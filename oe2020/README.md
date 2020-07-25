@@ -53,8 +53,16 @@ To learn how to build human and machine-interpretable definitions of concepts an
 
 <strong>Reading List:</strong> https://docs.google.com/document/d/1C_kGqMXP8GNqmh0j2QkeMhI-2EeoTWTD67bchYlCiCA/edit?usp=sharing
 
+<strong>Recommended Software:</strong>
+<ul>
+<li>Protégé ontology editor - Available from the Stanford Center for Biomedical Informatics Research at the Stanford University School of Medicine, at http://protege.stanford.edu/products.php, Protégé 5.5 (desktop version) </li>
+<li>Atlassian Sourcetree - free desktop Git client for Mac and Windows, available at https://www.atlassian.com/software/sourcetree </li>
+<li>Concept Maps (Cmaps) tool from the Institute for Human and Machine Cognition (IHMC), at http://cmap.ihmc.us/ </li>
+<li>All projects will be completed using Tetherless World public github accounts, linked to the course home page, and preserved for your reference in publications as well as for future students - template pages / accounts will be set up for each project after our 2nd class meeting. </li>
+</ul>
 
 <strong>Syllabus:</strong> https://docs.google.com/document/d/14oFYXPpZNutaj6eF-GWAbIK6acq8sVlbw4cu8E59Sr8/edit?usp=sharing
+<br />
 <br />
 
 <strong>Assessment Criteria:</strong>
