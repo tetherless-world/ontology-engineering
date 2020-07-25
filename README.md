@@ -1,34 +1,47 @@
 # Ontology Engineering
 
-Instructor: Professor Deborah McGuinness - dlm at cs dot rpi dot edu
-Guest Lecturer: Ms. Elisa Kendall - ekendall at thematix dot com
-Course Manager: Ms. Rebecca Cowan - cowanr at rpi dot edu
+<br />
 
-Office Hours: By appointment or in person in Winslow 2104
+<strong>Instructor:</strong> Professor Deborah McGuinness - dlm at cs dot rpi dot edu
 
-Course Listing: Ontologies
-CSCI 6967, CSCI 4968
+<strong>Guest Lecturer:</strong> Ms. Elisa Kendall - ekendall at thematix dot com
 
-Class Location: Online or in person in Winslow 1140
+<strong>Course Manager:</strong> Ms. Rebecca Cowan - cowanr at rpi dot edu
 
-Description: 
+<br />
+<br />
+
+<strong>Course Listing:</strong> Ontologies, CSCI 6340, CSCI 4340
+
+
+
+<strong>Description:</strong>
 This course provides an introduction to ontologies, their uses, and an overview of their application in semantically enabled systems. Ontologies, with their declarative encodings of meaning, can be used to improve communications between people and can enable computer programs to function more effectively. They provide the foundation for clear and unambiguous interaction. Ontologies have become increasingly common on the web, and class participants will not only learn about the use of ontologies in web-based applications but how to evaluate ontologies for reuse in such applications. Participants will read relevant papers, learn how to critically review ontology papers as well as ontologies themselves, and will participate in at least one group project designing, using, and evaluating ontologies.
+<br />
 
-Goal:
+<strong>Goal:</strong>
 To learn how to build human and machine-interpretable definitions of concepts and their relationships for use in knowledge-driven applications and automated systems.
 
-Objectives:
-Learn what ontologies are, how to build them, and how to use them
-Learn what use cases are, how to construct them, and how to use them to capture requirements for ontology and applications development
-Learn about terminology work, including definition development, and how to use terminologies as the starting point for ontology development
-Learn about ontology languages and some existing ontology resources
-Learn how to design, implement, and evaluate an ontology project
 
-Prerequisites:
-Basic knowledge of XML is expected
-Basic knowledge of Artificial Intelligence and the Web is expected
+<strong>Objectives:</strong>
+<ul>
+<li>Learn what ontologies are, how to build them, and how to use them </li>
+<li>Learn what use cases are, how to construct them, and how to use them to capture requirements for ontology and applications development </li>
+<li>Learn about terminology work, including definition development, and how to use terminologies as the starting point for ontology development </li>
+<li>Learn about ontology languages and some existing ontology resources </li>
+<li>Learn about knowledge graphs and how ontologies are used in the context of a knowledge graph </li>
+<li>Learn how to design, implement, and evaluate an ontology project </li>
+</ul>
 
-Recommended Books:
+<strong>Prerequisites:</strong>
+<ul>
+<li>Basic knowledge of XML is expected </li>
+<li>Basic knowledge of Artificial Intelligence and the Web is expected </li>
+<li>CSCI 2300  Data Structures and Algorithms </li>
+<li>Note - If you are taking the class without the prerequisites, please read at least the first half of the Ontology Engineering Book and the first 4 chapters of Semantic Web for the Working Ontologist. </li>
+</ul>
+
+<strong>Recommended Books:</strong>
 1. Elisa Kendall and Deborah L. McGuinness.  Ontology Engineering.  Synthesis Lectures on the Semantic Web: Theory and Technology, ISBN: 9781681733081, Morgan & Claypool, 2019.  (http://www.morganclaypoolpublishers.com/catalog_Orig/product_info.php?products_id=1395)
 
 2. Allemang, D., & Hendler, J. Semantic Web for the Working Ontologist, Second Edition: Effective Modeling in RDFS and OWL. Morgan Kaufmann Publishers, Waltham, MA, 2011. [ISBN:978-0-12-385965-5] (https://www.amazon.com/Semantic-Web-Working-Ontologist-Second/dp/0123859654)
