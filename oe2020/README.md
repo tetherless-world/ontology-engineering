@@ -10,7 +10,9 @@
 
 <strong>TAs:</strong> Sabbir Rashid - rashis2 at rpi dot edu, Shruthi Chari - charis at rpi dot edu
 
-<strong>Office Hours:</strong> By appointment or in person in Winslow 2104
+<strong>Meeting Times:</strong> Monday afternoon 12:00 noon - 3:50 pm
+
+<strong>Office Hours:</strong> By appointment only
 <br />
 <br />
 
@@ -19,7 +21,7 @@
 <strong>Course Homepage:</strong> https://tw.rpi.edu/web/Courses/Ontologies/2020
 <br />
 
-<strong>Class Location:</strong> Online or in person in TBD
+<strong>Class Location:</strong> Online and/or possiblly in person in TBD (check back closer to the start of classes)
 <br />
 <br />
 
@@ -37,6 +39,7 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <li>Learn what use cases are, how to construct them, and how to use them to capture requirements for ontology and applications development </li>
 <li>Learn about terminology work, including definition development, and how to use terminologies as the starting point for ontology development </li>
 <li>Learn about ontology languages and some existing ontology resources </li>
+<li>Learn about knowledge graphs and how ontologies are used in the context of a knowledge graph </li>
 <li>Learn how to design, implement, and evaluate an ontology project </li>
 </ul>
 
@@ -44,6 +47,8 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <ul>
 <li>Basic knowledge of XML is expected </li>
 <li>Basic knowledge of Artificial Intelligence and the Web is expected </li>
+<li>CSCI 2300  Data Structures and Algorithms </li>
+<li>Note - If you are taking the class without the prerequisites, please read at least the first half of the Ontology Engineering Book and the first 4 chapters of Semantic Web for the Working Ontologist. </li>
 </ul>
 
 <strong>Reading List:</strong> https://docs.google.com/document/d/1C_kGqMXP8GNqmh0j2QkeMhI-2EeoTWTD67bchYlCiCA/edit?usp=sharing
