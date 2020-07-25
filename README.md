@@ -9,10 +9,8 @@
 <strong>Course Manager:</strong> Ms. Rebecca Cowan - cowanr at rpi dot edu
 
 <br />
-<br />
 
 <strong>Course Listing:</strong> Ontologies, CSCI 6340, CSCI 4340
-
 
 
 <strong>Description:</strong>
@@ -32,7 +30,7 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <li>Learn about knowledge graphs and how ontologies are used in the context of a knowledge graph </li>
 <li>Learn how to design, implement, and evaluate an ontology project </li>
 </ul>
-
+<br />
 <strong>Prerequisites:</strong>
 <ul>
 <li>Basic knowledge of XML is expected </li>
