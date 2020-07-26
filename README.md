@@ -11,6 +11,7 @@
 <br />
 
 <strong>Course Listing:</strong> Ontologies, CSCI 6340, CSCI 4340
+
 <strong>Course Page:</strong> https://tw.rpi.edu//web/Courses/Ontologies
 
 <strong>Description:</strong>
