@@ -11,7 +11,7 @@
 <br />
 
 <strong>Course Listing:</strong> Ontologies, CSCI 6340, CSCI 4340
-
+<strong>Course Page:</strong> https://tw.rpi.edu//web/Courses/Ontologies
 
 <strong>Description:</strong>
 This course provides an introduction to ontologies, their uses, and an overview of their application in semantically enabled systems. Ontologies, with their declarative encodings of meaning, can be used to improve communications between people and can enable computer programs to function more effectively. They provide the foundation for clear and unambiguous interaction. Ontologies have become increasingly common on the web, and class participants will not only learn about the use of ontologies in web-based applications but how to evaluate ontologies for reuse in such applications. Participants will read relevant papers, learn how to critically review ontology papers as well as ontologies themselves, and will participate in at least one group project designing, using, and evaluating ontologies.
@@ -31,6 +31,7 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <li>Learn how to design, implement, and evaluate an ontology project </li>
 </ul>
 <br />
+
 <strong>Prerequisites:</strong>
 <ul>
 <li>Basic knowledge of XML is expected </li>

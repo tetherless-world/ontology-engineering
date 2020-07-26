@@ -8,7 +8,7 @@
 
 <strong>Course Manager:</strong> Ms. Rebecca Cowan - cowanr at rpi dot edu
 
-<strong>TAs:</strong> Sabbir Rashid - rashis2 at rpi dot edu, Shruthi Chari - charis at rpi dot edu
+<strong>Mentors:</strong> Sabbir Rashid - rashis2 at rpi dot edu, Shruthi Chari - charis at rpi dot edu
 
 <strong>Meeting Times:</strong> Monday afternoon 12:00 noon - 3:50 pm
 
