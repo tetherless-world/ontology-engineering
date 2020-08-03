@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 [Abstract](#abstract) | [Workflow](#workflow) | [Resource List](#resources) | [License](#license) | [Acknowledgements](#acknowledgements)
 
 <article class="mb-5" id="note">
