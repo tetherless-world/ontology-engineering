@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: inner_proj
 title: About
 ---
 
