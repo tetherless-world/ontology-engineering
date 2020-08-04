@@ -1,7 +1,6 @@
----
-layout: default
----
+{% extends _layouts/default.html %}
 
+{% block content %}
 [Abstract](#abstract) | [Workflow](#workflow) | [Resource List](#resources) | [License](#license) | [Acknowledgements](#acknowledgements)
 
 {{layout.nav}}
@@ -99,5 +98,5 @@ layout: default
   
  </ul>
  </content>
-
+{% endblock %}
 
