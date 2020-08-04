@@ -1,10 +1,11 @@
 ---
-layout: page
+layout: default
 title: About
 ---
 
 [Abstract](#abstract) | [Workflow](#workflow) | [Resource List](#resources) | [License](#license) | [Acknowledgements](#acknowledgements)
 
+{{layout.nav}}
 <article class="mb-5" id="note">
 <content>
  <h2>Note</h2>
