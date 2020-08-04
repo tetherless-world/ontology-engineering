@@ -1,6 +1,6 @@
 ---
 layout: default
-title: about
+title: About
 ---
 
 [Abstract](#abstract) | [Workflow](#workflow) | [Resource List](#resources) | [License](#license) | [Acknowledgements](#acknowledgements)
