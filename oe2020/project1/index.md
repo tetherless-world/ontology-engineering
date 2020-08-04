@@ -1,4 +1,6 @@
-{% extends _layouts/default.html %}
+---
+layout: default
+---
 
 {% block content %}
 [Abstract](#abstract) | [Workflow](#workflow) | [Resource List](#resources) | [License](#license) | [Acknowledgements](#acknowledgements)
