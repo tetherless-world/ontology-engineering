@@ -2,32 +2,23 @@
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ 'images/favicon/favicon.ico' | relative_url}}">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ 'assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-	  <link rel="stylesheet" type="text/css" 
-    href="{{ 'bootstrap/css/bootstrap.min.css?v=' | append: site.github.build_revision | relative_url }}"/>
 
+{% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	  <div class="w3-container top" style="background:url({{'images/medical-banner-4.jpg' | relative_url}});background-size:cover;
-  box-shadow:inset 0 0 0 2000px rgba(200, 247, 197, 0.3);">
-  <br>
-  <br>
-  <br>
-  <h1 class="header" style="text-align:center;box-shadow:inset 0 0 0 2000px rgba(200, 247, 197, 0.8);">{{ site.title | default: site.github.repository_name }}</h1>
-  <p class="header" style="text-align:center;box-shadow:inset 0 0 0 2000px rgba(200, 247, 197, 0.8);">{{ site.description | default: site.github.project_tagline }}</p>
-  <br>
-  <br>
-		  <p style="text-align:right"><sup>*</sup>This image was taken from: https://www.policyschool.ca/background-banner/health-policy/health-banner/</p>
-</div>
-  
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
     <div class="wrapper">
-      <header style="background-color:#8DE3CE;">
-        <ul class="navbar-nav" style="background-color:#8DE3CE;">
+      <header>
+        <h1 class="header">{{ site.title | default: site.github.repository_name }}</h1>
+        <p class="header">{{ site.description | default: site.github.project_tagline }}</p>
+
+        <ul>
             <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/index"><strong>Home</strong></a>
 	    </li>
@@ -47,20 +38,13 @@
                 <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/contact"><strong>Contact</strong></a>
             </li> -->
         </ul>
-        
-          </head>
 
+        {% if site.github.is_user_page %}
+          <ul>
+            <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
+          </ul>
+        {% endif %}
       </header>
-      
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none"></span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</nav>
 
       <section>
         {{ content }}
