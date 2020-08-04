@@ -1,11 +1,12 @@
 ---
-layout: inner_proj
+layout: default
 title: About
 ---
 
 [Abstract](#abstract) | [Workflow](#workflow) | [Resource List](#resources) | [License](#license) | [Acknowledgements](#acknowledgements)
 
-{{layout.nav}}
+{% include_relative navbar.md %}
+
 <article class="mb-5" id="note">
 <content>
  <h2>Note</h2>
