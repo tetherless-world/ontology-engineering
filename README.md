@@ -1,5 +1,7 @@
 # Ontology Engineering
 
+{% include navbar.html %}
+
 <br />
 
 <strong>Instructor:</strong> Professor Deborah McGuinness - dlm at cs dot rpi dot edu
