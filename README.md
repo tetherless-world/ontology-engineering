@@ -1,6 +1,6 @@
 # Ontology Engineering
 
-{% include navbar.html %}
+<!-- {% include navbar.html %} -->
 
 <br />
 
