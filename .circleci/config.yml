@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+  hygiene_tests:
+    working_directory: /git/ontology-hygiene-tests
+    docker:
+      - image: docker/compose:debian-1.26.2
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Run hygiene tests
+          command: .hygiene/run_hygiene.sh
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - hygiene_tests
