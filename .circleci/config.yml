@@ -10,10 +10,11 @@ jobs:
       - run:
           name: Run hygiene tests
           command: .hygiene/run_hygiene.sh
-      - store artifacts:
-          path: /output
       - run:
           name: Update CA Certificates
+          command: update-ca-certificates
+      - store artifacts:
+          path: /output
       - store_test_results:
           path: /output
 workflows:
