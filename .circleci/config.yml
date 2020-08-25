@@ -1,14 +1,19 @@
 version: 2.1
 jobs:
   hygiene_tests:
+    working_directory: /git/ontology-hygiene-tests
     docker:
-      - image: circleci/buildpack-deps
+      - image: docker/compose:debian-1.26.2
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Run hygiene tests
           command: .hygiene/run_hygiene.sh
+      - store artifacts:
+          path: /output
+      - run:
+          name: Update CA Certificates
       - store_test_results:
           path: /output
 workflows:
