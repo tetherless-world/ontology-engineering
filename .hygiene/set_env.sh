@@ -8,7 +8,7 @@ REPO_DIR=${REPO_DIR:-"$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"}
 HYGIENE_DIR=${HYGIENE_DIR:-"${REPO_DIR}/.hygiene"}
 
 # Path to directory where container output will be copied.
-OUTPUT_DIR=${OUTPUT_DIR:-"${REPO_DIR}/output"}
+OUTPUT_DIR=${OUTPUT_DIR:-"${HYGIENE_DIR}/output"}
 
 # Directory name of the repository (defaults to $REPO_DIR name)
 ONTPUB_FAMILY=${ONTPUB_FAMILY:-"${REPO_DIR##*/}"}
