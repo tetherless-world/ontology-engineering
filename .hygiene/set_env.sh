@@ -19,7 +19,7 @@ HYGIENE_WORKSPACE=${HYGIENE_WORKSPACE:-"$(cd "${REPO_DIR}" && cd .. && pwd)"}
 HYGIENE_TEST_SUBDIR=".hygiene/tests"
 
 # If true, fail tests that produce warnings
-HYGIENE_FAIL_ON_WARNINGS=true
+HYGIENE_FAIL_ON_WARNINGS=false
 
 # Relative path to ontology sources
 ONTPUB_SUBDIR=oe2020
