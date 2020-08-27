@@ -1,15 +1,18 @@
 version: 2.1
 jobs:
   hygiene_tests:
-    working_directory: /git/ontology-hygiene-tests
     docker:
-      - image: docker/compose:debian-1.26.2
+      - image: circleci/node:10
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Run hygiene tests
-          command: .hygiene/run_hygiene.sh
+          command: bash -xeo pipefail .hygiene/run_hygiene.sh
+      - store_artifacts:
+          path: .hygiene/output
+      - store_test_results:
+          path: .hygiene/output
 workflows:
   version: 2.1
   build_and_test:
