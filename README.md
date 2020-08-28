@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: :path/
+---
+
 # Ontology Engineering
 
 <br />
@@ -20,7 +25,6 @@ This course provides an introduction to ontologies, their uses, and an overview 
 
 <strong>Goal:</strong>
 To learn how to build human and machine-interpretable definitions of concepts and their relationships for use in knowledge-driven applications and automated systems.
-
 
 <strong>Objectives:</strong>
 <ul>
