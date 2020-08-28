@@ -1,8 +1,3 @@
----
-layout: default
-permalink: :path/
----
-
 # Ontology Engineering Fall 2020
 
 <br />

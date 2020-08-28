@@ -1,8 +1,3 @@
----
-layout: default
-permalink: :path/
----
-
 # Ontology Engineering
 
 <br />
