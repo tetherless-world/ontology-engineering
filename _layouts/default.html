@@ -1,6 +1,33 @@
 <!doctype html>
 <html lang="{{ site.lang | default: "en-US" }}">
 
+<!-- Determine if the current page is for a particular year or project -->
+
+{% assign url = page.url|remove:'index.html' %}
+{% assign years = site.data.years | sort %}
+{% assign active_year = false %}
+{% assign active_project = false %}
+
+{% for year_hash in years %}
+  {% assign year = year_hash[1] %}
+  {% assign year_path = year.year.path | relative_url %}
+  <!-- active_year will be assigned to either the most recent year or the currently selected year -->
+  <!-- (if the url contains the year's url the loop will break) -->
+  {% assign active_year = year%}
+  {% if url contains year_path %}
+    {% for project_hash in year.projects %}
+      {% assign project = project_hash[1] %}
+      {% assign project_path = year_path | append: '/' | append: project.path %}
+      {% if url contains project_path %}
+        {% assign active_project = project %}
+        {% assign active_project_path = project_path %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,12 +51,17 @@
           style="float: right; clear: right; display:inline-block; background: white;" alt="star">
       </h1>
     </span>
-    <!--   <img src="{{site.baseurl}}/images/tw-logo-v2.png" alt="star" /> -->
-    <h1 class="header" style="text-align:center;box-shadow:inset 0 0 0 2000px rgba(200, 247, 197, 0.8);">
-      {{ site.title | default: site.github.repository_name }}</h1>
-    <p class="header" style="text-align:center;box-shadow:inset 0 0 0 2000px rgba(200, 247, 197, 0.8);">
-      {{ site.description | default: site.github.project_tagline }}</p>
-    <!--   <img src="{{site.baseurl}}/images/rpi_logo.png" alt="star" /> -->
+    <!-- Display the project title for an active project -->
+    {% if active_project%}
+      <h1 class="header title">{{ active_project.name }}</h1>
+    {% else %}
+      <h1 class="header title">
+        {{ site.title | default: site.github.repository_name }}
+      </h1>
+      <p class="header title">
+        {{ site.description | default: site.github.project_tagline }}
+      </p>
+    {% endif %}
     <br>
     <br>
   </div>
@@ -38,67 +70,56 @@
 <body>
   <div class="wrapper">
     <header class="steelblue">
-      <h1 class="header">Navigation</h1>
-      <p class="header">Class and class project details</p>
-      <ul>
-        <li class="nav-item green-gradient">
-          <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/index"><strong>About Class</strong></a>
-        </li>
 
-        {% assign url = page.url|remove:'index.html' %}
-        {% assign years = site.data.years | sort %}
-        {% for year_hash in years %}
-          {% assign year = year_hash[1] %}
-          {% assign year_path = year.year.path | relative_url %}
-          <li class="nav-item green-gradient">
-            <a class="nav-link js-scroll-trigger" href="{{year_path}}"><strong>{{year.year.name}}</strong></a>
+      <!-- Project Page Menu -->
+      {% if active_project %}
+        <a href="{{active_year.year.path | relative_url}}">&lt; Back to course page</a>
+        <h1 class="header">{{active_project.name}}</h1>
+        <ul class="nav-menu">
+          {% for page in active_project.pages %}
+            {% assign page_path = active_project_path | append: '/' | append: page.path %}
+            <li>
+              <a href="{{page_path}}">{{page.name}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      <!-- Course Page Menu -->
+      {% else %}
+        <h1 class="header">Navigation</h1>
+        <p class="header">Class and class project details</p>
+        <ul class="nav-menu">
+          <li>
+            <a href="{{site.baseurl}}/index">About Class</a>
           </li>
-          {% if  url contains year_path %}
-            <div class="sub-menu">
-            {% for project_hash in year.projects %}
-              {% assign project = project_hash[1] %}
-              {% assign project_path = year_path | append: '/' | append: project.path %}
-              <li class="nav-item green-gradient">
-                <a class="nav-link js-scroll-trigger" href="{{project_path}}"><strong>{{project.name}}</strong></a>
-              </li>
-              {% if url contains project_path %}
-                <div class="sub-menu">
-                {% for page in project.pages %}
-                  {% assign page_path = project_path | append: '/' | append: page.path %}
-                  <li class="nav-item green-gradient">
-                    <a class="nav-link js-scroll-trigger" href="{{page_path}}"><strong>{{page.name}}</strong></a>
-                  </li>
-                {% endfor %}
-                </div>
-              {% endif %}
-            {% endfor %}
-            </div>
-          {% endif %}
-        {% endfor %}
-        <!-- <li class="nav-item green-gradient">
-          <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/oe2020/project1"><strong>Project 1</strong></a>
-        </li> -->
-<!--         <li class="nav-item green-gradient">
-          <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/index"><strong>Research</strong></a>
-        </li>
-        <li class="nav-item green-gradient">
-          <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/papers-used"><strong>Resources</strong></a>
-        </li>
-        <li class="nav-item green-gradient">
-          <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/ontology-resource"><strong>Design</strong></a>
-        </li>
-        <li class="nav-item green-gradient">
-          <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/application"><strong>Application</strong></a>
-        </li> -->
-        <!--             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/contact"><strong>Contact</strong></a>
-            </li> -->
+          {% assign years = site.data.years | sort %}
+          {% for year_hash in years %}
+            {% assign year = year_hash[1] %}
+            {% assign year_path = year.year.path | relative_url %}
+            <li>
+              <a href="{{year_path}}">{{year.year.name}}</a>
+            </li>
+            {% if active_year.year.path == year.year.path %}
+              <div class="sub-menu">
+              {% for project_hash in year.projects %}
+                {% assign project = project_hash[1] %}
+                {% assign project_path = year_path | append: '/' | append: project.path %}
+                <li>
+                  <a href="{{project_path}}">{{project.name}}</a>
+                </li>
+              {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <ul>
       </ul>
 
       {% if site.github.is_user_page %}
-      <ul>
-        <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
-      </ul>
+        <ul>
+          <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
+        </ul>
       {% endif %}
     </header>
 
