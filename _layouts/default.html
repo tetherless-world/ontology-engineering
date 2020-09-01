@@ -44,9 +44,40 @@
         <li class="nav-item green-gradient">
           <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/index"><strong>About Class</strong></a>
         </li>
-        <li class="nav-item green-gradient">
+
+        {% assign url = page.url|remove:'index.html' %}
+        {% assign years = site.data.years | sort %}
+        {% for year_hash in years %}
+          {% assign year = year_hash[1] %}
+          {% assign year_path = year.year.path | relative_url %}
+          <li class="nav-item green-gradient">
+            <a class="nav-link js-scroll-trigger" href="{{year_path}}"><strong>{{year.year.name}}</strong></a>
+          </li>
+          {% if  url contains year_path %}
+            <div class="sub-menu">
+            {% for project_hash in year.projects %}
+              {% assign project = project_hash[1] %}
+              {% assign project_path = year_path | append: '/' | append: project.path %}
+              <li class="nav-item green-gradient">
+                <a class="nav-link js-scroll-trigger" href="{{project_path}}"><strong>{{project.name}}</strong></a>
+              </li>
+              {% if url contains project_path %}
+                <div class="sub-menu">
+                {% for page in project.pages %}
+                  {% assign page_path = project_path | append: '/' | append: page.path %}
+                  <li class="nav-item green-gradient">
+                    <a class="nav-link js-scroll-trigger" href="{{page_path}}"><strong>{{page.name}}</strong></a>
+                  </li>
+                {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+        <!-- <li class="nav-item green-gradient">
           <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/oe2020/project1"><strong>Project 1</strong></a>
-        </li>
+        </li> -->
         <li class="nav-item green-gradient">
           <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/index"><strong>Research</strong></a>
         </li>
