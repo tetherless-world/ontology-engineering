@@ -1,4 +1,4 @@
-[Concept Map](#conceptmap) | [Ontology File](#ontologyfile) | [Ontologies Reused](#ontologyreused) | [Ontology Prefixes] (#ontologyprefixes)
+[Concept Map](#conceptmap) | [Ontology File](#ontologyfile) | [Ontologies Reused](#ontologyreused) | [Ontology Prefixes](#ontologyprefixes)
 
  <article class="mb-5" id="conceptmap">
 <content>
@@ -216,6 +216,5 @@
     <td> <a href="http://purl.org/net/OCRe/OCRe.owl/#"> Ontology of Clinical Research</a> </td> 
   </tr>
 </table>
- </ul>
  </content>
  
