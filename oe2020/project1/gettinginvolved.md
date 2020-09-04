@@ -6,7 +6,7 @@ title: About
 <article class="mb-5" id="note">
 <content>
  <h2>Note to students</h2>
- <p>Please edit the below to be project specific.</p>
+ <p class="message-highlight">Please edit the below to be project specific.</p>
  </content>
  
 <article class="mb-5" id="abstract">
@@ -20,7 +20,7 @@ title: About
  <article class="mb-5" id="abstract">
 <content>
 <h2>Getting Involved</h2>
- <p>Please mention plans for future work here and enlist the emails of team members</p><br/>
+ <p class="message-highlight">Please mention plans for future work here and enlist the emails of team members</p><br/>
 <p>There are several places where the project could expand. Different types of expansion include encoding measurement information, adding other common types of allergies and dietary restrictions, expanding the food classification, adding recipes and ingredients, and improving the inference of substitutions.
 If you are interested in contributing to the WhatToMake project or have any other ideas or suggestions, please contact us at the emails below:</p>
 <ul>
@@ -30,8 +30,4 @@ If you are interested in contributing to the WhatToMake project or have any othe
 </ul>
  </content>
  
-
-
- </content>
-
 
