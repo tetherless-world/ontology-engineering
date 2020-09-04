@@ -7,6 +7,6 @@ title: use case
 <content>
 <h2>Use Case Document</h2>
  <ul> 
-<iframe src="files/OEUseCaseTemplate.docx" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/OEUseCaseTemplatePDF.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
   </ul>
  </content>
