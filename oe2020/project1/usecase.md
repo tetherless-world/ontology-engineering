@@ -1,6 +1,7 @@
-
-
-
+---
+layout: default
+title: use case
+---
 
 <article class="mb-5" id="usecase">
 <content>
