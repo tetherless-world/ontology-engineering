@@ -6,7 +6,7 @@
 
 {%comment%} Determine if the current page is for a particular year or project {%endcomment%}
 
-{% assign url = page.url|remove:'index.html' %}
+{% assign url = page.url | relative_url | remove:'index.html' %}
 {% if debug_mode %}
   <p>url: {{url | inspect }}</p>
 {% endif %}
@@ -107,7 +107,7 @@
         <p class="header">Class and class project details</p>
         <ul class="nav-menu">
           <li>
-            <a href="{{site.baseurl}}/index">About Class</a>
+            <a href="{{site.baseurl}}">About Class</a>
           </li>
           {% assign years = site.data.years | sort %}
           {% for year_hash in years %}
