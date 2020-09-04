@@ -1,9 +1,15 @@
 <!doctype html>
 <html lang="{{ site.lang | default: "en-US" }}">
 
-<!-- Determine if the current page is for a particular year or project -->
+{%- comment -%} Debug messages will be renedered if this is true {%- endcomment -%}
+{% assign debug_mode = true %}
+
+{%comment%} Determine if the current page is for a particular year or project {%endcomment%}
 
 {% assign url = page.url|remove:'index.html' %}
+{% if debug_mode %}
+  <p>url: {{url | inspect }}</p>
+{% endif %}
 {% assign years = site.data.years | sort %}
 {% assign active_year = false %}
 {% assign active_project = false %}
@@ -11,13 +17,21 @@
 {% for year_hash in years %}
   {% assign year = year_hash[1] %}
   {% assign year_path = year.year.path | relative_url %}
-  <!-- active_year will be assigned to either the most recent year or the currently selected year -->
-  <!-- (if the url contains the year's url the loop will break) -->
+  {% if debug_mode %}
+    <p>year_path: {{year_path | inspect }}</p>
+  {% endif %}
+  {%- comment -%}
+    active_year will be assigned to either the most recent year or the currently selected year
+    (if the url contains the year's url the loop will break)
+  {%- endcomment -%}
   {% assign active_year = year%}
   {% if url contains year_path %}
     {% for project_hash in year.projects %}
       {% assign project = project_hash[1] %}
       {% assign project_path = year_path | append: '/' | append: project.path %}
+      {% if debug_mode %}
+        <p>project_path: {{project_path | inspect }}</p>
+      {% endif %}
       {% if url contains project_path %}
         {% assign active_project = project %}
         {% assign active_project_path = project_path %}
@@ -27,6 +41,10 @@
     {% break %}
   {% endif %}
 {% endfor %}
+{% if debug_mode %}
+  <p>active_year: {{active_year | inspect }}</p>
+  <p>active_project: {{active_project | inspect }}</p>
+{% endif %}
 
 <head>
   <meta charset="utf-8">
@@ -51,7 +69,7 @@
           style="float: right; clear: right; display:inline-block; background: white;" alt="star">
       </h1>
     </span>
-    <!-- Display the project title for an active project -->
+    {%- comment -%} Display the project title for an active project {%- endcomment -%}
     {% if active_project%}
       <h1 class="header title">{{ active_project.name }}</h1>
     {% else %}
@@ -71,7 +89,7 @@
   <div class="wrapper">
     <header class="steelblue">
 
-      <!-- Project Page Menu -->
+      {%- comment -%} Project Page Menu {%- endcomment -%}
       {% if active_project %}
         <a href="{{active_year.year.path | relative_url}}">&lt; Back to course page</a>
         <h1 class="header">{{active_project.name}}</h1>
@@ -83,7 +101,7 @@
             </li>
           {% endfor %}
         </ul>
-      <!-- Course Page Menu -->
+      {%- comment -%} Course Page Menu {%- endcomment -%}
       {% else %}
         <h1 class="header">Navigation</h1>
         <p class="header">Class and class project details</p>
