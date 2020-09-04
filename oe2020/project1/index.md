@@ -3,8 +3,6 @@ layout: default
 title: About
 ---
 
-[Abstract](#abstract) | [Workflow](#workflow) | [Resource List](#resources) | [License](#license) | [Acknowledgements](#acknowledgements)
-
 <article class="mb-5" id="note">
 <content>
  <h2>Note to students</h2>
@@ -56,7 +54,7 @@ title: About
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td> (a) <a href="https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl">Study Cohort Ontology (SCO)</a></td> 
+    <td> (a) <a href="https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl">Your Ontology</a></td> 
   </tr>
   <tr>
     <td>2. Term List</td>
