@@ -1,6 +1,7 @@
 <article class="mb-5" id="scenarioquery">
 <content>
 <h2>Queries</h2>
+	<p class="message-highlight">List your SPARQL queries to your competency questions along with answers retrieved from your ontology/KG such as the below.</p>
 <ul>
     <h3> Study Match: Is there a study that matches this patient on a feature (s)? </h3>
     <strong> Query 1: SPARQL Query to fetch study titles that match a patient's race and gender </strong>
