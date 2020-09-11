@@ -27,7 +27,7 @@ When you are trying to add to the website template that you have setup for your 
 Also, the navigation bar of your project page is filled out by us, and if you want to edit this (e.g.:, to add options), please consult with course TA, Shruthi: charis@rpi.edu or Sam Stouffer, stoufs2@rpi.edu
 Finally, should you have any questions: please check the course instructions page at: https://master--rpi-ontology-engineering.netlify.app/.
 
-We have further instructions, on the technical implementation of this infrastructure below. Please read through for your understanding. 
+We have further instructions, on the technical implementation of this infrastructure below. Please read through for your understanding.
 
 ## Preview a branch site on Netlify
 
@@ -68,47 +68,3 @@ This will update the status of your latest commit to indicate that it did not pa
 *When submitting assignments, your ontologies must pass all hygiene checks.*
 
 You can view details about the hygiene test runs on the project [CircleCI page](https://app.circleci.com/pipelines/github/tetherless-world/ontology-engineering).
-
-
-## Nav Menu
-
-The nav menu contains both static and configurable items.
-The static items are specified in the html template in `_layouts/default.html`.
-Course year specific items are configured via YAML files.
-
-Each course year will have its own directory in `_data/years` e.g. the fall 2020 course is in `_data/years/2020`.
-Each year specified in this way will be rendered as a nav link on the main menu.
-Within the year directory is a `year.yml` file that contains the nav label and relative path for that course year.  Example `_data/years/2020/year.yml`:
-```yaml
-name: OE 2020
-path: oe2020
-```
-{% assign main_nav_capt = "The main nav menu using example config" %}
-![{{ main_nav_capt }}](main_nav_example.png)
-<br>
-*{{ main_nav_capt }}*
-
-Also within the year directory is a `projects` directory containing a YAML file for each project of that year.
-The YAML files in this directory will be used to populate a sub-menu of the year's projects that is visible when the user is on that year's page.
-The sub-menu for the most recent year will be visible by default if the user is not on a year page.
-
-Project YAML files are similar to the `year.yml` file in that they contain `name` and `path` fields to specify the nav label and relative path respectively.
-In this case, the `path` is relative to the project's year.
-Additionally there is a `pages` list that dictates the contents of the nav menu for the project page.
-Each element of the `pages` list contains a `name` field and a `path` field, which is relative to the project page.
-
-Example `_data/years/2020/projects/project1.yml`:
-```yaml
-name: Project One
-path: project1
-pages:
-  - name: Sub Page
-    path: sub_page
-  - name: Other Page
-    path: other_page
-```
-
-{% assign proj_nav_capt = "The project one page nav menu using example config" %}
-![{{ proj_nav_capt }}](project_nav_example.png)
-<br>
-*{{ proj_nav_capt }}*
