@@ -113,11 +113,11 @@
       {%- comment -%} Course Page Menu {%- endcomment -%}
       {% else %}
         <h1 class="header">Navigation</h1>
-        <p class="header">Class and class project details</p>
         <ul class="nav-menu">
           <li class="nav-link">
             <a href="{{'/' | relative_url}}">About Class</a>
           </li>
+          <p class="section">Projects</p>
           {% assign years = site.data.years | sort %}
           {% for year_hash in years %}
             {% assign year = year_hash[1] %}
@@ -136,8 +136,12 @@
               </div>
             {% endif %}
           {% endfor %}
+          <p class="section">Guidelines</p>
           <li class="nav-link">
-            <a href="{{'/docs/site_development' | relative_url}}">Guidelines</a>
+            <a href="{{'/docs/site_development' | relative_url}}">Site Development</a>
+          </li>
+          <li class="nav-link">
+            <a href="{{'/docs/ontology_development' | relative_url}}">Ontology Development</a>
           </li>
         </ul>
       {% endif %}
