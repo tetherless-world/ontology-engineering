@@ -93,7 +93,6 @@
 <body>
   <div class="wrapper">
     <header class="steelblue">
-
       {%- comment -%} Project Page Menu {%- endcomment -%}
       {% if active_project %}
         <a href="{{active_year.path | relative_url}}">&lt; Back to course page</a>
@@ -101,7 +100,9 @@
         <ul class="nav-menu">
           {% for item in active_year.project_nav %}
             {% if item.section %}
-              <p class="section">{{ item.section }}</p>
+        </ul>
+        <p class="section">{{ item.section }}</p>
+        <ul class="nav-menu">
             {% else %}
               {% assign page_path = active_project_path | append: '/' | append: item.path %}
               <li class="nav-link">
@@ -117,7 +118,9 @@
           <li class="nav-link">
             <a href="{{'/' | relative_url}}">About Class</a>
           </li>
-          <p class="section">Projects</p>
+        </ul>
+        <p class="section">Projects</p>
+        <ul class="nav-menu">
           {% assign years = site.data.years | sort %}
           {% for year_hash in years %}
             {% assign year = year_hash[1] %}
@@ -136,7 +139,9 @@
               </div>
             {% endif %}
           {% endfor %}
-          <p class="section">Guidelines</p>
+        </ul>
+        <p class="section">Guidelines</p>
+        <ul class="nav-menu">
           <li class="nav-link">
             <a href="{{'/docs/site_development' | relative_url}}">Site Development</a>
           </li>
@@ -145,9 +150,6 @@
           </li>
         </ul>
       {% endif %}
-
-      <ul>
-      </ul>
 
       {% if site.github.is_user_page %}
         <ul>
