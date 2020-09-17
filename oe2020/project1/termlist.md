@@ -8,7 +8,7 @@ title: term list
 <h2>Terminology List</h2>
  <ul> 
 
-<iframe src="files/termlist.xlsx" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://rb.gy/qr3aqa" style="width: 100%;height: 700px;border: none;"></iframe>
   </ul>
  </content>
 
