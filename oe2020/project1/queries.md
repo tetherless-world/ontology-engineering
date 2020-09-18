@@ -7,7 +7,7 @@
 
 ### Study Match: Is there a study that matches this patient on a feature (s)?
 
-**Query 1: SPARQL Query to fetch study titles that match a patient's race and gender**
+#### Query 1: SPARQL Query to fetch study titles that match a patient's race and gender
 
 ```sparql
 PREFIX resource: <http://semanticscience.org/resource/>
@@ -39,7 +39,7 @@ WHERE {
 }
 ```
 
-**Result 1: Study titles retrieved from the study match query to find all studies in which African American Males are represented**
+#### Result 1: Study titles retrieved from the study match query to find all studies in which African American Males are represented
 
 |Study Title|
 |-----------|
@@ -59,10 +59,9 @@ WHERE {
 | Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults with and without glucose disorders: a report from the ALLHAT study |
 | Effects of intensive blood-pressure control in type 2 diabetes mellitus |
 
-
 ### Study Limitations: Are there absence or underrepresentation of population groups in this study?
 
-**Query 2: SPARQL Query to fetch study titles and range of values reported for Age**
+#### Query 2: SPARQL Query to fetch study titles and range of values reported for Age
 
 ```sparql
 PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
@@ -108,7 +107,7 @@ WHERE {
 }
 ```
 
-**Result 2: Study Titles and Age Ranges retrieved from the study limitation query to find studies where old adults above 70 are not represented**
+## Result 2: Study Titles and Age Ranges retrieved from the study limitation query to find studies where old adults above 70 are not represented
 
 <table style="width:100%">
   <tr>
@@ -203,10 +202,9 @@ WHERE {
   </tr>
 </table>
 
-
 ### Study Quality Evaluation: Are there adequate population sizes and is there a heterogeneity of treatment effect among arms?
 
-**Query 3: SPARQL query to find large scale studies with intervention arms size being at least 1/3rd the overall cohort size**
+#### Query 3: SPARQL query to find large scale studies with intervention arms size being at least 1/3rd the overall cohort size
 
 ```sparql
 PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
@@ -249,7 +247,7 @@ WHERE {
 }
 ```
 
-**Result 3: Cohort sizes and individual study arm sizes of clinical trials retrieved from a query to find the studies having a cohort population ≥ 1000 and individual study arm population sizes are at least 1rd ⁄3 the cohort size**
+#### Result 3: Cohort sizes and individual study arm sizes of clinical trials retrieved from a query to find the studies having a cohort population ≥ 1000 and individual study arm population sizes are at least 1rd ⁄3 the cohort size
 
 <table style="width:100%">
   <tr>
@@ -296,7 +294,6 @@ WHERE {
   </tr>
 </table>
 
-
 ## Value Retrieval Query for Visualization 
 
 ### Star Plot Code
@@ -305,11 +302,12 @@ We present a query below that is used to retrieve the central value, and upper a
 This query can flexibly retrieve values for both mean +/- standard deviation, median and interquartile range representations with being agnostic of the expression of the characteristic. Also, if we were to constrain the query for values of other parameters, we would just included them in the filter clause. Hence, this query is a generalized faceted browser query.
 
 To run the code, please follow the steps as below:
+
 1. `cd study-cohort-ontology`
-2. `python3 -m venv env`
-3. `source env/bin/activate`
-4. `pip install -r ../requirements.txt`
-5. `python3 starplot.py`
+1. `python3 -m venv env`
+1. `source env/bin/activate`
+1. `pip install -r ../requirements.txt`
+1. `python3 starplot.py`
 
 The star plot code can be browsed at: [https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py)
 

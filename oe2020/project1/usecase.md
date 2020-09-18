@@ -11,6 +11,6 @@ title: use case
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 
-*   [Version 3](files/OEUseCaseTemplatePDF.pdf)
-*   [Version 2](files/OEUseCaseTemplatePDF.pdf)
-*   [Version 1](files/OEUseCaseTemplatePDF.pdf)
+- [Version 3](files/OEUseCaseTemplatePDF.pdf)
+- [Version 2](files/OEUseCaseTemplatePDF.pdf)
+- [Version 1](files/OEUseCaseTemplatePDF.pdf)

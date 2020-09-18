@@ -19,5 +19,5 @@ Our maintainance policy is primarily focused on ensuring that our data remains a
 
 There are several places where the project could expand. Different types of expansion include encoding measurement information, adding other common types of allergies and dietary restrictions, expanding the food classification, adding recipes and ingredients, and improving the inference of substitutions. If you are interested in contributing to the WhatToMake project or have any other ideas or suggestions, please contact us at the emails below:
 
-*   Person 1 person1@rpi.edu
-*   Person 2 person2@rpi.edu
+- Person 1 person1@rpi.edu
+- Person 2 person2@rpi.edu

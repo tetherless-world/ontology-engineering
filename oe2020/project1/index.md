@@ -4,6 +4,7 @@ title: About
 ---
 
 ## Note to students
+
 This website is organized as follows.
 The side navigation serves a static menu to navigate across pages on this website.
 We provide you with a template of what we want to see from your project pages, the contents can be edited on a per project basis.
@@ -54,6 +55,6 @@ List resources you think a reader would benefit from to use your project. We lis
 <iframe src="files/License.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Acknowledgements
+
 <p class="message-highlight">Please acknowledge people who have helped you in this work. An example is below</p><br/>
 This work is undertaken as a part of the [Health Empowerement by Analytics, Learning and Semantics (HEALS)](https://science.rpi.edu/biology/news/ibm-and-rensselaer-team-research-chronic-diseases-cognitive-computing) project , and is partially supported by IBM Research AI through the AI Horizons Network. We thank our colleagues from IBM Research, Dan Gruen, Morgan Foreman and Ching-Hua Chen, and from RPI, John Erickson, Alexander New, Neha Keshan and Rebecca Cowan, who provided insight and expertise that greatly assisted the research.
-
