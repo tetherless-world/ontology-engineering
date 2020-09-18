@@ -2,76 +2,75 @@
 
 ## Conceptual Model
 
-![](images/ConceptMap_SubjectModel.png)
+![Concept Map Subject Model](images/ConceptMap_SubjectModel.png)
 
 An overview of the main classes and their property associations. Some property associations exist only upon
 representation of the Table 1 data, and so we highlight instances in pink
 
 ## Ontologies
-<h3> Study Cohort Ontology (SCO) </h3>
 
-#### Link:
+### Study Cohort Ontology (SCO)
+
+**Link:**
 [https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl)
 
-#### View the ontology documentation at:
+**View the ontology documentation at:**
 [https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
 
 #### Primary Classes and Definitions
 
 1. Research Study
-* Definition: A scientific investigation that involves testing a hypothesis
-* Immediate Superclass: None
-* Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-* Reused From: Hasco
-2. Clinical Trial
-* Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
-* Immediate Superclass: Research Study
-* Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-* Reused From: National Cancer Institute Thesarus (NCIT)
-3. Cohort
-* Definition: A cohort is the group of subjects enrolled in a study
-* Immediate Superclass: None
-* Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-* Reused From: The Statistical Methods Ontology (STATO)
-4. Study Arm
-* Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
-or no intervention, according to the trial's protocol
-* Immediate Superclass: Cohort
-* Example: Metformin Conventional Therapy Arm
-* Reused From: None
-5. Study Subject
-* Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
-professional or institution with the purpose to receive medical care when necessary
-* Immediate Superclass: None
-* Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-* Reused From: SemanticScience Integrated Ontology (SIO)
-6. Study Intervention
-* Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
-procedures, vaccines, and other products that are either investigational or already available
-* Immediate Superclass: None
-* Example: Metformin
-* Reused From: ProvCaRe
-7. Subject Characteristic
-* Definition: Property that summarizes important attributes of the participants enrolled in a study
-* Immediate Superclass: None
-* Example: Age
-* Reused From: None
-8. Statistical Measure
-* Definition: a standard unit used to express the size, amount, or degree of something
-* Immediate Superclass: None
-* Example: Mean
-* Reused From: ProvCaRe
-
+    - Definition: A scientific investigation that involves testing a hypothesis
+    - Immediate Superclass: None
+    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
+    - Reused From: Hasco
+1. Clinical Trial
+    - Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
+    - Immediate Superclass: Research Study
+    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
+    - Reused From: National Cancer Institute Thesarus (NCIT)
+1. Cohort
+    - Definition: A cohort is the group of subjects enrolled in a study
+    - Immediate Superclass: None
+    - Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
+    - Reused From: The Statistical Methods Ontology (STATO)
+1. Study Arm
+    - Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
+    or no intervention, according to the trial's protocol
+    - Immediate Superclass: Cohort
+    - Example: Metformin Conventional Therapy Arm
+    - Reused From: None
+1. Study Subject
+    - Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
+    professional or institution with the purpose to receive medical care when necessary
+    - Immediate Superclass: None
+    - Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
+    - Reused From: SemanticScience Integrated Ontology (SIO)
+1. Study Intervention
+    - Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
+    procedures, vaccines, and other products that are either investigational or already available
+    - Immediate Superclass: None
+    - Example: Metformin
+    - Reused From: ProvCaRe
+1. Subject Characteristic
+    - Definition: Property that summarizes important attributes of the participants enrolled in a study
+    - Immediate Superclass: None
+    - Example: Age
+    - Reused From: None
+1. Statistical Measure
+    - Definition: a standard unit used to express the size, amount, or degree of something
+    - Immediate Superclass: None
+    - Example: Mean
+    - Reused From: ProvCaRe
 
 ### Accompanying Suite of Ontologies
 
-* [Diseases](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/diseases.owl)
-* [Lab results](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/labresults.owl)
-* [Medications](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/medications.owl)
-* [Therapies](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/therapies.owl)
-* [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
-* [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
-
+- [Diseases](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/diseases.owl)
+- [Lab results](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/labresults.owl)
+- [Medications](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/medications.owl)
+- [Therapies](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/therapies.owl)
+- [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
+- [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
 
 # Ontologies Reused
 
@@ -79,28 +78,28 @@ We group the ontologies we reuse by the purpose and the use-cases they are inten
 
 ### Study Design Ontologies
 
-* [Provenance for Healthcare + Clinical Research (ProvCaRe)](https://provcare.case.edu/)
-* [Human-Aware Science Ontology](http://hadatac.org/ont/hasco/)
+- [Provenance for Healthcare + Clinical Research (ProvCaRe)](https://provcare.case.edu/)
+- [Human-Aware Science Ontology](http://hadatac.org/ont/hasco/)
 
 ### Medical Ontologies
 
-* [National Cancer Institute Thesarus (NCIT)](https://provcare.case.edu/)
-* [Children's Health Exposure Analysis Resource Ontology (CHEAR)](https://bioportal.bioontology.org/ontologies/NCIT)
-* [Human-Disease Ontology (DOID)](https://www.ebi.ac.uk/ols/ontologies/doid")
+- [National Cancer Institute Thesarus (NCIT)](https://provcare.case.edu/)
+- [Children's Health Exposure Analysis Resource Ontology (CHEAR)](https://bioportal.bioontology.org/ontologies/NCIT)
+- [Human-Disease Ontology (DOID)](https://www.ebi.ac.uk/ols/ontologies/doid")
 
 ### Mid-Level Ontologies
 
-* [SemanticScience Integrated Ontology
-(SIO)](https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-subset-labels.owl)
+- [SemanticScience Integrated Ontology
+  (SIO)](https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-subset-labels.owl)
 
 ### Statistical Ontologies
 
-* [Units Ontology
-(UO)](https://www.google.com/search?q=UO+ontology&rlz=1C5CHFA_enIN727IN729&oq=UO+ontology&aqs=chrome..69i57j69i60.3199j0j4&sourceid=chrome&ie=UTF-8)
-* [Statistical Methods Ontology (STATO)](https://www.ebi.ac.uk/ols/ontologies/stato)
-
+- [Units Ontology
+  (UO)](https://www.google.com/search?q=UO+ontology&rlz=1C5CHFA_enIN727IN729&oq=UO+ontology&aqs=chrome..69i57j69i60.3199j0j4&sourceid=chrome&ie=UTF-8)
+- [Statistical Methods Ontology (STATO)](https://www.ebi.ac.uk/ols/ontologies/stato)
 
 ### Ontology Prefixes
+
 <table style="width:100%">
   <tr>
     <th>Prefix</th>
