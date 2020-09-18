@@ -5,4 +5,4 @@ title: presentations
 
 ## Presentations
 
-<iframe src="https://drive.google.com/file/d/16R9G3-DlR4MNEeyVXTSdgqk37_A7Hp4w/view?embedded=true" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ3uREQwmlv-Sb2IURmkj5QiGlx1uVXvB3z89q5zQbEaRYmHOcCFxIYv3OckyGDst9fEnWhRWbylF-v/embed?start=false&loop=false&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
