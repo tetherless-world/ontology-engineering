@@ -72,7 +72,7 @@ representation of the Table 1 data, and so we highlight instances in pink
 - [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
 - [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
 
-# Ontologies Reused
+## Ontologies Reused
 
 We group the ontologies we reuse by the purpose and the use-cases they are intended to serve, as vocabularies for.
 
