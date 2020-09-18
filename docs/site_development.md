@@ -5,8 +5,9 @@
 
 This page contains technical documentation useful for developing your project site.
 
-The site is built using Jekyll, which primarily uses Markdown along with the Liquid template language.
-Helpful documentation on Jekyll development can be found [here](https://jekyllrb.com).
+The site is built using Jekyll, which primarily uses [Markdown](https://www.markdownguide.org/)
+along with the [Liquid](https://shopify.github.io/liquid/) template language.
+For additional info on Jekyll development, see the [official docs](https://jekyllrb.com).
 
 If you have questions or are experiencing difficulties, please contact Sam:
 stoufs2 at rpi dot edu or Shruthi: chari at rpi dot edu
@@ -48,5 +49,9 @@ Allow several minutes for Netlify to rebuild the site from your changes.
 Optionally, you can preview changes to your branch site without the hassle of pushing up a commit and waiting for Netlify
 by building and serving the site on your own machine.
 
-Follow the instructions [here](https://jekyllrb.com/docs/).
+Follow the quick start instructions in the [Jekyll documentation](https://jekyllrb.com/docs/).
 Skip the steps where you create a new site and change directory (just make sure you are in the `ontology-engineering` root directory when executing commands.)
+
+## Embed Google Drive document, spreadsheet, or presentation
+
+Follow the instructions to embed files on the [docs publishing support page](https://support.google.com/docs/answer/183965#embed_files).
