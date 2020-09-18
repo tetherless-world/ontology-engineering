@@ -1,3 +1,0 @@
-# PROJECT TWO
-
-Project two.
