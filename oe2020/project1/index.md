@@ -3,8 +3,6 @@ layout: default
 title: About
 ---
 
-<!-- <article class="mb-5" id="note">
-<content> -->
 ## Note to students
 This website is organized as follows.
 The side navigation serves a static menu to navigate across pages on this website.
