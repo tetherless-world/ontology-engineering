@@ -50,10 +50,6 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
 </table>
 
-## License
-
-<iframe src="files/License.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
-
 ## Acknowledgements
 
 <p class="message-highlight">Please acknowledge people who have helped you in this work. An example is below</p><br/>
