@@ -22,8 +22,8 @@ When you are trying to add to the website template that you have setup for your 
 4. We have setup website templates for each of your projects, that are accessible at project specific URLS of the form: <b>http://--rpi-ontology-engineering.netlify.app/*branch-name*</b>
 5. When you are editing the website for your assignments, you can edit the .md files that we have created for you in your project repositories.
 6. Images can be added to the <b>images/</b> folder in your project repository.
-7. Files can be added to the <b>files/</b> folder in your project repository.
-8. We have examples on how you can embed files and images for preview on your project website. Please try and use these templates we have provided for you.
+7. Files can be uploaded to your google drive project.
+8. We have examples on how you can embed files and images for preview on our sample project website: https://tetherless-world.github.io/ontology-engineering/oe2020/example/. Please try and use these templates we have provided for you.
 
 Also, the navigation bar of your project page is filled out by us, and if you want to edit this (e.g.:, to add options), please consult with course TA, Shruthi: charis@rpi.edu or Sam Stouffer, stoufs2@rpi.edu
 Finally, should you have any questions: please check the course instructions page at: https://master--rpi-ontology-engineering.netlify.app/.
