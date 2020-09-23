@@ -1,7 +1,13 @@
 ---
 layout: default
-title: About
+title: Beer Advisor
 ---
+
+## Point of Contact
+Lucas Standaert
+Marcelo De Castro Fernandes
+Anna Yaroslaski
+Sam Stouffer
 
 ## Abstract
 
