@@ -44,6 +44,9 @@ where *branch-name* is the name of your branch.
 
 Netlify will rebuild the site from your branch whenever you push new commits to the GitHub repo.
 Allow several minutes for Netlify to rebuild the site from your changes.
+The status of your Netlify build will be reported on GitHub as a [commit status](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-status-checks).
+You can also view the status of the latest builds on the [Netlify deploy dashboard](https://app.netlify.com/sites/rpi-ontology-engineering/deploys).
+(This requires registration to see more than the last two builds.)
 
 ## Preview a branch site on your own machine
 
