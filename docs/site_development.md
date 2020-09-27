@@ -19,7 +19,7 @@ When you are trying to add to the website template that you have setup for your 
 1. Each project has a dedicated github branch, which is titled *branch-name*. Note *branch-name*, the is a placeholder that you need to replace with your actual project name.
 2. Please only checkout this branch onto your machine using "git checkout *branch-name*"
 3. All your project files are under the <b>oe2020/*branch-name*</b> folder. This will be your project repository, a folder that you will upload all your artefacts, and use for website rendering as well.
-4. We have setup website templates for each of your projects, that are accessible at project specific URLS of the form: <b>http://--rpi-ontology-engineering.netlify.app/*branch-name*</b>
+4. We have setup website templates for each of your projects, that are accessible at project specific URLS of the form: <b>http://*branch-name*--rpi-ontology-engineering.netlify.app/*branch-name*</b>
 5. When you are editing the website for your assignments, you can edit the .md files that we have created for you in your project repositories.
 6. Images can be added to the <b>images/</b> folder in your project repository.
 7. Files can be uploaded to your google drive project.
