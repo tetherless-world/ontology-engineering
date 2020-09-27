@@ -5,7 +5,7 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="files/OE_4_Patient_Guideline_Recommendation_UseCase_ Clean.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vSmKNOqET9SDfDWYcf_Co4_8IYgL-3gIoWw8P3KsJ0o5VB8xfhhQPIKPDHRCrRyxA/pub?embedded=true" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
