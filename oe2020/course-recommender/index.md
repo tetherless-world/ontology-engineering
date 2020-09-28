@@ -25,4 +25,12 @@ Owen Xie  - xieo at rpi dot edu
 
 ## List of Resources
 
+1. Ontology
+
+2. Term List
+
+3. Competency Questions
+
+4. Presentations
+
 ## Acknowledgements
