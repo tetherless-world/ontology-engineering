@@ -25,6 +25,20 @@
 <br />
 <br />
 
+<strong>Individual Project Locations</strong>
+
+<ul>
+  <li>Beer Advisor: https://beer-advisor--rpi-ontology-engineering.netlify.app/oe2020/beer-advisor/ </li>
+
+<li>Course Recommender: https://course-recommender--rpi-ontology-engineering.netlify.app/oe2020/course-recommender/ </li>
+
+<li>Movie Recommender: https://movie-recommender--rpi-ontology-engineering.netlify.app/oe2020/movie-recommender/</li>
+
+<li>Patient Guideline Recommender: https://patient-guideline-recommender--rpi-ontology-engineering.netlify.app/oe2020/patient-guideline-recommender/</li>
+
+<li>Pokemon Moveset Application: https://pokemon-moveset-application--rpi-ontology-engineering.netlify.app/oe2020/pokemon-moveset-application/</li>    
+ </ul>
+
 <strong>Description:</strong>
 This course provides an introduction to ontologies, their uses, and an overview of their application in semantically enabled systems. Ontologies, with their declarative encodings of meaning, can be used to improve communications between people and can enable computer programs to function more effectively. They provide the foundation for clear and unambiguous interaction. Ontologies have become increasingly common on the web, and class participants will not only learn about the use of ontologies in web-based applications but how to evaluate ontologies for reuse in such applications. Participants will read relevant papers, learn how to critically review ontology papers as well as ontologies themselves, and will participate in at least one group project designing, using, and evaluating ontologies.
 <br />
