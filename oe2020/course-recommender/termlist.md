@@ -5,9 +5,9 @@ title: term list
 
 ## Terminology List
 
-## Previous Versions
+-[Version 2 Term List](https://docs.google.com/spreadsheets/d/e/2PACX-1vS9jEJTWIEnQR6mPWhbHcJWBhOqsvdBtMAZXePYTzL0pheWSDYRrzZXeqJgAl8jHg/pubhtml)
 
--[Version 1 Report](https://docs.google.com/document/d/e/2PACX-1vS8EWH_u5eyHVq6mnmn6Vq9Tn6Y8RXoY6mqBxOYUgpFJhErxYbWm1QS5_WI3bFwBHv63XGDQmmCODJF/pub)
+## Previous Versions
 
 -[Version 1 Term List](https://docs.google.com/spreadsheets/d/e/2PACX-1vSFPTbnpfwyKdv86m3vbTOKanxuLajFCB7JDlNRPp_3Q0p3CPfYEF2zDCxmIR1Ibz3vSJbm80mB13nX/pubhtml)
 
