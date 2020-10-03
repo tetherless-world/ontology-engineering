@@ -2,6 +2,10 @@
 
 ## Conceptual Model
 
+Preliminary Conceptual Model
+
+![conceptual_model](images/course_recommender_conceptual_model_prelim.png)
+
 ## Ontologies
 
 **Link:**
