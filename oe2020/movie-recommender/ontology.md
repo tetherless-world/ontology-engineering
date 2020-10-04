@@ -4,11 +4,11 @@
 
 General Model:
 
-<img src="images/conceptualModel.png" width="1000" height="1000">
+<img src="images/conceptualModel.png" width="100%">
 
 Genre Model:
 
-<img src="images/genresConceptualModel.jpg" width="1000" height="1000">
+<img src="images/genresConceptualModel.jpg" width="100%">
 
 ## Ontologies
 
