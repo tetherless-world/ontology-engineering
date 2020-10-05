@@ -1,4 +1,4 @@
-[Concept Map](#conceptual-model) | [Ontology File](#ontologies)
+[Concept Map](#conceptual-model) | [Ontology File](course-recommender.rdf)
 
 ## Conceptual Model
 
