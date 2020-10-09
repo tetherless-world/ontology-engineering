@@ -59,3 +59,4 @@ This will update the status of your latest commit to indicate that it did not pa
 *When submitting assignments, your ontologies must pass all hygiene checks.*
 
 You can view details about the hygiene test runs on the project [CircleCI page](https://app.circleci.com/pipelines/github/tetherless-world/ontology-engineering).
+To have permissions to view the project CI page, you will need to sign up for CircleCI using the same GitHub account that is used for this class.
