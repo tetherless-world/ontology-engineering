@@ -120,6 +120,22 @@
 
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/courseInstanceOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/courseInstanceOf">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseSection"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/ScheduledCourseSection"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/courseInstanceOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/Course"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasCourseRegistrationNumber -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasCourseRegistrationNumber">
@@ -190,12 +206,13 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasSchedule -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasSchedule">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseSection"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/ScheduledCourseSection"/>
         <rdfs:range>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasSchedule"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/AcademicSchedule"/>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/SemesterSchedule"/>
             </owl:Restriction>
         </rdfs:range>
     </owl:ObjectProperty>
@@ -274,7 +291,7 @@
         <rdfs:range>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/https://tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasScheduledOffering"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/AcademicSchedule"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/SemesterSchedule"/>
             </owl:Restriction>
         </rdfs:range>
     </owl:ObjectProperty>
@@ -329,6 +346,25 @@
     <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasLevel">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseCode"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasMeetingTime -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasMeetingTime">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseSchedule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasSemester -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/hasSemester">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseSchedule"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/SemesterSchedule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     </owl:DatatypeProperty>
 
 
@@ -389,6 +425,16 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseCode">
         <rdfs:comment>TODO: PLACEHOLDER</rdfs:comment>
         <rdfs:label>course code</rdfs:label>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseSchedule -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseSchedule">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/SemesterSchedule"/>
+        <rdfs:comment>TODO: PLACEHOLDER</rdfs:comment>
+        <rdfs:label>course schedule</rdfs:label>
     </owl:Class>
 
 
@@ -471,6 +517,16 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/CourseSection"/>
         <rdfs:comment>TODO: PLACEHOLDER</rdfs:comment>
         <rdfs:label>scheduled course section</rdfs:label>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/SemesterSchedule -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/SemesterSchedule">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/AcademicSchedule"/>
+        <rdfs:comment>TODO: PLACEHOLDER</rdfs:comment>
+        <rdfs:label>semester schedule</rdfs:label>
     </owl:Class>
 
 
