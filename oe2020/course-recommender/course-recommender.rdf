@@ -131,25 +131,92 @@ oe2020-crs-rec:Advisor
 
 oe2020-crs-rec:Course
 	a owl:Class ;
+	rdfs:subClassOf
+		owl:Thing ,
+		[
+			a owl:Restriction ;
+			owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasTopic> ;
+			owl:onClass oe2020-crs-rec:TopicArea ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode> ;
+			owl:onClass oe2020-crs-rec:CourseCode ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasCredits ;
+			owl:someValuesFrom xsd:int ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment> ;
+			owl:someValuesFrom oe2020-crs-rec:Department ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasScheduledOffering> ;
+			owl:someValuesFrom oe2020-crs-rec:SemesterSchedule ;
+		]
+		;
 	rdfs:label "course" ;
 	skos:definition "unit of teaching, usually an individual subject, that typically lasts one academic semester, is led by one or more instructors, and has a fixed roster of students" ;
 	.
 
 oe2020-crs-rec:CourseCode
 	a owl:Class ;
+	rdfs:subClassOf
+		owl:Thing ,
+		[
+			a owl:Restriction ;
+			owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode> ;
+			owl:onClass oe2020-crs-rec:CourseCode ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasLevel ;
+			owl:someValuesFrom xsd:int ;
+		]
+		;
 	rdfs:label "course code" ;
 	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
 
 oe2020-crs-rec:CourseSchedule
 	a owl:Class ;
-	rdfs:subClassOf oe2020-crs-rec:SemesterSchedule ;
+	rdfs:subClassOf
+		oe2020-crs-rec:SemesterSchedule ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasMeetingTime ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "course schedule" ;
 	rdfs:comment "TODO: PLACEEHOLDER" ;
 	.
 
 oe2020-crs-rec:CourseSection
 	a owl:Class ;
+	rdfs:subClassOf
+		owl:Thing ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:courseInstanceOf ;
+			owl:onClass oe2020-crs-rec:Course ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasSchedule ;
+			owl:onClass oe2020-crs-rec:SemesterSchedule ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "course section" ;
 	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
@@ -249,7 +316,32 @@ oe2020-crs-rec:RensselaerPolytechnicInstituteAsLegalEntity
 
 oe2020-crs-rec:ScheduledCourseSection
 	a owl:Class ;
-	rdfs:subClassOf oe2020-crs-rec:CourseSection ;
+	rdfs:subClassOf
+		oe2020-crs-rec:CourseSection ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasInstructor ;
+			owl:onClass oe2020-crs-rec:Professor ;
+			owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasSchedule ;
+			owl:onClass oe2020-crs-rec:CourseSchedule ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasCourseRegistrationNumber ;
+			owl:onDataRange xsd:string ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasRegisteredStudent ;
+			owl:someValuesFrom oe2020-crs-rec:Student ;
+		]
+		;
 	rdfs:label "scheduled course section" ;
 	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
@@ -266,7 +358,15 @@ oe2020-crs-rec:Semester
 
 oe2020-crs-rec:SemesterSchedule
 	a owl:Class ;
-	rdfs:subClassOf oe2020-crs-rec:AcademicSchedule ;
+	rdfs:subClassOf
+		oe2020-crs-rec:AcademicSchedule ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasSemester ;
+			owl:onDataRange xsd:dateTime ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
 	rdfs:label "semester schedule" ;
 	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
