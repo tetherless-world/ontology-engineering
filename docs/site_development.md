@@ -1,4 +1,5 @@
 ---
+toc: true
 ---
 
 # Site Development Instructions
@@ -19,11 +20,12 @@ When you are trying to add to the website template that you have setup for your 
 1. Each project has a dedicated github branch, which is titled *branch-name*. Note *branch-name*, the is a placeholder that you need to replace with your actual project name.
 2. Please only checkout this branch onto your machine using "git checkout *branch-name*"
 3. All your project files are under the <b>oe2020/*branch-name*</b> folder. This will be your project repository, a folder that you will upload all your artefacts, and use for website rendering as well.
-4. We have setup website templates for each of your projects, that are accessible at project specific URLS of the form: <b>http://--rpi-ontology-engineering.netlify.app/*branch-name*</b>
+4. We have setup website templates for each of your projects, that are accessible at project specific URLS of the form: <b>http://*branch-name*--rpi-ontology-engineering.netlify.app/*branch-name*</b>
 5. When you are editing the website for your assignments, you can edit the .md files that we have created for you in your project repositories.
 6. Images can be added to the <b>images/</b> folder in your project repository.
-7. Files can be added to the <b>files/</b> folder in your project repository.
-8. We have examples on how you can embed files and images for preview on your project website. Please try and use these templates we have provided for you.
+7. Files can be uploaded to your google drive project.
+8. We have examples on how you can embed files and images for preview on our sample project website: https://tetherless-world.github.io/ontology-engineering/oe2020/example/. Please try and use these templates we have provided for you. The code for this example project is at: https://github.com/tetherless-world/ontology-engineering/tree/master/oe2020/example.
+9. If you want to add in-page navigation in addition to the navigation menu, you can do something like this example project page: https://tetherless-world.github.io/ontology-engineering/oe2020/example/ontology
 
 Also, the navigation bar of your project page is filled out by us, and if you want to edit this (e.g.:, to add options), please consult with course TA, Shruthi: charis@rpi.edu or Sam Stouffer, stoufs2@rpi.edu
 Finally, should you have any questions: please check the course instructions page at: https://master--rpi-ontology-engineering.netlify.app/.
@@ -43,6 +45,9 @@ where *branch-name* is the name of your branch.
 
 Netlify will rebuild the site from your branch whenever you push new commits to the GitHub repo.
 Allow several minutes for Netlify to rebuild the site from your changes.
+The status of your Netlify build will be reported on GitHub as a [commit status](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-status-checks).
+You can also view the status of the latest builds on the [Netlify deploy dashboard](https://app.netlify.com/sites/rpi-ontology-engineering/deploys).
+(This requires registration to see more than the last two builds.)
 
 ## Preview a branch site on your own machine
 
