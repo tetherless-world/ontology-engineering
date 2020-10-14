@@ -123,7 +123,14 @@ oe2020-crs-rec:AcademicYear
 
 oe2020-crs-rec:Advisor
 	a owl:Class ;
-	rdfs:subClassOf oe2020-crs-rec:FacultyMember ;
+	rdfs:subClassOf
+		oe2020-crs-rec:FacultyMember ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:advises ;
+			owl:someValuesFrom oe2020-crs-rec:Student ;
+		]
+		;
 	rdfs:label "advisor" ;
 	skos:definition "faculty member tasked to work with students to develop educational plans, explain requirements and rules surrounding graduation, discuss and monitor academic progress, and provide general guidance" ;
 	fibo-fnd-utl-av:adaptedFrom "https://info.rpi.edu/advising-learning-assistance/advising/#FacultyStaffAdvisors"^^xsd:anyURI ;
@@ -182,7 +189,6 @@ oe2020-crs-rec:CourseCode
 		]
 		;
 	rdfs:label "course code" ;
-	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
 
 oe2020-crs-rec:CourseSchedule
@@ -197,7 +203,6 @@ oe2020-crs-rec:CourseSchedule
 		]
 		;
 	rdfs:label "course schedule" ;
-	rdfs:comment "TODO: PLACEEHOLDER" ;
 	.
 
 oe2020-crs-rec:CourseSection
@@ -218,13 +223,33 @@ oe2020-crs-rec:CourseSection
 		]
 		;
 	rdfs:label "course section" ;
-	rdfs:comment "TODO: PLACEHOLDER" ;
+	.
+
+oe2020-crs-rec:Degree
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasRequirement ;
+			owl:someValuesFrom oe2020-crs-rec:Requirement ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment> ;
+			owl:someValuesFrom oe2020-crs-rec:Department ;
+		]
+		;
+	rdfs:label "degree" ;
 	.
 
 oe2020-crs-rec:Department
 	a owl:Class ;
 	rdfs:label "department" ;
-	rdfs:comment "TODO: PLACEHOLDER" ;
+	.
+
+oe2020-crs-rec:Discipline
+	a owl:Class ;
+	rdfs:label "discipline" ;
 	.
 
 oe2020-crs-rec:EducationalInstitution
@@ -260,6 +285,11 @@ oe2020-crs-rec:FacultyMember
 					owl:someValuesFrom oe2020-crs-rec:University ;
 				] ;
 			] ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment> ;
+			owl:someValuesFrom oe2020-crs-rec:Department ;
 		]
 		;
 	rdfs:label "faculty member" ;
@@ -267,9 +297,48 @@ oe2020-crs-rec:FacultyMember
 	fibo-fnd-utl-av:adaptedFrom "https://www.lawinsider.com/dictionary/faculty-member"^^xsd:anyURI ;
 	.
 
+oe2020-crs-rec:Major
+	a owl:Class ;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment> ;
+		owl:someValuesFrom oe2020-crs-rec:Department ;
+	] ;
+	rdfs:label "major" ;
+	.
+
+oe2020-crs-rec:PlanOfStudy
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasClassYear ;
+			owl:someValuesFrom xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasPlannedDegree ;
+			owl:someValuesFrom oe2020-crs-rec:Degree ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasPlannedMajor ;
+			owl:someValuesFrom oe2020-crs-rec:Department ;
+		]
+		;
+	rdfs:label "plan of study" ;
+	.
+
 oe2020-crs-rec:Professor
 	a owl:Class ;
-	rdfs:subClassOf oe2020-crs-rec:FacultyMember ;
+	rdfs:subClassOf
+		oe2020-crs-rec:FacultyMember ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:teaches ;
+			owl:someValuesFrom oe2020-crs-rec:ScheduledCourseSection ;
+		]
+		;
 	rdfs:label "professor" ;
 	skos:definition "teacher of the highest rank in a college or university" ;
 	fibo-fnd-utl-av:adaptedFrom "https://en.wikipedia.org/wiki/Professor"^^xsd:anyURI ;
@@ -314,6 +383,23 @@ oe2020-crs-rec:RensselaerPolytechnicInstituteAsLegalEntity
 	fibo-be-le-fbo:hasHeadquartersAddress oe2020-crs-rec:RensselaerPolytechnicInstituteAddress ;
 	.
 
+oe2020-crs-rec:Requirement
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasValidCourses ;
+			owl:someValuesFrom oe2020-crs-rec:Course ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:requiresCredits ;
+			owl:someValuesFrom xsd:int ;
+		]
+		;
+	rdfs:label "requirement" ;
+	.
+
 oe2020-crs-rec:ScheduledCourseSection
 	a owl:Class ;
 	rdfs:subClassOf
@@ -343,7 +429,6 @@ oe2020-crs-rec:ScheduledCourseSection
 		]
 		;
 	rdfs:label "scheduled course section" ;
-	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
 
 oe2020-crs-rec:Semester
@@ -368,7 +453,6 @@ oe2020-crs-rec:SemesterSchedule
 		]
 		;
 	rdfs:label "semester schedule" ;
-	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
 
 oe2020-crs-rec:Student
@@ -385,6 +469,26 @@ oe2020-crs-rec:Student
 			a owl:Restriction ;
 			owl:onProperty fibo-fbc-fct-ra:isRegisteredBy ;
 			owl:someValuesFrom fibo-fbc-fct-ra:Registrar ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasAdvisor ;
+			owl:someValuesFrom oe2020-crs-rec:Advisor ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasClassYear ;
+			owl:someValuesFrom xsd:dateTime ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasInterest ;
+			owl:someValuesFrom oe2020-crs-rec:TopicArea ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2020-crs-rec:hasStudyPlan ;
+			owl:someValuesFrom oe2020-crs-rec:PlanOfStudy ;
 		]
 		;
 	rdfs:label "student" ;
@@ -394,8 +498,12 @@ oe2020-crs-rec:Student
 
 oe2020-crs-rec:TopicArea
 	a owl:Class ;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty oe2020-crs-rec:belongsTo ;
+		owl:someValuesFrom oe2020-crs-rec:Discipline ;
+	] ;
 	rdfs:label "topic area" ;
-	rdfs:comment "TODO: PLACEHOLDER" ;
 	.
 
 oe2020-crs-rec:University
@@ -421,6 +529,18 @@ oe2020-crs-rec:University
 	fibo-fnd-utl-av:adaptedFrom "https://www.lexico.com/en/definition/university"^^xsd:anyURI ;
 	.
 
+oe2020-crs-rec:advises
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Advisor ;
+	rdfs:range oe2020-crs-rec:Student ;
+	.
+
+oe2020-crs-rec:belongsTo
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:TopicArea ;
+	rdfs:range oe2020-crs-rec:Discipline ;
+	.
+
 oe2020-crs-rec:courseInstanceOf
 	a owl:ObjectProperty ;
 	rdfs:domain
@@ -433,6 +553,27 @@ oe2020-crs-rec:courseInstanceOf
 		owl:onClass oe2020-crs-rec:Course ;
 		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 	] ;
+	.
+
+oe2020-crs-rec:hasAdvisor
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Student ;
+	rdfs:range oe2020-crs-rec:Advisor ;
+	.
+
+oe2020-crs-rec:hasClassYear
+	a owl:DatatypeProperty ;
+	rdfs:domain
+		oe2020-crs-rec:PlanOfStudy ,
+		oe2020-crs-rec:Student
+		;
+	rdfs:range xsd:dateTime ;
+	.
+
+oe2020-crs-rec:hasCompletedCourse
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:PlanOfStudy ;
+	rdfs:range oe2020-crs-rec:CourseSection ;
 	.
 
 oe2020-crs-rec:hasCourseRegistrationNumber
@@ -478,6 +619,12 @@ oe2020-crs-rec:hasInstructor
 	] ;
 	.
 
+oe2020-crs-rec:hasInterest
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Student ;
+	rdfs:range oe2020-crs-rec:TopicArea ;
+	.
+
 oe2020-crs-rec:hasLevel
 	a owl:DatatypeProperty ;
 	rdfs:domain oe2020-crs-rec:CourseCode ;
@@ -488,6 +635,30 @@ oe2020-crs-rec:hasMeetingTime
 	a owl:DatatypeProperty ;
 	rdfs:domain oe2020-crs-rec:CourseSchedule ;
 	rdfs:range xsd:dateTime ;
+	.
+
+oe2020-crs-rec:hasOngoingCourse
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:PlanOfStudy ;
+	rdfs:range oe2020-crs-rec:ScheduledCourseSection ;
+	.
+
+oe2020-crs-rec:hasPlannedCourse
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:PlanOfStudy ;
+	rdfs:range oe2020-crs-rec:CourseSection ;
+	.
+
+oe2020-crs-rec:hasPlannedDegree
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:PlanOfStudy ;
+	rdfs:range oe2020-crs-rec:Degree ;
+	.
+
+oe2020-crs-rec:hasPlannedMajor
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:PlanOfStudy ;
+	rdfs:range oe2020-crs-rec:Major ;
 	.
 
 oe2020-crs-rec:hasRegisteredStudent
@@ -507,6 +678,15 @@ oe2020-crs-rec:hasRegisteredStudent
 			owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
 		]
 		;
+	.
+
+oe2020-crs-rec:hasRequirement
+	a owl:ObjectProperty ;
+	rdfs:domain
+		oe2020-crs-rec:Degree ,
+		oe2020-crs-rec:Requirement
+		;
+	rdfs:range oe2020-crs-rec:Requirement ;
 	.
 
 oe2020-crs-rec:hasSchedule
@@ -538,6 +718,42 @@ oe2020-crs-rec:hasSpecialTag
 	rdfs:range xsd:string ;
 	.
 
+oe2020-crs-rec:hasStudyPlan
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Student ;
+	rdfs:range oe2020-crs-rec:PlanOfStudy ;
+	.
+
+oe2020-crs-rec:hasValidCourses
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Requirement ;
+	rdfs:range oe2020-crs-rec:Course ;
+	.
+
+oe2020-crs-rec:isFulfilledBy
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Requirement ;
+	rdfs:range oe2020-crs-rec:Requirement ;
+	.
+
+oe2020-crs-rec:registeredIn
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Student ;
+	rdfs:range oe2020-crs-rec:ScheduledCourseSection ;
+	.
+
+oe2020-crs-rec:requiresCredits
+	a owl:DatatypeProperty ;
+	rdfs:domain oe2020-crs-rec:Requirement ;
+	rdfs:range xsd:int ;
+	.
+
+oe2020-crs-rec:teaches
+	a owl:ObjectProperty ;
+	rdfs:domain oe2020-crs-rec:Professor ;
+	rdfs:range oe2020-crs-rec:ScheduledCourseSection ;
+	.
+
 <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode>
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf owl:topObjectProperty ;
@@ -553,7 +769,12 @@ oe2020-crs-rec:hasSpecialTag
 <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment>
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf owl:topObjectProperty ;
-	rdfs:domain oe2020-crs-rec:Course ;
+	rdfs:domain
+		oe2020-crs-rec:Course ,
+		oe2020-crs-rec:Degree ,
+		oe2020-crs-rec:FacultyMember ,
+		oe2020-crs-rec:Major
+		;
 	rdfs:range [
 		a owl:Restriction ;
 		owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment> ;
@@ -566,24 +787,14 @@ oe2020-crs-rec:hasSpecialTag
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf owl:topObjectProperty ;
 	rdfs:domain oe2020-crs-rec:Course ;
-	rdfs:range [
-		a owl:Restriction ;
-		owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasRecommendedPrerequisite> ;
-		owl:onClass oe2020-crs-rec:Course ;
-		owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-	] ;
+	rdfs:range oe2020-crs-rec:Course ;
 	.
 
 <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasRequiredPrerequisite>
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf owl:topObjectProperty ;
 	rdfs:domain oe2020-crs-rec:Course ;
-	rdfs:range [
-		a owl:Restriction ;
-		owl:onProperty <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasRecommendedPrerequisite> ;
-		owl:onClass oe2020-crs-rec:Course ;
-		owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-	] ;
+	rdfs:range oe2020-crs-rec:Course ;
 	.
 
 <https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasScheduledOffering>
