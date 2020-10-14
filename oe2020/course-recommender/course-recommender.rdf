@@ -173,13 +173,6 @@
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseCode">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCourseCode"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;CourseCode"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasLevel"/>
 				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 			</owl:Restriction>
@@ -202,7 +195,7 @@
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseSection">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;courseInstanceOf"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;isCourseSectionOf"/>
 				<owl:onClass rdf:resource="&oe2020-crs-rec;Course"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -509,11 +502,6 @@
 		<rdfs:range rdf:resource="&oe2020-crs-rec;Discipline"/>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;courseInstanceOf">
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSection"/>
-		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasAdvisor">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Student"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;Advisor"/>
@@ -663,6 +651,11 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasValidCourses">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;isCourseSectionOf">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSection"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
 	</owl:ObjectProperty>
 	
