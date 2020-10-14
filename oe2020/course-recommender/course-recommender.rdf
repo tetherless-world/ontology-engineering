@@ -36,7 +36,6 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-be-fct-fct="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
 	xmlns:fibo-be-le-fbo="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
@@ -104,7 +103,7 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
-		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/"/>
+		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201014/course-recommender/"/>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;AcademicSchedule">
@@ -135,17 +134,16 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;Course">
-		<rdfs:subClassOf rdf:resource="&owl;Thing"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasTopic"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasTopic"/>
 				<owl:onClass rdf:resource="&oe2020-crs-rec;TopicArea"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCourseCode"/>
 				<owl:onClass rdf:resource="&oe2020-crs-rec;CourseCode"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -153,18 +151,18 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCredits"/>
-				<owl:someValuesFrom rdf:resource="&xsd;int"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasDepartment"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Department"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasScheduledOffering"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasScheduledOffering"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -173,10 +171,9 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseCode">
-		<rdfs:subClassOf rdf:resource="&owl;Thing"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCourseCode"/>
 				<owl:onClass rdf:resource="&oe2020-crs-rec;CourseCode"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -184,7 +181,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasLevel"/>
-				<owl:someValuesFrom rdf:resource="&xsd;int"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>course code</rdfs:label>
@@ -203,7 +200,6 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseSection">
-		<rdfs:subClassOf rdf:resource="&owl;Thing"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;courseInstanceOf"/>
@@ -224,14 +220,14 @@
 	<owl:Class rdf:about="&oe2020-crs-rec;Degree">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRequirement"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Requirement"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasDepartment"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Department"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Department"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRequirement"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Requirement"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>degree</rdfs:label>
@@ -277,7 +273,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasDepartment"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Department"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -289,7 +285,7 @@
 	<owl:Class rdf:about="&oe2020-crs-rec;Major">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasDepartment"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Department"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -369,7 +365,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;requiresCredits"/>
-				<owl:someValuesFrom rdf:resource="&xsd;int"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>requirement</rdfs:label>
@@ -515,14 +511,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;courseInstanceOf">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSection"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;courseInstanceOf"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;Course"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasAdvisor">
@@ -531,8 +520,16 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasClassYear">
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;PlanOfStudy"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Student"/>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2020-crs-rec;PlanOfStudy">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2020-crs-rec;Student">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>
 		<rdfs:range rdf:resource="&xsd;dateTime"/>
 	</owl:DatatypeProperty>
 	
@@ -541,44 +538,33 @@
 		<rdfs:range rdf:resource="&oe2020-crs-rec;CourseSection"/>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCourseCode">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;CourseCode"/>
+	</owl:ObjectProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasCourseRegistrationNumber">
-		<rdf:type rdf:resource="&owl;ObjectProperty"/>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCourseRegistrationNumber"/>
-				<owl:onDataRange rdf:resource="&xsd;string"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
+		<rdfs:range rdf:resource="&xsd;string"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasCredits">
-		<rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
-		<rdfs:range rdf:resource="&xsd;int"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCrossListing">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseCode"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;CourseCode"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;CourseCode"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasDepartment">
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Department"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasInstructor">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasInstructor"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;Professor"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Professor"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasInterest">
@@ -588,7 +574,7 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasLevel">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseCode"/>
-		<rdfs:range rdf:resource="&xsd;int"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasMeetingTime">
@@ -616,45 +602,47 @@
 		<rdfs:range rdf:resource="&oe2020-crs-rec;Major"/>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasRecommendedPrerequisite">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasRegisteredStudent">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRegisteredStudent"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;Student"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">9999</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRegisteredStudent"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;Student"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Student"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasRequiredPrerequisite">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasRequirement">
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Degree"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2020-crs-rec;Degree">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2020-crs-rec;Requirement">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;Requirement"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasSchedule">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSection"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasSchedule"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasScheduledOffering">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasSemester">
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
 		<rdfs:range rdf:resource="&xsd;dateTime"/>
 	</owl:DatatypeProperty>
 	
@@ -666,6 +654,11 @@
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasStudyPlan">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Student"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;PlanOfStudy"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasTopic">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;TopicArea"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasValidCourses">
@@ -685,74 +678,12 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;requiresCredits">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
-		<rdfs:range rdf:resource="&xsd;int"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;teaches">
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Professor"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasCourseCode"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;CourseCode"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Degree"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;FacultyMember"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Major"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasDepartment"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;Department"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasRecommendedPrerequisite">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
-		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasRequiredPrerequisite">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
-		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasScheduledOffering">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasScheduledOffering"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
-			</owl:Restriction>
-		</rdfs:range>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasTopic">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
-		<rdfs:range>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https:/tw.rpi.edu/ontology-engineering/oe2020/20201003/course-recommender/hasRecommendedPrerequisite"/>
-				<owl:onClass rdf:resource="&oe2020-crs-rec;TopicArea"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:range>
 	</owl:ObjectProperty>
 
 </rdf:RDF>
