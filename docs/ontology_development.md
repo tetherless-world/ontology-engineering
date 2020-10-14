@@ -20,7 +20,9 @@ Instructions for installing the serializer:
 1. Download the
     [rdf-toolkit jar file](https://jenkins.edmcouncil.org/job/rdf-toolkit-build/lastSuccessfulBuild/artifact/target/scala-2.12/rdf-toolkit.jar)
     and place it in `.git/hooks/` within the ontology-engineering repository.
-1. Copy the pre-commit script from `serializer/pre-commit` to `.git/hooks/`.
+1. Download (right click and select "Save link as...") the
+    [pre-commit script](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/master/serializer/pre-commit)
+    and place it in `.git/hooks/`.
 1. In `.git/hooks/pre-commit`, set line 12 (`export JAVA_HOME=...`) to match your java installation.
     * If you don't know where or what that is, [this site may help](https://www.baeldung.com/find-java-home).
     * If you are sure that the `JAVA_HOME` environment variable is set properly on your system, you can comment this line out: `#export JAVA_HOME=...`.
