@@ -195,7 +195,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseSchedule">
-		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasMeetingTime"/>
@@ -204,6 +204,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>course schedule</rdfs:label>
+		<skos:definition>a list of important dates and meeting times relevant to a specific section of a course</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseSection">
@@ -415,6 +416,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>scheduled course section</rdfs:label>
+		<skos:definition>a course section that has been assigned a concrete time and place of meeting as well as an instructor</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-crs-rec;Semester">
@@ -434,6 +436,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>semester schedule</rdfs:label>
+		<skos:definition>a portion of an academic schedule covering the period of the university&apos;s academic semester</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;Student">
@@ -532,6 +535,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasClassYear">
+		<rdfs:label>has class year</rdfs:label>
 		<rdfs:domain>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
@@ -543,6 +547,7 @@
 			</owl:Class>
 		</rdfs:domain>
 		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<skos:definition>the academic year when the student will complete their plan of study</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCompletedCourse">
@@ -556,13 +561,17 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasCourseRegistrationNumber">
+		<rdfs:label>has course registration number</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
 		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the course registration number a student can use to register for the scheduled course section</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasCredits">
+		<rdfs:label>has credits</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the number of credits associated with completing the course</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCrossListing">
@@ -576,7 +585,9 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasDescription">
+		<rdfs:label>has description</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the description of the individual</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasInstructor">
@@ -590,17 +601,23 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasLevel">
+		<rdfs:label>has level</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseCode"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the associated difficulty level of the course code</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasMeetingTime">
+		<rdfs:label>has meeting time</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
 		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<skos:definition>the times and dates during which a scheduled course section takes place</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasName">
+		<rdfs:label>has name</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the name of the individual</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasOngoingCourse">
@@ -663,13 +680,17 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasSemester">
+		<rdfs:label>has semester</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
 		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<skos:definition>the semester(s) that the academic schedule covers</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasSpecialTag">
+		<rdfs:label>has special tag</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
 		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>special tags associated with this course which are used to fulfill certain requirements</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasStudyPlan">
@@ -708,8 +729,10 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;requiresCredits">
+		<rdfs:label>requires credits</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the number of credits required to satisfy this requirement</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;teaches">
