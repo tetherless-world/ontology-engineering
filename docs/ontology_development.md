@@ -31,7 +31,7 @@ Instructions for installing the serializer:
 1. To make sure everything is working, open a command line interface and navigate to the ontology-engineering repository directory.
     When you run `git commit`, you should see output similar to below preceding the normal git output:
 
-    ```
+    ``` text
     rdf-toolkit: sesame-serializer: This is the pre-commit hook
     rdf-toolkit: sesame-serializer: java_home = /usr/lib/jvm/default
     rdf-toolkit: sesame-serializer: whichJava = /usr/lib/jvm/default/bin/java
@@ -49,16 +49,62 @@ Instructions for installing the serializer:
 Every time you push commits to your branch, a continuous integration job will run ontology hygiene checks on your branch.
 These checks will examine the ontologies in the repository and report errors if the ontologies do not conform to certain best practices.
 
+### Scope of Hygiene Checks
+
 The checks will pick up ontologies in files with extensions `.rdf`, `.ttl`, or `.jsonld`.
 These files can be anywhere in the repository.
 
 Resources in your ontology that do not contain `twc` in the namespace will not be checked.
 This is done to prevent checking of imported ontologies.
-*All of the resources for ontologies you develop must contain `twc` in the namespace.*
+**All of the resources for ontologies you develop must contain `twc` in the namespace.**
+
+### Errors and Warnings
 
 If the hygiene checks find errors in your ontologies, then the CI job will fail.
 This will update the status of your latest commit to indicate that it did not pass checks.
-*When submitting assignments, your ontologies must pass all hygiene checks.*
+**When submitting assignments, your ontologies must pass all hygiene checks.**
+
+The checks will also detect less severe ontology issues that are treated as warnings instead of errors.
+At first, warnings will not affect the passing status of the hygiene checks and will simply be logged in the CI output.
+Later on in the course, however, the CI job will be altered so that it will fail if any warnings are detected.
+Because of this, it is recommended that you check the CI logs periodically as you build your ontology to be aware of any warnings that may be accumulating.
+
+### Getting to the Hygiene CI Job
 
 You can view details about the hygiene test runs on the project [CircleCI page](https://app.circleci.com/pipelines/github/tetherless-world/ontology-engineering).
 To have permissions to view the project CI page, you will need to sign up for CircleCI using the same GitHub account that is used for this class.
+
+An easy way to get to the hygiene output for a particular commit on GitHub is via the commit status.
+The commit status is represented as a small icon next to the commit message that will be either a green check mark, yellow circle, or red X.
+To get to the hygiene output, click on the commit status icon and then click on "Details" next to the "hygiene_tests" check.
+This will bring you to a page containing details about the CircleCI job that was run for that commit.
+
+![Example of accessing the hygiene output via the commit status](hygiene_fail_status.png)
+
+On the CircleCI job page, you can view the hygiene logs for that job by going to to the "Steps" tab and expanding the "Run hygiene tests" step.
+**Note: Any errors reported in the "Tests" tab will not list all occurrences of the error.**
+Because of this, it is recommended to look in the logs when attempting to debug job failures.
+
+### Interpreting Hygiene Logs
+
+![An example hygiene test log with warnings and failures.](hygiene_log.png)
+
+There will be a lot of debug output in the logs that can be ignored. The relevant section for test results will be below the following line:
+
+``` text
+======================================= Errors in DEV:
+```
+
+Note that there will be a similar section labeled `Errors in PROD`.  This section should be ignored.
+
+Each individual check will have a line like the following:
+
+``` text
+ - Running test              : [Text should not use special characters]
+```
+
+This will be followed by a header line that indicates the output format.
+The header line will be something like `error` or `error,s,o`, so don't assume that seeing something like this indicates an error.
+
+After the header line, any errors or warnings will be printed.
+These lines will be in the format `ERROR: ...` or `WARN: ...`.
