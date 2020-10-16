@@ -2,6 +2,7 @@
 <!DOCTYPE rdf:RDF [
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-fnd-aap-ppl "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/">
+	<!ENTITY fibo-fnd-arr-arr "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/">
 	<!ENTITY fibo-fnd-arr-cls "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/">
 	<!ENTITY fibo-fnd-dt-fd "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/">
 	<!ENTITY fibo-fnd-pas-pas "https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/">
@@ -24,6 +25,7 @@
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
+	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
 	xmlns:fibo-fnd-arr-cls="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"
 	xmlns:fibo-fnd-dt-fd="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"
 	xmlns:fibo-fnd-pas-pas="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/"
@@ -49,7 +51,8 @@
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/ClassificationSchemes/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
@@ -79,7 +82,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;A1c">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;isRiskFactorFor"/>
@@ -95,6 +98,8 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Age">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Aspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;isTypeOf"/>
@@ -112,11 +117,11 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;BloodPressure">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;BloodSugar">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;isRiskFactorFor"/>
@@ -126,7 +131,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;BodyMass">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;isRiskFactorFor"/>
@@ -158,7 +163,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Cholesterol">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Culture">
@@ -206,19 +211,19 @@
 		<rdfs:subClassOf rdf:resource="&lcc-lr;Collection"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-arr-arr;isConstituentOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Lifestyle"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;comprises"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Food"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;componentOf"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Lifestyle"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;consistsOf"/>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;comprises"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Food"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -242,7 +247,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Exercise">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;componentOf"/>
+				<owl:onProperty rdf:resource="&fibo-fnd-arr-arr;isConstituentOf"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -363,9 +368,6 @@
 		<skos:definition>gender identity group including individuals that self-identify as male</skos:definition>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Measurement">
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2020-pat-rec;Medicine">
 	</owl:Class>
 	
@@ -428,7 +430,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Pregnant">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Protein">
@@ -443,6 +445,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Sex">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Aspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;isTypeOf"/>
@@ -493,16 +496,6 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;canIncrease">
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;componentOf">
-		<rdfs:label>component of</rdfs:label>
-		<skos:definition>a constituent part</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;consistsOf">
-		<rdfs:label>consists of</rdfs:label>
-		<skos:definition>to be composed or made up</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;contains">
