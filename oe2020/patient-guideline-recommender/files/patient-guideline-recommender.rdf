@@ -117,6 +117,50 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/is_treated_with"/>
     
+     <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/canAffect -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/canAffect">
+        <rdfs:label>canAffect</rdfs:label>
+        <skos:editorialNote>to produce an effect upon someone or something</skos:editorialNote>
+    </owl:ObjectProperty>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/componentOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/componentOf">
+        <rdfs:label>componentOf</rdfs:label>
+        <skos:definition>a constituent part</skos:definition>
+    </owl:ObjectProperty>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/recommends -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/recommends">
+        <rdfs:label>recommends</rdfs:label>
+        <skos:definition>to suggest an act or course of action</skos:definition>
+    </owl:ObjectProperty>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/restricts -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/restricts">
+        <rdfs:label>restricts</rdfs:label>
+        <skos:definition>to confine within bounds</skos:definition>
+    </owl:ObjectProperty>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/typeOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/typeOf">
+        <rdfs:label>typeOf</rdfs:label>
+        <skos:definition>a member of an indicated class or variety of people</skos:definition>
+    </owl:ObjectProperty>
+
+
 
 
     <!-- 
@@ -128,6 +172,166 @@
      -->
 
     
+
+     <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Aerobic_Exercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Aerobic_Exercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Exercise"/>
+        <skos:definition>physical exercise that depends primarily on the aerobic energy-generating process</skos:definition>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Age -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Age">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/typeOf"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Demographic"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Body-weight_Exercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Body-weight_Exercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Exercise"/>
+        <skos:definition>strength-training exercises that use the individual&apos;s own weight to provide resistance against gravity</skos:definition>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Culture -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Culture">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Lifestyle"/>
+        <skos:definition>the conventional conducts and ideologies of a community; the system comprising of the accepted norms and values of a society</skos:definition>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Demographic -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Demographic">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/canAffect"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Lifestyle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/restricts"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Guideline"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Exercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Exercise">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/componentOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Lifestyle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Female -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Female">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Sex"/>
+        <skos:definition>belonging to the sex which typically produces eggs (ova), or to the gender which is typically associated with it</skos:definition>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Guideline -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Guideline">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/recommends"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Exercise"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/recommends"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Lifestyle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Jogging -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Jogging">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Exercise"/>
+        <skos:definition>to run or ride at a slow trot</skos:definition>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Lifestyle -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Lifestyle"/>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Male -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Male">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Sex"/>
+        <skos:definition>of, relating to, or being the sex that typically has the capacity to produce relatively small, usually motile gametes which fertilize the eggs of a female</skos:definition>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Patient -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Patient"/>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Sedentary_Behavior -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Sedentary_Behavior">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Lifestyle"/>
+        <skos:definition>a type of lifestyle that lacks physical exercise, characterized by sitting, reading, watching television or using a computer for much of the day without vigorous physical exertion</skos:definition>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Sex -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Sex">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/typeOf"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Demographic"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Yoga -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Yoga">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Exercise"/>
+        <skos:definition>a system of physical postures, breathing techniques, and sometimes meditation derived from Yoga but often practiced independently especially in Western cultures to promote physical and emotional well-being</skos:definition>
+    </owl:Class>
+
 
 
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Person -->
@@ -149,22 +353,7 @@
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Age -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Age">
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/Classifier"/>
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/DatePeriod"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/hasStartDate"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/ExplicitDate"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>age</rdfs:label>
-        <skos:definition>period of time someone has been alive or something has existed</skos:definition>
-        <fibo-fnd-utl-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://dictionary.cambridge.org/dictionary/english/age</fibo-fnd-utl-av:adaptedFrom>
-    </owl:Class>
+    
     
 
 
@@ -200,20 +389,7 @@
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Demographic -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Demographic">
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/Classifier"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/classifies"/>
-                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Person"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>demographic</rdfs:label>
-        <skos:definition>statistical characteristic of a human population (such as age or income)</skos:definition>
-        <fibo-fnd-utl-av:adaptedFrom>A. B. Olokoba, O. A. Obateru, and L. B. Olokoba, &apos;Type 2 diabetes mellitus: a review of current trends,&apos; Oman medical journal, Jul-2012. [Online]. Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3464757/?fbclid=IwAR08ScAD3TqjSQm569uKaPu1sbcpCxzKI0gHXeuY9WsSgFUDMlBes5Xxhdg. [Accessed: 23-Sep-2020].</fibo-fnd-utl-av:adaptedFrom>
-    </owl:Class>
+    
     
 
 
@@ -233,15 +409,6 @@
     </owl:Class>
     
 
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Female -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Female">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/GenderIdentity"/>
-        <rdfs:label>female</rdfs:label>
-        <skos:definition>gender identity indicating that the individual self-identifies as being a woman</skos:definition>
-    </owl:Class>
-    
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Food -->
@@ -282,13 +449,7 @@
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Male -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Male">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/GenderIdentity"/>
-        <rdfs:label>male</rdfs:label>
-        <skos:definition>gender identity indicating that the individual self-identifies as being a man</skos:definition>
-    </owl:Class>
+  
     
 
 
@@ -302,22 +463,7 @@
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Patient -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Patient">
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/PartyInRole"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/hasIdentity"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Person"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>patient</rdfs:label>
-        <skos:definition>person who receives medical attention, care, or treatment, or who is registered with medical professional or institution with the purpose to receive medical care when necessary</skos:definition>
-        <skos:scopeNote>Patients will be limited to those who have type 2 diabetes.</skos:scopeNote>
-        <fibo-fnd-utl-av:adaptedFrom>S. Chong, D. Ding, R. Byun, E. Comino, A. Bauman, and B. Jalaludin, &apos;Lifestyle Changes After a Diagnosis of Type 2 Diabetes,&apos; Diabetes spectrum : a publication of the American Diabetes Association, Feb-2017. [Online]. Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5309903/?fbclid=IwAR2dY5OKOjSBRXRGfKAQ4NQosTKp534nixdd8ac6KW55BT3SmFSTitGHbbY. [Accessed: 23-Sep-2020].</fibo-fnd-utl-av:adaptedFrom>
-    </owl:Class>
+   
     
 
 
