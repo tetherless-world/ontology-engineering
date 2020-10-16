@@ -1,7 +1,7 @@
 [Concept Map](#conceptual-model) | [Ontology File](#ontologies)
 
 ## Conceptual Model
-![Concept Map Subject Model](images/OE_5_Beer_Advisor_ConceptualModel.png)
+![Concept Map Subject Model](images/OE_6_Beer_Advisor_ConceptualModel.png)
 
 An overview of the main classes and their property associations.
 
