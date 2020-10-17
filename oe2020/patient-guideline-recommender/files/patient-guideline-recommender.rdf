@@ -101,12 +101,6 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Age">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Aspect"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;isTypeOf"/>
-				<owl:allValuesFrom rdf:resource="&oe2020-pat-rec;Demographic"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>age</rdfs:label>
 		<skos:definition>the number of full years, months, days, hours, etc., that someone, or something, has been alive</skos:definition>
 	</owl:Class>
@@ -201,6 +195,11 @@
 		<skos:definition>gender identity indicating that the individual chose not to provide information as of some date</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;Defecit">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;QualatativeMeasure"/>
+		<rdfs:label>defecit</rdfs:label>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Demographic">
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -254,6 +253,10 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Macronutrient"/>
 		<rdfs:label>dietary fat</rdfs:label>
 		<skos:definition>a macronutrient that provides energy for your body</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;Energy">
+		<rdfs:label>energy</rdfs:label>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Exercise">
@@ -465,16 +468,16 @@
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://dictionary.cambridge.org/dictionary/english/age</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Pregnant">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
-		<rdfs:label>pregnant</rdfs:label>
-		<skos:definition>(of a woman or female animal) having a child or young developing in the uterus.</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2020-pat-rec;Protein">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Macronutrient"/>
 		<rdfs:label>protein</rdfs:label>
 		<skos:definition>a nutrient found in food (as meat, milk, eggs, and beans) that is made up of many amino acids joined together, is a necessary part of the diet, and is essential for normal cell structure and function</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;QualatativeMeasure">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Measure"/>
+		<rdfs:label>qualatative measure</rdfs:label>
+		<skos:definition>relating to, measuring, or measured by the quality of something rather than its quantity.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;SedentaryBehavior">
@@ -483,16 +486,22 @@
 		<skos:definition>a type of lifestyle that lacks physical exercise, characterized by sitting, reading, watching television or using a computer for much of the day without vigorous physical exertion</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;Serving">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;Quantity"/>
+		<rdfs:label>serving</rdfs:label>
+		<skos:definition>a quantity of food suitable for or served to one person.</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Sex">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Aspect"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;isTypeOf"/>
-				<owl:allValuesFrom rdf:resource="&oe2020-pat-rec;Demographic"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>sex</rdfs:label>
 		<skos:definition>the state of being male or female</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;Surplus">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;QualatativeMeasure"/>
+		<rdfs:label>surplus</rdfs:label>
+		<skos:definition>deficiency in amount or quality</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;TransFat">
@@ -586,11 +595,6 @@
 		<skos:definition>to care for or deal with medically or surgically</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;isTypeOf">
-		<rdfs:label>is type of</rdfs:label>
-		<skos:definition>a member of an indicated class or variety of people</skos:definition>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;recommends">
 		<rdfs:label>recommends</rdfs:label>
 		<skos:definition>to suggest an act or course of action</skos:definition>
@@ -600,21 +604,5 @@
 		<rdfs:label>restricts</rdfs:label>
 		<skos:definition>to confine within bounds</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2020-pat-rec;A1c">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pat-rec;BloodPressure">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pat-rec;BloodSugar">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pat-rec;BodyMass">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pat-rec;Cholesterol">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pat-rec;Pregnant">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
+
 </rdf:RDF>
