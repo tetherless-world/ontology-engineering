@@ -9,7 +9,7 @@ title: term list
 
 ## Previous Versions
 
-- [Version 1] (https://docs.google.com/spreadsheets/d/1JaVMAXSpJAGWkT1wYAqUgazQ17W4JqkxI7b1_-9U6f0/edit?usp=sharing)
+- [Version 1](https://docs.google.com/spreadsheets/d/1JaVMAXSpJAGWkT1wYAqUgazQ17W4JqkxI7b1_-9U6f0/edit?usp=sharing)
 
-- [Version 2] (https://docs.google.com/spreadsheets/d/1xglpcCRJR7Hom1xkRJzEGCKi7PS8GbmZQFENrf1CVYw/edit?usp=sharing)
+- [Version 2](https://docs.google.com/spreadsheets/d/1xglpcCRJR7Hom1xkRJzEGCKi7PS8GbmZQFENrf1CVYw/edit?usp=sharing)
 
