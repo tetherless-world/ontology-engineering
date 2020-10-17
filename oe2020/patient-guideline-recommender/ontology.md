@@ -6,5 +6,5 @@
 ## Ontologies
 
 **Link:**
-(patient-guideline-recommender.rdf)
+![Ontology Link](patient-guideline-recommender.rdf)
 **View the ontology documentation at:**
