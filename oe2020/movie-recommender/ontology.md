@@ -14,4 +14,6 @@ Genre Model:
 
 **Link:**
 
+-[Version 1 Ontology](https://github.com/tetherless-world/ontology-engineering/blob/movie-recommender/oe2020/movie-recommender/OE_6_MovieRecommender_Ontology.rdf)
+
 **View the ontology documentation at:**
