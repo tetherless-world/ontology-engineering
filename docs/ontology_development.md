@@ -27,11 +27,13 @@ Instructions for installing the serializer:
         Behavior for this varies by OS, but if you have an option to save as a particular file type, select "All files".
     * **MacOS and Linux users** will also need to make the file executable.
         To do this, run the following command from your project root after you have copied in the pre-commit script: `chmod +x .git/hooks/pre-commit`
-1. In `.git/hooks/pre-commit`, set line 12 (`export JAVA_HOME=...`) to match your java installation.
+1. In `.git/hooks/pre-commit`, set line 12 (`export JAVA_HOME="...`) to match your java installation.
     * If you don't know where or what that is, [this site may help](https://www.baeldung.com/find-java-home).
-    * If you are sure that the `JAVA_HOME` environment variable is set properly on your system, you can comment this line out: `#export JAVA_HOME=...`.
-    * If you are not sure, you will need to locate the directory where Java is installed, which will vary from system to system, and set the path of that directory as the value of `JAVA_HOME`.
-    The `JAVA_HOME` directory should have a `bin` folder containing the `java` executable.
+        `JAVA_HOME` should be a path the points to the java installation directory, which will vary from system to system.
+        The `JAVA_HOME` directory should have a `bin` folder containing the `java` executable.
+    * The set value of `JAVA_HOME` should be in quotation marks.
+    * If, in the past, you have configured your environment to set the `JAVA_HOME` environment variable, you can simply comment the line out: `#export JAVA_HOME=...`.
+        Only do this if you are certain you have already configured `JAVA_HOME`.
 1. To make sure everything is working, open a command line interface (e.g. Terminal in SourceTree) and navigate to the ontology-engineering repository directory.
     When you run `git commit`, you should see output similar to below preceding the normal git output:
 
