@@ -36,6 +36,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-be-fct-fct="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
 	xmlns:fibo-be-le-fbo="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
@@ -561,6 +562,13 @@
 		<skos:definition>a course that has been completed and earned a satisfactory grade</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCorequisite">
+		<rdfs:label>has corequisite</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
+		<skos:definition>a course the student is required to be registered for alongside this course</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCourseCode">
 		<rdfs:label>has course code</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
@@ -583,6 +591,7 @@
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCrossListing">
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
 		<rdfs:label>has cross listing</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseCode"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;CourseCode"/>
