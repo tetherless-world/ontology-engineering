@@ -200,12 +200,18 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasDepartmentCode"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;DepartmentCode"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasLevel"/>
 				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>course code</rdfs:label>
-		<skos:definition> a short course identifier with information about subject and course level in form of SUBJ-1111</skos:definition>
+		<skos:definition>a short course identifier with information about subject and course level in form of SUBJ-1111</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseSchedule">
@@ -272,6 +278,32 @@
 		</rdfs:subClassOf>
 		<rdfs:label>department</rdfs:label>
 		<skos:definition>division of a university or school faculty devoted to a particular academic discipline</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-crs-rec;DepartmentCode">
+		<rdfs:subClassOf rdf:resource="&lcc-lr;CodeElement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;denotes"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Department"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasTag"/>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasLevel"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>course code</rdfs:label>
+		<skos:definition>a short identifier for departments</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;Discipline">
@@ -629,6 +661,13 @@
 		<rdfs:range rdf:resource="&oe2020-crs-rec;Department"/>
 		<skos:definition>belongs to a specific academic department</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasDepartmentCode">
+		<rdfs:label>has department code</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseCode"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;DepartmentCode"/>
+		<skos:definition>the associated department of the course code</skos:definition>
+	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasDescription">
 		<rdfs:label>has description</rdfs:label>
