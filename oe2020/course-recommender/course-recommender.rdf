@@ -136,6 +136,27 @@
 	<owl:Class rdf:about="&oe2020-crs-rec;Course">
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCorequisite"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Course"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRecommendedPrerequisite"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Course"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRequiredPrerequisite"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Course"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasTopic"/>
 				<owl:onClass rdf:resource="&oe2020-crs-rec;TopicArea"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
@@ -364,6 +385,20 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;PlanOfStudy">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCompletedCourse"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasOngoingCourse"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;ScheduledCourseSection"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasClassYear"/>
@@ -663,6 +698,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasDepartmentCode">
+		<rdf:type rdf:resource="&owl;ObjectProperty"/>
 		<rdfs:label>has department code</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseCode"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;DepartmentCode"/>
