@@ -183,6 +183,21 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseCode">
+		<rdfs:subClassOf rdf:resource="&lcc-lr;CodeElement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;denotes"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Course"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasTag"/>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasLevel"/>
@@ -243,6 +258,18 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;Department">
+		<rdfs:subClassOf rdf:resource="&fibo-be-le-fbo;OrganizationalSubUnit"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-cr;isPartOf"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;playsRole"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;University"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>department</rdfs:label>
 		<skos:definition>division of a university or school faculty devoted to a particular academic discipline</skos:definition>
 	</owl:Class>
