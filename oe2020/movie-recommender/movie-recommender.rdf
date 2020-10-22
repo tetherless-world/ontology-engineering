@@ -29,6 +29,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-cls="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"
@@ -87,12 +88,14 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201003/movie-recommender/"/>
-		<skos:changeNote>The https://tw.rpi.edu/ontology-engineering/oe2020/20201003/movie-recommender.rdf version of this ontology is the seed version.</skos:changeNote>
 	</owl:Ontology>
+	
+	<owl:Class rdf:about="&fibo-fnd-plc-loc;Location">
+	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;3DAnimatedMovie">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;AnimatedMovie"/>
-		<rdfs:label>3DAnimatedMovie</rdfs:label>
+		<rdfs:label>3D animated movie</rdfs:label>
 		<rdfs:isDefinedBy>&quot;The 5 Types of Animation&quot;, Bloop. [Online]. Available: https://www.bloopanimation.com/types-of-animation/. [Accessed 15-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>animators design objects and movement paths, and the computer interpolates the frames of animation between the key frames</skos:definition>
 	</owl:Class>
@@ -111,7 +114,7 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;AnimatedMovie">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Style"/>
-		<rdfs:label>AnimatedMovie</rdfs:label>
+		<rdfs:label>animated movie</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2020-mov-rec;LiveActionMovie"/>
 		<skos:definition>&quot;animated&quot;, Merriam-Webster. [Online]. Available: https://www.merriam-webster.com/dictionary/animated. [Accessed: 2-Oct-2020]</skos:definition>
 		<skos:definition>film made in the form of a cartoon</skos:definition>
@@ -119,7 +122,7 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;ArtFilm">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;ProductionType"/>
-		<rdfs:label>ArtFilm</rdfs:label>
+		<rdfs:label>art film</rdfs:label>
 		<rdfs:isDefinedBy>T. Dirks, &apos; Film Sub-Genres Types (and Hybrids),&apos; Film Sub-Genres Types (and Hybrids). [Online]. Available: https://www.filmsite.org/subgenres2.html. [Accessed: 03-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>classification of a film indicating it is meant to be a serious artistic work</skos:definition>
 	</owl:Class>
@@ -133,7 +136,7 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Author">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Contributor"/>
-		<rdfs:label>Author</rdfs:label>
+		<rdfs:label>author</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Contributor Schema. [Online]. Available: https://schema.org/contributor. [Accessed: 2-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>author of the original content for which the work is based on</skos:definition>
 	</owl:Class>
@@ -144,7 +147,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Award">
-		<rdfs:label>Award</rdfs:label>
+		<rdfs:label>award</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>something that recognizes a movie or show for a quality</skos:definition>
 	</owl:Class>
@@ -174,12 +177,12 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Comedian">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Actor"/>
-		<rdfs:label>Comedian</rdfs:label>
+		<rdfs:label>comedian</rdfs:label>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Comedy">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Genre"/>
-		<rdfs:label>Comedy</rdfs:label>
+		<rdfs:label>comedy</rdfs:label>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec;Community">
@@ -196,7 +199,6 @@
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:label>Contributor</rdfs:label>
 		<rdfs:label>contributor</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>Person who worked on a creative work</skos:definition>
@@ -234,7 +236,6 @@
 				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;Contributor"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:label>CreativeWork</rdfs:label>
 		<rdfs:label>creative work</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>Movie or TV Show</skos:definition>
@@ -244,21 +245,21 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Creator">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Contributor"/>
-		<rdfs:label>Creator</rdfs:label>
+		<rdfs:label>creator</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; TV Series Schema. [Online]. Available: https://schema.org/TVSeries. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>creator for this work</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Director">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Contributor"/>
-		<rdfs:label>Director</rdfs:label>
+		<rdfs:label>director</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>person who directs the filming of a movie, show, or series</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Drama">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Genre"/>
-		<rdfs:label>Drama</rdfs:label>
+		<rdfs:label>drama</rdfs:label>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec;Emmy">
@@ -307,7 +308,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Genre">
-		<rdfs:label>Genre</rdfs:label>
+		<rdfs:label>genre</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>categorization of a movie, show, or series</skos:definition>
 	</owl:Class>
@@ -321,12 +322,12 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Horror">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Genre"/>
-		<rdfs:label>Horror</rdfs:label>
+		<rdfs:label>horror</rdfs:label>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;IndieFilm">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;ProductionType"/>
-		<rdfs:label>Indie Film</rdfs:label>
+		<rdfs:label>indie film</rdfs:label>
 		<rdfs:isDefinedBy>&quot;Independent Films&quot;, Dartmouth Library. [Online]. Available: https://researchguides.dartmouth.edu/filmgenres/independents. [Accessed 15-Oct-2020].</rdfs:isDefinedBy>
 		<owl:disjointWith rdf:resource="&oe2020-mov-rec;MajorMotionPicture"/>
 		<skos:definition>any type of filmmaking that takes place outside the mainstream commercial film industry</skos:definition>
@@ -334,7 +335,7 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;IndividualAward">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Award"/>
-		<rdfs:label>IndividualAward</rdfs:label>
+		<rdfs:label>individual award</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Person Schema. [Online]. Available: https://schema.org/Person. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<owl:disjointWith rdf:resource="&oe2020-mov-rec;ProductAward"/>
 		<skos:definition>recognition of an individual&apos;s performance in a movie or show</skos:definition>
@@ -350,28 +351,28 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;LiveActionMovie">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Style"/>
-		<rdfs:label>LiveActionMovie</rdfs:label>
+		<rdfs:label>live action movie</rdfs:label>
 		<rdfs:isDefinedBy>&quot;live action&quot;, Merriam-Webster. [Online]. Available: https://www.merriam-webster.com/dictionary/live-action. [Accessed: 2-Oct-2020]</rdfs:isDefinedBy>
 		<skos:definition>film not produced with animation</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;LowBudgetFilm">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;ProductionType"/>
-		<rdfs:label>LowBudgetFilm</rdfs:label>
+		<rdfs:label>low budget film</rdfs:label>
 		<rdfs:isDefinedBy>T. Dirks, &apos; Film Sub-Genres Types (and Hybrids),&apos; Film Sub-Genres Types (and Hybrids). [Online]. Available: https://www.filmsite.org/subgenres2.html. [Accessed: 03-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>classification of a film indicating a small budget or production team was used</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;MajorMotionPicture">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;ProductionType"/>
-		<rdfs:label>MajorMotionPicture</rdfs:label>
+		<rdfs:label>major motion picture</rdfs:label>
 		<rdfs:isDefinedBy>T. Dirks, &apos; Film Sub-Genres Types (and Hybrids),&apos; Film Sub-Genres Types (and Hybrids). [Online]. Available: https://www.filmsite.org/subgenres2.html. [Accessed: 03-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>classification of a film indicating a large budget or production team was used</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;MartialArtist">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Actor"/>
-		<rdfs:label>MartialArtist</rdfs:label>
+		<rdfs:label>martial artist</rdfs:label>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec;MissionImpossibleFallout">
@@ -381,7 +382,7 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Movie">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;CreativeWork"/>
-		<rdfs:label>Movie</rdfs:label>
+		<rdfs:label>movie</rdfs:label>
 		<rdfs:isDefinedBy>&quot;movie&quot;, Merriam-Webster. [Online]. Available: https://www.merriam-webster.com/dictionary/live-action. [Accessed: 16-Oct-2020]</rdfs:isDefinedBy>
 		<owl:disjointWith rdf:resource="&oe2020-mov-rec;TVShow"/>
 		<skos:definition>story or event recorded by a camera as a set of moving images and shown in a theater or on television; a motion picture.</skos:definition>
@@ -407,13 +408,13 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Parody">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Comedy"/>
-		<rdfs:label>Parody</rdfs:label>
+		<rdfs:label>parody</rdfs:label>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;PhysicalComedy">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Action"/>
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Comedy"/>
-		<rdfs:label>PhysicalComedy</rdfs:label>
+		<rdfs:label>physical comedy</rdfs:label>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec;PrimetimeEmmyOutstandingDrama">
@@ -428,19 +429,19 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;ProductAward">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Award"/>
-		<rdfs:label>ProductAward</rdfs:label>
+		<rdfs:label>product award</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>something that recognizes a movie or show for a quality</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;ProductionCompany">
-		<rdfs:label>ProductionCompany</rdfs:label>
+		<rdfs:label>production company</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>company or companies credited with producing the movie or show</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;ProductionType">
-		<rdfs:label>ProductionType</rdfs:label>
+		<rdfs:label>production type</rdfs:label>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec;Ratatouille">
@@ -450,13 +451,13 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Romance">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Genre"/>
-		<rdfs:label>Romance</rdfs:label>
+		<rdfs:label>romance</rdfs:label>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;RomanticComedy">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Comedy"/>
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Romance"/>
-		<rdfs:label>RomanticComedy</rdfs:label>
+		<rdfs:label>romantic comedy</rdfs:label>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec;RumbleInTheBronx">
@@ -486,18 +487,18 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;StopMotionAnimatedMovie">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;AnimatedMovie"/>
-		<rdfs:label>StopMotionAnimatedMovie</rdfs:label>
+		<rdfs:label>stop motion animated movie</rdfs:label>
 		<rdfs:isDefinedBy>&quot;The 5 Types of Animation&quot;, Bloop. [Online]. Available: https://www.bloopanimation.com/types-of-animation/. [Accessed 15-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>animators manipulate real world objects, move them slightly, take photos for each frame, and play them back in sequence to illustrate movement</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Stuntman">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Actor"/>
-		<rdfs:label>Stuntman</rdfs:label>
+		<rdfs:label>stuntman</rdfs:label>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Style">
-		<rdfs:label>Style</rdfs:label>
+		<rdfs:label>style</rdfs:label>
 		<rdfs:isDefinedBy>&quot;film style&quot;, Oxford-Reference. [Online]. Available: https://www.oxfordreference.com/view/10.1093/acref/9780199587261.001.0001/acref-9780199587261-e-0298. [Accessed: 16-Oct-2020]</rdfs:isDefinedBy>
 		<skos:definition>any distinctive, patterned, developed, meaningful use of techniques of the film medium</skos:definition>
 	</owl:Class>
@@ -516,7 +517,7 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;TVShow">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;CreativeWork"/>
-		<rdfs:label>TVShow</rdfs:label>
+		<rdfs:label>TV show</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; TV Series Schema. [Online]. Available: https://schema.org/TVSeries. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>Creative work series dedicated to TV broadcast and associated online delivery</skos:definition>
 	</owl:Class>
@@ -535,7 +536,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Theme">
-		<rdfs:label>Theme</rdfs:label>
+		<rdfs:label>theme</rdfs:label>
 		<rdfs:isDefinedBy>T. Dirks, &apos; Film Sub-Genres Types (and Hybrids),&apos; Film Sub-Genres Types (and Hybrids). [Online]. Available: https://www.filmsite.org/subgenres2.html. [Accessed: 03-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>word or phrase designating a theme of a film</skos:definition>
 	</owl:Class>
@@ -547,14 +548,14 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;TraditionalAnimatedMovie">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;AnimatedMovie"/>
-		<rdfs:label>TraditionalAnimatedMovie</rdfs:label>
+		<rdfs:label>traditional animated movie</rdfs:label>
 		<rdfs:isDefinedBy>&quot;The 5 Types of Animation&quot;, Bloop. [Online]. Available: https://www.bloopanimation.com/types-of-animation/. [Accessed 15-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>animators hand draw every frame and play them back in sequence</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Writer">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Contributor"/>
-		<rdfs:label>Writer</rdfs:label>
+		<rdfs:label>writer</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>person who was involved in the writing of the script for a movie</skos:definition>
 	</owl:Class>
@@ -612,6 +613,7 @@
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasDerivation">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
 		<rdfs:label>has derivation</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe2020-mov-rec;isDerivedFrom"/>
 		<skos:definition>is a source for</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -711,7 +713,6 @@
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;isDerivedFrom">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
 		<rdfs:label>is derived from</rdfs:label>
-		<owl:inverseOf rdf:resource="&oe2020-mov-rec;hasDerivation"/>
 		<skos:definition>is developed from</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote>Note that any creative work or expression of that work might be derived from or adapted from something else, such as a book or prior expression of a creative work.</fibo-fnd-utl-av:explanatoryNote>
 	</owl:ObjectProperty>
@@ -721,6 +722,9 @@
 		<rdfs:domain rdf:resource="&oe2020-mov-rec;CreativeWork"/>
 		<rdfs:range rdf:resource="&fibo-fnd-dt-fd;ExplicitDate"/>
 	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="&lcc-lr;Location">
+	</owl:Class>
 	
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
