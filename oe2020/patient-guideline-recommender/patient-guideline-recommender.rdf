@@ -205,14 +205,6 @@
 		<skos:definition>food (such as ice cream, cheese, or yogurt) made primarily of or from milk</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;DateOfBirth">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-fd;ExplicitDate"/>
-		<rdfs:label>date of birth</rdfs:label>
-		<skos:definition>explicit date on which an individual was born</skos:definition>
-		<fibo-fnd-utl-av:synonym>birth date</fibo-fnd-utl-av:synonym>
-		<fibo-fnd-utl-av:synonym>birthday</fibo-fnd-utl-av:synonym>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2020-pat-rec;DeclinedToState">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<rdfs:label>declined to state</rdfs:label>
@@ -328,7 +320,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Female">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Sex"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<rdfs:label>female</rdfs:label>
 		<skos:definition>belonging to the sex which typically produces eggs (ova), or to the gender which is typically associated with it</skos:definition>
 	</owl:Class>
@@ -437,7 +429,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Male">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Sex"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<rdfs:label>male</rdfs:label>
 		<skos:definition>of, relating to, or being the sex that typically has the capacity to produce relatively small, usually motile gametes which fertilize the eggs of a female</skos:definition>
 	</owl:Class>
@@ -511,15 +503,15 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Age"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-dt-fd;hasAsOfDate"/>
-				<owl:onClass rdf:resource="&fibo-fnd-dt-fd;ExplicitDate"/>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;isCalculatedFromBirth"/>
+				<owl:onClass rdf:resource="&fibo-fnd-aap-ppl;DateOfBirth"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;isCalculatedFromBirth"/>
-				<owl:onClass rdf:resource="&oe2020-pat-rec;DateOfBirth"/>
+				<owl:onProperty rdf:resource="&fibo-fnd-dt-fd;hasAsOfDate"/>
+				<owl:onClass rdf:resource="&fibo-fnd-dt-fd;ExplicitDate"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -549,13 +541,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Serving">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;Quantity"/>
 		<rdfs:label>serving</rdfs:label>
-		<skos:definition>a quantity of food suitable for or served to one person.</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2020-pat-rec;Sex">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Aspect"/>
-		<rdfs:label>sex</rdfs:label>
-		<skos:definition>the state of being male or female</skos:definition>
+		<skos:definition>a quantity of food suitable for or served to one person</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Surplus">
@@ -656,7 +642,7 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;isCalculatedFromBirth">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-dt-fd;hasStartDate"/>
 		<rdfs:label>is calculated from birth</rdfs:label>
-		<rdfs:range rdf:resource="&oe2020-pat-rec;DateOfBirth"/>
+		<rdfs:range rdf:resource="&fibo-fnd-aap-ppl;DateOfBirth"/>
 		<skos:definition>indicates the date from which age is calculated</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://dictionary.cambridge.org/dictionary/english/age</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
