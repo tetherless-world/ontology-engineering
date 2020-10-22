@@ -12,8 +12,12 @@ Genre Model:
 
 ## Ontologies
 
-**Link:**
+**Link to current version:**
 
--[Version 1 Ontology](https://github.com/tetherless-world/ontology-engineering/blob/movie-recommender/oe2020/movie-recommender/OE_6_MovieRecommender_Ontology.rdf)
+-[Current Version](https://github.com/tetherless-world/ontology-engineering/blob/movie-recommender/oe2020/movie-recommender/movie-recommender.rdf)
+
+**Link to past versions:**
+
+-[Version 1 Ontology](https://github.com/tetherless-world/ontology-engineering/blob/movie-recommender/oe2020/movie-recommender/files/OE_6_MovieRecommender_Ontology.rdf)
 
 **View the ontology documentation at:**
