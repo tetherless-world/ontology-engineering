@@ -27,7 +27,7 @@ WHERE {
   UNION
   {?s rdfs:subClassOf|owl:equivalentClass [?p owl:Thing]}
   }
-  FILTER (REGEX (xsd:string (?s), "twc"))
+  FILTER (REGEX (xsd:string (?s), "${NAMESPACE_REGEX}"))
   FILTER (?p != owl:someValuesFrom)
   BIND (afn:localname (?p) AS ?prop)
   BIND (concat ("PRODERROR:", xsd:string (?s), " has an explicit reference to owl:Thing (", ?prop, ").")
