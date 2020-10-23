@@ -25,7 +25,7 @@ SELECT DISTINCT ?error
 WHERE {
   ?s ?p ?o .
   FILTER (ISIRI (?o))
-  FILTER (REGEX (xsd:string (?o), "twc"))
+  FILTER (REGEX (xsd:string (?o), "${NAMESPACE_REGEX}"))
   FILTER NOT EXISTS {?o a []}
   FILTER (! (?p IN (owl:versionIRI, sm:dependsOn , owl:imports , sm:specificationVersionURL,
                     rdfs:seeAlso, dct:isPartOf, lcc-cr:isPartOf, lcc-cr:hasPart, dct:hasPart)))
