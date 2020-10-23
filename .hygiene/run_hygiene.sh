@@ -27,6 +27,6 @@ docker cp hygiene:"/output/$ONTPUB_FAMILY" "$OUTPUT_DIR"
 
 docker-compose down
 
-CURRENT_BRANCH="$(git branch --show-current)"
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
 npx verify-junit-xml "$OUTPUT_DIR/$ONTPUB_FAMILY/ontology/$CURRENT_BRANCH/latest/hygiene_test.dev.xml"
