@@ -26,7 +26,7 @@ SELECT #?error
 WHERE {
   ?s ?p ?o
   FILTER (DATATYPE(?o)=xsd:string)
-  FILTER (REGEX (xsd:string (?s), "twc"))
+  FILTER (REGEX (xsd:string (?s), "${NAMESPACE_REGEX}"))
   BIND (afn:localname (?p) AS ?prop)
   BIND ("[ÁáÇçÉéÍíÕõÖöäÄèÈμΜσΣa-zA-Z\\\\;'?@$%#&:/\"<*>,._+÷=)(\\[\\]{}0-9\n\t -]" AS ?reg)
   BIND (REPLACE (xsd:string (?o), ?reg, "")  AS ?bads)
