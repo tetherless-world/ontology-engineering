@@ -24,6 +24,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
@@ -68,6 +69,9 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201003/patient-guideline-recommender/"/>
 	</owl:Ontology>
+	
+	<owl:Class rdf:about="&fibo-fnd-aap-ppl;DateOfBirth">
+	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-fnd-aap-ppl;Person">
 		<rdfs:subClassOf>
@@ -306,6 +310,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Energy">
 		<rdfs:label>energy</rdfs:label>
+		<skos:definition>a quantity that denotes the ability to do work and is measured in a unit dimensioned in mass × distance²/time² (ML²/T²) or the equivalent</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Exercise">
@@ -448,6 +453,8 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Medicine">
+		<rdfs:label>medicine</rdfs:label>
+		<skos:definition>a compound or preparation used for the treatment or prevention of disease, especially a drug or drugs taken by mouth</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;NonBinary">
@@ -474,12 +481,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;canIncrease"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Cholesterol"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;indicates"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Type2"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>obesity</rdfs:label>
@@ -629,9 +630,6 @@
 		<rdfs:label>has gender identity</rdfs:label>
 		<rdfs:range rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<skos:definition>indicates the gender as reported by an individual</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;indicates">
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;isAfflictedWith">
