@@ -12,7 +12,7 @@ WHERE
 		WHERE
         {
 			?s  rdfs:label  ?label
-			FILTER regex(xsd:string(?s), "twc")
+			FILTER (REGEX (xsd:string (?s), "${NAMESPACE_REGEX}"))
         }
 		GROUP BY ?label
 		HAVING ( COUNT(?label) > 1 )
