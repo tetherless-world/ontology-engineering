@@ -24,6 +24,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
@@ -69,6 +70,9 @@
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201003/patient-guideline-recommender/"/>
 	</owl:Ontology>
 	
+	<owl:Class rdf:about="&fibo-fnd-aap-ppl;DateOfBirth">
+	</owl:Class>
+	
 	<owl:Class rdf:about="&fibo-fnd-aap-ppl;Person">
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -95,7 +99,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;isRiskFactorFor"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Type2"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Type2Diabetes"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>a1c</rdfs:label>
@@ -479,7 +483,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;indicates"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Type2"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Type2Diabetes"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>obesity</rdfs:label>
@@ -568,9 +572,9 @@
 		<skos:definition>gender identity including individuals that self-identify as having a gender identity or gender expression that differs with their assigned sex at birth</skos:definition>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Type2">
+	<owl:Class rdf:about="&oe2020-pat-rec;Type2Diabetes">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Diabetes"/>
-		<rdfs:label>type 2</rdfs:label>
+		<rdfs:label>type 2 diabetes</rdfs:label>
 		<skos:definition>a type of diabetes mellitus that is characterized by insulin resistance or desensitization and increased blood glucose levels</skos:definition>
 	</owl:Class>
 	
@@ -671,6 +675,9 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;restricts">
 		<rdfs:label>restricts</rdfs:label>
 		<skos:definition>to confine within bounds</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&lcc-cr;isClassifiedBy">
 	</owl:ObjectProperty>
 
 </rdf:RDF>
