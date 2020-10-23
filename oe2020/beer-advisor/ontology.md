@@ -14,5 +14,6 @@ An overview of the hasCharacteristic attribute and its association with other at
 ## Ontologies
 
 **Link:**
+[ontolgy-version1](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/OE_7_beer-advisor.rdf)
 
 **View the ontology documentation at:**
