@@ -106,6 +106,17 @@
 		<skos:definition>a test that measures the level of hemoglobin A1c in the blood as a means of determining the average blood sugar concentrations for the preceding two to three months</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevel">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-arr-arr;isConstituentOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Lifestyle"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>activity level</rdfs:label>
+		<skos:definition>a way to express a person&apos;s daily physical activity as a number, and is used to estimate a person&apos;s total energy expenditure</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
 		<rdfs:label>aerobic exercise</rdfs:label>
@@ -638,6 +649,9 @@
 		<skos:definition>indicates the gender as reported by an individual</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;indicates">
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;isAfflictedWith">
 		<rdfs:label>is afflicted with</rdfs:label>
 		<skos:definition>grievously affected or troubled</skos:definition>
@@ -674,6 +688,16 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;restricts">
 		<rdfs:label>restricts</rdfs:label>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2020-pat-rec;Diet">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2020-pat-rec;Guideline">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>
 		<skos:definition>to confine within bounds</skos:definition>
 	</owl:ObjectProperty>
 	
