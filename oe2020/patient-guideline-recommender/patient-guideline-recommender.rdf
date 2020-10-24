@@ -226,6 +226,7 @@
 		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Fruit"/>
 		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Meat"/>
 		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Vegetable"/>
+		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>food (such as ice cream, cheese, or yogurt) made primarily of or from milk</skos:definition>
 	</owl:Class>
 	
@@ -328,6 +329,12 @@
 		<skos:definition>a macronutrient that provides energy for your body</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;DietaryGoal">
+		<rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Goals/Goal"/>
+		<rdfs:label>dietary goal</rdfs:label>
+		<skos:definition>a goal related to a diet</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Energy">
 		<rdfs:label>energy</rdfs:label>
 		<skos:definition>a quantity that denotes the ability to do work and is measured in a unit dimensioned in mass × distance²/time² (ML²/T²) or the equivalent</skos:definition>
@@ -346,6 +353,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Female">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;SexAtBirth"/>
 		<rdfs:label>female</rdfs:label>
 		<skos:definition>belonging to the sex which typically produces eggs (ova), or to the gender which is typically associated with it</skos:definition>
 	</owl:Class>
@@ -380,6 +388,7 @@
 		<rdfs:label>fruit</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Meat"/>
 		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Vegetable"/>
+		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>the usually edible reproductive body of a seed plant, especially one having a sweet pulp associated with the seed</skos:definition>
 	</owl:Class>
 	
@@ -442,6 +451,12 @@
 		<skos:definition>to run or ride at a slow trot</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;Legume">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
+		<rdfs:label>legume</rdfs:label>
+		<skos:definition>the fruit or seed of plants of the legume family (such as peas or beans) used for food</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Lifestyle">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-cls;Classifier"/>
 		<rdfs:label>lifestyle</rdfs:label>
@@ -455,6 +470,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Male">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;SexAtBirth"/>
 		<rdfs:label>male</rdfs:label>
 		<skos:definition>of, relating to, or being the sex that typically has the capacity to produce relatively small, usually motile gametes which fertilize the eggs of a female</skos:definition>
 	</owl:Class>
@@ -469,6 +485,7 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>meat</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Vegetable"/>
+		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>animal tissue considered especially as food</skos:definition>
 	</owl:Class>
 	
@@ -583,6 +600,19 @@
 		<skos:definition>a quantity of food suitable for or served to one person</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;SexAtBirth">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-cls;Classifier"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-dt-fd;hasAsOfDate"/>
+				<owl:onClass rdf:resource="&fibo-fnd-dt-fd;ExplicitDate"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>sex at birth</rdfs:label>
+		<skos:definition>the state of being male or female, as assigned at birth</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Surplus">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;QualitativeMeasure"/>
 		<rdfs:label>surplus</rdfs:label>
@@ -616,7 +646,14 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Vegetable">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>vegetable</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>a usually herbaceous plant (such as the cabbage, bean, or potato) grown for an edible part that is usually eaten as part of a meal</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;WholeGrain">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
+		<rdfs:label>whole grain</rdfs:label>
+		<skos:definition>a cereal grain that contains cereal germ, endosperm, and bran, in contrast to refined grains, which retain only the endosperm</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Yoga">
@@ -737,6 +774,22 @@
 			<rdf:Description rdf:about="&oe2020-pat-rec;Sedentary">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2020-pat-rec;SemiActive">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe2020-pat-rec;Dairy">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2020-pat-rec;Fruit">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2020-pat-rec;Legume">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2020-pat-rec;Meat">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2020-pat-rec;Vegetable">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2020-pat-rec;WholeGrain">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
