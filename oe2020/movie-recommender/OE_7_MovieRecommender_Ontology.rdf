@@ -150,12 +150,6 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Award">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasAwardProductionType"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;ProductionType"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>award</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>something that recognizes a movie or show for a quality</skos:definition>
@@ -212,12 +206,6 @@
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;bornIn"/>
-				<owl:onClass rdf:resource="&lcc-lr;Location"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>contributor</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>someone who contributes to a creative work</skos:definition>
@@ -252,18 +240,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasContributor"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;Contributor"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasProductAward"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;ProductAward"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasProductionType"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;ProductionType"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>creative work</rdfs:label>
@@ -422,12 +398,6 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Movie">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;CreativeWork"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasRuntime"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-dt-fd;Duration"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>movie</rdfs:label>
 		<rdfs:isDefinedBy>&quot;movie&quot;, Merriam-Webster. [Online]. Available: https://www.merriam-webster.com/dictionary/live-action. [Accessed: 16-Oct-2020]</rdfs:isDefinedBy>
 		<owl:disjointWith rdf:resource="&oe2020-mov-rec;TVShow"/>
@@ -585,18 +555,6 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;TVShow">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;CreativeWork"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasNumberOfEpisodes"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasNumberOfSeasons"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>TV show</rdfs:label>
 		<rdfs:isDefinedBy>&apos;schema.org,&apos; TV Series Schema. [Online]. Available: https://schema.org/TVSeries. [Accessed: 23-Sep-2020].</rdfs:isDefinedBy>
 		<skos:definition>Creative work series dedicated to TV broadcast and associated online delivery</skos:definition>
@@ -641,21 +599,14 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;UserAccount">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasStreamingService"/>
-				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/Streaming Service"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>user account</rdfs:label>
 		<rdfs:isDefinedBy>&quot;What is a User Account&quot;, ComputerHope. [Online]. Available: https://www.computerhope.com/jargon.htm. [Accessed 22-Oct-2020].</rdfs:isDefinedBy>
 		<skos:definition>a location on a network server used to store a computer username, password, and other information</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;WatchedMovie">
-		<rdfs:label>watched movie</rdfs:label>
-		<skos:definition>a movie that a user has started or finished watching</skos:definition>
+		<rdfs:label>WatchedMovie</rdfs:label>
+		<skos:definition>a Movie that a user has started or finished watching</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Writer">
