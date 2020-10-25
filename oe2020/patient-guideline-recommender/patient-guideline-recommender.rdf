@@ -5,6 +5,7 @@
 	<!ENTITY fibo-fnd-arr-arr "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/">
 	<!ENTITY fibo-fnd-arr-cls "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/">
 	<!ENTITY fibo-fnd-dt-fd "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/">
+	<!ENTITY fibo-fnd-gao-obj "https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/">
 	<!ENTITY fibo-fnd-org-fm "https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/">
 	<!ENTITY fibo-fnd-pas-pas "https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/">
 	<!ENTITY fibo-fnd-pty-pty "https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/">
@@ -29,6 +30,7 @@
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
 	xmlns:fibo-fnd-arr-cls="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"
 	xmlns:fibo-fnd-dt-fd="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"
+	xmlns:fibo-fnd-gao-obj="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"
 	xmlns:fibo-fnd-org-fm="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/"
 	xmlns:fibo-fnd-pas-pas="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/"
 	xmlns:fibo-fnd-pty-pty="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"
@@ -56,6 +58,7 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
@@ -226,11 +229,11 @@
 		<skos:definition>food (such as ice cream, cheese, or yogurt) made primarily of or from milk</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;DeclinedToState">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;DeclinedToState">
+		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<rdfs:label>declined to state</rdfs:label>
 		<skos:definition>gender identity indicating that the individual chose not to provide information as of some date</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Deficit">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;QualitativeMeasure"/>
@@ -326,7 +329,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;DietaryGoal">
-		<rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Goals/Goal"/>
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/fibo-fnd-gao-obj;Objective"/>
 		<rdfs:label>dietary goal</rdfs:label>
 		<skos:definition>a goal related to a diet</skos:definition>
 	</owl:Class>
@@ -359,12 +362,12 @@
 		<skos:definition>bodily exertion for the sake of developing and maintaining physical fitness</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Female">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;SexAtBirth"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Female">
+		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
+		<rdf:type rdf:resource="&oe2020-pat-rec;SexAssignedAtBirth"/>
 		<rdfs:label>female</rdfs:label>
 		<skos:definition>belonging to the sex which typically produces eggs (ova), or to the gender which is typically associated with it</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;FemaleGroup">
 		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentityGroup"/>
@@ -476,12 +479,12 @@
 		<skos:definition>a chemical element or substance (such as potassium or protein) that is essential in relatively large amounts to the growth and health of a living organism</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Male">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;SexAtBirth"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Male">
+		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
+		<rdf:type rdf:resource="&oe2020-pat-rec;SexAssignedAtBirth"/>
 		<rdfs:label>male</rdfs:label>
 		<skos:definition>of, relating to, or being the sex that typically has the capacity to produce relatively small, usually motile gametes which fertilize the eggs of a female</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;MaleGroup">
 		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentityGroup"/>
@@ -502,11 +505,11 @@
 		<skos:definition>a compound or preparation used for the treatment or prevention of disease, especially a drug or drugs taken by mouth</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;NonBinary">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;NonBinary">
+		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<rdfs:label>non-binary</rdfs:label>
 		<skos:definition>gender identity indicating that the individual self-identifies as not being exclusively masculine or feminine, i.e., as being outside of the gender binary</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;NonBinaryGroup">
 		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentityGroup"/>
@@ -608,17 +611,10 @@
 		<skos:definition>a quantity of food suitable for or served to one person</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;SexAtBirth">
+	<owl:Class rdf:about="&oe2020-pat-rec;SexAssignedAtBirth">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-cls;Classifier"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-dt-fd;hasAsOfDate"/>
-				<owl:onClass rdf:resource="&fibo-fnd-dt-fd;ExplicitDate"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>sex at birth</rdfs:label>
-		<skos:definition>the state of being male or female, as assigned at birth</skos:definition>
+		<rdfs:label>sex assigned at birth</rdfs:label>
+		<skos:definition>the discernment of an infant&apos;s sex at birth, which usually aligns with a child&apos;s anatomical sex and phenotype</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Surplus">
@@ -633,11 +629,11 @@
 		<skos:definition>a fat containing trans-fatty acids</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Transgender">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Transgender">
+		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<rdfs:label>transgender</rdfs:label>
 		<skos:definition>gender identity indicating that the individual self-identifies as having a gender identity or gender expression that differs with their assigned sex at birth</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;TransgenderGroup">
 		<rdf:type rdf:resource="&oe2020-pat-rec;GenderIdentityGroup"/>
