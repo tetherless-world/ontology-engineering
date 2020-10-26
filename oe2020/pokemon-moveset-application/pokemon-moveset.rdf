@@ -165,6 +165,18 @@
 		<skos:definition>gender indicating that the Pokémon is female</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;FemaleGenderRatio">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;GenderRatio"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Female"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>female gender ratio</rdfs:label>
+		<skos:definition>ratio indicating the percentage female gender that a given Pokémon has with respect to breeding ability</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Friendship">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;PokemonStatistic"/>
 		<rdfs:label>friendship</rdfs:label>
@@ -183,6 +195,19 @@
 		<rdfs:label>gender</rdfs:label>
 		<skos:definition>classifier indicating a physical condition of a Pokémon with respect to breeding with other Pokémon</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.dictionary.com/browse/gender</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;GenderRatio">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Percentage"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;PokemonStatistic"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Gender"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>gender ratio</rdfs:label>
+		<skos:definition>ratio indicating the percentage gender that a given Pokémon has</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Item">
@@ -231,6 +256,18 @@
 		<rdfs:label>male</rdfs:label>
 		<skos:definition>gender indicating that the Pokémon is male</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;MaleGenderRatio">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;GenderRatio"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Male"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>male gender ratio</rdfs:label>
+		<skos:definition>ratio indicating the percentage male gender that a given Pokémon has with respect to breeding ability</skos:definition>
+	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Move">
 		<rdfs:label>move</rdfs:label>
@@ -478,7 +515,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasFriendship">
-		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasPokémonStatistic"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasPokemonStatistic"/>
 		<rdfs:label>has friendship</rdfs:label>
 		<skos:definition>indicates a specific Pokémon has a specific friendship level or must have a specific friendship level for an event to occur</skos:definition>
 	</owl:ObjectProperty>
@@ -490,6 +527,13 @@
 		<skos:definition>indicates the physical condition of a Pokémon with respect to sexuality</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasGenderRatio">
+		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasPokemonStatistic"/>
+		<rdfs:label>has gender ratio</rdfs:label>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;GenderRatio"/>
+		<skos:definition>indicates the physical condition of a Pokémon with respect to percentage sexuality</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasLearnMethod">
 		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasStrategy"/>
 		<rdfs:label>has learn method</rdfs:label>
@@ -497,7 +541,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasLevel">
-		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasPokémonStatistic"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasPokemonStatistic"/>
 		<rdfs:label>has level</rdfs:label>
 		<skos:definition>indicates a specific Pokémon has a specific level or must have a specific level for an event to occur</skos:definition>
 	</owl:ObjectProperty>
@@ -508,7 +552,8 @@
 		<skos:definition>indicates the method by which a Pokémon can be obtained</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasPokémonStatistic">
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasPokemonStatistic">
+		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-qt-qtu;hasQuantityValue"/>
 		<rdfs:label>has Pokémon statistic</rdfs:label>
 		<skos:definition>indicates that a Pokémon has a Pokémon statistic or must have a some value for an event to occur</skos:definition>
 	</owl:ObjectProperty>
