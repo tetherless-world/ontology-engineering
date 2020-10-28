@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY Analytics "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-be-fct-fct "https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/">
 	<!ENTITY fibo-be-le-fbo "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/">
@@ -29,6 +30,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/"
+	xmlns:Analytics="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-be-fct-fct="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
 	xmlns:fibo-be-le-fbo="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
@@ -214,6 +216,11 @@
 		<skos:definition>a short course identifier with information about subject and course level in form of SUBJ-1111</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-crs-rec;CourseCodeRestriction">
+		<rdfs:label>course code restriction</rdfs:label>
+		<skos:definition>a class that captures and represents restrictions on courses that can be applied to fulfill requirements through the use of course codes</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-crs-rec;CourseSchedule">
 		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
 		<rdfs:subClassOf>
@@ -316,6 +323,12 @@
 		<fibo-fnd-utl-av:explanatoryNote>According to 20 USCS section 1681 educational institution means &apos;any public or private preschool, elementary, or secondary school, or any institution of vocational, professional, or higher education, except that in the case of an educational institution composed of more than one school, college, or department which are administratively separate units, such term means each such school, college, or department.&apos;</fibo-fnd-utl-av:explanatoryNote>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-crs-rec;ExactCourseCodeRestriction">
+		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;CourseCodeRestriction"/>
+		<rdfs:label>exact course code restriction</rdfs:label>
+		<skos:definition>a specific course code that is allowed to be used to fulfill a requirement</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-crs-rec;FacultyMember">
 		<rdfs:subClassOf rdf:resource="&fibo-be-oac-exec;AuthorizedParty"/>
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;OrganizationMember"/>
@@ -407,11 +420,67 @@
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Professor</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-crs-rec;RangedCourseCodeRestriction">
+		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;CourseCodeRestriction"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasValidDepartmentCode"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;DepartmentCode"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasValidLevelMax"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasValidLevelMin"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>a restriction on a range of departments and/or levels of course codes that can be applied to fulfill a requirement</rdfs:label>
+		<rdfs:label>ranged course code restriction</rdfs:label>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-crs-rec;Requirement">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasValidCourses"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Course"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;canShareCreditsWith"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRestriction"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasSubRequirement"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;isFulfilledBy"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCourseCodeRestriction"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;CourseCodeRestriction"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -475,6 +544,19 @@
 		</rdfs:subClassOf>
 		<rdfs:label>semester schedule</rdfs:label>
 		<skos:definition>the selected courses a student will complete in the upcoming future semester in order to complete their degree within a four-year plan</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-crs-rec;SpecialTagCourseCodeRestriction">
+		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;CourseCodeRestriction"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasValidSpecialTag"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>special tag course code restriction</rdfs:label>
+		<skos:definition>a restriction to ony allow course codes for courses that have a specified special tag to be used to fulfill a requirement</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;Student">
@@ -570,6 +652,11 @@
 		<skos:definition>the topic area belongs to a discipline</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;canShareCreditsWith">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Requirement"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasAdvisor">
 		<rdfs:label>has advisor</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Student"/>
@@ -613,6 +700,10 @@
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;CourseCode"/>
 		<skos:definition>has a unique number to identify the specific course in Self-Service Information System</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasCourseCodeRestriction">
+		<rdfs:range rdf:resource="&oe2020-crs-rec;CourseCodeRestriction"/>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasCourseRegistrationNumber">
@@ -757,6 +848,11 @@
 		<skos:definition>has a requirement that must be fulfilled to earn the degree</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasRestriction">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Requirement"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasSchedule">
 		<rdfs:label>has schedule</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSection"/>
@@ -792,6 +888,11 @@
 		<skos:definition>has a plan of study leading to graduation</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasSubRequirement">
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;Requirement"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasTopic">
 		<rdfs:label>has topic</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
@@ -799,12 +900,28 @@
 		<skos:definition>has a subject of discussion</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasValidCourses">
-		<rdfs:label>has valid courses</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;Requirement"/>
-		<rdfs:range rdf:resource="&oe2020-crs-rec;Course"/>
-		<skos:definition>courses that can be completed to fulfill this requirement</skos:definition>
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasValidDepartmentCode">
+		<rdfs:range>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasValidDepartmentCode"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;DepartmentCode"/>
+			</owl:Restriction>
+		</rdfs:range>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasValidLevelMax">
+		<rdfs:range rdf:resource="&xsd;integer"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasValidLevelMin">
+		<rdfs:range rdf:resource="&xsd;integer"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasValidSpecialTag">
+		<rdfs:label>has valid special tag</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>valid special tags of courses that can fulfill a course restriction</skos:definition>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;isCourseSectionOf">
 		<rdfs:label>is course section of</rdfs:label>
