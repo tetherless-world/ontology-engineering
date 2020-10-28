@@ -106,6 +106,12 @@
 		<skos:definition>film genre in which the protagonist is thrust into a series of events that typically involve violence or physical feats</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-mov-rec;Actor">
+		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;PerformingArtist"/>
+		<rdfs:label>actor</rdfs:label>
+		<skos:definition>performing artist that portrays a character in some creative work</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-mov-rec;AgeRating">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-rt;Rating"/>
 		<rdfs:label>age rating</rdfs:label>
@@ -165,7 +171,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Comedian">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Actor"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;PerformingArtist"/>
 		<rdfs:label>comedian</rdfs:label>
 		<skos:definition>an entertainer whose act is designed to make an audience laugh</skos:definition>
 	</owl:Class>
@@ -193,6 +199,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;CreativeWork">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Situation"/>
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pas-pas;Product"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -219,6 +226,18 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasContributor"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;Contributor"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasGenre"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;Genre"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasProductionType"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;ProductionType"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>creative work</rdfs:label>
@@ -248,6 +267,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Expression">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Situation"/>
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pas-pas;Product"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -282,6 +302,18 @@
 				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;Contributor"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasGenre"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;Genre"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasProductionType"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;ProductionType"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>expression</rdfs:label>
 		<skos:definition>manifestation of a specific version of a creative work</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote>Many films and television programs have been remade over time in various forms.  An expression represents a version of a given creative work. It may be filmed in some time frame with a specific set of contributors and in a specific format (e.g., animated film vs. full-feature film with live actors).  Note that there may be multiple versions of the same expression, for example, the same film re-recorded with voice over in a different natural language. In that case, the same character may be performed by multiple actors - the original actor on screen and a different actor for the voice.</fibo-fnd-utl-av:explanatoryNote>
@@ -289,6 +321,12 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Genre">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-cls;Classifier"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-cr;classifies"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;CreativeWork"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>genre</rdfs:label>
 		<skos:definition>categorization of a movie, show, or series</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom>&apos;schema.org,&apos; Movie Schema. [Online]. Available: https://schema.org/Movie. [Accessed: 23-Sep-2020].</fibo-fnd-utl-av:adaptedFrom>
@@ -337,7 +375,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;MartialArtist">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Actor"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;PerformingArtist"/>
 		<rdfs:label>martial artist</rdfs:label>
 		<skos:definition>a practitioner of sports that originated as self-defense or attack</skos:definition>
 	</owl:Class>
@@ -364,6 +402,12 @@
 		<skos:definition>type of comedy film meant to spoof other film genres as pastiches</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-mov-rec;PerformingArtist">
+		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Artist"/>
+		<rdfs:label>performing artist</rdfs:label>
+		<skos:definition>entertainer who performs a dramatic or musical work for an audience</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-mov-rec;PhysicalComedy">
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Action"/>
 		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Comedy"/>
@@ -387,6 +431,12 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;ProductionType">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-cls;Classifier"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-cr;classifies"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;CreativeWork"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>production type</rdfs:label>
 		<skos:definition>the circumstances under which a film was created</skos:definition>
 	</owl:Class>
@@ -438,7 +488,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Stuntman">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Actor"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;PerformingArtist"/>
 		<rdfs:label>stuntman</rdfs:label>
 		<skos:definition>a person employed to take an actor&apos;s place in performing dangerous stunts</skos:definition>
 	</owl:Class>
@@ -520,7 +570,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;contributesTo">
-		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
+		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-pty-pty;actsIn"/>
 		<rdfs:label>contributes to</rdfs:label>
 		<owl:inverseOf rdf:resource="&oe2020-mov-rec;hasContributor"/>
 		<skos:definition>gives to; participates in</skos:definition>
@@ -568,6 +618,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasGenre">
+		<rdfs:subPropertyOf rdf:resource="&lcc-cr;isClassifiedBy"/>
 		<rdfs:label>has genre</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-mov-rec;CreativeWork"/>
 		<rdfs:range rdf:resource="&oe2020-mov-rec;Genre"/>
@@ -626,18 +677,19 @@
 		<skos:definition>designates a film or tv show with an award</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasProductionType">
-		<rdfs:label>has production type</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2020-mov-rec;CreativeWork"/>
-		<rdfs:range rdf:resource="&oe2020-mov-rec;ProductionType"/>
-		<skos:definition>designates a film or tv show with a particular production type</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasProdudctionCompany">
+	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasProductionCompany">
 		<rdfs:label>has production company</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-mov-rec;CreativeWork"/>
 		<rdfs:range rdf:resource="&oe2020-mov-rec;ProductionCompany"/>
 		<skos:definition>the company producing a film</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasProductionType">
+		<rdfs:subPropertyOf rdf:resource="&lcc-cr;isClassifiedBy"/>
+		<rdfs:label>has production type</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-mov-rec;CreativeWork"/>
+		<rdfs:range rdf:resource="&oe2020-mov-rec;ProductionType"/>
+		<skos:definition>designates a film or tv show with a particular production type</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasRuntime">
