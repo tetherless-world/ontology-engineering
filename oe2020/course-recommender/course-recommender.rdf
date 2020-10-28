@@ -325,6 +325,13 @@
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;ExactCourseCodeRestriction">
 		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;CourseCodeRestriction"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasValidCourseCodeTag"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>exact course code restriction</rdfs:label>
 		<skos:definition>a specific course code that is allowed to be used to fulfill a requirement</skos:definition>
 	</owl:Class>
@@ -900,6 +907,10 @@
 		<rdfs:range rdf:resource="&oe2020-crs-rec;TopicArea"/>
 		<skos:definition>has a subject of discussion</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasValidCourseCodeTag">
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasValidDepartmentCode">
 		<rdfs:range>
