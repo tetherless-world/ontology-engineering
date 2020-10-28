@@ -78,6 +78,52 @@
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201025/pokemon-moveset/"/>
 	</owl:Ontology>
 	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;BreedingPair">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-org-fm;Group"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Situation"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;produces"/>
+				<owl:onClass>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;PokemonEgg">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+								<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;PokemonFamily"/>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:onClass>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>breeding pair</rdfs:label>
+		<skos:definition></skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Character">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-agt;AutonomousAgent"/>
 		<rdfs:subClassOf>
@@ -94,6 +140,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EggGroup">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-cls;Classifier"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-org-fm;Group"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;classifies"/>
@@ -175,6 +222,18 @@
 		</rdfs:subClassOf>
 		<rdfs:label>female gender ratio</rdfs:label>
 		<skos:definition>ratio indicating the percentage female gender that a given Pokémon has with respect to breeding ability</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;FemalePokemon">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
+				<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Female"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>female pokemon</rdfs:label>
+		<skos:definition>Pokémon whose gender is female</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Friendship">
@@ -267,6 +326,18 @@
 		</rdfs:subClassOf>
 		<rdfs:label>male gender ratio</rdfs:label>
 		<skos:definition>ratio indicating the percentage male gender that a given Pokémon has with respect to breeding ability</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;MalePokemon">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
+				<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Male"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>male pokemon</rdfs:label>
+		<skos:definition>Pokémon whose gender is male</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Move">
@@ -403,6 +474,12 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasEggGroup"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Gender"/>
 			</owl:Restriction>
@@ -494,6 +571,14 @@
 		<rdfs:comment>for use with unknown gendered Pokémon, excluding the Pokémon Ditto</rdfs:comment>
 		<skos:definition>gender indicating that the nature of the Pokémon&apos;s sexuality is not known</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;breedsWith">
+		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-pty-pty;actsOn"/>
+		<rdfs:label>breeds with</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
+		<skos:definition>relates a female Pokemon with a male Pokemon that she can breed with</skos:definition>
+	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasAssociatedMove">
 		<rdfs:label>has associated move</rdfs:label>
