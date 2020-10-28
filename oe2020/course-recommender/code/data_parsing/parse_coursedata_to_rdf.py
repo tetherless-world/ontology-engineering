@@ -34,10 +34,11 @@ for file in course_data_files:
 
 graph = rdflib.Graph()
 
-graph.bind('crs-onto', CRS_NS)
+graph.bind('oe2020-crs-rec', CRS_NS)
 graph.bind('owl', OWL)
-entity_ns = rdflib.Namespace('https://tw.rpi.edu/ontology-engineering/oe2020/entity/')
-graph.bind('crs-entity', entity_ns)
+entity_ns = rdflib.Namespace('https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/')
+graph.bind('oe2020-crs-rec-ind', entity_ns)
+graph.bind('lcc-lr', rdflib.URIRef('https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/'))
 entity_uri_dict = dict()
 
 
@@ -61,7 +62,14 @@ for row in data_rows[1:]:
         graph.add((course_uri, RDF_NS['type'], CRS_NS['Course']))
         graph.add((course_uri, RDF_NS['type'], OWL['NamedIndividual']))
         graph.add((course_uri, CRS_NS['hasName'], rdflib.Literal(row[name_to_index['full_name']], datatype=XSD.string)))
-        graph.add((course_uri, CRS_NS['hasCredits'], rdflib.Literal(row[name_to_index['course_credit_hours']], datatype=XSD.integer)))
+
+        # TODO: not sure how to handle credit hours with ranges (e.g. "1-9") so just set to 1 for now
+        if "-" in row[name_to_index['course_credit_hours']]:
+            graph.add((course_uri, CRS_NS['hasCredits'],
+                       rdflib.Literal(1, datatype=XSD.integer)))
+        else:
+            graph.add((course_uri, CRS_NS['hasCredits'], rdflib.Literal(row[name_to_index['course_credit_hours']], datatype=XSD.integer)))
+
         graph.add((course_uri, CRS_NS['hasDepartment'], department_uri))
         graph.add((course_uri, CRS_NS['hasCourseCode'], course_code_uri))
         graph.add((course_uri, CRS_NS['hasDescription'], rdflib.Literal(row[name_to_index['description']], datatype=XSD.string)))
