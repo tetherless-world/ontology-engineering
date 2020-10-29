@@ -83,23 +83,57 @@
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Situation"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:onClass>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;FemalePokemon">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2020-pkm-mvs;breedsWith"/>
+								<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:onClass>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
+				<owl:onClass>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;MalePokemon">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasBreedingPartner"/>
+								<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:onClass>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+				<owl:onClass>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;Pokemon">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+								<owl:onClass rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
+								<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:onClass>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -108,7 +142,7 @@
 				<owl:onClass>
 					<owl:Class>
 						<owl:intersectionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2020-pkm-mvs;OffspringPokemon">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;PokemonEgg">
 							</rdf:Description>
 							<owl:Restriction>
 								<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
