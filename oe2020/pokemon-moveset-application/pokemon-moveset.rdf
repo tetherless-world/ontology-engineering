@@ -27,6 +27,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-agt="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
@@ -78,6 +79,9 @@
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201025/pokemon-moveset/"/>
 	</owl:Ontology>
 	
+	<owl:Class rdf:about="&fibo-fnd-gao-obj;Strategy">
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;BreedingPair">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-org-fm;Group"/>
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Situation"/>
@@ -91,14 +95,14 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;FemalePokémon"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;MalePokémon"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -108,7 +112,7 @@
 				<owl:onClass>
 					<owl:Class>
 						<owl:intersectionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2020-pkm-mvs;PokemonEgg">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;OffspringPokémon">
 							</rdf:Description>
 							<owl:Restriction>
 								<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
@@ -121,7 +125,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>breeding pair</rdfs:label>
-		<skos:definition></skos:definition>
+		<skos:definition>set of two Pokémon bred together</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Character">
@@ -144,7 +148,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;classifies"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>egg group</rdfs:label>
@@ -224,15 +228,20 @@
 		<skos:definition>ratio indicating the percentage female gender that a given Pokémon has with respect to breeding ability</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;FemalePokemon">
-		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
-				<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Female"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>female pokemon</rdfs:label>
+	<owl:Class rdf:about="&oe2020-pkm-mvs;FemalePokémon">
+		<rdfs:label>female Pokémon</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2020-pkm-mvs;Pokémon">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
+						<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Female"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition>Pokémon whose gender is female</skos:definition>
 	</owl:Class>
 	
@@ -248,7 +257,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;classifies"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>gender</rdfs:label>
@@ -270,6 +279,12 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Item">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-plc-loc;isLocatedAt"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;PokemonLocation"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>item</rdfs:label>
 		<skos:definition>a in-game object that can be used on or by Pokémon</skos:definition>
 	</owl:Class>
@@ -280,26 +295,56 @@
 		<skos:definition>learn method in which a move is learned by breeding two Pokémon</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnByItem">
-		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
-		<rdfs:label>learn by item</rdfs:label>
-		<skos:definition>learn method in which a move is learned by using an item on a Pokémon</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnByLevelUp">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<rdfs:label>learn by level up</rdfs:label>
 		<skos:definition>learn method in which a move is learned upon reaching a certain Pokémon level</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnByMoveTutor">
+	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnFromItem">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
-		<rdfs:label>learn by move tutor</rdfs:label>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasAssociatedMoveSource"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;MoveItem"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>learn from item</rdfs:label>
+		<skos:definition>learn method in which a move is learned by using an item on a Pokémon</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnFromMoveSource">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
+		<rdfs:label>learn from move source</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasAssociatedMoveSource"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>learn method in which a move is learned from an in-game entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnFromMoveTutor">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasAssociatedMoveSource"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;MoveTutor"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>learn from move tutor</rdfs:label>
 		<skos:definition>learn method in which a move is learned by interacting with a move tutor</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnMethod">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-gao-obj;Strategy"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;isLearnMethodFor"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Move"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>learn method</rdfs:label>
 		<skos:definition>conditions for acquiring a move</skos:definition>
 	</owl:Class>
@@ -328,24 +373,68 @@
 		<skos:definition>ratio indicating the percentage male gender that a given Pokémon has with respect to breeding ability</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;MalePokemon">
-		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
-				<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Male"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>male pokemon</rdfs:label>
+	<owl:Class rdf:about="&oe2020-pkm-mvs;MalePokémon">
+		<rdfs:label>male Pokémon</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2020-pkm-mvs;Pokémon">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
+						<owl:hasValue rdf:resource="&oe2020-pkm-mvs;Male"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition>Pokémon whose gender is male</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Move">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasName"/>
+				<owl:someValuesFrom rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>move</rdfs:label>
 		<skos:definition>ability or action a Pokémon can use</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;MoveItem">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Item"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;isMoveSourceFor"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;Move"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>move item</rdfs:label>
+		<skos:definition>item that can be used to teach a Pokémon a move</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;MoveSource">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;isMoveSourceFor"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Move"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>move source</rdfs:label>
+		<skos:definition>in-game entity that can teach a Pokémon one or more moves</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;MoveTutor">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;NonPlayerCharacter"/>
 		<rdfs:label>move tutor</rdfs:label>
 		<skos:definition>a non-player character who will teach a Pokémon specific moves</skos:definition>
@@ -360,6 +449,12 @@
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;NonPlayerCharacter">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Character"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-plc-loc;isLocatedAt"/>
+				<owl:someValuesFrom rdf:resource="&lcc-cr;Location"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>non-player character</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2020-pkm-mvs;PlayerCharacter"/>
 		<skos:definition>character whose actions cannot be controlled by the player (i.e., person operating the handheld or console)</skos:definition>
@@ -385,7 +480,13 @@
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively through a Pokémon event</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromNPC">
+	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromEvolution">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
+		<rdfs:label>obtain from evolution</rdfs:label>
+		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively evolving another Pokémon</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromNonPlayerCharacter">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<rdfs:label>obtain from non-player character</rdfs:label>
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively through interaction with a non-player character</skos:definition>
@@ -413,6 +514,24 @@
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-gao-obj;Strategy"/>
 		<rdfs:label>obtain method</rdfs:label>
 		<skos:definition>strategy employed by a player for adding a Pokémon to their collection</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;OffspringPokémon">
+		<rdfs:label>offspring Pokémon</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2020-pkm-mvs;Pokémon">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pkm-mvs;evolvesFrom"/>
+						<owl:onClass rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+						<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>result of breeding two Pokémon together</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Player">
@@ -444,62 +563,6 @@
 		<fibo-fnd-utl-av:explanatoryNote>It is left up to the real player to &apos;fill in&apos; what they imagine the character is feeling, thinking, and acting, thus immersing them within the world of the game.</fibo-fnd-utl-av:explanatoryNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;Pokemon">
-		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Character"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasEvolutionMethod"/>
-				<owl:allValuesFrom rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasAssociatedMove"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;Move"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">4</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;PokemonFamily"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasAssociatedMove"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Move"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasEggGroup"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasGender"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Gender"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasObtainMethod"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>Pokémon</rdfs:label>
-		<skos:definition>fictional, animated monster that can be captured by a player and trained to fight with other monsters on behalf of the player</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;PokemonEgg">
-		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
-		<rdfs:label>Pokémon egg</rdfs:label>
-		<skos:definition>result of breeding two Pokémon together</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;PokemonEvent">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-oc;Occurrence"/>
 		<rdfs:label>Pokémon event</rdfs:label>
@@ -511,7 +574,14 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;OffspringPokémon"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>Pokémon family</rdfs:label>
@@ -539,28 +609,58 @@
 		<skos:definition>value or measure associated with some Pokémon</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pkm-mvs;TechnicalMachine">
-		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Item"/>
+	<owl:Class rdf:about="&oe2020-pkm-mvs;Pokémon">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Character"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasAssociatedMove"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;Move"/>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasEvolutionMethod"/>
+				<owl:allValuesFrom rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasEggGroup"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:maxQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;PokemonFamily"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasEggGroup"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasLearnMethod"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasObtainMethod"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>Pokémon</rdfs:label>
+		<skos:definition>fictional, animated monster that can be captured by a player and trained to fight with other monsters on behalf of the player</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pkm-mvs;TechnicalMachine">
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;MoveItem"/>
 		<rdfs:label>technical machine</rdfs:label>
 		<skos:definition>item that can be used to teach a Pokémon a move (infinite uses)</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;TechnicalRecord">
-		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Item"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasAssociatedMove"/>
-				<owl:onClass rdf:resource="&oe2020-pkm-mvs;Move"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
+		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;MoveItem"/>
 		<rdfs:label>technical record</rdfs:label>
 		<skos:definition>item that can be used to teach a Pokémon a move (single uses)</skos:definition>
 	</owl:Class>
@@ -575,20 +675,39 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;breedsWith">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-pty-pty;actsOn"/>
 		<rdfs:label>breeds with</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
-		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;FemalePokémon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MalePokémon"/>
 		<skos:definition>relates a female Pokemon with a male Pokemon that she can breed with</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasAssociatedMove">
-		<rdfs:label>has associated move</rdfs:label>
-		<skos:definition>indicates a specific move is associated with a learn method</skos:definition>
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;evolvesFrom">
+		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;succeeds"/>
+		<rdfs:label>evolves from</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;evolvesInto"/>
+		<skos:definition>indicates that a Pokémon evolves from a specific Pokémon</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;evolvesInto">
+		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;precedes"/>
+		<rdfs:label>evolves into</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<skos:definition>indicates that a Pokémon evolves into a specific Pokémon</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasAssociatedMoveSource">
+		<rdfs:label>has associated move source</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnFromMoveSource"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
+		<skos:definition>indicates a learn method has an associated move source for a specific move</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasEggGroup">
 		<rdfs:subPropertyOf rdf:resource="&lcc-cr;isClassifiedBy"/>
 		<rdfs:label>has egg group</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;EggGroup"/>
 		<skos:definition>indicates the group of Pokémon with which a Pokémon is able to breed successfully</skos:definition>
 	</owl:ObjectProperty>
@@ -596,6 +715,8 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasEvolutionMethod">
 		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasStrategy"/>
 		<rdfs:label>has evolution method</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<skos:definition>indicates the method by which a Pokémon evolves</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -608,6 +729,7 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasGender">
 		<rdfs:subPropertyOf rdf:resource="&lcc-cr;isClassifiedBy"/>
 		<rdfs:label>has gender</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Character"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Gender"/>
 		<skos:definition>indicates the physical condition of a Pokémon with respect to sexuality</skos:definition>
 	</owl:ObjectProperty>
@@ -622,6 +744,8 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasLearnMethod">
 		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasStrategy"/>
 		<rdfs:label>has learn method</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<skos:definition>indicates the method by which a Pokémon can learn a move</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -631,9 +755,19 @@
 		<skos:definition>indicates a specific Pokémon has a specific level or must have a specific level for an event to occur</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasMoveSource">
+		<rdfs:label>has move source</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Move"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
+		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;isMoveSourceFor"/>
+		<skos:definition>indicates a move has a specific move source</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasObtainMethod">
 		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;hasStrategy"/>
 		<rdfs:label>has obtain method</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<skos:definition>indicates the method by which a Pokémon can be obtained</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -650,22 +784,34 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromEvent">
 		<rdfs:label>is from event</rdfs:label>
-		<skos:definition>indicates a specific Pokémon event in which a specific Pokémon or item is distributed</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromItem">
-		<rdfs:label>is from item</rdfs:label>
-		<skos:definition>indicates a move can be learned from a specific item</skos:definition>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokémon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;PokemonEvent"/>
+		<skos:definition>indicates a specific Pokémon event in which a specific Pokémon is distributed</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromNonPlayerCharacter">
 		<rdfs:label>is from non-player character</rdfs:label>
-		<skos:definition>indicates that a Pokémon egg, item, or move can be obtained from a non-player character</skos:definition>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;NonPlayerCharacter"/>
+		<skos:definition>indicates that a Pokémon or item can be obtained from a non-player character</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromParent">
 		<rdfs:label>is from parent</rdfs:label>
 		<skos:definition>indicates a move can be inherited from a specific Pokémon</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isLearnMethodFor">
+		<rdfs:label>is learn method for</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Move"/>
+		<skos:definition>indicates a learn method is related to a specific move</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isMoveSourceFor">
+		<rdfs:label>is move source for</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Move"/>
+		<skos:definition>indicates a move source is the source of a specific move</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;precedes">
@@ -687,11 +833,6 @@
 		<rdfs:label>succeeds</rdfs:label>
 		<skos:definition>relates a stage in a lifecycle, an event, or occurrence, such as a breeding event, to one that follows it</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/succeed</fibo-fnd-utl-av:adaptedFrom>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;teachesMove">
-		<rdfs:label>teaches move</rdfs:label>
-		<skos:definition>indicates that an item or non-player character is able to teach a Pokémon a specific move</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:AllDisjointClasses>
@@ -724,11 +865,11 @@
 		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2020-pkm-mvs;LearnByInheritance">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;LearnByItem">
-			</rdf:Description>
 			<rdf:Description rdf:about="&oe2020-pkm-mvs;LearnByLevelUp">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;LearnByMoveTutor">
+			<rdf:Description rdf:about="&oe2020-pkm-mvs;LearnFromItem">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2020-pkm-mvs;LearnFromMoveTutor">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
@@ -740,7 +881,7 @@
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2020-pkm-mvs;ObtainFromEvent">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;ObtainFromNPC">
+			<rdf:Description rdf:about="&oe2020-pkm-mvs;ObtainFromNonPlayerCharacter">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2020-pkm-mvs;ObtainFromTrade">
 			</rdf:Description>
