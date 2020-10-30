@@ -89,27 +89,61 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pkm-mvs-ind;Braviary">
 		<rdf:type rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasLearnMethod"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;LearnByLevelUp">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasLevel"/>
+								<owl:someValuesFrom>
+									<owl:Class>
+										<owl:intersectionOf rdf:parseType="Collection">
+											<rdf:Description rdf:about="&oe2020-pkm-mvs;Level">
+											</rdf:Description>
+											<owl:Restriction>
+												<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+												<owl:hasValue rdf:datatype="&xsd;decimal">64</owl:hasValue>
+											</owl:Restriction>
+										</owl:intersectionOf>
+									</owl:Class>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2020-pkm-mvs;isLearnMethodFor"/>
+								<owl:hasValue rdf:resource="&oe2020-pkm-mvs-ind;Defog"/>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;hasObtainMethod"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pkm-mvs;ObtainFromWild">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&fibo-fnd-plc-loc;isLocatedAt"/>
+								<owl:hasValue rdf:resource="&oe2020-pkm-mvs-ind;Lake_of_Outrage"/>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label>Braviary</rdfs:label>
 		<skos:definition>dual-type Normal/Flying Pokémon introduced in Generation V</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote>It evolves from Rufflet at level 54.  It was first introduced in Pokemon White 2.</fibo-fnd-utl-av:explanatoryNote>
 		<oe2020-pkm-mvs:hasEggGroup rdf:resource="&oe2020-pkm-mvs-ind;FlyingEggGroup"/>
 		<oe2020-pkm-mvs:hasGenderRatio rdf:resource="&oe2020-pkm-mvs-ind;FemaleGenderRatio-0"/>
 		<oe2020-pkm-mvs:hasGenderRatio rdf:resource="&oe2020-pkm-mvs-ind;MaleGenderRatio-100"/>
-		<oe2020-pkm-mvs:hasLearnMethod>
-			<oe2020-pkm-mvs:LearnByLevelUp>
-				<oe2020-pkm-mvs:hasLevel>
-					<oe2020-pkm-mvs:Level>
-						<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">64</fibo-fnd-qt-qtu:hasNumericValue>
-					</oe2020-pkm-mvs:Level>
-				</oe2020-pkm-mvs:hasLevel>
-				<oe2020-pkm-mvs:hasMoveSource rdf:resource="&oe2020-pkm-mvs-ind;Defog"/>
-			</oe2020-pkm-mvs:LearnByLevelUp>
-		</oe2020-pkm-mvs:hasLearnMethod>
-		<oe2020-pkm-mvs:hasObtainMethod>
-			<oe2020-pkm-mvs:ObtainFromWild>
-				<oe2020-pkm-mvs:isLocatedAt rdf:resource="&oe2020-pkm-mvs-ind;Lake_of_Outrage"/>
-			</oe2020-pkm-mvs:ObtainFromWild>
-		</oe2020-pkm-mvs:hasObtainMethod>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pkm-mvs-ind;Bridge_Field">
