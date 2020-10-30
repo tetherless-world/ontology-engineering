@@ -12,7 +12,7 @@ Beer classification involves the attributes that are intrinsic and extrinsic to 
 
 ![Qualitative Characteristic Model Diagram](images/Characteristic-Class-Diagram.jpg)
 
-![Ingredient Characteristic Model Diagram](images/Characteristic-One.jpg)
+![Ingredient Characteristic Model Diagram](images/Characteristic-one.jpg)
 
 #### User
 The person or organization that uses the application will have their role in the application connected to a User Profile. This is needed so the ontology-enabled application to assess the singularities of each user in order to provide better beer suggestions for each individual. Therefore, the User Profile is linked to two main classes: Preferences and Search History. The former is a class that is responsible for storing beers and characteristics that are preferred by the user. The latter is a class related to storing the search history of the user. This last piece of information can help a user to explore what people is looking for in a particular Brewery, for example. The diagram shown below summarizes the classes and properties related to the User.
@@ -23,8 +23,9 @@ The person or organization that uses the application will have their role in the
 ## Ontologies
 
 **Link:**
-[ontology latest version](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor.rdf)
-[individuals ontology latest version](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor-individuals.rdf)
+[main-ontology](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor.rdf)
+
+[individuals-ontology](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor-individuals.rdf)
 
 **View the ontology documentation at:**
 
