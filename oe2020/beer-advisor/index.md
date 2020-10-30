@@ -9,7 +9,10 @@ Beer is said to be one of the oldest alcoholic drinks created by humans. In fact
 NOTE: This page is still under development.  
 
 ## Point of Contact
-Lucas Standaert (standl at rpi dot edu), Marcelo De Castro Fernandes (decasm3 at rpi dot edu), Anna Yaroslaski (yarosa2 at rpi dot edu), Sam Stouffer (stoufs2 at rpi dot edu)
+Lucas Standaert (standl at rpi dot edu)
+Anna Yaroslaski (yarosa2 at rpi dot edu)
+Marcelo De Castro Fernandes (decasm3 at rpi dot edu)
+Sam Stouffer (stoufs2 at rpi dot edu)
 
 ## Project Overview Diagram
 
