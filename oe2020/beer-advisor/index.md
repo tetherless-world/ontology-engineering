@@ -17,7 +17,6 @@ Sam Stouffer (stoufs2 at rpi dot edu)
 ## Project Overview Diagram
 
 
-
 ## List of Resources
 
 

@@ -23,11 +23,12 @@ The person or organization that uses the application will have their role in the
 ## Ontologies
 
 **Link:**
-[ontolgy-version1](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/OE_7_beer-advisor.rdf)
+[ontology latest version](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor.rdf)
+[individuals ontology latest version](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor-individuals.rdf)
 
 **View the ontology documentation at:**
 
 
 ## Previous Versions of Ontologies
 **Link:**
-[ontolgy-version1](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/OE_7_beer-advisor.rdf)
+[ontology-version1](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_7_beer-advisor.rdf)
