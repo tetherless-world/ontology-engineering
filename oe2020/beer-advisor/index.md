@@ -11,10 +11,11 @@ NOTE: This page is still under development.
 ## Point of Contact
 Lucas Standaert (standl at rpi dot edu)
 Anna Yaroslaski (yarosa2 at rpi dot edu)
-Marcelo De Castro Fernandes (decasm3 at rpi dot edu)
+Marcelo de Castro Fernandes (decasm3 at rpi dot edu)
 Sam Stouffer (stoufs2 at rpi dot edu)
 
 ## Project Overview Diagram
+
 
 
 ## List of Resources
