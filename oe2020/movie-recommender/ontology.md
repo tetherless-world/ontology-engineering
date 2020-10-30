@@ -10,6 +10,10 @@ Genre Model:
 
 <img src="images/genresConceptualModel.jpg" width="100%">
 
+User Model:
+
+<img src="images/userAccount.png" width="100%">
+
 ## Ontologies
 
 **Link to current version:**
