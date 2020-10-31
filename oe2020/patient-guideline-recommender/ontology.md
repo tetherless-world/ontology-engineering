@@ -8,9 +8,9 @@
 ## Ontologies
 
 **Link:**
-![Ontology Link](patient-guideline-recommender.rdf)
+[Ontology Link](patient-guideline-recommender.rdf)
 
-![Individual Ontology](patient-guideline-recommender-individuals.rdf)
+[Individual Ontology](patient-guideline-recommender-individuals.rdf)
 
 
 **View the ontology documentation at:**
