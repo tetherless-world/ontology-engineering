@@ -8,5 +8,5 @@ title: use case
 
 ## Previous Versions
 - [OE6](https://docs.google.com/document/d/e/2PACX-1vR6-fYX9Qa45xv7J5z2_19UVkR222kj5ABEEBiS4-8MplTabHZY7XezPQY2e0jZTA/pub)
-- [OE5](https://drive.google.com/file/d/11lf2qolf8Jh8O085rQvW6b5HoMzFt5Pi/view?usp=sharing)
-- [OE4](https://docs.google.com/document/d/1yXVv-dRVzPCL4tlbLGnbtRuUfFURZREIovIbLcUczLY/edit?usp=sharing)
+- [OE5](https://docs.google.com/document/d/e/2PACX-1vT_IIfxNyz3MZjfaRNbW45gRsXGJOy3kDDchVbwou09jcxra1hdu0z3i69FxiEimg/pub)
+- [OE4](https://docs.google.com/document/d/e/2PACX-1vQxPQ7XQLdRMtzkSlYNk_0Z37ANvPJ-jMGlqmf6r_G2VGrBrrZ8BxE9M-gSnEuDjXNfezFcMlSMKOgP/pub)
