@@ -7,9 +7,9 @@ title: About
 
 This is the preliminary project page for the Course Recommender ontology engineering project.
 
-The goal of this use case is to provide a set of recommended courses for an RPI student to enroll in for the next semester.
+The goal of this project is to develop a system that can recommended courses for an RPI student to enroll in for the next semester. To enable this system, our team is constructing an ontology that can capture information about courses, a student's plan-of-study, topic areas of courses, and graduation requirements.
 
-The content of this site is currently under development. 
+This project and its core use case are currently under active development. More information about the most up-to-date documents related to the ontology and associated artifacts can be found in the list of resources.
 
 ## Team
 
@@ -25,12 +25,12 @@ Owen Xie  - xieo at rpi dot edu
 
 ## List of Resources
 
-1. Ontology
+1. [Ontology](ontology.md)
 
-2. Term List
+2. [Term List](termlist.md)
 
-3. Competency Questions
+3. [Use Case and Competency Questions](usecase.md)
 
-4. Presentations
+4. [Presentations](presentations.md)
 
 ## Acknowledgements
