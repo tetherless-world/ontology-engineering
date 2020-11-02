@@ -2,15 +2,15 @@
 
 ## Conceptual Model
 
-General Model:
+General Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/conceptualModel.png):
 
 <img src="images/conceptualModel.png" width="100%">
 
-Genre Model:
+Genre Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/genresConceptualModel.jpg):
 
 <img src="images/genresConceptualModel.jpg" width="100%">
 
-User Model:
+User Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/userAccount.png):
 
 <img src="images/userAccount.png" width="100%">
 
