@@ -116,8 +116,15 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Active">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:label>active</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">420</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>requiring vigorous action or exertion</skos:definition>
 	</owl:Class>
 	
@@ -227,12 +234,6 @@
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Situation"/>
 		<rdfs:label>condition</rdfs:label>
 		<skos:definition>an abnormal state of health that interferes with the usual activities or feeling of wellbeing</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2020-pat-rec;Culture">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
-		<rdfs:label>culture</rdfs:label>
-		<skos:definition>the conventional conducts and ideologies of a community; the system comprising of the accepted norms and values of a society</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Dairy">
@@ -610,20 +611,35 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Sedentary">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:label>sedentary</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">150</owl:maxQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>not physically active</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;SedentaryBehavior">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
-		<rdfs:label>sedentary behavior</rdfs:label>
-		<skos:definition>a type of lifestyle that lacks physical exercise, characterized by sitting, reading, watching television or using a computer for much of the day without vigorous physical exertion</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2020-pat-rec;SemiActive">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:label>semi active</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">419</owl:maxQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">151</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>somewhere between active and sedentary</skos:definition>
 	</owl:Class>
 	
@@ -728,6 +744,12 @@
 		<rdfs:label>harms</rdfs:label>
 		<skos:definition>physical or mental damage</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasActivityLevel">
+		<rdfs:label>has activity level</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;negativeInteger"/>
+		<skos:definition>how active a person is in a week, in minutes</skos:definition>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasAge">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-rel-rel;isCharacterizedBy"/>
