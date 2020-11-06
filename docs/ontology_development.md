@@ -121,13 +121,13 @@ These lines will be in the format `ERROR: ...` or `WARN: ...`.
 
 ### Install Java
 
-Find install link here: https://bit.ly/38kxlR4
+Find install link [here](https://bit.ly/38kxlR4)
 
 Ubuntu users can run the following command `sudo apt update && sudo apt install default-jdk`
 
 ### Download blazegraph: 
 
-You can find the latest release here: https://github.com/blazegraph/database/releases/ 
+You can find the latest release [here](https://github.com/blazegraph/database/releases/) 
 
 Download the jar file
 
@@ -139,7 +139,7 @@ Move the jar file into that directory
 
 ### Download the ontology file 
 
-Download validation ontology by first going to https://bit.ly/3eClMpE
+Download validation ontology by first going to [here](https://bit.ly/3eClMpE)
 
 Right click and save this file into your working directory
 
@@ -151,10 +151,12 @@ Open a terminal window
 * Mac: Double click /Applications/Utilities/Terminal
 
 Within the terminal, change to your working directory
-`cd blazegraph`
+
+* `cd blazegraph`
 
 Run blazegraph
-`java -server -Xmx4g -jar blazegraph.jar`
+
+* `java -server -Xmx4g -jar blazegraph.jar`
 
 ### Open blazegraph UI
 Once blazegraph has started, use a web browser to go to the URL that is specified 
