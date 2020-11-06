@@ -146,10 +146,9 @@ Right click and save this file into your working directory
 ### Start Blazegraph 
 Open a terminal window
 
-Linux: Press Ctrl+Alt+t
-
-Windows: Search for 'cmd'
-Mac: Double click /Applications/Utilities/Terminal
+* Linux: Press Ctrl+Alt+t
+* Windows: Search for 'cmd'
+* Mac: Double click /Applications/Utilities/Terminal
 
 Within the terminal, change to your working directory
 `cd blazegraph`
