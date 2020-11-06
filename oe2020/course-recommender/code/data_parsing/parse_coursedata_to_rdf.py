@@ -18,7 +18,7 @@ transcript_files = {
     'kelly': 'kf_transcript.csv'
 }
 
-LIMIT_COURSE_DEPT = True9
+LIMIT_COURSE_DEPT = True
 COURSE_DEPT_CHOICES = ['CSCI']
 SKIP_NONEXISTING_PREREQ = True
 save_combined = True
