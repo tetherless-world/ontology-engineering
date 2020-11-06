@@ -198,7 +198,7 @@
 						<owl:onDatatype rdf:resource="&xsd;decimal"/>
 						<owl:withRestrictions rdf:parseType="Collection">
 							<rdf:Description>
-								<xsd:minInclusive rdf:datatype="&xsd;decimal">7</xsd:minInclusive>
+								<xsd:minExclusive rdf:datatype="&xsd;decimal">7</xsd:minExclusive>
 							</rdf:Description>
 						</owl:withRestrictions>
 					</rdfs:Datatype>
@@ -211,6 +211,21 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HighBitterness">
 		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minExclusive rdf:datatype="&xsd;decimal">60</xsd:minExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label xml:lang="en">high bitterness</rdfs:label>
 		<skos:definition>beers with an internation bitterness unit value above 60</skos:definition>
 	</owl:NamedIndividual>
@@ -229,24 +244,90 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;LowAlcohol">
 		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">5</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label xml:lang="en">low alcohol content</rdfs:label>
 		<skos:definition>beers with an alcohol by volume less than 5 percent</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;LowBitterness">
 		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">30</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label xml:lang="en">low bitterness</rdfs:label>
 		<skos:definition>beers with an internation bitterness unit value of less than 30</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;MediumAlcohol">
 		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">5</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">7</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label xml:lang="en">medium alcohol content</rdfs:label>
 		<skos:definition>beers with an alcohol by volume in the range of 5 to 7 percent</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;MediumBitterness">
 		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">30</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">60</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label xml:lang="en">medium bitterness</rdfs:label>
 		<skos:definition>beers with an internation bitterness unit value in the range of 30 to 60</skos:definition>
 	</owl:NamedIndividual>
