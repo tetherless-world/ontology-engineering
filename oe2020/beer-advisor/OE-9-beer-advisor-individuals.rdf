@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY fibo-be-corp-corp "https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/">
+	<!ENTITY fibo-be-ge-usj "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/">
+	<!ENTITY fibo-be-le-cb "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/">
+	<!ENTITY fibo-be-le-fbo "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/">
+	<!ENTITY fibo-be-le-lp "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/">
+	<!ENTITY fibo-be-plc-plc "https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/">
+	<!ENTITY fibo-fnd-aap-ppl "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/">
+	<!ENTITY fibo-fnd-arr-rt "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/">
+	<!ENTITY fibo-fnd-dt-fd "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/">
+	<!ENTITY fibo-fnd-plc-adr "https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/">
+	<!ENTITY fibo-fnd-plc-loc "https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/">
+	<!ENTITY fibo-fnd-plc-vrt "https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/">
+	<!ENTITY fibo-fnd-qt-qtu "https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/">
+	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
+	<!ENTITY fibo-fnd-utl-alx "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/">
+	<!ENTITY fibo-fnd-utl-av "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
+	<!ENTITY lcc-3166-1 "https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/">
+	<!ENTITY lcc-3166-2-us "https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/">
+	<!ENTITY lcc-cr "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/">
+	<!ENTITY lcc-lr "https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/">
+	<!ENTITY oe2020-beer "https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/">
+	<!ENTITY oe2020-beer-ind "https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor-individuals/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor-individuals/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:fibo-be-corp-corp="https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/"
+	xmlns:fibo-be-ge-usj="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/"
+	xmlns:fibo-be-le-cb="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/"
+	xmlns:fibo-be-le-fbo="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
+	xmlns:fibo-be-le-lp="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"
+	xmlns:fibo-be-plc-plc="https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/"
+	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
+	xmlns:fibo-fnd-arr-rt="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/"
+	xmlns:fibo-fnd-dt-fd="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"
+	xmlns:fibo-fnd-plc-adr="https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/"
+	xmlns:fibo-fnd-plc-loc="https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/"
+	xmlns:fibo-fnd-plc-vrt="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/"
+	xmlns:fibo-fnd-qt-qtu="https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/"
+	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
+	xmlns:fibo-fnd-utl-alx="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"
+	xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
+	xmlns:lcc-3166-1="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/"
+	xmlns:lcc-3166-2-us="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/"
+	xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
+	xmlns:lcc-lr="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"
+	xmlns:oe2020-beer="https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/"
+	xmlns:oe2020-beer-ind="https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor-individuals/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor-individuals/">
+		<rdfs:label>Beer Advisor Individuals Ontology</rdfs:label>
+		<dct:abstract>This ontology ...</dct:abstract>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/BE/</sm:dependsOn>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
+		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201025/beer-advisor-individuals/"/>
+		<skos:changeNote>The https://tw.rpi.edu/ontology-engineering/oe2020/20201025/beer-advisor-individuals.rdf version of this ontology is the seed version.</skos:changeNote>
+	</owl:Ontology>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;BuffyHazyIpa">
+		<rdf:type rdf:resource="&oe2020-beer;NewEnglandIndiaPaleAle"/>
+		<rdfs:label xml:lang="en">Buffy Hazy IPA</rdfs:label>
+		<skos:definition>a new england style india pale ale produced by Helltown brewery</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;HelltownBrewery"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;DarkColor">
+		<rdf:type rdf:resource="&oe2020-beer;Color"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minExclusive rdf:datatype="&xsd;decimal">40</xsd:minExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">dark color</rdfs:label>
+		<skos:definition>a preference for a dark color, with an SRM above 40</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;FatTireAmberAle">
+		<rdf:type rdf:resource="&oe2020-beer;Ale"/>
+		<rdfs:label xml:lang="en">Fat Tire Amber Ale</rdfs:label>
+		<skos:definition>easy-drinking beer born in Colorado</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;NewBelgiumBrewing"/>
+		<oe2020-beer:hasAlcoholByVolume rdf:resource="&oe2020-beer-ind;FatTireAmberAleAlcoholContent"/>
+		<oe2020-beer:hasBitternessUnit rdf:resource="&oe2020-beer-ind;FatTireAmberAleBitterness"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;FatTireAmberAleAlcoholContent">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:label xml:lang="en">Fat Tire Amber Ale Alcohol Content</rdfs:label>
+		<skos:definition>alcohol by volume for Fat Tire Amber Ale</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;AlcoholByVolume"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">5.2</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;FatTireAmberAleBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:label xml:lang="en">Fat Tire Amber Ale Bitterness</rdfs:label>
+		<skos:definition>bitterness measure for Fat Tire Amber Ale</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;InternationalBitternessUnit"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">22</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;FatTireBelgianWhite">
+		<rdf:type rdf:resource="&oe2020-beer;Ale"/>
+		<rdfs:label xml:lang="en">Fat Tire Belgian White</rdfs:label>
+		<skos:definition>fresh, perfectly sweet, natural tasting beer</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;NewBelgiumBrewing"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;GlutinyPaleAle">
+		<rdf:type rdf:resource="&oe2020-beer;PaleAle"/>
+		<rdfs:label xml:lang="en">Glutiny Pale Ale</rdfs:label>
+		<skos:definition>gluten-reduced beer with complex aroma and hoppy bitter taste</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;NewBelgiumBrewing"/>
+		<oe2020-beer:hasAlcoholByVolume rdf:resource="&oe2020-beer-ind;GlutinyPaleAleAlcoholContent"/>
+		<oe2020-beer:hasBitternessUnit rdf:resource="&oe2020-beer-ind;GlutinyPaleAleBitterness"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;GlutinyPaleAleAlcoholContent">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:label xml:lang="en">Glutiny Pale Ale Alcohol Content</rdfs:label>
+		<skos:definition>alcohol by volume for Glutiny Pale Ale</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;AlcoholByVolume"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">6</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;GlutinyPaleAleBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:label xml:lang="en">Glutiny Pale Ale Bitterness</rdfs:label>
+		<skos:definition>bitterness measure for Glutiny Pale Ale</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;InternationalBitternessUnit"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">30</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HelltownBrewery">
+		<rdf:type rdf:resource="&oe2020-beer;Brewery"/>
+		<rdfs:label xml:lang="en">Helltown Brewery</rdfs:label>
+		<skos:definition>a brewery located in Pennsylvania</skos:definition>
+		<fibo-fnd-rel-rel:hasIdentity rdf:resource="&oe2020-beer-ind;HelltownBrewingCompany"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HelltownBreweryAddress">
+		<rdf:type rdf:resource="&fibo-fnd-plc-adr;PhysicalAddress"/>
+		<rdfs:label>Helltown Brewery Address</rdfs:label>
+		<skos:definition>address for Helltown Brewery</skos:definition>
+		<fibo-fnd-plc-adr:hasAddressLine1>13 Henry C. Frick Street</fibo-fnd-plc-adr:hasAddressLine1>
+		<fibo-fnd-plc-adr:hasCityName>Mt. Pleasant</fibo-fnd-plc-adr:hasCityName>
+		<fibo-fnd-plc-adr:hasPostalCode>15666</fibo-fnd-plc-adr:hasPostalCode>
+		<fibo-fnd-plc-loc:hasCountry rdf:resource="&lcc-3166-1;UnitedStates"/>
+		<fibo-fnd-plc-loc:hasSubdivision rdf:resource="&lcc-3166-2-us;Pennsylvania"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HelltownBrewingCompany">
+		<rdf:type rdf:resource="&fibo-be-le-lp;BusinessEntity"/>
+		<rdfs:label xml:lang="en">Helltown Brewery Company</rdfs:label>
+		<skos:definition>private company with legal entity for Helltown Brewing Company</skos:definition>
+		<fibo-be-le-fbo:hasHeadquartersAddress rdf:resource="&oe2020-beer-ind;HelltownBreweryAddress"/>
+		<fibo-fnd-plc-vrt:hasWebsite rdf:datatype="&xsd;anyURI">https://www.helltownbrewing.com/</fibo-fnd-plc-vrt:hasWebsite>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HighAlcohol">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minExclusive rdf:datatype="&xsd;decimal">7</xsd:minExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">high alcohol content</rdfs:label>
+		<skos:definition>beers with an alcohol by volume above 7 percent</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HighBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minExclusive rdf:datatype="&xsd;decimal">60</xsd:minExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">high bitterness</rdfs:label>
+		<skos:definition>beers with an internation bitterness unit value above 60</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HomerSimpson">
+		<rdf:type rdf:resource="&oe2020-beer;User"/>
+		<rdfs:label xml:lang="en">Homer Simpson</rdfs:label>
+		<skos:definition>a user of our ontology</skos:definition>
+		<oe2020-beer:hasIdentity rdf:resource="&oe2020-beer-ind;HomerSimpsonIdentity"/>
+		<oe2020-beer:hasProfile rdf:resource="&oe2020-beer-ind;HomerSimpsonProfile"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HomerSimpsonIdentity">
+		<rdf:type rdf:resource="&fibo-fnd-aap-ppl;Person"/>
+		<rdfs:label xml:lang="en">Homer Simpson identity</rdfs:label>
+		<skos:definition>a man living in Springfield, Oregon</skos:definition>
+		<fibo-fnd-aap-ppl:hasDateOfBirth>1981-05-12</fibo-fnd-aap-ppl:hasDateOfBirth>
+		<fibo-fnd-aap-ppl:hasGender>male</fibo-fnd-aap-ppl:hasGender>
+		<fibo-fnd-aap-ppl:hasPlaceOfBirth>Springfield, Oregon</fibo-fnd-aap-ppl:hasPlaceOfBirth>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HomerSimpsonPreferences">
+		<rdf:type rdf:resource="&oe2020-beer;Preference"/>
+		<rdfs:label xml:lang="en">Homer Simpson preference</rdfs:label>
+		<skos:definition>Homer Simpson&apos;s stored preferences within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;FatTireAmberAle"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;LightColor"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;LowAlcohol"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;LowBitterness"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;Sweet"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HomerSimpsonProfile">
+		<rdf:type rdf:resource="&oe2020-beer;UserProfile"/>
+		<rdfs:label xml:lang="en">Homer Simpson profile</rdfs:label>
+		<skos:definition>Homer Simpson&apos;s user profile within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;HomerSimpsonPreferences"/>
+		<oe2020-beer:hasHistory rdf:resource="&oe2020-beer-ind;HomerSimpsonSearchHistory"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HomerSimpsonSearchHistory">
+		<rdf:type rdf:resource="&oe2020-beer;SearchHistory"/>
+		<rdfs:label xml:lang="en">Homer Simpson search history</rdfs:label>
+		<skos:definition>Homer Simpson&apos;s search history within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;FatTireAmberAle"/>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;FatTireBelgianWhite"/>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;GlutinyPaleAle"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;LightColor">
+		<rdf:type rdf:resource="&oe2020-beer;Color"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">20</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">light color</rdfs:label>
+		<skos:definition>a preference for a light color, with an SRM below 20</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;LowAlcohol">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">5</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">low alcohol content</rdfs:label>
+		<skos:definition>beers with an alcohol by volume less than 5 percent</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;LowBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">30</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">low bitterness</rdfs:label>
+		<skos:definition>beers with an internation bitterness unit value of less than 30</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;MediumAlcohol">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">5</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">7</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">medium alcohol content</rdfs:label>
+		<skos:definition>beers with an alcohol by volume in the range of 5 to 7 percent</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;MediumBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">30</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">60</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">medium bitterness</rdfs:label>
+		<skos:definition>beers with an internation bitterness unit value in the range of 30 to 60</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;MediumColor">
+		<rdf:type rdf:resource="&oe2020-beer;Color"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">20</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">40</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">medium color</rdfs:label>
+		<skos:definition>a preference for a medium color, with an SRM between 20 and 40</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;MildlySweet">
+		<rdf:type rdf:resource="&oe2020-beer;OriginalGravity"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">1.030</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">1.100</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">mildly sweet</rdfs:label>
+		<skos:definition>a preference towards mildly sweet beers, with an original gravity between 1.030 and 1.000</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;NewBelgiumBrewing">
+		<rdf:type rdf:resource="&oe2020-beer;Brewery"/>
+		<rdfs:label xml:lang="en">New Belgium Brewing</rdfs:label>
+		<skos:definition>nationally distributed brewery located in Fort Collins, CO</skos:definition>
+		<fibo-fnd-rel-rel:hasIdentity rdf:resource="&oe2020-beer-ind;NewBelgiumBrewingCompany"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;NewBelgiumBrewingAddress">
+		<rdf:type rdf:resource="&fibo-fnd-plc-adr;PhysicalAddress"/>
+		<rdfs:label>New Belgium Brewing address</rdfs:label>
+		<skos:definition>physical street address for New Belgium Brewing Company</skos:definition>
+		<fibo-fnd-plc-adr:hasAddressLine1>500 Linden Street</fibo-fnd-plc-adr:hasAddressLine1>
+		<fibo-fnd-plc-adr:hasPostalCode>80524</fibo-fnd-plc-adr:hasPostalCode>
+		<fibo-fnd-plc-loc:hasCityName>Fort Collins</fibo-fnd-plc-loc:hasCityName>
+		<fibo-fnd-plc-loc:hasCountry rdf:resource="&lcc-3166-1;UnitedStates"/>
+		<fibo-fnd-plc-loc:hasSubdivision rdf:resource="&lcc-3166-2-us;Colorado"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;NewBelgiumBrewingCompany">
+		<rdf:type rdf:resource="&fibo-be-le-lp;BusinessEntity"/>
+		<rdfs:label xml:lang="en">New Belgium Brewing Company</rdfs:label>
+		<skos:definition>private company with legal entity for New Belgium Brewing Company</skos:definition>
+		<fibo-be-le-fbo:hasHeadquartersAddress rdf:resource="&oe2020-beer-ind;NewBelgiumBrewingAddress"/>
+		<fibo-fnd-plc-vrt:hasWebsite rdf:datatype="&xsd;anyURI">https://www.newbelgium.com/</fibo-fnd-plc-vrt:hasWebsite>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;NotSweet">
+		<rdf:type rdf:resource="&oe2020-beer;OriginalGravity"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;decimal">1.030</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">not sweet</rdfs:label>
+		<skos:definition>a preference towards not sweet beers, with an original gravity below 1.030</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RandyMarsh">
+		<rdf:type rdf:resource="&oe2020-beer;User"/>
+		<rdfs:label xml:lang="en">Randy Marsh</rdfs:label>
+		<skos:definition>a user of our ontology</skos:definition>
+		<fibo-fnd-rel-rel:hasIdentity rdf:resource="&oe2020-beer-ind;RandyMarshIdentity"/>
+		<oe2020-beer:hasProfile rdf:resource="&oe2020-beer-ind;RandyMarshProfile"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RandyMarshIdentity">
+		<rdf:type rdf:resource="&fibo-fnd-aap-ppl;Person"/>
+		<rdfs:label xml:lang="en">Randy Marsh identity</rdfs:label>
+		<skos:definition>a man living in South Park, Colorado</skos:definition>
+		<fibo-fnd-aap-ppl:hasDateOfBirth>1975-03-01</fibo-fnd-aap-ppl:hasDateOfBirth>
+		<fibo-fnd-aap-ppl:hasGender>male</fibo-fnd-aap-ppl:hasGender>
+		<fibo-fnd-aap-ppl:hasPlaceOfBirth>South Park, Colorado</fibo-fnd-aap-ppl:hasPlaceOfBirth>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RandyMarshPreferences">
+		<rdf:type rdf:resource="&oe2020-beer;Preference"/>
+		<rdfs:label xml:lang="en">Randy Marsh preference</rdfs:label>
+		<skos:definition>Randy Marsh&apos;s stored preferences within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;BuffyHazyIpa"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;HighAlcohol"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;HighBitterness"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;LightColor"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;NotSweet"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RandyMarshProfile">
+		<rdf:type rdf:resource="&oe2020-beer;UserProfile"/>
+		<rdfs:label xml:lang="en">Randy Marsh profile</rdfs:label>
+		<skos:definition>Randy Marsh&apos;s user profile within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;RandyMarshPreferences"/>
+		<oe2020-beer:hasHistory rdf:resource="&oe2020-beer-ind;RandyMarshSearchHistory"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RandyMarshSearchHistory">
+		<rdf:type rdf:resource="&oe2020-beer;SearchHistory"/>
+		<rdfs:label xml:lang="en">Randy Marsh search history</rdfs:label>
+		<skos:definition>Randy Marsh&apos;s search history within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;BuffyHazyIpa"/>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;FatTireAmberAle"/>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;FatTireBelgianWhite"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RareFormBrewing">
+		<rdf:type rdf:resource="&oe2020-beer;Brewpub"/>
+		<rdf:type rdf:resource="&oe2020-beer;Restaurant"/>
+		<rdfs:label xml:lang="en">Rare Form Brewing</rdfs:label>
+		<skos:definition>brewpub offering classic beers and pizza in Troy, NY</skos:definition>
+		<fibo-fnd-rel-rel:hasIdentity rdf:resource="&oe2020-beer-ind;RareFormBrewingCompanyLLC"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RareFormBrewingAddress">
+		<rdf:type rdf:resource="&fibo-fnd-plc-adr;PhysicalAddress"/>
+		<rdfs:label>Rare Form Brewing address</rdfs:label>
+		<skos:definition>physical street address for Rare Form Brewing Company LLC</skos:definition>
+		<fibo-fnd-plc-adr:hasAddressLine1>90 Congress Street</fibo-fnd-plc-adr:hasAddressLine1>
+		<fibo-fnd-plc-adr:hasPostalCode>12180</fibo-fnd-plc-adr:hasPostalCode>
+		<fibo-fnd-plc-loc:hasCityName>Troy</fibo-fnd-plc-loc:hasCityName>
+		<fibo-fnd-plc-loc:hasCountry rdf:resource="&lcc-3166-1;UnitedStates"/>
+		<fibo-fnd-plc-loc:hasSubdivision rdf:resource="&lcc-3166-2-us;NewYork"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RareFormBrewingCompanyLLC">
+		<rdf:type rdf:resource="&fibo-be-plc-plc;PrivateCompanyWithLimitedLiability"/>
+		<rdfs:label xml:lang="en">Rare Form Brewing Company LLC</rdfs:label>
+		<skos:definition>private company with limited liability legal entity for Rare Form Brewing, a New York Limited Liability Company</skos:definition>
+		<fibo-be-corp-corp:hasDateOfRegistration rdf:resource="&oe2020-beer-ind;RareFormBrewingRegistrationDate"/>
+		<fibo-be-le-cb:isIncorporatedIn rdf:resource="&fibo-be-ge-usj;StateOfNewYorkJurisdiction"/>
+		<fibo-be-le-fbo:hasHeadquartersAddress rdf:resource="&oe2020-beer-ind;RareFormBrewingAddress"/>
+		<fibo-fnd-plc-vrt:hasWebsite rdf:datatype="&xsd;anyURI">https://www.rareformbrewing.com/</fibo-fnd-plc-vrt:hasWebsite>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RareFormBrewingCompanyLLCBusinessEntityIdentifier">
+		<rdf:type rdf:resource="&fibo-be-corp-corp;RegistrationIdentifier"/>
+		<rdfs:label>Rare Form Brewing Company LLC business entity identifier</rdfs:label>
+		<skos:definition>registration identifier assigned by the New York Division of Corporations for Rare Form Brewing Company LLC</skos:definition>
+		<fibo-fnd-rel-rel:isGovernedBy rdf:resource="&fibo-be-ge-usj;StateOfNewYorkJurisdiction"/>
+		<lcc-lr:hasTag>4302693</lcc-lr:hasTag>
+		<lcc-lr:identifies rdf:resource="&oe2020-beer-ind;RareFormBrewingCompanyLLC"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RareFormBrewingRegistrationDate">
+		<rdf:type rdf:resource="&fibo-fnd-dt-fd;Date"/>
+		<rdfs:label>Rare Form Brewing Company LLC registration date</rdfs:label>
+		<skos:definition>date that Rare Form Brewing Company LLC was first registered as a limited liability company in the State of New York</skos:definition>
+		<fibo-fnd-dt-fd:hasDateValue>2012-10-01</fibo-fnd-dt-fd:hasDateValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RickSanchez">
+		<rdf:type rdf:resource="&oe2020-beer;User"/>
+		<rdfs:label xml:lang="en">Rick Sanchez</rdfs:label>
+		<skos:definition>a user of our ontology</skos:definition>
+		<fibo-fnd-rel-rel:hasIdentity rdf:resource="&oe2020-beer-ind;RickSanchezIdentity"/>
+		<oe2020-beer:hasProfile rdf:resource="&oe2020-beer-ind;RickSanchezProfile"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RickSanchezIdentity">
+		<rdf:type rdf:resource="&fibo-fnd-aap-ppl;Person"/>
+		<rdfs:label xml:lang="en">Rick Sanchez identity</rdfs:label>
+		<skos:definition>a man living in Seattle, Washington</skos:definition>
+		<fibo-fnd-aap-ppl:hasDateOfBirth>1950-06-09</fibo-fnd-aap-ppl:hasDateOfBirth>
+		<fibo-fnd-aap-ppl:hasGender>male</fibo-fnd-aap-ppl:hasGender>
+		<fibo-fnd-aap-ppl:hasPlaceOfBirth>Seattle, Washington</fibo-fnd-aap-ppl:hasPlaceOfBirth>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RickSanchezPreferences">
+		<rdf:type rdf:resource="&oe2020-beer;Preference"/>
+		<rdfs:label xml:lang="en">Rick Sanchez preference</rdfs:label>
+		<skos:definition>Rick Sanchez&apos;s stored preferences within beer advisor</skos:definition>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;DarkColor"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;HighAlcohol"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;MediumBitterness"/>
+		<oe2020-beer:hasCharacteristic rdf:resource="&oe2020-beer-ind;NotSweet"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RickSanchezProfile">
+		<rdf:type rdf:resource="&oe2020-beer;UserProfile"/>
+		<rdfs:label xml:lang="en">Rick Sanchez profile</rdfs:label>
+		<skos:definition>Rick Sanchez&apos;s user profile within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;RickSanchezPreferences"/>
+		<oe2020-beer:hasHistory rdf:resource="&oe2020-beer-ind;RickSanchezSearchHistory"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;RickSanchezSearchHistory">
+		<rdf:type rdf:resource="&oe2020-beer;SearchHistory"/>
+		<rdfs:label xml:lang="en">Rick Sanchez search history</rdfs:label>
+		<skos:definition>Rick Sanchez&apos;s search history within beer advisor</skos:definition>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;FatTireAmberAle"/>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;GlutinyPaleAle"/>
+		<fibo-fnd-rel-rel:comprises rdf:resource="&oe2020-beer-ind;VoodooRangerAmericanHaze"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;Sweet">
+		<rdf:type rdf:resource="&oe2020-beer;OriginalGravity"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minExclusive rdf:datatype="&xsd;decimal">1.100</xsd:minExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label xml:lang="en">sweet</rdfs:label>
+		<skos:definition>a preference towards sweet beers, with an origina gravity above 1.100</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRanger">
+		<rdf:type rdf:resource="&oe2020-beer;IndiaPaleAle"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger</rdfs:label>
+		<skos:definition>beer with tropical aromas and juicy fruit flavors</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;NewBelgiumBrewing"/>
+		<oe2020-beer:hasAlcoholByVolume rdf:resource="&oe2020-beer-ind;VoodooRangerAlcoholContent"/>
+		<oe2020-beer:hasBitternessUnit rdf:resource="&oe2020-beer-ind;VoodooRangerBitterness"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerAlcoholContent">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger Alcohol Content</rdfs:label>
+		<skos:definition>alcohol by volume for Voodoo Ranger</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;AlcoholByVolume"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">7</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerAmericanHaze">
+		<rdf:type rdf:resource="&oe2020-beer;SessionIndiaPaleAle"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger American Haze</rdfs:label>
+		<skos:definition>unfiltered beer with notes of passionfruit and brewed with all-American hops</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;NewBelgiumBrewing"/>
+		<oe2020-beer:hasAlcoholByVolume rdf:resource="&oe2020-beer-ind;VoodooRangerAmericanHazeAlcoholContent"/>
+		<oe2020-beer:hasBitternessUnit rdf:resource="&oe2020-beer-ind;VoodooRangerAmericanHazeBitterness"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerAmericanHazeAlcoholContent">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger American Haze Alcohol Content</rdfs:label>
+		<skos:definition>alcohol by volume for Voodoo Ranger American Haze</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;AlcoholByVolume"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">5</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerAmericanHazeBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger American Haze Bitterness</rdfs:label>
+		<skos:definition>bitterness measure for Voodoo Ranger American Haze</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;InternationalBitternessUnit"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">30</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger Bitterness</rdfs:label>
+		<skos:definition>bitterness measure for Voodoo Ranger</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;InternationalBitternessUnit"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">50</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerImperial">
+		<rdf:type rdf:resource="&oe2020-beer;ImperialIndiaPaleAle"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger Imperial</rdfs:label>
+		<skos:definition>beer with complex, rich taste and fresh-cut pine and citrus flavors</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;NewBelgiumBrewing"/>
+		<oe2020-beer:hasAlcoholByVolume rdf:resource="&oe2020-beer-ind;VoodooRangerImperialAlcoholContent"/>
+		<oe2020-beer:hasBitternessUnit rdf:resource="&oe2020-beer-ind;VoodooRangerImperialBitterness"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerImperialAlcoholContent">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger Imperial Alcohol Content</rdfs:label>
+		<skos:definition>alcohol by volume for Voodoo Ranger Imperial</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;AlcoholByVolume"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">9</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerImperialBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger Imperial Bitterness</rdfs:label>
+		<skos:definition>bitterness measure for Voodoo Ranger Imperial</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;InternationalBitternessUnit"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">70</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerJuicyHaze">
+		<rdf:type rdf:resource="&oe2020-beer;IndiaPaleAle"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger Juicy Haze</rdfs:label>
+		<skos:definition>unfiltered beer packed with bright tropical aromas and brilliant citrusy flavors</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;NewBelgiumBrewing"/>
+		<oe2020-beer:hasAlcoholByVolume rdf:resource="&oe2020-beer-ind;VoodooRangerJuicyHazeAlcoholContent"/>
+		<oe2020-beer:hasBitternessUnit rdf:resource="&oe2020-beer-ind;VoodooRangerJuicyHazeBitterness"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerJuicyHazeAlcoholContent">
+		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger Juicy HazeAlcohol Content</rdfs:label>
+		<skos:definition>alcohol by volume for Voodoo Ranger Juicy Haze</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;AlcoholByVolume"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">7.5</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;VoodooRangerJuicyHazeBitterness">
+		<rdf:type rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:label xml:lang="en">Voodoo Ranger JuicyHaze Bitterness</rdfs:label>
+		<skos:definition>bitterness measure for Voodoo Ranger Juicy Haze</skos:definition>
+		<fibo-fnd-qt-qtu:hasMeasurementUnit rdf:resource="&oe2020-beer;InternationalBitternessUnit"/>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">42</fibo-fnd-qt-qtu:hasNumericValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-beer;Rapture">
+		<rdf:type rdf:resource="&oe2020-beer;IndiaPaleAle"/>
+		<rdfs:label xml:lang="en">Rapture</rdfs:label>
+		<skos:definition>a medium-bodied, hop forward IPA produced by Helltown brewer</skos:definition>
+		<fibo-fnd-rel-rel:isProducedBy rdf:resource="&oe2020-beer-ind;HelltownBrewery"/>
+	</owl:NamedIndividual>
+
+</rdf:RDF>
