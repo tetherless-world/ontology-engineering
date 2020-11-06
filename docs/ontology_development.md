@@ -123,7 +123,9 @@ These lines will be in the format `ERROR: ...` or `WARN: ...`.
 
 Find install link [here](https://bit.ly/38kxlR4)
 
-Ubuntu users can run the following command `sudo apt update && sudo apt install default-jdk`
+Ubuntu users can run the following command 
+
+* `sudo apt update && sudo apt install default-jdk`
 
 ### Download blazegraph: 
 
