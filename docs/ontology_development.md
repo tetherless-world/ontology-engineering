@@ -120,8 +120,51 @@ These lines will be in the format `ERROR: ...` or `WARN: ...`.
 ## Setting up Blazegraph tutorial
 
 ### Install Java
+
 Find install link here: https://bit.ly/38kxlR4
+
 Ubuntu users can run the following command `sudo apt update && sudo apt install default-jdk`
+
 ### Download blazegraph: 
+
 You can find the latest release here: https://github.com/blazegraph/database/releases/ 
+
 Download the jar file
+
+### Create a working directory 
+
+Create a directory called “blazegraph”
+
+Move the jar file into that directory
+
+### Download the ontology file 
+
+Download validation ontology by first going to https://bit.ly/3eClMpE
+
+Right click and save this file into your working directory
+
+### Start Blazegraph 
+Open a terminal window
+
+Linux: Press Ctrl+Alt+t
+
+Windows: Search for 'cmd'
+Mac: Double click /Applications/Utilities/Terminal
+
+Within the terminal, change to your working directory
+`cd blazegraph`
+
+Run blazegraph
+`java -server -Xmx4g -jar blazegraph.jar`
+
+### Open blazegraph UI
+Once blazegraph has started, use a web browser to go to the URL that is specified 
+
+### Load the ontology
+Go to the Update tab
+
+Click 'Choose File' and load the ontology file
+
+Specify the Type as 'RDF Data and the Format as 'Turtle'
+
+Press the Update button and switch over to the query tab -- we are ready to begin!
