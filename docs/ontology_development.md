@@ -114,3 +114,14 @@ The header line will be something like `error` or `error,s,o`, so don't assume t
 
 After the header line, any errors or warnings will be printed.
 These lines will be in the format `ERROR: ...` or `WARN: ...`.
+
+
+
+## Setting up Blazegraph tutorial
+
+### Install Java
+Find install link here: https://bit.ly/38kxlR4
+Ubuntu users can run the following command `sudo apt update && sudo apt install default-jdk`
+### Download blazegraph: 
+You can find the latest release here: https://github.com/blazegraph/database/releases/ 
+Download the jar file
