@@ -190,6 +190,21 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2020-beer-ind;HighAlcohol">
 		<rdf:type rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">7</xsd:minInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label xml:lang="en">high alcohol content</rdfs:label>
 		<skos:definition>beers with an alcohol by volume above 7 percent</skos:definition>
 	</owl:NamedIndividual>
