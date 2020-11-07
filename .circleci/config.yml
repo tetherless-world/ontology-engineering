@@ -3,9 +3,20 @@ jobs:
   hygiene_tests:
     docker:
       - image: circleci/node:10
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - setup_remote_docker
+      - run:
+          name: Docker Hub login if available
+          command: |
+            if [ -n "$DOCKERHUB_USERNAME" ]; then
+              docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
+            else
+              echo "Docker Hub credentials unavailable, pulling anonymously"
+            fi
       - run:
           name: Run hygiene tests
           command: bash -xeo pipefail .hygiene/run_hygiene.sh
