@@ -2,7 +2,7 @@
 
 ## Conceptual Model
 
-Conceptual Model for the current ontology version (OE 9)
+Conceptual Model for the current ontology version (OE 9) [drawio file](https://drive.google.com/file/d/17-oPXd9jiXA3v5oe85b0aNwD1yMScFW5/view?usp=sharing)
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT_hoVxISQjwSDF2v_LMlL0Ra3RqFPPKDsxnljISJsoO4n3FQXPezZor3k_aNq3nw/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
