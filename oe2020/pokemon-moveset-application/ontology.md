@@ -14,7 +14,12 @@ Pokemon-Related Methods:
 ## Ontologies
 
 **Link:** 
--pokemon moveset(https://raw.githubusercontent.com/tetherless-world/ontology-engineering/pokemon-moveset-application/oe2020/pokemon-moveset-application/pokemon-moveset.rdf)
--pokemon moveset individual(https://raw.githubusercontent.com/tetherless-world/ontology-engineering/pokemon-moveset-application/oe2020/pokemon-moveset-application/pokemon-moveset-individuals.rdf)
+[Ontology Link](pokemon-moveset.rdf)
+[Individual Ontology Link](pokemon-moveset-individuals.rdf)
+**Previous Ontologies Link:**
 
+[OE-7](files/PreviousOntology/OE_7_pokemon-moveset.rdf)
+[OE-8](files/PreviousOntology/OE_8_pokemon-moveset.rdf)
+**Previous Individual Link:**
+[OE-8](files/PreviousOntology/OE_8_pokemon-moveset-individuals.rdf)
 **View the ontology documentation at:** Coming soon!
