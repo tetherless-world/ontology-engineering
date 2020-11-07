@@ -122,6 +122,17 @@
 		<rdf:type rdf:resource="&oe2020-pat-rec;Fruit"/>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec-ind;CaloricIntake">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;DietaryGoal"/>
+		<rdfs:label>calorie intake</rdfs:label>
+		<rdfs:label>the goal numer of calories a user should eat</rdfs:label>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;GoalCalories-B">
+		<rdf:type rdf:resource="&oe2020-pat-rec-ind;CaloricIntake"/>
+		<oe2020-pat-rec:hasCalories rdf:datatype="&xsd;integer">2000</oe2020-pat-rec:hasCalories>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Guideline-5.12">
 		<rdf:type>
 			<owl:Restriction>
@@ -137,12 +148,6 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Guideline-5.27">
 		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline"/>
-		<rdf:type>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:allValuesFrom rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
-			</owl:Restriction>
-		</rdf:type>
 		<rdfs:label>Guideline 5.27</rdfs:label>
 		<skos:definition>guideline including recommendations for physical activity for adults</skos:definition>
 		<fibo-fnd-rel-rel:appliesTo rdf:resource="&oe2020-pat-rec-ind;Patient-A"/>
@@ -155,6 +160,7 @@
 		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline"/>
 		<rdfs:label>Guideline 8.7</rdfs:label>
 		<skos:definition>guideline including reccomendations for weight loss for adults</skos:definition>
+		<fibo-fnd-rel-rel:appliesTo rdf:resource="&oe2020-pat-rec-ind;Patient-B"/>
 		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;As all energy-deficit food intake will result in weight loss, eating plans should be individualized to meet the patient&apos;s protein, fat, and carbohydrate needs while still promoting weight loss.&apos;</fibo-fnd-utl-av:explanatoryNote>
 	</owl:NamedIndividual>
 	
@@ -189,19 +195,11 @@
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Recommendation-5.12">
-		<rdf:type>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2020-pat-rec;Food">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2020-pat-rec;highIn"/>
-						<owl:onClass rdf:resource="&oe2020-pat-rec;Fiber"/>
-						<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</rdf:type>
+		<rdf:type rdf:resource="&oe2020-pat-rec;Dairy"/>
+		<rdf:type rdf:resource="&oe2020-pat-rec;Fruit"/>
+		<rdf:type rdf:resource="&oe2020-pat-rec;Legume"/>
+		<rdf:type rdf:resource="&oe2020-pat-rec;Vegetable"/>
+		<rdf:type rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<rdfs:label>Recommendation 5.12</rdfs:label>
 		<skos:definition>recommendation for carohydrate intake</skos:definition>
 	</owl:NamedIndividual>
@@ -230,6 +228,11 @@
 		<rdfs:label>Recommendation 5.27</rdfs:label>
 		<skos:definition>recommendation for physical activity for adults</skos:definition>
 		<fibo-fnd-utl-av:explanatorNote>&quot;All adults, and particularly those with type 2 diabetes, should decrease the amount of time spent in daily sedentary behavior. B Prolonged sitting should be interrupted every 30 min for blood glucose benefits, particularly in adults with type 2 diabetes.&quot;</fibo-fnd-utl-av:explanatorNote>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Recommendation-8.7">
+		<rdfs:comment>Recommendation 8.7</rdfs:comment>
+		<skos:definition>reccomendation for wieght loss</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Sedentary-Activity">
@@ -266,6 +269,7 @@
 		<rdf:type rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
 		<rdfs:label>User-A</rdfs:label>
 		<fibo-fnd-pty-rl:playsRole rdf:resource="&oe2020-pat-rec-ind;Patient-A"/>
+		<oe2020-pat-rec:hasActivityLevel rdf:datatype="&xsd;integer">56</oe2020-pat-rec:hasActivityLevel>
 		<oe2020-pat-rec:hasAge rdf:resource="&oe2020-pat-rec-ind;Age-A"/>
 		<lcc-lr:hasName>John Smith</lcc-lr:hasName>
 	</owl:NamedIndividual>
@@ -274,6 +278,9 @@
 		<rdf:type rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
 		<rdfs:label>User-B</rdfs:label>
 		<fibo-fnd-pty-rl:playsRole rdf:resource="&oe2020-pat-rec-ind;Patient-B"/>
+		<oe2020-pat-rec-ind:hasCaloricGoal rdf:resource="&oe2020-pat-rec-ind;GoalCalories-B"/>
+		<oe2020-pat-rec-ind:hasWeightGoal rdf:resource="&oe2020-pat-rec-ind;WeightGoal-B"/>
+		<oe2020-pat-rec:hasActivityLevel rdf:datatype="&xsd;integer">532</oe2020-pat-rec:hasActivityLevel>
 		<oe2020-pat-rec:hasAge rdf:resource="&oe2020-pat-rec-ind;Age-B"/>
 		<lcc-lr:hasName>Jane Smith</lcc-lr:hasName>
 	</owl:NamedIndividual>
@@ -284,9 +291,81 @@
 		<lcc-lr:hasName xml:lang="en">Namir Xia</lcc-lr:hasName>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;WeightGoal-B">
+		<rdf:type rdf:resource="&oe2020-pat-rec;WeightLoss"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Yogurt">
 		<rdf:type rdf:resource="&oe2020-pat-rec;Dairy"/>
 	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec-ind;hasCaloricGoal">
+		<rdfs:label>has caloric goal</rdfs:label>
+		<skos:definition>number of reccomended calories for that user</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec-ind;hasNetCalories">
+		<rdfs:label>has net calories</rdfs:label>
+		<skos:definition>difference between goal calories and eaten calories</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec-ind;hasWeightGoal">
+		<rdfs:label>has weight goal</rdfs:label>
+		<skos:definition>a users weight goal of increasing or decreasing their weight</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec-ind;requires">
+		<rdfs:label>requires</rdfs:label>
+		<skos:definition>mandates</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevel">
+	</owl:Class>
+	
+	<rdf:Description rdf:about="&oe2020-pat-rec;DietaryGoal">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec-ind;requires"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&oe2020-pat-rec;EnergyDeficit">
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec-ind;hasNetCalories"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;integer">0</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&oe2020-pat-rec;EnergySurplus">
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec-ind;hasNetCalories"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+	</rdf:Description>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Guideline">
 		<rdfs:subClassOf>
@@ -308,6 +387,11 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 	</owl:Class>
+	
+	<rdf:Description rdf:about="&oe2020-pat-rec;WeightLoss">
+		<rdfs:label>a dietary goal of decreasing your weight</rdfs:label>
+		<rdfs:label>weight loss</rdfs:label>
+	</rdf:Description>
 	
 	<rdf:Description rdf:about="&oe2020-pat-rec;hasActivityLevel">
 		<rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>

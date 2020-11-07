@@ -118,18 +118,25 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Active">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:label>active</rdfs:label>
-		<skos:definition>requiring vigorous action or exertion</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevel">
-		<rdfs:subClassOf>
+		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-arr-arr;isConstituentOf"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Lifestyle"/>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;nonNegativeInteger">420</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">10080</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
 			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>activity level</rdfs:label>
-		<skos:definition>a way to express a person&apos;s daily physical activity as a number, and is used to estimate a person&apos;s total energy expenditure</skos:definition>
+		</owl:equivalentClass>
+		<skos:definition>requiring vigorous action or exertion</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
@@ -231,19 +238,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Dairy">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;highIn"/>
-				<owl:onClass rdf:resource="&oe2020-pat-rec;Fiber"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>dairy</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Fruit"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Legume"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Meat"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Vegetable"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>food (such as ice cream, cheese, or yogurt) made primarily of or from milk</skos:definition>
 	</owl:Class>
 	
@@ -405,6 +400,12 @@
 		<skos:definition>material in food that stimulates the intestine and promotes elimination of waste from the large intestine</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;FiberousFood">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
+		<rdfs:label>fiberous food</rdfs:label>
+		<skos:definition>food items that have fiber</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Food">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pas-pas;Product"/>
 		<rdfs:subClassOf>
@@ -420,18 +421,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Fruit">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;highIn"/>
-				<owl:onClass rdf:resource="&oe2020-pat-rec;Fiber"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>fruit</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Legume"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Meat"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Vegetable"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>the usually edible reproductive body of a seed plant, especially one having a sweet pulp associated with the seed</skos:definition>
 	</owl:Class>
 	
@@ -496,16 +486,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Legume">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;highIn"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Fiber"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>legume</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Meat"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Vegetable"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>a seed, pod, or other edible part of a leguminous plant, used as food</skos:definition>
 	</owl:Class>
 	
@@ -536,8 +517,6 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Meat">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>meat</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Vegetable"/>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>animal tissue considered especially as food</skos:definition>
 	</owl:Class>
 	
@@ -631,13 +610,49 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Sedentary">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:label>sedentary</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;nonNegativeInteger">0</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">150</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>not physically active</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;SemiActive">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:label>semi active</rdfs:label>
-		<skos:definition>somewhere between active and sedentary</skos:definition>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;nonNegativeInteger">151</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">419</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>intermediate state between active and non sedentary</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Serving">
@@ -682,29 +697,21 @@
 		<skos:definition>a type of diabetes mellitus that is characterized by insulin resistance or desensitization and increased blood glucose levels</skos:definition>
 	</owl:Class>
 	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;UserActivityLevel">
+	</owl:NamedIndividual>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Vegetable">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;highIn"/>
-				<owl:onClass rdf:resource="&oe2020-pat-rec;Fiber"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>vegetable</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;WholeGrain"/>
 		<skos:definition>a usually herbaceous plant (such as the cabbage, bean, or potato) grown for an edible part that is usually eaten as part of a meal</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;WeightLoss">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;DietaryGoal"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;WholeGrain">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;highIn"/>
-				<owl:onClass rdf:resource="&oe2020-pat-rec;Fiber"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>whole grain</rdfs:label>
 		<skos:definition>a cereal grain that contains cereal germ, endosperm, and bran, in contrast to refined grains, which retain only the endosperm</skos:definition>
 	</owl:Class>
@@ -768,6 +775,12 @@
 		<rdfs:range rdf:resource="&oe2020-pat-rec;Age"/>
 		<skos:definition>indicates the length of time someone has been alive or something has existed</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasCalories">
+		<rdfs:label>has calories</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the number of caloric units in food, will always be greater than 0</skos:definition>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasCharacteristic">
 		<rdfs:label>has characteristic</rdfs:label>
@@ -848,16 +861,6 @@
 	<owl:ObjectProperty rdf:about="&lcc-cr;isClassifiedBy">
 	</owl:ObjectProperty>
 	
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2020-pat-rec;Active">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pat-rec;Sedentary">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pat-rec;SemiActive">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2020-pat-rec;AerobicExercise">
