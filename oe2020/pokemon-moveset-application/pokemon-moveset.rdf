@@ -27,6 +27,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-agt="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
@@ -182,6 +183,13 @@
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolutionMethod">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-gao-obj;Strategy"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;resultsIn"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>evolution method</rdfs:label>
 		<skos:definition>conditions for triggering evolution in a specific Pokémon</skos:definition>
 	</owl:Class>
@@ -545,7 +553,12 @@
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="&oe2020-pkm-mvs;evolvesFrom"/>
 						<owl:onClass rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
-						<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+						<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pkm-mvs;isResultOf"/>
+						<owl:onClass rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
+						<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
@@ -599,6 +612,13 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pkm-mvs;isResultOf"/>
+				<owl:onClass rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
 				<owl:onClass rdf:resource="&oe2020-pkm-mvs;PokemonFamily"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -639,24 +659,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
 				<owl:onClass rdf:resource="&oe2020-pkm-mvs;OffspringPokemon"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:onClass>
-					<owl:Class>
-						<owl:intersectionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2020-pkm-mvs;OffspringPokemon">
-							</rdf:Description>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2020-pkm-mvs;evolvesFrom"/>
-								<owl:someValuesFrom rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
-							</owl:Restriction>
-						</owl:intersectionOf>
-					</owl:Class>
-				</owl:onClass>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -709,6 +711,7 @@
 		<rdfs:label>breeds with</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
+		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;hasBreedingPartner"/>
 		<skos:definition>relates a female Pokemon with a male Pokemon that she can breed with</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -743,7 +746,6 @@
 		<rdfs:label>has breeding partner</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;MalePokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;FemalePokemon"/>
-		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;breedsWith"/>
 		<skos:definition>relates a male Pokemon with a female Pokemon that he can breed with</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -857,6 +859,14 @@
 		<skos:definition>indicates a move source is the source of a specific move</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isResultOf">
+		<rdfs:label>is result of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
+		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;resultsIn"/>
+		<skos:definition>indicates a Pokémon is the product of a specific evolution method</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;precedes">
 		<rdfs:subPropertyOf rdf:resource="&oe2020-pkm-mvs;relatesTo"/>
 		<rdfs:label>precedes</rdfs:label>
@@ -869,6 +879,13 @@
 		<rdfs:label>relates to</rdfs:label>
 		<skos:definition>has a logical or causal connection with</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/relates</fibo-fnd-utl-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;resultsIn">
+		<rdfs:label>results in</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
+		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
+		<skos:definition>indicates an evolution method produces a specific Pokémon</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;succeeds">
@@ -885,22 +902,6 @@
 			<rdf:Description rdf:about="&oe2020-pkm-mvs;TechnicalMachine">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2020-pkm-mvs;TechnicalRecord">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;EvolveByFriendship">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;EvolveByItem">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;EvolveByLevelUp">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;EvolveByTimeOfDay">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;EvolveByTrade">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2020-pkm-mvs;EvolveByUniqueProcess">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
