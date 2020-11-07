@@ -10,11 +10,15 @@ Conceptual Model for the current ontology version (OE 9)
 
 **Link:**
 
--[Current Version of the Ontology (OE 9)](https://drive.google.com/file/d/1verhdTvaZH14al4VWKdWQ2QXlu_wuWxd/view?usp=sharing)
+[Current Version of the Ontology (OE 9)](https://drive.google.com/file/d/1verhdTvaZH14al4VWKdWQ2QXlu_wuWxd/view?usp=sharing)
+
+[OE 9 Individuals](https://drive.google.com/file/d/1FyM0HyfL2gX5EFISvuk4AhkvFRoopKsG/view?usp=sharing)
 
 **Previous Versions**
 
 [OE 8 Ontology](https://drive.google.com/file/d/1v9KZwQ4AZDXTUz2iHKb_jwY-ValCyj1g/view?usp=sharing)
+
+[OE 8 Individuals](https://drive.google.com/file/d/17cGa9se5tNKEGQONhoDQR0vvtq-w-c75/view?usp=sharing)
 
 [OE 7 Ontology](https://drive.google.com/file/d/1ARmCyA8xjANjzTvHzqkahsWC4y-itHmT/view?usp=sharing)
 
