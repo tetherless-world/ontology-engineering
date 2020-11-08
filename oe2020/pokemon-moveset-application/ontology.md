@@ -14,6 +14,9 @@ Concept Map General Model:[download PDF](files/OE8_PokemontologyGroup_Model.pdf)
 - [Individual Link](pokemon-moveset-individuals.rdf)
 
 **Link to Previous versions:**
+- OE-9:
+	- [Ontology](archived/OE9_PokemonMovesetOntology.rdf)
+	- [Individuals](archived/OE9_PokemonMovesetOntology_Individuals.rdf)
 - OE-8:
 	- [Ontology](archived/OE_8_pokemon-moveset.rdf)
 	- [Individuals](archived/OE_8_pokemon-moveset-individuals.rdf)
