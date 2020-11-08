@@ -2,18 +2,23 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/OE8_PokemontologyGroup_Model.png)
-[Pdf version](files/OE8_PokemontologyGroup_Model.pdf)
-[Editable version](files/OE8_PokemontologyGroup_Conceptual_Model.mdj)
+Concept Map General Model:[download PDF](files/OE8_PokemontologyGroup_Model.pdf)[download MDJ](files/OE8_Pokemontology_Group_Conceptual_Model.mdj)
+<img src="images/OE8_PokemontologyGroup_Model.png",width="100%">
+
 ## Ontologies
 
-**Link:** 
-[Ontology Link](pokemon-moveset.rdf)
-[Individual Ontology Link](pokemon-moveset-individuals.rdf)
-**Previous Ontologies Link:**
+**Link to current version:** 
 
--[OE-7](files/PreviousOntology/OE_7_pokemon-moveset.rdf)
--[OE-8](files/PreviousOntology/OE_8_pokemon-moveset.rdf)
--[OE-8-individual](files/PreviousOntology/OE_8_pokemon-moveset-individuals.rdf)
+- [Ontology Link](pokemon-moveset.rdf)
+
+- [Individual Link](pokemon-moveset-individuals.rdf)
+
+**Link to Previous versions:**
+- OE-8:
+	- [Ontology](archived/OE_8_pokemon-moveset.rdf)
+	- [Individuals](archived/OE_8_pokemon-moveset-individuals.rdf)
+- [OE-7](archived/OE_7_pokemon-moveset.rdf)
+
+
 
 **View the ontology documentation at:** Coming soon!
