@@ -2,8 +2,11 @@
 
 ## Conceptual Model
 
-Concept Map General Model:[download PDF](files/OE8_PokemontologyGroup_Model.pdf)[download MDJ](files/OE8_Pokemontology_Group_Conceptual_Model.mdj)
-<img src="images/OE8_PokemontologyGroup_Model.png",width="100%">
+Concept Map General Model:
+<img src="images/OE8_PokemontologyGroup_Model.png" width="100%">
+
+- [download PDF](files/OE8_PokemontologyGroup_Model.pdf) 
+- [download MDJ](files/OE8_Pokemontology_Group_Conceptual_Model.mdj)
 
 ## Ontologies
 
