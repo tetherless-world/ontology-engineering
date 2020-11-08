@@ -4,6 +4,7 @@
 	<!ENTITY fibo-be-fct-fct "https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/">
 	<!ENTITY fibo-fbc-pas-caa "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/">
 	<!ENTITY fibo-fnd-aap-ppl "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/">
+	<!ENTITY fibo-fnd-arr-arr "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/">
 	<!ENTITY fibo-fnd-arr-asmt "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/">
 	<!ENTITY fibo-fnd-arr-cls "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/">
 	<!ENTITY fibo-fnd-arr-doc "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/">
@@ -34,6 +35,7 @@
 	xmlns:fibo-be-fct-fct="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
 	xmlns:fibo-fbc-pas-caa="https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
+	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
 	xmlns:fibo-fnd-arr-asmt="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/"
 	xmlns:fibo-fnd-arr-cls="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"
 	xmlns:fibo-fnd-arr-doc="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/"
@@ -73,6 +75,7 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/"/>
@@ -543,15 +546,57 @@
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;UserAccount">
 		<rdfs:subClassOf rdf:resource="&fibo-fbc-pas-caa;Account"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasWatchList"/>
+				<owl:onClass rdf:resource="&oe2020-mov-rec;WatchList"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>user account</rdfs:label>
 		<skos:definition>a location on a network server used to store a computer username, password, and other information</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom>&quot;What is a User Account&quot;, ComputerHope. [Online]. Available: https://www.computerhope.com/jargon.htm. [Accessed 22-Oct-2020].</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-mov-rec;WatchedMovie">
-		<rdfs:subClassOf rdf:resource="&oe2020-mov-rec;Movie"/>
-		<rdfs:label>watched movie</rdfs:label>
-		<skos:definition>a Movie that a user has started or finished watching</skos:definition>
+	<owl:Class rdf:about="&oe2020-mov-rec;WatchList">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-doc;Record"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-fd;DatedStructuredCollection"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-arr-arr;hasConstituent"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-mov-rec;WatchListEntry"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>watch list</rdfs:label>
+		<skos:definition>record of creative works that a user has watched</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-mov-rec;WatchListEntry">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-fd;DatedCollectionConstituent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasViewerRating"/>
+				<owl:onClass rdf:resource="&fibo-fnd-arr-rt;Rating"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasWatchedOnService"/>
+				<owl:onClass rdf:resource="&oe2020-mov-rec;StreamingService"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-mov-rec;hasCreativeWork"/>
+				<owl:onClass rdf:resource="&oe2020-mov-rec;CreativeWork"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>watch list entry</rdfs:label>
+		<skos:definition>entry in a list of creative works that a user has watched</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote>Each entry in the list includes (1) the service that the user watched the film or show on, (2) the date and time that they watched it, and (3) any rating they gave it, in addition to linking to the creative work.</fibo-fnd-utl-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-mov-rec;Writer">
@@ -623,6 +668,14 @@
 		<skos:definition>links a party to something that they have contributed to</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasCreativeWork">
+		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-rel-rel;comprises"/>
+		<rdfs:label>has creative work</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-mov-rec;WatchListEntry"/>
+		<rdfs:range rdf:resource="&oe2020-mov-rec;CreativeWork"/>
+		<skos:definition>designates something that a user has watched, in whole or in part</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasDerivation">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
 		<rdfs:label>has derivation</rdfs:label>
@@ -654,8 +707,8 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasMovie">
+		<rdfs:subPropertyOf rdf:resource="&oe2020-mov-rec;hasCreativeWork"/>
 		<rdfs:label>has movie</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2020-mov-rec;WatchedMovie"/>
 		<rdfs:range rdf:resource="&oe2020-mov-rec;Movie"/>
 		<skos:definition>designates movie that is a User has watched</skos:definition>
 	</owl:ObjectProperty>
@@ -718,6 +771,12 @@
 		<skos:definition>indicates the place or environment where something takes place</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasStreamingService">
+		<rdfs:label>has streaming service</rdfs:label>
+		<rdfs:range rdf:resource="&oe2020-mov-rec;StreamingService"/>
+		<skos:definition>indicates a service that the user subscribes to</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasSubGenre">
 		<rdfs:subPropertyOf rdf:resource="&oe2020-mov-rec;hasGenre"/>
 		<rdfs:label>has sub genre</rdfs:label>
@@ -748,9 +807,23 @@
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasViewerRating">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-arr-rt;hasRating"/>
 		<rdfs:label>has viewer rating</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2020-mov-rec;WatchedMovie"/>
+		<rdfs:domain rdf:resource="&oe2020-mov-rec;WatchListEntry"/>
 		<rdfs:range rdf:resource="&fibo-fnd-arr-rt;Rating"/>
-		<skos:definition>indicates the rating assigned by a viewer to a movie that viewer has already seen</skos:definition>
+		<skos:definition>indicates the rating assigned by a viewer to something that viewer has already seen</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasWatchList">
+		<rdfs:label>has watch list</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-mov-rec;UserAccount"/>
+		<rdfs:range rdf:resource="&oe2020-mov-rec;WatchList"/>
+		<skos:definition>links a user&apos;s account to things that they have watched at some point in time</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;hasWatchedOnService">
+		<rdfs:label>has watched on service</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-mov-rec;WatchListEntry"/>
+		<rdfs:range rdf:resource="&oe2020-mov-rec;StreamingService"/>
+		<skos:definition>indicates the streaming service on which a user watched some creative work</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-mov-rec;isAvailableNow">
