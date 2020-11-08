@@ -2,6 +2,7 @@
 <!DOCTYPE rdf:RDF [
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-fnd-aap-ppl "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/">
+	<!ENTITY fibo-fnd-arr-arr "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/">
 	<!ENTITY fibo-fnd-arr-cls "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/">
 	<!ENTITY fibo-fnd-arr-doc "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/">
 	<!ENTITY fibo-fnd-arr-id "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/">
@@ -31,6 +32,7 @@
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender-individuals/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
+	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
 	xmlns:fibo-fnd-arr-cls="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"
 	xmlns:fibo-fnd-arr-doc="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/"
 	xmlns:fibo-fnd-arr-id="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/"
@@ -68,6 +70,7 @@
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/"/>
@@ -86,7 +89,7 @@
 		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
-		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201025/movie-recommender-individuals/"/>
+		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201108/movie-recommender-individuals/"/>
 	</owl:Ontology>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AStarIsBorn">
@@ -100,39 +103,53 @@
 		<oe2020-mov-rec:isAvailableNow rdf:resource="&oe2020-mov-rec;Hulu"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;Alexis">
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexisAccount">
 		<rdf:type rdf:resource="&oe2020-mov-rec;UserAccount"/>
-		<rdfs:label>John Doe</rdfs:label>
-		<skos:definition>a user on the Movie Recommendation system</skos:definition>
+		<rdfs:label>Alexis&apos; account</rdfs:label>
+		<skos:definition>account for a user called Alexis on the Movie Recommendation system</skos:definition>
 		<oe2020-mov-rec:hasStreamingService rdf:resource="&oe2020-mov-rec-ind;Hulu"/>
 		<oe2020-mov-rec:hasStreamingService rdf:resource="&oe2020-mov-rec-ind;Netflix"/>
-		<oe2020-mov-rec:hasWatchedMovies rdf:resource="&oe2020-mov-rec-ind;AlexisssWatchList"/>
+		<oe2020-mov-rec:hasWatchList rdf:resource="&oe2020-mov-rec-ind;AlexisWatchList"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexissCaptainAmericaReview">
-		<rdf:type rdf:resource="&fibo-fnd-arr-rt;Ratings"/>
-		<rdfs:label>Alexis&apos;s Captain America Review</rdfs:label>
-		<skos:definition>Alexis&apos;s review of the movie Captain America</skos:definition>
-		<fibo-fnd-arr-rt:hasRatingScore>9</fibo-fnd-arr-rt:hasRatingScore>
-		<fibo-fnd-arr-rt:reportsOn rdf:resource="&oe2020-mov-rec-ind;CaptainAmerica"/>
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexisCaptainAmericaReview">
+		<rdf:type rdf:resource="&fibo-fnd-arr-rt;Rating"/>
+		<rdfs:label>Alexis&apos; Captain America review</rdfs:label>
+		<skos:definition>Alexis&apos; review of the movie Captain America</skos:definition>
+		<fibo-fnd-arr-rt:hasRatingScore rdf:resource="&oe2020-mov-rec-ind;RatingScore-9"/>
+		<fibo-fnd-arr-rt:rates rdf:resource="&oe2020-mov-rec-ind;CaptainAmerica"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexissIronManReview">
-		<rdf:type rdf:resource="&fibo-fnd-arr-rt;Ratings"/>
-		<rdfs:label>Alexis&apos;s Iron Man Review</rdfs:label>
-		<skos:definition>Alexis&apos;s review of the movie Iron Man</skos:definition>
-		<fibo-fnd-arr-rt:hasRatingScore>8</fibo-fnd-arr-rt:hasRatingScore>
-		<fibo-fnd-arr-rt:reportsOn rdf:resource="&oe2020-mov-rec-ind;IronMan"/>
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexisIronManReview">
+		<rdf:type rdf:resource="&fibo-fnd-arr-rt;Rating"/>
+		<rdfs:label>Alexis&apos; Iron Man Review</rdfs:label>
+		<skos:definition>Alexis&apos; review of the movie Iron Man</skos:definition>
+		<fibo-fnd-arr-rt:hasRatingScore rdf:resource="&oe2020-mov-rec-ind;RatingScore-8"/>
+		<fibo-fnd-arr-rt:rates rdf:resource="&oe2020-mov-rec-ind;IronMan"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexissWatchList">
-		<rdf:type rdf:resource="&oe2020-mov-rec;WatchedMovies"/>
-		<rdfs:label>Alexis&apos;s Watch List</rdfs:label>
-		<skos:definition>a user&apos;s watched movies list on the Movie Recommendation system</skos:definition>
-		<fibo-fnd-arr-rt:Ratings rdf:resource="&oe2020-mov-rec-ind;AlexissCaptainAmericaReview"/>
-		<fibo-fnd-arr-rt:Ratings rdf:resource="&oe2020-mov-rec-ind;AlexissIronManReview"/>
-		<oe2020-mov-rec:hasMovie rdf:resource="&oe2020-mov-rec-ind;CaptainAmerica"/>
-		<oe2020-mov-rec:hasMovie rdf:resource="&oe2020-mov-rec-ind;IronMan"/>
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexisWatchList">
+		<rdf:type rdf:resource="&oe2020-mov-rec;WatchList"/>
+		<rdfs:label>Alexis&apos; watch list</rdfs:label>
+		<skos:definition>Alexis&apos; list of watched movies list on the Movie Recommendation system</skos:definition>
+		<fibo-fnd-arr-arr:hasConstituent rdf:resource="&oe2020-mov-rec-ind;AlexisWatchListEntry-001"/>
+		<fibo-fnd-arr-arr:hasConstituent rdf:resource="&oe2020-mov-rec-ind;AlexisWatchListEntry-002"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexisWatchListEntry-001">
+		<rdf:type rdf:resource="&oe2020-mov-rec;WatchListEntry"/>
+		<rdfs:label>Alexis&apos; watch list entry - 001</rdfs:label>
+		<skos:definition>Alexis&apos; list entry for Captain America</skos:definition>
+		<fibo-fnd-arr-rt:hasRating rdf:resource="&oe2020-mov-rec-ind;AlexisCaptainAmericaReview"/>
+		<oe2020-mov-rec:hasCreativeWork rdf:resource="&oe2020-mov-rec-ind;CaptainAmerica"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AlexisWatchListEntry-002">
+		<rdf:type rdf:resource="&oe2020-mov-rec;WatchListEntry"/>
+		<rdfs:label>Alexis&apos; watch list entry - 002</rdfs:label>
+		<skos:definition>Alexis&apos; list entry for Iron Man</skos:definition>
+		<fibo-fnd-arr-rt:hasRating rdf:resource="&oe2020-mov-rec-ind;AlexisIronManReview"/>
+		<oe2020-mov-rec:hasCreativeWork rdf:resource="&oe2020-mov-rec-ind;IronMan"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;AvatarTheLastAirbender">
@@ -227,7 +244,7 @@
 		<skos:definition>a user on the Movie Recommendation system</skos:definition>
 		<oe2020-mov-rec:hasStreamingService rdf:resource="&oe2020-mov-rec-ind;Hulu"/>
 		<oe2020-mov-rec:hasStreamingService rdf:resource="&oe2020-mov-rec-ind;Netflix"/>
-		<oe2020-mov-rec:hasWatchedMovies rdf:resource="&oe2020-mov-rec-ind;JohnsWatchList"/>
+		<oe2020-mov-rec:hasWatchList rdf:resource="&oe2020-mov-rec-ind;JohnsWatchList"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;JohnDoesWatchList">
@@ -307,6 +324,20 @@
 		<rdfs:label>Ratatouille</rdfs:label>
 		<skos:definition>movie about a rat who can cook and makes an unusual alliance with a young kitchen worker at a famous restaurant</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom>&quot;Ratatouille&quot;, IMDB. [Online]. Available: https://www.imdb.com/title/tt0382932/?ref_=nv_sr_srsg_0. [Accessed 23-Sep-2020]</fibo-fnd-utl-av:adaptedFrom>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;RatingScore-8">
+		<rdf:type rdf:resource="&fibo-fnd-arr-rt;RatingScore"/>
+		<rdfs:label>rating score - 8</rdfs:label>
+		<skos:definition>a rating of 8 on a scale of 0 to 10</skos:definition>
+		<fibo-fnd-arr-rt:hasMeasureWithinScale rdf:datatype="&xsd;decimal">8</fibo-fnd-arr-rt:hasMeasureWithinScale>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;RatingScore-9">
+		<rdf:type rdf:resource="&fibo-fnd-arr-rt;RatingScore"/>
+		<rdfs:label>rating score - 9</rdfs:label>
+		<skos:definition>a rating of 9 on a scale of 0 to 10</skos:definition>
+		<fibo-fnd-arr-rt:hasMeasureWithinScale rdf:datatype="&xsd;decimal">9</fibo-fnd-arr-rt:hasMeasureWithinScale>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-mov-rec-ind;RumbleInTheBronx">
