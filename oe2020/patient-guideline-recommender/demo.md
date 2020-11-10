@@ -35,3 +35,25 @@ Question:
 
 
 What carbohydrates should I be eating?
+
+## SPARQL query to retrieve matched guideline for patient
+
+<code>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/>
+PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/>
+PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/> 
+
+SELECT DISTINCT ?user ?matchedGuideline ?recommendation WHERE {
+
+?user a people:Adult .
+?user a ?matchedGuideline .
+?matchedGuideline rdfs:subClassOf pgo:Guideline .
+?matchedGuideline rdfs:subClassOf ?recommendation .
+?recommendation rdfs:subClassOf individuals:Recommendation .
+} 
+
+  </code>
