@@ -54,4 +54,5 @@ SELECT DISTINCT ?user ?matchedGuideline ?recommendation WHERE {
 ?matchedGuideline rdfs:subClassOf pgo:Guideline .
 ?matchedGuideline rdfs:subClassOf ?recommendation .
 ?recommendation rdfs:subClassOf individuals:Recommendation .
-} ```
+}
+```
