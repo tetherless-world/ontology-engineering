@@ -986,7 +986,17 @@
                     <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Adult"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/eats"/>
-                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Carbohydrate"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Food"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/contains"/>
+                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/Carbohydrate"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
