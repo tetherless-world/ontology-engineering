@@ -466,6 +466,18 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;FiberousFood">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>fiberous food</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2020-pat-rec;Food">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;highIn"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Fiber"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition>food items that have fiber</skos:definition>
 	</owl:Class>
 	
@@ -976,6 +988,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;highIn">
+		<rdfs:subPropertyOf rdf:resource="&oe2020-pat-rec;contains"/>
 		<rdfs:label>high in</rdfs:label>
 		<skos:definition>has large quantities of</skos:definition>
 	</owl:ObjectProperty>
