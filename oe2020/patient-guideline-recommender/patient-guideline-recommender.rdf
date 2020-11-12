@@ -156,6 +156,8 @@
 				</owl:someValuesFrom>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:label>activity level recommendation</rdfs:label>
+		<skos:definition>as defined by activity level 5.27 - the reccomendation is to decrease the amount of time spent in daily sedentary behavior</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
@@ -233,6 +235,12 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Macronutrient"/>
 		<rdfs:label>carbohydrate</rdfs:label>
 		<skos:definition>any of various neutral compounds of carbon, hydrogen, and oxygen (as sugars, starches, and celluloses) most of which are formed by green plants and which constitute a major class of animal foods</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;CarbohydrateRecommendation">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
+		<rdfs:label>carbohydrate recommendation</rdfs:label>
+		<skos:definition>As stated in guideline 5.12- the reccomendation is to emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Cholesterol">
@@ -534,9 +542,30 @@
 		<skos:definition>a general rule, principle, or piece of advice</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;Guideline5.12">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;CarbohydrateRecommendation"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdfs:label>guideline  5.12</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;eats"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Carbohydrate"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>guideline recommending types of carbohydrates to eat</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;Carbohydrate intake should emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products.&apos;</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Guideline5.27">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelRecommendation"/>
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdfs:label>guideline 5.27</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -544,11 +573,44 @@
 					</rdf:Description>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;playsRole"/>
-						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Patient"/>
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:intersectionOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2020-pat-rec;Patient">
+									</rdf:Description>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&oe2020-pat-rec;isAfflictedWith"/>
+										<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Illness"/>
+									</owl:Restriction>
+								</owl:intersectionOf>
+							</owl:Class>
+						</owl:someValuesFrom>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
+		<skos:definition>guideline including recommendations for physical activity for adults</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;All adults, and particularly those with type 2 diabetes, should decrease the amount of time spent in daily sedentary behavior.&apos; It also says, &apos;Prolonged sitting should be interrupted every 30 min for blood glucose benefits.&apos;</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;Guideline8.7">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;WeightLossRecommendation"/>
+		<rdfs:label>guideline 8.7</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasWeightGoal"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLoss"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>guideline including reccomendations for weight loss for adults</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;As all energy-deficit food intake will result in weight loss, eating plans should be individualized to meet the patient&apos;s protein, fat, and carbohydrate needs while still promoting weight loss.&apos;</fibo-fnd-utl-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Illness">
@@ -806,6 +868,12 @@
 		</rdfs:subClassOf>
 		<rdfs:label>weight loss</rdfs:label>
 		<skos:definition>dietary goal of decreasing your weight</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;WeightLossRecommendation">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
+		<rdfs:label>weight loss recommendation</rdfs:label>
+		<skos:definition>As stated in guideline 8.7, the recommendation is that energy-deficit food intake will result in weight loss</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;WholeGrain">
