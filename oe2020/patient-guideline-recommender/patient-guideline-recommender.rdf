@@ -139,6 +139,25 @@
 		<skos:definition>requiring vigorous action or exertion</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevelRecommendation">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;has"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pat-rec;Active">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2020-pat-rec;SemiActive">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
 		<rdfs:label>aerobic exercise</rdfs:label>
@@ -192,6 +211,12 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
 		<rdfs:label>body weight exercise</rdfs:label>
 		<skos:definition>strength-training exercises that use the individual&apos;s own weight to provide resistance against gravity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;CaloricIntake">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;DietaryGoal"/>
+		<rdfs:label>calorie intake</rdfs:label>
+		<skos:definition>the goal numer of calories a user should eat</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Calorie">
@@ -355,12 +380,42 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;EnergyDeficit">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Deficit"/>
 		<rdfs:label>energy deficit</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxExclusive rdf:datatype="&xsd;integer">0</xsd:maxExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>a deficit related to energy</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;EnergySurplus">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Surplus"/>
 		<rdfs:label>energy surplus</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>a surplus related to energy</skos:definition>
 	</owl:Class>
 	
@@ -447,6 +502,24 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Guideline">
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;AgeGroup"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;GenderIdentityGroup"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Illness"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Exercise"/>
 			</owl:Restriction>
@@ -459,6 +532,23 @@
 		</rdfs:subClassOf>
 		<rdfs:label>guideline</rdfs:label>
 		<skos:definition>a general rule, principle, or piece of advice</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;Guideline5.27">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelRecommendation"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;playsRole"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Patient"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Illness">
@@ -607,6 +697,9 @@
 		<skos:definition>relating to, measuring, or measured by the quality of something rather than its quantity</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2020-pat-rec;Recommendation">
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;Sedentary">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:label>sedentary</rdfs:label>
@@ -705,6 +798,12 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;WeightLoss">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;DietaryGoal"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;requires"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>weight loss</rdfs:label>
 		<skos:definition>dietary goal of decreasing your weight</skos:definition>
 	</owl:Class>
@@ -775,6 +874,11 @@
 		<skos:definition>indicates the length of time someone has been alive or something has existed</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasCaloricGoal">
+		<rdfs:label>has caloric goal</rdfs:label>
+		<skos:definition>number of reccomended calories for that user</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasCalories">
 		<rdfs:label>has calories</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;integer"/>
@@ -791,6 +895,16 @@
 		<rdfs:label>has gender identity</rdfs:label>
 		<rdfs:range rdf:resource="&oe2020-pat-rec;GenderIdentity"/>
 		<skos:definition>indicates the gender as reported by an individual</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasNetCalories">
+		<rdfs:label>has net calories</rdfs:label>
+		<skos:definition>difference between goal calories and eaten calories</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasWeightGoal">
+		<rdfs:label>has weight goal</rdfs:label>
+		<skos:definition>a users weight goal of increasing or decreasing their weight</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;highIn">
@@ -840,6 +954,11 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;recommends">
 		<rdfs:label>recommends</rdfs:label>
 		<skos:definition>to suggest an act or course of action</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;requires">
+		<rdfs:label>requires</rdfs:label>
+		<skos:definition>mandates</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;restricts">
