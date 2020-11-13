@@ -20,11 +20,19 @@ The person or organization that uses the application will have their role in the
 ![User Model Diagram](images/UserDiagram.jpg)
 
 
+## Conceptual Model Raw Files
+
+**Links:**
+- [Version 1](files/characteristic.uml)
+- [Version 1](files/overview.uml)
+- [Version 1](files/property_overview.uml)
+- [Version 1](files/updated.uml)
+
 ## Ontologies
 
 **Links:**
-[main-ontology](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-9-beer-advisor.rdf)
-[individuals-ontology](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-9-beer-advisor-individuals.rdf)
+[main-ontology](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/OE-10-beer-advisor.rdf)
+[individuals-ontology](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/OE-10-beer-advisor-individuals.rdf)
 
 **View the ontology documentation at:**
 
@@ -32,6 +40,8 @@ The person or organization that uses the application will have their role in the
 ## Previous Versions of Ontologies
 **Links:**
 
+[ontology-version3](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-9-beer-advisor.rdf)
 [ontology-version2](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor.rdf)
 [ontology-version1](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_7_beer-advisor.rdf)
+[individuals-ontology-version2](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-9-beer-advisor-individuals.rdf)
 [individuals-ontology-version1](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor-individuals.rdf)

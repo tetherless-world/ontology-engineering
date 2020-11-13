@@ -4,7 +4,7 @@ title: use case
 ---
 
 ## Use Case Document
-<iframe src="files/OE_8_Beer_Advisor_UseCase_Clean.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/OE_10_Beer_Advisor_UseCase_Clean.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
