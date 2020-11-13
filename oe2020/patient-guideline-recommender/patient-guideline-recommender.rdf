@@ -151,7 +151,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>activity level recommendation</rdfs:label>
-		<skos:definition>as defined by activity level 5.27 - the reccomendation is to decrease the amount of time spent in daily sedentary behavior</skos:definition>
+		<skos:definition>as defined by activity level 5.27 - the recommendation is to decrease the amount of time spent in daily sedentary behavior</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
@@ -235,7 +235,7 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
 		<rdfs:label>carbohydrate recommendation</rdfs:label>
 		<owl:equivalentClass rdf:resource="&oe2020-pat-rec;FiberousFood"/>
-		<skos:definition>As stated in guideline 5.12- the reccomendation is to emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products</skos:definition>
+		<skos:definition>As stated in guideline 5.12- the recommendation is to emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Cholesterol">
@@ -979,6 +979,12 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;WeightLossRecommendation">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;requires"/>
+				<owl:allValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>weight loss recommendation</rdfs:label>
 		<skos:definition>As stated in guideline 8.7, the recommendation is that energy-deficit food intake will result in weight loss</skos:definition>
 	</owl:Class>
@@ -1049,9 +1055,14 @@
 		<skos:definition>indicates the length of time someone has been alive or something has existed</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasBurnedCalories">
+		<rdfs:label>has burned calories</rdfs:label>
+		<skos:definition>number of burned calories for that user</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasCaloricGoal">
 		<rdfs:label>has caloric goal</rdfs:label>
-		<skos:definition>number of reccomended calories for that user</skos:definition>
+		<skos:definition>number of recommended calories for that user</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasCalories">
