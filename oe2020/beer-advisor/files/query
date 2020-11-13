@@ -1,0 +1,94 @@
+- QUESTION 02 (under development):
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX loc: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/>
+PREFIX adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/>
+PREFIX us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/>
+PREFIX rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
+PREFIX fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/>
+PREFIX lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/>
+PREFIX qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/>
+PREFIX beer: <https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/>
+
+SELECT DISTINCT ?brewery
+WHERE {
+  ?brewery rdf:type beer:Brewery .
+  ?brewery rel:hasIdentity ?id .
+  ?id rdf:type lp:BusinessEntity .
+  ?id fbo:hasHeadquartersAddress ?address .
+  ?address rdf:type adr:PhysicalAddress .
+  ?address loc:hasSubdivision us:Pennsylvania .
+   
+  ?beertypes rdfs:subClassOf beer:IndiaPaleAle .
+  
+  {
+    ?beer rdf:type ?beertypes .
+  }
+  UNION
+  {
+    ?beer rdf:type beer:IndiaPaleAle .
+  }
+  
+  ?beer rel:isProducedBy ?brewery .
+  
+  ?beer beer:hasAlcoholByVolume ?alcohol .
+  ?alcohol rdf:type beer:AlcoholContent .
+  ?alcohol qtu:hasNumericValue ?abv .
+  FILTER (?abv < 8)  
+}
+
+
+- QUESTION 03 (under development):
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX loc: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/>
+PREFIX adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/>
+PREFIX us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/>
+PREFIX rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
+PREFIX fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/>
+PREFIX lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/>
+PREFIX qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/>
+PREFIX beer: <https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/>
+
+SELECT DISTINCT ?beer
+WHERE {
+  ?beertypes rdfs:subClassOf beer:IndiaPaleAle .
+  
+  {
+    ?beer rdf:type ?beertypes .
+  }
+  UNION
+  {
+    ?beer rdf:type beer:IndiaPaleAle .
+  }
+  
+  ?beer beer:hasAlcoholByVolume ?alcohol .
+  ?alcohol rdf:type beer:AlcoholContent .
+  ?alcohol qtu:hasNumericValue ?abv .
+  FILTER (?abv < 10)
+  
+}
+
+-QUESTION 04 (under development):
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX loc: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/>
+PREFIX adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/>
+PREFIX us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/>
+PREFIX rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
+PREFIX fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/>
+PREFIX lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/>
+PREFIX qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/>
+PREFIX beer: <https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/>
+
+SELECT DISTINCT ?beer
+WHERE {
+  ?searchhistories rdf:type beer:SearchHistory .
+  ?searchhistories rel:comprises ?beer .
+  ?beer rel:isProducedBy ?brewery .  
+  ?brewery rdfs:label ?brewlabel .
+  FILTER (?brewlabel = 'New Belgium Brewing'@en)
+      }
