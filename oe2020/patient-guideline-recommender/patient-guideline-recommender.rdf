@@ -307,7 +307,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Diabetes">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Illness"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Condition"/>
 		<rdfs:label>diabetes</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Obesity"/>
 		<skos:definition>a disease in which the body ability to produce or respond to the hormone insulin is impaired</skos:definition>
@@ -543,12 +543,6 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Illness"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Exercise"/>
 			</owl:Restriction>
@@ -568,7 +562,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;TypicalPatient5.27"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;TypicalPatient5.12"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -578,35 +572,18 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>guideline  5.12</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2020-pat-rec;eats"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2020-pat-rec;Food">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2020-pat-rec;contains"/>
-										<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Carbohydrate"/>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
 		<skos:definition>guideline recommending types of carbohydrates to eat</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;Carbohydrate intake should emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products.&apos;</fibo-fnd-utl-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Guideline5.27">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;TypicalPatient5.27"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
@@ -622,36 +599,19 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;TypicalPatient8.7"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLossRecommendation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>guideline 8.7</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasWeightGoal"/>
-						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLoss"/>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
 		<skos:definition>guideline including reccomendations for weight loss for adults</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;As all energy-deficit food intake will result in weight loss, eating plans should be individualized to meet the patient&apos;s protein, fat, and carbohydrate needs while still promoting weight loss.&apos;</fibo-fnd-utl-av:explanatoryNote>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2020-pat-rec;Illness">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;isTreatedWith"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Medicine"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>illness</rdfs:label>
-		<skos:definition>an unhealthy condition of body or mind</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Insulin">
@@ -738,7 +698,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Obesity">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Illness"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Condition"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;canIncrease"/>
@@ -796,6 +756,8 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Recommendation">
+		<rdfs:label>recommendation</rdfs:label>
+		<skos:definition>class that explains the recommendations of  different guidelines</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Sedentary">
@@ -888,10 +850,42 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;TypicalPatient">
+		<rdfs:label>typical patient</rdfs:label>
+		<skos:definition>a class that defines the typical patients for guidelines</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;TypicalPatient5.12">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;TypicalPatient"/>
+		<rdfs:label>typical patient 5.12</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;eats"/>
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:intersectionOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2020-pat-rec;Food">
+									</rdf:Description>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&oe2020-pat-rec;contains"/>
+										<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Carbohydrate"/>
+									</owl:Restriction>
+								</owl:intersectionOf>
+							</owl:Class>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>the typical patient that guideline 5.12 applies to</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;TypicalPatient5.27">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;TypicalPatient"/>
+		<rdfs:label>typical patient 5.27</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -905,7 +899,7 @@
 									<rdf:Description rdf:about="&oe2020-pat-rec;Patient">
 									</rdf:Description>
 									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2020-pat-rec;isAfflictedWith"/>
+										<owl:onProperty rdf:resource="&oe2020-pat-rec;hasCondition"/>
 										<owl:hasValue rdf:resource="&oe2020-pat-rec;Type2Diabetes"/>
 									</owl:Restriction>
 								</owl:intersectionOf>
@@ -915,6 +909,25 @@
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
+		<skos:definition>the typical patient that guideline 5.27 applies to</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;TypicalPatient8.7">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;TypicalPatient"/>
+		<rdfs:label>typical patient 8.7</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasWeightGoal"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLoss"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>the typical patient that guideline 8.7 applies to</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Vegetable">
@@ -1050,6 +1063,11 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasCharacteristic">
 		<rdfs:label>has characteristic</rdfs:label>
 		<skos:definition>a distinguishing trait, quality, or property</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasCondition">
+		<rdfs:label>has condition</rdfs:label>
+		<skos:definition>having a particular state of existence, often an illness or another medical problem</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasGenderIdentity">
