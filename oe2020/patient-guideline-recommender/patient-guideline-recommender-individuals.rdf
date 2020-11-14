@@ -98,6 +98,11 @@
 		<rdfs:label>apple</rdfs:label>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Bread">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Food"/>
+		<oe2020-pat-rec:contains rdf:resource="&oe2020-pat-rec-ind;SimpleCarbohydrate"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Guideline-5.12">
 		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline5.12"/>
 		<rdfs:label>Guideline 5.12</rdfs:label>
@@ -107,7 +112,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Guideline-5.27">
-		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline5.27"/>
 		<rdfs:label>Guideline 5.27</rdfs:label>
 		<skos:definition>guideline including recommendations for physical activity for adults</skos:definition>
 		<fibo-fnd-rel-rel:appliesTo rdf:resource="&oe2020-pat-rec-ind;JohnSmithPatient"/>
@@ -148,14 +153,7 @@
 		<fibo-fnd-pty-rl:playsRole rdf:resource="&oe2020-pat-rec-ind;JaneSmithPatient"/>
 		<oe2020-pat-rec:hasActivityLevel rdf:datatype="&xsd;integer">532</oe2020-pat-rec:hasActivityLevel>
 		<oe2020-pat-rec:hasAge rdf:resource="&oe2020-pat-rec-ind;JaneSmithAge"/>
-		<oe2020-pat-rec:hasCaloricGoal rdf:resource="&oe2020-pat-rec-ind;JaneSmithGoalCalories"/>
-		<oe2020-pat-rec:hasWeightGoal rdf:resource="&oe2020-pat-rec-ind;JaneSmithWeightGoal"/>
 		<lcc-lr:hasName>Jane Smith</lcc-lr:hasName>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JaneSmithWeightGoal">
-		<rdf:type rdf:resource="&oe2020-pat-rec;WeightLoss"/>
-		<rdfs:label>Jane Smith weight goal</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JohnSmithAge">
@@ -173,6 +171,7 @@
 		<rdf:type rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
 		<rdfs:label>John Smith user</rdfs:label>
 		<fibo-fnd-pty-rl:playsRole rdf:resource="&oe2020-pat-rec-ind;JohnSmithPatient"/>
+		<oe2020-pat-rec:eats rdf:resource="&oe2020-pat-rec-ind;Bread"/>
 		<oe2020-pat-rec:hasActivityLevel rdf:datatype="&xsd;integer">56</oe2020-pat-rec:hasActivityLevel>
 		<oe2020-pat-rec:hasAge rdf:resource="&oe2020-pat-rec-ind;JohnSmithAge"/>
 		<lcc-lr:hasName>John Smith</lcc-lr:hasName>
@@ -200,8 +199,14 @@
 		<rdfs:label>Namir Xia user</rdfs:label>
 		<fibo-fnd-pty-rl:playsRole rdf:resource="&oe2020-pat-rec-ind;NamirXiaPatient"/>
 		<oe2020-pat-rec:hasAge rdf:resource="&oe2020-pat-rec-ind;NamirXiaAge"/>
+		<oe2020-pat-rec:hasWeightGoal rdf:resource="&oe2020-pat-rec-ind;NamirXiaWeightGoal"/>
 		<lcc-lr:hasName xml:lang="en">Namir Xia</lcc-lr:hasName>
 		<lcc-lr:hasName>Namir Xia</lcc-lr:hasName>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;NamirXiaWeightGoal">
+		<rdf:type rdf:resource="&oe2020-pat-rec;WeightLoss"/>
+		<rdfs:label>Namir Xia Weight Goal</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Oats">
@@ -221,26 +226,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Recommendation-5.27">
-		<rdf:type>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Person">
-					</rdf:Description>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2020-pat-rec;livesWith"/>
-								<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Active"/>
-							</owl:Restriction>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2020-pat-rec;livesWith"/>
-								<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;SemiActive"/>
-							</owl:Restriction>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:intersectionOf>
-			</owl:Class>
-		</rdf:type>
+		<rdf:type rdf:resource="&oe2020-pat-rec;ActivityLevelRecommendation"/>
 		<rdfs:label>Recommendation 5.27</rdfs:label>
 		<skos:definition>recommendation for physical activity for adults</skos:definition>
 		<fibo-fnd-utl-av:explanatorNote>&quot;All adults, and particularly those with type 2 diabetes, should decrease the amount of time spent in daily sedentary behavior. B Prolonged sitting should be interrupted every 30 min for blood glucose benefits, particularly in adults with type 2 diabetes.&quot;</fibo-fnd-utl-av:explanatorNote>
@@ -257,6 +243,10 @@
 		<skos:definition>a person older than another</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;SimpleCarbohydrate">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Carbohydrate"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Spinach">
 		<rdf:type rdf:resource="&oe2020-pat-rec;Vegetable"/>
 		<rdfs:label>spinach</rdfs:label>
@@ -267,6 +257,13 @@
 		<rdf:type rdf:resource="&oe2020-pat-rec;Fiber"/>
 		<rdfs:label>spinach fiber instance</rdfs:label>
 		<oe2020-pat-rec:hasMacronutrientValue rdf:datatype="&xsd;decimal">35</oe2020-pat-rec:hasMacronutrientValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;TypicalPatient5.12">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;TypicalPatient5.27">
+		<rdf:type rdf:resource="&oe2020-pat-rec;TypicalPatient5.27"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Yogurt">
