@@ -546,14 +546,14 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasSemesterYear"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasYear"/>
 				<owl:onDataRange rdf:resource="&xsd;integer"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasSemester"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasTerm"/>
 				<owl:onDataRange rdf:resource="&xsd;string"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -877,19 +877,6 @@
 		<skos:definition>has a semester during which the course is intended to be offered in regular intervals</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasSemester">
-		<rdfs:label>has semester</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
-		<rdfs:range rdf:resource="&xsd;string"/>
-		<skos:definition>the semester(s) that the academic schedule covers</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasSemesterYear">
-		<rdfs:label>has semester year</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;integer"/>
-		<skos:definition>the year associated with a particular semester</skos:definition>
-	</owl:DatatypeProperty>
-	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasSpecialTag">
 		<rdfs:label>has special tag</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
@@ -910,6 +897,13 @@
 		<rdfs:range rdf:resource="&oe2020-crs-rec;Requirement"/>
 		<skos:definition>a requirement that must be fulfilled in order for this requirement to be fulfilled</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasTerm">
+		<rdfs:label>has term</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the term that the academic schedule covers</skos:definition>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasTopic">
 		<rdfs:label>has topic</rdfs:label>
@@ -946,6 +940,12 @@
 		<rdfs:label>has valid special tag</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;string"/>
 		<skos:definition>valid special tags of courses that can fulfill a course restriction</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasYear">
+		<rdfs:label>has year</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the year associated with a particular schedule</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;isCourseSectionOf">
