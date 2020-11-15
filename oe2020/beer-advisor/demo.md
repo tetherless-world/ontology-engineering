@@ -12,9 +12,9 @@ For question 2, the output should be Helltown Brewery.
 
 # Query 2
 
-For question 3, the output should for now return all instances of IPA's.
+For question 3, the output should return no results as no IPA's are under 5% ABV.
 ![output_2](images/query3-result.png)
-As an optional test, you can also change the range on the ABV in this query.
+As an optional test, you can also change the range on the ABV in this query to prove that it works.
 ![output_2_opt](images/query3-result-opt.png)
 
 # Query 3
