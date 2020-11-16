@@ -17,19 +17,19 @@ This diagram shows how all the individuals for one hypothetical user interact. N
 
 ![Concept Map Subject Model](images/OE_10_1.png)
 
-This shows how we represent Guideline 5.27 in our ontology. *Guideline 5.27* _applies to_ a *patient* that has *Type 2 Diabetes*, and _recommends_ a *Semi-Active* or *Active* lifestyle.
+This shows how we represent Guideline 5.27 in our ontology. *Guideline 5.27* __applies to__ a *patient* that has *Type 2 Diabetes*, and __recommends__ a *Semi-Active* or *Active* lifestyle.
 
 **Question 2 Conceptual Model:**
 
 ![Concept Map Subject Model](images/OE_10_2.png)
 
-This shows how we represent Guideline 8.7 in our ontology. *Guideline 8.7* _applies to_ a *patient* with a *weight loss goal* and _recommends_ an *energy deficit*.
+This shows how we represent Guideline 8.7 in our ontology. *Guideline 8.7* __applies to__ a *patient* with a *weight loss goal* and __recommends__ an *energy deficit*.
 
 **Question 3 Conceptual Model:**
 
 ![Concept Map Subject Model](images/OE_10_3.png)
 
-This shows how we represent Guideline 5.12 in our ontology. *Guideline 5.12* _applies to_ a *patient* who _eats_ *food* _containing_ *carbohydrates* and _recommends_ eating *fiber*.
+This shows how we represent Guideline 5.12 in our ontology. *Guideline 5.12* __applies to__ a *patient* who __eats__ *food* __containing__ *carbohydrates* and __recommends__ eating *fiber*.
 
 ## Ontologies
 
