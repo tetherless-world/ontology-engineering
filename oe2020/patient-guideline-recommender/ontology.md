@@ -1,9 +1,25 @@
 [Concept Map](#conceptual-model) | [Ontology File](#ontologies)
 
 ## Conceptual Model
+**Patient Conceptual Model:**
+
 ![Concept Map Subject Model](images/OE_10_Patient.png)
 
+**Individual Conceptual Model:**
+
 ![Concept Map Subject Model](images/OE_10_Indi.png)
+
+**Question 1 Conceptual Model:**
+
+![Concept Map Subject Model](images/OE_10_1.png)
+
+**Question 2 Conceptual Model:**
+
+![Concept Map Subject Model](images/OE_10_2.png)
+
+**Question 3 Conceptual Model:**
+
+![Concept Map Subject Model](images/OE_10_3.png)
 
 ## Ontologies
 
