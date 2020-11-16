@@ -24,7 +24,7 @@ WHERE {
 ```
 
 #### Example Results
-*Note that the example URLs have use a namespace prefix for ease-of-reading.*
+*Note that the example URLs use a namespace prefix for ease-of-reading.*
 
 | preReqCourse                 | prcName                         |
 |------------------------------|---------------------------------|
@@ -35,7 +35,7 @@ WHERE {
 
 ### Competency Question 2
 #### Question
-*This question will use the course history of Jacob Shomstein to produce an answer, but a full list of courses completed is omitted for privacy*
+*This question will use the course history of Jacob Shomstein to produce an answer, but a full list of courses completed is omitted for privacy.*
 
 I am a rising senior and I want to take the smallest number of courses required to complete my degree. I also want to take “easier” courses whenever possible to allow for more time to plan for a future career. What courses can fulfill my remaining requirements? 
 
@@ -71,7 +71,7 @@ WHERE {
 ```
 
 #### Example Results
-*Note that the example URLs have use a namespace prefix for ease-of-reading.*
+*Note that the example URLs use a namespace prefix for ease-of-reading.*
 
 | recCourse                    | recCourseName                     | recCourseLabel |
 |------------------------------|-----------------------------------|----------------|
@@ -82,10 +82,46 @@ WHERE {
 I have taken CSCI 4340 Ontologies and CSCI 4020 Design and Analysis of Algorithms. What are some courses like CSCI 6340 Ontologies that I should take next fall?
 
 #### Query
-
-
+```sparql
+prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
+prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
+prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
+SELECT DISTINCT ?validCourse
+WHERE {
+  VALUES ?completedCourseTag { "CSCI-4340" "CSCI-4020" }
+  ?completedCourse oe2020-crs-rec:hasCourseCode [
+    lcc-lr:hasTag ?completedCourseTag
+  ] .
+  ?completedCourse oe2020-crs-rec:hasRequiredPrerequisite* ?completedCourseInferred .
+  ?validCourseSec a oe2020-crs-rec:CourseSection ;
+                  oe2020-crs-rec:hasSchedule [
+                   oe2020-crs-rec:hasTerm "fall" ;
+                   oe2020-crs-rec:hasYear 2020
+                 ] ;
+                  oe2020-crs-rec:isCourseSectionOf ?validCourse .
+  ?validCourse a oe2020-crs-rec:Course .
+  FILTER NOT EXISTS {
+    ?validCourse oe2020-crs-rec:hasRequiredPrerequisite+ ?filterPrereqs .
+    FILTER(?filterPreqreqs != ?completedCourseInferred)
+  }
+  FILTER (?validCourse != ?completedCourseInferred)
+}
+LIMIT 10
+```
 
 #### Example Results
-*Note that the example URLs have use a namespace prefix for ease-of-reading.*
+*Note that the example URLs use a namespace prefix for ease-of-reading.*
 
+| validCourse              |
+|--------------------------|
+| oe2020-crs-rec:crs000045 |
+| oe2020-crs-rec:crs000048 |
+| oe2020-crs-rec:crs000484 |
+| oe2020-crs-rec:crs000488 |
+| oe2020-crs-rec:crs000491 |
+| oe2020-crs-rec:crs000497 |
+| oe2020-crs-rec:crs000082 |
+| oe2020-crs-rec:crs000088 |
+| oe2020-crs-rec:crs000102 |
+| oe2020-crs-rec:crs000015 |
 
