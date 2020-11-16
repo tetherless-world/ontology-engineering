@@ -60,7 +60,7 @@ SELECT DISTINCT ?typicalPatient ?object {
 
 #### Question:
 
-If I ate a burrito, pad thai, and a slice of cheesecake today, with no calories burned exercise, how should I work towards my dietary goal of losing weight?
+If I ate 1800 calories today, with no calories burned from exercise, have I met my dietary goal of losing weight??
 
 #### Query:
 In Snap-SPARQL, with reasoner run:
