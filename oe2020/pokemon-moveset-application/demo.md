@@ -37,11 +37,14 @@ PREFIX sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/>
 PREFIX pkm-mvs: <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/>
 PREFIX pkm-mvs-ind:  <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset-individuals/>
 ```
+
 ### Competency Questions
 
 #### Competency Question 1
+
 - Question: 
 How can the Pokémon species Noivern learn the moves Hurricane, Draco Meteor, Air Slash, and Defog?
+
 - Query:
 ```sparql
 SELECT DISTINCT ?move_name ?method_name ?method_info {
@@ -69,10 +72,10 @@ SELECT DISTINCT ?move_name ?method_name ?method_info {
     }
     FILTER (?move_name = "Hurricane" || ?move_name = "Draco Meteor" || ?move_name = "Air Slash" || ?move_name = "Defog")
 }
-
 ```
 
 #### Competency Question 2
+
 - Question:
 Are the Pokémon species Hydreigon and Braviary compatible breeding
 partners?
@@ -104,7 +107,6 @@ SELECT DISTINCT ?move_name ?method_name ?method_info {
     }
     FILTER (?move_name = "Hurricane" || ?move_name = "Draco Meteor" || ?move_name = "Air Slash" || ?move_name = "Defog")
 }
-
 ```
 
 #### Competency Question 3
@@ -123,13 +125,13 @@ SELECT DISTINCT ?move_name {
     ?move rdfs:label ?move_name.
     ?lis rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
 }
-
 ```
 
 #### Competency Question 4
 - Question:
 From what Pokémon species can the Pokémon species Squirtle inherit the
 move Fake Out as an Egg Move?
+
 - Query:
 ```sparql
 SELECT DISTINCT ?move_name ?pokemon_inherit_from {
