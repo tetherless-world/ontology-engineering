@@ -69,6 +69,7 @@ SELECT DISTINCT ?move_name ?method_name ?method_info {
     }
     FILTER (?move_name = "Hurricane" || ?move_name = "Draco Meteor" || ?move_name = "Air Slash" || ?move_name = "Defog")
 }
+
 ```
 
 #### Competency Question 2
@@ -78,12 +79,32 @@ partners?
 
 - Query:
 ```sparql
-SELECT ?breeding_partner_name ?egg_group_name WHERE {
-    pkm-mvs-ind:Hydreigon pkm-mvs:hasEggGroup ?egg_group.
-    ?breeding_partner pkm-mvs:hasEggGroup ?egg_group.
-    ?breeding_partner rdfs:label ?breeding_partner_name.
-    ?egg_group rdfs:label ?egg_group_name.
+SELECT DISTINCT ?move_name ?method_name ?method_info {
+    pkm-mvs-ind:Noivern a ?r.
+    ?r a owl:Restriction.
+    ?r owl:onProperty pkm-mvs:hasLearnMethod.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis.
+    ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
+    ?move a pkm-mvs:Move.
+    ?move rdfs:label ?move_name.
+    OPTIONAL {
+      ?lis rdf:rest*/rdf:first ?method.
+      ?method a owl:Class.
+      ?method rdfs:label ?method_name.
+    }
+    OPTIONAL {
+      ?lis rdf:rest*/rdf:first ?r2.
+      ?r2 owl:onProperty pkm-mvs:hasAssociatedMoveSource.
+      ?r2 owl:hasValue / rdfs:label ?method_info.
+    }
+    OPTIONAL {
+      ?lis rdf:rest*/rdf:first ?r2.
+      ?r2 owl:onProperty pkm-mvs:hasLevel.
+      ?r2 owl:someValuesFrom / owl:intersectionOf / rdf:rest* / rdf:first / owl:hasValue ?method_info. 
+    }
+    FILTER (?move_name = "Hurricane" || ?move_name = "Draco Meteor" || ?move_name = "Air Slash" || ?move_name = "Defog")
 }
+
 ```
 
 #### Competency Question 3
@@ -92,10 +113,17 @@ Is the move Fly a valid Egg Move for the Pokémon species Squirtle?
 
 - Query:
 ```sparql
-SELECT ?egg_move_name WHERE {
-    pkm-mvs-ind:Squirtle pkm-mvs:hasLearnMethod ?method.
-    ?method pkm-mvs:hasMoveSource / rdfs:label ?egg_move_name.
+SELECT DISTINCT ?move_name {
+    pkm-mvs-ind:Noivern a ?r.
+    ?r a owl:Restriction.
+    ?r owl:onProperty pkm-mvs:hasLearnMethod.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis.
+    ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
+    ?move a pkm-mvs:Move.
+    ?move rdfs:label ?move_name.
+    ?lis rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
 }
+
 ```
 
 #### Competency Question 4
@@ -104,9 +132,17 @@ From what Pokémon species can the Pokémon species Squirtle inherit the
 move Fake Out as an Egg Move?
 - Query:
 ```sparql
-SELECT ?pokemon_inherit_from WHERE {
-    pkm-mvs-ind:Squirtle (pkm-mvs:hasLearnMethod / pkm-mvs:inheritsMoveFrom)+ ?pkmn.
-    ?pkmn pkm-mvs:hasLearnMethod / pkm-mvs:hasMoveSource pkm-mvs-ind:FakeOut.
-    ?pkmn rdfs:label ?pokemon_inherit_from.
+SELECT DISTINCT ?move_name ?pokemon_inherit_from {
+    pkm-mvs-ind:Squirtle a ?r.
+    ?r a owl:Restriction.
+    ?r owl:onProperty pkm-mvs:hasLearnMethod.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis.
+    ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
+    ?move a pkm-mvs:Move.
+    ?move rdfs:label ?move_name.
+    ?lis rdf:rest*/rdf:first ?r2.
+    ?r2 owl:onProperty pkm-mvs:inheritsMoveFrom.
+    ?r2 owl:hasValue ?pokemon_inherit_from.
+    FILTER (?move_name = "Fake Out")
 }
 ```
