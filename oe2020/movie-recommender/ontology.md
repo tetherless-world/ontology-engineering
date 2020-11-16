@@ -2,15 +2,15 @@
 
 ## Conceptual Model
 
-General Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/conceptualModel.png):
+General Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/conceptualModel.png) [(Editable Version)](https://drive.google.com/file/d/1MSmUmnXD892Ia6nD116NB8nuCs-uXFc1/view?usp=sharing):
 
 <img src="images/conceptualModel.png" width="100%">
 
-Genre Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/genresConceptualModel.jpg):
+Genre Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/genresConceptualModel.jpg) [(Editable Version)](https://drive.google.com/file/d/1SaZrs4M5MLkLHHiZZzHqiqZpFmZ0tR-z/view?usp=sharing):
 
 <img src="images/genresConceptualModel.jpg" width="100%">
 
-User Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/userAccount.png):
+User Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/userAccount.png) [(Editable Version)](https://drive.google.com/file/d/1daR8-y7vl6DvhiFOharI3-nsPbhf-V7K/view?usp=sharing):
 
 <img src="images/userAccount.png" width="100%">
 
