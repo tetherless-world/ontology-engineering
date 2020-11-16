@@ -5,23 +5,27 @@
 
 - Competency Question 1 Demo Query
 ```
+PREFIX movie: <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/>
+PREFIX movieind: <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender-individuals/>
+
 SELECT DISTINCT ?movies ?service
-WHERE
-{
-	<https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender-individuals/TheFarewell> <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasProductionType> ?productionType .
-	?award <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasAwardProductionType> ?productionType .
-    ?movies <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasAward> ?award .
-	?movies <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/isAvailableNow> ?service  
+WHERE {
+	movieind:TheFarewell movie:hasProductionType ?productionType .
+	?award movie:hasAwardProductionType ?productionType .
+    ?movies movie:hasAward ?award .
+	?movies movie:isAvailableNow ?service  
 }
 ```
 - Competency Question 3 Demo Query
 ```
+PREFIX movie: <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/>
+PREFIX movieind: <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender-individuals/>
+
 SELECT DISTINCT ?subgenre
-WHERE
-{
-	<https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender-individuals/JohnDoe> <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasWatchList> ?watchlist .
-  	?watchlist <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasMovie> ?movies .
-  	?movies <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasGenre> ?genres .
+WHERE {
+	movieind:JohnDoe movie:hasWatchList ?watchlist .
+  	?watchlist movie:hasMovie ?movies .
+  	?movies movie:hasGenre ?genres .
     ?subgenre rdfs:subClassOf ?genres
 }
 GROUP BY ?subgenre
@@ -29,12 +33,15 @@ HAVING (COUNT(?subgenre) > 1)
 ```
 - Competency Question 4 Demo Query
 ```
+PREFIX movie: <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/>
+PREFIX movieind: <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender-individuals/>
+PREFIX fibo: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/>
+
 SELECT DISTINCT ?movies ?service
-WHERE
-{
-	<https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender-individuals/DamienChazelle> <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/playsActiveRoleIn> ?refMovies .
-	?refMovies <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasProductionType> ?productionType .
-  	?movies <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/hasProductionType> ?productionType .
-  	?movies <https://tw.rpi.edu/ontology-engineering/oe2020/movie-recommender/isAvailableNow> ?service
+WHERE {
+	movieind:DamienChazelle fibo:playsActiveRoleIn ?refMovies .
+	?refMovies movie:hasProductionType ?productionType .
+  	?movies movie:hasProductionType ?productionType .
+  	?movies movie:isAvailableNow ?service
 }
 ```
