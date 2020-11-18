@@ -103,8 +103,11 @@ This query sample will provide the following answer:
 | |
 
 The image below shows the implementation of Query 2 in Protege. Note that there is no beer displayed as an answer. This is actually correct because there is no IPA under 5% ABV.
+
 ![output_2](images/query3-result.png)
+
 As an optional test, you can also change the range on the ABV in this query to prove that it works.
+
 ![output_2_opt](images/query3-result-opt.png)
 
 ### Query 3
