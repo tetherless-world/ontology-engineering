@@ -26,3 +26,4 @@ NOTE: This page is still under development.
 
 ## Acknowledgements
 
+The authors would like to thank Elisa Kendall, Sam Stouffer and Prof. Deborah McGuiness, for their continuing support in technical matters during the development of this ontology. The authors would also like to thank Evan Wallace and Pete Rivett for providing important insights and expertise that greatly assisted this project.
