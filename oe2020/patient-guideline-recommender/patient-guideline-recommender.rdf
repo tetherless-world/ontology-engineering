@@ -233,7 +233,7 @@
 		<owl:equivalentClass>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:allValuesFrom rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+				<owl:someValuesFrom rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
 			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>group of people that are considered adults</skos:definition>
@@ -349,19 +349,18 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;CohortWeightLossGoal">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Cohort"/>
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;AdultPatientCohort"/>
 		<rdfs:label>cohort with weight loss goal</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
-					</rdf:Description>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:someValuesFrom>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasWeightGoal"/>
 						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLoss"/>
 					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>the cohort of people with weight loss as a goal</skos:definition>
 	</owl:Class>
