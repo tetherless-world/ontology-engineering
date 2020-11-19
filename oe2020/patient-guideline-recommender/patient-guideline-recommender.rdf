@@ -25,7 +25,6 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
@@ -57,7 +56,7 @@
 		<dct:creator>Liam Feehery</dct:creator>
 		<dct:creator>Namir Xia</dct:creator>
 		<dct:creator>Travis Peterson</dct:creator>
-		<dct:license>license</dct:license>
+		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
 		<sm:copyright>copyright</sm:copyright>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
@@ -91,6 +90,12 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasAge"/>
 				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;PersonAge"/>
 			</owl:Restriction>
@@ -109,49 +114,129 @@
 		<skos:definition>a test that measures the level of hemoglobin A1c in the blood as a means of determining the average blood sugar concentrations for the preceding two to three months</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Active">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
-		<rdfs:label>active</rdfs:label>
+	<owl:Class rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityBySteps">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
+		<rdfs:label>active level of activity by steps</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
 					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
 						<owl:withRestrictions rdf:parseType="Collection">
 							<rdf:Description>
-								<xsd:minInclusive rdf:datatype="&xsd;nonNegativeInteger">420</xsd:minInclusive>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">10001</xsd:minInclusive>
 							</rdf:Description>
 							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">10080</xsd:maxInclusive>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">12500</xsd:maxInclusive>
 							</rdf:Description>
 						</owl:withRestrictions>
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
 		</owl:equivalentClass>
-		<skos:definition>requiring vigorous action or exertion</skos:definition>
+		<skos:definition>activity level for a person who takes between 10,000 and 12,500 steps per day</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevelRecommendation">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
+	<owl:Class rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityInMinutes">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
+		<rdfs:label>active level of activity in minutes</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">420</xsd:minInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>activity level for a person who spends more than 420 minutes per week in moderate or vigorous intensity activity</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ActiveLifestyle">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;has"/>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
 				<owl:someValuesFrom>
 					<owl:Class>
 						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2020-pat-rec;Active">
+							<rdf:Description rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityBySteps">
 							</rdf:Description>
-							<rdf:Description rdf:about="&oe2020-pat-rec;SemiActive">
+							<rdf:Description rdf:about="&oe2020-pat-rec;HighLevelOfActivityBySteps">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityInMinutes">
 							</rdf:Description>
 						</owl:unionOf>
 					</owl:Class>
 				</owl:someValuesFrom>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:label>active lifestyle</rdfs:label>
+		<skos:definition>lifestyle that includes significant levels of physical activity on a regular basis</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevel">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
+		<rdfs:label>activity level</rdfs:label>
+		<skos:definition>measure of the amount of physical activity an individual gets on a per day or per week basis</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevelBySteps">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<rdfs:label>activity level by steps</rdfs:label>
+		<skos:definition>activity level measured by the number of steps per day that an individual takes</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevelInMinutes">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<rdfs:label>activity level in minutes</rdfs:label>
+		<skos:definition>activity level measured in terms of the number of minutes per week an individual engages in moderate or vigorous intensity exercise</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.heart.org/HEARTORG/HealthyLiving/PhysicalActivity/FitnessBasics/Moderate-to-VigorousWhat-is-your-level-of-intensity_UCM_463775_Article.jsp</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:explanatoryNote>Physical activity intensity level measurements are based on the physical sensations experienced during physical activity, including: increased heart rate, increased respiration or breathing rate, increased sweating, and muscle fatigue.</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;ActivityLevelRecommendation">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Recommendation"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pat-rec;ModeratelyActiveLifestyle">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2020-pat-rec;ActiveLifestyle">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label>activity level recommendation</rdfs:label>
-		<skos:definition>as defined by activity level 5.27 - the reccomendation is to decrease the amount of time spent in daily sedentary behavior</skos:definition>
+		<skos:definition>recommendation with respect to the level of activity that adults should attempt to achieve</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote>To improve overall cardiovascular health, the American Heart Association recommends at least 150 minutes of moderate exercise or 75 minutes of vigorous exercise per week – or a combination of the two for adults. See also the Guideline 5.27.</fibo-fnd-utl-av:explanatoryNote>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;AdultPatientCohort">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Cohort"/>
+		<rdfs:label>adult patient cohort</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:allValuesFrom rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>group of people that are considered adults</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
@@ -231,12 +316,17 @@
 		<skos:definition>any of various neutral compounds of carbon, hydrogen, and oxygen (as sugars, starches, and celluloses) most of which are formed by green plants and which constitute a major class of animal foods</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;CarbohydrateRecommendation">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;CarbohydrateRecommendation">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Recommendation"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;FiberousFood"/>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label>carbohydrate recommendation</rdfs:label>
-		<owl:equivalentClass rdf:resource="&oe2020-pat-rec;FiberousFood"/>
-		<skos:definition>As stated in guideline 5.12- the reccomendation is to emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products</skos:definition>
-	</owl:Class>
+		<skos:definition>As stated in guideline 5.12- the recomendation is to emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products</skos:definition>
+	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Cholesterol">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
@@ -254,7 +344,6 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>cohort</rdfs:label>
-		<skos:definition>a class that defines the examplar subjects for guidelines</skos:definition>
 		<skos:definition>group of people that share a common characteristic</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://dictionary.cambridge.org/us/dictionary/english/cohort</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
@@ -336,29 +425,17 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Cohort"/>
 		<rdfs:label>diabetic patient cohort</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
-					</rdf:Description>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:someValuesFrom>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;playsRole"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2020-pat-rec;Patient">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2020-pat-rec;hasCondition"/>
-										<owl:hasValue rdf:resource="&oe2020-pat-rec;Type2Diabetes"/>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasCondition"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Diabetes"/>
 					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
-		<skos:definition>the diabetic patient cohort</skos:definition>
+		<skos:definition>group of patients that have some form of diabetes</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Diet">
@@ -556,86 +633,106 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;AgeGroup"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;GenderIdentityGroup"/>
+				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;StatisticalPopulation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Exercise"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Lifestyle"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Recommendation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>guideline</rdfs:label>
-		<skos:definition>a general rule, principle, or piece of advice</skos:definition>
+		<skos:definition>general rule, principle, or piece of advice</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Guideline5.12">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
-		<rdfs:subClassOf>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Guideline-5.12">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdf:type>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;DiabeticPatientCohort"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;DiabeticPatientCohort"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
 			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;CarbohydrateRecommendation"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>guideline  5.12</rdfs:label>
+		</rdf:type>
+		<rdfs:label>guideline 5.12</rdfs:label>
 		<skos:definition>guideline recommending types of carbohydrates to eat</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;Carbohydrate intake should emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products.&apos;</fibo-fnd-utl-av:explanatoryNote>
-	</owl:Class>
+		<oe2020-pat-rec:recommends rdf:resource="&oe2020-pat-rec;CarbohydrateRecommendation"/>
+	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Guideline5.27">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
-		<rdfs:subClassOf>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Guideline-5.27">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdf:type>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;DiabeticPatientCohort"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:unionOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2020-pat-rec;AdultPatientCohort">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2020-pat-rec;DiabeticPatientCohort">
+									</rdf:Description>
+								</owl:unionOf>
+							</owl:Class>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:someValuesFrom>
 			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;ActivityLevelRecommendation"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
+		</rdf:type>
 		<rdfs:label>guideline 5.27</rdfs:label>
 		<skos:definition>guideline including recommendations for physical activity for adults</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>American Diabetes Association. Diabetes Care 2020 Jan; 43(Supplement 1): S48-S65. &apos;5. Facilitating Behavior Change and Well-being to Improve Health Outcomes: Standards of Medical Care in Diabetes-2020&apos;, section 5.27. Available: https://care.diabetesjournals.org/content/43/Supplement_1/S48. [Accessed October 25, 2020].</fibo-fnd-utl-av:adaptedFrom>
 		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;All adults, and particularly those with type 2 diabetes, should decrease the amount of time spent in daily sedentary behavior.&apos; It also says, &apos;Prolonged sitting should be interrupted every 30 min for blood glucose benefits.&apos;</fibo-fnd-utl-av:explanatoryNote>
-	</owl:Class>
+		<oe2020-pat-rec:recommends rdf:resource="&oe2020-pat-rec;ActivityLevelRecommendation"/>
+	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Guideline8.7">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Guideline"/>
-		<rdfs:subClassOf>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Guideline-8.7">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline"/>
+		<rdf:type>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;CohortWeightLossGoal"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;CohortWeightLossGoal"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
 			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLossRecommendation"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
+		</rdf:type>
 		<rdfs:label>guideline 8.7</rdfs:label>
 		<skos:definition>guideline including reccomendations for weight loss for adults</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;As all energy-deficit food intake will result in weight loss, eating plans should be individualized to meet the patient&apos;s protein, fat, and carbohydrate needs while still promoting weight loss.&apos;</fibo-fnd-utl-av:explanatoryNote>
+		<oe2020-pat-rec:recommends rdf:resource="&oe2020-pat-rec;WeightLossRecommendation"/>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;HighLevelOfActivityBySteps">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
+		<rdfs:label>high level of activity by steps</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">12501</xsd:minInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>activity level for a person who takes more than 12,500 steps per day</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Insulin">
@@ -660,6 +757,43 @@
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-arr-cls;Classifier"/>
 		<rdfs:label>lifestyle</rdfs:label>
 		<skos:definition>the typical way of life of an individual, group, or culture</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;LightLevelOfActivityBySteps">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
+		<rdfs:label>light level of activity by steps</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">5001</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">7500</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>activity level for a person who takes between 5,000 and 7,500 steps per day</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;LightlyActiveLifestyle">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;LightLevelOfActivityBySteps"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>lightly active lifestyle</rdfs:label>
+		<skos:definition>lifestyle that includes moderate levels of physical activity on a regular basis</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Macronutrient">
@@ -701,6 +835,76 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Medicine">
 		<rdfs:label>medicine</rdfs:label>
 		<skos:definition>a compound or preparation used for the treatment or prevention of disease, especially a drug or drugs taken by mouth</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ModerateLevelOfActivityBySteps">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
+		<rdfs:label>moderate level of activity by steps</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">7501</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">10000</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>activity level for a person who takes between 7,500 and 10,000 steps per day</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ModerateLevelOfActivityInMinutes">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
+		<rdfs:label>moderate level of activity in minutes</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">151</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">419</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>activity level for a person who spends between 150 and 420 minutes per week in moderate or vigorous intensity activity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;ModeratelyActiveLifestyle">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pat-rec;ModerateLevelOfActivityBySteps">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2020-pat-rec;ModerateLevelOfActivityInMinutes">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>moderately active lifestyle</rdfs:label>
+		<skos:definition>lifestyle that includes moderate levels of physical activity on a regular basis</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;NonBinary">
@@ -784,52 +988,68 @@
 		<skos:definition>the directives as provided by different guidelines</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;Sedentary">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
-		<rdfs:label>sedentary</rdfs:label>
+	<owl:Class rdf:about="&oe2020-pat-rec;SedentaryActivityBySteps">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
+		<rdfs:label>sedentary activity by steps</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
 					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
 						<owl:withRestrictions rdf:parseType="Collection">
 							<rdf:Description>
-								<xsd:minInclusive rdf:datatype="&xsd;nonNegativeInteger">0</xsd:minInclusive>
-							</rdf:Description>
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">150</xsd:maxInclusive>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">5000</xsd:maxInclusive>
 							</rdf:Description>
 						</owl:withRestrictions>
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
 		</owl:equivalentClass>
-		<skos:definition>not physically active</skos:definition>
+		<skos:definition>activity level for a person who takes fewer than 5,000 steps per day</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;SemiActive">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
-		<rdfs:label>semi active</rdfs:label>
+	<owl:Class rdf:about="&oe2020-pat-rec;SedentaryActivityInMinutes">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
+		<rdfs:label>sedentary activity in minutes</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
 					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
 						<owl:withRestrictions rdf:parseType="Collection">
 							<rdf:Description>
-								<xsd:minInclusive rdf:datatype="&xsd;nonNegativeInteger">151</xsd:minInclusive>
-							</rdf:Description>
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">419</xsd:maxInclusive>
+								<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">149</xsd:maxInclusive>
 							</rdf:Description>
 						</owl:withRestrictions>
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
 		</owl:equivalentClass>
-		<skos:definition>intermediate state between active and non sedentary</skos:definition>
+		<skos:definition>activity level for a person who spends fewer than 150 minutes per week in moderate or vigorous intensity activity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;SedentaryLifestyle">
+		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Lifestyle"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasActivityLevel"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2020-pat-rec;SedentaryActivityBySteps">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2020-pat-rec;SedentaryActivityInMinutes">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>sedentary active lifestyle</rdfs:label>
+		<skos:definition>lifestyle that includes low levels of physical activity on a regular basis</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Serving">
@@ -920,11 +1140,11 @@
 		<skos:definition>dietary goal of decreasing your weight</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;WeightLossRecommendation">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Recommendation"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;WeightLossRecommendation">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Recommendation"/>
 		<rdfs:label>weight loss recommendation</rdfs:label>
 		<skos:definition>As stated in guideline 8.7, the recommendation is that energy-deficit food intake will result in weight loss</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;WholeGrain">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
@@ -979,11 +1199,11 @@
 		<skos:definition>physical or mental damage</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasActivityLevel">
+	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasActivityLevel">
 		<rdfs:label>has activity level</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
-		<skos:definition>how active a person is in a week, in minutes</skos:definition>
-	</owl:DatatypeProperty>
+		<rdfs:range rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<skos:definition>how active a person is in steps per day or minutes per week</skos:definition>
+	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasAge">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-rel-rel;isCharacterizedBy"/>
@@ -994,6 +1214,7 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasCaloricGoal">
 		<rdfs:label>has caloric goal</rdfs:label>
+		<skos:definition>the goal number of calories for a user in a day</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasCalories">
@@ -1014,6 +1235,7 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasConsumedCalories">
 		<rdfs:label>has consumed calories</rdfs:label>
+		<skos:definition>the number of calories user consumes in a day</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasGenderIdentity">
@@ -1027,6 +1249,7 @@
 		<rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
 		<rdfs:label>has macronutrient value</rdfs:label>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>possessing the value of the macro-nutrient in grams</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-pat-rec;hasNetCalories">

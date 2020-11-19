@@ -26,7 +26,6 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
@@ -100,42 +99,10 @@
 		<oe2020-pat-rec:contains rdf:resource="&oe2020-pat-rec-ind;SimpleCarbohydrate"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;CohortWeightLossGoal">
-		<rdf:type rdf:resource="&oe2020-pat-rec;CohortWeightLossGoal"/>
-		<rdfs:label>cohort with weight loss instantiation</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;DiabeticPatientCohort">
-		<rdf:type rdf:resource="&oe2020-pat-rec;DiabeticPatientCohort"/>
-		<rdfs:label>diabetic patient cohort insantiation</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Guideline-5.12">
-		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline5.12"/>
-		<rdfs:label>guideline 5.12 instantiation</rdfs:label>
-		<skos:definition>guideline recommending types of carbohydrates to eat</skos:definition>
-		<fibo-fnd-rel-rel:appliesTo rdf:resource="&oe2020-pat-rec-ind;DiabeticPatientCohort"/>
-		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;Carbohydrate intake should emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products.&apos;</fibo-fnd-utl-av:explanatoryNote>
-		<oe2020-pat-rec:recommends rdf:resource="&oe2020-pat-rec-ind;Recommendation-5.12"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Guideline-5.27">
-		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline5.27"/>
-		<rdfs:label>guideline 5.27 instantiation</rdfs:label>
-		<skos:definition>guideline including recommendations for physical activity for adults</skos:definition>
-		<fibo-fnd-rel-rel:appliesTo rdf:resource="&oe2020-pat-rec-ind;DiabeticPatientCohort"/>
-		<fibo-fnd-utl-av:adaptedFrom>American Diabetes Association. Diabetes Care 2020 Jan; 43(Supplement 1): S48-S65. &apos;5. Facilitating Behavior Change and Well-being to Improve Health Outcomes: Standards of Medical Care in Diabetes-2020&apos;, section 5.27. Available: https://care.diabetesjournals.org/content/43/Supplement_1/S48. [Accessed October 25, 2020].</fibo-fnd-utl-av:adaptedFrom>
-		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;All adults, and particularly those with type 2 diabetes, should decrease the amount of time spent in daily sedentary behavior.&apos; It also says, &apos;Prolonged sitting should be interrupted every 30 min for blood glucose benefits.&apos;</fibo-fnd-utl-av:explanatoryNote>
-		<oe2020-pat-rec:recommends rdf:resource="&oe2020-pat-rec-ind;Recommendation-5.27"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Guideline-8.7">
-		<rdf:type rdf:resource="&oe2020-pat-rec;Guideline8.7"/>
-		<rdfs:label>guideline 8.7 instantiation</rdfs:label>
-		<skos:definition>guideline including reccomendations for weight loss for adults</skos:definition>
-		<fibo-fnd-rel-rel:appliesTo rdf:resource="&oe2020-pat-rec-ind;CohortWeightLossGoal"/>
-		<fibo-fnd-utl-av:explanatoryNote>The guideline states, &apos;As all energy-deficit food intake will result in weight loss, eating plans should be individualized to meet the patient&apos;s protein, fat, and carbohydrate needs while still promoting weight loss.&apos;</fibo-fnd-utl-av:explanatoryNote>
-		<oe2020-pat-rec:recommends rdf:resource="&oe2020-pat-rec-ind;Recommendation-8.7"/>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JaneSmithActivityLevel">
+		<rdf:type rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
+		<rdfs:label>Jane Smith activity level</rdfs:label>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">532</fibo-fnd-qt-qtu:hasNumericValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JaneSmithAge">
@@ -147,16 +114,22 @@
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JaneSmithPatient">
 		<rdf:type rdf:resource="&oe2020-pat-rec;Patient"/>
 		<rdfs:label>Jane Smith patient</rdfs:label>
-		<oe2020-pat-rec:hasCondition rdf:resource="&oe2020-pat-rec;Type2Diabetes"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JaneSmithUser">
 		<rdf:type rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
 		<rdfs:label>Jane Smith user</rdfs:label>
 		<fibo-fnd-pty-rl:playsRole rdf:resource="&oe2020-pat-rec-ind;JaneSmithPatient"/>
-		<oe2020-pat-rec:hasActivityLevel rdf:datatype="&xsd;integer">532</oe2020-pat-rec:hasActivityLevel>
+		<oe2020-pat-rec:hasActivityLevel rdf:resource="&oe2020-pat-rec-ind;JaneSmithActivityLevel"/>
 		<oe2020-pat-rec:hasAge rdf:resource="&oe2020-pat-rec-ind;JaneSmithAge"/>
+		<oe2020-pat-rec:hasCondition rdf:resource="&oe2020-pat-rec;Type2Diabetes"/>
 		<lcc-lr:hasName>Jane Smith</lcc-lr:hasName>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JohnSmithActivityLevel">
+		<rdf:type rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
+		<rdfs:label>John Smith activity level</rdfs:label>
+		<fibo-fnd-qt-qtu:hasNumericValue rdf:datatype="&xsd;decimal">56</fibo-fnd-qt-qtu:hasNumericValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;JohnSmithAge">
@@ -175,8 +148,9 @@
 		<rdfs:label>John Smith user</rdfs:label>
 		<fibo-fnd-pty-rl:playsRole rdf:resource="&oe2020-pat-rec-ind;JohnSmithPatient"/>
 		<oe2020-pat-rec:eats rdf:resource="&oe2020-pat-rec-ind;Bread"/>
-		<oe2020-pat-rec:hasActivityLevel rdf:datatype="&xsd;integer">56</oe2020-pat-rec:hasActivityLevel>
+		<oe2020-pat-rec:hasActivityLevel rdf:resource="&oe2020-pat-rec-ind;JohnSmithActivityLevel"/>
 		<oe2020-pat-rec:hasAge rdf:resource="&oe2020-pat-rec-ind;JohnSmithAge"/>
+		<oe2020-pat-rec:hasCondition rdf:resource="&oe2020-pat-rec;Type2Diabetes"/>
 		<lcc-lr:hasName>John Smith</lcc-lr:hasName>
 	</owl:NamedIndividual>
 	
@@ -220,25 +194,6 @@
 		<rdfs:label>oats</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Recommendation-5.12">
-		<rdf:type rdf:resource="&oe2020-pat-rec;CarbohydrateRecommendation"/>
-		<rdfs:label>recommendation 5.12</rdfs:label>
-		<skos:definition>recommendation for carohydrate intake</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Recommendation-5.27">
-		<rdf:type rdf:resource="&oe2020-pat-rec;ActivityLevelRecommendation"/>
-		<rdfs:label>recommendation 5.27</rdfs:label>
-		<skos:definition>recommendation for physical activity for adults</skos:definition>
-		<fibo-fnd-utl-av:explanatorNote>&quot;All adults, and particularly those with type 2 diabetes, should decrease the amount of time spent in daily sedentary behavior. B Prolonged sitting should be interrupted every 30 min for blood glucose benefits, particularly in adults with type 2 diabetes.&quot;</fibo-fnd-utl-av:explanatorNote>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Recommendation-8.7">
-		<rdf:type rdf:resource="&oe2020-pat-rec;WeightLossRecommendation"/>
-		<rdfs:label>recommendation 8.7</rdfs:label>
-		<skos:definition>reccomendation for wieght loss</skos:definition>
-	</owl:NamedIndividual>
-	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec-ind;Senior">
 		<rdf:type rdf:resource="&oe2020-pat-rec;AgeGroup"/>
 		<rdfs:label>senior</rdfs:label>
@@ -266,17 +221,5 @@
 		<rdf:type rdf:resource="&oe2020-pat-rec;Dairy"/>
 		<rdfs:label>yogurt</rdfs:label>
 	</owl:NamedIndividual>
-	
-	<rdf:Description rdf:about="&oe2020-pat-rec;hasCaloricGoal">
-		<skos:definition>the goal number of calories for a user in a day</skos:definition>
-	</rdf:Description>
-	
-	<rdf:Description rdf:about="&oe2020-pat-rec;hasConsumedCalories">
-		<skos:definition>the number of calories user consumes in a day</skos:definition>
-	</rdf:Description>
-	
-	<rdf:Description rdf:about="&oe2020-pat-rec;hasMacronutrientValue">
-		<skos:definition>possessing the value of the macro-nutrient in grams</skos:definition>
-	</rdf:Description>
 
 </rdf:RDF>
