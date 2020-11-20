@@ -25,6 +25,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
@@ -112,6 +113,9 @@
 		</rdfs:subClassOf>
 	</owl:Class>
 	
+	<owl:DatatypeProperty rdf:about="&fibo-fnd-utl-av;hasNumericValue">
+	</owl:DatatypeProperty>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;A1c">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:label>a1c</rdfs:label>
@@ -175,9 +179,9 @@
 						<owl:unionOf rdf:parseType="Collection">
 							<rdf:Description rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityBySteps">
 							</rdf:Description>
-							<rdf:Description rdf:about="&oe2020-pat-rec;HighLevelOfActivityBySteps">
-							</rdf:Description>
 							<rdf:Description rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityInMinutes">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2020-pat-rec;HighLevelOfActivityBySteps">
 							</rdf:Description>
 						</owl:unionOf>
 					</owl:Class>
@@ -217,9 +221,9 @@
 				<owl:someValuesFrom>
 					<owl:Class>
 						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2020-pat-rec;ModeratelyActiveLifestyle">
-							</rdf:Description>
 							<rdf:Description rdf:about="&oe2020-pat-rec;ActiveLifestyle">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2020-pat-rec;ModeratelyActiveLifestyle">
 							</rdf:Description>
 						</owl:unionOf>
 					</owl:Class>
@@ -228,7 +232,7 @@
 		</rdf:type>
 		<rdfs:label>activity level recommendation</rdfs:label>
 		<skos:definition>recommendation with respect to the level of activity that adults should attempt to achieve</skos:definition>
-		<fibo-fnd-utl-av:explanatoryNote>To improve overall cardiovascular health, the American Heart Association recommends at least 150 minutes of moderate exercise or 75 minutes of vigorous exercise per week – or a combination of the two for adults. See also the Guideline 5.27.</fibo-fnd-utl-av:explanatoryNote>
+		<fibo-fnd-utl-av:explanatoryNote>To improve overall cardiovascular health, the American Heart Association recommends at least 150 minutes of moderate exercise or 75 minutes of vigorous exercise per week or a combination of the two for adults. See also the Guideline 5.27.</fibo-fnd-utl-av:explanatoryNote>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;AdultPatientCohort">
@@ -1148,6 +1152,7 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;WeightLossRecommendation">
+		<rdf:type rdf:resource="&owl;Class"/>
 		<rdf:type rdf:resource="&oe2020-pat-rec;Recommendation"/>
 		<rdfs:label>weight loss recommendation</rdfs:label>
 		<skos:definition>As stated in guideline 8.7, the recommendation is that energy-deficit food intake will result in weight loss</skos:definition>
