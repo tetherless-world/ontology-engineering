@@ -76,25 +76,30 @@ PREFIX lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPers
 PREFIX qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/>
 PREFIX beer: <https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/>
 
-SELECT DISTINCT ?beer
+
+SELECT DISTINCT (IF(COUNT(?result)>0, ?result, 0) as ?beer)
+
 WHERE {
-  ?beertypes rdfs:subClassOf beer:IndiaPaleAle .
-  
-  {
-    ?beer rdf:type ?beertypes .
-  }
-  UNION
-  {
-    ?beer rdf:type beer:IndiaPaleAle .
-  }
-  
-  ?beer beer:hasAlcoholByVolume ?alcohol .
-  ?alcohol rdf:type beer:AlcoholContent .
-  ?alcohol qtu:hasNumericValue ?abv .
-  FILTER (?abv < 5)
-  
+SELECT DISTINCT ?result
+
+WHERE {
+?beertypes rdfs:subClassOf beer:IndiaPaleAle .
+{
+?result rdf:type ?beertypes .
 }
-```
+UNION
+{
+?result rdf:type beer:IndiaPaleAle .
+}
+
+?result beer:hasAlcoholByVolume ?alcohol .
+?alcohol rdf:type beer:AlcoholContent .
+?alcohol qtu:hasNumericValue ?abv .
+FILTER (?abv < 5)
+
+}
+}
+GROUP BY ?result```
 
 This query sample will provide the following answer:
 

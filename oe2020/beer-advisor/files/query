@@ -1,4 +1,7 @@
-- QUESTION 02 (under development):
+- Please refer to our website for more information about the queries.
+
+- QUESTION 02: What is a brewery in Pennsylvania that makes IPAs under 8% ?
+- This query is supposed to return Helltown Brewery as answer.
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -39,7 +42,9 @@ WHERE {
 }
 
 
-- QUESTION 03 (under development):
+- QUESTION 03: What is an IPA that is 5% ABV or below?
+- This query is supposed to return no answer because 5% is not within the nominal alcohol content for IPAs. 
+- OBS: This question still needs to be modified to return similar beer types when no result is found
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -52,26 +57,33 @@ PREFIX lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPers
 PREFIX qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/>
 PREFIX beer: <https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/>
 
-SELECT DISTINCT ?beer
+
+SELECT DISTINCT (IF(COUNT(?result)>0, ?result, 0) as ?beer)
+
 WHERE {
-  ?beertypes rdfs:subClassOf beer:IndiaPaleAle .
-  
-  {
-    ?beer rdf:type ?beertypes .
-  }
-  UNION
-  {
-    ?beer rdf:type beer:IndiaPaleAle .
-  }
-  
-  ?beer beer:hasAlcoholByVolume ?alcohol .
-  ?alcohol rdf:type beer:AlcoholContent .
-  ?alcohol qtu:hasNumericValue ?abv .
-  FILTER (?abv < 10)
-  
+SELECT DISTINCT ?result
+
+WHERE {
+?beertypes rdfs:subClassOf beer:IndiaPaleAle .
+{
+?result rdf:type ?beertypes .
+}
+UNION
+{
+?result rdf:type beer:IndiaPaleAle .
 }
 
--QUESTION 04 (under development):
+?result beer:hasAlcoholByVolume ?alcohol .
+?alcohol rdf:type beer:AlcoholContent .
+?alcohol qtu:hasNumericValue ?abv .
+FILTER (?abv < 5)
+
+}
+}
+GROUP BY ?result
+
+- QUESTION 04: I really like New Belgium’s IPA’s, what other beers have people searched for from New Belgium?
+- This query is supposed to return beer such as Fat Tire Amber Ale, Fat Tire Belgian White, Glutiny Pale Ale and Voodoo Ranger American Haze. 
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
