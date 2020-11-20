@@ -113,6 +113,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>alcohol content</rdfs:label>
 		<skos:definition>the amount of alcohol a liquid contains</skos:definition>
+		<skos:example>the quantity value for AlcoholByVolume</skos:example>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Alcohol_by_volume</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
@@ -221,14 +222,135 @@
 		</rdfs:subClassOf>
 		<rdfs:label>bitterness unit</rdfs:label>
 		<skos:definition>unit of the measurement scale for the bitterness of beers</skos:definition>
+		<skos:example>the quantitive measurement unit you provide for InternationalBitternessUnit</skos:example>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Beer_measurement#Bitterness/fibo-fnd-utl-av:adaptedFrom</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-beer;Bock">
 		<rdfs:subClassOf rdf:resource="&oe2020-beer;Lager"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasAlcoholByVolume"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;BockAlcoholRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasBitternessUnit"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;BockBitternessRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasColor"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;BockColorRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasOriginalGravity"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;BockOriginalGravityRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>bock</rdfs:label>
 		<skos:definition>type of dark lager with strong malty flavor</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.craftbeer.com/beer/beer-styles-guide</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;BockAlcoholRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">6.3</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">9.5</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>bock alcohol range</rdfs:label>
+		<skos:definition>range of possible alcohol contents for beers to classify as bocks</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;BockBitternessRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">15</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">38</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>bock bitterness range</rdfs:label>
+		<skos:definition>range of possible bitterness for beers to classify as bocks</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;BockColorRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;Color"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">4</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">30</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>bock color range</rdfs:label>
+		<skos:definition>range of possible colors for beers to classify as bocks</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;BockOriginalGravityRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;OriginalGravity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">1.050</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">1.100</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>bock original gravity range</rdfs:label>
+		<skos:definition>range of possible original gravity values for beers to classify as bocks</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-beer;Brand">
@@ -299,6 +421,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>color</rdfs:label>
 		<skos:definition>the appearance that beers have that results from the way in which they reflect light</skos:definition>
+		<skos:example>the quantitive value for StandardReferenceMethod</skos:example>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.oxfordlearnersdictionaries.com/definition/english/color_1?q=color</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
@@ -318,9 +441,129 @@
 	
 	<owl:Class rdf:about="&oe2020-beer;DarkLager">
 		<rdfs:subClassOf rdf:resource="&oe2020-beer;Lager"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasAlcoholByVolume"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;DarkLagerAlcoholRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasBitternessUnit"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;DarkLagerBitternessRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasColor"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;DarkLagerColorRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasOriginalGravity"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;DarkLagerOriginalGravityRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>dark lager</rdfs:label>
 		<skos:definition>style of lager; pairs clean lager yeast with dark malts</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.craftbeer.com/beer/beer-styles-guide</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;DarkLagerAlcoholRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">3.8</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">6.0</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>dark lager alcohol range</rdfs:label>
+		<skos:definition>range of possible alcohol contents for beers to classify as dark lagers</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;DarkLagerBitternessRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">14</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">35</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>dark lager bitterness range</rdfs:label>
+		<skos:definition>range of possible bitterness for beers to classify as dark lagers</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;DarkLagerColorRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;Color"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">4</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">30</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>dark lager color range</rdfs:label>
+		<skos:definition>range of possible colors for beers to classify as dark lagers</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;DarkLagerOriginalGravityRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;OriginalGravity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">1.010</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">1.056</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>dark lager original gravity range</rdfs:label>
+		<skos:definition>range of possible original gravity values for beers to classify as dark lagers</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-beer;DarkMalt">
@@ -400,6 +643,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>india pale ale</rdfs:label>
 		<skos:definition>pale ale made with extra hops</skos:definition>
+		<skos:example>An individual that is provided with an alochol content, IBU, color, and OG within the IPA ranges found below</skos:example>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/India%20pale%20ale</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
@@ -581,6 +825,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>original gravity</rdfs:label>
 		<skos:definition>specific gravity, or relative density compared to water, measured before fermentation</skos:definition>
+		<skos:example>the quantitive value for DegreePlato</skos:example>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Gravity_(alcoholic_beverage)</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
@@ -689,9 +934,129 @@
 	
 	<owl:Class rdf:about="&oe2020-beer;Porter">
 		<rdfs:subClassOf rdf:resource="&oe2020-beer;Ale"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasAlcoholByVolume"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;PorterAlcoholRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasBitternessUnit"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;PorterBitternessRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasColor"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;PorterColorRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasOriginalGravity"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;PorterOriginalGravity"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>porter</rdfs:label>
 		<skos:definition>darker ale that utilizes brown or charred malts</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/porters</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;PorterAlcoholRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">4.4</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">12.0</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>porter alcohol range</rdfs:label>
+		<skos:definition>range of possible alcohol contents for beers to classify as porters</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;PorterBitternessRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">20</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">50</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>porter bitterness range</rdfs:label>
+		<skos:definition>range of possible bitterness for beers to classify as porters</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;PorterColorRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;Color"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">20</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">40</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>porter color range</rdfs:label>
+		<skos:definition>range of possible colors for beers to classify as porters</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;PorterOriginalGravity">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;OriginalGravity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">1.040</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">1.100</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>porter original gravity range</rdfs:label>
+		<skos:definition>range of possible original gravity values for beers to classify as porters</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-beer;Preference">
@@ -943,9 +1308,126 @@
 	
 	<owl:Class rdf:about="&oe2020-beer;Stout">
 		<rdfs:subClassOf rdf:resource="&oe2020-beer;Ale"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasAlcoholByVolume"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;StoutAlcoholRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasBitternessUnit"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;StoutBitternessRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasColor"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;StoutColorRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-beer;hasOriginalGravity"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-beer;StoutOriginalGravityRange"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>stout</rdfs:label>
 		<skos:definition>dark ale brewed with unmalted roasted barley</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/stouts</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;StoutAlcoholRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;AlcoholContent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">3.2</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">12.0</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>stout alcohol range</rdfs:label>
+		<skos:definition>range of possible alcohol contents for beers to classify as stouts</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;StoutBitternessRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;BitternessUnit"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">15</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">80</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>stout bitterness range</rdfs:label>
+		<skos:definition>range of possible bitterness for beers to classify as stouts</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;StoutColorRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;ColorS"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">20</xsd:minInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>stout color range</rdfs:label>
+		<skos:definition>range of possible color for beers to classify as stouts</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-beer;StoutOriginalGravityRange">
+		<rdfs:subClassOf rdf:resource="&oe2020-beer;OriginalGravity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;decimal"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;decimal">1.008</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;decimal">1.100</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>stout original gravity range</rdfs:label>
+		<skos:definition>range of possible original gravity values for beers to classify as stouts</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-beer;Style">
