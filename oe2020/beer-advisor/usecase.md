@@ -8,8 +8,8 @@ title: use case
 
 ## Previous Versions
 
-- [Version 5](files/OE_8_Beer_Advisor_UseCase_Clean.pdf)
-- [Version 4](files/OE_6_Beer_Advisor_UseCase_Clean.pdf)
-- [Version 3](files/OE_5_Beer_Advisor_UseCase_Clean.pdf)
-- [Version 2](files/OE_4_Ontologists_Anonymous_UseCase_Clean.pdf)
-- [Version 1](files/OE_3_Ontologists_Anonymous_UseCase.pdf)
+- [Version 5 (OE-8)](files/OE_8_Beer_Advisor_UseCase_Clean.pdf)
+- [Version 4 (OE-6)](files/OE_6_Beer_Advisor_UseCase_Clean.pdf)
+- [Version 3 (OE-5)](files/OE_5_Beer_Advisor_UseCase_Clean.pdf)
+- [Version 2 (OE-4)](files/OE_4_Ontologists_Anonymous_UseCase_Clean.pdf)
+- [Version 1 (OE-3)](files/OE_3_Ontologists_Anonymous_UseCase.pdf)
