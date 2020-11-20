@@ -59,8 +59,8 @@
 		<dct:creator>Liam Feehery</dct:creator>
 		<dct:creator>Namir Xia</dct:creator>
 		<dct:creator>Travis Peterson</dct:creator>
-		<dct:modified>2020-11-20</dct:modified>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
+		<dct:modified>2020-11-20</dct:modified>
 		<sm:copyright>copyright © 2020 Liam Feehery, Ishita Padhiar, Travis Peterson, and Namir Xia</sm:copyright>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
@@ -231,17 +231,17 @@
 		<fibo-fnd-utl-av:explanatoryNote>To improve overall cardiovascular health, the American Heart Association recommends at least 150 minutes of moderate exercise or 75 minutes of vigorous exercise per week – or a combination of the two for adults. See also the Guideline 5.27.</fibo-fnd-utl-av:explanatoryNote>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;AdultPatientCohort">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Cohort"/>
-		<rdfs:label>adult patient cohort</rdfs:label>
-		<owl:equivalentClass>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;AdultPatientCohort">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Cohort"/>
+		<rdf:type>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
 				<owl:someValuesFrom rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdf:type>
+		<rdfs:label>adult patient cohort</rdfs:label>
 		<skos:definition>group of people that are considered adults</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
@@ -352,22 +352,17 @@
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://dictionary.cambridge.org/us/dictionary/english/cohort</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;CohortWeightLossGoal">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;AdultPatientCohort"/>
-		<rdfs:label>cohort with weight loss goal</rdfs:label>
-		<owl:equivalentClass>
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;CohortWeightLossGoal">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Cohort"/>
+		<rdf:type>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:someValuesFrom>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasWeightGoal"/>
-						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLoss"/>
-					</owl:Restriction>
-				</owl:someValuesFrom>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;OverweightPatient"/>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdf:type>
+		<rdfs:label>cohort with weight loss goal</rdfs:label>
 		<skos:definition>the cohort of people with weight loss as a goal</skos:definition>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Condition">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;Situation"/>
@@ -420,26 +415,32 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Diabetes">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Condition"/>
 		<rdfs:label>diabetes</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2020-pat-rec;Obesity"/>
 		<skos:definition>a disease in which the body ability to produce or respond to the hormone insulin is impaired</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2020-pat-rec;DiabeticPatientCohort">
-		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Cohort"/>
-		<rdfs:label>diabetic patient cohort</rdfs:label>
+	<owl:Class rdf:about="&oe2020-pat-rec;DiabeticPatient">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+		<rdfs:label>diabetic patient</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:someValuesFrom>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasCondition"/>
-						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Diabetes"/>
-					</owl:Restriction>
-				</owl:someValuesFrom>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasCondition"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Diabetes"/>
 			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>group of patients that have some form of diabetes</skos:definition>
 	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;DiabeticPatientCohort">
+		<rdf:type rdf:resource="&oe2020-pat-rec;Cohort"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;DiabeticPatient"/>
+			</owl:Restriction>
+		</rdf:type>
+		<rdfs:label>diabetic patient cohort</rdfs:label>
+		<skos:definition>group of patients that have some form of diabetes</skos:definition>
+	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Diet">
 		<rdfs:subClassOf rdf:resource="&lcc-lr;Collection"/>
@@ -657,7 +658,7 @@
 				<owl:someValuesFrom>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
-						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;DiabeticPatientCohort"/>
+						<owl:hasValue rdf:resource="&oe2020-pat-rec;DiabeticPatientCohort"/>
 					</owl:Restriction>
 				</owl:someValuesFrom>
 			</owl:Restriction>
@@ -676,16 +677,7 @@
 				<owl:someValuesFrom>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:unionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2020-pat-rec;AdultPatientCohort">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2020-pat-rec;DiabeticPatientCohort">
-									</rdf:Description>
-								</owl:unionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
+						<owl:hasValue rdf:resource="&oe2020-pat-rec;AdultPatientCohort"/>
 					</owl:Restriction>
 				</owl:someValuesFrom>
 			</owl:Restriction>
@@ -705,7 +697,7 @@
 				<owl:someValuesFrom>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
-						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;CohortWeightLossGoal"/>
+						<owl:hasValue rdf:resource="&oe2020-pat-rec;CohortWeightLossGoal"/>
 					</owl:Restriction>
 				</owl:someValuesFrom>
 			</owl:Restriction>
@@ -938,6 +930,18 @@
 		</rdfs:subClassOf>
 		<rdfs:label>obesity</rdfs:label>
 		<skos:definition>the condition of being grossly fat or overweight</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2020-pat-rec;OverweightPatient">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+		<rdfs:label>overweight patient</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasWeightGoal"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;WeightLoss"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>patient whose weight is considered higher than a healthy weight</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Patient">
