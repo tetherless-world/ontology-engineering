@@ -5,7 +5,7 @@ title: About
 
 ## Maintenenance Policy
 
-The beer-ontology was created in the Beer-Advisor project for the Ontology Engineering course of RPI (Rensselaer Polytchnic Institute) during Fall 2020. The code therefore was developed by the students that were part of the project and it is maintained as part of the Tetherless World legacy repository for the Ontology Engineering course from past semesters. The authors do not aim to perform modifications in the main ontology URL after the final version is delivered. However, notifications will be posted if such modifications occur. More information about the ontology URI, past versions URI and update notes can be found in <a href="https://beer-advisor--rpi-ontology-engineering.netlify.app/oe2020/beer-advisor/ontology#ontologies">ontology section</a> and in the ontology header. 
+The beer-ontology was created in the Beer-Advisor project for the Ontology Engineering course of RPI (Rensselaer Polytchnic Institute) during Fall 2020. The code therefore was developed by the students that were part of the project and it is maintained as part of the Tetherless World legacy repository for the Ontology Engineering course from past semesters. The authors do not aim to perform modifications in the main ontology URL after the final version is delivered. However, notifications will be posted if such modifications occur. More information about the ontology URI, past versions URI and update notes can be found in <a href="../beer-advisor/ontology#ontologies">ontology section</a> and in the ontology header. 
 
 ## Getting Involved
 
