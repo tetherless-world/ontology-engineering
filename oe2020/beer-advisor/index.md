@@ -40,7 +40,7 @@ This section summarizes some resources that might be useful for someone interest
   </tr>
   <tr>
     <td>2. Ontology</td>
-    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/OE-10-beer-advisor.rdf">Beer Ontology</a></td>
+    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/beer-advisor.rdf">Beer Ontology</a></td>
   </tr>
   <tr>
     <td>3. Term List</td>
