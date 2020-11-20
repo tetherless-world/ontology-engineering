@@ -2,6 +2,18 @@
 ---
 
 ## Static Demo
+
+### Query Prefix
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
+PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
+PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
+```
+
 ## Competency Questions
 
 ### Competency Question 1
@@ -15,13 +27,6 @@ How does this guideline recommendation apply to me?
 #### Query:
 In Snap-SPARQL, with reasoner run:
 ```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
 PREFIX fiboRoles: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/>
 PREFIX fiboRelations: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
 
@@ -41,15 +46,6 @@ SELECT DISTINCT ?user ?typicalPatient WHERE {
 
 In SPARQL:
 ```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
-
-
 SELECT DISTINCT ?typicalPatient ?object {
   ?typicalPatient rdfs:subClassOf pgo:TypicalPatient.
   ?typicalPatient (rdfs:subClassOf|owl:equivalentClass) ?object .
@@ -65,12 +61,6 @@ If I ate 1800 calories today, with no calories burned from exercise, have I met 
 #### Query:
 In Snap-SPARQL, with reasoner run:
 ```sparql
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
 PREFIX fiboRelations: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
 
 SELECT DISTINCT ?user ?goalMet WHERE {
@@ -102,12 +92,6 @@ What carbohydrates should I be eating?
 #### Query:
 In Snap-SPARQL:
 ```sparql
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
 PREFIX fiboRelations: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
 
 SELECT DISTINCT ?user ?recommendationInst WHERE {
@@ -130,14 +114,6 @@ SELECT DISTINCT ?user ?recommendationInst WHERE {
 
 
 ```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/>
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/>
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/> 
-
 SELECT DISTINCT ?user ?matchedGuideline ?recommendation WHERE {
   ?user a people:Adult .
   ?user a ?matchedGuideline .
@@ -148,42 +124,18 @@ SELECT DISTINCT ?user ?matchedGuideline ?recommendation WHERE {
 ```
 
 ```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
 SELECT DISTINCT ?matchedGuideline ?object {
   ?matchedGuideline rdfs:subClassOf pgo:Guideline .
   ?matchedGuideline (rdfs:subClassOf|owl:equivalentClass) ?object .
-} 
+}
 
-
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
 SELECT DISTINCT ?user ?matchedGuideline ?object WHERE {
   ?user a people:Adult .
   ?user a ?matchedGuideline .
   ?matchedGuideline rdfs:subClassOf pgo:Guideline .
   ?matchedGuideline owl:equivalentClass ?object .
-} 
+}
 
-
-
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
-PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
-PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
 SELECT DISTINCT ?actionInstances WHERE {
   ?matchedGuidelineInstance a ?matchedGuideline .
   ?matchedGuideline rdfs:subClassOf pgo:Guideline .
@@ -192,6 +144,5 @@ SELECT DISTINCT ?actionInstances WHERE {
   ?recommendation rdfs:subClassOf pgo:Recommendation .
   ?recommendation owl:equivalentClass ?action .
   ?actionInstances a ?action .
-} 
-
+}
 ```
