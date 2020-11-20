@@ -1,0 +1,29 @@
+Question: what guidelines apply to a given user?
+
+Step 1: In regular SPARQL, execute the following
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX people: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> 
+PREFIX individuals: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender-individuals/> 
+PREFIX pgo: <https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/>
+PREFIX fibo-fnd-pty-rl: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/>
+PREFIX fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
+PREFIX lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
+
+SELECT ?guideline ?cohort ?userConstraint
+	WHERE { 
+?guideline a pgo:Guideline ;
+   rdf:type ?r .
+?r a owl:Restriction ;
+   owl:onProperty fibo-fnd-rel-rel:appliesTo ;
+   owl:someValuesFrom/owl:hasValue ?cohort .
+?cohort rdf:type ?p .
+?p  a owl:Restriction ;
+    owl:onProperty lcc-lr:hasMember ;
+    owl:someValuesFrom ?userConstraint .
+}
+
+Step 2: Then with SNAP SPARQL - take the results from the above and execute '?user rdf:type ?userConstraint' 
