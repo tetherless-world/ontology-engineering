@@ -28,6 +28,8 @@ Related to Guideline 5.27:
 How does this guideline recommendation apply to me?
 
 #### Query:
+In this query, we find the associated cohort to Guideline 5.27 and extract the type of its members (`?userConstraint`).
+
 In SPARQL:
 ```sparql
 SELECT DISTINCT ?userConstraint WHERE {
