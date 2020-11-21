@@ -46,8 +46,9 @@ SELECT DISTINCT ?userConstraint WHERE {
 }
 ```
 
-After matching `?userConstraint` values, we then run the following query in snap-SPARQL with the reasoner:
-(substitute in `?userConstraint` from above)
+After matching `?userConstraint` values, we need to test each guideline whether it applies to the user.
+
+In snap-SPARQL+reasoner, substituting in `?userConstraint` from above:
 ```sparql
 SELECT ?match WHERE {
 	# Check if user matches guideline constraint
@@ -69,6 +70,8 @@ The value of `?match` for each query tells us whether that constraint of Guideli
 If I ate 1800 calories today (net -200), with no calories burned from exercise, have I met my dietary goal of losing weight??
 
 #### Query:
+In this query, we first find the guideline candidates (`?guideline`) to answer this question. We then find the associated cohort, and the type of its members (`?userConstraint`). Because of the question ('...have I met my dietary goal...'), we only consider guidelines that are have some restriction based on `pgo:hasWeightGoal`. Finally, we find the target of the recommendation (`?recTarget`) to check later.
+
 In Snap-SPARQL, with reasoner run:
 ```sparql
 SELECT DISTINCT ?guideline ?userConstraint ?recommendation ?recTarget WHERE {
@@ -92,22 +95,23 @@ SELECT DISTINCT ?guideline ?userConstraint ?recommendation ?recTarget WHERE {
 		owl:onProperty pgo:hasWeightGoal .
 
 	# Find target of recommendation
-	?guideline pgo:recommends ?recommendation .
-	?recommendation a ?recRestriction .
+	?guideline pgo:recommends/a ?recRestriction .
 	# (recommendation recommends some ?recTarget)
 	?recRestriction a owl:Restriction ;
 		owl:onProperty pgo:recommends ;
 		owl:someValuesFrom ?recTarget .
 }
 ```
-After running the above query, check whether the guideline applies to the user with the following query in snap-SPARQL+reasoner:
-(substitute in `?userConstraint` and `?recTarget` pairs from above)
+
+After running the above query, we need to find which guidelines are applicable to the user, and of those, whether the user already satisfies the recommendation (the user is on track).
+
+In snap-SPARQL+reasoner, substituting in `?userConstraint` and `?recTarget` pairs from above:
 ```sparql
 SELECT ?goalMet WHERE {
 	# Only consider guidelines that are applicable to the user
 	individuals:NamirXiaUser a ?userConstraint .
 	
-	# Find if the user has met the recommendation
+	# Find if the user has satisfied the recommendation
 	BIND(EXISTS {
 		individuals:NamirXiaUser a ?recTarget .
 	} as ?goalMet) .
@@ -124,31 +128,33 @@ SELECT ?goalMet WHERE {
 What carbohydrates should I be eating?
 
 #### Query:
+To answer this, we first find guideline candidates (`?guideline`) to answer the question. We then find the associated cohort, and the type of its members (`?userConstraint`). Because of the question ('what carbohydrates'), we only consider guidelines that recommend something marked as applying to `pgo:Carbohydrate`. Finally, we use other parts of the question ('eating') to only consider guidelines that recommend eating something, and extract the things that it suggests to eat (`?eatTarget`).
+
 In SPARQL:
 ```sparql
 SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
 	?guideline a pgo:Guideline ;
 		rdf:type ?restriction .
 
-	# Find guideline restriction
+	# Find guideline restriction (?guideline appliesTo some ?cohort)
 	?restriction a owl:Restriction ;
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom/owl:hasValue ?cohort .
 
-	# Find cohort restraint
+	# Find cohort restraint (?cohort 'has member' some ?userConstraint)
 	?cohort rdf:type ?p .
 	?p a owl:Restriction ;
 		owl:onProperty lcc-lr:hasMember ;
 		owl:someValuesFrom ?userConstraint .
 	?guideline pgo:recommends ?recommendation .
 
-	# Match recommendations relevant to carbohydrates
+	# Match recommendations relevant to carbohydrates (?recommendation appliesTo Carbohydrate)
 	?recommendation a ?recommendationFilt1 .
 	?recommendationFilt1 a owl:Restriction ;
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom pgo:Carbohydrate .
   
-	# Match recommendations relevant to eating
+	# Match recommendations relevant to eating (?recommendation recommends some (eats some ?eatTarget))
 	?recommendation a ?recommendationFilt2 .
 	?recommendationFilt2 a owl:Restriction ;
 		owl:onProperty pgo:recommends ;
@@ -159,13 +165,15 @@ SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
 }
 ```
 
-After running the above query, check whether the guideline applies and which food items it recommends to the user with the following query in snap-SPARQL+reasoner:
-(substitute in `?userConstraint` and `?eatTarget` pairs from above)
+After running the above query, we need to check if the guideline applies to the user and what food items it suggests eating.
+
+In snap-SPARQL+reasoner, substituting in `?userConstraint` and `?eatTarget` pairs from above:
 ```sparql
 SELECT ?food WHERE {
 	# Only consider guidelines that apply to the user
 	individuals:JaneSmithUser a ?userConstraint .
 	
+	# Find food items that are being recommended to eat
 	?food a ?eatTarget .
 }
 ```
