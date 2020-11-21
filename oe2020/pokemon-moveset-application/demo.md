@@ -39,7 +39,7 @@ PREFIX pkm-mvs-ind:  <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-mov
 ```
 
 ### Competency Questions
-
+- Download the SPARQL Queries [Here](https://docs.google.com/document/d/1d5yUYvRzTnKTj5QJUA99YBfmGUGpjkeNe9ChlYQnPsE/edit?usp=sharing)
 #### Competency Question 1
 
 - Question: 
