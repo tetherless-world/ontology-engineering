@@ -195,6 +195,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevel">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:label>activity level</rdfs:label>
+		<dct:source>https://en.wiktionary.org/wiki/Wiktionary:Main_Page.</dct:source>
 		<skos:definition>measure of the amount of physical activity an individual gets on a per day or per week basis</skos:definition>
 	</owl:Class>
 	
@@ -250,6 +251,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;AerobicExercise">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
 		<rdfs:label>aerobic exercise</rdfs:label>
+		<dct:source>https://en.wiktionary.org/wiki/Wiktionary:Main_Page.</dct:source>
 		<skos:definition>physical exercise that depends primarily on the aerobic energy-generating process</skos:definition>
 	</owl:Class>
 	
@@ -257,6 +259,7 @@
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Aspect"/>
 		<rdfs:label>age</rdfs:label>
+		<dct:source>https://en.wiktionary.org/wiki/Wiktionary:Main_Page.</dct:source>
 		<skos:definition>the number of full years, months, days, hours, etc., that someone, or something, has been alive</skos:definition>
 	</owl:Class>
 	
@@ -281,6 +284,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>blood sugar</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/dictionary/blood%20sugar</dct:source>
 		<skos:definition>the glucose in the blood; also, its concentration</skos:definition>
 	</owl:Class>
 	
@@ -293,12 +297,14 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>body mass</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/dictionary/body%20mass</dct:source>
 		<skos:definition>a measure of body fat that is the ratio of the weight of the body in kilograms to the square of its height in meters</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;BodyWeightExercise">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
 		<rdfs:label>body weight exercise</rdfs:label>
+		<dct:source>https://en.wiktionary.org/wiki/Wiktionary:Main_Page.</dct:source>
 		<skos:definition>strength-training exercises that use the individual&apos;s own weight to provide resistance against gravity</skos:definition>
 	</owl:Class>
 	
@@ -309,55 +315,77 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;CaloricallyDeficientAdult">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;has"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
 		<rdfs:label>calorically deficient adult</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
-				<owl:someValuesFrom>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:maxExclusive rdf:datatype="&xsd;integer">0</xsd:maxExclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</owl:equivalentClass>
-		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;has"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
-			</owl:Restriction>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
+						<owl:someValuesFrom>
+							<rdfs:Datatype>
+								<owl:onDatatype rdf:resource="&xsd;integer"/>
+								<owl:withRestrictions rdf:parseType="Collection">
+									<rdf:Description>
+										<xsd:maxExclusive rdf:datatype="&xsd;integer">0</xsd:maxExclusive>
+									</rdf:Description>
+								</owl:withRestrictions>
+							</rdfs:Datatype>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>a person of age who has an energy deficit</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;CaloricallySurplusedAdult">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;has"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergySurplus"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
 		<rdfs:label>calorically surplused adult</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
-				<owl:someValuesFrom>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</owl:equivalentClass>
-		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;has"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergySurplus"/>
-			</owl:Restriction>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
+						<owl:someValuesFrom>
+							<rdfs:Datatype>
+								<owl:onDatatype rdf:resource="&xsd;integer"/>
+								<owl:withRestrictions rdf:parseType="Collection">
+									<rdf:Description>
+										<xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
+									</rdf:Description>
+								</owl:withRestrictions>
+							</rdfs:Datatype>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>a person of age who has an energy surplus</skos:definition>
 	</owl:Class>
@@ -375,6 +403,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Carbohydrate">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Macronutrient"/>
 		<rdfs:label>carbohydrate</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>any of various neutral compounds of carbon, hydrogen, and oxygen (as sugars, starches, and celluloses) most of which are formed by green plants and which constitute a major class of animal foods</skos:definition>
 	</owl:Class>
 	
@@ -393,6 +422,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Cholesterol">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<rdfs:label>cholesterol</rdfs:label>
+		<dct:source>https://en.wiktionary.org/wiki/Wiktionary:Main_Page.</dct:source>
 		<skos:definition>a sterol lipid synthesized by the liver and transported in the bloodstream to the membranes of all animal cells; it plays a central role in many biochemical processes and, as a lipoprotein that coats the walls of blood vessels, is associated with cardiovascular disease</skos:definition>
 	</owl:Class>
 	
@@ -431,6 +461,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Dairy">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>dairy</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>food (such as ice cream, cheese, or yogurt) made primarily of or from milk</skos:definition>
 	</owl:Class>
 	
@@ -534,6 +565,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;DietaryGoal">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-gao-obj;Objective"/>
 		<rdfs:label>dietary goal</rdfs:label>
+		<dct:source>Patient Guideline Reccomender Group</dct:source>
 		<skos:definition>a goal related to a diet</skos:definition>
 	</owl:Class>
 	
@@ -587,6 +619,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Fiber">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Macronutrient"/>
 		<rdfs:label>fiber</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>material in food that stimulates the intestine and promotes elimination of waste from the large intestine</skos:definition>
 	</owl:Class>
 	
@@ -638,6 +671,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Fruit">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>fruit</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>the usually edible reproductive body of a seed plant, especially one having a sweet pulp associated with the seed</skos:definition>
 	</owl:Class>
 	
@@ -760,18 +794,21 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Insulin">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Medicine"/>
 		<rdfs:label>insulin</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>a hormone that is essential for the metabolism of carbohydrates and the regulation of glucose levels in the blood</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Jogging">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
 		<rdfs:label>jogging</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>to run or ride at a slow trot</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Legume">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>legume</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>a seed, pod, or other edible part of a leguminous plant, used as food</skos:definition>
 	</owl:Class>
 	
@@ -851,6 +888,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Meat">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>meat</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>animal tissue considered especially as food</skos:definition>
 	</owl:Class>
 	
@@ -1008,6 +1046,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Protein">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Macronutrient"/>
 		<rdfs:label>protein</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>a nutrient found in food (as meat, milk, eggs, and beans) that is made up of many amino acids joined together, is a necessary part of the diet, and is essential for normal cell structure and function</skos:definition>
 	</owl:Class>
 	
@@ -1107,6 +1146,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;TransFat">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Macronutrient"/>
 		<rdfs:label>trans fat</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>a fat containing trans-fatty acids</skos:definition>
 	</owl:Class>
 	
@@ -1130,6 +1170,7 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;Vegetable">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>vegetable</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<owl:equivalentClass>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;contains"/>
@@ -1171,12 +1212,29 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>weight loss</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>dietary goal of decreasing your weight</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;WeightLossRecommendation">
-		<rdf:type rdf:resource="&owl;Class"/>
 		<rdf:type rdf:resource="&oe2020-pat-rec;Recommendation"/>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;CaloricallyDeficientAdult"/>
+			</owl:Restriction>
+		</rdf:type>
+		<rdf:type>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;has"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdf:type>
 		<rdfs:label>weight loss recommendation</rdfs:label>
 		<skos:definition>As stated in guideline 8.7, the recommendation is that energy-deficit food intake will result in weight loss</skos:definition>
 	</owl:NamedIndividual>
@@ -1184,33 +1242,39 @@
 	<owl:Class rdf:about="&oe2020-pat-rec;WholeGrain">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Food"/>
 		<rdfs:label>whole grain</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>a cereal grain that contains cereal germ, endosperm, and bran, in contrast to refined grains, which retain only the endosperm</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Yoga">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;Exercise"/>
 		<rdfs:label>yoga</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>a system of physical postures, breathing techniques, and sometimes meditation derived from Yoga but often practiced independently especially in Western cultures to promote physical and emotional well-being</skos:definition>
 	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;benefits">
 		<rdfs:label>benefits</rdfs:label>
+		<dct:source>https://health.gov/our-work/physical-activity/current-guidelines</dct:source>
 		<skos:definition>something that produces good or helpful results or effects or that promotes well-being</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;canAffect">
 		<rdfs:label>can affect</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>to produce an effect upon someone or something</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;canIncrease">
 		<rdfs:label>can increase</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>to become progressively greater</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;contains">
 		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
 		<rdfs:label>contains</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/dictionary/contains</dct:source>
 		<skos:definition>to have within</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -1221,11 +1285,13 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;eats">
 		<rdfs:label>eats</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/dictionary/eats</dct:source>
 		<skos:definition>put (food) into the mouth and chew and swallow it.</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;engagesIn">
 		<rdfs:label>engages in</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>to induce to participate</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -1260,7 +1326,8 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasCharacteristic">
 		<rdfs:label>has characteristic</rdfs:label>
-		<skos:definition>a distinguishing trait, quality, or property</skos:definition>
+		<dct:source>https://www.merriam-webster.com/dictionary/characteristic</dct:source>
+		<skos:definition>has a distinguishing trait, quality, or property</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;hasCondition">
@@ -1315,6 +1382,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;isAfflictedWith">
 		<rdfs:label>is afflicted with</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>grievously affected or troubled</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -1329,16 +1397,19 @@
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;isRiskFactorFor">
 		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
 		<rdfs:label>is risk factor for</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>something that increases risk or susceptibility</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;isTreatedWith">
 		<rdfs:label>is treated with</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>to care for or deal with medically or surgically</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;livesWith">
 		<rdfs:label>lives with</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/</dct:source>
 		<skos:definition>to dwell with</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -1354,6 +1425,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pat-rec;restricts">
 		<rdfs:label>restricts</rdfs:label>
+		<dct:source>https://www.merriam-webster.com/dictionary/restricts</dct:source>
 		<rdfs:domain>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
