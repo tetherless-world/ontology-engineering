@@ -27,6 +27,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-agt="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
@@ -63,7 +64,6 @@
 		<dct:author>Mitchell Falkow, Jade Franklin, Zhepeng Luo, John Slowik</dct:author>
 		<dct:modified>11/20/2020</dct:modified>
 		<dct:publisher>Pokemontology Team</dct:publisher>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
@@ -86,6 +86,16 @@
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201120/pokemon-moveset/"/>
 		<skos:changeNote>This week we updated annotations on classes and completed the header.</skos:changeNote>
 	</owl:Ontology>
+	
+	<owl:AnnotationProperty rdf:about="&dct;author">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;publisher">
+	</owl:AnnotationProperty>
+	
+	<rdf:Description rdf:about="&fibo-fnd-utl-alx;Aspect">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Percentage"/>
+	</rdf:Description>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;BreedingPair">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-org-fm;Group"/>
@@ -120,6 +130,9 @@
 		</rdfs:subClassOf>
 		<rdfs:label>breeding pair</rdfs:label>
 		<skos:definition>set of two Pokémon bred together</skos:definition>
+		<fibo-fnd-utl-av:definitionOrigin>Pokemon-Moveset-Application Team</fibo-fnd-utl-av:definitionOrigin>
+		<fibo-fnd-utl-av:synonym>breed</fibo-fnd-utl-av:synonym>
+		<fibo-fnd-utl-av:termOrigin>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_breeding</fibo-fnd-utl-av:termOrigin>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Character">
@@ -147,12 +160,14 @@
 		</rdfs:subClassOf>
 		<rdfs:label>egg group</rdfs:label>
 		<skos:definition>collection of Pokémon species that are able to interbreed</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Egg_Group</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolutionItem">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;Item"/>
 		<rdfs:label>evolution item</rdfs:label>
 		<skos:definition>item that causes a Pokémon to undergo evolution</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution_item</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolutionMethod">
@@ -166,18 +181,22 @@
 		</rdfs:subClassOf>
 		<rdfs:label>evolution method</rdfs:label>
 		<skos:definition>conditions for triggering evolution in a specific Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>method of evolution</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolveByFriendship">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<rdfs:label>evolve by friendship</rdfs:label>
 		<skos:definition>evolution method characterized by a required level of friendship with a Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolveByItem">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<rdfs:label>evolve by item</rdfs:label>
 		<skos:definition>evolution method characterized by the use of an item on a Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolveByLevelUp">
@@ -190,25 +209,31 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>evolve by level up</rdfs:label>
-		<skos:definition>evolution method characterized by a minimum required Pokémon level</skos:definition>
+		<skos:definition>evolution method characterized by the Pokémon increasing in level and meeting or exceeding a specific level; a player may choose to stop the Pokémon from evolving any time it attempts to evolve</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>evolve by training</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolveByTimeOfDay">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<rdfs:label>evolve by time of day</rdfs:label>
 		<skos:definition>evolution method characterized by a required time of day</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolveByTrade">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<rdfs:label>evolve by trade</rdfs:label>
+		<skos:altLabel>evolve by Pokémon trade</skos:altLabel>
 		<skos:definition>evolution method characterized by a trade between two players</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;EvolveByUniqueProcess">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<rdfs:label>evolve by unique process</rdfs:label>
 		<skos:definition>evolution method characterized by a unique process or set of triggers</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pkm-mvs;Female">
@@ -227,6 +252,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>female gender ratio</rdfs:label>
 		<skos:definition>ratio indicating the percentage female gender that a given Pokémon has with respect to breeding ability</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_gender_ratio</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;FemalePokemon">
@@ -244,6 +270,7 @@
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>Pokémon whose gender is female</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Gender</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Friendship">
@@ -251,6 +278,7 @@
 		<rdfs:label>friendship</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2020-pkm-mvs;Level"/>
 		<skos:definition>measure of a Pokémon&apos;s level of attachment to the player character</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Friendship</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Gender">
@@ -277,6 +305,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>gender ratio</rdfs:label>
 		<skos:definition>ratio indicating the percentage gender that a given Pokémon has</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_gender_ratio</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Item">
@@ -288,18 +317,22 @@
 		</rdfs:subClassOf>
 		<rdfs:label>item</rdfs:label>
 		<skos:definition>a in-game object that can be used on or by Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Item</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnByInheritance">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<rdfs:label>learn by inheritance</rdfs:label>
 		<skos:definition>learn method in which a move is learned by breeding two Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnByLevelUp">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<rdfs:label>learn by level up</rdfs:label>
-		<skos:definition>learn method in which a move is learned upon reaching a certain Pokémon level</skos:definition>
+		<skos:definition>a learn method in which a move is learned when a Pokémon reaches a particular level</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>learn by training</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnFromItem">
@@ -312,6 +345,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>learn from item</rdfs:label>
 		<skos:definition>learn method in which a move is learned by using an item on a Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnFromMoveSource">
@@ -336,6 +370,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>learn from move tutor</rdfs:label>
 		<skos:definition>learn method in which a move is learned by interacting with a move tutor</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;LearnMethod">
@@ -348,12 +383,14 @@
 		</rdfs:subClassOf>
 		<rdfs:label>learn method</rdfs:label>
 		<skos:definition>conditions for acquiring a move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Level">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;PokemonStatistic"/>
 		<rdfs:label>level</rdfs:label>
 		<skos:definition>measurement of Pokémon strength</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Level</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pkm-mvs;Male">
@@ -372,6 +409,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>male gender ratio</rdfs:label>
 		<skos:definition>ratio indicating the percentage male gender that a given Pokémon has with respect to breeding ability</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_gender_ratio</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;MalePokemon">
@@ -389,6 +427,7 @@
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>Pokémon whose gender is male</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Gender</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Move">
@@ -399,7 +438,10 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>move</rdfs:label>
+		<skos:altLabel>Attack</skos:altLabel>
+		<skos:altLabel>Technique</skos:altLabel>
 		<skos:definition>ability or action a Pokémon can use</skos:definition>
+		<fibo-fnd-utl-av:definitionOrigin>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:definitionOrigin>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;MoveItem">
@@ -421,6 +463,8 @@
 		</rdfs:subClassOf>
 		<rdfs:label>move item</rdfs:label>
 		<skos:definition>item that can be used to teach a Pokémon a move</skos:definition>
+		<fibo-fnd-utl-av:definitionOrigin>Pokemon-Moveset-Application Team</fibo-fnd-utl-av:definitionOrigin>
+		<fibo-fnd-utl-av:termOrigin>Pokemon-Moveset-Application Team</fibo-fnd-utl-av:termOrigin>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;MoveSource">
@@ -432,6 +476,8 @@
 		</rdfs:subClassOf>
 		<rdfs:label>move source</rdfs:label>
 		<skos:definition>in-game entity that can teach a Pokémon one or more moves</skos:definition>
+		<fibo-fnd-utl-av:definitionOrigin>Pokemon-Moveset-Application Team</fibo-fnd-utl-av:definitionOrigin>
+		<fibo-fnd-utl-av:termOrigin>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:termOrigin>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;MoveTutor">
@@ -439,6 +485,8 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;NonPlayerCharacter"/>
 		<rdfs:label>move tutor</rdfs:label>
 		<skos:definition>a non-player character who will teach a Pokémon specific moves</skos:definition>
+		<fibo-fnd-utl-av:definitionOrigin>https://bulbapedia.bulbagarden.net/wiki/Move_Tutor</fibo-fnd-utl-av:definitionOrigin>
+		<fibo-fnd-utl-av:synonym>tutor</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pkm-mvs;NonBinary">
@@ -459,44 +507,57 @@
 		<rdfs:label>non-player character</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2020-pkm-mvs;PlayerCharacter"/>
 		<skos:definition>character whose actions cannot be controlled by the player (i.e., person operating the handheld or console)</skos:definition>
+		<skos:example>Professor Oak is an important NPC in game that gives away starter Pokémon to first time Trainers</skos:example>
+		<skos:scopeNote>This term is commonly used in most role-playing games</skos:scopeNote>
 		<fibo-fnd-utl-av:abbreviation>NPC</fibo-fnd-utl-av:abbreviation>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://bulbapedia.bulbagarden.net/wiki/Non-player_character</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:explanatoryNote>NPCs&apos; main function is to further the story progress Their duties vary Some provide gifts or in-game trades while some give advice to new players</fibo-fnd-utl-av:explanatoryNote>
+		<fibo-fnd-utl-av:synonym>non-playable character</fibo-fnd-utl-av:synonym>
+		<fibo-fnd-utl-av:termOrigin>https://www.smogon.com/ingame/guides/swsh_ingame_tips_and_tricks</fibo-fnd-utl-av:termOrigin>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromBreeding">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<rdfs:label>obtain from breeding</rdfs:label>
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively by breeding two Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Egg</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromEgg">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<rdfs:label>obtain from egg</rdfs:label>
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively through hatching an egg that is received from in-game (via story progression or some non-player character)</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Egg</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromEvent">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<rdfs:label>obtain from event</rdfs:label>
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively through a Pokémon event</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Event_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromEvolution">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<rdfs:label>obtain from evolution</rdfs:label>
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively evolving another Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromNonPlayerCharacter">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<rdfs:label>obtain from non-player character</rdfs:label>
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively through interaction with a non-player character</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Gift_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:termOrigin>Pokemon-Moveset-Application Team</fibo-fnd-utl-av:termOrigin>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromTrade">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<rdfs:label>obtain from trade</rdfs:label>
+		<skos:altLabel>obtain from Pokémon trade</skos:altLabel>
 		<skos:definition>obtain method characterized by a Pokémon species being obtainable exclusively via trading with between two players</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/In-game_trade</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainFromWild">
@@ -508,17 +569,21 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>obtain from wild</rdfs:label>
-		<skos:definition>obtain method characterized by a Pokémon species being obtainable through wild encounters in a specific Pokémon location</skos:definition>
+		<skos:definition>an obtain method characterized by the ability to encounter and subsequently catch a Pokémon species in a location</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Caught_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>catch a Pokémon</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;ObtainMethod">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-gao-obj;Strategy"/>
 		<rdfs:label>obtain method</rdfs:label>
 		<skos:definition>strategy employed by a player for adding a Pokémon to their collection</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Caught_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;OffspringPokemon">
 		<rdfs:label>offspring Pokémon</rdfs:label>
+		<dct:identifier>http://purl.org/pokemonmovesetontology/kb#InstanceSource</dct:identifier>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -538,6 +603,8 @@
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>result of breeding two Pokémon together</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Egg</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>child Pokémon</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Player">
@@ -551,7 +618,8 @@
 		</rdfs:subClassOf>
 		<rdfs:label>player</rdfs:label>
 		<skos:definition>person who takes part or is skilled in Pokémon games</skos:definition>
-		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.collinsdictionary.com/dictionary/english/player</fibo-fnd-utl-av:adaptedFrom>
+		<skos:prefLabel>player</skos:prefLabel>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://bulbapedia.bulbagarden.net/wiki/Player_character</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;PlayerCharacter">
@@ -567,6 +635,7 @@
 		<skos:definition>main character in a Pokémon game that is an avatar for a human player</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://bulbapedia.bulbagarden.net/wiki/Player_character</fibo-fnd-utl-av:adaptedFrom>
 		<fibo-fnd-utl-av:explanatoryNote>It is left up to the real player to &apos;fill in&apos; what they imagine the character is feeling, thinking, and acting, thus immersing them within the world of the game.</fibo-fnd-utl-av:explanatoryNote>
+		<fibo-fnd-utl-av:synonym>PC</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;Pokemon">
@@ -617,12 +686,16 @@
 		</rdfs:subClassOf>
 		<rdfs:label>Pokémon</rdfs:label>
 		<skos:definition>fictional, animated monster that can be captured by a player and trained to fight with other monsters on behalf of the player</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_(species)</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;PokemonEvent">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-oc;Occurrence"/>
 		<rdfs:label>Pokémon event</rdfs:label>
 		<skos:definition>a promotional event in which a Pokémon is distributed</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Event_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>community event</fibo-fnd-utl-av:synonym>
+		<fibo-fnd-utl-av:synonym>event</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;PokemonFamily">
@@ -637,7 +710,9 @@
 		</rdfs:subClassOf>
 		<rdfs:label>Pokémon family</rdfs:label>
 		<skos:definition>set of Pokémon related by evolution</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_evolution_family</fibo-fnd-utl-av:adaptedFrom>
 		<fibo-fnd-utl-av:explanatoryNote>The species at the lowest evolutionary stage in an evolutionary family can ultimately evolve into any member of the evolutionary family.</fibo-fnd-utl-av:explanatoryNote>
+		<fibo-fnd-utl-av:synonym>Pokémon species</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;PokemonLocation">
@@ -651,6 +726,8 @@
 		</rdfs:subClassOf>
 		<rdfs:label>Pokémon location</rdfs:label>
 		<skos:definition>a location in a Pokémon game</skos:definition>
+		<fibo-fnd-utl-av:definitionOrigin>Pokemon-Moveset-Application Team</fibo-fnd-utl-av:definitionOrigin>
+		<fibo-fnd-utl-av:termOrigin>https://bulbapedia.bulbagarden.net/wiki/List_of_locations_by_name</fibo-fnd-utl-av:termOrigin>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;PokemonStatistic">
@@ -658,18 +735,26 @@
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Aspect"/>
 		<rdfs:label>Pokémon statistic</rdfs:label>
 		<skos:definition>value or measure associated with some Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Statistic</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>stat</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;TechnicalMachine">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;MoveItem"/>
 		<rdfs:label>technical machine</rdfs:label>
 		<skos:definition>item that can be used to teach a Pokémon a move (infinite uses)</skos:definition>
+		<fibo-fnd-utl-av:abbreviation>TM</fibo-fnd-utl-av:abbreviation>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/TM</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>TM</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pkm-mvs;TechnicalRecord">
 		<rdfs:subClassOf rdf:resource="&oe2020-pkm-mvs;MoveItem"/>
 		<rdfs:label>technical record</rdfs:label>
 		<skos:definition>item that can be used to teach a Pokémon a move (single uses)</skos:definition>
+		<fibo-fnd-utl-av:abbreviation>TR</fibo-fnd-utl-av:abbreviation>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/TR</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>TR</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2020-pkm-mvs;UnknownGender">
@@ -696,6 +781,7 @@
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;evolvesInto"/>
 		<skos:definition>indicates that a Pokémon is the results from a specific Pokémon that has undergoing evolution</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;evolvesInto">
@@ -705,6 +791,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<skos:definition>indicates that a Pokémon undergoes evolution and results in a specific Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasAssociatedMoveSource">
@@ -712,6 +799,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnFromMoveSource"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
 		<skos:definition>indicates a learn method has an associated move source for a specific move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasBreedingPartner">
@@ -736,6 +824,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<skos:definition>indicates the method by which a Pokémon evolves</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasFriendship">
@@ -765,6 +854,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<skos:definition>indicates the method by which a Pokémon can learn a move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasLevel">
@@ -775,10 +865,11 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasMoveSource">
 		<rdfs:label>has move source</rdfs:label>
+		<rdfs:comment>has move source</rdfs:comment>
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Move"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
 		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;isMoveSourceFor"/>
-		<skos:definition>indicates a move has a specific move source</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasObtainMethod">
@@ -787,6 +878,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<skos:definition>indicates the method by which a Pokémon can be obtained</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Caught_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasPokemonStatistic">
@@ -805,17 +897,20 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;PokemonEvent"/>
 		<skos:definition>indicates a specific Pokémon event in which a specific Pokémon is distributed</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Event_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromNonPlayerCharacter">
 		<rdfs:label>is from non-player character</rdfs:label>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;NonPlayerCharacter"/>
 		<skos:definition>indicates that a Pokémon or item can be obtained from a non-player character</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Non-player_character</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromParent">
 		<rdfs:label>is from parent</rdfs:label>
 		<skos:definition>indicates a move can be inherited from a specific Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_breeding</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isInheritedFrom">
@@ -823,6 +918,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnByInheritance"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<skos:definition>Indicate that the move can be inherited from a Pokemon via breeding</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_breeding</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isLearnMethodFor">
@@ -830,6 +926,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Move"/>
 		<skos:definition>indicates a learn method is related to a specific move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isMoveSourceFor">
@@ -837,12 +934,14 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Move"/>
 		<skos:definition>indicates a move source is the source of a specific move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isResultOf">
 		<rdfs:label>is result of</rdfs:label>
 		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;resultsIn"/>
 		<skos:definition>indicates a Pokémon is the product of a specific evolution method</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;precedes">
@@ -864,6 +963,8 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<skos:definition>indicates an evolution method produces a specific Pokémon</skos:definition>
+		<skos:prefLabel>evolves from</skos:prefLabel>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;succeeds">
