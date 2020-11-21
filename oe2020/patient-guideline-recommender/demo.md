@@ -46,7 +46,7 @@ SELECT DISTINCT ?userConstraint WHERE {
 }
 ```
 
-After matching `?userConstraint` values, we then run the following query in snap-SPARQL with the reasoner (substututing the values of the previous query for `?userConstraint`):
+After matching `?userConstraint` values, we then run the following query in snap-SPARQL with the reasoner:
 (substitute in `?userConstraint` from above)
 ```sparql
 SELECT ?match WHERE {
