@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-fnd-aap-ppl "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/">
 	<!ENTITY fibo-fnd-arr-arr "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/">
@@ -26,6 +27,7 @@
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
 	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
@@ -52,6 +54,7 @@
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/">
 		<rdfs:label>Patient Guideline Recommender Ontology</rdfs:label>
+		<dc:publisher>Patient Guideline Group</dc:publisher>
 		<dct:abstract>The goal of this project is to provide the tools to assess the nutritional/lifestyle needs of a diabetic patient. We would do this by developing an ontology-enabled application that would use the ontology tocould answer patient questions based on the recommendations detailed in the authoritative literature in the diabetes domain, the Standards of Medical Care, Clinical Practice Guidelines (CPG) released by the American Diabetes Association (ADA). The ontology should also match them to the guidelines that are relevant to them.</dct:abstract>
 		<dct:contributor>Deborah McGuinness</dct:contributor>
 		<dct:contributor>Elisa Kendall</dct:contributor>
@@ -62,8 +65,9 @@
 		<dct:creator>Travis Peterson</dct:creator>
 		<dct:modified>2020-11-20</dct:modified>
 		<sm:copyright>copyright (c) 2020 Liam Feehery, Ishita Padhiar, Travis Peterson, and Bolun &quot;Namir&quot; Xia</sm:copyright>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
+		<sm:priorVersion>https://drive.google.com/file/d/1L1kWN3GlH3k3XKmB6yzDS04Yi5AqgKaE/view?usp=sharing</sm:priorVersion>
+		<owl:imports rdf:resource="http://purl.org/NET/dc_owl2dl/elements"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"/>
@@ -424,21 +428,21 @@
 		<rdf:type rdf:resource="&oe2020-pat-rec;Recommendation"/>
 		<rdf:type>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Carbohydrate"/>
+			</owl:Restriction>
+		</rdf:type>
+		<rdf:type>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-pat-rec;recommends"/>
 				<owl:someValuesFrom>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2020-pat-rec;eats" />
-						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;FiberousFood" />
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;eats"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;FiberousFood"/>
 					</owl:Restriction>
 				</owl:someValuesFrom>
 			</owl:Restriction>
 		</rdf:type>
-		<rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
-                <owl:someValuesFrom rdf:resource="&oe2020-pat-rec;Carbohydrate"/>
-            </owl:Restriction>
-        </rdf:type>
 		<rdfs:label>carbohydrate recommendation</rdfs:label>
 		<skos:definition>As stated in guideline 5.12- the recomendation is to emphasize nutrient-dense carbohydrate sources that are high in fiber, including vegetables, fruits, legumes, whole grains, as well as dairy products</skos:definition>
 	</owl:NamedIndividual>
