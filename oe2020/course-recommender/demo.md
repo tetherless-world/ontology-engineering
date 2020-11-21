@@ -6,27 +6,31 @@
 ## Competency Questions
 
 ### Competency Question 1
+
 #### Question
+
 What are all the prerequisite courses need to take the CSCI 4340 Ontologies course?
 
 #### Query
+
 ```sparql
 prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
 prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
-SELECT DISTINCT ?preReqCourse ?prcName
+SELECT DISTINCT ?prerequisiteCourse ?prerequisiteCourseName
 WHERE {  
   VALUES ?targetCourseTag { "CSCI-4340" }
   ?targetcourse oe2020-crs-rec:hasCourseCode [ lcc-lr:hasTag ?targetCourseTag ] ;
-                oe2020-crs-rec:hasRequiredPrerequisite+ ?preReqCourse .
-  ?preReqCourse oe2020-crs-rec:hasName ?prcName .
+                oe2020-crs-rec:hasRequiredPrerequisite+ ?prerequisiteCourse .
+  ?prerequisiteCourse oe2020-crs-rec:hasName ?prerequisiteCourseName .
 }
 ```
 
 #### Example Results
+
 *Note that the example URLs use a namespace prefix for ease-of-reading.*
 
-| preReqCourse                 | prcName                         |
+| prerequisiteCourse           | prerequisiteCourseName          |
 |------------------------------|---------------------------------|
 | oe2020-crs-rec-ind:crs000102 | Computer Science I              |
 | oe2020-crs-rec-ind:crs000138 | Data Structures                 |
@@ -34,6 +38,7 @@ WHERE {
 | oe2020-crs-rec-ind:crs000205 | Introduction to Algorithms      |
 
 ### Competency Question 2
+
 #### Question
 *This question will use the course history of Jacob Shomstein to produce an answer, but a full list of courses completed is omitted for privacy.*
 
