@@ -64,7 +64,6 @@
 		<dct:author>Mitchell Falkow, Jay Franklin, Zhepeng Luo, John Slowik</dct:author>
 		<dct:modified>11/20/2020</dct:modified>
 		<dct:publisher>Pokemontology Team</dct:publisher>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
@@ -87,6 +86,12 @@
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201120/pokemon-moveset/"/>
 		<skos:changeNote>This week we updated annotations on classes and completed the header.</skos:changeNote>
 	</owl:Ontology>
+	
+	<owl:AnnotationProperty rdf:about="&dct;author">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;publisher">
+	</owl:AnnotationProperty>
 	
 	<rdf:Description rdf:about="&fibo-fnd-utl-alx;Aspect">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Percentage"/>
@@ -776,6 +781,7 @@
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;evolvesInto"/>
 		<skos:definition>indicates that a Pokémon is the results from a specific Pokémon that has undergoing evolution</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;evolvesInto">
@@ -785,6 +791,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<skos:definition>indicates that a Pokémon undergoes evolution and results in a specific Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasAssociatedMoveSource">
@@ -792,6 +799,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnFromMoveSource"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
 		<skos:definition>indicates a learn method has an associated move source for a specific move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasBreedingPartner">
@@ -816,6 +824,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;EvolutionMethod"/>
 		<skos:definition>indicates the method by which a Pokémon evolves</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasFriendship">
@@ -845,6 +854,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<skos:definition>indicates the method by which a Pokémon can learn a move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasLevel">
@@ -859,6 +869,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Move"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
 		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;isMoveSourceFor"/>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasObtainMethod">
@@ -867,6 +878,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;ObtainMethod"/>
 		<skos:definition>indicates the method by which a Pokémon can be obtained</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Caught_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;hasPokemonStatistic">
@@ -885,17 +897,20 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;PokemonEvent"/>
 		<skos:definition>indicates a specific Pokémon event in which a specific Pokémon is distributed</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Event_Pok%C3%A9mon</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromNonPlayerCharacter">
 		<rdfs:label>is from non-player character</rdfs:label>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;NonPlayerCharacter"/>
 		<skos:definition>indicates that a Pokémon or item can be obtained from a non-player character</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Non-player_character</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isFromParent">
 		<rdfs:label>is from parent</rdfs:label>
 		<skos:definition>indicates a move can be inherited from a specific Pokémon</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_breeding</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isInheritedFrom">
@@ -903,6 +918,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnByInheritance"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<skos:definition>Indicate that the move can be inherited from a Pokemon via breeding</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_breeding</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isLearnMethodFor">
@@ -910,6 +926,7 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;LearnMethod"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Move"/>
 		<skos:definition>indicates a learn method is related to a specific move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isMoveSourceFor">
@@ -917,12 +934,14 @@
 		<rdfs:domain rdf:resource="&oe2020-pkm-mvs;MoveSource"/>
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Move"/>
 		<skos:definition>indicates a move source is the source of a specific move</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Move</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;isResultOf">
 		<rdfs:label>is result of</rdfs:label>
 		<owl:inverseOf rdf:resource="&oe2020-pkm-mvs;resultsIn"/>
 		<skos:definition>indicates a Pokémon is the product of a specific evolution method</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;precedes">
@@ -945,6 +964,7 @@
 		<rdfs:range rdf:resource="&oe2020-pkm-mvs;Pokemon"/>
 		<skos:definition>indicates an evolution method produces a specific Pokémon</skos:definition>
 		<skos:prefLabel>evolves from</skos:prefLabel>
+		<fibo-fnd-utl-av:adaptedFrom>https://bulbapedia.bulbagarden.net/wiki/Evolution</fibo-fnd-utl-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-pkm-mvs;succeeds">
