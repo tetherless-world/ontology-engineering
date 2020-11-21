@@ -1,0 +1,35 @@
+# Competency Question 3
+#
+# Goal:
+#   I have taken CSCI 4340 Ontologies and CSCI 4020 Design and Analysis of
+#   Algorithms. What are some courses like CSCI 6340 Ontologies that I should
+#   take next fall?
+# 
+# Explanation:
+#   ...fill...
+
+
+prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
+prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
+prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
+SELECT DISTINCT ?validCourse
+WHERE {
+  VALUES ?completedCourseTag { "CSCI-4340" "CSCI-4020" }
+  ?completedCourse oe2020-crs-rec:hasCourseCode [
+    lcc-lr:hasTag ?completedCourseTag
+  ] .
+  ?completedCourse oe2020-crs-rec:hasRequiredPrerequisite* ?completedCourseInferred .
+  ?validCourseSec a oe2020-crs-rec:CourseSection ;
+                  oe2020-crs-rec:hasSchedule [
+                   oe2020-crs-rec:hasTerm "fall" ;
+                   oe2020-crs-rec:hasYear 2020
+                 ] ;
+                  oe2020-crs-rec:isCourseSectionOf ?validCourse .
+  ?validCourse a oe2020-crs-rec:Course .
+  FILTER NOT EXISTS {
+    ?validCourse oe2020-crs-rec:hasRequiredPrerequisite+ ?filterPrereqs .
+    FILTER(?filterPreqreqs != ?completedCourseInferred)
+  }
+  FILTER (?validCourse != ?completedCourseInferred)
+}
+LIMIT 10
