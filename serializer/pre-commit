@@ -137,10 +137,18 @@ function serialize() {
       fi
     fi
 
+    local target_format
 
     case ${extension} in
     	ttl)
+        target_format=turtle
      	  ;;
+      rdf)
+        target_format=rdf-xml
+        ;;
+      jsonld)
+        target_format=json-ld
+        ;;
       *)
         log "Skipping unsupported file $file"
         return 0
@@ -180,7 +188,7 @@ __log_config__
     "${java_exe}" -Xmx1g "-Dorg.clapper.avsl.config=${logcfg}" -cp "${RDF_TOOLKIT_JAR}" org.edmcouncil.rdf_toolkit.SesameRdfFormatter \
       --source "${file}" \
       --target "${file}X" \
-      --target-format turtle \
+      --target-format "${target_format}" \
       --use-dtd-subset \
       --inline-blank-nodes \
       --infer-base-iri
