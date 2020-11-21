@@ -309,55 +309,77 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;CaloricallyDeficientAdult">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;has"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
 		<rdfs:label>calorically deficient adult</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
-				<owl:someValuesFrom>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:maxExclusive rdf:datatype="&xsd;integer">0</xsd:maxExclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</owl:equivalentClass>
-		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;has"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergyDeficit"/>
-			</owl:Restriction>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
+						<owl:someValuesFrom>
+							<rdfs:Datatype>
+								<owl:onDatatype rdf:resource="&xsd;integer"/>
+								<owl:withRestrictions rdf:parseType="Collection">
+									<rdf:Description>
+										<xsd:maxExclusive rdf:datatype="&xsd;integer">0</xsd:maxExclusive>
+									</rdf:Description>
+								</owl:withRestrictions>
+							</rdfs:Datatype>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>a person of age who has an energy deficit</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;CaloricallySurplusedAdult">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-ppl;Adult"/>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;has"/>
+						<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergySurplus"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
 		<rdfs:label>calorically surplused adult</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
-				<owl:someValuesFrom>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</owl:equivalentClass>
-		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;has"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-pat-rec;EnergySurplus"/>
-			</owl:Restriction>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&fibo-fnd-aap-ppl;Adult">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2020-pat-rec;hasNetCalories"/>
+						<owl:someValuesFrom>
+							<rdfs:Datatype>
+								<owl:onDatatype rdf:resource="&xsd;integer"/>
+								<owl:withRestrictions rdf:parseType="Collection">
+									<rdf:Description>
+										<xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
+									</rdf:Description>
+								</owl:withRestrictions>
+							</rdfs:Datatype>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>a person of age who has an energy surplus</skos:definition>
 	</owl:Class>
