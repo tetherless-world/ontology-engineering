@@ -28,17 +28,17 @@ Related to Guideline 5.27:
 How does this guideline recommendation apply to me?
 
 #### Query:
-In SPARQL, with reasoner run:
+In SPARQL:
 ```sparql
 SELECT DISTINCT ?userConstraint WHERE {
 	pgo:Guideline-5.27 a ?restriction .
   
-	# Find guideline restriction
+	# Find guideline restriction (Guideline-5.27 appliesTo some ?cohort)
 	?restriction a owl:Restriction ;
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom/owl:hasValue ?cohort .
     
-	# Find cohort restraint
+	# Find cohort restraint (?cohort 'has member' some ?userConstraint)
 	?cohort rdf:type ?p .
 	?p a owl:Restriction ;
 		owl:onProperty lcc-lr:hasMember ;
@@ -47,8 +47,10 @@ SELECT DISTINCT ?userConstraint WHERE {
 ```
 
 After matching `?userConstraint` values, we then run the following query in snap-SPARQL with the reasoner (substututing the values of the previous query for `?userConstraint`):
+(substitute in `?userConstraint` from above)
 ```sparql
 SELECT ?match WHERE {
+	# Check if user matches guideline constraint
 	BIND(EXISTS {
 		individuals:JaneSmithUser a ?userConstraint .
 	} as ?match) .
@@ -58,27 +60,57 @@ The value of `?match` for each query tells us whether that constraint of Guideli
 
 ### Competency Question 2
 
+#### Context:
+ - Dietary goal of 2000 calories
+ - Weight loss goal
+
 #### Question:
 
-If I ate 1800 calories today, with no calories burned from exercise, have I met my dietary goal of losing weight??
+If I ate 1800 calories today (net -200), with no calories burned from exercise, have I met my dietary goal of losing weight??
 
 #### Query:
 In Snap-SPARQL, with reasoner run:
 ```sparql
-SELECT DISTINCT ?user ?goalMet WHERE {
-  ?user a people:Adult .
-  ?user pgo:hasWeightGoal ?weightloss .
-  ?user a ?typicalPatient .
-  ?typicalPatient rdfs:subClassOf pgo:TypicalPatient .
-  ?typicalPatInst a ?typicalPatient .
-  ?guideline rdfs:subClassOf pgo:Guideline .
-  ?guidelineInst a ?guideline .
-  ?guidelineInst fiboRelations:appliesTo ?typicalPatInst .
-  ?guidelineInst pgo:recommends ?recommendation .
-  ?recommendation a pgo:Recommendation .
-  ?recommendationInst a pgo:Recommendation .
-  FILTER(?recommendationInst = ?user) .
-  BIND (IF (?recommendationInst = ?user, True, False) as ?goalMet) .
+SELECT DISTINCT ?guideline ?userConstraint ?recommendation ?recTarget WHERE {
+	?guideline a pgo:Guideline ;
+		rdf:type ?restriction .
+
+	# Find guideline restriction (?guideline appliesTo some ?cohort)
+	?restriction a owl:Restriction ;
+		owl:onProperty fiboRelations:appliesTo ;
+		owl:someValuesFrom/owl:hasValue ?cohort .
+
+	# Find cohort restraint (?cohort 'has member' some ?userConstraint)
+	?cohort rdf:type ?p .
+	?p a owl:Restriction ;
+		owl:onProperty lcc-lr:hasMember ;
+		owl:someValuesFrom ?userConstraint .
+
+	# Only consider user constraints that restrict based on weight goal (?userConstraint 'equivalent to' hasWeightGoal *)
+	?userConstraint owl:equivalentClass ?userFilt .
+	?userFilt a owl:Restriction ;
+		owl:onProperty pgo:hasWeightGoal .
+
+	# Find target of recommendation
+	?guideline pgo:recommends ?recommendation .
+	?recommendation a ?recRestriction .
+	# (recommendation recommends some ?recTarget)
+	?recRestriction a owl:Restriction ;
+		owl:onProperty pgo:recommends ;
+		owl:someValuesFrom ?recTarget .
+}
+```
+After running the above query, check whether the guideline applies to the user with the following query in snap-SPARQL+reasoner:
+(substitute in `?userConstraint` and `?recTarget` pairs from above)
+```sparql
+SELECT ?goalMet WHERE {
+	# Only consider guidelines that are applicable to the user
+	individuals:NamirXiaUser a ?userConstraint .
+	
+	# Find if the user has met the recommendation
+	BIND(EXISTS {
+		individuals:NamirXiaUser a ?recTarget .
+	} as ?goalMet) .
 }
 ```
 
@@ -126,54 +158,14 @@ SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
 		owl:someValuesFrom ?eatTarget .
 }
 ```
-After running the above query, check whether the guideline applies to the user with the following query in snap-SPARQL+reasoner:
-```sparql
-SELECT ?match WHERE {
-	BIND(EXISTS {
-		individuals:JaneSmithUser a ?userConstraint .
-	} as ?match) .
-}
-```
-For each guideline that matches, find all items of food to eat with the following query in snap-SPARQL+reasoner:
+
+After running the above query, check whether the guideline applies and which food items it recommends to the user with the following query in snap-SPARQL+reasoner:
+(substitute in `?userConstraint` and `?eatTarget` pairs from above)
 ```sparql
 SELECT ?food WHERE {
+	# Only consider guidelines that apply to the user
+	individuals:JaneSmithUser a ?userConstraint .
+	
 	?food a ?eatTarget .
-}
-```
-
-## SPARQL query to retrieve matched guideline for patient
-
-
-```sparql
-SELECT DISTINCT ?user ?matchedGuideline ?recommendation WHERE {
-  ?user a people:Adult .
-  ?user a ?matchedGuideline .
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuideline rdfs:subClassOf ?recommendation .
-  ?recommendation rdfs:subClassOf individuals:Recommendation .
-}
-```
-
-```sparql
-SELECT DISTINCT ?matchedGuideline ?object {
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuideline (rdfs:subClassOf|owl:equivalentClass) ?object .
-}
-
-SELECT DISTINCT ?user ?matchedGuideline ?object WHERE {
-  ?user a people:Adult .
-  ?user a ?matchedGuideline .
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuideline owl:equivalentClass ?object .
-}
-
-SELECT DISTINCT ?actionInstances WHERE {
-  ?matchedGuidelineInstance a ?matchedGuideline .
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuidelineInstance pgo:recommends ?recommendationInstance .
-  ?recommendationInstance a ?recommendation .
-  ?recommendation rdfs:subClassOf pgo:Recommendation .
-  ?recommendation owl:equivalentClass ?action .
-  ?actionInstances a ?action .
 }
 ```
