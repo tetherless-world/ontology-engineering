@@ -31,9 +31,9 @@ How does this guideline recommendation apply to me?
 In SPARQL, with reasoner run:
 ```sparql
 SELECT DISTINCT ?userConstraint WHERE {
-  pgo:Guideline-5.27 a ?restriction .
+	pgo:Guideline-5.27 a ?restriction .
   
-  # Find guideline restriction
+	# Find guideline restriction
 	?restriction a owl:Restriction ;
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom/owl:hasValue ?cohort .
@@ -49,9 +49,9 @@ SELECT DISTINCT ?userConstraint WHERE {
 After matching `?userConstraint` values, we then run the following query in snap-SPARQL with the reasoner (substututing the values of the previous query for `?userConstraint`):
 ```sparql
 SELECT ?match WHERE {
-  BIND(EXISTS {
-    individuals:JaneSmithUser a ?userConstraint .
-  } as ?match) .
+	BIND(EXISTS {
+		individuals:JaneSmithUser a ?userConstraint .
+	} as ?match) .
 }
 ```
 The value of `?match` for each query tells us whether that constraint of Guideline 5.27 is applicable to the user.
@@ -116,7 +116,7 @@ SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom pgo:Carbohydrate .
   
-  # Match recommendations relevant to eating
+	# Match recommendations relevant to eating
 	?recommendation a ?recommendationFilt2 .
 	?recommendationFilt2 a owl:Restriction ;
 		owl:onProperty pgo:recommends ;
@@ -129,15 +129,15 @@ SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
 After running the above query, check whether the guideline applies to the user with the following query in snap-SPARQL+reasoner:
 ```sparql
 SELECT ?match WHERE {
-  BIND(EXISTS {
-    individuals:JaneSmithUser a ?userConstraint .
-  } as ?match) .
+	BIND(EXISTS {
+		individuals:JaneSmithUser a ?userConstraint .
+	} as ?match) .
 }
 ```
 For each guideline that matches, find all items of food to eat with the following query in snap-SPARQL+reasoner:
 ```sparql
 SELECT ?food WHERE {
-  ?food a ?eatTarget .
+	?food a ?eatTarget .
 }
 ```
 
