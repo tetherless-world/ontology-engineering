@@ -25,7 +25,6 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2020/patient-guideline-recommender/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
@@ -124,8 +123,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityBySteps">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
-		<rdfs:label>active level of activity by steps</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -142,15 +140,15 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>active level of activity by steps</rdfs:label>
 		<skos:definition>activity level for a person who takes between 10,000 and 12,500 steps per day</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;ActiveLevelOfActivityInMinutes">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
-		<rdfs:label>active level of activity in minutes</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -164,7 +162,8 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>active level of activity in minutes</rdfs:label>
 		<skos:definition>activity level for a person who spends more than 420 minutes per week in moderate or vigorous intensity activity</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
@@ -200,6 +199,12 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevelBySteps">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasMeasurementUnit"/>
+				<owl:hasValue rdf:resource="&oe2020-pat-rec;Step"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>activity level by steps</rdfs:label>
 		<skos:definition>activity level measured by the number of steps per day that an individual takes</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
@@ -207,6 +212,12 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;ActivityLevelInMinutes">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevel"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-qt-qtu;hasMeasurementUnit"/>
+				<owl:hasValue rdf:resource="&oe2020-pat-rec;Minute"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>activity level in minutes</rdfs:label>
 		<skos:definition>activity level measured in terms of the number of minutes per week an individual engages in moderate or vigorous intensity exercise</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.heart.org/HEARTORG/HealthyLiving/PhysicalActivity/FitnessBasics/Moderate-to-VigorousWhat-is-your-level-of-intensity_UCM_463775_Article.jsp</fibo-fnd-utl-av:adaptedFrom>
@@ -759,8 +770,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;HighLevelOfActivityBySteps">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
-		<rdfs:label>high level of activity by steps</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -774,7 +784,8 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>high level of activity by steps</rdfs:label>
 		<skos:definition>activity level for a person who takes more than 12,500 steps per day</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
@@ -805,8 +816,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;LightLevelOfActivityBySteps">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
-		<rdfs:label>light level of activity by steps</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -823,7 +833,8 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>light level of activity by steps</rdfs:label>
 		<skos:definition>activity level for a person who takes between 5,000 and 7,500 steps per day</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
@@ -881,10 +892,17 @@
 		<skos:definition>a compound or preparation used for the treatment or prevention of disease, especially a drug or drugs taken by mouth</skos:definition>
 	</owl:Class>
 	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Minute">
+		<rdf:type rdf:resource="&fibo-fnd-qt-qtu;DerivedUnit"/>
+		<rdfs:label>minute</rdfs:label>
+		<skos:definition>unit of time defined as 1 min = 60 s</skos:definition>
+		<fibo-fnd-utl-av:abbreviation>min</fibo-fnd-utl-av:abbreviation>
+		<fibo-fnd-utl-av:adaptedFrom>ISO 31-0, Quantities and Units - Part 0: General principles, Third Edition, 1992-08-01</fibo-fnd-utl-av:adaptedFrom>
+	</owl:NamedIndividual>
+	
 	<owl:Class rdf:about="&oe2020-pat-rec;ModerateLevelOfActivityBySteps">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
-		<rdfs:label>moderate level of activity by steps</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -901,15 +919,15 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>moderate level of activity by steps</rdfs:label>
 		<skos:definition>activity level for a person who takes between 7,500 and 10,000 steps per day</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;ModerateLevelOfActivityInMinutes">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
-		<rdfs:label>moderate level of activity in minutes</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -926,7 +944,8 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>moderate level of activity in minutes</rdfs:label>
 		<skos:definition>activity level for a person who spends between 150 and 420 minutes per week in moderate or vigorous intensity activity</skos:definition>
 	</owl:Class>
 	
@@ -1046,8 +1065,7 @@
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;SedentaryActivityBySteps">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelBySteps"/>
-		<rdfs:label>sedentary activity by steps</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -1061,15 +1079,15 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>sedentary activity by steps</rdfs:label>
 		<skos:definition>activity level for a person who takes fewer than 5,000 steps per day</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.livestrong.com/article/401892-what-are-sedentary-moderate-high-activity-exercise-levels/</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;SedentaryActivityInMinutes">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;ActivityLevelInMinutes"/>
-		<rdfs:label>sedentary activity in minutes</rdfs:label>
-		<owl:equivalentClass>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-av;hasNumericValue"/>
 				<owl:someValuesFrom>
@@ -1083,7 +1101,8 @@
 					</rdfs:Datatype>
 				</owl:someValuesFrom>
 			</owl:Restriction>
-		</owl:equivalentClass>
+		</rdfs:subClassOf>
+		<rdfs:label>sedentary activity in minutes</rdfs:label>
 		<skos:definition>activity level for a person who spends fewer than 150 minutes per week in moderate or vigorous intensity activity</skos:definition>
 	</owl:Class>
 	
@@ -1119,6 +1138,14 @@
 		<rdfs:label>sex assigned at birth</rdfs:label>
 		<skos:definition>the discernment of an infant&apos;s sex at birth, which usually aligns with a child&apos;s anatomical sex and phenotype</skos:definition>
 	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2020-pat-rec;Step">
+		<rdf:type rdf:resource="&fibo-fnd-qt-qtu;DerivedUnit"/>
+		<rdfs:label>step</rdfs:label>
+		<owl:differentFrom rdf:resource="&oe2020-pat-rec;Minute"/>
+		<skos:definition>move by lifting one&apos;s foot and putting it down in a different place</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>https://dictionary.cambridge.org/dictionary/english/step</fibo-fnd-utl-av:adaptedFrom>
+	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2020-pat-rec;Surplus">
 		<rdfs:subClassOf rdf:resource="&oe2020-pat-rec;QualitativeMeasure"/>
