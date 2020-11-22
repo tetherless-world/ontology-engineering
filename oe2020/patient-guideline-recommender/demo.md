@@ -32,7 +32,7 @@ In this query, we find the associated cohort to Guideline 5.27 and extract the t
 
 In SPARQL:
 ```sparql
-SELECT DISTINCT ?userConstraint WHERE {
+SELECT DISTINCT ?userConstraint ?match WHERE {
 	pgo:Guideline-5.27 a ?restriction .
   
 	# Find guideline restriction (Guideline-5.27 appliesTo some ?cohort)
@@ -45,22 +45,15 @@ SELECT DISTINCT ?userConstraint WHERE {
 	?p a owl:Restriction ;
 		owl:onProperty lcc-lr:hasMember ;
 		owl:someValuesFrom ?userConstraint .
-}
-```
-
-After matching `?userConstraint` values, we need to test each guideline whether it applies to the user.
-
-In snap-SPARQL+reasoner, substituting in `?userConstraint` from above:
-```sparql
-SELECT ?match WHERE {
-	# Check if user matches guideline constraint
-	individuals:JaneSmithUser a ?userConstraint .
 	
-	# snap-SPARQL is pretty limited in what it supports, so this is the most efficient way to bind a variable to True
-	BIND(IF(1=1, True, False) as ?match) .
+	# The following part requires the inferred axioms
+	BIND(EXISTS {
+		individuals:JaneSmithUser a ?userConstraint .
+	} as ?match) .
 }
 ```
-The value of `?match` (if no results are returned, assume `?match` is false) for each query tells us whether that constraint of Guideline 5.27 is applicable to the user.
+
+The value of `?match` tells us whether each constraint of Guideline 5.27 is applicable to the user.
 
 ### Competency Question 2
 
