@@ -25,6 +25,9 @@ WHERE {
 }
 ```
 
+#### Description
+This query is looking for movies that the user may enjoy given that they enjoyed "The Farewell". This particular query aims to achieve that goal by finding award winning movies of the same production type. The first line in the WHERE clause determines the production type of "The Farewell" and puts it into the ?productionType variable. The second line uses that variable to find all awards that share that particular production type, putting it into the ?awards variable. Those awards are then used in the third line to find the movies that are associated with those awards, as each award is associated with one movie (the award refers to one instance of an award, not the general award). Finally, the last line takes the movies that have been queried and finds the services they are streaming on in order to make watching them faster for the user.
+
 ### Competency Question 3 Demo Query
 
 #### Question
