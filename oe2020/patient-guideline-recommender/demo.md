@@ -19,6 +19,9 @@ PREFIX lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
 
 ## Competency Questions
 
+### Note
+The following queries require the results of the reasoner. If using progege, you can do File>Export inferred axioms as ontology..., then select all axioms to export. Open the exported file, and run the SPARQL queries on that.
+
 ### Competency Question 1
 #### Question:
 
@@ -28,9 +31,9 @@ Related to Guideline 5.27:
 How does this guideline recommendation apply to me?
 
 #### Query:
-In this query, we find the associated cohort to Guideline 5.27 and extract the type of its members (`?userConstraint`).
+In this query, we find the associated cohort to Guideline 5.27 and extract the type of its members (`?userConstraint`), then check if each matches the current user (`?match`).
 
-In SPARQL:
+In SPARQL on the inferred ontology, run:
 ```sparql
 SELECT DISTINCT ?userConstraint ?match WHERE {
 	pgo:Guideline-5.27 a ?restriction .
@@ -66,7 +69,7 @@ The value of `?match` tells us whether each constraint of Guideline 5.27 is appl
 If I ate 1800 calories today (net -200), with no calories burned from exercise, have I met my dietary goal of losing weight??
 
 #### Query:
-In this query, we first find the guideline candidates (`?guideline`) to answer this question. After that, we find the associated cohort, and the type of its members (`?userConstraint`). Because of the question ('...have I met my dietary goal...'), we only consider guidelines that are have some restriction based on `pgo:hasWeightGoal`. We then test if guideline is applicable to the current user (in this example, `individuals:NamirXiaUser`). Finally, we find the target of the recommendation (`?recTarget`) and test if the user has satisfied the recommendation.
+In this query, we first find the guideline candidates (`?guideline`) to answer this question. After that, we find the associated cohort, and the type of its members. Because of the question ('...have I met my dietary goal...'), we only consider guidelines that are have some restriction based on `pgo:hasWeightGoal`. We then test if guideline is applicable to the current user (in this example, `individuals:NamirXiaUser`). Finally, we find the target of the recommendation (`?recTarget`) and test if the user has satisfied the recommendation.
 
 In SPARQL on the inferred ontology, run:
 ```sparql
