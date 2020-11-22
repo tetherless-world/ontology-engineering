@@ -121,11 +121,11 @@ After running the above query, `?goalMet` will be bound to whether or not the us
 What carbohydrates should I be eating?
 
 #### Query:
-To answer this, we first find guideline candidates (`?guideline`) to answer the question. We then find the associated cohort, and the type of its members (`?userConstraint`). Because of the question ('what carbohydrates'), we only consider guidelines that recommend something marked as applying to `pgo:Carbohydrate`. Finally, we use other parts of the question ('eating') to only consider guidelines that recommend eating something, and extract the things that it suggests to eat (`?eatTarget`).
+To answer this, we first find guideline candidates (`?guideline`) to answer the question. We then find the associated cohort, and the type of its members, and check if the current user (`individuals:JaneSmithUser`) matches. Because of the question ('what carbohydrates'), we only consider guidelines that recommend something marked as applying to `pgo:Carbohydrate`. Finally, we use other parts of the question ('eating') to only consider guidelines that recommend eating something, and extract the things that it suggests to eat (`?food`).
 
 In SPARQL:
 ```sparql
-SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
+SELECT DISTINCT ?guideline ?recommendation ?food WHERE {
 	?guideline a pgo:Guideline ;
 		rdf:type ?restriction .
 
@@ -155,14 +155,8 @@ SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
 	?recTarget a owl:Restriction ;
 		owl:onProperty pgo:eats ;
 		owl:someValuesFrom ?eatTarget .
-}
-```
-
-After running the above query, we need to check if the guideline applies to the user and what food items it suggests eating.
-
-In snap-SPARQL+reasoner, substituting in `?userConstraint` and `?eatTarget` pairs from above:
-```sparql
-SELECT ?food WHERE {
+	
+	# The following part requires the inferred axioms
 	# Only consider guidelines that apply to the user
 	individuals:JaneSmithUser a ?userConstraint .
 	
@@ -170,3 +164,5 @@ SELECT ?food WHERE {
 	?food a ?eatTarget .
 }
 ```
+
+After running the above query, (`?food`) is bound to the food items that the guidelines suggest eating.
