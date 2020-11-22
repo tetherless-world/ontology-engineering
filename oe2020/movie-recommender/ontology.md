@@ -18,12 +18,15 @@ User Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/onto
 
 **Link to current version:**
 
-- Current Version (OE 10)
+- Current Version (OE 11)
     - [Ontology](https://github.com/tetherless-world/ontology-engineering/blob/movie-recommender/oe2020/movie-recommender/movie-recommender.rdf)
     - [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/movie-recommender/oe2020/movie-recommender/movie-recommender-individuals.rdf)
 
 **Link to past versions:**
 
+- Current Version (OE 10)
+    - [Ontology](https://drive.google.com/file/d/1cLP7i3rTDrrYxpbLjjhSQv2wUkFkUPAm/view?usp=sharing)
+    - [Individuals](https://drive.google.com/file/d/1IoUp5YrV-CBFHxGFpdpjeGrsI0crbNDB/view?usp=sharing)
 - Version 4 (OE 9)
     - [Ontology](https://drive.google.com/file/d/1XryOQJe_h0wOGZHPHF5ss-kCeKv5pent/view?usp=sharing)
     - [Individuals](https://drive.google.com/file/d/14YaUmhAJmDt_ItMQAYdlDIE79Ru_TKI3/view?usp=sharing)
