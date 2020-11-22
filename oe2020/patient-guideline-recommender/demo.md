@@ -54,12 +54,13 @@ In snap-SPARQL+reasoner, substituting in `?userConstraint` from above:
 ```sparql
 SELECT ?match WHERE {
 	# Check if user matches guideline constraint
-	BIND(EXISTS {
-		individuals:JaneSmithUser a ?userConstraint .
-	} as ?match) .
+	individuals:JaneSmithUser a ?userConstraint .
+	
+	# snap-SPARQL is pretty limited in what it supports, so this is the most efficient way to bind a variable to True
+	BIND(IF(1=1, True, False) as ?match) .
 }
 ```
-The value of `?match` for each query tells us whether that constraint of Guideline 5.27 is applicable to the user.
+The value of `?match` (if no results are returned, assume `?match` is false) for each query tells us whether that constraint of Guideline 5.27 is applicable to the user.
 
 ### Competency Question 2
 
@@ -72,11 +73,11 @@ The value of `?match` for each query tells us whether that constraint of Guideli
 If I ate 1800 calories today (net -200), with no calories burned from exercise, have I met my dietary goal of losing weight??
 
 #### Query:
-In this query, we first find the guideline candidates (`?guideline`) to answer this question. We then find the associated cohort, and the type of its members (`?userConstraint`). Because of the question ('...have I met my dietary goal...'), we only consider guidelines that are have some restriction based on `pgo:hasWeightGoal`. Finally, we find the target of the recommendation (`?recTarget`) to check later.
+In this query, we first find the guideline candidates (`?guideline`) to answer this question. After that, we find the associated cohort, and the type of its members (`?userConstraint`). Because of the question ('...have I met my dietary goal...'), we only consider guidelines that are have some restriction based on `pgo:hasWeightGoal`. We then test if guideline is applicable to the current user (in this example, `individuals:NamirXiaUser`). Finally, we find the target of the recommendation (`?recTarget`) and test if the user has satisfied the recommendation.
 
-In Snap-SPARQL, with reasoner run:
+In SPARQL on the inferred ontology, run:
 ```sparql
-SELECT DISTINCT ?guideline ?userConstraint ?recommendation ?recTarget WHERE {
+SELECT DISTINCT ?guideline ?recommendation ?goalMet WHERE {
 	?guideline a pgo:Guideline ;
 		rdf:type ?restriction .
 
@@ -97,28 +98,25 @@ SELECT DISTINCT ?guideline ?userConstraint ?recommendation ?recTarget WHERE {
 		owl:onProperty pgo:hasWeightGoal .
 
 	# Find target of recommendation
-	?guideline pgo:recommends/a ?recRestriction .
+	?guideline pgo:recommends ?recommendation .
 	# (recommendation recommends some ?recTarget)
+	?recommendation a ?recRestriction .
 	?recRestriction a owl:Restriction ;
-		owl:onProperty pgo:recommends ;
+		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom ?recTarget .
-}
-```
-
-After running the above query, we need to find which guidelines are applicable to the user, and of those, whether the user already satisfies the recommendation (the user is on track).
-
-In snap-SPARQL+reasoner, substituting in `?userConstraint` and `?recTarget` pairs from above:
-```sparql
-SELECT ?goalMet WHERE {
+	
+	# The following part requires the inferred axioms
 	# Only consider guidelines that are applicable to the user
 	individuals:NamirXiaUser a ?userConstraint .
-	
+
 	# Find if the user has satisfied the recommendation
 	BIND(EXISTS {
 		individuals:NamirXiaUser a ?recTarget .
 	} as ?goalMet) .
 }
 ```
+
+After running the above query, `?goalMet` will be bound to whether or not the user has satisfied the recommendation.
 
 ### Competency Question 3.
 
