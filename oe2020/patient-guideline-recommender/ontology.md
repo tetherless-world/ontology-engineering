@@ -41,9 +41,16 @@ This shows how we represent Guideline 5.12 in our ontology. *Guideline 5.12* __a
 **Previous Ontologies Link:**
 
 
-[OE-7](files/OE_7_PatientGuidelineRecommender.rdf)
+[Version 1 - OE-6](https://drive.google.com/file/d/1MjOd3Fz1jb3mDt64vZkIe7u_w7uQwK4M/view?usp=sharing)
 
-[OE-8](files/OE_6_patient-guideline-recommender.rdf)
+[Version 2 - OE-7](https://drive.google.com/file/d/1ExcOr2hMCnMStTiu90XM5VITMIBKxtov/view?usp=sharing)
 
+[Version 3 - OE-8](https://drive.google.com/drive/folders/16OjjC46xGAQiJ299rv04HXnSRf374rjX?usp=sharing)
+
+[Version 4 - OE-9](https://drive.google.com/drive/folders/1WU7ojUufQWvg6pWD1iEpZkH6EaGexJ0_?usp=sharing)
+
+[Version 5 - OE-10](https://drive.google.com/drive/folders/1071X--WPvpQzO9k4Pd6l1nIhrNV9Q3ls?usp=sharing)
+
+[Version 6 - OE-11](https://drive.google.com/drive/folders/11nHSO4Xz9lCPcIOfIs1boXp85pxKIESv?usp=sharing)
 
 **View the ontology documentation at:**

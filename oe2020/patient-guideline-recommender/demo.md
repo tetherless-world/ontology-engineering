@@ -19,6 +19,9 @@ PREFIX lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
 
 ## Competency Questions
 
+### Note
+The following queries require the results of the reasoner (available for OE11 [here](https://gist.github.com/mailmindlin/18cde4c5c39d9966d75d034a8fa45fd0)). If using progege, you can do File>Export inferred axioms as ontology..., then select all axioms to export. Open the exported file, and run the SPARQL queries on that.
+
 ### Competency Question 1
 #### Question:
 
@@ -28,59 +31,88 @@ Related to Guideline 5.27:
 How does this guideline recommendation apply to me?
 
 #### Query:
-In SPARQL, with reasoner run:
+In this query, we find the associated cohort to Guideline 5.27 and extract the type of its members (`?userConstraint`), then check if each matches the current user (`?match`).
+
+In SPARQL on the inferred ontology, run:
 ```sparql
-SELECT DISTINCT ?userConstraint WHERE {
-  pgo:Guideline-5.27 a ?restriction .
+SELECT DISTINCT ?userConstraint ?match WHERE {
+	pgo:Guideline-5.27 a ?restriction .
   
-  # Find guideline restriction
+	# Find guideline restriction (Guideline-5.27 appliesTo some ?cohort)
 	?restriction a owl:Restriction ;
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom/owl:hasValue ?cohort .
     
-	# Find cohort restraint
+	# Find cohort restraint (?cohort 'has member' some ?userConstraint)
 	?cohort rdf:type ?p .
 	?p a owl:Restriction ;
 		owl:onProperty lcc-lr:hasMember ;
 		owl:someValuesFrom ?userConstraint .
+	
+	# The following part requires the inferred axioms
+	BIND(EXISTS {
+		individuals:JaneSmithUser a ?userConstraint .
+	} as ?match) .
 }
 ```
 
-After matching `?userConstraint` values, we then run the following query in snap-SPARQL with the reasoner (substututing the values of the previous query for `?userConstraint`):
-```sparql
-SELECT ?match WHERE {
-  BIND(EXISTS {
-    individuals:JaneSmithUser a ?userConstraint .
-  } as ?match) .
-}
-```
-The value of `?match` for each query tells us whether that constraint of Guideline 5.27 is applicable to the user.
+The value of `?match` tells us whether each constraint of Guideline 5.27 is applicable to the user.
 
 ### Competency Question 2
 
+#### Context:
+ - Dietary goal of 2000 calories
+ - Weight loss goal
+
 #### Question:
 
-If I ate 1800 calories today, with no calories burned from exercise, have I met my dietary goal of losing weight??
+If I ate 1800 calories today (net -200), with no calories burned from exercise, have I met my dietary goal of losing weight??
 
 #### Query:
-In Snap-SPARQL, with reasoner run:
+In this query, we first find the guideline candidates (`?guideline`) to answer this question. After that, we find the associated cohort, and the type of its members. Because of the question ('...have I met my dietary goal...'), we only consider guidelines that are have some restriction based on `pgo:hasWeightGoal`. We then test if guideline is applicable to the current user (in this example, `individuals:NamirXiaUser`). Finally, we find the target of the recommendation (`?recTarget`) and test if the user has satisfied the recommendation.
+
+In SPARQL on the inferred ontology, run:
 ```sparql
-SELECT DISTINCT ?user ?goalMet WHERE {
-  ?user a people:Adult .
-  ?user pgo:hasWeightGoal ?weightloss .
-  ?user a ?typicalPatient .
-  ?typicalPatient rdfs:subClassOf pgo:TypicalPatient .
-  ?typicalPatInst a ?typicalPatient .
-  ?guideline rdfs:subClassOf pgo:Guideline .
-  ?guidelineInst a ?guideline .
-  ?guidelineInst fiboRelations:appliesTo ?typicalPatInst .
-  ?guidelineInst pgo:recommends ?recommendation .
-  ?recommendation a pgo:Recommendation .
-  ?recommendationInst a pgo:Recommendation .
-  FILTER(?recommendationInst = ?user) .
-  BIND (IF (?recommendationInst = ?user, True, False) as ?goalMet) .
+SELECT DISTINCT ?guideline ?recommendation ?goalMet WHERE {
+	?guideline a pgo:Guideline ;
+		rdf:type ?restriction .
+
+	# Find guideline restriction (?guideline appliesTo some ?cohort)
+	?restriction a owl:Restriction ;
+		owl:onProperty fiboRelations:appliesTo ;
+		owl:someValuesFrom/owl:hasValue ?cohort .
+
+	# Find cohort restraint (?cohort 'has member' some ?userConstraint)
+	?cohort rdf:type ?p .
+	?p a owl:Restriction ;
+		owl:onProperty lcc-lr:hasMember ;
+		owl:someValuesFrom ?userConstraint .
+
+	# Only consider user constraints that restrict based on weight goal (?userConstraint 'equivalent to' hasWeightGoal *)
+	?userConstraint owl:equivalentClass ?userFilt .
+	?userFilt a owl:Restriction ;
+		owl:onProperty pgo:hasWeightGoal .
+
+	# Find target of recommendation
+	?guideline pgo:recommends ?recommendation .
+	# (recommendation recommends some ?recTarget)
+	?recommendation a ?recRestriction .
+	?recRestriction a owl:Restriction ;
+		owl:onProperty fiboRelations:appliesTo ;
+		owl:someValuesFrom ?recTarget .
+	
+	# The following part requires the inferred axioms
+	# Only consider guidelines that are applicable to the user
+	individuals:NamirXiaUser a ?userConstraint .
+
+	# Find if the user has satisfied the recommendation
+	BIND(EXISTS {
+		individuals:NamirXiaUser a ?recTarget .
+	} as ?goalMet) .
 }
 ```
+
+After running the above query, `?goalMet` will be bound to whether or not the user has satisfied the recommendation.
 
 ### Competency Question 3.
 
@@ -92,31 +124,33 @@ SELECT DISTINCT ?user ?goalMet WHERE {
 What carbohydrates should I be eating?
 
 #### Query:
+To answer this, we first find guideline candidates (`?guideline`) to answer the question. We then find the associated cohort, and the type of its members, and check if the current user (`individuals:JaneSmithUser`) matches. Because of the question ('what carbohydrates'), we only consider guidelines that recommend something marked as applying to `pgo:Carbohydrate`. Finally, we use other parts of the question ('eating') to only consider guidelines that recommend eating something, and extract the things that it suggests to eat (`?food`).
+
 In SPARQL:
 ```sparql
-SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
+SELECT DISTINCT ?guideline ?recommendation ?food WHERE {
 	?guideline a pgo:Guideline ;
 		rdf:type ?restriction .
 
-	# Find guideline restriction
+	# Find guideline restriction (?guideline appliesTo some ?cohort)
 	?restriction a owl:Restriction ;
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom/owl:hasValue ?cohort .
 
-	# Find cohort restraint
+	# Find cohort restraint (?cohort 'has member' some ?userConstraint)
 	?cohort rdf:type ?p .
 	?p a owl:Restriction ;
 		owl:onProperty lcc-lr:hasMember ;
 		owl:someValuesFrom ?userConstraint .
 	?guideline pgo:recommends ?recommendation .
 
-	# Match recommendations relevant to carbohydrates
+	# Match recommendations relevant to carbohydrates (?recommendation appliesTo Carbohydrate)
 	?recommendation a ?recommendationFilt1 .
 	?recommendationFilt1 a owl:Restriction ;
 		owl:onProperty fiboRelations:appliesTo ;
 		owl:someValuesFrom pgo:Carbohydrate .
   
-  # Match recommendations relevant to eating
+	# Match recommendations relevant to eating (?recommendation recommends some (eats some ?eatTarget))
 	?recommendation a ?recommendationFilt2 .
 	?recommendationFilt2 a owl:Restriction ;
 		owl:onProperty pgo:recommends ;
@@ -124,56 +158,14 @@ SELECT DISTINCT ?guideline ?recommendation ?userConstraint ?eatTarget WHERE {
 	?recTarget a owl:Restriction ;
 		owl:onProperty pgo:eats ;
 		owl:someValuesFrom ?eatTarget .
-}
-```
-After running the above query, check whether the guideline applies to the user with the following query in snap-SPARQL+reasoner:
-```sparql
-SELECT ?match WHERE {
-  BIND(EXISTS {
-    individuals:JaneSmithUser a ?userConstraint .
-  } as ?match) .
-}
-```
-For each guideline that matches, find all items of food to eat with the following query in snap-SPARQL+reasoner:
-```sparql
-SELECT ?food WHERE {
-  ?food a ?eatTarget .
+	
+	# The following part requires the inferred axioms
+	# Only consider guidelines that apply to the user
+	individuals:JaneSmithUser a ?userConstraint .
+	
+	# Find food items that are being recommended to eat
+	?food a ?eatTarget .
 }
 ```
 
-## SPARQL query to retrieve matched guideline for patient
-
-
-```sparql
-SELECT DISTINCT ?user ?matchedGuideline ?recommendation WHERE {
-  ?user a people:Adult .
-  ?user a ?matchedGuideline .
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuideline rdfs:subClassOf ?recommendation .
-  ?recommendation rdfs:subClassOf individuals:Recommendation .
-}
-```
-
-```sparql
-SELECT DISTINCT ?matchedGuideline ?object {
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuideline (rdfs:subClassOf|owl:equivalentClass) ?object .
-}
-
-SELECT DISTINCT ?user ?matchedGuideline ?object WHERE {
-  ?user a people:Adult .
-  ?user a ?matchedGuideline .
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuideline owl:equivalentClass ?object .
-}
-
-SELECT DISTINCT ?actionInstances WHERE {
-  ?matchedGuidelineInstance a ?matchedGuideline .
-  ?matchedGuideline rdfs:subClassOf pgo:Guideline .
-  ?matchedGuidelineInstance pgo:recommends ?recommendationInstance .
-  ?recommendationInstance a ?recommendation .
-  ?recommendation rdfs:subClassOf pgo:Recommendation .
-  ?recommendation owl:equivalentClass ?action .
-  ?actionInstances a ?action .
-}
-```
+After running the above query, (`?food`) is bound to the food items that the guidelines suggest eating.
