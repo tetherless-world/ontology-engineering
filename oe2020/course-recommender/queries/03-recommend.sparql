@@ -15,7 +15,7 @@
 prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
 prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
-SELECT DISTINCT ?validCourse
+SELECT DISTINCT ?validCourse ?validCourseName
 WHERE {
   VALUES ?completedCourseTag { "CSCI-4340" "CSCI-4020" }
   ?completedCourse oe2020-crs-rec:hasCourseCode [
@@ -29,10 +29,12 @@ WHERE {
                  ] ;
                   oe2020-crs-rec:isCourseSectionOf ?validCourse .
   ?validCourse a oe2020-crs-rec:Course .
+  ?validCourse oe2020-crs-rec:hasName ?validCourseName .
   FILTER NOT EXISTS {
     ?validCourse oe2020-crs-rec:hasRequiredPrerequisite+ ?filterPrereqs .
     FILTER(?filterPreqreqs != ?completedCourseInferred)
   }
   FILTER (?validCourse != ?completedCourseInferred)
+  FILTER (strlen(?validCourseName) > 0)
 }
 LIMIT 10
