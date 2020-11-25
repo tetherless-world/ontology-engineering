@@ -69,7 +69,7 @@ The value of `?match` tells us whether each constraint of Guideline 5.27 is appl
 If I ate 1800 calories today (net -200), with no calories burned from exercise, have I met my dietary goal of losing weight??
 
 #### Query:
-In this query, we first find the guideline candidates (`?guideline`) to answer this question. After that, we find the associated cohort, and the type of its members. Because of the question ('...have I met my dietary goal...'), we only consider guidelines that are have some restriction based on `pgo:hasWeightGoal`. We then test if guideline is applicable to the current user (in this example, `individuals:NamirXiaUser`). Finally, we find the target of the recommendation (`?recTarget`) and test if the user has satisfied the recommendation.
+In this query, we first find the guideline candidates (`?guideline`) to answer this question. After that, we find the associated cohort, and the type of its members. Because of the question ('...have I met my dietary goal...'), we only consider guidelines that have some restriction based on `pgo:hasWeightGoal`. We then test if guideline is applicable to the current user (in this example, `individuals:NamirXiaUser`). Finally, we find the target of the recommendation (`?recTarget`) and test if the user has satisfied the recommendation.
 
 In SPARQL on the inferred ontology, run:
 ```sparql
