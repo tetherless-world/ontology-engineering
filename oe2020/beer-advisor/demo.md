@@ -56,8 +56,7 @@ This query sample will provide the following answer:
 |-----------|
 | Helltown Brewery|
 
-The image below shows the implementation of Query 1 in Protege. Note that the answer is Helltown, a brewery located in PA that produces Buffy Haze, an IPA with 6.7% ABV.
-![output_1](images/query2.png)
+Note that the answer is Helltown, a brewery located in PA that produces Buffy Haze, an IPA with 6.7% ABV.
 
 ### Query 2
 
@@ -108,13 +107,54 @@ This query sample will provide the following answer:
 |-----------|
 | |
 
-The image below shows the implementation of Query 2 in Protege. Note that there is no beer displayed as an answer. This is actually correct because there is no IPA under 5% ABV.
+Note that there is no beer displayed as an answer. This is actually correct because there is no IPA under 5% ABV. As an optional test, you can also change the range on the ABV in this query to prove that it works. For instance, consider the following query:
 
-![output_2](images/query3-result.png)
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX loc: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/>
+PREFIX adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/>
+PREFIX us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/>
+PREFIX rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>
+PREFIX fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/>
+PREFIX lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/>
+PREFIX qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/>
+PREFIX beer: <https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/>
 
-As an optional test, you can also change the range on the ABV in this query to prove that it works.
 
-![output_2_opt](images/query3-result-opt.png)
+SELECT DISTINCT (IF(COUNT(?result)>0, ?result, 0) as ?beer)
+
+WHERE {
+SELECT DISTINCT ?result
+
+WHERE {
+?beertypes rdfs:subClassOf beer:IndiaPaleAle .
+{
+?result rdf:type ?beertypes .
+}
+UNION
+{
+?result rdf:type beer:IndiaPaleAle .
+}
+
+?result beer:hasAlcoholByVolume ?alcohol .
+?alcohol rdf:type beer:AlcoholContent .
+?alcohol qtu:hasNumericValue ?abv .
+FILTER (?abv < 8)
+
+}
+}
+GROUP BY ?result
+```
+
+This new query provides a non-empty answer as displayed below. Note that now four beers are listed.
+
+|beer|
+|-----------|
+| Voodoo Ranger|
+| Buffy Hazy IPA|
+| Rapture|
+| Voodoo Ranger Juicy Haze|
 
 ### Query 3
 
@@ -154,6 +194,5 @@ This query sample will provide the following answer:
 | Voodoo Ranger American Haze |
 
 
-The image below shows the implementation of Query 3 in Protege. Note that a list of beers is provided as answer to this query.
-![output_3](images/query4.png)
+Note that a list of beers is provided as answer to this query.
 
