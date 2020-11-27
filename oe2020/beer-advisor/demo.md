@@ -99,7 +99,8 @@ FILTER (?abv < 5)
 
 }
 }
-GROUP BY ?result```
+GROUP BY ?result
+```
 
 This query sample will provide the following answer:
 
