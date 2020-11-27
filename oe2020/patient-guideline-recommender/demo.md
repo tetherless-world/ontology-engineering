@@ -20,7 +20,7 @@ PREFIX lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
 ## Competency Questions
 
 ### Note
-The following queries require the results of the reasoner (available for OE11 [here](https://gist.github.com/mailmindlin/18cde4c5c39d9966d75d034a8fa45fd0)). If using progege, you can do File>Export inferred axioms as ontology..., then select all axioms to export. Open the exported file, and run the SPARQL queries on that.
+The following queries require the results of the reasoner (available for OE12 [here](https://gist.github.com/mailmindlin/18cde4c5c39d9966d75d034a8fa45fd0)). If using progege, you can do File>Export inferred axioms as ontology..., then select all axioms to export. Open the exported file, and run the SPARQL queries on that.
 
 ### Competency Question 1
 #### Question:
