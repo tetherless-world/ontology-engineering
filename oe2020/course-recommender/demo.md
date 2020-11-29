@@ -54,7 +54,8 @@ prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
 SELECT DISTINCT ?recCourse ?recCourseName ?recCourseLabel
 WHERE {
   # the URI for Jacob in our individuals ontology
-  oe2020-crs-rec-ind:usr000929 oe2020-crs-rec:hasStudyPlan [ oe2020-crs-rec:hasCompletedCourse ?completedCourseSection ] .
+  ?usrUri oe2020-crs-rec:hasName "jacob" ;
+          oe2020-crs-rec:hasStudyPlan [ oe2020-crs-rec:hasCompletedCourse ?completedCourseSection ] .
   ?completedCourseSection oe2020-crs-rec:isCourseSectionOf ?completedCourse .
   ?requirement a oe2020-crs-rec:Requirement ;
                oe2020-crs-rec:hasCourseCodeRestriction ?ccRest .
