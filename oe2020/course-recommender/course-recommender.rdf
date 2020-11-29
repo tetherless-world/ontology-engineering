@@ -94,9 +94,11 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
-		<owl:priorVersion>https://raw.githubusercontent.com/tetherless-world/ontology-engineering/566ec334ec42070cb587f769021415d358c2424a/oe2020/course-recommender/course-recommender.rdf</owl:priorVersion>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201128/course-recommender/"/>
 	</owl:Ontology>
+	
+	<owl:AnnotationProperty rdf:about="&dct;publisher">
+	</owl:AnnotationProperty>
 	
 	<owl:Class rdf:about="&oe2020-crs-rec;AcademicSchedule">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-fd;Schedule"/>
@@ -282,9 +284,23 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;AcademicSchedule"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasMeetingTime"/>
-				<owl:onDataRange rdf:resource="&xsd;dateTime"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasDayOfWeek"/>
+				<owl:onClass rdf:resource="&fibo-fnd-dt-bd;DayOfWeek"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasEndTime"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasStartTime"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>course schedule</rdfs:label>
@@ -784,6 +800,14 @@
 		<skos:definition>is course alias of</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasDayOfWeek">
+		<rdfs:label>has day of week</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
+		<rdfs:range rdf:resource="&fibo-fnd-dt-bd;DayOfWeek"/>
+		<skos:definition>the recurring days in a working week when a scheduled course section is scheduled to meet</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasDepartment">
 		<rdfs:label>has department</rdfs:label>
 		<dct:source>http://catalog.rpi.edu/</dct:source>
@@ -805,6 +829,14 @@
 		<dct:source>http://catalog.rpi.edu/</dct:source>
 		<rdfs:range rdf:resource="&xsd;string"/>
 		<skos:definition>the description of the individual</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasEndTime">
+		<rdfs:label>has end time</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the time of day at which a scheduled course section is scheduled to end</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasInstructor">
@@ -830,14 +862,6 @@
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseCode"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
 		<skos:definition>the associated difficulty level of the course code</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasMeetingTime">
-		<rdfs:label>has meeting time</rdfs:label>
-		<dct:source>http://catalog.rpi.edu/</dct:source>
-		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
-		<rdfs:range rdf:resource="&xsd;dateTime"/>
-		<skos:definition>the times and dates during which a scheduled course section takes place</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasName">
@@ -950,6 +974,14 @@
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
 		<rdfs:range rdf:resource="&xsd;string"/>
 		<skos:definition>special tags associated with this course which are used to fulfill certain requirements</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasStartTime">
+		<rdfs:label>has start time</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the time of the day at which a scheduled course section is scheduled to begin</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasStudyPlan">
