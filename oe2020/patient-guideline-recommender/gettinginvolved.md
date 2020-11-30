@@ -13,6 +13,12 @@ Our maintainance policy is primarily focused on ensuring that we continue repres
 There are several places where the project could expand. Different types of expansion include including more ADA guidelines, adding other common types of food-related capacities such as caloric values of different foods using an external ontology, and implementing the application UI that would be facing ordinary consumers. If you are interested in contributing to the project or have any other ideas or suggestions, please contact us at the emails below:
 
 Liam Feehery, feehew@rpi.edu
+
+
 Ishita Padhiar, padhii@rpi.edu
+
+
 Travis Peterson, petert6@rpi.edu
+
+
 Bolun “Namir” Xia, xiab3@rpi.edu
