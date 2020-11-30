@@ -18,7 +18,7 @@ prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-re
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
 prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
 SELECT DISTINCT ?prerequisiteCourse ?prerequisiteCourseName
-WHERE {  
+WHERE {
   VALUES ?targetCourseTag { "CSCI-4340" }
   ?targetcourse oe2020-crs-rec:hasCourseCode [ lcc-lr:hasTag ?targetCourseTag ] ;
                 oe2020-crs-rec:hasRequiredPrerequisite+ ?prerequisiteCourse .
@@ -40,13 +40,29 @@ WHERE {
 ### Competency Question 2
 
 #### Question
-*This question will use the course history of Jacob Shomstein to produce an answer, but a full list of courses completed is omitted for privacy.*
 
-I am a rising senior and I want to take the smallest number of courses required to complete my degree. I also want to take “easier” courses whenever possible to allow for more time to plan for a future career. What courses can fulfill my remaining requirements? 
+*This question will use the course history of Jacob Shomstein to produce an
+answer, but a full list of courses completed is omitted for privacy.*
 
-> We don’t have a complete information encoded surrounding graduation requirements (since there doesn’t seem to be any convenient way for us to automate adding them, the only ones we have right now have been done by hand). Therefore for demonstrative purposes we will show how we can achieve this query by (1) getting all courses that can fulfill portions of the HASS core requirements (which we have mostly encoded, along with one Integrative Pathway option), (2) remove all courses that Jacob has already completed, and (3) filter out courses by course level to only choose “easy” courses (which we will define as being below the 4000 level, for this query example). 
+I am a rising senior and I want to take the smallest number of courses required
+to complete my degree. I also want to take “easier” courses whenever possible
+to allow for more time to plan for a future career. What courses can fulfill my
+remaining requirements?
+
+#### Note
+
+> We don’t have a complete information encoded surrounding graduation
+> requirements (since there doesn’t seem to be any convenient way for us to
+> automate adding them, the only ones we have right now have been done by
+> hand). Therefore for demonstrative purposes we will show how we can achieve
+> this query by (1) getting all courses that can fulfill portions of the HASS
+> core requirements (which we have mostly encoded, along with one Integrative
+> Pathway option), (2) remove all courses that Jacob has already completed, and
+> (3) filter out courses by course level to only choose “easy” courses (which
+> we will define as being below the 4000 level, for this query example).
 
 #### Query
+
 ```sparql
 prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
