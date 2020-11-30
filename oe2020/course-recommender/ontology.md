@@ -2,9 +2,11 @@
 
 ## Conceptual Model
 
-Conceptual Model for the current ontology version (OE 10) [drawio file](https://drive.google.com/file/d/1b3JVHcvj6Lowty8aPcan0jGcSv3qkH0Z/view?usp=sharing)
+The conceptual model for our most recent ontology version can be seen as a [drawio file](https://drive.google.com/file/d/1b3JVHcvj6Lowty8aPcan0jGcSv3qkH0Z/view?usp=sharing).
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSnyuWfPtSg0GoByhGMccMULY6I1_vI-sl9yGztWO7PHM4QHBdPM814z15Q1jelpA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+The following presentation can also be used to view some breakdowns of the conceptual model.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR6bVv5sO9bp1qrsPPDSlzj7qgFnCAZbZnm4JV7Xfu4rX96Z8UdvC2VV2dhzCNU2A/pub?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ## Ontologies
 
