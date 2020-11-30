@@ -12,12 +12,12 @@ The following presentation can also be used to view some breakdowns of the conce
 
 | Ontology                    | Individuals                 |
 |-----------------------------|-----------------------------|
-| [Latest (OE 12)](oe-12-ont) | [Latest (OE 12)](oe-12-ind) |
-| [OE 11](oe-11-ont)          | [OE 11](oe-11-ind)          |
-| [OE 10](oe-10-ont)          | [OE 10](oe-10-ind)          |
-| [OE 9](oe-9-ont)            | [OE 9](oe-9-ind)            |
-| [OE 8](oe-8-ont)            | [OE 8](oe-8-ind)            |
-| [OE 7](oe-7-ont)            |                             |
+| [Latest (OE 12)][oe-12-ont] | [Latest (OE 12)][oe-12-ind] |
+| [OE 11][oe-11-ont]          | [OE 11][oe-11-ind]          |
+| [OE 10][oe-10-ont]          | [OE 10][oe-10-ind]          |
+| [OE 9][oe-9-ont]            | [OE 9][oe-9-ind]            |
+| [OE 8][oe-8-ont]            | [OE 8][oe-8-ind]            |
+| [OE 7][oe-7-ont]            |                             |
 
 [oe-12-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/course-recommender/oe2020/course-recommender/course-recommender.rdf
 [oe-12-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/course-recommender/oe2020/course-recommender/course-recommender-individuals.rdf
