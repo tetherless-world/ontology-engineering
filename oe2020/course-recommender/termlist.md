@@ -5,7 +5,7 @@ title: Terminology List
 
 ## Terminology List
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRKv2uT9yQRwV0PMkn4XAI9WBO01O5noODn7Bal_0lK2z5vXBOvqTO_HLvk2tTU7g/pubhtml?widget=true&amp;headers=false"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRKv2uT9yQRwV0PMkn4XAI9WBO01O5noODn7Bal_0lK2z5vXBOvqTO_HLvk2tTU7g/pubhtml?widget=true&amp;headers=false" style="width: 100%; height: 500px;"></iframe>
 
 ## Previous Versions
 
