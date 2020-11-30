@@ -20,7 +20,7 @@ Beer is one of the oldest alcoholic drinks created by humans and we have been cr
 
 ## Project Overview Diagram
 
-A general idea of the Beer-Advisor project is displayed in the Figure below. Beer consumers, distributors and sellers are considered potential users that use the application searching for beer recommendations. The ontology-enabled application is expected to collect information from databases and the ontology is used for organizing all that information in a graph-like knowledge base. The application will then use this organized knowledge to recommend beers given the specific characteristics required by the user.
+A general idea of the Beer-Advisor project is displayed in the figure below. Beer consumers, distributors and sellers are considered potential users that use the application searching for beer recommendations. The ontology-enabled application is expected to collect information from databases and the ontology is used for organizing all that information in a graph-like knowledge base. The application will then use this organized knowledge to recommend beers given the specific characteristics required by the user.
 
 ![Overview Diagram](images/usecase-diagram.png)
 
@@ -40,7 +40,9 @@ This section summarizes some resources that might be useful for someone interest
   </tr>
   <tr>
     <td>2. Ontology</td>
-    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/beer-advisor.rdf">Beer Ontology</a></td>
+    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/beer-advisor.rdf">Beer Ontology</a><br>
+        (b) <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/beer-advisor-individuals.rdf">Individuals</a>
+    </td>
   </tr>
   <tr>
     <td>3. Term List</td>
@@ -53,6 +55,10 @@ This section summarizes some resources that might be useful for someone interest
   <tr>
     <td>5. Presentations:</td>
     <td>(a) <a href="./presentations">Project presentations during class</a> </td>
+  </tr>
+  <tr>
+    <td>6. Getting involved:</td>
+    <td>(a) <a href="./gettinginvolved">Contact Information</a> </td>
   </tr>
 </table>
 
