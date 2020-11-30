@@ -11,13 +11,13 @@ Beer is one of the oldest alcoholic drinks created by humans and we have been cr
 ## Point of Contact
 
 <ul>
-<li>Lucas Standaert (standl at rpi dot edu) </li>
-Lucas Standaert is a current Applied Mathematics masters student at RPI who will be graduating in Spring 2021 who enjoys a variety of different kinds of beers, but prefers IPA's and Pale Ales.
-<li>Anna Yaroslaski (yarosa2 at rpi dot edu) </li>
-Anna Yaroslaski is a Computer Science undergratuate student at Rensselaer Polytechnic Institute. She is currently only 20 years old so she does not drink beer, but she enjoys working on this project reguardless.
-<li>Marcelo de Castro Fernandes (decasm3 at rpi dot edu) </li>
-Marcelo de Castro is a current Electrical Engineer PhD student at Rensselaer Polytechnic Institute who is expected to graduate in Spring 2022. He enjoys beers of all kinds and he wishes every day was Oktoberfest. 
-<li>Sam Stouffer (stoufs2 at rpi dot edu) </li>
+<li>**Lucas Standaert** (standl at rpi dot edu) </li>
+Lucas is a current Applied Mathematics masters student at RPI who will be graduating in Spring 2021 who enjoys a variety of different kinds of beers, but prefers IPA's and Pale Ales.
+<li>**Anna Yaroslaski** (yarosa2 at rpi dot edu) </li>
+Anna is a Computer Science undergratuate student at Rensselaer Polytechnic Institute. She is currently only 20 years old so she does not drink beer, but she enjoys working on this project reguardless.
+<li>**Marcelo de Castro Fernandes** (decasm3 at rpi dot edu) </li>
+Marcelo is a current Electrical Engineer PhD student at Rensselaer Polytechnic Institute who is expected to graduate in Spring 2022. He enjoys beers of all kinds and he wishes every day was Oktoberfest. 
+<li>**Sam Stouffer** (stoufs2 at rpi dot edu) </li>
 </ul>
 
 
