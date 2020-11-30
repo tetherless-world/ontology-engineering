@@ -43,11 +43,14 @@ The person or organization that uses the application will have their role in the
 
 ## Previous Versions of Ontologies
 **Links:**
+
+- [ontology-version6 (OE-11)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-11-beer-advisor.rdf)
 - [ontology-version5 (OE-10)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-10-beer-advisor.rdf)
 - [ontology-version4 (OE-9)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-9-beer-advisor.rdf)
 - [ontology-version3 (OE-8)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor.rdf)
 - [ontology-version2 (OE-7)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_7_beer-advisor.rdf)
 - [ontology-version1 (OE-6)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-6-beer-advisor.rdf)
+- [individuals-ontology-version3 (OE-11)(https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-11-beer-advisor-individuals.rdf)
 - [individuals-ontology-version3 (OE-10)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-10-beer-advisor-individuals.rdf)
 - [individuals-ontology-version2 (OE-9)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE-9-beer-advisor-individuals.rdf)
 - [individuals-ontology-version1 (OE-8)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/archived/OE_8_beer-advisor-individuals.rdf)
