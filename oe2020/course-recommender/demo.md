@@ -100,10 +100,15 @@ WHERE {
 | oe2020-crs-rec-ind:crs000015 | Introduction to Cognitive Science | COGS-2120      |
 
 ### Competency Question 3
+
 #### Question
-I have taken CSCI 4340 Ontologies and CSCI 4020 Design and Analysis of Algorithms. What are some courses like CSCI 6340 Ontologies that I should take next fall?
+
+I have taken CSCI 4340 Ontologies and CSCI 4020 Design and Analysis of
+Algorithms. What are some courses like CSCI 6340 Ontologies that I should take
+next fall?
 
 #### Query
+
 ```sparql
 prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
@@ -133,6 +138,7 @@ LIMIT 10
 ```
 
 #### Example Results
+
 *Note that the example URLs use a namespace prefix for ease-of-reading.*
 
 | validCourse              | validCourseName |
