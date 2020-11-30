@@ -172,4 +172,4 @@ After running the above query, (`?food`) is bound to the food items that the gui
 
 ## Link to Text File
 
-![Google Doc Link](https://docs.google.com/document/d/1-ducPP8jKYXi0WRKR4y-AYngxjIs2OZomoYhRPlGoPA/edit?usp=sharing)
+[Google Doc Link](https://docs.google.com/document/d/1-ducPP8jKYXi0WRKR4y-AYngxjIs2OZomoYhRPlGoPA/edit?usp=sharing)
