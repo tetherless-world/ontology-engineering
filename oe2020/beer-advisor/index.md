@@ -12,6 +12,7 @@ Beer is one of the oldest alcoholic drinks created by humans and we have been cr
 
 <ul>
 <li>Lucas Standaert (standl at rpi dot edu) </li>
+Lucas Standaert is a current Applied Mathematics masters student at RPI who will be graduating in Spring 2021 who enjoys a variety of different kinds of beers, but prefers IPA's and Pale Ales.
 <li>Anna Yaroslaski (yarosa2 at rpi dot edu) </li>
 <li>Marcelo de Castro Fernandes (decasm3 at rpi dot edu) </li>
 <li>Sam Stouffer (stoufs2 at rpi dot edu) </li>
