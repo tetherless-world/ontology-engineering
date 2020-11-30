@@ -18,7 +18,7 @@ prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-re
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
 prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
 SELECT DISTINCT ?prerequisiteCourse ?prerequisiteCourseName
-WHERE {  
+WHERE {
   VALUES ?targetCourseTag { "CSCI-4340" }
   ?targetcourse oe2020-crs-rec:hasCourseCode [ lcc-lr:hasTag ?targetCourseTag ] ;
                 oe2020-crs-rec:hasRequiredPrerequisite+ ?prerequisiteCourse .
@@ -40,13 +40,29 @@ WHERE {
 ### Competency Question 2
 
 #### Question
-*This question will use the course history of Jacob Shomstein to produce an answer, but a full list of courses completed is omitted for privacy.*
 
-I am a rising senior and I want to take the smallest number of courses required to complete my degree. I also want to take “easier” courses whenever possible to allow for more time to plan for a future career. What courses can fulfill my remaining requirements? 
+*This question will use the course history of Jacob Shomstein to produce an
+answer, but a full list of courses completed is omitted for privacy.*
 
-> We don’t have a complete information encoded surrounding graduation requirements (since there doesn’t seem to be any convenient way for us to automate adding them, the only ones we have right now have been done by hand). Therefore for demonstrative purposes we will show how we can achieve this query by (1) getting all courses that can fulfill portions of the HASS core requirements (which we have mostly encoded, along with one Integrative Pathway option), (2) remove all courses that Jacob has already completed, and (3) filter out courses by course level to only choose “easy” courses (which we will define as being below the 4000 level, for this query example). 
+I am a rising senior and I want to take the smallest number of courses required
+to complete my degree. I also want to take “easier” courses whenever possible
+to allow for more time to plan for a future career. What courses can fulfill my
+remaining requirements?
+
+#### Note
+
+> We don’t have a complete information encoded surrounding graduation
+> requirements (since there doesn’t seem to be any convenient way for us to
+> automate adding them, the only ones we have right now have been done by
+> hand). Therefore for demonstrative purposes we will show how we can achieve
+> this query by (1) getting all courses that can fulfill portions of the HASS
+> core requirements (which we have mostly encoded, along with one Integrative
+> Pathway option), (2) remove all courses that Jacob has already completed, and
+> (3) filter out courses by course level to only choose “easy” courses (which
+> we will define as being below the 4000 level, for this query example).
 
 #### Query
+
 ```sparql
 prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
@@ -84,15 +100,20 @@ WHERE {
 | oe2020-crs-rec-ind:crs000015 | Introduction to Cognitive Science | COGS-2120      |
 
 ### Competency Question 3
+
 #### Question
-I have taken CSCI 4340 Ontologies and CSCI 4020 Design and Analysis of Algorithms. What are some courses like CSCI 6340 Ontologies that I should take next fall?
+
+I have taken CSCI 4340 Ontologies and CSCI 4020 Design and Analysis of
+Algorithms. What are some courses like CSCI 6340 Ontologies that I should take
+next fall?
 
 #### Query
+
 ```sparql
 prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
 prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
-SELECT DISTINCT ?validCourse
+SELECT DISTINCT ?validCourse ?validCourseName
 WHERE {
   VALUES ?completedCourseTag { "CSCI-4340" "CSCI-4020" }
   ?completedCourse oe2020-crs-rec:hasCourseCode [
@@ -106,6 +127,7 @@ WHERE {
                  ] ;
                   oe2020-crs-rec:isCourseSectionOf ?validCourse .
   ?validCourse a oe2020-crs-rec:Course .
+  ?validCourse oe2020-crs-rec:hasName ?validCourseName .
   FILTER NOT EXISTS {
     ?validCourse oe2020-crs-rec:hasRequiredPrerequisite+ ?filterPrereqs .
     FILTER(?filterPreqreqs != ?completedCourseInferred)
@@ -116,18 +138,18 @@ LIMIT 10
 ```
 
 #### Example Results
+
 *Note that the example URLs use a namespace prefix for ease-of-reading.*
 
-| validCourse              |
-|--------------------------|
-| oe2020-crs-rec:crs000045 |
-| oe2020-crs-rec:crs000048 |
-| oe2020-crs-rec:crs000484 |
-| oe2020-crs-rec:crs000488 |
-| oe2020-crs-rec:crs000491 |
-| oe2020-crs-rec:crs000497 |
-| oe2020-crs-rec:crs000082 |
-| oe2020-crs-rec:crs000088 |
-| oe2020-crs-rec:crs000102 |
-| oe2020-crs-rec:crs000015 |
-
+| validCourse              | validCourseName |
+|--------------------------|-----------------|
+| oe2020-crs-rec:crs000015 | Introduction to Cognitive Science |
+| oe2020-crs-rec:crs000023 | Introduction to Linguistics |
+| oe2020-crs-rec:crs000037 | Introduction to Cognitive Neuroscience |
+| oe2020-crs-rec:crs000687 | Programming for Cognitive Science and Artificial Intelligence |
+| oe2020-crs-rec:crs000692 | Game AI |
+| oe2020-crs-rec:crs000696 | Learning and Advanced Game AI |
+| oe2020-crs-rec:crs000059 | Topics in Cognitive Science |
+| oe2020-crs-rec:crs000063 | Undergraduate Thesis |
+| oe2020-crs-rec:crs000103 | Master's Project |
+| oe2020-crs-rec:crs000113 | Master's Thesis |
