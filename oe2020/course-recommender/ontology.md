@@ -6,32 +6,33 @@ Conceptual Model for the current ontology version (OE 10) [drawio file](https://
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSnyuWfPtSg0GoByhGMccMULY6I1_vI-sl9yGztWO7PHM4QHBdPM814z15Q1jelpA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-## Ontologies
+## Ontology Downloads
 
-**Link:**
+| Ontology                    | Individuals                 |
+|-----------------------------|-----------------------------|
+| [Latest (OE 12)](oe-12-ont) | [Latest (OE 12)](oe-12-ind) |
+| [OE 11](oe-11-ont)          | [OE 11](oe-11-ind)          |
+| [OE 10](oe-10-ont)          | [OE 10](oe-10-ind)          |
+| [OE 9](oe-9-ont)            | [OE 9](oe-9-ind)            |
+| [OE 8](oe-8-ont)            | [OE 8](oe-8-ind)            |
+| [OE 7](oe-7-ont)            |                             |
 
-[Current Version of the Ontology (OE 12)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/course-recommender/oe2020/course-recommender/course-recommender.rdf)
+[oe-12-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/course-recommender/oe2020/course-recommender/course-recommender.rdf
+[oe-12-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/course-recommender/oe2020/course-recommender/course-recommender-individuals.rdf
 
-[OE 12 Individuals](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/course-recommender/oe2020/course-recommender/course-recommender-individuals.rdf)
+[oe-11-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/4316f30ca8a93fd652ff4d4861c7ba101e28c7fa/oe2020/course-recommender/course-recommender.rdf
+[oe-11-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/4316f30ca8a93fd652ff4d4861c7ba101e28c7fa/oe2020/course-recommender/course-recommender-individuals.rdf
 
-**Previous Versions**
+[oe-10-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/f611a01bbe4915a8af9f6bfa2e8a11d371b7ed0e/oe2020/course-recommender/course-recommender.rdf
+[oe-10-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/f611a01bbe4915a8af9f6bfa2e8a11d371b7ed0e/oe2020/course-recommender/course-recommender-individuals.rdf
 
-[OE 11 Ontology](https://drive.google.com/file/d/1v2Nf-dslzcYm01R3ZRdKT2_VmGxpKw8R/view?usp=sharing)
+[oe-9-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/83366e952dae6beb86ddcd660f004076a31b81ea/oe2020/course-recommender/course-recommender.rdf
+[oe-9-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/83366e952dae6beb86ddcd660f004076a31b81ea/oe2020/course-recommender/course-recommender-individuals.rdf
 
-[OE 11 Individuals](https://drive.google.com/file/d/1e7EfA2jqqXoKt09bdIyuSpJDEutZpphw/view?usp=sharing)
+[oe-8-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/1d4ed76076bb7bc6687dd92ace36fc8734f34995/oe2020/course-recommender/course-recommender.rdf
+[oe-8-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/83366e952dae6beb86ddcd660f004076a31b81ea/oe2020/course-recommender/course-recommender-individuals.rdf
 
-[OE 10 Ontology](https://drive.google.com/file/d/1Z7OmLrPrenLtqMe2cgdFLSb2sAny2fje/view?usp=sharing)
+[oe-7-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/5f9f5249fb24d6367fbf894c1673205298ef0f96/oe2020/course-recommender/course-recommender.rdf
 
-[OE 10 Individuals](https://drive.google.com/file/d/1jzigNNVkpA3yAjks9FpoYFqoPWrHXdS8/view?usp=sharing)
-
-[OE 9 Ontology](https://drive.google.com/file/d/1verhdTvaZH14al4VWKdWQ2QXlu_wuWxd/view?usp=sharing)
-
-[OE 9 Individuals](https://drive.google.com/file/d/1FyM0HyfL2gX5EFISvuk4AhkvFRoopKsG/view?usp=sharing)
-
-[OE 8 Ontology](https://drive.google.com/file/d/1v9KZwQ4AZDXTUz2iHKb_jwY-ValCyj1g/view?usp=sharing)
-
-[OE 8 Individuals](https://drive.google.com/file/d/17cGa9se5tNKEGQONhoDQR0vvtq-w-c75/view?usp=sharing)
-
-[OE 7 Ontology](https://drive.google.com/file/d/1ARmCyA8xjANjzTvHzqkahsWC4y-itHmT/view?usp=sharing)
 
 **View the ontology documentation at:**
