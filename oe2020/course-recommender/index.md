@@ -5,11 +5,34 @@ title: About
 
 ## Abstract
 
-This is the preliminary project page for the Course Recommender ontology engineering project.
+Students attending a university can benefit from carefully planning out which
+courses they will take during the course of their academic career. Developing
+such a plan of study can be difficult because students need to consider factors
+such as how each course applies to their graduation requirements, whether
+course schedules have conflicts, whether the courses are interesting to the
+student, and how registering for particular courses can affect their choices of
+future courses. In this work, we present a Course Recommendation Ontology,
+which aims to represent relevant information about courses, schedules,
+graduation requirements, and student interests to enable a recommender system.
+Our ontology can be used to enable rule-based recommendations that adhere to
+course requirements (such as prerequisite requirements) and can provide
+explanations to students about why certain courses are recommended to them.
 
-The goal of this project is to develop a system that can recommended courses for an RPI student to enroll in for the next semester. To enable this system, our team is constructing an ontology that can capture information about courses, a student's plan-of-study, topic areas of courses, and graduation requirements.
+## Introduction/Motivation
 
-This project and its core use case are currently under active development. More information about the most up-to-date documents related to the ontology and associated artifacts can be found in the list of resources.
+The domain of courses themselves are relatively clear with concrete credit
+count, course level and subjects. However, when entered into the domain of
+course registration and graduation requirements, more un-described context of
+the domain is required to make decisions. Given every semester an average of
+around 5000 students all need to simultaneously perform the same action of
+comparing available courses with their own graduation requirements, there is a
+need for guidance. This guidance at the moment is serviced by academic advisors
+that are the subject matter experts that provide this reconciliation of courses
+to requirements. To alleviate this enormous constraint on these subject matter
+experts (SMEs) and empower students with the appropriate data, an Ontology can
+be used to describe the domain and offer a query interface to expose not only
+data and requirements, but also the less tangible recommendations that advisors
+often provide.
 
 ## Team
 
