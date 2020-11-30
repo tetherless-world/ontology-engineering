@@ -92,7 +92,7 @@ I have taken CSCI 4340 Ontologies and CSCI 4020 Design and Analysis of Algorithm
 prefix oe2020-crs-rec: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/>
 prefix oe2020-crs-rec-ind: <https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender-individuals/>
 prefix lcc-lr: <https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/>
-SELECT DISTINCT ?validCourse
+SELECT DISTINCT ?validCourse ?validCourseName
 WHERE {
   VALUES ?completedCourseTag { "CSCI-4340" "CSCI-4020" }
   ?completedCourse oe2020-crs-rec:hasCourseCode [
@@ -106,6 +106,7 @@ WHERE {
                  ] ;
                   oe2020-crs-rec:isCourseSectionOf ?validCourse .
   ?validCourse a oe2020-crs-rec:Course .
+  ?validCourse oe2020-crs-rec:hasName ?validCourseName .
   FILTER NOT EXISTS {
     ?validCourse oe2020-crs-rec:hasRequiredPrerequisite+ ?filterPrereqs .
     FILTER(?filterPreqreqs != ?completedCourseInferred)
@@ -118,16 +119,15 @@ LIMIT 10
 #### Example Results
 *Note that the example URLs use a namespace prefix for ease-of-reading.*
 
-| validCourse              |
-|--------------------------|
-| oe2020-crs-rec:crs000045 |
-| oe2020-crs-rec:crs000048 |
-| oe2020-crs-rec:crs000484 |
-| oe2020-crs-rec:crs000488 |
-| oe2020-crs-rec:crs000491 |
-| oe2020-crs-rec:crs000497 |
-| oe2020-crs-rec:crs000082 |
-| oe2020-crs-rec:crs000088 |
-| oe2020-crs-rec:crs000102 |
-| oe2020-crs-rec:crs000015 |
-
+| validCourse              | validCourseName |
+|--------------------------|-----------------|
+| oe2020-crs-rec:crs000015 | Introduction to Cognitive Science |
+| oe2020-crs-rec:crs000023 | Introduction to Linguistics |
+| oe2020-crs-rec:crs000037 | Introduction to Cognitive Neuroscience |
+| oe2020-crs-rec:crs000687 | Programming for Cognitive Science and Artificial Intelligence |
+| oe2020-crs-rec:crs000692 | Game AI |
+| oe2020-crs-rec:crs000696 | Learning and Advanced Game AI |
+| oe2020-crs-rec:crs000059 | Topics in Cognitive Science |
+| oe2020-crs-rec:crs000063 | Undergraduate Thesis |
+| oe2020-crs-rec:crs000103 | Master's Project |
+| oe2020-crs-rec:crs000113 | Master's Thesis |
