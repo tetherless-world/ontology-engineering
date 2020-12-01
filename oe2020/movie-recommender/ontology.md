@@ -2,23 +2,29 @@
 
 ## Conceptual Model
 
-### General Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/conceptualModel.png) [(Editable Version)](https://drive.google.com/file/d/1MSmUmnXD892Ia6nD116NB8nuCs-uXFc1/view?usp=sharing):
+### General Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/conceptualModel.jpg) [(Editable Version)](https://drive.google.com/file/d/1MSmUmnXD892Ia6nD116NB8nuCs-uXFc1/view?usp=sharing):
 
-<img src="images/conceptualModel.png" width="100%">
+<img src="images/conceptualModel.jpg" width="100%">
 
 The above model shows how most of the high level classes connect to each other in the Movie Recommender ontology. It shows the basic construction of a creative work, the various classes connected to it that serve as attributes, and how it breaks into movies and TV shows. The contributor class is also detailed in this general model.
 
 ### Genre Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/genresConceptualModel.jpg) [(Editable Version)](https://drive.google.com/file/d/1SaZrs4M5MLkLHHiZZzHqiqZpFmZ0tR-z/view?usp=sharing):
 
-<img src="images/genresConceptualModel.jpg" width="100%">
+<img src="images/genresConceptualModel(2).jpg" width="100%">
 
-The above model shows how the concept of a genre is represented in the ontology, and how there are several aspects to what classifies a movie, such as the production type and style rather than just a single word designating what the movie "is".
+The above model shows how the concept of a genre is represented in the ontology. The genres are broken to 5 fundamental categories: Action, Comedy, Romance, Horror, and Drama. Each of these genres have many subgenres associated with them. For example, Martial Arts is a subgenre of Action. These subgenres can sometimes be subclasses of more than one genre. For example, RomanticComedy is a subgenre of Comedy and Romance. The number of subgenres displayed in the diagram is limited for the scope of this project. 
 
-### User Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/userAccount.png) [(Editable Version)](https://drive.google.com/file/d/1daR8-y7vl6DvhiFOharI3-nsPbhf-V7K/view?usp=sharing):
+### Style Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/styleConceptualModel.jpg) [(Editable Version)](https://drive.google.com/file/d/1SaZrs4M5MLkLHHiZZzHqiqZpFmZ0tR-z/view?usp=sharing):
 
-<img src="images/userAccount.png" width="100%">
+<img src="images/styleConceptualModel.jpg" width="100%">
 
-The above model shows how users using the ontology are represented within the ontology. This includes their watch data as well as personal preferences.
+The above model shows how the concept of a style is represented in the ontology. Style classifies movies outside of story elements. Rather is looks at the methods of actually producing a movie. Considerations for style include the artistic format of the movie. Artistic style is broken up between animated and live-action. From there there are many sub-categories such as 3D Animation or musicals. Budget used to produce a movie and intended audience is also a consideration. Large budget, general audience films are typically considered "Major Motion". Small budget films with very specific audiences typcially fall under art films or indie films. 
+
+### User Model [(Full Size)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/movie-recommender/oe2020/movie-recommender/images/userAccount.jpg) [(Editable Version)](https://drive.google.com/file/d/1daR8-y7vl6DvhiFOharI3-nsPbhf-V7K/view?usp=sharing):
+
+<img src="images/userAccount.jpg" width="100%">
+
+The above model shows how users using the ontology are represented within the ontology. This includes their watch data as well as personal preferences. The watch data includes information about how users rate the movies they watch. The user data also stores information about streaming services to which the user is subscribed to so as to limit reccomendations by the catalogs of those services.
 
 ## Ontologies
 
