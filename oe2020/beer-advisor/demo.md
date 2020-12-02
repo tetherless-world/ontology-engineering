@@ -150,30 +150,23 @@ PREFIX lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPers
 PREFIX qtu: <https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/>
 PREFIX beer: <https://tw.rpi.edu/ontology-engineering/oe2020/beer-advisor/>
 
-
-SELECT DISTINCT (IF(COUNT(?result)>0, ?result, 0) as ?beer)
-
-WHERE {
-SELECT DISTINCT ?result
+SELECT DISTINCT ?beer
 
 WHERE {
-?beertypes rdfs:subClassOf beer:IndiaPaleAle .
-{
-?result rdf:type ?beertypes .
-}
-UNION
-{
-?result rdf:type beer:IndiaPaleAle .
-}
+  ?beertypes rdfs:subClassOf* beer:IndiaPaleAle .
+  {
+    ?beer rdf:type ?beertypes .
+  }
+  UNION
+  {
+    ?beer rdf:type beer:IndiaPaleAle .
+  }
 
-?result beer:hasAlcoholByVolume ?alcohol .
-?alcohol rdf:type beer:AlcoholContent .
-?alcohol qtu:hasNumericValue ?abv .
-FILTER (?abv < 8)
-
+  ?beer beer:hasAlcoholByVolume ?alcohol .
+  ?alcohol rdf:type beer:AlcoholContent .
+  ?alcohol qtu:hasNumericValue ?abv .
+  FILTER (?abv < 8)
 }
-}
-GROUP BY ?result
 ```
 
 This new query provides a non-empty answer as displayed below. Note that now four beers are listed.
