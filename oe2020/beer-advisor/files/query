@@ -75,6 +75,17 @@ SELECT DISTINCT ?beer
     FILTER (?abv < 10)
   }
 
+SELECT ?beertypes ?beer
+
+WHERE {
+  beer:IndiaPaleAle beer:similarTo ?beertypes .
+  ?beer rdf:type ?beertypes .
+  ?beer beer:hasAlcoholByVolume ?alcohol .
+  ?alcohol rdf:type beer:AlcoholContent .
+  ?alcohol qtu:hasNumericValue ?abv .
+  FILTER (?abv <= 5)
+}
+
 
 - QUESTION 04: I really like New Belgium’s IPA’s, what other beers have people searched for from New Belgium?
 - This query is supposed to return beer such as Fat Tire Amber Ale, Fat Tire Belgian White, Glutiny Pale Ale and Voodoo Ranger American Haze. 
