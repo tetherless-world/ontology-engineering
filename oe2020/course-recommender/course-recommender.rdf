@@ -318,7 +318,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasSchedule"/>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasSemester"/>
 				<owl:onClass rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -553,6 +553,20 @@
 		<rdfs:subClassOf rdf:resource="&oe2020-crs-rec;CourseSection"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasInstructor"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Professor"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRegisteredStudent"/>
+				<owl:onClass rdf:resource="&oe2020-crs-rec;Student"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasSchedule"/>
 				<owl:onClass rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
@@ -563,18 +577,6 @@
 				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasCourseRegistrationNumber"/>
 				<owl:onDataRange rdf:resource="&xsd;string"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasInstructor"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Professor"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2020-crs-rec;hasRegisteredStudent"/>
-				<owl:someValuesFrom rdf:resource="&oe2020-crs-rec;Student"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>scheduled course section</rdfs:label>
@@ -956,8 +958,8 @@
 		<rdfs:label>has schedule</rdfs:label>
 		<dct:source>http://catalog.rpi.edu/</dct:source>
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSection"/>
-		<rdfs:range rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
-		<skos:definition>has a semester schedule during which the course is intended to take place</skos:definition>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;CourseSchedule"/>
+		<skos:definition>has a regular schedule during the work week in which the course takes place</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasScheduledOffering">
@@ -966,6 +968,14 @@
 		<rdfs:domain rdf:resource="&oe2020-crs-rec;Course"/>
 		<rdfs:range rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
 		<skos:definition>has a semester during which the course is intended to be offered in regular intervals</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2020-crs-rec;hasSemester">
+		<rdfs:label>has semester</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&oe2020-crs-rec;CourseSection"/>
+		<rdfs:range rdf:resource="&oe2020-crs-rec;SemesterSchedule"/>
+		<skos:definition>has a semester schedule during which the course is intended to take place</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2020-crs-rec;hasSpecialTag">
