@@ -6,10 +6,11 @@ title: related_work
 ## Related Work and References
 
 ### Related Work
-
-<p class="message-highlight">
-	Currently, the Beer-Advisor project has no main related work. This page will be updated as soon as we have some material ready.
-</p>
+The beer ontology developed for the Beer-Advisor project can be related to a few other ontologies related to beverages. For instance, we can list the following ontologies that are related to beer or to beverages in general:
+-  <a href="http://www.daml.org/ontologies/76.html">Wine Ontology</a>: This ontology is designed in order to correctly categorize different wines, allowing recommendations of wines to accompany certain dishes. The ontology can be dowloaded <a href="https://www.w3.org/TR/2003/PR-owl-guide-20031215/wine">here</a>. 
+- <a href="http://rdfs.co/bevon/latest/html">BEVON</a>: The Beverage Ontology is designed to be able to structure information from different types of beverages. The ontology contains a set of different types of beers, such as Irish Red and Pilsner, and different characteristics for beer, such as color and alcohol content.
+- <a href="https://www.cs.umd.edu/projects/plus/SHOE/onts/beer1.0.html">Beer-Ontology</a>: This beer ontology contains many different beer subclasses, allowing different beers to be classified. However, it does not contain any attributes other than ingredients, limiting its application to a Beer-Advisor application.  
+- <a href="https://dbs.uni-leipzig.de/files/coma/sources/fd/beer.owl">Beer Ontology OWL Lite</a>: This second beer ontology contains a better beer classification than the previous listed ontology. It also contains interesting attributes that are related to beer such as characteristics (alcohol content and sweetness). In addition, the ontology also allows beers to be linked to the its breweries.
 
 
 ### References
