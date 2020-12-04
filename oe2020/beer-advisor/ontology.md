@@ -2,10 +2,7 @@
 
 ## Conceptual Model
 
-The changes to our conceptual models were made in week 7. We realized that our initial model, dpeicted below, was not representative of our actual ontology.
-[(Figure 0 - Original Model)](images/OE_5_Beer_Advisor_ConceptualModel.jpg)
-![[original model](images/OE_5_Beer_Advisor_ConceptualModel.jpg)
-In reality, the ontology changed drastically from our initial plans, so we decided to completely redo our models. In order to make them more readable, we also split them into 4 different parts, a broad overview, the user class, and two of the characteristics. Underneath each image will be a link to the full size version of the image for better readability.
+Below are the conceptual models that describe the ontology. In order to help with readability, the models have been split into four sections: a broad overview, the characterstic class, and the user class.
 
 #### Overview
 [(Figure 1 - Full Image)](images/OverviewDiagram.jpg)
