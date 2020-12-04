@@ -22,7 +22,7 @@ Marcelo is a current Electrical Engineer PhD student at Rensselaer Polytechnic I
 
 ## Project Overview Diagram
 
-This section aims to provide the reader with two quick overviews that will show how the beer ontology works and how an application leveraging such ontology could recommend the perfect beer for a user. First, let us start with the application and the Beer-Advisor project. A general idea of the Beer-Advisor application that would use the ontology developed in this project is displayed in the figure below. Beer consumers, distributors and sellers are considered potential users that use the application searching for beer recommendations. The ontology-enabled application is expected to collect information from databases and the ontology is used for organizing all that information in a graph-like knowledge base. 
+This section aims to provide the reader with two quick overviews that will show how the beer ontology works and how an application leveraging such ontology could recommend the perfect beer for a user. First, let us start with the the Beer-Advisor project application. A general idea of a beer-recommender application that would use the ontology developed in this project is displayed in the figure below. Beer consumers, distributors and sellers are considered potential users that use the application searching for beer recommendations. The ontology-enabled application is expected to collect information from databases and the ontology is used for organizing all that information in a graph-like knowledge base. 
 
 ![Overview Diagram](images/usecase-diagram.png)
 
