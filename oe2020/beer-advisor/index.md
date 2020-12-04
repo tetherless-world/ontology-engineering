@@ -44,7 +44,8 @@ This section summarizes some resources that might be useful for someone interest
   </tr>
   <tr>
     <td>1. Documentation</td>
-    <td>(a) <a href="./usecase">Use Case Section</a></td>
+    <td>(a) <a href="./usecase">Use Case Section</a><br>
+        (b) <a href="./publications">Publication Section</a></td>
   </tr>
   <tr>
     <td>2. Ontology</td>
