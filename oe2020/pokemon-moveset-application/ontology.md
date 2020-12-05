@@ -17,6 +17,12 @@ Concept Map General Model:
 - [Individual Link](pokemon-moveset-individuals.rdf)
 
 **Link to Previous versions:**
+- OE-12:
+	- [Ontology](archived/OE12_PokemonMovesetOntology.rdf)
+	- [Individuals](archived/OE12_PokemonMovesetOntology_Individuals.rdf)
+- OE-11:
+	- [Ontology](archived/OE11_PokemonMovesetOntology.rdf)
+	- [Individuals](archived/OE11_PokemonMovesetOntology_Individuals.rdf)
 - OE-10:
 	- [Ontology](archived/OE10_PokemonMovesetOntology.rdf)
 	- [Individuals](archived/OE10_PokemonMovesetOntology_Individuals.rdf)
@@ -26,7 +32,7 @@ Concept Map General Model:
 - OE-8:
 	- [Ontology](archived/OE_8_pokemon-moveset.rdf)
 	- [Individuals](archived/OE_8_pokemon-moveset-individuals.rdf)
-- [OE-7](archived/OE_7_pokemon-moveset.rdf)
+- [OE-7](archived/OE7_pokemon-moveset.rdf)
 
 
 

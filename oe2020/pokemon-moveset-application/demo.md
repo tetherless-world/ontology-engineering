@@ -2,7 +2,10 @@
 ---
 
 ## Static Demo
-### Query Prefix:
+### Competency Questions
+- Download the SPARQL Queries [Here](https://docs.google.com/document/d/1d5yUYvRzTnKTj5QJUA99YBfmGUGpjkeNe9ChlYQnPsE/edit?usp=sharing)
+
+#### Query Prefix:
 ```sparql 
 PREFIX uo: <http://purl.obolibrary.org/obo/UO_> 
 PREFIX owl: <http://www.w3.org/2002/07/owl#> 
@@ -38,8 +41,6 @@ PREFIX pkm-mvs: <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset/
 PREFIX pkm-mvs-ind:  <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-moveset-individuals/>
 ```
 
-### Competency Questions
-- Download the SPARQL Queries [Here](https://docs.google.com/document/d/1d5yUYvRzTnKTj5QJUA99YBfmGUGpjkeNe9ChlYQnPsE/edit?usp=sharing)
 #### Competency Question 1
 
 - Question: 
