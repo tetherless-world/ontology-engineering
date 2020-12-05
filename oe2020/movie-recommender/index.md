@@ -35,6 +35,8 @@ Here is a compounded list of the most important resources.
 [Live Demo](https://movie-recommender--rpi-ontology-engineering.netlify.app/oe2020/movie-recommender/demo)
 [Static Demo](https://movie-recommender--rpi-ontology-engineering.netlify.app/oe2020/movie-recommender/demo)
 
+The Movie Recommender team encourages viewers to utilize the open source resources however they wish, and to continue providing ideas and help towards the advancement of the ontology.
+
 ## Acknowledgements
 
 We would like to thank the Fall 2020 Ontologies instructors Professor Deborah McGuinness and Elisa Kendall for all their hard work. We would also like to thank course manager Rebecca Cowen, and the teaching assistants Shruthi Chari and Sabbir Muhammed Rashid.
