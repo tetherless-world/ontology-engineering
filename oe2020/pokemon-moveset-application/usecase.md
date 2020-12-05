@@ -7,7 +7,7 @@ title: Use Case
 
 Latest Version (OE6):
 
-<iframe src="https://docs.google.com/document/d/e/2PACX-1vR6-fYX9Qa45xv7J5z2_19UVkR222kj5ABEEBiS4-8MplTabHZY7XezPQY2e0jZTA/pub?embedded=true" style="width: 800px; height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vTuyYMQRdnxzpaaV3hpl42wZHqNK1xBfKIuGorOjt2jX-jRdzNv-tWmTROmXBNu5w/pub?embedded=true" style="width: 800px; height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 - [OE6 (Latest)](https://docs.google.com/document/d/e/2PACX-1vR6-fYX9Qa45xv7J5z2_19UVkR222kj5ABEEBiS4-8MplTabHZY7XezPQY2e0jZTA/pub)
