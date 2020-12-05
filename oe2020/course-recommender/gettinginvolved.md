@@ -5,6 +5,7 @@ title: About
 
 ## Maintenenance Policy
 
+The Course Recommender Ontology was created during the Fall 2020 semester of Ontology Engineering at Rensselaer Polytechnic Institute.
 Any person who desires to work more in depth with and contribute to this ontology can do so by notifying any of the 
 current team members. Additionally, any changes or updates to the ontology must be documented on the website in order 
 to show an accurate representation of its current state and record provenance details of such changes. By using links
@@ -18,10 +19,10 @@ potential for expansion and implementation not only for Rensselaer’s purposes 
 country. If you are interested in working on the Course Recommender Ontology, please contact one of the project 
 members by email below:
 
-Kelly Fellenzer - fellek at rpi dot edu
-
 Sola S. Shirai - shiras2 at rpi dot edu
+
+Owen Xie  - xieo at rpi dot edu
 
 Jacob Shomstein - shomsj at rpi dot edu
 
-Owen Xie  - xieo at rpi dot edu
+Kelly Fellenzer - fellek at rpi dot edu
