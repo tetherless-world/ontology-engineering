@@ -1,6 +1,6 @@
 ---
 layout: default
-title: use case
+title: Use Case
 ---
 
 ## Use Case Document

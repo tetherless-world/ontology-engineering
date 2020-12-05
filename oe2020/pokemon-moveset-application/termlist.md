@@ -1,6 +1,6 @@
 ---
 layout: default
-title: term list
+title: Term List
 ---
 
 ## Terminology List
