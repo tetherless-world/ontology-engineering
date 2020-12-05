@@ -5,6 +5,8 @@ title: use case
 
 ## Use Case Document
 
+[File Link](https://docs.google.com/document/d/e/2PACX-1vTxwdYcndxCYEAXbCkozDWeC1wpFWzRJlOK02SstpeqQzNapd_AfIWhjL1XZgXVxg/pub)
+
 <iframe src="https://docs.google.com/document/d/e/2PACX-1vTxwdYcndxCYEAXbCkozDWeC1wpFWzRJlOK02SstpeqQzNapd_AfIWhjL1XZgXVxg/pub?embedded=true" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
