@@ -37,13 +37,13 @@ often provide.
 
 ## Point of Contact
 
-Sola S. Shirai - shiras2 at rpi dot edu
+- Sola S. Shirai - shiras2 at rpi dot edu
 
-Owen Xie  - xieo at rpi dot edu
+- Owen Xie  - xieo at rpi dot edu
 
-Kelly Fellenzer - fellek at rpi dot edu
+- Kelly Fellenzer - fellek at rpi dot edu
 
-Jacob Shomstein - shomsj at rpi dot edu
+- Jacob Shomstein - shomsj at rpi dot edu
 
 ## Project Overview Diagram
 
@@ -55,7 +55,9 @@ Jacob Shomstein - shomsj at rpi dot edu
 
 3. [Use Case and Competency Questions](usecase.md)
 
-4. [Presentations](presentations.md)
+4. [Static Demo](demo.md) 
+
+5. [Presentations](presentations.md)
 
 ## Acknowledgements
 A huge thank you to our professors Deborah McGuinness and Elisa Kendall for providing help and insight during the 
