@@ -27,7 +27,7 @@ WHERE {
 
 #### Example Results
 
-*Note that the example URLs use a namespace prefix for ease-of-reading.*
+*Note that the example URIs use a namespace prefix for ease-of-reading.*
 
 | prerequisiteCourse           | prerequisiteCourseName          |
 |------------------------------|---------------------------------|
@@ -59,6 +59,10 @@ remaining requirements?
 > Pathway option), (2) remove all courses that Jacob has already completed, and
 > (3) filter out courses by course level to only choose “easy” courses (which
 > we will define as being below the 4000 level, for this query example).
+
+> Note the following query is written for SPARQL 1.1, and the results were
+> obtained after loading the ontology and running the query in Blazegraph.
+> This query may not work if you try to load and run it in Protege.
 
 #### Query
 
@@ -92,7 +96,7 @@ WHERE {
 ```
 
 #### Example Results
-*Note that the example URLs use a namespace prefix for ease-of-reading.*
+*Note that the example URIs use a namespace prefix for ease-of-reading.*
 
 | recCourse                    | recCourseName                     | recCourseLabel |
 |------------------------------|-----------------------------------|----------------|
@@ -138,7 +142,7 @@ LIMIT 10
 
 #### Example Results
 
-*Note that the example URLs use a namespace prefix for ease-of-reading.*
+*Note that the example URs use a namespace prefix for ease-of-reading.*
 
 | validCourse              | validCourseName |
 |--------------------------|-----------------|
