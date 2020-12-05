@@ -6,16 +6,14 @@ title: About
 ## Maintenenance Policy
 
 The Course Recommender Ontology was created during the Fall 2020 semester of Ontology Engineering at Rensselaer Polytechnic Institute.
-<ul>
-<li>After the end of the Fall 2020 semester, the final versions of the ontology and its artifacts will remain at the same URL.</li>
-<li>Any person who desires to work more in depth with and contribute to this ontology can do so by notifying any of the 
-current team members.</li> 
-<li>Additionally, any changes or updates to the ontology must be documented on the website in order 
-to show an accurate representation of its current state and record provenance details of such changes.</li> 
-<li>By using links
-to Github commits and documents published from Google Docs, new and old versions of the ontology and its artifacts
-are neatly available on this website.</li>
-</ul>  
+
+- After the end of the Fall 2020 semester, the final versions of the ontology and its artifacts will remain available
+through the various links on this website.
+- Periodic updates may be made to the content available on this website.
+- Future changes to the ontology and related artifacts will be documented on the website, and previous versions of
+ any updated artifact will remain accessible after updated versions are released. 
+- Anyone interested in contributing to this ontology may contact the current team members.
+
 For more information about the ontology, please see our Design, Research, and Resources sections!
 
 ## Getting Involved
