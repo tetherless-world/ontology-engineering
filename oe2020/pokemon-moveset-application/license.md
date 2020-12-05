@@ -4,6 +4,7 @@ title: license
 ---
 
 ## License
+
 The MIT License (MIT)
 
 Copyright (c) 2020 Mitchell Falkow, Jay Franklin, Zhepeng Luo, John Slowik
