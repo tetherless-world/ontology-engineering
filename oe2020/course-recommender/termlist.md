@@ -5,6 +5,7 @@ title: Terminology List
 
 ## Terminology List
 
+[File Link](https://docs.google.com/spreadsheets/d/e/2PACX-1vTb3-QbMShlW0t8GqPrkm5dETjHN-CtMP2vyvmYP2qB0bZQ-nLqes2FMZCcgYpsfA/pubhtml)
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTb3-QbMShlW0t8GqPrkm5dETjHN-CtMP2vyvmYP2qB0bZQ-nLqes2FMZCcgYpsfA/pubhtml?widget=true&amp;headers=false" style="width: 100%; height: 500px;"></iframe>
 
 ## Previous Versions
