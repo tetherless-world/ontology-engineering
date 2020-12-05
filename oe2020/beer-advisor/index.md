@@ -22,15 +22,13 @@ Marcelo is a current Electrical Engineer PhD student at Rensselaer Polytechnic I
 
 ## Project Overview Diagram
 
-This section aims to provide the reader with two quick overviews that will show how the beer ontology works and how an application leveraging such ontology could recommend the perfect beer for a user. First, let us start with the the Beer-Advisor project application. A general idea of a beer-recommender application that would use the ontology developed in this project is displayed in the figure below. Beer consumers, distributors and sellers are considered potential users that use the application searching for beer recommendations. The ontology-enabled application is expected to collect information from databases and the ontology is used for organizing all that information in a graph-like knowledge base. 
-
-![Overview Diagram](images/usecase-diagram.png)
-
-
-This sample application then uses the <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/beer-advisor.rdf">beer-advisor</a> ontology to organize the data and to recommend beers given the specific characteristics required by the user. For istance, consider the image below. There, HomerSimpson has a user profile which allows preferred beers to be listed. In fact, it is possible to see that VoodooRangerJuicyHaze, an India Pale Ale, is in HomerSimpson's preferences. Note that the beer is listed to have attributes such as bitterness and alcohol content and that the beer is linked to the brewery which produces it. It is important to observe how the ontology was able to structure all this data and that an application leveraging such ontology would be able to recommend beers using all this linked information.
+This section aims to provide the reader with two quick overviews that will show how the beer ontology works and how an application leveraging such ontology could recommend the perfect beer for a user. First, let us giving an overview about the ontology. As an example, take the image below. There, HomerSimpson has a user profile which allows preferred beers to be listed. In fact, it is possible to see that VoodooRangerJuicyHaze, an India Pale Ale, is in HomerSimpson's preferences. Note that the classification of VoodooRangerJuicyHaze into an India Pale Ale allows implies that the beer is clearly a special type of Pale Ale, which is style of Ale, which is a subclass of beer. In addition, observe that the beer is listed to have attributes such as bitterness and alcohol content and that the beer is linked to the brewery which produces it. This simple example illustrates how the ontology was able to create a graph structure using all this data.
 
 ![Overview Diagram 2](images/Example_Overview.png)
 
+Now, let us see how an application leveraging such ontology would be able to recommend beers using all this graph-structured information. A general idea of a beer-recommender application that would use the ontology developed in this project is displayed in the figure below. Beer consumers, distributors and sellers are considered potential users of the application by searching for beer recommendations. The ontology-enabled application is expected to collect information from databases and the ontology is used for organizing all that information in a graph-like knowledge base. This sample application then uses the <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/beer-advisor/oe2020/beer-advisor/beer-advisor.rdf">beer-advisor</a> ontology to organize the data and to recommend beers given the specific characteristics required by the user. 
+
+![Overview Diagram](images/usecase-diagram.png)
 
 
 ## List of Resources
