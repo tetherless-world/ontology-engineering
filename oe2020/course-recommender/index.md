@@ -35,15 +35,15 @@ be used to describe the domain and offer a query interface to expose not only
 data and requirements, but also the less tangible recommendations that advisors
 often provide.
 
-## Team
-
-Kelly Fellenzer - fellek at rpi dot edu
+## Point of Contact
 
 Sola S. Shirai - shiras2 at rpi dot edu
 
-Jacob Shomstein - shomsj at rpi dot edu
-
 Owen Xie  - xieo at rpi dot edu
+
+Kelly Fellenzer - fellek at rpi dot edu
+
+Jacob Shomstein - shomsj at rpi dot edu
 
 ## Project Overview Diagram
 
@@ -58,4 +58,6 @@ Owen Xie  - xieo at rpi dot edu
 4. [Presentations](presentations.md)
 
 ## Acknowledgements
-A huge thank you to our professors Deborah McGuinness and Elisa Kendall for providing help and insight during the development of our Course Recommender Ontology. Additionally, we appreciate all of Sabbir Rashid's and Shruthi Chari's feedback we recieved on our artifacts and presentations.  
+A huge thank you to our professors Deborah McGuinness and Elisa Kendall for providing help and insight during the 
+development of our Course Recommender Ontology. Additionally, we appreciate all of Sabbir Rashid's and Shruthi Chari's 
+feedback we recieved on our artifacts and presentations.  
