@@ -4,7 +4,6 @@
 ## Static Demo
 
 ## Competency Questions
-
 ### Competency Question 1
 
 #### Question
@@ -153,3 +152,9 @@ LIMIT 10
 | oe2020-crs-rec:crs000063 | Undergraduate Thesis |
 | oe2020-crs-rec:crs000103 | Master's Project |
 | oe2020-crs-rec:crs000113 | Master's Thesis |
+
+## SPARQL Query Document Links
+-[Version 2 SPARQL Queries](https://docs.google.com/document/d/e/2PACX-1vSNBvI4Ea8cJPNZj-vL0r0344MjT63iemZSwAxOHSkA8jPIZuhoMUOMdQSX8AMXO-u7RGMwOjabhXke/pub)
+
+-[Version 1 SPARQL Queries](https://docs.google.com/document/d/e/2PACX-1vRNPjW90hb4S7h_uGvDivmLV2UHkhO4m70CiVk5skBZLGZSUQijGRPn3WHoj85zZ6Ur3tH-IXMP55Hl/pub)
+
