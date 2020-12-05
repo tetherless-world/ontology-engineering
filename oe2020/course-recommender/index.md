@@ -10,12 +10,13 @@ courses they will take during the course of their academic career. Developing
 such a plan of study can be difficult because students need to consider factors
 such as how each course applies to their graduation requirements, whether
 course schedules have conflicts, whether the courses are interesting to the
-student, and how registering for particular courses can affect their choices of
-future courses. In this work, we present a Course Recommendation Ontology,
+student, and whether registering for particular courses can fulfill prerequisites
+for future courses. In this work, we present a Course Recommendation Ontology,
 which aims to represent relevant information about courses, schedules,
-graduation requirements, and student interests to enable a recommender system.
+graduation requirements, relationships among courses, and student interests 
+to enable a recommender system.
 Our ontology can be used to enable rule-based recommendations that adhere to
-course requirements (such as prerequisite requirements) and can provide
+course requirements (such as prerequisite requirements) and provide
 explanations to students about why certain courses are recommended to them.
 
 ## Introduction/Motivation
