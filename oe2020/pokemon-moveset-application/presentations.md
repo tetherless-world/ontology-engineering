@@ -1,6 +1,6 @@
 ---
 layout: default
-title: presentations
+title: Presentations
 ---
 
 ## Presentations

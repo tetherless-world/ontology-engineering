@@ -1,3 +1,8 @@
+---
+layout: default
+title: Concept Map & Ontology
+---
+
 [Concept Map](#conceptual-model) | [Ontology Downloads](#ontology-downloads)
 
 ## Conceptual Model

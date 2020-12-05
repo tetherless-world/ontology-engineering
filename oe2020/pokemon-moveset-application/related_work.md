@@ -1,6 +1,6 @@
 ---
 layout: default
-title: related_work
+title: Related Work
 ---
 
 ## Related Work and References
