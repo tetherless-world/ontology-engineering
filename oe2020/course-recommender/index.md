@@ -19,22 +19,6 @@ Our ontology can be used to enable rule-based recommendations that adhere to
 course requirements (such as prerequisite requirements) and provide
 explanations to students about why certain courses are recommended to them.
 
-## Introduction/Motivation
-
-The domain of courses themselves are relatively clear with concrete credit
-count, course level and subjects. However, when entered into the domain of
-course registration and graduation requirements, more un-described context of
-the domain is required to make decisions. Given every semester an average of
-around 5000 students all need to simultaneously perform the same action of
-comparing available courses with their own graduation requirements, there is a
-need for guidance. This guidance at the moment is serviced by academic advisors
-that are the subject matter experts that provide this reconciliation of courses
-to requirements. To alleviate this enormous constraint on these subject matter
-experts (SMEs) and empower students with the appropriate data, an Ontology can
-be used to describe the domain and offer a query interface to expose not only
-data and requirements, but also the less tangible recommendations that advisors
-often provide.
-
 ## Point of Contact
 
 - Sola S. Shirai - shiras2 at rpi dot edu
