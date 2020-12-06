@@ -158,6 +158,9 @@ LIMIT 10
 | oe2020-crs-rec:crs000113 | Master's Thesis |
 
 ## SPARQL Query Document Links
+
+-[Week 13 SPARQL Queries](https://github.com/tetherless-world/ontology-engineering/blob/628bd433e492f5a76d6346face7d6d59c0122f78/oe2020/course-recommender/queries/OE_13_CourseRecommender_SPARQLQueries.sparql)
+
 -[Week 11 SPARQL Queries](https://docs.google.com/document/d/e/2PACX-1vSNBvI4Ea8cJPNZj-vL0r0344MjT63iemZSwAxOHSkA8jPIZuhoMUOMdQSX8AMXO-u7RGMwOjabhXke/pub)
 
 -[Week 10 SPARQL Queries](https://docs.google.com/document/d/e/2PACX-1vRNPjW90hb4S7h_uGvDivmLV2UHkhO4m70CiVk5skBZLGZSUQijGRPn3WHoj85zZ6Ur3tH-IXMP55Hl/pub)
