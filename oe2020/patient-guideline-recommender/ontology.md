@@ -3,15 +3,21 @@
 ## Conceptual Model
 
 
-**User Conceptual Model:**
+### Legend
+
+ - Blue arrows refer to properties
+ - Orange lined boxes represent classes
+ - Purple squares represent individuals.
+ - Green boxes indicate data properties
+
+### Overview
 
 ![Concept Map Subject Model](images/OE-12-Conceptual-Model-User.png)
 
-This is our overview diagram of the system as it interacts with users and patients. We have a couple key relationships that we look at here, including exercise and activity level, health conditions, and food/ dietary modeling. Our patient also has some basic demographic information such as age group. We characterize a user's activity level using the reasoner and given the amount that they workout in a week. 
+This is our overview diagram of the system as it interacts with users and patients. We have a couple key relationships that we look at here, including exercise and activity level, health conditions, and food/ dietary modeling. Our patient also has some basic demographic information such as age group. We characterize a user's activity levelusing the reasoner and given the amount that they workout in a week.
 
 
-
-**Individual Conceptual Model:**
+### Sample Individual
 
 ![Concept Map Subject Model](images/OE-12-Conceptual-Model-Individuals.png)
 
@@ -19,7 +25,7 @@ This diagram contains a model of what a user might look like in the system. In t
 
 
 
-**Guideline 5.12 Conceptual Model:**
+### Guideline 5.12
 
 ![Concept Map Subject Model](images/OE-12-Conceptual-Model-Guideline-5.12.png)
 
@@ -27,7 +33,7 @@ This diagram represents Guideline 5.12 in our ontology. Guideline 5.12, which st
 
 
 
-**Guideline 8.7 Conceptual Model:**
+### Guideline 8.7
 
 ![Concept Map Subject Model](images/OE-12-Conceptual-Model-Guideline-8.7.png)
 
@@ -35,13 +41,12 @@ Similar to the previous diagram, this one represents Guideline 8.7 in our ontolo
 
 ## Ontologies
 
-**Link:**
-[Ontology Link](patient-guideline-recommender.rdf)
+### Link
+[Ontology Link](./patient-guideline-recommender.rdf)
 
-[Individual Ontology](patient-guideline-recommender-individuals.rdf)
+[Individual Ontology](./patient-guideline-recommender-individuals.rdf)
 
-**Previous Ontologies Link:**
-
+### Previous Versions
 
 [Version 1 - OE-6](https://drive.google.com/file/d/1MjOd3Fz1jb3mDt64vZkIe7u_w7uQwK4M/view?usp=sharing)
 
@@ -55,4 +60,4 @@ Similar to the previous diagram, this one represents Guideline 8.7 in our ontolo
 
 [Version 6 - OE-11](https://drive.google.com/drive/folders/11nHSO4Xz9lCPcIOfIs1boXp85pxKIESv?usp=sharing)
 
-**View the ontology documentation at:**
+### View the ontology documentation at:
