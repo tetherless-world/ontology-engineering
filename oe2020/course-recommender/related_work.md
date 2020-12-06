@@ -15,6 +15,8 @@ The Course Recommender Ontology was developed with help from a few previously cr
 
 ### References
 
+Below are the references that contributed to the creation of our artifcats and/or the development of our Course Recommender Ontology.
+
 - Abdallah, S. A., &amp; Ferris, B. (2010, July 23). The Ordered List Ontology. Retrieved September 11, 2020, from http://smiy.sourceforge.net/olo/spec/orderedlistontology.html
 - Academic Calendar. (2020). Retrieved September 16, 2020, from https://info.rpi.edu/registrar/academic-calendar
 - Association of Educational Publishers & Creative Commons. (2014, October 23). LRMI Version 1.1. Retrieved September 16, 2020, from https://www.dublincore.org/specifications/lrmi/1.1/
