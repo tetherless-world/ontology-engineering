@@ -10,7 +10,7 @@ Mitchell Falkow, Jade Franklin, Zhepeng Luo, John Slowik
 As games become increasingly complicated, professional gamers and their audience are faced with a growing amount of information they need to understand and navigate to intelligently participate and compete.  In most cases, players simply memorize these facts and navigate them by intuition and trial-and-error, resulting in potentially large time costs to answer questions about new styles of play.  A technique for efficiently encoding the multiple layers of complexity and available information is absent; such a tool could greatly improve the accessibility of complex games for both veteran and novice players. Ontologies encode, relate, and can reason on abstract information (which can be changing, versioned, and distributed); as such, they fit these requirements perfectly.  Here, we demonstrate this on the Pokémon franchise: it has a healthy esports community, and there is a particular problem involving relatively simple mechanics that is greatly complicated by the scale of the game: teaching a specific Pokémon a specific move.  Although our technique can answer a number sub-questions players may find useful, this specific task requires players to memorize, minimally, hundreds of unique Pokémon, hundreds of unique moves, which Pokémon can learn which moves, and then navigate this information in its entirety to find a solution.
 
 <p align="center">
-<img src="images/gengar_intro_comp_pokemon.png" width="50">
+<img src="images/gengar_intro_comp_pokemon.png" width="50%">
 <\p>
 
 ## Overview
@@ -21,14 +21,14 @@ As games become increasingly complicated, professional gamers and their audience
 
 
 <p align="center">
-<img src="images/Poke_Ball.png" width="10">
+<img src="images/Poke_Ball.png" width="10%">
 <\p>
 
 ## A Super Breif Introduction to Pokémon
 Pokémon is a turn based role-playing game where the player collects creatures, called Pokémon.  The primary gameplay involves Pokémon battling, wherein two Pokémon take turns using moves to inflict damage or status effects on each other.  Players can carry up to six Pokémon, though they can - and almost always - do have many more stored elsewhere. Pokémon can know at most four moves, which are determined by a number of factors, and change as the player adventures through the game. For example, a Pokémon's level, a measure that reflects and increases with a Pokémon's general power; when a Pokémon acheives certain levels, they can learn specific moves.  The specific level and move a Pokémon learns varys from species to species.
 
 <p align="center">
-<img src="images/noivern_moves.png" width="30">
+<img src="images/noivern_moves.png" width="30%">
 <\p>
 
 Pokémon is a Nintendo game franchise that dates back to 1996, and has since seen the release of dozens of games following the same core gameplay from above.  It is broadly considered to be one of the most successful gaming franchise ever, and unsurprisingly has developed a large community of fans that hold tournaments where players battle each other and events where players generally share their enthusiasm for the games.  
@@ -43,17 +43,17 @@ Inheritance is one of four ways a Pokémon can learn a move.  The first, as ment
 A naive approach may find this problem simple at first: find a Pokémon that can learn the move, breed it with the Pokémon species you would like to inherit the move, done. E-z p-z? Not so: this process is complicated by a breeding restriction called Egg Groups (hence the moves being known as "Egg" Moves).  An Egg Group is a class of Pokémon that are allowed to breed together - for example, the Field Egg Group is unable to breed with Pokémon from the Water-1 Egg Group.  What makes the problem more interesting is that some Pokémon are in two Egg Groups at once; this means that the Pokémon that knows the move you want to learn may not be directly breedable, meaning you need to find a Pokémon that can inherit it *and* can breed with the Pokémon that can learn the move and your Pokémon.  This technique is known as breed-chaining, and can include more than one in-between Pokémon inheriting the move. The problem gains substance due to the scale and distribution of egg moves - there are many moves, Pokémon, and egg groups to take into consideration when attempting to form a working breed-chain.
 
 <p align="center">
-<img src="images/Egg Groups.png" width="90">
+<img src="images/Egg Groups.png" width="90%">
 <\p>
 
 <p align="center">
-<img src="images/Move_Inheritance.png" width="90">
+<img src="images/Move_Inheritance.png" width="90%">
 <\p>
 
 ## Project Overview Diagram
 The system in the current work is limited greatly in scope from a fully working application.  A working framework for the ontology has been deployed and tested; however, it only handles a few Pokémon, Moves, and Items - sufficient to demonstrate all the core functionality. The user interface, system backend, and connection with external databases was cut from the project scope.  As pictured below, a user would interact with the user interface, which would supply the user with answers to queries through communication with the system backend - which itself would retrieve the answer by interacting directly with the ontology, and in some cases communicating other networked databases.  In its current implementation, the Ontology itself does not need to access external databases, but such an interaction wouldn't be out of the question in a full implementation.
 <p align="center">
-<img src="images/SystemArchitecture.png" width="75">
+<img src="images/SystemArchitecture.png" width="75%">
 <\p>
 
 ## Future Applications of this Work
@@ -62,7 +62,7 @@ There are several uses for this system that go beyond game information managemen
 Another useful function Ontologies serve is encoding version information - becuase the Pokémon franchise is spread out over many games, the rules of the game and Pokémon available have varied over time.  It would be entirely within reason to setup the Ontology to encode information for specific generations,
 
 <p align="center">
-<img src="images/gengar_v_golem.png" width="75">
+<img src="images/gengar_v_golem.png" width="75%">
 <\p>
 
 ## List of Resources
