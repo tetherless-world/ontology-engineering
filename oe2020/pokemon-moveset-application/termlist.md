@@ -7,7 +7,7 @@ title: Term List
 
 Latest:
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSo4hovCweefKeWhXVvTJ-08k-zHXiI8-EqLVsGnNm2edHWxmAA3VT0R2ym_dFvVLyXSghpdtxGvmOJ/pubhtml?widget=true&amp;headers=false" style="width: 920; height: 700px; border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSo4hovCweefKeWhXVvTJ-08k-zHXiI8-EqLVsGnNm2edHWxmAA3VT0R2ym_dFvVLyXSghpdtxGvmOJ/pubhtml?widget=true&amp;headers=false" style="width: 920px; height: 700px; border: none;"></iframe>
 
 ## Previous Versions
 - [Latest](https://docs.google.com/spreadsheets/d/e/2PACX-1vSo4hovCweefKeWhXVvTJ-08k-zHXiI8-EqLVsGnNm2edHWxmAA3VT0R2ym_dFvVLyXSghpdtxGvmOJ/pubhtml)
