@@ -1,25 +1,26 @@
 [Concept Map](#conceptual-model) | [Ontology File](course-recommender.rdf)
 
 ## Conceptual Model
-
-The conceptual model for our most recent ontology version can be seen as a [drawio file](https://drive.google.com/file/d/1b3JVHcvj6Lowty8aPcan0jGcSv3qkH0Z/view?usp=sharing).
-
-The following presentation can also be used to view some breakdowns of the conceptual model.
-
 ![Overall Concept Map](images/concept_map_overall.png)
+The concept map above shows an overview of the classses and relationships in our ontology. In the following sections we break down this view into related components.
 
+### People
 ![People Sub-Concept Map](images/concept_map_people.png)
 
+### Courses
 ![Courses Sub-Concept Map](images/concept_map_courses.png)
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR6bVv5sO9bp1qrsPPDSlzj7qgFnCAZbZnm4JV7Xfu4rX96Z8UdvC2VV2dhzCNU2A/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+### Plans of Study
+![Requirements Sub-Concept Map](images/concept_map_requirements.png)
+
+The conceptual model for our most recent ontology version can be seen as a [drawio file](https://drive.google.com/file/d/1b3JVHcvj6Lowty8aPcan0jGcSv3qkH0Z/view?usp=sharing).
 
 ## Ontologies
 
 - [Main Ontology][oe-current]
 - [Individuals][oe-current-ind]
 
-## Previous Versions
+### Previous Versions
 
 | Ontology                    | Individuals                  |
 |-----------------------------|------------------------------|
