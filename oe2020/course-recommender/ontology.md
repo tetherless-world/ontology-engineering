@@ -49,6 +49,3 @@ The following presentation can also be used to view some breakdowns of the conce
 [oe-8-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/83366e952dae6beb86ddcd660f004076a31b81ea/oe2020/course-recommender/course-recommender-individuals.rdf
 
 [oe-7-ont]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/5f9f5249fb24d6367fbf894c1673205298ef0f96/oe2020/course-recommender/course-recommender.rdf
-
-
-**View the ontology documentation at:**
