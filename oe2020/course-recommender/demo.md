@@ -60,10 +60,6 @@ remaining requirements?
 > (3) filter out courses by course level to only choose “easy” courses (which
 > we will define as being below the 4000 level, for this query example).
 
-> Note the following query is written for SPARQL 1.1, and the results were
-> obtained after loading the ontology and running the query in Blazegraph.
-> This query may not work if you try to load and run it in Protege.
-
 #### Query
 
 ```sparql
