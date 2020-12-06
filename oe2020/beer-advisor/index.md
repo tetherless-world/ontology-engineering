@@ -72,4 +72,10 @@ This section summarizes some resources that might be useful for someone interest
 
 ## Acknowledgements
 
-The authors would like to thank Elisa Kendall, Sam Stouffer and Prof. Deborah McGuiness, for their continuing support in technical matters during the development of this ontology. The authors would also like to thank Evan Wallace and Pete Rivett for providing important insights and expertise that greatly assisted this project.
+The authors would like to thank Elisa Kendall, Sam Stouffer and Prof. Deborah McGuiness, for their continuing support in technical matters during the development of this ontology. The authors would also like to thank Evan Wallace and Pete Rivett for providing important insights and expertise that greatly assisted this project.<br />
+
+Images in the above diagram are from the following websites<br />
+DDara. Flaticon, 2020, www.flaticon.com/free-icon/feedback_1087804?term=preference&amp;page=1&amp;position=3.<br />
+Wikipedia, New Belgium Brewing Company, 2020, en.wikipedia.org/wiki/New_Belgium_Brewing_Company#/media/File:New_Belgium_Brewing_Company_logo.gif.<br />
+Homer Simpson, 2018, simpsons.fandom.com/wiki/Homer_Simpson?oldid=928189&amp;file=Homer_Simpson.png.<br />
+New Belgium Voodoo Ranger Juicy Haze IPA, New , 2020, www.walmart.com/ip/New-Belgium-Voodoo-Ranger-Juicy-Haze-IPA-6Pk-12oz-Cans/819204342.
