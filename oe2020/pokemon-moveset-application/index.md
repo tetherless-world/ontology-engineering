@@ -49,6 +49,8 @@ There are several uses for this system that go beyond game information managemen
 
 Another useful function Ontologies serve is encoding version information - becuase the Pokémon franchise is spread out over many games, the rules of the game and Pokémon available have varied over time.  It would be entirely within reason to setup the Ontology to encode information for specific generations,
 
+<img src="images/gengar_v_golem.png" width="90%">
+
 ## List of Resources
 
 - [Ontology](ontology.md)
