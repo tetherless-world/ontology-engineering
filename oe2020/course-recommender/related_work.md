@@ -7,7 +7,8 @@ title: related_work
 
 ### Related Work
 
-The Course Recommender Ontology was developed with help from a few previously created ontologies:
+The Course Recommender Ontology was developed with help from a few published ontologies related to dates and times, codes, and academic structures. Below listed are the ontologies that were referenced in the design and/or implementation of the Course Recommender Ontology. For further information on any of these ontologies, feel free to click their respective hyperlink.
+
 - <a href="https://vkreations.github.io/CCSO/">Curriculum Course Syllabus Ontology (CCSO)</a> - CCSO aims to model 
 concepts in academic settings, particularly with respect to course syllabi.
 - <a href="https://vocab.org/aiiso/">Academic Institution Internal Structure Ontology (AIISO)</a> - AIISO describes
