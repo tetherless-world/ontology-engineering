@@ -6,6 +6,8 @@ The conceptual model for our most recent ontology version can be seen as a [draw
 
 The following presentation can also be used to view some breakdowns of the conceptual model.
 
+![Overall Concept Map](images/concept_map_overall.png)
+
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR6bVv5sO9bp1qrsPPDSlzj7qgFnCAZbZnm4JV7Xfu4rX96Z8UdvC2VV2dhzCNU2A/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1280" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ## Ontologies
