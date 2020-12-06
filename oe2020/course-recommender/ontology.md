@@ -1,19 +1,42 @@
 [Concept Map](#conceptual-model) | [Ontology File](course-recommender.rdf)
 
 ## Conceptual Model
+
+The conceptual model for our most recent ontology version can be seen as a [drawio file](https://drive.google.com/file/d/1b3JVHcvj6Lowty8aPcan0jGcSv3qkH0Z/view?usp=sharing).
 ![Overall Concept Map](images/concept_map_overall.png)
 The concept map above shows an overview of the classses and relationships in our ontology. In the following sections we break down this view into related components.
 
 ### People
 ![People Sub-Concept Map](images/concept_map_people.png)
 
+The types of people that we represent in the Course Recommender Ontology are students and faculty members. Faculty
+members may be instructors or advisors. For students, we capture their topics of interest and class year, as well as
+the courses they are registered in and their plan of study (shown in the Plans of Study Section).
+
 ### Courses
 ![Courses Sub-Concept Map](images/concept_map_courses.png)
+
+For courses, we capture information including course codes, the number of credits the course
+provides, the topic areas it covers, any special tags (corresponding to special
+requirements that they might fulfill), and the department associated with that course. Courses also have
+required- and recommended-prerequisite relations. 
+
+Specific instances of courses are represented as ScheduledCourseSections. ScheduledCourseSections correspond to
+actual course offerings that a student can register for, and include schedule and instructor information.
 
 ### Plans of Study
 ![Requirements Sub-Concept Map](images/concept_map_requirements.png)
 
-The conceptual model for our most recent ontology version can be seen as a [drawio file](https://drive.google.com/file/d/1b3JVHcvj6Lowty8aPcan0jGcSv3qkH0Z/view?usp=sharing).
+A student's Plan of Study is meant to model the student's intended graduation degree and major along with their course
+information. Relevant information about courses includes which courses the student has completed, which courses they
+are currently registered in, and which courses they plan to take in future semesters.
+
+Additionally, through the
+Degree concept, we have relations to Requirements (or Graduation Requirements). Requirements can be fulfilled by
+certain courses - specified by CourseCodeRestrictions - and have relations that are used to determine how different
+graduation requirements interact with each other.  Requirements are an essential piece in enabling our intended
+course recommendation system, as the courses that are recommended to students should help them make progress in 
+fulfilling their remaining graduation requirements.
 
 ## Ontologies
 
