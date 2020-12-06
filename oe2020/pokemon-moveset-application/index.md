@@ -23,11 +23,11 @@ As games become increasingly complicated, professional gamers and their audience
 ## A Super Breif Introduction to Pokémon
 Pokémon is a turn based role-playing game where the player collects creatures, called Pokémon.  The primary gameplay involves Pokémon battling, wherein two Pokémon take turns using moves to inflict damage or status effects on each other.  Players can carry up to six Pokémon, though they can - and almost always - do have many more stored elsewhere. Pokémon can know at most four moves, which are determined by a number of factors, and change as the player adventures through the game. For example, a Pokémon's level, a measure that reflects and increases with a Pokémon's general power; when a Pokémon acheives certain levels, they can learn specific moves.  The specific level and move a Pokémon learns varys from species to species.
 
+<img src="images/noivern_moves.png" width="30%">
+
 Pokémon is a Nintendo game franchise that dates back to 1996, and has since seen the release of dozens of games following the same core gameplay from above.  It is broadly considered to be one of the most successful gaming franchise ever, and unsurprisingly has developed a large community of fans that hold tournaments where players battle each other and events where players generally share their enthusiasm for the games.  
 
 The primary appeal of the game is a combination of adventure/role-playing elements, intuitive rock-paper-scissors battling mechanics, and collect-'em-all features; the accessibility and cohesion of these features has garnerd the game's large audience, in tandem with excellent management by the game's developing studio, Nintendo, who regularly released new games that added new Pokémon and mechanics while keeping the core gameplay intact, and held public relations events and sponsorships with other groups.
-
-<img src="images/noivern_moves.png" width="30%">
 
 ## The Problem: Breeding and Move Inheritance
 As mentioned in the abstract, our project is a demonstration deployment of an ontology that encodes information from the Pokémon game, with the goal of answering certain player question about the game - for now, most of the supported questions are simple, such as "What moves can Pokémon X learn?"  The question we're primarily interested in answering is "How can Pokémon X learn move Y?" - with the restriction that Pokémon X can only learn Y through inheritance.
@@ -36,7 +36,7 @@ Inheritance is one of four ways a Pokémon can learn a move.  The first, as ment
 
 A naive approach may find this problem simple at first: find a Pokémon that can learn the move, breed it with the Pokémon species you would like to inherit the move, done. E-z p-z? Not so: this process is complicated by a breeding restriction called Egg Groups (hence the moves being known as "Egg" Moves).  An Egg Group is a class of Pokémon that are allowed to breed together - for example, the Field Egg Group is unable to breed with Pokémon from the Water-1 Egg Group.  What makes the problem more interesting is that some Pokémon are in two Egg Groups at once; this means that the Pokémon that knows the move you want to learn may not be directly breedable, meaning you need to find a Pokémon that can inherit it *and* can breed with the Pokémon that can learn the move and your Pokémon.  This technique is known as breed-chaining, and can include more than one in-between Pokémon inheriting the move. The problem gains substance due to the scale and distribution of egg moves - there are many moves, Pokémon, and egg groups to take into consideration when attempting to form a working breed-chain.
 
-<img src="images/Egg_Groups.png" width="90%">
+<img src="images/Egg Groups.png" width="90%">
 
 <img src="images/Move_Inheritance.png" width="90%">
 
