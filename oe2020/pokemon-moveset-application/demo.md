@@ -5,7 +5,7 @@ title: Demo
 
 ## Static Demo
 ### Competency Questions
-- Download the SPARQL Queries [Here](https://docs.google.com/document/d/1d5yUYvRzTnKTj5QJUA99YBfmGUGpjkeNe9ChlYQnPsE/edit?usp=sharing)
+- Download the SPARQL Queries [Here](https://docs.google.com/document/d/e/2PACX-1vTb4omkqTUynXymTeJoXFfCMVGgHn8uaWEtyWHdxQpGRgj2FLY9uo-Wf1lDME4C1ruiZvYSFEjnKJEi/pub)
 
 #### Query Prefix:
 ```sparql 
@@ -50,32 +50,44 @@ How can the Pokémon species Noivern learn the moves Hurricane, Draco Meteor, Ai
 
 - Query:
 ```sparql
-SELECT DISTINCT ?move_name ?method_name ?method_info {
+SELECT DISTINCT ?move ?method_name ?method_info WHERE {
     pkm-mvs-ind:Noivern a ?r.
     ?r a owl:Restriction.
     ?r owl:onProperty pkm-mvs:hasLearnMethod.
     ?r owl:someValuesFrom / owl:intersectionOf ?lis.
-    ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
-    ?move a pkm-mvs:Move.
-    ?move rdfs:label ?move_name.
-    OPTIONAL {
-      ?lis rdf:rest*/rdf:first ?method.
-      ?method a owl:Class.
-      ?method rdfs:label ?method_name.
+    ?lis rdf:first / rdfs:label ?method_name.
+    ?lis rdf:rest/rdf:first ?e1.
+    {
+        ?e1 owl:onProperty pkm-mvs:isLearnMethodFor.
+        ?e1 owl:hasValue ?move.
+    } UNION {
+        ?lis rdf:rest/rdf:rest/rdf:first ?e2.
+        ?e2 owl:onProperty pkm-mvs:isLearnMethodFor.
+        ?e2 owl:hasValue ?move.
+        OPTIONAL {
+            {
+                ?e1 owl:onProperty pkm-mvs:hasAssociatedMoveSource.
+                ?e1 owl:hasValue / rdfs:label ?method_info.
+            }
+            UNION {
+                ?e1 owl:onProperty pkm-mvs:hasLevel.
+                ?e1 owl:someValuesFrom / owl:intersectionOf / rdf:rest* / rdf:first / owl:hasValue ?method_info.
+             }
+        }
     }
-    OPTIONAL {
-      ?lis rdf:rest*/rdf:first ?r2.
-      ?r2 owl:onProperty pkm-mvs:hasAssociatedMoveSource.
-      ?r2 owl:hasValue / rdfs:label ?method_info.
-    }
-    OPTIONAL {
-      ?lis rdf:rest*/rdf:first ?r2.
-      ?r2 owl:onProperty pkm-mvs:hasLevel.
-      ?r2 owl:someValuesFrom / owl:intersectionOf / rdf:rest* / rdf:first / owl:hasValue ?method_info. 
-    }
-    FILTER (?move_name = "Hurricane" || ?move_name = "Draco Meteor" || ?move_name = "Air Slash" || ?move_name = "Defog")
+    FILTER (?move = pkm-mvs-ind:Hurricane || ?move = pkm-mvs-ind:DracoMeteor || ?move = pkm-mvs-ind:AirSlash || ?move = pkm-mvs-ind:Defog)
 }
 ```
+- Results:
+
+|      move     |      method_name      |        method_info     |
+|:-------------:|:---------------------:|:----------------------:|
+| Hurricane     |"learn by level up"    |56                      |
+| Hurricane     |"learn from item"      |"technical record #89"  |
+| Draco Meteor  |"learn from move tutor"|"Ace Trainer"           |
+| Air Slash     |"learn from item"      |"technical record #95"  |
+| Defog         |"learn by inheritance" |                        |
+
 
 #### Competency Question 2
 
@@ -85,32 +97,24 @@ partners?
 
 - Query:
 ```sparql
-SELECT DISTINCT ?move_name ?method_name ?method_info {
-    pkm-mvs-ind:Noivern a ?r.
-    ?r a owl:Restriction.
-    ?r owl:onProperty pkm-mvs:hasLearnMethod.
-    ?r owl:someValuesFrom / owl:intersectionOf ?lis.
-    ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
-    ?move a pkm-mvs:Move.
-    ?move rdfs:label ?move_name.
-    OPTIONAL {
-      ?lis rdf:rest*/rdf:first ?method.
-      ?method a owl:Class.
-      ?method rdfs:label ?method_name.
-    }
-    OPTIONAL {
-      ?lis rdf:rest*/rdf:first ?r2.
-      ?r2 owl:onProperty pkm-mvs:hasAssociatedMoveSource.
-      ?r2 owl:hasValue / rdfs:label ?method_info.
-    }
-    OPTIONAL {
-      ?lis rdf:rest*/rdf:first ?r2.
-      ?r2 owl:onProperty pkm-mvs:hasLevel.
-      ?r2 owl:someValuesFrom / owl:intersectionOf / rdf:rest* / rdf:first / owl:hasValue ?method_info. 
-    }
-    FILTER (?move_name = "Hurricane" || ?move_name = "Draco Meteor" || ?move_name = "Air Slash" || ?move_name = "Defog")
+SELECT DISTINCT ?breeding_partner_name ?egg_group_name WHERE {
+    pkm-mvs-ind:Hydreigon pkm-mvs:hasEggGroup ?egg_group.
+    ?breeding_partner pkm-mvs:hasEggGroup ?egg_group.
+    ?breeding_partner rdfs:label ?breeding_partner_name.
+    ?egg_group rdfs:label ?egg_group_name.
 }
 ```
+
+- Results:
+
+|      breeding_partner_name     |      egg_group_name      | 
+|:------------------------------:|:------------------------:|
+| "Deino"                        |"Dragon egg group"        |
+| "Hydreigon"                    |"Dragon egg group"        |
+| "Noibat"                       |"Dragon egg group"        |
+| "Zweilous"                     |"Dragon egg group"        |
+| "Noivern"                      |"Dragon egg group"        |
+
 
 #### Competency Question 3
 - Question:
@@ -118,17 +122,24 @@ Is the move Fly a valid Egg Move for the Pokémon species Squirtle?
 
 - Query:
 ```sparql
-SELECT DISTINCT ?move_name {
+SELECT DISTINCT ?move WHERE {
     pkm-mvs-ind:Noivern a ?r.
     ?r a owl:Restriction.
     ?r owl:onProperty pkm-mvs:hasLearnMethod.
     ?r owl:someValuesFrom / owl:intersectionOf ?lis.
     ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
     ?move a pkm-mvs:Move.
-    ?move rdfs:label ?move_name.
-    ?lis rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis2.
+    ?lis2 rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
 }
 ```
+
+- Results:
+
+|    move    |
+|:----------:|
+|Defog       |
+|Dragon Rush |
 
 #### Competency Question 4
 - Question:
@@ -137,17 +148,24 @@ move Fake Out as an Egg Move?
 
 - Query:
 ```sparql
-SELECT DISTINCT ?move_name ?pokemon_inherit_from {
-    pkm-mvs-ind:Squirtle a ?r.
+SELECT DISTINCT ?method_name ?method_info WHERE {
+    pkm-mvs-ind:Rufflet a ?r.
     ?r a owl:Restriction.
-    ?r owl:onProperty pkm-mvs:hasLearnMethod.
+    ?r owl:onProperty pkm-mvs:hasObtainMethod.
     ?r owl:someValuesFrom / owl:intersectionOf ?lis.
-    ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
-    ?move a pkm-mvs:Move.
-    ?move rdfs:label ?move_name.
-    ?lis rdf:rest*/rdf:first ?r2.
-    ?r2 owl:onProperty pkm-mvs:inheritsMoveFrom.
-    ?r2 owl:hasValue ?pokemon_inherit_from.
-    FILTER (?move_name = "Fake Out")
+    ?lis rdf:first ?method.
+    ?method a owl:Class.
+    ?method rdfs:label ?method_name.
+    OPTIONAL {
+      ?lis rdf:rest*/rdf:first ?r2.
+      ?r2 owl:hasValue / rdfs:label ?method_info.
+    }
 }
 ```
+
+- Results:
+
+|method_name       |method_info      |
+|:----------------:|:---------------:|
+|"obtain from wild"|"Lake of Outrage"|
+|"obtain from wild"|"Bridge Field"   |
