@@ -4,9 +4,9 @@ title: Movie Recommender
 ---
 
 ## Point of Contact
-* Justin Chen (chenj37)
-* Liam Haining (hainil)
-* Dhruv Patel (pateld7)
+* Justin Chen (chenj37@rpi.edu)
+* Liam Haining (hainil@rpi.edu)
+* Dhruv Patel (pateld7@rpi.edu)
 
 ## Abstract
 
