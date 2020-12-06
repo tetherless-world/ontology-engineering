@@ -159,6 +159,8 @@ LIMIT 10
 
 ## SPARQL Query Document Links
 
+-[Week 13 SPARQL Queries](https://github.com/tetherless-world/ontology-engineering/blob/b06457f41f73596b6fcd1b00692a38b73602d763/oe2020/course-recommender/queries/OE_13_CourseRecommender_SPARQLQueries.sparql)
+
 -[Week 11 SPARQL Queries](https://docs.google.com/document/d/e/2PACX-1vSNBvI4Ea8cJPNZj-vL0r0344MjT63iemZSwAxOHSkA8jPIZuhoMUOMdQSX8AMXO-u7RGMwOjabhXke/pub)
 
 -[Week 10 SPARQL Queries](https://docs.google.com/document/d/e/2PACX-1vRNPjW90hb4S7h_uGvDivmLV2UHkhO4m70CiVk5skBZLGZSUQijGRPn3WHoj85zZ6Ur3tH-IXMP55Hl/pub)
