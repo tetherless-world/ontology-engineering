@@ -3,6 +3,8 @@
 
 ## Static Demo
 
+[Link to queries as text file](https://drive.google.com/file/d/1mKtpEp7tK0hTFoiK2vOG5S2LMqf4WQKo/view?usp=sharing)
+
 ### Competency Question 1 Demo Query
 
 #### Question
