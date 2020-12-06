@@ -19,6 +19,29 @@ Our ontology can be used to enable rule-based recommendations that adhere to
 course requirements (such as prerequisite requirements) and provide
 explanations to students about why certain courses are recommended to them.
 
+## Project Overview Diagram
+
+The Course Recommendation Ontology is intended to be used together with external resources
+to serve the use case of recommending courses to students. The system architecture diagram below
+depicts how this ontology would fit in to such an application. Course information would be retrieved
+or stored from other sources, like a course catalog. A recommender system would ingest the information
+about available courses, then use the Course Recommendation Ontology to help determine what courses to
+recommend to the user.
+
+![System architecture diagram](images/sys_arch.png)
+
+Let us consider the basic flow of a student entering the course recommender system and retrieving some
+recommended courses to sign up for. A recommendation system might function following the an activity
+diagram like the one below. A student would enter the system by logging in, then request some course 
+recommendations from the system. The recommender system would use the Course Recommendation Ontology 
+to retrieve information like course prerequisites, corequisites, and topics. The system would then query
+some database containing information about what course sections and schedules are being offered in
+the next semester. These pieces of information would be leveraged by the recommendation system, together
+with the student profile, to decide which courses to provide as recommendations. 
+
+
+![Basic flow activity diagram](images/sys_flow.png)
+
 ## Point of Contact
 
 - Sola S. Shirai - shiras2 at rpi dot edu
@@ -28,8 +51,6 @@ explanations to students about why certain courses are recommended to them.
 - Kelly Fellenzer - fellek at rpi dot edu
 
 - Jacob Shomstein - shomsj at rpi dot edu
-
-## Project Overview Diagram
 
 ## List of Resources
 
