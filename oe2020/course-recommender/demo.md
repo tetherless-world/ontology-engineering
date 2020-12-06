@@ -3,6 +3,10 @@
 
 ## Static Demo
 
+To run the demo, load the Individuals ontology (which can be found [here](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/course-recommender/oe2020/course-recommender/course-recommender-individuals.rdf))
+into your favorite triplestore that is able to run SPARQL queries. 
+We have tested the following queries using [Blazegraph](https://blazegraph.com/).
+
 ## Competency Questions
 ### Competency Question 1
 

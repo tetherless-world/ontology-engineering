@@ -64,6 +64,8 @@ with the student profile, to decide which courses to provide as recommendations.
 
 5. [Presentations](presentations.md)
 
+6. [Getting Involved](gettinginvolved.md)
+
 ## Acknowledgements
 A huge thank you to our professors Deborah McGuinness and Elisa Kendall for providing help and insight during the 
 development of our Course Recommender Ontology. Additionally, we appreciate all of Sabbir Rashid's and Shruthi Chari's 
