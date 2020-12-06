@@ -5,6 +5,10 @@ title: related_work
 
 ## Related Work and References
 
+### Related Work
+
+- [Netflix Prize](https://www.netflixprize.com/): A competition to improve the Netflix recommendation algorithm with a million dollar prize.
+
 ### References
 
 - “Naming and Organizing Your TV Show Files,” Plex Support, 09-Jan-2020. [Online]. Available: https://support.plex.tv/articles/naming-and-organizing-your-tv-show-files/. [Accessed: 23-Sep-2020].
