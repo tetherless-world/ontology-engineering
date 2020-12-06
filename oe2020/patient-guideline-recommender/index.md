@@ -38,6 +38,8 @@ Here is the link: [Static Demo](https://patient-guideline-recommender--rpi-ontol
 
 As problems of modernity become more and more apparent in our societies, diabetes, as a disease, is becoming more and more prevalent. As such, we need to increase our attention towards caring for the needs of diabetic patients, since they may not have the expertise or the time to do it themselves. So, come, our brethrens, let us all contribute to a project such as this, and do something beneficial for the diabetic patients in our society!
 
+![Diabetes](images/diabe.jpg)
+
 ## Acknowledgements
 Prof. Deborah McGuinness, who taught us in this class;
 
