@@ -48,6 +48,8 @@ PREFIX pkm-mvs-ind:  <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-mov
 - **Question:** 
 *How can the Pokémon species Noivern learn the moves Hurricane, Draco Meteor, Air Slash, and Defog?*
 
+This query returns information on how Noivern can learn each one of these moves, for each one it can:
+
 - **Query:**
 ```sparql
 SELECT DISTINCT ?move ?method_name ?method_info WHERE {
@@ -95,6 +97,8 @@ SELECT DISTINCT ?move ?method_name ?method_info WHERE {
 *Are the Pokémon species Hydreigon and Noivern compatible breeding
 partners?*
 
+To be as applicable as possible, we designed this query to return all compatible breeding partners of Hydreigon:
+
 - **Query:**
 ```sparql
 SELECT DISTINCT ?breeding_partner_name ?egg_group_name WHERE {
@@ -115,10 +119,29 @@ SELECT DISTINCT ?breeding_partner_name ?egg_group_name WHERE {
 | "Zweilous"                     |"Dragon egg group"        |
 | "Noivern"                      |"Dragon egg group"        |
 
+The above query answers the more general question of *“What are the compatible breeding partners of Hydreigon?”*, as we think it useful to demonstrate how to do this, and since Noivern is included in the list, it answers the question of whether Hydreigon and Noivern can breed. Alternatively, to only return true or false if Hydreigon and Noivern can breed, we can use the following query:
+
+- **Query:**
+```sparql
+SELECT ?can_breed WHERE {
+    BIND(EXISTS{
+        pkm-mvs-ind:Hydreigon pkm-mvs:hasEggGroup ?egg_group.
+        pkm-mvs-ind:Noivern pkm-mvs:hasEggGroup ?egg_group.
+    } AS ?can_breed)
+}
+```
+
+- **Results:**
+
+| can_breed  |
+|:----------:|
+|True        |
 
 #### Competency Question 3
 - **Question:**
-*Is the move Transform a valid Egg Move for the Pokémon species Noivern?*
+*Is the move Defog a valid Egg Move for the Pokémon species Noivern?*
+
+Query to return *all* valid Egg Moves for the Pokémon species Noivern:
 
 - **Query:**
 ```sparql
@@ -141,9 +164,35 @@ SELECT DISTINCT ?move WHERE {
 |Defog       |
 |Dragon Rush |
 
-#### Competency Question 4
+We can add a filter to the above query to return *just* Defog if it is a valid Egg Move for the Pokémon species Noivern:
+
+- **Query:**
+```sparql
+SELECT DISTINCT ?move WHERE {
+    pkm-mvs-ind:Noivern a ?r.
+    ?r a owl:Restriction.
+    ?r owl:onProperty pkm-mvs:hasLearnMethod.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis.
+    ?lis rdf:rest*/rdf:first/owl:hasValue ?move.
+    ?move a pkm-mvs:Move.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis2.
+    ?lis2 rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
+FILTER (?move = pkm-mvs-ind:Defog)
+}
+```
+
+- **Results:**
+
+|    move    |
+|:----------:|
+|Defog       |
+
+
+#### Competency Question 5
 - **Question:**
 *How can you obtain the Pokémon Rufflet?*
+
+Query to return methods to obtain Rufflet:
 
 - **Query:**
 ```sparql
