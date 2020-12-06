@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-## Pokemon-Moveset-Application Team
+## Pokémon-Moveset-Application Team
 Mitchell Falkow, Jade Franklin, Zhepeng Luo, John Slowik
 
 ## Abstract
