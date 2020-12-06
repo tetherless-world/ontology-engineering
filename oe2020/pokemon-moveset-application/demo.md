@@ -7,7 +7,7 @@ title: Demo
 ### Competency Questions
 - Download the SPARQL Queries [Here](https://docs.google.com/document/d/e/2PACX-1vTb4omkqTUynXymTeJoXFfCMVGgHn8uaWEtyWHdxQpGRgj2FLY9uo-Wf1lDME4C1ruiZvYSFEjnKJEi/pub)
 
-#### Query Prefix:
+#### Query Prefixes:
 ```sparql 
 PREFIX uo: <http://purl.obolibrary.org/obo/UO_> 
 PREFIX owl: <http://www.w3.org/2002/07/owl#> 
@@ -48,7 +48,7 @@ PREFIX pkm-mvs-ind:  <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-mov
 - **Question:** 
 *How can the Pokémon species Noivern learn the moves Hurricane, Draco Meteor, Air Slash, and Defog?*
 
-This query returns information on how Noivern can learn each one of these moves, for each one it can:
+Assembling a team of Pokémon that know specific moves is the core idea of the Pokémon Moveset Ontology, but it is not always straightfoward to get a Pokémon that knows certain moves, as there are multiple ways a Pokémon can learn a move. This query returns information on how Noivern can learn each one of these moves, for each one it can:
 
 - **Query:**
 ```sparql
@@ -97,7 +97,7 @@ SELECT DISTINCT ?move ?method_name ?method_info WHERE {
 *Are the Pokémon species Hydreigon and Noivern compatible breeding
 partners?*
 
-To be as applicable as possible, we designed this query to return all compatible breeding partners of Hydreigon:
+The most complex method of learning a move is the "learning through inheritance" method. In order for a Pokémon to learn a Move through inheritance, specific parent Pokémon must be bred together--and in order for two Pokémon to breed, they must be compatible breeding partners (in the same egg group). To be as applicable as possible, we designed this query to return all compatible breeding partners of Hydreigon:
 
 - **Query:**
 ```sparql
@@ -141,7 +141,7 @@ SELECT ?can_breed WHERE {
 - **Question:**
 *Is the move Defog a valid Egg Move for the Pokémon species Noivern?*
 
-Query to return *all* valid Egg Moves for the Pokémon species Noivern:
+An Egg Move is a move which is learned through inheritance and breeding. This query returns *all* valid Egg Moves for the Pokémon species Noivern:
 
 - **Query:**
 ```sparql
@@ -192,7 +192,7 @@ FILTER (?move = pkm-mvs-ind:Defog)
 - **Question:**
 *How can you obtain the Pokémon Rufflet?*
 
-Query to return methods to obtain Rufflet:
+In order to get a Pokémon with moves you want, you first need to get the Pokémon. There are usually multiple different ways to obtain a member of a specific Pokémon species--this query returns all methods to obtain Rufflet:
 
 - **Query:**
 ```sparql
