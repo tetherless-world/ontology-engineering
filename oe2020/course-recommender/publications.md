@@ -14,3 +14,4 @@ Below is the embedded and linked final report document. As of today, December 5t
 ### Final Report Links
 
 - [Word Version](files/OE_CourseRecommender_DraftFinalReport_Outline.docx)
+- [PDF Version](files/OE_CourseRecommender_DraftFinalReport_Outline.pdf)
