@@ -9,7 +9,7 @@ Mitchell Falkow, Jade Franklin, Zhepeng Luo, John Slowik
 ## Abstract
 As games become increasingly complicated, professional gamers and their audience are faced with a growing amount of information they need to understand and navigate to intelligently participate and compete.  In most cases, players simply memorize these facts and navigate them by intuition and trial-and-error, resulting in potentially large time costs to answer questions about new styles of play.  A technique for efficiently encoding the multiple layers of complexity and available information is absent; such a tool could greatly improve the accessibility of complex games for both veteran and novice players. Ontologies encode, relate, and can reason on abstract information (which can be changing, versioned, and distributed); as such, they fit these requirements perfectly.  Here, we demonstrate this on the Pokémon franchise: it has a healthy esports community, and there is a particular problem involving relatively simple mechanics that is greatly complicated by the scale of the game: teaching a specific Pokémon a specific move.  Although our technique can answer a number sub-questions players may find useful, this specific task requires players to memorize, minimally, hundreds of unique Pokémon, hundreds of unique moves, which Pokémon can learn which moves, and then navigate this information in its entirety to find a solution.
 
-<img src="images/gengar_intro_comp_pokemon.png" width="100%">
+<img src="images/gengar_intro_comp_pokemon.png" width="50%">
 
 ## Overview
 - **Who:** Competitive Pokémon Players
@@ -18,7 +18,7 @@ As games become increasingly complicated, professional gamers and their audience
 - **How:** By accessing and making decisions on information already mostly available on the web
 
 
-<img src="images/Poke_Ball.png" width="100%">
+<img src="images/Poke_Ball.png" width="10%">
 
 ## A Super Breif Introduction to Pokémon
 Pokémon is a turn based role-playing game where the player collects creatures, called Pokémon.  The primary gameplay involves Pokémon battling, wherein two Pokémon take turns using moves to inflict damage or status effects on each other.  Players can carry up to six Pokémon, though they can - and almost always - do have many more stored elsewhere. Pokémon can know at most four moves, which are determined by a number of factors, and change as the player adventures through the game. For example, a Pokémon's level, a measure that reflects and increases with a Pokémon's general power; when a Pokémon acheives certain levels, they can learn specific moves.  The specific level and move a Pokémon learns varys from species to species.
@@ -27,7 +27,7 @@ Pokémon is a Nintendo game franchise that dates back to 1996, and has since see
 
 The primary appeal of the game is a combination of adventure/role-playing elements, intuitive rock-paper-scissors battling mechanics, and collect-'em-all features; the accessibility and cohesion of these features has garnerd the game's large audience, in tandem with excellent management by the game's developing studio, Nintendo, who regularly released new games that added new Pokémon and mechanics while keeping the core gameplay intact, and held public relations events and sponsorships with other groups.
 
-<img src="images/noivern_moves.png" width="100%">
+<img src="images/noivern_moves.png" width="30%">
 
 ## The Problem: Breeding and Move Inheritance
 As mentioned in the abstract, our project is a demonstration deployment of an ontology that encodes information from the Pokémon game, with the goal of answering certain player question about the game - for now, most of the supported questions are simple, such as "What moves can Pokémon X learn?"  The question we're primarily interested in answering is "How can Pokémon X learn move Y?" - with the restriction that Pokémon X can only learn Y through inheritance.
@@ -36,9 +36,9 @@ Inheritance is one of four ways a Pokémon can learn a move.  The first, as ment
 
 A naive approach may find this problem simple at first: find a Pokémon that can learn the move, breed it with the Pokémon species you would like to inherit the move, done. E-z p-z? Not so: this process is complicated by a breeding restriction called Egg Groups (hence the moves being known as "Egg" Moves).  An Egg Group is a class of Pokémon that are allowed to breed together - for example, the Field Egg Group is unable to breed with Pokémon from the Water-1 Egg Group.  What makes the problem more interesting is that some Pokémon are in two Egg Groups at once; this means that the Pokémon that knows the move you want to learn may not be directly breedable, meaning you need to find a Pokémon that can inherit it *and* can breed with the Pokémon that can learn the move and your Pokémon.  This technique is known as breed-chaining, and can include more than one in-between Pokémon inheriting the move. The problem gains substance due to the scale and distribution of egg moves - there are many moves, Pokémon, and egg groups to take into consideration when attempting to form a working breed-chain.
 
-<img src="images/Egg_Groups.png" width="100%">
+<img src="images/Egg_Groups.png" width="90%">
 
-<img src="images/Move_Inheritance.png" width="100%">
+<img src="images/Move_Inheritance.png" width="90%">
 
 ## Project Overview Diagram
 The system in the current work is limited greatly in scope from a fully working application.  A working framework for the ontology has been deployed and tested; however, it only handles a few Pokémon, Moves, and Items - sufficient to demonstrate all the core functionality. The user interface, system backend, and connection with external databases was cut from the project scope.  As pictured below, a user would interact with the user interface, which would supply the user with answers to queries through communication with the system backend - which itself would retrieve the answer by interacting directly with the ontology, and in some cases communicating other networked databases.  In its current implementation, the Ontology itself does not need to access external databases, but such an interaction wouldn't be out of the question in a full implementation.
