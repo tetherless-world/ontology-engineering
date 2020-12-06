@@ -24,6 +24,7 @@ Below are the references that contributed to the creation of our artifcats and/o
 - Degree Works. (2020). Retrieved September 20, 2020, from https://info.rpi.edu/degree-works
 - FOAF Vocabulary Specification 0.99. (2014, January). Retrieved September 16, 2020, from http://xmlns.com/foaf/spec/
 - Oh, S., &amp; Rühle, S. (2009). DCMI: Home. Retrieved September 15, 2020, from https://dublincore.org/
+- RCOS. (2020). YACS. Retrieved September 30, 2020, from https://yacs.cs.rpi.edu/schools
 - "Rensselaer Polytechnic Institute - Acalog ACMS™", Rensselaer Catalog 2019-2020, 2019.[Online]. Available: http://catalog.rpi.edu/. [Accessed: 28- Sep- 2020]
 - Self-Service Information System. 2020. User Login. [online] Available at: <https://sis.rpi.edu/> [Accessed 27 September 2020].
 - Styles, R., &amp; Wallace, C. (2008, May 14). Academic Institution Internal Structure Ontology Roles (AIISO Roles). Retrieved September 20, 2020, from https://vocab.org/aiiso-roles/schema
