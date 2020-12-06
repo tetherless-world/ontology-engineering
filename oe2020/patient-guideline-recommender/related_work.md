@@ -18,7 +18,7 @@ title: related_work
 - [An Ontology-Based Clinical Decision Support System for the Management of Patients
 with Multiple Chronic Disorders](https://www.researchgate.net/profile/Alexandre_Galopin/publication/281815170_An_Ontology-Based_Clinical_Decision_Support_System_for_the_Management_of_Patients_with_Multiple_Chronic_Disorders/links/5654801608ae4988a7b03a4a/An-Ontology-Based-Clinical-Decision-Support-System-for-the-Management-of-Patients-with-Multiple-Chronic-Disorders.pdf)
 
--[Ontology Based Clinical Decision Support System for Diabetes Diagnostic](https://www.researchgate.net/profile/Reham_Alharbi/publication/282333676_Ontology_Based_Clinical_Decision_Support_System_for_Diabetes_Diagnostic/links/56c469eb08aea564e304ae60/Ontology-Based-Clinical-Decision-Support-System-for-Diabetes-Diagnostic.pdf)
+- [Ontology Based Clinical Decision Support System for Diabetes Diagnostic](https://www.researchgate.net/profile/Reham_Alharbi/publication/282333676_Ontology_Based_Clinical_Decision_Support_System_for_Diabetes_Diagnostic/links/56c469eb08aea564e304ae60/Ontology-Based-Clinical-Decision-Support-System-for-Diabetes-Diagnostic.pdf)
 
 
 ### References
