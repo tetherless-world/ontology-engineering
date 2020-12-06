@@ -45,10 +45,10 @@ PREFIX pkm-mvs-ind:  <https://tw.rpi.edu/ontology-engineering/oe2020/pokemon-mov
 
 #### Competency Question 1
 
-- Question: 
-How can the Pokémon species Noivern learn the moves Hurricane, Draco Meteor, Air Slash, and Defog?
+- **Question:** 
+*How can the Pokémon species Noivern learn the moves Hurricane, Draco Meteor, Air Slash, and Defog?*
 
-- Query:
+- **Query:**
 ```sparql
 SELECT DISTINCT ?move ?method_name ?method_info WHERE {
     pkm-mvs-ind:Noivern a ?r.
@@ -78,7 +78,7 @@ SELECT DISTINCT ?move ?method_name ?method_info WHERE {
     FILTER (?move = pkm-mvs-ind:Hurricane || ?move = pkm-mvs-ind:DracoMeteor || ?move = pkm-mvs-ind:AirSlash || ?move = pkm-mvs-ind:Defog)
 }
 ```
-- Results:
+- **Results:**
 
 |      move     |      method_name      |        method_info     |
 |:-------------:|:---------------------:|:----------------------:|
@@ -91,11 +91,11 @@ SELECT DISTINCT ?move ?method_name ?method_info WHERE {
 
 #### Competency Question 2
 
-- Question:
-Are the Pokémon species Hydreigon and Braviary compatible breeding
-partners?
+- **Question:**
+*Are the Pokémon species Hydreigon and Noivern compatible breeding
+partners?*
 
-- Query:
+- **Query:**
 ```sparql
 SELECT DISTINCT ?breeding_partner_name ?egg_group_name WHERE {
     pkm-mvs-ind:Hydreigon pkm-mvs:hasEggGroup ?egg_group.
@@ -105,7 +105,7 @@ SELECT DISTINCT ?breeding_partner_name ?egg_group_name WHERE {
 }
 ```
 
-- Results:
+- **Results:**
 
 |      breeding_partner_name     |      egg_group_name      | 
 |:------------------------------:|:------------------------:|
@@ -117,10 +117,10 @@ SELECT DISTINCT ?breeding_partner_name ?egg_group_name WHERE {
 
 
 #### Competency Question 3
-- Question:
-Is the move Fly a valid Egg Move for the Pokémon species Squirtle?
+- **Question:**
+*Is the move Transform a valid Egg Move for the Pokémon species Noivern?*
 
-- Query:
+- **Query:**
 ```sparql
 SELECT DISTINCT ?move WHERE {
     pkm-mvs-ind:Noivern a ?r.
@@ -134,7 +134,7 @@ SELECT DISTINCT ?move WHERE {
 }
 ```
 
-- Results:
+- **Results:**
 
 |    move    |
 |:----------:|
@@ -142,11 +142,10 @@ SELECT DISTINCT ?move WHERE {
 |Dragon Rush |
 
 #### Competency Question 4
-- Question:
-From what Pokémon species can the Pokémon species Squirtle inherit the
-move Fake Out as an Egg Move?
+- **Question:**
+*How can you obtain the Pokémon Rufflet?*
 
-- Query:
+- **Query:**
 ```sparql
 SELECT DISTINCT ?method_name ?method_info WHERE {
     pkm-mvs-ind:Rufflet a ?r.
@@ -163,7 +162,7 @@ SELECT DISTINCT ?method_name ?method_info WHERE {
 }
 ```
 
-- Results:
+- **Results:**
 
 |method_name       |method_info      |
 |:----------------:|:---------------:|
