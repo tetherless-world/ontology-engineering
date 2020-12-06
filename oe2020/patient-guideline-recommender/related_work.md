@@ -7,8 +7,6 @@ title: related_work
 
 ### Related Work
 
-- [Netflix Prize](https://www.netflixprize.com/): A competition to improve the Netflix recommendation algorithm with a million dollar prize.
-
 - [Ontology based recommender system for health information management](http://worldcomp-proceedings.com/proc/p2012/ICA6022.pdf)
 
 - [HealthRecSys: A semantic content-based recommender system to complement health videos](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-017-0431-7)
