@@ -25,7 +25,7 @@ with Multiple Chronic Disorders](https://www.researchgate.net/profile/Alexandre_
 
 - S. Chong, D. Ding, R. Byun, E. Comino, A. Bauman, and B. Jalaludin, “Lifestyle Changes After a Diagnosis of Type 2 Diabetes,” Diabetes spectrum : a publication of the American Diabetes Association, Feb-2017. [Online]. Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5309903/?fbclid=IwAR2dY5OKOjSBRXRGfKAQ4NQosTKp534nixdd8ac6KW55BT3SmFSTitGHbbY. [Accessed: 23-Sep-2020].
 
-- Health.gov. 2020. Current Guidelines, Health.Gov. [online] Available at: <https://health.gov/our-work/physical-activity/current-guidelines> [Accessed 23 September 2020].
+- Health.gov. 2020. Current Guidelines, Health.Gov. [online] Available at: https://health.gov/our-work/physical-activity/current-guidelines [Accessed 23 September 2020].
 
 - A. B. Olokoba, O. A. Obateru, and L. B. Olokoba, “Type 2 diabetes mellitus: a review of current trends,” Oman medical journal, Jul-2012. [Online]. Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3464757/?fbclid=IwAR08ScAD3TqjSQm569uKaPu1sbcpCxzKI0gHXeuY9WsSgFUDMlBes5Xxhdg. [Accessed: 23-Sep-2020].
 
