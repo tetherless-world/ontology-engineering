@@ -8,10 +8,16 @@ title: related_work
 ### Related Work
 
 The Course Recommender Ontology was developed with help from a few previously created ontologies:
-- <a href="https://xworks.gr/ontologies/ccso.owl">Curriculum Course Syllabus Ontology (CCSO)</a>
-- <a href="https://vocab.org/aiiso/">Academic Institution Internal Structure Ontology (AIISO)</a>
-- <a href="https://www.bbc.co.uk/ontologies/curriculum">BBC Curriculum</a>
-- <a href="https://www.google.com/url?q=https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/MetadataFNDDatesAndTimes/DatesAndTimesModule&sa=D&ust=1607220146759000&usg=AOvVaw1oseNh4OQmhiQuCp7vwcGd">FIBO: Dates and Times Module</a>
+- <a href="https://vkreations.github.io/CCSO/">Curriculum Course Syllabus Ontology (CCSO)</a> - CCSO aims to model 
+concepts in academic settings, particularly with respect to course syllabi.
+- <a href="https://vocab.org/aiiso/">Academic Institution Internal Structure Ontology (AIISO)</a> - AIISO describes
+the organizational structure of academic institutions.
+- <a href="https://www.bbc.co.uk/ontologies/curriculum">BBC Curriculum</a> - This ontology topic of study, 
+field of study, and level as they relate to the UK's national curricula. 
+- <a href="https://www.google.com/url?q=https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/MetadataFNDDatesAndTimes/DatesAndTimesModule&sa=D&ust=1607220146759000&usg=AOvVaw1oseNh4OQmhiQuCp7vwcGd">FIBO: Dates and Times Module</a> - this ontology 
+describes concepts like date, time, and schedules as referenced in financial services.
+- [Languages, Countries and Codes (LCC)](https://www.omg.org/spec/LCC/About-LCC/) - LCC provides metamodels to
+represent commonly used codes of languages. 
 
 ### References
 
