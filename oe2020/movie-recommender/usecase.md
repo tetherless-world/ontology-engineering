@@ -9,8 +9,6 @@ title: use case
 
 ## Previous Versions
 
-<p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
-
 - [Version 6 (OE 10)](https://drive.google.com/file/d/1uCiYNfb3mYUgQSXkNxKMUghrRUvh50-Z/view?usp=sharing)
 - [Version 5 (OE 8)](https://drive.google.com/file/d/1ZU_FZW_JeNzwkNu8MzTeWVmwg9ug8YRV/view?usp=sharing)
 - [Version 4 (OE 6)](https://drive.google.com/file/d/1XAeBIJRZoRk2k3Cn7DjFOMKwrfRojgSD/view?usp=sharing)
