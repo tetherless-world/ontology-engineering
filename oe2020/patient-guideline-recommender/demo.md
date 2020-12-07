@@ -55,6 +55,11 @@ SELECT DISTINCT ?userConstraint ?match WHERE {
 	} as ?match) .
 }
 ```
+The result should be as follows:
+
+| userConstraint | match |
+|----------------|-------|
+| adult          | true  |
 
 The value of `?match` tells us whether each constraint of Guideline 5.27 is applicable to the user.
 
@@ -114,6 +119,12 @@ SELECT DISTINCT ?guideline ?recommendation ?goalMet WHERE {
 
 After running the above query, `?goalMet` will be bound to whether or not the user has satisfied the recommendation.
 
+The sample data should produce the following result:
+
+| guideline     | recommendation             | goalMet |
+|---------------|----------------------------|---------|
+| guideline 8.7 | weight loss recommendation | true    |
+
 ### Competency Question 3.
 
 #### Context:
@@ -169,6 +180,12 @@ SELECT DISTINCT ?guideline ?recommendation ?food WHERE {
 ```
 
 After running the above query, (`?food`) is bound to the food items that the guidelines suggest eating.
+
+Our sample data should produce the following result:
+
+| guideline      | recommendation              | food    |
+|----------------|-----------------------------|---------|
+| guideline 5.12 | carbohydrate recommendation | spinach |
 
 ## Link to Text File
 
