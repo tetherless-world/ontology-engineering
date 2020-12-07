@@ -5,11 +5,11 @@ title: About
 
 ## Maintenenance Policy
 
-The beer-ontology was created in the Beer-Advisor project for the Ontology Engineering course of RPI (Rensselaer Polytchnic Institute) during Fall 2020.
+The beer-ontology was created in the Beer-Advisor project for the Ontology Engineering course of RPI (Rensselaer Polytechnic Institute) during Fall 2020.
 <ul>
-<li>Upon delivery fo the final version the ontology will remain at the same URL.</li>
-<li>Any and all cchagnes will documented and updated in the website in order to keep the ontology up to date.</li>
-<li>Upon any major change to the ontoloyg, a new version will be produced and the prevous version will be archived. These changes will then be reflected inside of the use case, quieries, and conceptual models.</li>
+<li>Upon delivery of the final version the ontology will remain at the same URL.</li>
+<li>Any and all changes will be documented and updated in the website in order to keep the ontology up to date.</li>
+<li>Upon any major change to the ontology, a new version will be produced and the previous version will be archived. These changes will then be reflected inside of the use case, quieries, and conceptual models.</li>
 </ul>
 More information about the ontology URI, past versions URI and update notes can be found in <a href="../beer-advisor/ontology#ontologies">ontology section</a> and in the ontology header. 
 
