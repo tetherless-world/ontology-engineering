@@ -187,6 +187,104 @@ FILTER (?move = pkm-mvs-ind:Defog)
 |:----------:|
 |Defog       |
 
+#### Competency Question 4
+
+- **Question:**
+*From what Pokémon species can the Pokémon species Noibat inherit the move Defog as an Egg Move?*
+
+An Egg Move is a move which is learned through inheritance and breeding. This query returns chains of different Pokémon that you can breed successively in order to eventually get a Noibat which knows the move Defog.
+
+- **Query:**
+```sparql
+SELECT DISTINCT ?move_name ?PSTART ?p1 ?p2 ?p_end WHERE {
+    BIND(pkm-mvs-ind:Noibat AS ?PSTART) #PSTART == starting pokemon
+    BIND(pkm-mvs-ind:Defog AS ?MOVE)     #MOVE == move to learn  
+  
+    #Confirm that PSTART can learn this MOVE by inheritance
+    ?PSTART a ?r.
+    ?r a owl:Restriction.
+    ?r owl:onProperty pkm-mvs:hasLearnMethod.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis.
+    ?lis rdf:rest*/rdf:first/owl:hasValue ?MOVE. 
+    ?MOVE rdfs:label ?move_name.
+    ?r owl:someValuesFrom / owl:intersectionOf ?lis2.
+    ?lis2 rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
+  
+    # Try to end chain here; if cannot, start making chain
+    # (Can end chain if p_end learns MOVE via level-up)
+    {
+      ?PSTART pkm-mvs:hasEggGroup /^ pkm-mvs:hasEggGroup ?p_end.
+      ?p_end a ?r_pend.
+      ?r_pend a owl:Restriction.
+      ?r_pend owl:onProperty pkm-mvs:hasLearnMethod.
+      ?r_pend owl:someValuesFrom / owl:intersectionOf ?lis_pend.
+      ?lis_pend rdf:rest*/rdf:first/owl:hasValue ?MOVE. 
+      ?MOVE rdfs:label ?move_name.
+      ?r_pend owl:someValuesFrom / owl:intersectionOf ?lis_pend2.
+      ?lis_pend2 rdf:rest*/rdf:first pkm-mvs:LearnByLevelUp.
+    } UNION {
+      #Get p1 (First link in chain)
+      ?PSTART pkm-mvs:hasEggGroup /^ pkm-mvs:hasEggGroup ?p1.
+      ?p1 a ?r1.
+      ?r1 a owl:Restriction.
+      ?r1 owl:onProperty pkm-mvs:hasLearnMethod.
+      ?r1 owl:someValuesFrom / owl:intersectionOf ?lis1.
+      ?lis1 rdf:rest*/rdf:first/owl:hasValue ?MOVE. 
+      ?MOVE rdfs:label ?move_name.
+      ?r1 owl:someValuesFrom / owl:intersectionOf ?lis_1.
+      ?lis_1 rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
+      
+      # Try to end chain here; if cannot, start making chain
+      # (Can end chain if p_end learns MOVE via level-up)
+      {
+        ?p1 pkm-mvs:hasEggGroup /^ pkm-mvs:hasEggGroup ?p_end.
+        ?p_end a ?r_pend.
+        ?r_pend a owl:Restriction.
+        ?r_pend owl:onProperty pkm-mvs:hasLearnMethod.
+        ?r_pend owl:someValuesFrom / owl:intersectionOf ?lis_pend.
+        ?lis_pend rdf:rest*/rdf:first/owl:hasValue ?MOVE. 
+        ?MOVE rdfs:label ?move_name.
+        ?r_pend owl:someValuesFrom / owl:intersectionOf ?lis_pend2.
+        ?lis_pend2 rdf:rest*/rdf:first pkm-mvs:LearnByLevelUp.
+      } UNION {
+        #Get p1 (First link in chain)
+        ?p1 pkm-mvs:hasEggGroup /^ pkm-mvs:hasEggGroup ?p2.
+        ?p2 a ?r2.
+        ?r2 a owl:Restriction.
+        ?r2 owl:onProperty pkm-mvs:hasLearnMethod.
+        ?r2 owl:someValuesFrom / owl:intersectionOf ?lis2__.
+        ?lis2__ rdf:rest*/rdf:first/owl:hasValue ?MOVE. 
+        ?MOVE rdfs:label ?move_name.
+        ?r2 owl:someValuesFrom / owl:intersectionOf ?lis_2.
+        ?lis_2 rdf:rest*/rdf:first pkm-mvs:LearnByInheritance.
+
+        ?p2 pkm-mvs:hasEggGroup /^ pkm-mvs:hasEggGroup ?p_end.
+        ?p_end a ?r_pend.
+        ?r_pend a owl:Restriction.
+        ?r_pend owl:onProperty pkm-mvs:hasLearnMethod.
+        ?r_pend owl:someValuesFrom / owl:intersectionOf ?lis_pend.
+        ?lis_pend rdf:rest*/rdf:first/owl:hasValue ?MOVE. 
+        ?MOVE rdfs:label ?move_name.
+        ?r_pend owl:someValuesFrom / owl:intersectionOf / rdf:rest*/rdf:first pkm-mvs:LearnByLevelUp.
+        
+        FILTER (?p1 != ?p2 && ?PSTART != ?p2).
+      }
+      
+      FILTER (?PSTART != ?p1).
+    }
+}
+```
+
+- **Results:**
+
+|    move_name    |   PSTART    |    p1    |    p2    |    p_end    |
+|:---------------:|:-----------:|:--------:|:--------:|:-----------:|
+|Defog            |Noibat       |          |          |Rufflet      |
+|Defog            |Noibat       |          |          |Braviary     |
+|Defog            |Noibat       |Noivern   |          |Rufflet      |
+|Defog            |Noibat       |Noivern   |          |Braviary     |
+
+p2 is empty, but we still return it here to show that we can return longer and longer chains of Pokemon to inherit from.
 
 #### Competency Question 5
 - **Question:**
