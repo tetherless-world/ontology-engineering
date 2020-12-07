@@ -7,6 +7,9 @@ title: Related Work
 - [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page)
 - [Smogon/Pokemon-showdown](https://github.com/smogon/pokemon-showdown/tree/master/data)
 - [Serebii](https://www.serebii.net/pokemongo/pokemon/)
+- W3 Basic Ontologies: [OWL](http://www.w3.org/2002/07/owl#), [RDFS](http://www.w3.org/2000/01/rdf-schema#) and [SKOS](http://www.w3.org/2004/02/skos/core#) - core ontology framework
+- [FIBO](https://spec.edmcouncil.org/fibo/ontology) - allows use of properties
+- [Dublin Core Ontology](https://www.serebii.net/pokemongo/pokemon/) - allows annotations, versioning
 
 ## References
 **[1]** Guangcong Luo, “Pokémon Showdown,”github.com, July 2, 2012. [Online]. Available: https://github.com/smogon/pokemon-showdown. [Accessed Sept. 20, 2020].
