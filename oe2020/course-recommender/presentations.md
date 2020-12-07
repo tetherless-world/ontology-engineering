@@ -5,6 +5,12 @@ title: presentations
 
 ## Presentations
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSVhtAOsrVgMOjHHaXo0lnbamQYFCazZ3APeMdy28ZIPXaKvzUVLBA_Nxs_iX47wYPkxCBkRjsAYO8i/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<i>Description: Final presentation for the Ontology Engineering course, general overview and highlights of the project, Date: 2020-12-07</i>
+
+<hr>
+
+
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQg7IeUoNJmYYZAXGGl0q1fdJe9wFYkwGJmJ9ZcslieKVZ4n7q5HL546TS4lyhHQdokjWztHzD_beKg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 <i>Description: Presentation for encoding competency questions into SPARQL queries, Date: 2020-11-16</i>
 
