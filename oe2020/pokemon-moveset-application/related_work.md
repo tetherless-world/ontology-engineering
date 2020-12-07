@@ -8,7 +8,7 @@ title: Related Work
 - [Smogon/Pokemon-showdown](https://github.com/smogon/pokemon-showdown/tree/master/data)
 - [Serebii](https://www.serebii.net/pokemongo/pokemon/)
 - W3 Basic Ontologies: [OWL](http://www.w3.org/2002/07/owl#), [RDFS](http://www.w3.org/2000/01/rdf-schema#) and [SKOS](http://www.w3.org/2004/02/skos/core#) - core ontology framework
-- [FIBO](https://spec.edmcouncil.org/fibo/ontology) - allows use of properties
+- [FIBO](https://spec.edmcouncil.org/fibo/ontology) - allows use of basic properties, such as for values
 - [Dublin Core Ontology](https://www.serebii.net/pokemongo/pokemon/) - allows annotations, versioning
 
 ## References
