@@ -1,5 +1,4 @@
-# Pokemon Moveset Ontology
-## Ontology Engineering
+# Ontology Engineering
 
 <br />
 
