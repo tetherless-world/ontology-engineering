@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY crs-rec "https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY fibo-be-fct-fct "https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/">
+	<!ENTITY fibo-be-le-fbo "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/">
+	<!ENTITY fibo-be-le-lp "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/">
+	<!ENTITY fibo-be-oac-exec "https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/">
+	<!ENTITY fibo-fbc-fct-ra "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/">
+	<!ENTITY fibo-fnd-aap-ppl "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/">
+	<!ENTITY fibo-fnd-arr-cls "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/">
+	<!ENTITY fibo-fnd-arr-doc "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/">
+	<!ENTITY fibo-fnd-arr-id "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/">
+	<!ENTITY fibo-fnd-dt-bd "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/">
+	<!ENTITY fibo-fnd-dt-fd "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/">
+	<!ENTITY fibo-fnd-dt-oc "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/">
+	<!ENTITY fibo-fnd-gao-obj "https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/">
+	<!ENTITY fibo-fnd-pas-pas "https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/">
+	<!ENTITY fibo-fnd-pty-pty "https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/">
+	<!ENTITY fibo-fnd-pty-rl "https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/">
+	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
+	<!ENTITY fibo-fnd-utl-av "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
+	<!ENTITY lcc-cr "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/">
+	<!ENTITY lcc-lr "https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/"
+	xmlns:crs-rec="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:fibo-be-fct-fct="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
+	xmlns:fibo-be-le-fbo="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
+	xmlns:fibo-be-le-lp="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"
+	xmlns:fibo-be-oac-exec="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/"
+	xmlns:fibo-fbc-fct-ra="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/"
+	xmlns:fibo-fnd-aap-ppl="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"
+	xmlns:fibo-fnd-arr-cls="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"
+	xmlns:fibo-fnd-arr-doc="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/"
+	xmlns:fibo-fnd-arr-id="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/"
+	xmlns:fibo-fnd-dt-bd="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/"
+	xmlns:fibo-fnd-dt-fd="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"
+	xmlns:fibo-fnd-dt-oc="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/"
+	xmlns:fibo-fnd-gao-obj="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"
+	xmlns:fibo-fnd-pas-pas="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/"
+	xmlns:fibo-fnd-pty-pty="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"
+	xmlns:fibo-fnd-pty-rl="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"
+	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
+	xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
+	xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
+	xmlns:lcc-lr="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2020/course-recommender/">
+		<rdfs:label>Course Recommender Ontology</rdfs:label>
+		<dct:abstract>This ontology provides a means to capture relevant information about university courses, gradation requirements,
+		and schedules to enable course recommendation services.</dct:abstract>
+		<dct:creator>Jacob Shomstein</dct:creator>
+		<dct:creator>Kelly Fellenzer</dct:creator>
+		<dct:creator>Owen Xie</dct:creator>
+		<dct:creator>Sola Shirai</dct:creator>
+		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
+		<dct:modified rdf:datatype="&xsd;dateTime">2020-12-05T23:59:59</dct:modified>
+		<dct:publisher>Course Recommender Team</dct:publisher>
+		<sm:copyright>Copyright (c) 2020 Kelly Fellenzer, Jacom Shomstein, Sola Shirai, and Owen Xie</sm:copyright>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/BE/</sm:dependsOn>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
+		<rdfs:seeAlso rdf:resource="https://course-recommender--rpi-ontology-engineering.netlify.app/oe2020/course-recommender/gettinginvolved"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
+		<owl:priorVersion rdf:resource="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/c1f81cfa0aa06d352e5ce331d98c28fee0f8c7ae/oe2020/course-recommender/course-recommender.rdf"/>
+		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2020/20201205/course-recommender/"/>
+		<skos:changeNote>Header information was modified to include appropriate terms. Relations surrounding CourseSchedule were updated.</skos:changeNote>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&crs-rec;AcademicSchedule">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-fd;Schedule"/>
+		<rdfs:label>academic schedule</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>list of events and deadlines of importance to students covering the period of the university&apos;s academic year</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://info.rpi.edu/registrar/academic-calendar</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&crs-rec;AcademicYear">
+		<rdf:type rdf:resource="&fibo-fnd-dt-fd;CalendarPeriod"/>
+		<rdfs:label>academic year</rdfs:label>
+		<skos:definition>calendar period during which students attend school or university, typically starting at the end of August and concluding near the end of May the following calendar year</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Academic_year</fibo-fnd-utl-av:adaptedFrom>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&crs-rec;Advisor">
+		<rdfs:subClassOf rdf:resource="&crs-rec;FacultyMember"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;advises"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Student"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>advisor</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>faculty member tasked to work with students to develop educational plans, explain requirements and rules surrounding graduation, discuss and monitor academic progress, and provide general guidance</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://info.rpi.edu/advising-learning-assistance/advising/#FacultyStaffAdvisors</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Course">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasCorequisite"/>
+				<owl:onClass rdf:resource="&crs-rec;Course"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasRecommendedPrerequisite"/>
+				<owl:onClass rdf:resource="&crs-rec;Course"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasRequiredPrerequisite"/>
+				<owl:onClass rdf:resource="&crs-rec;Course"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasCourseCode"/>
+				<owl:onClass rdf:resource="&crs-rec;CourseCode"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasCredits"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasDepartment"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Department"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasDescription"/>
+				<owl:someValuesFrom rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasName"/>
+				<owl:someValuesFrom rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasScheduledOffering"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;SemesterSchedule"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasTopic"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;TopicArea"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>course</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>unit of teaching, usually an individual subject, that typically lasts one academic semester, is led by one or more instructors, and has a fixed roster of students</skos:definition>
+		<skos:example>&apos;Ontology Engineering&apos; is a type of course which is offered at RPI. An individual course like ontology engineering should be persistent, and each new offering of the course
+		 across different years or semesters should point to the persistent ontology engineering individual.</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;CourseCode">
+		<rdfs:subClassOf rdf:resource="&lcc-lr;CodeElement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;denotes"/>
+				<owl:onClass rdf:resource="&crs-rec;Course"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasTag"/>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasDepartmentCode"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;DepartmentCode"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasLevel"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>course code</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>a short course identifier with information about subject and course level in form of SUBJ-1111</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;CourseCodeRestriction">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasValidLevelMax"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasValidLevelMin"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasSpecialTag"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasValidCourseCodeTag"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasValidDepartmentCodeTag"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>course code restriction</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<skos:definition>a class that captures and represents restrictions on courses that can be applied to fulfill requirements through the use of course codes</skos:definition>
+		<skos:example>The Humanities, Arts, and Social Sciences (HASS) core requirement is a common requirement for all majors at RPI.
+		The HASS requirement has sub requirements, with varying required courses themselves, that must be fulfilled in order to fulfill the HASS requirement.
+		For example, one sub requirement is that at least 6 credits of social sciences courses must be taken.
+		Sub requirments can share credits, for example the social sciences sub requirement may be applied to the integrative pathway sub requirement.
+		The HASS requirement also has restrictions on the number of courses that may be applied to it, only allowing 2 courses at the 1000 level.</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;CourseSchedule">
+		<rdfs:subClassOf rdf:resource="&crs-rec;AcademicSchedule"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasDayOfWeek"/>
+				<owl:onClass rdf:resource="&fibo-fnd-dt-bd;DayOfWeek"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasEndTime"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasStartTime"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>course schedule</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>a list of important dates and meeting times relevant to a specific section of a course</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;CourseSection">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;isCourseSectionOf"/>
+				<owl:onClass rdf:resource="&crs-rec;Course"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasSemester"/>
+				<owl:onClass rdf:resource="&crs-rec;SemesterSchedule"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>course section</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>a unique sections of a larger class commonly held during seperate times</skos:definition>
+		<skos:example xml:lang="en">Section 01 of CSCI-4340 for Fall 2020 Semester</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Degree">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasDepartment"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Department"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasRequirement"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Requirement"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>degree</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>qualification (or certification) awarded to students upon successful completion of a course of study in higher education</skos:definition>
+		<skos:example xml:lang="en">Bachelor of Science Degree in Computer Science</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Department">
+		<rdfs:subClassOf rdf:resource="&fibo-be-le-fbo;OrganizationalSubUnit"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-cr;isPartOf"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;playsRole"/>
+						<owl:someValuesFrom rdf:resource="&crs-rec;University"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>department</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>division of a university or school faculty devoted to a particular academic discipline</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;DepartmentCode">
+		<rdfs:subClassOf rdf:resource="&lcc-lr;CodeElement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;denotes"/>
+				<owl:onClass rdf:resource="&crs-rec;Department"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&lcc-lr;hasTag"/>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>department code</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>a short identifier for departments</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Discipline">
+		<rdfs:label>discipline</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>branch of knowledge, taught and researched as a part of higher education</skos:definition>
+		<skos:example xml:lang="en">Computer Science (CSCI) Discipline</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;EducationalInstitution">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;FunctionalBusinessEntity"/>
+		<rdfs:subClassOf rdf:resource="&fibo-be-oac-exec;AuthorizingParty"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-pas-pas;ServiceProvider"/>
+		<rdfs:label>educational institution</rdfs:label>
+		<skos:definition>institution where people gain an education, providing a variety of learning environments and spaces</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://definitions.uslegal.com/e/educational-institution/</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.thefreedictionary.com/educational+institution</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:explanatoryNote>According to 20 USCS section 1681 educational institution means &apos;any public or private preschool, elementary, or secondary school, or any institution of vocational, professional, or higher education, except that in the case of an educational institution composed of more than one school, college, or department which are administratively separate units, such term means each such school, college, or department.&apos;</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;FacultyMember">
+		<rdfs:subClassOf rdf:resource="&fibo-be-oac-exec;AuthorizedParty"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;OrganizationMember"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;isPlayedBy"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;isMemberOf"/>
+						<owl:someValuesFrom>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;playsRole"/>
+								<owl:someValuesFrom rdf:resource="&crs-rec;University"/>
+							</owl:Restriction>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasDepartment"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Department"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>faculty member</rdfs:label>
+		<skos:definition>party employed by a college or district to conduct classroom or teaching activities or who is otherwise considered by the college to be a member of faculty</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.lawinsider.com/dictionary/faculty-member</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Major">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasDepartment"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Department"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>major</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>academic discipline to which an undergraduate student formally commits</skos:definition>
+		<skos:example xml:lang="en">Computer Science Major</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;PlanOfStudy">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-gao-obj;Strategy"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasCompletedCourse"/>
+				<owl:onClass rdf:resource="&crs-rec;CourseSection"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasOngoingCourse"/>
+				<owl:onClass rdf:resource="&crs-rec;ScheduledCourseSection"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasClassYear"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasPlannedDegree"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Degree"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasPlannedMajor"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Department"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>plan of study</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>area of study composed of major, minors, and concentrations within a program</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Professor">
+		<rdfs:subClassOf rdf:resource="&crs-rec;FacultyMember"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;teaches"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;ScheduledCourseSection"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>professor</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>teacher of the highest rank in a college or university</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Professor</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Requirement">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;canShareCreditsWith"/>
+				<owl:onClass rdf:resource="&crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasRestriction"/>
+				<owl:onClass rdf:resource="&crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasSubRequirement"/>
+				<owl:onClass rdf:resource="&crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;isFulfilledBy"/>
+				<owl:onClass rdf:resource="&crs-rec;Requirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasCourseCodeRestriction"/>
+				<owl:onClass rdf:resource="&crs-rec;CourseCodeRestriction"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;requiresCredits"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>requirement</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>conditions in an academic major that must be met in order to satisfy degree completion by graduation</skos:definition>
+		<skos:example xml:lang="en">Depth Requirement: Requires completion of two courses in the same Subject Code; one of which is above 1000 level</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;ScheduledCourseSection">
+		<rdfs:subClassOf rdf:resource="&crs-rec;CourseSection"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasInstructor"/>
+				<owl:onClass rdf:resource="&crs-rec;Professor"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasRegisteredStudent"/>
+				<owl:onClass rdf:resource="&crs-rec;Student"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasSchedule"/>
+				<owl:onClass rdf:resource="&crs-rec;CourseSchedule"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasCourseRegistrationNumber"/>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>scheduled course section</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<skos:definition>a course section that has been assigned a concrete time and place of meeting as well as an instructor</skos:definition>
+		<skos:example>The Ontology Engineering course, offered in Fall 2020 and instructed by Professor Deborah L. McGuinness, is an instance of a ScheduledCourseSection.</skos:example>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&crs-rec;Semester">
+		<rdf:type rdf:resource="&fibo-fnd-dt-fd;CalendarPeriod"/>
+		<rdfs:label>semester</rdfs:label>
+		<skos:definition>18-week period of instruction into which an academic year is often divided</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/semester</fibo-fnd-utl-av:adaptedFrom>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&crs-rec;SemesterSchedule">
+		<rdfs:subClassOf rdf:resource="&crs-rec;AcademicSchedule"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasYear"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasTerm"/>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>semester schedule</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>the selected courses a student will complete in the upcoming future semester in order to complete their degree within a four-year plan</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;Student">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;PartyInRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;hasIdentity"/>
+				<owl:onClass rdf:resource="&fibo-fnd-aap-ppl;Person"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fbc-fct-ra;isRegisteredBy"/>
+				<owl:someValuesFrom rdf:resource="&fibo-fbc-fct-ra;Registrar"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasAdvisor"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Advisor"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasClassYear"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasInterest"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;TopicArea"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;hasStudyPlan"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;PlanOfStudy"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>student</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>person who is formally registered at an educational institution to partake in academic courses with the purpose of acquiring a degree</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://catalog.rpi.edu/</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;TopicArea">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&crs-rec;belongsTo"/>
+				<owl:someValuesFrom rdf:resource="&crs-rec;Discipline"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>topic area</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<skos:definition>subject of disussion in a course or field of study</skos:definition>
+		<skos:example xml:lang="en">Topic Area: Artificial Intelligence</skos:example>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&crs-rec;University">
+		<rdfs:subClassOf rdf:resource="&crs-rec;EducationalInstitution"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;isPlayedBy"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
+						<owl:someValuesFrom>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;playsRole"/>
+								<owl:someValuesFrom rdf:resource="&crs-rec;FacultyMember"/>
+							</owl:Restriction>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>university</rdfs:label>
+		<skos:definition>educational institution designed for instruction, examination, or both, of students in many branches of advanced learning, conferring degrees in various faculties, and often embodying colleges and similar institutions</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.lexico.com/en/definition/university</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;advises">
+		<rdfs:label>advises</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Advisor"/>
+		<rdfs:range rdf:resource="&crs-rec;Student"/>
+		<owl:inverseOf rdf:resource="&crs-rec;hasAdvisor"/>
+		<skos:definition>is the curriculum advisor of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;belongsTo">
+		<rdfs:label>belongs to</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;TopicArea"/>
+		<rdfs:range rdf:resource="&crs-rec;Discipline"/>
+		<skos:definition>the discipline that this topic area is a part of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;canShareCreditsWith">
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdfs:label>can share credits with</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&crs-rec;Requirement"/>
+		<skos:definition>a requirement that can be fulfilled using credits applied to this requirement</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasAdvisor">
+		<rdfs:label>has advisor</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Student"/>
+		<rdfs:range rdf:resource="&crs-rec;Advisor"/>
+		<skos:definition>has a curriculum advisor</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasClassYear">
+		<rdfs:label>has class year</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&crs-rec;PlanOfStudy">
+					</rdf:Description>
+					<rdf:Description rdf:about="&crs-rec;Student">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the academic year when the student will complete their plan of study</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasCompletedCourse">
+		<rdfs:label>has completed course</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;PlanOfStudy"/>
+		<rdfs:range rdf:resource="&crs-rec;CourseSection"/>
+		<skos:definition>a course that has been completed and earned a satisfactory grade</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasCorequisite">
+		<rdfs:label>has corequisite</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&crs-rec;Course"/>
+		<skos:definition>a course the student is required to be registered for alongside this course</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasCourseCode">
+		<rdfs:subPropertyOf rdf:resource="&lcc-lr;hasDenotation"/>
+		<rdfs:label>has course code</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&crs-rec;CourseCode"/>
+		<skos:definition>has a unique number to identify the specific course in Self-Service Information System</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasCourseCodeRestriction">
+		<rdfs:label>has course code restriction</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:range rdf:resource="&crs-rec;CourseCodeRestriction"/>
+		<skos:definition>a course code restriction on courses that can be applied to this requirement</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasCourseRegistrationNumber">
+		<rdfs:label>has course registration number</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;ScheduledCourseSection"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the course registration number a student can use to register for the scheduled course section</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasCredits">
+		<rdfs:label>has credits</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the number of credits associated with completing the course</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasCrossListing">
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdfs:label>has cross listing</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseCode"/>
+		<rdfs:range rdf:resource="&crs-rec;CourseCode"/>
+		<skos:definition>is course alias of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasDayOfWeek">
+		<rdfs:label>has day of week</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseSchedule"/>
+		<rdfs:range rdf:resource="&fibo-fnd-dt-bd;DayOfWeek"/>
+		<skos:definition>the recurring days in a working week when a scheduled course section is scheduled to meet</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasDepartment">
+		<rdfs:label>has department</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:range rdf:resource="&crs-rec;Department"/>
+		<skos:definition>belongs to a specific academic department</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasDepartmentCode">
+		<rdf:type rdf:resource="&owl;ObjectProperty"/>
+		<rdfs:label>has department code</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseCode"/>
+		<rdfs:range rdf:resource="&crs-rec;DepartmentCode"/>
+		<skos:definition>the associated department of the course code</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasDescription">
+		<rdfs:label>has description</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the description of the individual</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasEndTime">
+		<rdfs:label>has end time</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseSchedule"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the time of day at which a scheduled course section is scheduled to end</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasInstructor">
+		<rdfs:label>has instructor</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;ScheduledCourseSection"/>
+		<rdfs:range rdf:resource="&crs-rec;Professor"/>
+		<owl:inverseOf rdf:resource="&crs-rec;teaches"/>
+		<skos:definition>has an academic faculty member to teach the course content</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasInterest">
+		<rdfs:label>has interest</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Student"/>
+		<rdfs:range rdf:resource="&crs-rec;TopicArea"/>
+		<skos:definition>has an interest in a topic area</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasLevel">
+		<rdfs:label>has level</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseCode"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the associated difficulty level of the course code</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasName">
+		<rdfs:label>has name</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the name of the individual</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasOngoingCourse">
+		<rdfs:label>has ongoing course</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;PlanOfStudy"/>
+		<rdfs:range rdf:resource="&crs-rec;ScheduledCourseSection"/>
+		<skos:definition>has an ongoing scheduled course section in which the student is enrolled</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasPlannedCourse">
+		<rdfs:label>has planned course</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;PlanOfStudy"/>
+		<rdfs:range rdf:resource="&crs-rec;CourseSection"/>
+		<skos:definition>has a course section that the student is intending to register for in the future</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasPlannedDegree">
+		<rdfs:label>has planned degree</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;PlanOfStudy"/>
+		<rdfs:range rdf:resource="&crs-rec;Degree"/>
+		<skos:definition>has a degree whose requirements the plan of study is intended to fully fulfill</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasPlannedMajor">
+		<rdfs:label>has planned major</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;PlanOfStudy"/>
+		<rdfs:range rdf:resource="&crs-rec;Major"/>
+		<skos:definition>has a major for which the plan of study is intended to fully fulfill requirements</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasRecommendedPrerequisite">
+		<rdfs:label>has recommended prerequisite</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&crs-rec;Course"/>
+		<skos:definition>a prerequisite course that is suggested to be completed before registering for this course</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasRegisteredStudent">
+		<rdfs:label>has registered student</rdfs:label>
+		<dct:source>http://sis.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;ScheduledCourseSection"/>
+		<rdfs:range rdf:resource="&crs-rec;Student"/>
+		<owl:inverseOf rdf:resource="&crs-rec;registeredIn"/>
+		<skos:definition>has a student who is registered to this scheduled course section</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasRequiredPrerequisite">
+		<rdfs:label>has required prerequisite</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&crs-rec;Course"/>
+		<skos:definition>the specified courses required to be completed before a student is eligible to take this course</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasRequirement">
+		<rdfs:label>has requirement</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&crs-rec;Degree">
+					</rdf:Description>
+					<rdf:Description rdf:about="&crs-rec;Requirement">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>
+		<rdfs:range rdf:resource="&crs-rec;Requirement"/>
+		<skos:definition>has a requirement that must be fulfilled to earn the degree</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasRestriction">
+		<rdfs:label>has restriction</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&crs-rec;Requirement"/>
+		<skos:definition>a requirement that acts as a restriction on this requirement</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasSchedule">
+		<rdfs:label>has schedule</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseSection"/>
+		<rdfs:range rdf:resource="&crs-rec;CourseSchedule"/>
+		<skos:definition>has a regular schedule during the work week in which the course takes place</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasScheduledOffering">
+		<rdfs:label>has scheduled offering</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&crs-rec;SemesterSchedule"/>
+		<skos:definition>has a semester during which the course is intended to be offered in regular intervals</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasSemester">
+		<rdfs:label>has semester</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseSection"/>
+		<rdfs:range rdf:resource="&crs-rec;SemesterSchedule"/>
+		<skos:definition>has a semester schedule during which the course is intended to take place</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasSpecialTag">
+		<rdfs:label>has special tag</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>special tags associated with this course which are used to fulfill certain requirements</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasStartTime">
+		<rdfs:label>has start time</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseSchedule"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the time of the day at which a scheduled course section is scheduled to begin</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasStudyPlan">
+		<rdfs:label>has plan of study</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Student"/>
+		<rdfs:range rdf:resource="&crs-rec;PlanOfStudy"/>
+		<skos:definition>has a plan of study leading to graduation</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasSubRequirement">
+		<rdfs:label>has sub requirement</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&crs-rec;Requirement"/>
+		<skos:definition>a requirement that must be fulfilled in order for this requirement to be fulfilled</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasTerm">
+		<rdfs:label>has term</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;AcademicSchedule"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>the term that the academic schedule covers</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;hasTopic">
+		<rdfs:label>has topic</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Course"/>
+		<rdfs:range rdf:resource="&crs-rec;TopicArea"/>
+		<skos:definition>has a subject of discussion</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasValidCourseCodeTag">
+		<rdfs:label>has valid course code tag</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>a course code tag string that is allowed by this course code restriction</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasValidDepartmentCodeTag">
+		<rdfs:label>has valid department code tag</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>a department code tag string for courses that are allowed by this course code restriction</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasValidLevelMax">
+		<rdfs:label>has valid level max</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the maximum level of a course that is allowed by this course code restriction</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasValidLevelMin">
+		<rdfs:label>has valid level min</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the minimum level of a course that is allowed by this course code restriction</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasValidSpecialTag">
+		<rdfs:label>has valid special tag</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>valid special tags of courses that can fulfill a course restriction</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;hasYear">
+		<rdfs:label>has year</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the year associated with a particular schedule</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;isCourseSectionOf">
+		<rdfs:label>is course section of</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;CourseSection"/>
+		<rdfs:range rdf:resource="&crs-rec;Course"/>
+		<skos:definition>a course that this individual is a section of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;isFulfilledBy">
+		<rdfs:label>is fulfilled by</rdfs:label>
+		<dct:source>Course Recommender Team</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&crs-rec;Requirement"/>
+		<skos:definition>a requirement that can be fulfilled to satisfy this requirement</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;isSubTopicOf">
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:label>is sub topic of</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;TopicArea"/>
+		<rdfs:range rdf:resource="&crs-rec;TopicArea"/>
+		<skos:definition>a related topic area that subsumes this topic area</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;registeredIn">
+		<rdfs:label>registered in</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Student"/>
+		<rdfs:range rdf:resource="&crs-rec;ScheduledCourseSection"/>
+		<skos:definition>a scheduled course section in which this student is currently formally enrolled and participating in</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&crs-rec;requiresCredits">
+		<rdfs:label>requires credits</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Requirement"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>the number of credits required to satisfy this requirement</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&crs-rec;teaches">
+		<rdfs:label>teaches</rdfs:label>
+		<dct:source>http://catalog.rpi.edu/</dct:source>
+		<rdfs:domain rdf:resource="&crs-rec;Professor"/>
+		<rdfs:range rdf:resource="&crs-rec;ScheduledCourseSection"/>
+		<skos:definition>a scheduled course section that this professor is the instructor of</skos:definition>
+	</owl:ObjectProperty>
+
+</rdf:RDF>
