@@ -6,7 +6,7 @@
 
 <strong>Guest Lecturer:</strong> Ms. Elisa Kendall - ekendall at thematix dot com
 
-<strong>Course Manager:</strong> TODO
+<strong>Course Manager:</strong> Jade Franklin - frankj6 at rpi dot edu, Sola Shirai - shiras2 at rpi dot edu
 
 <br />
 
