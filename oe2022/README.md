@@ -10,7 +10,7 @@
 
 <strong>Meeting Times:</strong> Monday afternoon 12:20 pm - 3:50 pm
 
-<strong>Office Hours:</strong> TBD
+<strong>Office Hours:</strong> By Appointment
 <br />
 <br />
 
@@ -56,7 +56,7 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <li>Note - If you are taking the class without the prerequisites, please read at least the first half of the Ontology Engineering Book and the first 4 chapters of Semantic Web for the Working Ontologist. </li>
 </ul>
 
-<strong>Reading List:</strong> https://docs.google.com/document/d/1C_kGqMXP8GNqmh0j2QkeMhI-2EeoTWTD67bchYlCiCA/edit?usp=sharing
+<strong>Reading List (from Fall 2020 course offering):</strong> https://docs.google.com/document/d/1C_kGqMXP8GNqmh0j2QkeMhI-2EeoTWTD67bchYlCiCA/edit?usp=sharing
 
 <strong>Recommended Software:</strong>
 <ul>
@@ -66,7 +66,7 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <li>All projects will be completed using Tetherless World public github accounts, linked to the course home page, and preserved for your reference in publications as well as for future students - template pages / accounts will be set up for each project after our 2nd class meeting. </li>
 </ul>
 
-<strong>Syllabus:</strong> https://docs.google.com/document/d/14oFYXPpZNutaj6eF-GWAbIK6acq8sVlbw4cu8E59Sr8/edit?usp=sharing
+<strong>Syllabus:</strong> https://docs.google.com/document/d/112pblup4uVHsrNR1O9_kTxv2N--XmMDE/
 <br />
 <br />
 
