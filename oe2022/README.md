@@ -6,9 +6,7 @@
 
 <strong>Guest Lecturer:</strong> Ms. Elisa Kendall - ekendall at thematix dot com
 
-<strong>Course Manager:</strong> ? sola and jade ?
-
-<strong>Mentors:</strong> Jade Franklin - frankj6 at rpi dot edu, Sola Shirai - shiras2 at rpi dot edu
+<strong>Course Manager:</strong> Jade Franklin - frankj6 at rpi dot edu, Sola Shirai - shiras2 at rpi dot edu
 
 <strong>Meeting Times:</strong> Monday afternoon 12:20 pm - 3:50 pm
 
