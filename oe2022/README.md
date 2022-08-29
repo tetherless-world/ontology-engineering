@@ -16,7 +16,7 @@
 
 <strong>Course Listing:</strong> Ontologies, CSCI 6340, CSCI 4340
 
-<strong>Course Homepage:</strong> https://tw.rpi.edu/classes/ontology-engineering-fall-2022
+<strong>Course Homepage:</strong> [https://tw.rpi.edu/classes/ontology-engineering-fall-2022](https://tw.rpi.edu/classes/ontology-engineering-fall-2022)
 <br />
 
 <strong>Class Location:</strong> Winslow Building
@@ -56,17 +56,17 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <li>Note - If you are taking the class without the prerequisites, please read at least the first half of the Ontology Engineering Book and the first 4 chapters of Semantic Web for the Working Ontologist. </li>
 </ul>
 
-<strong>Reading List (from Fall 2020 course offering):</strong> https://docs.google.com/document/d/1C_kGqMXP8GNqmh0j2QkeMhI-2EeoTWTD67bchYlCiCA/edit?usp=sharing
+<strong>Reading List (from Fall 2020 course offering):</strong> [https://docs.google.com/document/d/1C_kGqMXP8GNqmh0j2QkeMhI-2EeoTWTD67bchYlCiCA/edit?usp=sharing](https://docs.google.com/document/d/1C_kGqMXP8GNqmh0j2QkeMhI-2EeoTWTD67bchYlCiCA/edit?usp=sharing)
 
 <strong>Recommended Software:</strong>
 <ul>
-<li>Protégé ontology editor - Available from the Stanford Center for Biomedical Informatics Research at the Stanford University School of Medicine, at http://protege.stanford.edu/products.php, Protégé 5.5 (desktop version) </li>
-<li>Atlassian Sourcetree - free desktop Git client for Mac and Windows, available at https://www.atlassian.com/software/sourcetree </li>
-<li>Concept Maps (Cmaps) tool from the Institute for Human and Machine Cognition (IHMC), at http://cmap.ihmc.us/ or an open source UML (Unified Modeling Language) tool of your choice </li>
+<li>Protégé ontology editor - Available from the Stanford Center for Biomedical Informatics Research at the Stanford University School of Medicine, at [http://protege.stanford.edu/products.php](http://protege.stanford.edu/products.php), Protégé 5.5 (desktop version) </li>
+<li>Atlassian Sourcetree - free desktop Git client for Mac and Windows, available at [https://www.atlassian.com/software/sourcetree](https://www.atlassian.com/software/sourcetree) </li>
+<li>Concept Maps (Cmaps) tool from the Institute for Human and Machine Cognition (IHMC), at [http://cmap.ihmc.us/](http://cmap.ihmc.us/) or an open source UML (Unified Modeling Language) tool of your choice </li>
 <li>All projects will be completed using Tetherless World public github accounts, linked to the course home page, and preserved for your reference in publications as well as for future students - template pages / accounts will be set up for each project after our 2nd class meeting. </li>
 </ul>
 
-<strong>Syllabus:</strong> https://docs.google.com/document/d/112pblup4uVHsrNR1O9_kTxv2N--XmMDE/
+<strong>Syllabus:</strong> [https://docs.google.com/document/d/112pblup4uVHsrNR1O9_kTxv2N--XmMDE/](https://docs.google.com/document/d/112pblup4uVHsrNR1O9_kTxv2N--XmMDE/)
 <br />
 <br />
 
@@ -84,7 +84,7 @@ To learn how to build human and machine-interpretable definitions of concepts an
 <br />
 
 <strong>Remote Participation: </strong>
-We anticipate that this course will be either a combination of online and in person (hybrid) or entirely remote, depending on recommendations from the university and public health officials.  We will use Cisco’s Webex tool as the basis for remote work and for at least some off-line tutoring and group work as needed.  We expect live participation during the scheduled course time through the provided Webex system. Please go to the WebEx site, at https://help.webex.com/en-us/nrbgeodb/Join-a-Webex-Meeting and test your ability to participate prior to our first class meeting. There are instructions for most browsers and a video to help you get started.  We expect your attention to be on the materials as they are being presented live, whether it is from the instructors or a presentation from another student.  If you are participating remotely, we also expect you to get a web camera, if you don’t already have one, and have it on during the class.  We also suggest testing your microphone and camera with webex in advance of the first class (see instructions in the FAQ on the Join a Webex Meeting page for instructions).
+We anticipate that this course will be either a combination of online and in person (hybrid) or entirely remote, depending on recommendations from the university and public health officials.  We will use Cisco’s Webex tool as the basis for remote work and for at least some off-line tutoring and group work as needed.  We expect live participation during the scheduled course time through the provided Webex system. Please go to the WebEx site, at [https://help.webex.com/en-us/nrbgeodb/Join-a-Webex-Meeting](https://help.webex.com/en-us/nrbgeodb/Join-a-Webex-Meeting) and test your ability to participate prior to our first class meeting. There are instructions for most browsers and a video to help you get started.  We expect your attention to be on the materials as they are being presented live, whether it is from the instructors or a presentation from another student.  If you are participating remotely, we also expect you to get a web camera, if you don’t already have one, and have it on during the class.  We also suggest testing your microphone and camera with webex in advance of the first class (see instructions in the FAQ on the Join a Webex Meeting page for instructions).
 <br />
 This class requires a group project.  You should plan to make time to work with your group members outside of the regular class time, as necessary, to complete group assignments. You will have to either schedule these to be remote or in person, following the social distancing protocols set out by the campus.
 <br />
