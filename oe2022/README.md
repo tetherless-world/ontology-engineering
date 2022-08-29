@@ -8,7 +8,7 @@
 
 <strong>Course Manager:</strong> Jade Franklin - frankj6 at rpi dot edu, Sola Shirai - shiras2 at rpi dot edu
 
-<strong>Meeting Times:</strong> Monday afternoon 12:20 pm - 3:50 pm
+<strong>Meeting Times:</strong> Monday afternoon 12:00 pm - 3:50 pm
 
 <strong>Office Hours:</strong> By Appointment
 <br />
