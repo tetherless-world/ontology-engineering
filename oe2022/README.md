@@ -19,7 +19,7 @@
 <strong>Course Homepage:</strong> https://tw.rpi.edu/classes/ontology-engineering-fall-2022
 <br />
 
-<strong>Class Location:</strong> Online and/or possiblly in person in TBD (check back closer to the start of classes)
+<strong>Class Location:</strong> Winslow Building
 <br />
 <br />
 
