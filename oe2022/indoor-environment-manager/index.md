@@ -19,6 +19,14 @@ This project aims to develop an ontology that recommends a viable solution to im
 
 <p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
 
+## Point of Contact
+
+Chung, Jihoon 
+
+Rook, Kelsey 
+
+Jacoby-Cooper, Gabriel
+
 ## List of Resources
 
 List resources you think a reader would benefit from to use your project. We list some examples you could make available below.
