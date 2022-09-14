@@ -19,6 +19,14 @@ This application recommends dog breeds to households given some specific charact
 
 <p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
 
+## Point of Contact
+
+Ashley Choi
+
+Debjani Ray-Majumder
+
+Danielle Villa
+
 ## List of Resources
 
 List resources you think a reader would benefit from to use your project. We list some examples you could make available below.
