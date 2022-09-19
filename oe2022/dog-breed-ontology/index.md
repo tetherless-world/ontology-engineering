@@ -25,7 +25,7 @@ Ashley Choi
 
 Debjani Ray-Majumder
 
-Danielle Villa
+Danielle Villa, villad4@rpi.edu
 
 ## List of Resources
 
