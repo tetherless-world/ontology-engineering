@@ -21,7 +21,7 @@ This project aims to develop an ontology that recommends a viable solution to im
 
 ## Point of Contact
 
-Chung, Jihoon 
+Chung, Jihoon (chungj11@rpi.edu)
 
 Rook, Kelsey 
 
