@@ -21,7 +21,7 @@ This application recommends dog breeds to households given some specific charact
 
 ## Point of Contact
 
-Ashley Choi
+Ashley Choi, choia5@rpi.edu
 
 Debjani Ray-Majumder
 
