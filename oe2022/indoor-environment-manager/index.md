@@ -25,7 +25,7 @@ Chung, Jihoon (chungj11@rpi.edu)
 
 Rook, Kelsey 
 
-Jacoby-Cooper, Gabriel
+Jacoby-Cooper, Gabriel (rensselaer@gabrieljc.me)
 
 ## List of Resources
 
