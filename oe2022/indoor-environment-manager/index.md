@@ -23,7 +23,7 @@ This project aims to develop an ontology that recommends a viable solution to im
 
 Chung, Jihoon (chungj11@rpi.edu)
 
-Rook, Kelsey 
+Rook, Kelsey (rookk@rpi.edu)
 
 Jacoby-Cooper, Gabriel (rensselaer@gabrieljc.me)
 
