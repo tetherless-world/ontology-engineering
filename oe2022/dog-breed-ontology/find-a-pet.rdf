@@ -46,8 +46,16 @@
 	<owl:Class rdf:about="&oe2022-dogs;Breed">
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
-				<owl:allValuesFrom rdf:resource="&oe2022-dogs;BreedGroup"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedGroup"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -64,12 +72,6 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasMarking"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Marking"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasPopularityRanking"/>
 				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PopularityRanking"/>
 			</owl:Restriction>
@@ -78,12 +80,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;isColored"/>
 				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Color"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>breed</rdfs:label>
@@ -108,12 +104,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-col;comprises"/>
 				<owl:allValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;hasRole"/>
-				<owl:someValuesFrom rdf:resource="&cmns-pts;FunctionalRole"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>breed group</rdfs:label>
@@ -198,7 +188,15 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;isColored"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Color"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Color"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasShape"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Shape"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 	</owl:Class>
@@ -235,15 +233,8 @@
 		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;wasRankedBy"/>
-				<owl:onClass rdf:resource="&oe2022-dogs;Organization"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-pts;holdsDuring"/>
-				<owl:someValuesFrom>
+				<owl:onClass>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/hasDuration"/>
 						<owl:someValuesFrom>
@@ -253,7 +244,14 @@
 							</owl:Restriction>
 						</owl:someValuesFrom>
 					</owl:Restriction>
-				</owl:someValuesFrom>
+				</owl:onClass>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;wasRankedBy"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Organization"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 	</owl:Class>
@@ -316,76 +314,91 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysAdaptabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysBarkingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysCatFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysCharacteristicLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:domain rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysChildFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysDroolingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysExerciseNeedsLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysGroomingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysHealthIssueSusceptabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysIntelligenceLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysMentalStimulationNeedsLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysPlayfullnessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysStrangerFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysTrainabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysWatchDogAbilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
@@ -501,11 +514,26 @@
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isSimilarTo">
+		<rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/isDescribedBy"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isSimilarTo"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;providedRanking">
 		<owl:inverseOf rdf:resource="&oe2022-dogs;wasRankedBy"/>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;wasRanked">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRanking"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;wasRankedBy">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRanking"/>
 		<rdfs:range rdf:resource="&oe2022-dogs;Organization"/>
 	</owl:ObjectProperty>
