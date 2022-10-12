@@ -39,6 +39,11 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;ApartmentIndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;IndoorSpace"/>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;HouseIndoorSpace"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;Athlete">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
 	</owl:Class>
@@ -120,6 +125,15 @@
 		<skos:definition>collection of ...</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;Budget">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;City">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;GeopoliticalRegion"/>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;State"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;CoatLength">
 		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
 	</owl:Class>
@@ -153,12 +167,38 @@
 		</rdfs:subClassOf>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;DogAllergy">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;DoubleCoatType">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;ExerciseLevel">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;Family">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FamilyWithChildren">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;FamilyWithoutChildren"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FamilyWithoutChildren">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;GardenOutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;OutdoorSpace"/>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;YardOutdoorSpace"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;GeopoliticalRegion">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HairlessCoatType">
@@ -177,6 +217,10 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;HouseIndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;IndoorSpace"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;Hunter">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
 	</owl:Class>
@@ -187,6 +231,10 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;HunterOfSmallGame">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Hunter"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;IndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Space"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LongCoatLength">
@@ -224,6 +272,10 @@
 		<cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;OutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Space"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;Person">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
 		<rdfs:label xml:lang="en">person</rdfs:label>
@@ -258,8 +310,28 @@
 		</rdfs:subClassOf>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;PotentialAdopter">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isRoleIn"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;Racer">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Residence">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;comprises"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Space"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;RoughCoatType">
@@ -290,12 +362,30 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;Space">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;State">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;GeopoliticalRegion"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;TerrierBreedGroup">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;ToyBreedGroup">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;TravellingLevel">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;WavyCoatType">
@@ -308,6 +398,10 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;WorkingBreedGroup">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;YardOutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;OutdoorSpace"/>
 	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;colors">
@@ -390,10 +484,24 @@
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;exerciseLevelOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;hasExerciseLevel"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasAllergy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+	</owl:ObjectProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasBreedValue">
 		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
 	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasBudget">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isBudgetOf"/>
+	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasCoatLength">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
@@ -407,6 +515,10 @@
 		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:range rdf:resource="&oe2022-dogs;CoatType"/>
 		<owl:inverseOf rdf:resource="&oe2022-dogs;isCoatTypeOf"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasExerciseLevel">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasMarking">
@@ -476,6 +588,10 @@
 		<owl:inverseOf rdf:resource="&oe2022-dogs;isShapeOf"/>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isBudgetOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCoatLengthOf">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 	</owl:ObjectProperty>
@@ -487,6 +603,10 @@
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isColored">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:range rdf:resource="&oe2022-dogs;Color"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocatedIn">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isMarkingOf">
@@ -501,14 +621,54 @@
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isTravellingLevelOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;travelsAt"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;primarilyResidesAt">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;primaryResidenceOf"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;primaryResidenceOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;providedRanking">
 		<owl:inverseOf rdf:resource="&oe2022-dogs;wasRankedBy"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;travelsAt">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;wantsDogToPerform">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;wasRankedBy">
 		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRanking"/>
 		<rdfs:range rdf:resource="&oe2022-dogs;Organization"/>
 	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="&cmns-cls;Aspect">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;characterizes"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&cmns-pts;Party">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;hasPartyRole"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PotentialAdopter"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
 	
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
