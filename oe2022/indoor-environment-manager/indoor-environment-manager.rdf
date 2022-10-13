@@ -43,22 +43,13 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 	</owl:Ontology>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Dimension-L">
-		<rdf:type rdf:resource="&cmns-qtu;QuantityDimension"/>
-		<rdfs:label>dimension - L</rdfs:label>
-		<skos:definition>dimension that is the measurement of how far apart objects or points are</skos:definition>
-		<cmns-av:symbol>L</cmns-av:symbol>
-		<cmns-cls:classifies rdf:resource="&oe2022-iem;Length"/>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQuality">
+		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
+		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;AirQualityIndex"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Dimension-M">
-		<rdf:type rdf:resource="&cmns-qtu;QuantityDimension"/>
-		<rdfs:label>dimension - M</rdfs:label>
-		<skos:definition>dimension that is the measurement of a body&apos;s inertial property or how much matter it contains</skos:definition>
-		<cmns-av:symbol>M</cmns-av:symbol>
-		<cmns-cls:classifies rdf:resource="&oe2022-iem;Mass"/>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityIndex">
+		<rdf:type rdf:resource="&cmns-qtu;ArbitraryUnit"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Gram">
@@ -73,21 +64,115 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;IEQAirQualityEffect">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IEQEffect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityValue"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&cmns-qtu;QuantityValue">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&cmns-qtu;hasMeasurementUnit"/>
+								<owl:someValuesFrom>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityKind"/>
+										<owl:hasValue rdf:resource="&oe2022-iem;AirQuality"/>
+									</owl:Restriction>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;IEQAirSpeedEffect">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IEQEffect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityValue"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&cmns-qtu;QuantityValue">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&cmns-qtu;hasMeasurementUnit"/>
+								<owl:someValuesFrom>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityKind"/>
+										<owl:hasValue rdf:resource="&oe2022-iem;Speed"/>
+									</owl:Restriction>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;IEQAirTemperatureEffect">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IEQEffect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityValue"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&cmns-qtu;QuantityValue">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&cmns-qtu;hasMeasurementUnit"/>
+								<owl:someValuesFrom>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityKind"/>
+										<owl:hasValue rdf:resource="&oe2022-iem;Temperature"/>
+									</owl:Restriction>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;IEQEffect">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityValue"/>
+				<owl:someValuesFrom rdf:resource="&cmns-qtu;QuantityValue"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;IEQRelativeHumidityEffect">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IEQEffect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityValue"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&cmns-qtu;QuantityValue">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&cmns-qtu;hasMeasurementUnit"/>
+								<owl:someValuesFrom>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityKind"/>
+										<owl:hasValue rdf:resource="&oe2022-iem;RelativeHumidity"/>
+									</owl:Restriction>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Kelvin">
@@ -134,7 +219,6 @@
 		<skos:definition>base quantity kind that is the quantitative measure of distance, i.e., of how far apart objects or points are</skos:definition>
 		<cmns-av:symbol>l</cmns-av:symbol>
 		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-		<cmns-qtu:hasDimension rdf:resource="&oe2022-iem;Dimension-L"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Mass">
@@ -144,7 +228,6 @@
 		<cmns-av:explanatoryNote>Note that as of 2018, mass has been redefined in the International System of Units in terms of Planck&apos;s constant, h. The kilogram is defined by taking the fixed numerical value of the Planck constant, h, to be 6.626 070 15 × 10-34 when expressed in the unit J s, which is equal to kg m^2 s^−1, where the metre and the second are defined in terms of the speed of light, 𝒸, and the hyperfine transition frequency of the caesium-133 atom, ∆ν, respectively.</cmns-av:explanatoryNote>
 		<cmns-av:symbol>m</cmns-av:symbol>
 		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-		<cmns-qtu:hasDimension rdf:resource="&oe2022-iem;Dimension-M"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Meter">
@@ -157,6 +240,14 @@
 		<cmns-av:symbol>m</cmns-av:symbol>
 		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
 		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Length"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;MetersPerSecond">
+		<rdf:type rdf:resource="&cmns-qtu;DerivedUnit"/>
+		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
+		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;PerSecond"/>
+		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Speed"/>
+		<cmns-qtu:isDerivedFrom rdf:resource="&oe2022-iem;Meter"/>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-iem;Occupant">
@@ -181,12 +272,40 @@
 		<cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;PerSecond">
+		<rdf:type rdf:resource="&cmns-qtu;UnitPowerFactor"/>
+		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">-1/1</cmns-qtu:hasExponent>
+		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;Second"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;PerTime">
+		<rdf:type rdf:resource="&cmns-qtu;QuantityKindPowerFactor"/>
+		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">-1/1</cmns-qtu:hasExponent>
+		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Time"/>
+	</owl:NamedIndividual>
+	
 	<owl:Class rdf:about="&oe2022-iem;Person">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
 		<rdfs:label xml:lang="en">person</rdfs:label>
 		<skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
 		<cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
 	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;RelativeHumidity">
+		<rdf:type rdf:resource="&cmns-qtu;DimensionlessQuantity"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;Second">
+		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
+		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
+		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Time"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;Speed">
+		<rdf:type rdf:resource="&cmns-qtu;DerivedQuantityKind"/>
+		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
+		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;PerTime"/>
+	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Temperature">
 		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
@@ -195,6 +314,11 @@
 		<skos:definition>base quantity kind that is the quantitative measure of the ability of a substance, or more generally of any physical system, to transfer heat energy to another physical system</skos:definition>
 		<cmns-av:explanatoryNote>There are three types of temperature scale: those, such as the SI scale, that are defined in terms of the average translational kinetic energy per freely moving microscopic particle, such as atom, molecule, or electron, in a body; those that rely solely on purely macroscopic properties and thermodynamic principles, such as Kelvin&apos;s original definition; and those that are not defined by theoretical principles, but are defined by convenient empirical properties of particular materials.</cmns-av:explanatoryNote>
 		<cmns-av:symbol>T</cmns-av:symbol>
+		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;Time">
+		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
 		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
 	</owl:NamedIndividual>
 	
