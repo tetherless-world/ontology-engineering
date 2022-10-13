@@ -127,6 +127,12 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Budget">
 		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isBudgetOf"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;City">
@@ -177,10 +183,22 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;ExerciseLevel">
 		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;exerciseLevelOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Person"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;Family">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Person"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;FamilyWithChildren">
@@ -278,6 +296,24 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Person">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasAllergy"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;DogAllergy"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasExerciseLevel"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isMemberOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Family"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">person</rdfs:label>
 		<skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
 		<cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
@@ -314,6 +350,18 @@
 		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;primarilyResidesAt"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;wantsDogToPerform"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;FunctionalRole"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-pts;isRoleIn"/>
 				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
 			</owl:Restriction>
@@ -326,6 +374,24 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Residence">
 		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedIn"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;City"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedIn"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;State"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;primaryResidenceOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PotentialAdopter"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-col;comprises"/>
@@ -386,6 +452,12 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;TravellingLevel">
 		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isTravellingLevelOf"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;WavyCoatType">
@@ -575,6 +647,24 @@
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 	</owl:DatatypeProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberHours">
+		<rdfs:domain rdf:resource="&oe2022-dogs;Person"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberHoursInResidence">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasNumberHours"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberInteractableHours">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasNumberHours"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberOfIndividuals">
+		<rdfs:domain rdf:resource="&oe2022-dogs;Person"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasPopularityRanking">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
@@ -587,6 +677,12 @@
 		<rdfs:range rdf:resource="&oe2022-dogs;Shape"/>
 		<owl:inverseOf rdf:resource="&oe2022-dogs;isShapeOf"/>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasSize">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Space"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isBudgetOf">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
@@ -621,6 +717,12 @@
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;isSizeInSqFt">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasSize"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isTravellingLevelOf">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 		<owl:inverseOf rdf:resource="&oe2022-dogs;travelsAt"/>
@@ -652,16 +754,19 @@
 		<rdfs:range rdf:resource="&oe2022-dogs;Organization"/>
 	</owl:ObjectProperty>
 	
-	<rdf:Description rdf:about="&cmns-cls;Aspect">
+	<rdf:Description rdf:about="&cmns-pts;Party">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-cls;characterizes"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasBudget"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Budget"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-	</rdf:Description>
-	
-	<rdf:Description rdf:about="&cmns-pts;Party">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;travelsAt"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;TravellingLevel"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-pts;hasPartyRole"/>
