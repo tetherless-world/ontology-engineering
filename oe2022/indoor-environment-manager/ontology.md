@@ -2,7 +2,7 @@
 
 ## Conceptual Model
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVPTbnOG4=/?moveToViewport=-1266,-370,2553,1159&embedId=18993659909" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<iframe src="https://miro.com/app/live-embed/uXjVPNokmA4=/?moveToViewport=-1765,-385,2032,1412&embedId=641440842144" scrolling="no" allowfullscreen width="768" height="432" frameborder="0"></iframe>
 
 An overview of the main classes and their property associations. Some property associations exist only upon
 representation of the Table 1 data, and so we highlight instances in pink
