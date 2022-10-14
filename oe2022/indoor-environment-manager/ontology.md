@@ -4,8 +4,7 @@
 
 <iframe src="https://miro.com/app/live-embed/uXjVPNokmA4=/?moveToViewport=-1765,-385,2032,1412&embedId=641440842144" scrolling="no" allowfullscreen width="768" height="432" frameborder="0"></iframe>
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
+An overview of the relationship between several categories of concepts the ontology uses, including a room the system could operate in as well as its occupants, attributes pertaining to the room’s environment, items in the room that affect its environment, various relevant measurements, attributes of the occupants, and types of comfort the occupant may experience. The diagram also depicts the relationship between the state of said room and its energy usage.
 
 ## Ontologies
 
