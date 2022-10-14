@@ -46,6 +46,8 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isAttributeOf"/>
+        <rdfs:label>has attribute</rdfs:label>
+        <skos:definition>has components that affect the nature of the whole with respect to relevant actors</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -63,6 +65,8 @@
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isPossibleStateOf"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>has possible state</rdfs:label>
+        <skos:definition>has the ability to be in some condition at a point in time</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -74,6 +78,8 @@
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isStateOf"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>has state</rdfs:label>
+        <skos:definition>is currently in the condition, referring to objects that have some changeable condition</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -82,6 +88,8 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isAttributeOf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is attribute of</rdfs:label>
+        <skos:definition>is a component that affects the nature of the whole with respect to relevant actors</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -90,6 +98,8 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isPossibleStateOf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is possible state of</rdfs:label>
+        <skos:definition>can be the condition of a given object at some point in time</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -98,6 +108,8 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isStateOf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is currently the condition of</rdfs:label>
+        <rdfs:label>is state of</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -118,13 +130,18 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ClosedState">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState"/>
+        <rdfs:label>closed state</rdfs:label>
+        <skos:definition>condition of being not open</skos:definition>
     </owl:Class>
     
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState -->
 
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState">
+        <rdfs:label>component state</rdfs:label>
+        <skos:definition>an object in a room that can be used to alter relevant IEQ parameters</skos:definition>
+    </owl:Class>
     
 
 
@@ -145,6 +162,8 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label>dehumidifier</rdfs:label>
+        <skos:definition>room component that can be on or off, thereby lowering indoor relative humidity or not, respectively</skos:definition>
     </owl:Class>
     
 
@@ -173,6 +192,8 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label>energy usage</rdfs:label>
+        <skos:definition>quantity of energy used to power some equipment, per unit time</skos:definition>
     </owl:Class>
     
 
@@ -196,6 +217,8 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
+        <rdfs:label>equipment</rdfs:label>
+        <skos:definition>room component that consumes energy</skos:definition>
     </owl:Class>
     
 
@@ -223,6 +246,8 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label>fan</rdfs:label>
+        <skos:definition>HVAC equipment that can increase air speed</skos:definition>
     </owl:Class>
     
 
@@ -251,6 +276,8 @@
                 <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label>furniture</rdfs:label>
+        <skos:definition>room component that does not consume energy</skos:definition>
     </owl:Class>
     
 
@@ -265,6 +292,8 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label>HVAC</rdfs:label>
+        <skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
     </owl:Class>
     
 
@@ -419,6 +448,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OffState">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>off state</rdfs:label>
+        <skos:definition>condition of not being activated</skos:definition>
     </owl:Class>
     
 
@@ -427,6 +458,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OnState">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>on state</rdfs:label>
+        <skos:definition>condition of being currently in operation</skos:definition>
     </owl:Class>
     
 
@@ -435,6 +468,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OpenState">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>open state</rdfs:label>
+        <skos:definition>condition of being not closed</skos:definition>
     </owl:Class>
     
 
@@ -480,19 +515,27 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label>radiator</rdfs:label>
+        <skos:definition>HVAC equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
     </owl:Class>
     
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Room -->
 
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Room"/>
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Room">
+        <rdfs:label>room</rdfs:label>
+        <skos:definition>region in a building in which occupant comfort and measurements apply</skos:definition>
+    </owl:Class>
     
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent -->
 
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent">
+        <rdfs:label>room component</rdfs:label>
+        <skos:definition>an object in a room that can be used to alter relevant IEQ parameters</skos:definition>
+    </owl:Class>
     
 
 
@@ -521,6 +564,8 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label>thermostat state</rdfs:label>
+        <skos:definition>numeric value at which the thermostat is set</skos:definition>
     </owl:Class>
     
 
@@ -530,6 +575,8 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Window">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/WindowBlinds"/>
+        <rdfs:label>window</rdfs:label>
+        <skos:definition>room component that can optionally let air flow between inside and outside regions</skos:definition>
     </owl:Class>
     
 
@@ -538,6 +585,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/WindowBlinds">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
+        <rdfs:label>window blinds</rdfs:label>
+        <skos:definition>room component that be open or closed, thereby letting in or blocking light, respectively</skos:definition>
     </owl:Class>
     
 
@@ -574,6 +623,8 @@
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Energy">
         <rdf:type rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/BaseQuantityKind"/>
+        <rdfs:label>energy</rdfs:label>
+        <skos:definition>measurement of the ability of something to do work</skos:definition>
     </owl:NamedIndividual>
     
 
@@ -601,6 +652,8 @@
         <cmns-dsg:isDefinedIn rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/InternationalSystemOfUnits"/>
         <cmns-dsg:isDescribedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Time"/>
         <cmns-qtu:hasQuantityKind rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Time"/>
+        <rdfs:label>hour</rdfs:label>
+        <skos:definition>unit of time representing the 24th part of a day</skos:definition>
     </owl:NamedIndividual>
     
 
@@ -662,6 +715,8 @@
         <cmns-qtu:hasFactor rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Kilo"/>
         <cmns-qtu:hasQuantityKind rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Energy"/>
         <cmns-qtu:isDerivedFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Watt"/>
+        <rdfs:label>kilowatt</rdfs:label>
+        <skos:definition>conversion-based unit of energy</skos:definition>
     </owl:NamedIndividual>
     
 
@@ -674,6 +729,8 @@
         <cmns-qtu:hasFactor rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerHour"/>
         <cmns-qtu:hasQuantityKind rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Energy"/>
         <cmns-qtu:isDerivedFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Kilowatt"/>
+        <rdfs:label>kilowatt-hour</rdfs:label>
+        <skos:definition>measure of electrical energy equivalent to a power consumption of 1,000 watts for 1 hour</skos:definition>
     </owl:NamedIndividual>
     
 
@@ -817,6 +874,8 @@
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Watt">
         <rdf:type rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/BaseUnit"/>
         <cmns-dsg:isDefinedIn rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/InternationalSystemOfQuantities"/>
+        <rdfs:label>watt</rdfs:label>
+        <skos:definition>unit of power equivalent to one joule per second</skos:definition>
     </owl:NamedIndividual>
     
 
