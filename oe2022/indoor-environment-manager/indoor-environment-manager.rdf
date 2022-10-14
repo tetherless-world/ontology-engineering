@@ -33,6 +33,43 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasEffect -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasEffect"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasPossibleState -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasPossibleState">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -60,6 +97,19 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Dehumidifier">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OffState"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OnState"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -68,6 +118,13 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
     </owl:Class>
     
@@ -77,6 +134,19 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Fan">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OffState"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OnState"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -85,6 +155,26 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ClosedState"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OpenState"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -93,6 +183,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/HVAC">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -295,6 +391,19 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Radiator">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OffState"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OnState"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -315,6 +424,27 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/QuantityValue"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasMeasurementUnit"/>
+                                <owl:someValuesFrom>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityKind"/>
+                                        <owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Temperature"/>
+                                    </owl:Restriction>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
