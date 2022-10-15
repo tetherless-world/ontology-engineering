@@ -5,12 +5,11 @@ title: term list
 
 ## Terminology List
 
-<iframe src="https://rb.gy/qr3aqa" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRpmP_Bnvo-fPIpOjKxkti6euMjZmOWC8MbQYG16gJvv9A_6ZH6Vy9A1awbjk0xAw/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
-<p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
+- [Version 3 (OE 5)](files/TermList_v3.xlsx)
+- [Version 2 (OE 4 final)](files/TermList_v2.xlsx)
+- [Version 1 (OE 4 init)](files/TermList_v1.xlsx)
 
-- [Version 3](files/termlist.xlsx)
-- [Version 2](files/termlist.xlsx)
-- [Version 1](files/termlist.xlsx)
