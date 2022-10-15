@@ -6,6 +6,11 @@
 
 An overview of the relationship between several categories of concepts the ontology uses, including a room the system could operate in as well as its occupants, attributes pertaining to the room’s environment, items in the room that affect its environment, various relevant measurements, attributes of the occupants, and types of comfort the occupant may experience. The diagram also depicts the relationship between the state of said room and its energy usage.
 
+### Previous Versions
+
+- [Version 2 (OE 6)](files/OE_6_IEQ_Management_System_ConceptualModel.pdf)
+- [Version 1 (OE 5)](files/OE_5_IEQ Management System_ConceptualModel.pdf)
+
 ## Ontology
 
 [Latest](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf)
