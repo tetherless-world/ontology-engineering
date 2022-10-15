@@ -107,12 +107,31 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isQuantifiedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isQuantifiedBy">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/quatifies"/>
+        <rdfs:label>is quantified by</rdfs:label>
+        <skos:definition>is specified by the quantify of the object</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isStateOf -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isStateOf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:label>is currently the condition of</rdfs:label>
         <rdfs:label>is state of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/quatifies -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/quatifies">
+        <rdfs:label>quantifies</rdfs:label>
+        <skos:definition>specifies the quantify of the object</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -125,6 +144,15 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermalComfort"/>
+    </owl:Class>
     
 
 
@@ -527,6 +555,15 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality">
+        <rdfs:label>indoor environmental quality</rdfs:label>
+        <skos:definition>a perceived indoor experience of the building indoor including thermal comfort, indoor air quality, lighting, acoustics, and control systems</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorRelativeHumidity -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorRelativeHumidity">
@@ -802,6 +839,16 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermalComfort -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermalComfort">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality"/>
+        <rdfs:label>thermal comfort</rdfs:label>
+        <skos:definition>the condition of mind which expresses satisfaction with the surrounding thermal environment and is assessed by subjective evaluation</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState">
@@ -870,8 +917,6 @@
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality">
         <rdf:type rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/QuantityKind"/>
         <cmns-qtu:hasMeasurementUnit rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityIndex"/>
-        <rdfs:label>air quality</rdfs:label>
-        <skos:definition>the quantification of attributes of an object or event</skos:definition>
     </owl:NamedIndividual>
     
 
@@ -882,6 +927,16 @@
         <rdf:type rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ArbitraryUnit"/>
         <rdfs:label>air quality index</rdfs:label>
         <skos:definition>measurement that combines other meaurements of properties of air to indicate the level of danger to human health</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Cost -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Cost">
+        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/BaseQuantityKind"/>
+        <rdfs:label>cost</rdfs:label>
+        <skos:definition>amount paid or charged for something</skos:definition>
     </owl:NamedIndividual>
     
 
@@ -1204,6 +1259,21 @@
         <cmns-qtu:hasFactor rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerCubicTime"/>
         <cmns-qtu:hasFactor rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SquareLength"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality">
+        <skos:definition>Synthesis of various physical measurements of properties of air that threaten human health</skos:definition>
+        <rdfs:label>air quality</rdfs:label>
+    </rdf:Description>
     
 
 
