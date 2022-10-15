@@ -11,7 +11,7 @@ title: use case
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 
-- [Version 4 (OE 6)](files/OE_6_IEQ Management System_UseCase.pdf)
-- [Version 3 (OE 5)](files/OE_5_IEQ Management System_UseCase.pdf)
-- [Version 2 (OE 4)](files/OE_4_IEQ Management System_UseCase.pdf)
-- [Version 1 (OE 3)](files/OE_3_IEQ Management System_UseCase.pdf)
+- [Version 4 (OE 6)](files/OE_6_IEQManagementSystem_UseCase.pdf)
+- [Version 3 (OE 5)](files/OE_5_IEQManagementSystem_UseCase.pdf)
+- [Version 2 (OE 4)](files/OE_4_IEQManagementSystem_UseCase.pdf)
+- [Version 1 (OE 3)](files/OE_3_IEQManagementSystemm_UseCase.pdf)
