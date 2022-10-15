@@ -16,5 +16,7 @@ title: term list
 
 ## Previous Versions
 
-### Assignment 5
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT09i2YarLS6WhF7Q84qC4y9JvgkJVaErCttZg7XRDMMw9OT4IJjZ8T-7wdQHiHHQ/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
+- [Version 4 (OE 6)](files/OE_6_IEQ Management System_CuratedTermList.xlsx)
+- [Version 3 (OE 5)](files/OE_5_IEQ Management System_CuratedTermList.xlsx)
+- [Version 2 (OE 4 final)](files/OE_4_IEQ Management System_CuratedTermList.xlsx)
+- [Version 1 (OE 4 Prelim)](files/OE_4_IEQ Management System_TermList_Prelim.xlsx)
