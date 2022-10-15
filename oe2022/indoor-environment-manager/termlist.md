@@ -16,7 +16,7 @@ title: term list
 
 ## Previous Versions
 
-- [Version 4 (OE 6)](files/OE_6_IEQ Management System_CuratedTermList.xlsx)
-- [Version 3 (OE 5)](files/OE_5_IEQ Management System_CuratedTermList.xlsx)
-- [Version 2 (OE 4 final)](files/OE_4_IEQ Management System_CuratedTermList.xlsx)
-- [Version 1 (OE 4 Prelim)](files/OE_4_IEQ Management System_TermList_Prelim.xlsx)
+- [Version 4 (OE 6)](files/OE_6_IEQManagementSystem_CuratedTermList.xlsx)
+- [Version 3 (OE 5)](files/OE_5_IEQManagementSystem_CuratedTermList.xlsx)
+- [Version 2 (OE 4 final)](files/OE_4_IEQManagementSystem_CuratedTermList.xlsx)
+- [Version 1 (OE 4 Prelim)](files/OE_4_IEQManagementSystem_TermList_Prelim.xlsx)

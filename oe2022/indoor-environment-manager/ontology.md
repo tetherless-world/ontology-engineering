@@ -8,8 +8,8 @@ An overview of the relationship between several categories of concepts the ontol
 
 ### Previous Versions
 
-- [Version 2 (OE 6)](files/OE_6_IEQ_Management_System_ConceptualModel.pdf)
-- [Version 1 (OE 5)](files/OE_5_IEQ Management System_ConceptualModel.pdf)
+- [Version 2 (OE 6)](files/OE_6_IEQManagementSystem_ConceptualModel.pdf)
+- [Version 1 (OE 5)](files/OE_5_IEQManagementSystem_ConceptualModel.pdf)
 
 ## Ontology
 
