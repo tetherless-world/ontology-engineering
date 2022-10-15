@@ -14,4 +14,4 @@ title: use case
 - [Version 4 (OE 6)](files/OE_6_IEQManagementSystem_UseCase.pdf)
 - [Version 3 (OE 5)](files/OE_5_IEQManagementSystem_UseCase.pdf)
 - [Version 2 (OE 4)](files/OE_4_IEQManagementSystem_UseCase.pdf)
-- [Version 1 (OE 3)](files/OE_3_IEQManagementSystemm_UseCase.pdf)
+- [Version 1 (OE 3)](files/OE_3_IEQManagementSystem_UseCase.pdf)
