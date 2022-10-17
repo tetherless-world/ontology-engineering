@@ -26,9 +26,7 @@
 		<dct:contributor>Mark Linehan, Thematix Partners LLC</dct:contributor>
 		<dct:contributor>Pete Rivett, agnos.ai U.K. Ltd</dct:contributor>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20220801/DatesAndTimes/"/>
-		<skos:changeNote>https://www.omg.org/spec/Commons/20220501/DatesAndTimes.rdf version of this ontology was modified to eliminate a double space in the scope note on CombinedDateTime (COMMONS-6).</skos:changeNote>
 		<skos:note>The dates and times ontology conforms with the OWL 2 DL semantics, and is outside of OWL 2 RL due to the inclusion of exact cardinality constraints on explicit date, explicit duration and time of day. These constraints can be changed to maximum cardinality constraints if needed to support OWL RL rule-based applications that cannot be extended to support them.</skos:note>
 		<cmns-av:copyright>Copyright (c) 2014-2022 EDM Council, Inc.</cmns-av:copyright>
 		<cmns-av:copyright>Copyright (c) 2014-2022 Object Management Group, Inc.</cmns-av:copyright>
@@ -36,16 +34,49 @@
 		<cmns-av:copyright>Copyright (c) 2021-2022 agnos.ai U.K. Ltd</cmns-av:copyright>
 	</owl:Ontology>
 	
+	<owl:AnnotationProperty rdf:about="&dct;abstract">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;contributor">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;license">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;source">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;definition">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;example">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;note">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;scopeNote">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&cmns-av;adaptedFrom">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&cmns-av;copyright">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&cmns-av;synonym">
+	</owl:AnnotationProperty>
+	
 	<rdfs:Datatype rdf:about="&cmns-dt;CombinedDateTime">
 		<rdfs:label>combined date time</rdfs:label>
 		<owl:equivalentClass>
 			<rdfs:Datatype>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&xsd;string">
-					</rdf:Description>
 					<rdf:Description rdf:about="&xsd;dateTime">
 					</rdf:Description>
 					<rdf:Description rdf:about="&xsd;dateTimeStamp">
+					</rdf:Description>
+					<rdf:Description rdf:about="&xsd;string">
 					</rdf:Description>
 				</owl:unionOf>
 			</rdfs:Datatype>
@@ -362,13 +393,13 @@
 	<owl:ObjectProperty rdf:about="&cmns-dt;precedes">
 		<rdfs:label>precedes</rdfs:label>
 		<dct:source>ISO 1087 Terminology work and terminology science - Vocabulary, Second edition, 2019-09, clause 3.2.24</dct:source>
+		<owl:inverseOf rdf:resource="&cmns-dt;succeeds"/>
 		<skos:definition>associates based on prior spatial or temporal proximity; occurs before in a logical order or sequence</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&cmns-dt;succeeds">
 		<rdfs:label>succeeds</rdfs:label>
 		<dct:source>ISO 1087 Terminology work and terminology science - Vocabulary, Second edition, 2019-09, clause 3.2.24</dct:source>
-		<owl:inverseOf rdf:resource="&cmns-dt;precedes"/>
 		<skos:definition>associates based on subsequent spatial or temporal proximity; follows in a logical order or sequence</skos:definition>
 	</owl:ObjectProperty>
 
