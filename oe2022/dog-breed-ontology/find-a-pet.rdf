@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
-	<!ENTITY DatesAndTimes "https://www.omg.org/spec/Commons/DatesAndTimes/">
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
 	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
 	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY lcc-cr "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/">
 	<!ENTITY oe2022-dogs "https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -14,12 +15,13 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
-	xmlns:DatesAndTimes="https://www.omg.org/spec/Commons/DatesAndTimes/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
 	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
 	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
 	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
 	xmlns:oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -30,11 +32,12 @@
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
 		<rdfs:label>Find a Pet - Dog Breeds Ontology</rdfs:label>
 		<dct:abstract></dct:abstract>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/20220801/DatesAndTimes/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&oe2022-dogs;AgilityAthlete">
@@ -129,14 +132,10 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;City">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;GeopoliticalRegion"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedIn"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;State"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;State"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Municipality"/>
+		<rdfs:label>city</rdfs:label>
+		<skos:definition>municipality of greater size, population, or importance than a town or village</skos:definition>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/city</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;CoatLength">
@@ -175,7 +174,7 @@
 				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<skos:definition>domestic mammal closely related to the grey wolf</skos:definition>
+		<skos:definition>domestic mammal closely related to the gray wolf</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;DogAllergy">
@@ -215,13 +214,17 @@
 		<skos:definition>family were all members are at least 5 years of age</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;FederalState">
+		<rdfs:subClassOf rdf:resource="&lcc-cr;CountrySubdivision"/>
+		<rdfs:label>federal state</rdfs:label>
+		<skos:definition>self-governing geopolitical unit which forms part of a wider geopolitical unit that is recognized as a country</skos:definition>
+		<cmns-av:explanatoryNote>This type of entity, variously referred to as a state, province or canton, has a level of self government including its own legal system and court jurisdiction, but cedes a level of autonomy to the federation of which it forms a part.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;GardenOutdoorSpace">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;OutdoorSpace"/>
 		<owl:disjointWith rdf:resource="&oe2022-dogs;YardOutdoorSpace"/>
 		<skos:definition>outdoor space used to grow vegetables, fruit, herbs, or flowers</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-dogs;GeopoliticalRegion">
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HairlessCoatType">
@@ -297,6 +300,19 @@
 	<owl:Class rdf:about="&oe2022-dogs;MiscellaneousBreedGroup">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
 		<skos:definition>breed group of purebred dogs that are not recognized by the AKC</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Municipality">
+		<rdfs:subClassOf rdf:resource="&lcc-cr;GeopoliticalEntity"/>
+		<rdfs:label>municipality</rdfs:label>
+		<skos:definition>urban administrative division having corporate status and usually powers of self-government or jurisdiction</skos:definition>
+		<skos:example>A municipality can be any political jurisdiction from a sovereign state, such as the Principality of Monaco, or a small village, such as West Hampton Dunes, New York.</skos:example>
+		<skos:scopeNote>The territory over which a municipality has jurisdiction may encompass:
+- only one populated place such as a city, town, or village
+- several of such places (e.g., early jurisdictions in the state of New Jersey (1798-1899) as townships governing several villages, Municipalities of Mexico)
+- only parts of such places, sometimes boroughs of a city such as the 34 municipalities of Santiago, Chile.</skos:scopeNote>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Municipality</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>A municipality is a general-purpose administrative subdivision, as opposed to a special-purpose district.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;NonSportingBreedGroup">
@@ -389,7 +405,7 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedIn"/>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedAt"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;City"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -448,10 +464,6 @@
 		<skos:definition>potential adopter aspect describing a continuous area or expanse which is free, available, or unoccupied for use by a pet</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-dogs;State">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;GeopoliticalRegion"/>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2022-dogs;TerrierBreedGroup">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
 		<skos:definition>breed group of dogs bred to go underground to hunt vermin and other small prey</skos:definition>
@@ -494,9 +506,9 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;Year">
-		<rdf:type rdf:resource="&DatesAndTimes;ExplicitDuration"/>
+		<rdf:type rdf:resource="&cmns-dt;ExplicitDuration"/>
 		<skos:definition>explicit period of 12 months</skos:definition>
-		<DatesAndTimes:hasDurationValue>P1Y</DatesAndTimes:hasDurationValue>
+		<cmns-dt:hasDurationValue>P1Y</cmns-dt:hasDurationValue>
 	</owl:NamedIndividual>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysAdaptabilityLevel">
@@ -785,15 +797,17 @@
 		<skos:definition>is the frequency of activity requiring physical effort, carried out to sustain or improve health and fitness, performed by</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocatedIn">
-		<rdfs:subPropertyOf rdf:resource="&cmns-col;isIncludedIn"/>
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocatedAt">
+		<rdfs:label>is located at</rdfs:label>
+		<rdfs:range rdf:resource="&lcc-cr;Location"/>
 		<owl:inverseOf rdf:resource="&oe2022-dogs;isLocationOf"/>
-		<skos:definition>is physically located in</skos:definition>
+		<skos:definition>relates something to a location, which might be physical or virtual</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocationOf">
-		<rdfs:subPropertyOf rdf:resource="&cmns-col;comprises"/>
-		<skos:definition>is physical location of</skos:definition>
+		<rdfs:label>is location of</rdfs:label>
+		<rdfs:domain rdf:resource="&lcc-cr;Location"/>
+		<skos:definition>indicates the physical location of</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isMarkingOf">
@@ -875,9 +889,6 @@
 		<rdfs:range rdf:resource="&oe2022-dogs;Organization"/>
 		<skos:definition>was given a place within a hierarchy based on popularity by</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:AnnotationProperty rdf:about="&DatesAndTimes;hasDurationValue">
-	</owl:AnnotationProperty>
 	
 	<rdf:Description rdf:about="&cmns-pts;Party">
 		<rdfs:subClassOf>
