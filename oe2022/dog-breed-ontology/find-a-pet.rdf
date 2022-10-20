@@ -48,6 +48,8 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;AgilityAthlete">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
+		<rdfs:label>agility athlete</rdfs:label>
+		<skos:definition>athlete competing in ability to move quickly and easily</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;ApartmentIndoorSpace">
@@ -59,6 +61,9 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Athlete">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>athlete</rdfs:label>
+		<skos:definition>functional role of moving animals from one place to another</skos:definition>
+		<skos:definition>functional role of performing in physical competitions</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;Breed">
@@ -84,7 +89,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasPopularityRanking"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PopularityRanking"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PopularityRating"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -179,6 +184,8 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Companion">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>companion</rdfs:label>
+		<skos:definition>functional role of spending time with another, sometimes to provide comfort</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;CordedCoatType">
@@ -280,6 +287,8 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Herder">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>herder</rdfs:label>
+		<skos:definition>functional role of moving animals from one place to another</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HerdingBreedGroup">
@@ -302,14 +311,20 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Hunter">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>hunter</rdfs:label>
+		<skos:definition>functional role of finding and catching prey</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HunterOfLargeGame">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Hunter"/>
+		<rdfs:label>hunter of large game</rdfs:label>
+		<skos:definition>hunter whose prey is above ground, such as rabbits</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HunterOfSmallGame">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Hunter"/>
+		<rdfs:label>hunter of small game</rdfs:label>
+		<skos:definition>hunter whose primary prey is underground, such as rodents</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;IndoorSpace">
@@ -415,12 +430,19 @@
 		<cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-dogs;PopularityRanking">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+	<owl:Class rdf:about="&oe2022-dogs;PopularityRating">
+		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Ratings/Rating"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;wasRankedBy"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Organization"/>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Ratings/rates"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Breed"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Ratings/hasRatingScore"/>
+				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Ratings/QualitativeRatingScore"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>popularity rank</rdfs:label>
@@ -459,6 +481,8 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Racer">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
+		<rdfs:label>racer</rdfs:label>
+		<skos:definition>athlete competing in speed competitions</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;Residence">
@@ -512,6 +536,8 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;SocialMediaSubject">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>social media subject</rdfs:label>
+		<skos:definition>functional role of being photogenic and posing for cameras</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;SortingBreedGroup">
@@ -594,12 +620,6 @@
 		<rdfs:label>yard</rdfs:label>
 		<skos:definition>outdoor space adjoining a building or house</skos:definition>
 	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;Year">
-		<rdf:type rdf:resource="&cmns-dt;ExplicitDuration"/>
-		<skos:definition>explicit period of 12 months</skos:definition>
-		<cmns-dt:hasDurationValue>P1Y</cmns-dt:hasDurationValue>
-	</owl:NamedIndividual>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysAdaptabilityLevel">
 		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
@@ -834,7 +854,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasPopularityRanking">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
-		<rdfs:range rdf:resource="&oe2022-dogs;PopularityRanking"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;PopularityRating"/>
 		<owl:inverseOf rdf:resource="&oe2022-dogs;isPopularityRankingOf"/>
 		<skos:definition>is placed in a popularity hierarchy at</skos:definition>
 	</owl:ObjectProperty>
@@ -910,6 +930,13 @@
 		<skos:definition>is the placement in a popularity heirarchy of</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isPrimaryResidenceOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Residence"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;primarilyResidesAt"/>
+		<skos:definition>is the primary location of residence of</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isShapeOf">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 		<skos:definition>is the outline or form of</skos:definition>
@@ -939,14 +966,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;primarilyResidesAt">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
-		<owl:inverseOf rdf:resource="&oe2022-dogs;primaryResidenceOf"/>
 		<skos:definition>spends the majority of their time in</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-dogs;primaryResidenceOf">
-		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
-		<rdfs:domain rdf:resource="&oe2022-dogs;Residence"/>
-		<skos:definition>is the primary location of residence of</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;providedRanking">
@@ -967,17 +987,23 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;wasRanked">
 		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
-		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRanking"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRating"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
 		<skos:definition>specifies the standing in a heirarchy, with lower numbers specifying higher rank</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;wasRankedBy">
 		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
-		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRanking"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRating"/>
 		<rdfs:range rdf:resource="&oe2022-dogs;Organization"/>
 		<skos:definition>was given a place within a hierarchy based on popularity by</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;year">
+		<rdf:type rdf:resource="&cmns-dt;ExplicitDuration"/>
+		<skos:definition>explicit period of 12 months</skos:definition>
+		<cmns-dt:hasDurationValue>P1Y</cmns-dt:hasDurationValue>
+	</owl:NamedIndividual>
 	
 	<rdf:Description rdf:about="&cmns-pts;Party">
 		<rdfs:subClassOf>
