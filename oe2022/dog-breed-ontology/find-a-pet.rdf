@@ -65,13 +65,6 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
-				<owl:onClass rdf:resource="&oe2022-dogs;BreedGroup"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
 				<owl:someValuesFrom rdf:resource="&oe2022-dogs;CoatLength"/>
 			</owl:Restriction>
@@ -95,6 +88,13 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>breed</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedGroup"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>set of genetics and physical traits approved by the American Kennel Club</skos:definition>
 	</owl:Class>
 	
@@ -117,14 +117,19 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;BreedGroup">
-		<rdfs:subClassOf rdf:resource="&cmns-col;Collection"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-col;comprises"/>
-				<owl:allValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>breed group</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&cmns-col;Collection">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-col;comprises"/>
+						<owl:allValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition>collection of breeds grouped together by the American Kennel Club based on what the breeds were bred to do</skos:definition>
 	</owl:Class>
 	
@@ -132,6 +137,13 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
 		<rdfs:label>budget</rdfs:label>
 		<skos:definition>potential adopter aspect describing the level of income and expenditure for a set period of time</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Child">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Person"/>
+		<rdfs:label>child</rdfs:label>
+		<rdfs:isDefinedBy>K.E. Holland, &quot;Acquiring a pet dog: A review of factors affecting the decision-making of prospective dog owners,&quot; Animals, vol. 9, no. 124, Mar. 2019 , doi: 10.3390/ani9040124</rdfs:isDefinedBy>
+		<skos:definition>person under the age of 5</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;City">
@@ -217,9 +229,20 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;FamilyWithChildren">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
 		<rdfs:label>family with children</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2022-dogs;FamilyWithoutChildren"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Family">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
+						<owl:someValuesFrom rdf:resource="&oe2022-dogs;Child"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition>family with at least one person under 5 years of age</skos:definition>
 	</owl:Class>
 	
@@ -492,7 +515,6 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;Space">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
@@ -500,6 +522,22 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>space</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;PotentialAdopterAspect">
+					</rdf:Description>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;IndoorSpace">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2022-dogs;OutdoorSpace">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition>potential adopter aspect describing a continuous area or expanse which is free, available, or unoccupied for use by a pet</skos:definition>
 	</owl:Class>
 	
