@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-asmt "https://www.omg.org/spec/Commons/Assessments/">
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
+	<!ENTITY cmns-dsg "https://www.omg.org/spec/Commons/Designators/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY cmns-oc "https://www.omg.org/spec/Commons/Occurrences/">
+	<!ENTITY cmns-prd "https://www.omg.org/spec/Commons/ProductsAndServices/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://www.omg.org/spec/Commons/Assessments/"
+	xmlns:cmns-asmt="https://www.omg.org/spec/Commons/Assessments/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+	xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:cmns-oc="https://www.omg.org/spec/Commons/Occurrences/"
+	xmlns:cmns-prd="https://www.omg.org/spec/Commons/ProductsAndServices/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://www.omg.org/spec/Commons/Assessments/">
+		<rdfs:label>Assessments Ontology</rdfs:label>
+		<dct:abstract>This ontology defines abstract concepts for assessments, evaluations, and outcomes, as the basis for various analysis, such as for business performance, compliance and risk.</dct:abstract>
+		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Occurrences/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ProductsAndServices/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20221001/Assessments/"/>
+		<cmns-av:copyright>Copyright (c) 2019-2022 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2019-2022 Object Management Group, Inc.</cmns-av:copyright>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&cmns-asmt;AssessmentActivity">
+		<rdfs:subClassOf rdf:resource="&cmns-oc;OccurrenceKind"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-asmt;evaluates"/>
+				<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-asmt;hasParticipant"/>
+				<owl:onClass rdf:resource="&cmns-pts;AgentRole"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>assessment activity</rdfs:label>
+		<skos:definition>activity involving the evaluation or estimation of the nature, quality, ability, or value of someone or something</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-asmt;AssessmentEvent">
+		<rdfs:subClassOf rdf:resource="&cmns-oc;Occurrence"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;produces"/>
+				<owl:onClass rdf:resource="&cmns-asmt;AssessmentReport"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-asmt;hasParticipant"/>
+				<owl:onClass rdf:resource="&cmns-pts;AgentRole"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-oc;exemplifies"/>
+				<owl:onClass rdf:resource="&cmns-asmt;AssessmentActivity"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>assessment event</rdfs:label>
+		<skos:definition>event involving the evaluation or estimation of the nature, quality, or ability of someone or something</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-asmt;AssessmentReport">
+		<rdfs:subClassOf rdf:resource="&cmns-doc;Report"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-dsg;describes"/>
+				<owl:onClass rdf:resource="&cmns-asmt;Opinion"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-asmt;hasDateOfAssessment"/>
+				<owl:onClass rdf:resource="&cmns-dt;hasExplicitDate"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>assessment report</rdfs:label>
+		<skos:definition>report that includes an opinion, judgement, appraisal, or view about something and typically the methodology and raw inputs used to arrive at that opinion</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-asmt;Opinion">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;isProvidedBy"/>
+				<owl:onClass rdf:resource="&cmns-pts;PartyRole"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>opinion</rdfs:label>
+		<skos:definition>judgement, appraisal, or view about something</skos:definition>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&cmns-asmt;evaluates">
+		<rdfs:label>evaluates</rdfs:label>
+		<skos:definition>assesses the nature, quality, or ability of someone or something</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-asmt;hasDateOfAssessment">
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasExplicitDate"/>
+		<rdfs:label xml:lang="en">has date of assessment</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;ExplicitDate"/>
+		<skos:definition xml:lang="en">date on which an assessment process was completed</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-asmt;hasParticipant">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasRole"/>
+		<rdfs:label xml:lang="en">has participant</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-pts;AgentRole"/>
+		<skos:definition xml:lang="en">indicates a role of an agent that takes part in or becomes involved in a particular activity or event</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-asmt;participatesIn">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;isRoleIn"/>
+		<rdfs:label xml:lang="en">participates in</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-pts;AgentRole"/>
+		<skos:definition xml:lang="en">indicates an activity or event that involves a particular agent role</skos:definition>
+	</owl:ObjectProperty>
+
+</rdf:RDF>

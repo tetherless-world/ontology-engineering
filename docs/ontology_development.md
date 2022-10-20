@@ -18,7 +18,7 @@ Installing the serializer will involve modifications to a hidden folder within t
 Instructions for installing the serializer:
 
 1. Download the
-    [rdf-toolkit jar file](https://jenkins.edmcouncil.org/job/rdf-toolkit-build/lastSuccessfulBuild/artifact/target/scala-2.12/rdf-toolkit.jar)
+    [rdf-toolkit jar file](https://jenkins.edmcouncil.org/job/rdf-toolkit-build/lastSuccessfulBuild/artifact/target/rdf-toolkit.jar)
     and place it in `.git/hooks/` within the ontology-engineering repository.
 1. Download (right click and select "Save link as...") the
     [pre-commit script](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/master/serializer/pre-commit)
