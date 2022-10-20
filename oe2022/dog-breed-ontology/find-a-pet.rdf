@@ -1,1506 +1,980 @@
-<?xml version="1.0"?>
-<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
-     xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
-     xmlns:dct="http://purl.org/dc/terms/"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
-     xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
-     xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
-     xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
-     xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
-     xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
-     xmlns:oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
-    <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
-        <dct:abstract>The goal of this ontology is to recommend a dog breed based on the specifications of a particular household. The ontology evaluates breeds using the following characteristics: height, weight, grooming frequency, shedding, energy, trainability, demeanour, hypoallergenic status.</dct:abstract>
-        <rdfs:label>Find a Pet - Dog Breeds Ontology</rdfs:label>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasAllergy -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasAllergy">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/DogAllergy"/>
-        <skos:definition>experiences an allergic reaction when exposed to</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBudget -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBudget">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isBudgetOf"/>
-        <skos:definition>has the level of disposable income willing to be spent on a specific activity of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasCoatLength -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasCoatLength">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isCoatLengthOf"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatLength"/>
-        <skos:definition>has a coat with an average length of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasCoatType -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasCoatType">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isCoatTypeOf"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <skos:definition>has the fur texture</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasExerciseLevel -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasExerciseLevel">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isExerciseLevelOf"/>
-        <skos:definition>performs activity requiring physical effort, carried out to sustain or improve health and fitness with frequency</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMarking -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMarking">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isMarkingOf"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Marking"/>
-        <skos:definition>has the potential to display the pattern</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasPopularityRanking -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasPopularityRanking">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isPopularityRankingOf"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PopularityRanking"/>
-        <skos:definition>is placed in a popularity hierarchy at</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasShape -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasShape">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isShapeOf"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Shape"/>
-        <skos:definition>has the form or outline of a</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isBudgetOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isBudgetOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Budget"/>
-        <skos:definition>is the level of disposable income willing to be spent on a specific activity of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isCoatLengthOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isCoatLengthOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <skos:definition>is the average length of the fur of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isCoatTypeOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isCoatTypeOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <skos:definition>is the texture of the fur of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isColorOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isColorOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isColored"/>
-        <skos:definition>is the primary pigment of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isColored -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isColored">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Color"/>
-        <skos:definition>is primarily pigmented</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isExerciseLevelOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isExerciseLevelOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ExerciseLevel"/>
-        <skos:definition>is the frequency of activity requiring physical effort, carried out to sustain or improve health and fitness, performed by</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isLocatedAt -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isLocatedAt">
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isLocationOf"/>
-        <rdfs:range rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/Location"/>
-        <rdfs:label>is located at</rdfs:label>
-        <skos:definition>relates something to a location, which might be physical or virtual</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isLocationOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isLocationOf">
-        <rdfs:domain rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/Location"/>
-        <rdfs:label>is location of</rdfs:label>
-        <skos:definition>indicates the physical location of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isMarkingOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isMarkingOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <skos:definition>is a potential pattern displayed on</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isPopularityRankingOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isPopularityRankingOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <skos:definition>is the placement in a popularity heirarchy of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isShapeOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isShapeOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <skos:definition>is the outline or form of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isSimilarTo -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isSimilarTo">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/isDescribedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isSimilarTo"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ReflexiveProperty"/>
-        <skos:definition>resembles without being identical to</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isTravellingLevelOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isTravellingLevelOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/travelsAt"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/TravellingLevel"/>
-        <skos:definition>is the frequency of temporarily changing location of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/primarilyResidesAt -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/primarilyResidesAt">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/primaryResidenceOf"/>
-        <skos:definition>spends the majority of their time in</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/primaryResidenceOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/primaryResidenceOf">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Residence"/>
-        <skos:definition>is the primary location of residence of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/providedRanking -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/providedRanking">
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wasRankedBy"/>
-        <skos:definition>gave a place within a hierarchy based on popularity</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/travelsAt -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/travelsAt">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-        <skos:definition>how frequently the potential adopter temporarily changes location</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wantsDogToPerform -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wantsDogToPerform">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/FunctionalRole"/>
-        <skos:definition>wants a dog to fulfill the specific role of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wasRankedBy -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wasRankedBy">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PopularityRanking"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Organization"/>
-        <skos:definition>was given a place within a hierarchy based on popularity by</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysAdaptabilityLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysAdaptabilityLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing how easily a breed handles change</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysBarkingLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysBarkingLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing how often a breed barks or howls</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCatFriendlinessLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCatFriendlinessLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing the tendency toward a tolerance for cats and a lower prey drive</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>specifies the level a breed displays a specific characteristic</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysChildFriendlinessLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysChildFriendlinessLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing the tendency to be more sturdy, playful, easygoing, and tolerant around children under 5</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysDroolingLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysDroolingLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing how much a breed tends to drool</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysExerciseNeedsLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysExerciseNeedsLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing the level of daily activity needed</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysGroomingLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysGroomingLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>describing how frequently a breed requires bathing, brushing, trimming, or other kinds of coat maintenance</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysHealthIssueSusceptabilityLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysHealthIssueSusceptabilityLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing the level of health issues a breed tends to have</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysIntelligenceLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysIntelligenceLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing the thinking and problem-solving ability</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysMentalStimulationNeedsLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysMentalStimulationNeedsLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing how much often a breed will need some form of mental activity to stimulate and enrich their mind</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysPlayfullnessLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysPlayfullnessLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing how spirited a dog tends to be as an adult</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysStrangerFriendlinessLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysStrangerFriendlinessLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing how welcoming a breed is likely to be towards strangers</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysTrainabilityLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysTrainabilityLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing the level of ease in learning something new and a willingness to try new things</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysWatchDogAbilityLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysWatchDogAbilityLevel">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/displaysCharacteristicLevel"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>level describing how likely a breed is to alert their owner to the presence of strangers</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <skos:definition>specifies some physical or external aspect of a breed</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxHeight -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxHeight">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>breed value measuring the maximum distance from ground to top of an adult dog&apos;s head while standing</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxLifespan -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxLifespan">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <skos:definition>breed value measuring the maximum average length of life of an average dog in a healthy environment</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxPrice -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxPrice">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>breed value of the maximum average amount of money required to purchase a dog of a breed</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxWeight -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMaxWeight">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>breed value measuring the maximum potential of an adult dog&apos;s relative mass</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinHeight -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinHeight">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>breed value measuring the minimum distance from ground to top of an adult dog&apos;s head while standing</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinLifespan -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinLifespan">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <skos:definition>breed value measuring the minimum average length of life of an average dog in a healthy environment</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinPrice -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinPrice">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>breed value of the minimum average amount of money required to purchase a dog of a breed</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinWeight -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasMinWeight">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBreedValue"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>breed value measuring the minimum potential of an adult dog&apos;s relative mass</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberHours -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberHours">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Person"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>specifies the number of hours a person has available</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberHoursInResidence -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberHoursInResidence">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberHours"/>
-        <skos:definition>number of hours spent physically in the residence</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberInteractableHours -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberInteractableHours">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberHours"/>
-        <skos:definition>number of hours not preoccupied with known and scheduled tasks</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberOfIndividuals -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasNumberOfIndividuals">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Family"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <skos:definition>specifies the number of people in a family</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasSize -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasSize">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Space"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>specifies something&apos;s dimensions</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isSizeInSqFt -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isSizeInSqFt">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasSize"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <skos:definition>size of a space in square feet</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wasRanked -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wasRanked">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PopularityRanking"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <skos:definition>specifies the standing in a heirarchy, with lower numbers specifying higher rank</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/AgilityAthlete -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/AgilityAthlete">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Athlete"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ApartmentIndoorSpace -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ApartmentIndoorSpace">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/IndoorSpace"/>
-        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HouseIndoorSpace"/>
-        <rdfs:label>apartment</rdfs:label>
-        <skos:definition>indoor space consisting of a suite of rooms forming one residence, typically in a building containing a number of these</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Athlete -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Athlete">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/FunctionalRole"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasCoatLength"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatLength"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasCoatType"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasPopularityRanking"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PopularityRanking"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isColored"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Color"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isIncludedIn"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>breed</rdfs:label>
-        <skos:definition>set of genetics and physical traits approved by the American Kennel Club</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedAspect -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedAspect">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/Aspect"/>
-        <rdfs:label>breed aspect</rdfs:label>
-        <skos:definition>aspect that characterizes a breed</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedAspect"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>breed characteristic</rdfs:label>
-        <skos:definition>breed aspect describing a breed&apos;s typical needs and behaviors</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Collections/Collection"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/comprises"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>breed group</rdfs:label>
-        <skos:definition>collection of breeds grouped together by the American Kennel Club based on what the breeds were bred to do</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Budget -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Budget">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect"/>
-        <rdfs:label>budget</rdfs:label>
-        <skos:definition>potential adopter aspect describing the level of income and expenditure for a set period of time</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/City -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/City">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Municipality"/>
-        <rdfs:label>city</rdfs:label>
-        <skos:definition>municipality of greater size, population, or importance than a town or village</skos:definition>
-        <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.merriam-webster.com/dictionary/city</cmns-av:adaptedFrom>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatLength -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatLength">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedAspect"/>
-        <rdfs:label>coat length</rdfs:label>
-        <skos:definition>breed aspect describing the average length of a dog&apos;s coat</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedAspect"/>
-        <rdfs:label>coat type</rdfs:label>
-        <skos:definition>characteristic describing the texture of a dog&apos;s coat</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Color -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Color">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/Aspect"/>
-        <rdfs:label>color</rdfs:label>
-        <skos:definition>aspect describing the pigmentation that may be found on a breed&apos;s fur</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Companion -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Companion">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/FunctionalRole"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CordedCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CordedCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>corded coat</rdfs:label>
-        <skos:definition>coat type describing fur that naturally clump into thick strands</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CurlyCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CurlyCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>curly coat</rdfs:label>
-        <skos:definition>coat type with swirls, curlicues, and twists in the fur</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Dog -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Dog">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isClassifiedBy"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>dog</rdfs:label>
-        <skos:definition>domestic mammal closely related to the gray wolf</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/DogAllergy -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/DogAllergy">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect"/>
-        <rdfs:label>dog allergy</rdfs:label>
-        <skos:definition>potential adopter aspect describing whether a person is susceptible to an allergic reaction from dog dander</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/DoubleCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/DoubleCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>double coat</rdfs:label>
-        <skos:definition>coat type describing an undercoat that is typically shorter than the outer coat, and fur with a dense, woolly texture</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ExerciseLevel -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ExerciseLevel">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect"/>
-        <rdfs:label>exercise level</rdfs:label>
-        <skos:definition>potential adopter aspect describing how often the potential adopter performs activity requiring physical effort, carried out to sustain or improve health and fitness</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Family -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Family">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Party"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/hasMember"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Person"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>Family</rdfs:label>
-        <skos:definition>party describing a group of one or more adults and any children living together as a unit</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FamilyWithChildren -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FamilyWithChildren">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Family"/>
-        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FamilyWithoutChildren"/>
-        <rdfs:label>family with children</rdfs:label>
-        <skos:definition>family with at least one person under 5 years of age</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FamilyWithoutChildren -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FamilyWithoutChildren">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Family"/>
-        <rdfs:label>family without children</rdfs:label>
-        <skos:definition>family were all members are at least 5 years of age</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FederalState -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FederalState">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/CountrySubdivision"/>
-        <rdfs:label>federal state</rdfs:label>
-        <skos:definition>self-governing geopolitical unit which forms part of a wider geopolitical unit that is recognized as a country</skos:definition>
-        <cmns-av:explanatoryNote>This type of entity, variously referred to as a state, province or canton, has a level of self government including its own legal system and court jurisdiction, but cedes a level of autonomy to the federation of which it forms a part.</cmns-av:explanatoryNote>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/GardenOutdoorSpace -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/GardenOutdoorSpace">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/OutdoorSpace"/>
-        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/YardOutdoorSpace"/>
-        <rdfs:label>garden</rdfs:label>
-        <skos:definition>outdoor space used to grow vegetables, fruit, herbs, or flowers</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HairlessCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HairlessCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>hairless coat</rdfs:label>
-        <skos:definition>coat type describing a coat without fur</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Herder -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Herder">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/FunctionalRole"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HerdingBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HerdingBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>herding</rdfs:label>
-        <skos:definition>breed group of dogs bred to move livestock</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HoundBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HoundBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>hound</rdfs:label>
-        <skos:definition>breed group of dogs bred to pursue non-feathered warm-blooded game above ground</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HouseIndoorSpace -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HouseIndoorSpace">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/IndoorSpace"/>
-        <rdfs:label>house</rdfs:label>
-        <skos:definition>indoor space for human habitation, especially one that is lived in by a family or small group of people</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Hunter -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Hunter">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/FunctionalRole"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HunterOfLargeGame -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HunterOfLargeGame">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Hunter"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HunterOfSmallGame -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HunterOfSmallGame">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Hunter"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/IndoorSpace -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/IndoorSpace">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Space"/>
-        <rdfs:label>indoor</rdfs:label>
-        <skos:definition>space situated, conducted, or used within a building or under cover</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/LongCoatLength -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/LongCoatLength">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatLength"/>
-        <rdfs:label>long coat</rdfs:label>
-        <skos:definition>coat length that requires regular grooming to keep it neat and free of mats</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Marking -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Marking">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedAspect"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasShape"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Shape"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isColored"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Color"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>marking</rdfs:label>
-        <skos:definition>breed aspect describing potential patterns that may be found on a dog of a breed</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/MediumCoatLength -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/MediumCoatLength">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatLength"/>
-        <rdfs:label>medium coat</rdfs:label>
-        <skos:definition>coat length that requires regular brushing due to risk of feathering on legs and tail becoming matted</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/MiscellaneousBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/MiscellaneousBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>miscellaneous</rdfs:label>
-        <skos:definition>breed group of purebred dogs that are not recognized by the AKC</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Municipality -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Municipality">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/GeopoliticalEntity"/>
-        <rdfs:label>municipality</rdfs:label>
-        <skos:definition>urban administrative division having corporate status and usually powers of self-government or jurisdiction</skos:definition>
-        <skos:example>A municipality can be any political jurisdiction from a sovereign state, such as the Principality of Monaco, or a small village, such as West Hampton Dunes, New York.</skos:example>
-        <skos:scopeNote>The territory over which a municipality has jurisdiction may encompass:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
+	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY lcc-cr "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/">
+	<!ENTITY oe2022-dogs "https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
+	xmlns:oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
+		<rdfs:label>Find a Pet - Dog Breeds Ontology</rdfs:label>
+		<dct:abstract>The goal of this ontology is to recommend a dog breed based on the specifications of a particular household. The ontology evaluates breeds using the following characteristics: height, weight, grooming frequency, shedding, energy, trainability, demeanour, hypoallergenic status.</dct:abstract>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&oe2022-dogs;AgilityAthlete">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ApartmentIndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;IndoorSpace"/>
+		<rdfs:label>apartment</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;HouseIndoorSpace"/>
+		<skos:definition>indoor space consisting of a suite of rooms forming one residence, typically in a building containing a number of these</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Athlete">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Breed">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedGroup"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;CoatLength"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;CoatType"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasPopularityRanking"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PopularityRanking"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isColored"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Color"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>breed</rdfs:label>
+		<skos:definition>set of genetics and physical traits approved by the American Kennel Club</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedAspect">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>breed aspect</rdfs:label>
+		<skos:definition>aspect that characterizes a breed</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;characterizes"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>breed characteristic</rdfs:label>
+		<skos:definition>breed aspect describing a breed&apos;s typical needs and behaviors</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedGroup">
+		<rdfs:subClassOf rdf:resource="&cmns-col;Collection"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;comprises"/>
+				<owl:allValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>breed group</rdfs:label>
+		<skos:definition>collection of breeds grouped together by the American Kennel Club based on what the breeds were bred to do</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Budget">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:label>budget</rdfs:label>
+		<skos:definition>potential adopter aspect describing the level of income and expenditure for a set period of time</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;City">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Municipality"/>
+		<rdfs:label>city</rdfs:label>
+		<skos:definition>municipality of greater size, population, or importance than a town or village</skos:definition>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/city</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:label>coat length</rdfs:label>
+		<skos:definition>breed aspect describing the average length of a dog&apos;s coat</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:label>coat type</rdfs:label>
+		<skos:definition>characteristic describing the texture of a dog&apos;s coat</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Color">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>color</rdfs:label>
+		<skos:definition>aspect describing the pigmentation that may be found on a breed&apos;s fur</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Companion">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CordedCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>corded coat</rdfs:label>
+		<skos:definition>coat type describing fur that naturally clump into thick strands</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CurlyCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>curly coat</rdfs:label>
+		<skos:definition>coat type with swirls, curlicues, and twists in the fur</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Dog">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isClassifiedBy"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>dog</rdfs:label>
+		<skos:definition>domestic mammal closely related to the grey wolf</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;DogAllergy">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:label>dog allergy</rdfs:label>
+		<skos:definition>potential adopter aspect describing whether a person is susceptible to an allergic reaction from dog dander</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;DoubleCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>double coat</rdfs:label>
+		<skos:definition>coat type describing an undercoat that is typically shorter than the outer coat, and fur with a dense, woolly texture</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ExerciseLevel">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:label>exercise level</rdfs:label>
+		<skos:definition>potential adopter aspect describing how often the potential adopter performs activity requiring physical effort, carried out to sustain or improve health and fitness</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Family">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Person"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>Family</rdfs:label>
+		<skos:definition>party describing a group of one or more adults and any children living together as a unit</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FamilyWithChildren">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
+		<rdfs:label>family with children</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;FamilyWithoutChildren"/>
+		<skos:definition>family with at least one person under 5 years of age</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FamilyWithoutChildren">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
+		<rdfs:label>family without children</rdfs:label>
+		<skos:definition>family were all members are at least 5 years of age</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FederalState">
+		<rdfs:subClassOf rdf:resource="&lcc-cr;CountrySubdivision"/>
+		<rdfs:label>federal state</rdfs:label>
+		<skos:definition>self-governing geopolitical unit which forms part of a wider geopolitical unit that is recognized as a country</skos:definition>
+		<cmns-av:explanatoryNote>This type of entity, variously referred to as a state, province or canton, has a level of self government including its own legal system and court jurisdiction, but cedes a level of autonomy to the federation of which it forms a part.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;GardenOutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;OutdoorSpace"/>
+		<rdfs:label>garden</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;YardOutdoorSpace"/>
+		<skos:definition>outdoor space used to grow vegetables, fruit, herbs, or flowers</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HairlessCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>hairless coat</rdfs:label>
+		<skos:definition>coat type describing a coat without fur</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Herder">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HerdingBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>herding</rdfs:label>
+		<skos:definition>breed group of dogs bred to move livestock</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HoundBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>hound</rdfs:label>
+		<skos:definition>breed group of dogs bred to pursue non-feathered warm-blooded game above ground</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HouseIndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;IndoorSpace"/>
+		<rdfs:label>house</rdfs:label>
+		<skos:definition>indoor space for human habitation, especially one that is lived in by a family or small group of people</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Hunter">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HunterOfLargeGame">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Hunter"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HunterOfSmallGame">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Hunter"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;IndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Space"/>
+		<rdfs:label>indoor</rdfs:label>
+		<skos:definition>space situated, conducted, or used within a building or under cover</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;LongCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>long coat</rdfs:label>
+		<skos:definition>coat length that requires regular grooming to keep it neat and free of mats</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Marking">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isColored"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Color"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasShape"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Shape"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>marking</rdfs:label>
+		<skos:definition>breed aspect describing potential patterns that may be found on a dog of a breed</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;MediumCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>medium coat</rdfs:label>
+		<skos:definition>coat length that requires regular brushing due to risk of feathering on legs and tail becoming matted</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;MiscellaneousBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>miscellaneous</rdfs:label>
+		<skos:definition>breed group of purebred dogs that are not recognized by the AKC</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Municipality">
+		<rdfs:subClassOf rdf:resource="&lcc-cr;GeopoliticalEntity"/>
+		<rdfs:label>municipality</rdfs:label>
+		<skos:definition>urban administrative division having corporate status and usually powers of self-government or jurisdiction</skos:definition>
+		<skos:example>A municipality can be any political jurisdiction from a sovereign state, such as the Principality of Monaco, or a small village, such as West Hampton Dunes, New York.</skos:example>
+		<skos:scopeNote>The territory over which a municipality has jurisdiction may encompass:
 - only one populated place such as a city, town, or village
 - several of such places (e.g., early jurisdictions in the state of New Jersey (1798-1899) as townships governing several villages, Municipalities of Mexico)
 - only parts of such places, sometimes boroughs of a city such as the 34 municipalities of Santiago, Chile.</skos:scopeNote>
-        <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://en.wikipedia.org/wiki/Municipality</cmns-av:adaptedFrom>
-        <cmns-av:explanatoryNote>A municipality is a general-purpose administrative subdivision, as opposed to a special-purpose district.</cmns-av:explanatoryNote>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/NonSportingBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/NonSportingBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>non sporting</rdfs:label>
-        <skos:definition>breed group of dogs bred to interact with people that in ways that do not fit into another breed group</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Organization -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Organization">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Party"/>
-        <rdfs:label xml:lang="en">organization</rdfs:label>
-        <rdfs:seeAlso rdf:resource="https://www.w3.org/TR/vocab-org/#org:Organization"/>
-        <skos:definition xml:lang="en">collection of one or more people, or groups of people formed together into a community or other social, commercial or political structure to act, or that is designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis</skos:definition>
-        <skos:example xml:lang="en">This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization.</skos:example>
-        <cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/OutdoorSpace -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/OutdoorSpace">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Space"/>
-        <rdfs:label>outdoor</rdfs:label>
-        <skos:definition>space not within a building or under cover</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Person -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Person">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Party"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasAllergy"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/DogAllergy"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasExerciseLevel"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ExerciseLevel"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isMemberOf"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Family"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">person</rdfs:label>
-        <skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
-        <cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PopularityRanking -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PopularityRanking">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedAspect"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wasRankedBy"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Organization"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>popularity rank</rdfs:label>
-        <skos:definition>breed aspect describing the relative standing of a breed in how many dogs were acquired and registered with an organization within a specified time period</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopter -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopter">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/PartyRole"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/primarilyResidesAt"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Residence"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/wantsDogToPerform"/>
-                <owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/FunctionalRole"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isRoleIn"/>
-                <owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Party"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>potential adopter</rdfs:label>
-        <skos:definition>a person who may legally take in a dog and bring it up as their own</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/Aspect"/>
-        <rdfs:label>potential adopter aspect</rdfs:label>
-        <skos:definition>aspect describing a potential adopter</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Racer -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Racer">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Athlete"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Residence -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Residence">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/comprises"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Space"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isLocatedAt"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/City"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>residence</rdfs:label>
-        <skos:definition>potential adopter aspect describing the physical space in which the potential adopter lives</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/RoughCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/RoughCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>rough coat</rdfs:label>
-        <skos:definition>coat type that is always coarse to the touch</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Shape -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Shape">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/Aspect"/>
-        <rdfs:label>shape</rdfs:label>
-        <skos:definition>aspect describing the external form, contours, or outline</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ShortCoatLength -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ShortCoatLength">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatLength"/>
-        <rdfs:label>short coat</rdfs:label>
-        <skos:definition>coat length in which fur is naturally short and lays close to the body</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SilkyCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SilkyCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>silky coat</rdfs:label>
-        <skos:definition>coat type describing fur that flows and cascades with glossy sheen</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SmoothCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SmoothCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>smooth coat</rdfs:label>
-        <skos:definition>coat type describing silky fur that lays close to the body</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SocialMediaSubject -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SocialMediaSubject">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/FunctionalRole"/>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SortingBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SortingBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>sorting</rdfs:label>
-        <skos:definition>breed group of dogs bred to help hunters in the capture and retrieval of feathered game</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Space -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Space">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isIncludedIn"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Residence"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>space</rdfs:label>
-        <skos:definition>potential adopter aspect describing a continuous area or expanse which is free, available, or unoccupied for use by a pet</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/TerrierBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/TerrierBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>terrier</rdfs:label>
-        <skos:definition>breed group of dogs bred to go underground to hunt vermin and other small prey</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ToyBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ToyBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>toy</rdfs:label>
-        <skos:definition>breed group of dogs bred to be small in size and be good companions</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/TravellingLevel -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/TravellingLevel">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopterAspect"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isTravellingLevelOf"/>
-                <owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Party"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>travelling level</rdfs:label>
-        <skos:definition>potential adopter aspect describing how often the potential adopter moves from one place to another temporarily</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WavyCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WavyCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>wavy coat</rdfs:label>
-        <skos:definition>coat type describing a coat with curls that tangles and knots easily and has a tendency to become dry</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WiryCoatType -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WiryCoatType">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CoatType"/>
-        <rdfs:label>wiry coat</rdfs:label>
-        <skos:definition>coat type describing fur with a wire-like texture that is harsh and stiff and stands away from the body</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WorkingBreedGroup -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WorkingBreedGroup">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-        <rdfs:label>working</rdfs:label>
-        <skos:definition>breed group of dogs bred to assist humans</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/YardOutdoorSpace -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/YardOutdoorSpace">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/OutdoorSpace"/>
-        <rdfs:label>yard</rdfs:label>
-        <skos:definition>outdoor space adjoining a building or house</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/Party -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/Party">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasBudget"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Budget"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/travelsAt"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/TravellingLevel"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/hasPartyRole"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopter"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Year -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Year">
-        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/ExplicitDuration"/>
-        <cmns-dt:hasDurationValue>P1Y</cmns-dt:hasDurationValue>
-        <skos:definition>explicit period of 12 months</skos:definition>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HerdingBreedGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/HoundBreedGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/MiscellaneousBreedGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/NonSportingBreedGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SortingBreedGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/TerrierBreedGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ToyBreedGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WorkingBreedGroup"/>
-        </owl:members>
-    </rdf:Description>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Municipality</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>A municipality is a general-purpose administrative subdivision, as opposed to a special-purpose district.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;NonSportingBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>non sporting</rdfs:label>
+		<skos:definition>breed group of dogs bred to interact with people that in ways that do not fit into another breed group</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Organization">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:label xml:lang="en">organization</rdfs:label>
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/vocab-org/#org:Organization"/>
+		<skos:definition xml:lang="en">collection of one or more people, or groups of people formed together into a community or other social, commercial or political structure to act, or that is designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis</skos:definition>
+		<skos:example xml:lang="en">This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization.</skos:example>
+		<cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;OutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Space"/>
+		<rdfs:label>outdoor</rdfs:label>
+		<skos:definition>space not within a building or under cover</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Person">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasAllergy"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;DogAllergy"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasExerciseLevel"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isMemberOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Family"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">person</rdfs:label>
+		<skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
+		<cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;PopularityRanking">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;wasRankedBy"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Organization"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>popularity rank</rdfs:label>
+		<skos:definition>breed aspect describing the relative standing of a breed in how many dogs were acquired and registered with an organization within a specified time period</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;PotentialAdopter">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;primarilyResidesAt"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;wantsDogToPerform"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;FunctionalRole"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isRoleIn"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>potential adopter</rdfs:label>
+		<skos:definition>a person who may legally take in a dog and bring it up as their own</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;PotentialAdopterAspect">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>potential adopter aspect</rdfs:label>
+		<skos:definition>aspect describing a potential adopter</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Racer">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Residence">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedAt"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;City"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;comprises"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Space"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>residence</rdfs:label>
+		<skos:definition>potential adopter aspect describing the physical space in which the potential adopter lives</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;RoughCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>rough coat</rdfs:label>
+		<skos:definition>coat type that is always coarse to the touch</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Shape">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>shape</rdfs:label>
+		<skos:definition>aspect describing the external form, contours, or outline</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ShortCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>short coat</rdfs:label>
+		<skos:definition>coat length in which fur is naturally short and lays close to the body</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SilkyCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>silky coat</rdfs:label>
+		<skos:definition>coat type describing fur that flows and cascades with glossy sheen</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SmoothCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>smooth coat</rdfs:label>
+		<skos:definition>coat type describing silky fur that lays close to the body</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SocialMediaSubject">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SortingBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>sorting</rdfs:label>
+		<skos:definition>breed group of dogs bred to help hunters in the capture and retrieval of feathered game</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Space">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>space</rdfs:label>
+		<skos:definition>potential adopter aspect describing a continuous area or expanse which is free, available, or unoccupied for use by a pet</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;TerrierBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>terrier</rdfs:label>
+		<skos:definition>breed group of dogs bred to go underground to hunt vermin and other small prey</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ToyBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>toy</rdfs:label>
+		<skos:definition>breed group of dogs bred to be small in size and be good companions</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;TravellingLevel">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isTravellingLevelOf"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>travelling level</rdfs:label>
+		<skos:definition>potential adopter aspect describing how often the potential adopter moves from one place to another temporarily</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;WavyCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>wavy coat</rdfs:label>
+		<skos:definition>coat type describing a coat with curls that tangles and knots easily and has a tendency to become dry</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;WiryCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>wiry coat</rdfs:label>
+		<skos:definition>coat type describing fur with a wire-like texture that is harsh and stiff and stands away from the body</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;WorkingBreedGroup">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedGroup"/>
+		<rdfs:label>working</rdfs:label>
+		<skos:definition>breed group of dogs bred to assist humans</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;YardOutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;OutdoorSpace"/>
+		<rdfs:label>yard</rdfs:label>
+		<skos:definition>outdoor space adjoining a building or house</skos:definition>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;Year">
+		<rdf:type rdf:resource="&cmns-dt;ExplicitDuration"/>
+		<skos:definition>explicit period of 12 months</skos:definition>
+		<cmns-dt:hasDurationValue>P1Y</cmns-dt:hasDurationValue>
+	</owl:NamedIndividual>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysAdaptabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how easily a breed handles change</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysBarkingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how often a breed barks or howls</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysCatFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the tendency toward a tolerance for cats and a lower prey drive</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysCharacteristicLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>specifies the level a breed displays a specific characteristic</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysChildFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the tendency to be more sturdy, playful, easygoing, and tolerant around children under 5</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysDroolingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how much a breed tends to drool</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysExerciseNeedsLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the level of daily activity needed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysGroomingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>describing how frequently a breed requires bathing, brushing, trimming, or other kinds of coat maintenance</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysHealthIssueSusceptabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the level of health issues a breed tends to have</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysIntelligenceLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the thinking and problem-solving ability</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysMentalStimulationNeedsLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how much often a breed will need some form of mental activity to stimulate and enrich their mind</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysPlayfullnessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how spirited a dog tends to be as an adult</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysStrangerFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how welcoming a breed is likely to be towards strangers</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysTrainabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the level of ease in learning something new and a willingness to try new things</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysWatchDogAbilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how likely a breed is to alert their owner to the presence of strangers</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasAllergy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;DogAllergy"/>
+		<skos:definition>experiences an allergic reaction when exposed to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasBreedValue">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<skos:definition>specifies some physical or external aspect of a breed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasBudget">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isBudgetOf"/>
+		<skos:definition>has the level of disposable income willing to be spent on a specific activity of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasCoatLength">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;CoatLength"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isCoatLengthOf"/>
+		<skos:definition>has a coat with an average length of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasCoatType">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;CoatType"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isCoatTypeOf"/>
+		<skos:definition>has the fur texture</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasExerciseLevel">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isExerciseLevelOf"/>
+		<skos:definition>performs activity requiring physical effort, carried out to sustain or improve health and fitness with frequency</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasMarking">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;Marking"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isMarkingOf"/>
+		<skos:definition>has the potential to display the pattern</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxHeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the maximum distance from ground to top of an adult dog&apos;s head while standing</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxLifespan">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>breed value measuring the maximum average length of life of an average dog in a healthy environment</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxPrice">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value of the maximum average amount of money required to purchase a dog of a breed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxWeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the maximum potential of an adult dog&apos;s relative mass</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinHeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the minimum distance from ground to top of an adult dog&apos;s head while standing</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinLifespan">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>breed value measuring the minimum average length of life of an average dog in a healthy environment</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinPrice">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value of the minimum average amount of money required to purchase a dog of a breed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinWeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the minimum potential of an adult dog&apos;s relative mass</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberHours">
+		<rdfs:domain rdf:resource="&oe2022-dogs;Person"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>specifies the number of hours a person has available</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberHoursInResidence">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasNumberHours"/>
+		<skos:definition>number of hours spent physically in the residence</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberInteractableHours">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasNumberHours"/>
+		<skos:definition>number of hours not preoccupied with known and scheduled tasks</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberOfIndividuals">
+		<rdfs:domain rdf:resource="&oe2022-dogs;Family"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>specifies the number of people in a family</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasPopularityRanking">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;PopularityRanking"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isPopularityRankingOf"/>
+		<skos:definition>is placed in a popularity hierarchy at</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasShape">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;Shape"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isShapeOf"/>
+		<skos:definition>has the form or outline of a</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasSize">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Space"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>specifies something&apos;s dimensions</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isBudgetOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Budget"/>
+		<skos:definition>is the level of disposable income willing to be spent on a specific activity of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCoatLengthOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<skos:definition>is the average length of the fur of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCoatTypeOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<skos:definition>is the texture of the fur of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isColorOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isColored"/>
+		<skos:definition>is the primary pigment of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isColored">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;Color"/>
+		<skos:definition>is primarily pigmented</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isExerciseLevelOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+		<skos:definition>is the frequency of activity requiring physical effort, carried out to sustain or improve health and fitness, performed by</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocatedAt">
+		<rdfs:label>is located at</rdfs:label>
+		<rdfs:range rdf:resource="&lcc-cr;Location"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isLocationOf"/>
+		<skos:definition>relates something to a location, which might be physical or virtual</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocationOf">
+		<rdfs:label>is location of</rdfs:label>
+		<rdfs:domain rdf:resource="&lcc-cr;Location"/>
+		<skos:definition>indicates the physical location of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isMarkingOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<skos:definition>is a potential pattern displayed on</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isPopularityRankingOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<skos:definition>is the placement in a popularity heirarchy of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isShapeOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<skos:definition>is the outline or form of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isSimilarTo">
+		<rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/isDescribedBy"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isSimilarTo"/>
+		<skos:definition>resembles without being identical to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;isSizeInSqFt">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasSize"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>size of a space in square feet</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isTravellingLevelOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;TravellingLevel"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;travelsAt"/>
+		<skos:definition>is the frequency of temporarily changing location of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;primarilyResidesAt">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;primaryResidenceOf"/>
+		<skos:definition>spends the majority of their time in</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;primaryResidenceOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Residence"/>
+		<skos:definition>is the primary location of residence of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;providedRanking">
+		<owl:inverseOf rdf:resource="&oe2022-dogs;wasRankedBy"/>
+		<skos:definition>gave a place within a hierarchy based on popularity</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;travelsAt">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<skos:definition>how frequently the potential adopter temporarily changes location</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;wantsDogToPerform">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:range rdf:resource="&cmns-pts;FunctionalRole"/>
+		<skos:definition>wants a dog to fulfill the specific role of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;wasRanked">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRanking"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>specifies the standing in a heirarchy, with lower numbers specifying higher rank</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;wasRankedBy">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;PopularityRanking"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;Organization"/>
+		<skos:definition>was given a place within a hierarchy based on popularity by</skos:definition>
+	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="&cmns-pts;Party">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasBudget"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Budget"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;travelsAt"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;TravellingLevel"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;hasPartyRole"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PotentialAdopter"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
+	
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe2022-dogs;HerdingBreedGroup">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;HoundBreedGroup">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;MiscellaneousBreedGroup">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;NonSportingBreedGroup">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;SortingBreedGroup">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;TerrierBreedGroup">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;ToyBreedGroup">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;WorkingBreedGroup">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
-
