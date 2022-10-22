@@ -104,7 +104,7 @@
 	<owl:Class rdf:about="&oe2022-iem;ClosedState">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
 		<rdfs:label>closed state</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;ThermostatState"/>
+		<owl:disjointWith rdf:resource="&oe2022-iem;OpenState"/>
 		<skos:definition>condition of being not open</skos:definition>
 	</owl:Class>
 	
@@ -615,6 +615,7 @@
 	<owl:Class rdf:about="&oe2022-iem;OffState">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
 		<rdfs:label>off state</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe2022-iem;OnState"/>
 		<skos:definition>condition of not being activated</skos:definition>
 	</owl:Class>
 	
@@ -788,24 +789,9 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityValue"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:intersectionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&cmns-qtu;QuantityValue">
-							</rdf:Description>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&cmns-qtu;hasMeasurementUnit"/>
-								<owl:someValuesFrom>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&cmns-qtu;hasQuantityKind"/>
-										<owl:hasValue rdf:resource="&oe2022-iem;Temperature"/>
-									</owl:Restriction>
-								</owl:someValuesFrom>
-							</owl:Restriction>
-						</owl:intersectionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasSettingValue"/>
+				<owl:onClass rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>thermostat state</rdfs:label>
@@ -871,6 +857,9 @@
 		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isPossibleStateOf"/>
 		<skos:definition>has the ability to be in some condition at a point in time</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasSettingValue">
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasSign">
@@ -942,18 +931,6 @@
 	</owl:AllDisjointClasses>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;ClosedState">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;OffState">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;OnState">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;OpenState">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;Fan">
@@ -973,18 +950,6 @@
 			<rdf:Description rdf:about="&oe2022-iem;IEQAirTemperatureEffect">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;IEQRelativeHumidityEffect">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;OffState">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;OnState">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;OpenState">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;ThermostatState">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
