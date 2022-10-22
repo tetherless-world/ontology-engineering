@@ -202,11 +202,25 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnergyUsage -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnergyUsage">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasMeasurementUnit"/>
-                <owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/KilowattHour"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/QuantityValue"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasMeasurementUnit"/>
+                                <owl:someValuesFrom>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityKind"/>
+                                        <owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Energy"/>
+                                    </owl:Restriction>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>energy usage</rdfs:label>
@@ -572,28 +586,6 @@
         </rdfs:subClassOf>
         <rdfs:label>indoor relative humidity</rdfs:label>
         <skos:definition>a relative humidity attribute of a local indoor environment</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Measurement -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Measurement">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasMeasurementUnit"/>
-                <owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>measurement</rdfs:label>
-        <skos:definition>amount of something, as established by measuring</skos:definition>
     </owl:Class>
     
 
