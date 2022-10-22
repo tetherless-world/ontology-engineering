@@ -64,10 +64,12 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-iem;AirSpeedAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;AirTemperatureAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 	</owl:Class>
 	
@@ -120,6 +122,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-iem;DaylightIntensityAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 	</owl:Class>
 	
@@ -144,6 +147,10 @@
 		<skos:definition>room component that can be on or off, thereby lowering indoor relative humidity or not, respectively</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;DeltaCapableMeasurement">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
 		<rdfs:subClassOf>
@@ -155,7 +162,16 @@
 							<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
 							</rdf:Description>
 							<owl:Class>
-								<owl:complementOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
+								<owl:complementOf>
+									<owl:Class>
+										<owl:intersectionOf rdf:parseType="Collection">
+											<rdf:Description rdf:about="&oe2022-iem;DeltaCapableMeasurement">
+											</rdf:Description>
+											<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttribute">
+											</rdf:Description>
+										</owl:intersectionOf>
+									</owl:Class>
+								</owl:complementOf>
 							</owl:Class>
 						</owl:unionOf>
 					</owl:Class>
@@ -214,6 +230,13 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
+				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
 				<owl:onClass rdf:resource="&oe2022-iem;RelativeHumidityAttribute"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 			</owl:Restriction>
@@ -223,13 +246,6 @@
 				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
 				<owl:onClass rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 	</owl:Class>
@@ -464,6 +480,13 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
+				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<owl:disjointWith rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
 	</owl:Class>
 	
