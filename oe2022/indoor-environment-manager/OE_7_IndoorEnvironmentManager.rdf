@@ -1,874 +1,865 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rdf:RDF [
-	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
-	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
-	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
-	<!ENTITY cmns-dsg "https://www.omg.org/spec/Commons/Designators/">
-	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
-	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
-	<!ENTITY cmns-qtu "https://www.omg.org/spec/Commons/QuantitiesAndUnits/">
-	<!ENTITY dct "http://purl.org/dc/terms/">
-	<!ENTITY oe2022-iem "https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/">
-	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
-	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
-	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
-]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/"
-	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
-	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
-	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
-	xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
-	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
-	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
-	xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:oe2022-iem="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/"
-	xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-	
-	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/">
-		<rdfs:label>Indoor Environment Manager Ontology</rdfs:label>
-		<dct:abstract></dct:abstract>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
-	</owl:Ontology>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQuality">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentalQuality"/>
-		<rdfs:label>air quality</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;ThermalComfort"/>
-		<skos:definition>Synthesis of various physical measurements of properties of air that threaten human health</skos:definition>
-		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;AirQualityIndex"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;AirQualityAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityIndex">
-		<rdf:type rdf:resource="&cmns-qtu;ArbitraryUnit"/>
-		<rdfs:label>air quality index</rdfs:label>
-		<skos:definition>measurement that combines other meaurements of properties of air to indicate the level of danger to human health</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;AirSpeedAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;AirTemperatureAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:complementOf rdf:resource="&oe2022-iem;EnvironmentAttributeDelta"/>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<owl:disjointWith rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Bucket">
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:oneOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;High">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;Low">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;Medium">
-					</rdf:Description>
-				</owl:oneOf>
-			</owl:Class>
-		</owl:equivalentClass>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;ClosedState">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>closed state</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;OpenState"/>
-		<skos:definition>condition of being not open</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;ComponentState">
-		<rdfs:label>component state</rdfs:label>
-		<skos:definition>an object in a room that can be used to alter relevant IEQ parameters</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Cost">
-		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
-		<rdfs:label>cost</rdfs:label>
-		<skos:definition>amount paid or charged for something</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;DaylightIntensityAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Dehumidifier">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2022-iem;OffState">
-							</rdf:Description>
-							<rdf:Description rdf:about="&oe2022-iem;OnState">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>dehumidifier</rdfs:label>
-		<skos:definition>room component that can be on or off, thereby lowering indoor relative humidity or not, respectively</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;DeltaCapableMeasurement">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
-							</rdf:Description>
-							<owl:Class>
-								<owl:complementOf>
-									<owl:Class>
-										<owl:intersectionOf rdf:parseType="Collection">
-											<rdf:Description rdf:about="&oe2022-iem;DeltaCapableMeasurement">
-											</rdf:Description>
-											<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttribute">
-											</rdf:Description>
-										</owl:intersectionOf>
-									</owl:Class>
-								</owl:complementOf>
-							</owl:Class>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;isDefinedInTermsOf"/>
-				<owl:onClass rdf:resource="&oe2022-iem;BaselineIndoorEnvironment"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Energy">
-		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
-		<rdfs:label>energy</rdfs:label>
-		<skos:definition>measurement of the ability of something to do work</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnergyUsage">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-qtu;hasMeasurementUnit"/>
-				<owl:hasValue rdf:resource="&oe2022-iem;KilowattHour"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>energy usage</rdfs:label>
-		<skos:definition>quantity of energy used to power some equipment, per unit time</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Environment">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirQualityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirSpeedAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;RelativeHumidityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
-		<rdfs:label>environment attribute</rdfs:label>
-		<skos:definition>a quantitative attribute of local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasSign"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Sign"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;DeltaCapableMeasurement">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttribute">
-					</rdf:Description>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Equipment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;EnergyUsage"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>equipment</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;Furniture"/>
-		<skos:definition>room component that consumes energy</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EquipmentEnergyUsage">
-		<rdfs:label>equipment energy usage</rdfs:label>
-		<skos:definition>Energy consumption used by equipment in a room</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Fan">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2022-iem;OffState">
-							</rdf:Description>
-							<rdf:Description rdf:about="&oe2022-iem;OnState">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>fan</rdfs:label>
-		<skos:definition>HVAC equipment that can increase air speed</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Furniture">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2022-iem;ClosedState">
-							</rdf:Description>
-							<rdf:Description rdf:about="&oe2022-iem;OpenState">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>furniture</rdfs:label>
-		<skos:definition>room component that does not consume energy</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Gram">
-		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
-		<rdfs:label>gram</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<skos:definition>base unit of mass defined in the Unified Code for Units Of Measure (UCUM) System of Units</skos:definition>
-		<cmns-av:explanatoryNote>The kilogram, as of 2019, is defined by the International Bureau of Weights and Measures from the fixed numerical value of the Planck constant (h), which is 6.62607015×10^−34 kg⋅m^2⋅s^−1</cmns-av:explanatoryNote>
-		<cmns-av:symbol>g</cmns-av:symbol>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;High">
-		<rdf:type rdf:resource="&oe2022-iem;Bucket"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Hour">
-		<rdf:type rdf:resource="&cmns-qtu;ConversionBasedUnit"/>
-		<rdf:type rdf:resource="&cmns-qtu;UnitPowerFactor"/>
-		<rdfs:label>hour</rdfs:label>
-		<skos:definition>unit of time representing the 24th part of a day</skos:definition>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">1/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;Hour"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Time"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<owl:disjointWith rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironmentalQuality">
-		<rdfs:label>indoor environmental quality</rdfs:label>
-		<skos:definition>a perceived indoor experience of the building indoor including thermal comfort, indoor air quality, lighting, acoustics, and control systems</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Kelvin">
-		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
-		<rdfs:label>kelvin</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<rdfs:seeAlso rdf:resource="https://www.nist.gov/pml/owm/si-units-temperature"/>
-		<skos:definition>base unit of temperature that is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 ×10^−23 when expressed in the unit J K^−1, which is equal to kg m^2 s^−2 K^−1</skos:definition>
-		<cmns-av:explanatoryNote>The temperature 0 K is commonly referred to as &apos;absolute zero.&apos; On the widely used Celsius temperature scale, water freezes at 0 °C and boils at about 100 °C. One Celsius degree is an interval of 1 K, and zero degrees Celsius is 273.15 K. An interval of one Celsius degree corresponds to an interval of 1.8 Fahrenheit degrees on the Fahrenheit temperature scale.</cmns-av:explanatoryNote>
-		<cmns-av:symbol>K</cmns-av:symbol>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Temperature"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Kilo">
-		<rdf:type rdf:resource="&cmns-qtu;Prefix"/>
-		<rdfs:label>kilo</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Prefixes</dct:source>
-		<skos:definition>prefix defined in the Unified Code for Units Of Measure (UCUM) System of Units</skos:definition>
-		<cmns-av:symbol>k</cmns-av:symbol>
-		<cmns-dsg:hasDescription>10^3=(10^3)^1</cmns-dsg:hasDescription>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Kilogram">
-		<rdf:type rdf:resource="&cmns-qtu;PrefixedUnit"/>
-		<rdfs:label>kilogram</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<rdfs:seeAlso rdf:resource="https://www.nist.gov/si-redefinition/kilogram"/>
-		<skos:definition>conversion-based unit of mass</skos:definition>
-		<skos:note>Note that in the International System of Units (SI), the kilogram is considered the base unit rather than the gram, which is the base unit in the UCUM.</skos:note>
-		<cmns-av:symbol>kg</cmns-av:symbol>
-		<cmns-dsg:hasDescription>10^3 grams</cmns-dsg:hasDescription>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;Kilo"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Mass"/>
-		<cmns-qtu:isDerivedFrom rdf:resource="&oe2022-iem;Gram"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Kilowatt">
-		<rdf:type rdf:resource="&cmns-qtu;PrefixedUnit"/>
-		<rdfs:label>kilowatt</rdfs:label>
-		<skos:definition>conversion-based unit of energy</skos:definition>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;Kilo"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Energy"/>
-		<cmns-qtu:isDerivedFrom rdf:resource="&oe2022-iem;Watt"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;KilowattHour">
-		<rdf:type rdf:resource="&cmns-qtu;DerivedUnit"/>
-		<rdfs:label>kilowatt-hour</rdfs:label>
-		<skos:definition>measure of electrical energy equivalent to a power consumption of 1,000 watts for 1 hour</skos:definition>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;Hour"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Energy"/>
-		<cmns-qtu:isDerivedFrom rdf:resource="&oe2022-iem;Kilowatt"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Length">
-		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
-		<rdfs:label>length</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<skos:definition>base quantity kind that is the quantitative measure of distance, i.e., of how far apart objects or points are</skos:definition>
-		<cmns-av:symbol>l</cmns-av:symbol>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Low">
-		<rdf:type rdf:resource="&oe2022-iem;Bucket"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Mass">
-		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
-		<rdfs:label>mass</rdfs:label>
-		<skos:definition>base quantity kind for the measure of a measure of a body&apos;s inertial property or how much matter it contains</skos:definition>
-		<cmns-av:explanatoryNote>Note that as of 2018, mass has been redefined in the International System of Units in terms of Planck&apos;s constant, h. The kilogram is defined by taking the fixed numerical value of the Planck constant, h, to be 6.626 070 15 × 10-34 when expressed in the unit J s, which is equal to kg m^2 s^−1, where the metre and the second are defined in terms of the speed of light, 𝒸, and the hyperfine transition frequency of the caesium-133 atom, ∆ν, respectively.</cmns-av:explanatoryNote>
-		<cmns-av:symbol>m</cmns-av:symbol>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Measurement">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasBucket"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Bucket"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-qtu;hasMeasurementUnit"/>
-				<owl:someValuesFrom rdf:resource="&cmns-qtu;MeasurementUnit"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>measurement</rdfs:label>
-		<skos:definition>amount of something</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Medium">
-		<rdf:type rdf:resource="&oe2022-iem;Bucket"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Meter">
-		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
-		<rdfs:label>meter</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<rdfs:seeAlso rdf:resource="https://www.nist.gov/pml/owm/si-units-length"/>
-		<rdfs:seeAlso rdf:resource="https://www.nist.gov/system/files/documents/pml/div683/museum-length.pdf"/>
-		<skos:definition>base unit of length that is the distance traveled by light in vacuum during the time interval of 1/299 792 458 of a second</skos:definition>
-		<cmns-av:symbol>m</cmns-av:symbol>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Length"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;MetersPerSecond">
-		<rdf:type rdf:resource="&cmns-qtu;DerivedUnit"/>
-		<rdfs:label>meter per second</rdfs:label>
-		<skos:definition>measure of speed equipvalent to the moved meters for 1 second</skos:definition>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;PerSecond"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Speed"/>
-		<cmns-qtu:isDerivedFrom rdf:resource="&oe2022-iem;Meter"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Negative">
-		<rdf:type rdf:resource="&oe2022-iem;Sign"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Occupant">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;isPlayedBy"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Person"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">occupant</rdfs:label>
-		<skos:definition xml:lang="en">someone that resides or is present in or using a building, vehicle, seat, place, etc., at a given time</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;OffState">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>off state</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;OnState"/>
-		<skos:definition>condition of not being activated</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;OnState">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>on state</rdfs:label>
-		<skos:definition>condition of being currently in operation</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;OpenState">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>open state</rdfs:label>
-		<skos:definition>condition of being not closed</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Organization">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
-		<rdfs:label xml:lang="en">organization</rdfs:label>
-		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/vocab-org/#org:Organization"/>
-		<skos:definition xml:lang="en">collection of one or more people, or groups of people formed together into a community or other social, commercial or political structure to act, or that is designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis</skos:definition>
-		<skos:example xml:lang="en">This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization.</skos:example>
-		<cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerCubicSecond">
-		<rdf:type rdf:resource="&cmns-qtu;UnitPowerFactor"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">-3/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;Second"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerCubicTime">
-		<rdf:type rdf:resource="&cmns-qtu;QuantityKindPowerFactor"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">-3/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Time"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerHour">
-		<rdf:type rdf:resource="&cmns-qtu;UnitPowerFactor"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">-1/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;Hour"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerSecond">
-		<rdf:type rdf:resource="&cmns-qtu;UnitPowerFactor"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">-1/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;Second"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerTime">
-		<rdf:type rdf:resource="&cmns-qtu;QuantityKindPowerFactor"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">-1/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Time"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Person">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
-		<rdfs:label xml:lang="en">person</rdfs:label>
-		<skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
-		<cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Positive">
-		<rdf:type rdf:resource="&oe2022-iem;Sign"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Radiator">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2022-iem;OffState">
-							</rdf:Description>
-							<rdf:Description rdf:about="&oe2022-iem;OnState">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>radiator</rdfs:label>
-		<skos:definition>HVAC equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;RelativeHumidity">
-		<rdf:type rdf:resource="&cmns-qtu;DimensionlessQuantity"/>
-		<rdfs:label>relatvie humidity</rdfs:label>
-		<skos:definition>ratio of the mole fraction of water vapor to the mole fraction of water vapor saturated at the same temperature and barometric pressure.</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;RelativeHumidityAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Room">
-		<rdfs:label>room</rdfs:label>
-		<skos:definition>region in a building in which occupant comfort and measurements apply</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;RoomComponent">
-		<rdfs:label>room component</rdfs:label>
-		<skos:definition>an object in a room that can be used to alter relevant IEQ parameters</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Second">
-		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfUnits"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Time"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Sign">
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:oneOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;Negative">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;Positive">
-					</rdf:Description>
-				</owl:oneOf>
-			</owl:Class>
-		</owl:equivalentClass>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Speed">
-		<rdf:type rdf:resource="&cmns-qtu;DerivedQuantityKind"/>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;PerTime"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;SquareLength">
-		<rdf:type rdf:resource="&cmns-qtu;QuantityKindPowerFactor"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">2/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Length"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;SquareMeter">
-		<rdf:type rdf:resource="&cmns-qtu;UnitPowerFactor"/>
-		<cmns-qtu:hasExponent rdf:datatype="&owl;rational">2/1</cmns-qtu:hasExponent>
-		<cmns-qtu:hasMeasurementUnit rdf:resource="&oe2022-iem;Meter"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Temperature">
-		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
-		<rdfs:label>temperature</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<skos:definition>base quantity kind that is the quantitative measure of the ability of a substance, or more generally of any physical system, to transfer heat energy to another physical system</skos:definition>
-		<cmns-av:explanatoryNote>There are three types of temperature scale: those, such as the SI scale, that are defined in terms of the average translational kinetic energy per freely moving microscopic particle, such as atom, molecule, or electron, in a body; those that rely solely on purely macroscopic properties and thermodynamic principles, such as Kelvin&apos;s original definition; and those that are not defined by theoretical principles, but are defined by convenient empirical properties of particular materials.</cmns-av:explanatoryNote>
-		<cmns-av:symbol>T</cmns-av:symbol>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;ThermalComfort">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentalQuality"/>
-		<rdfs:label>thermal comfort</rdfs:label>
-		<skos:definition>the condition of mind which expresses satisfaction with the surrounding thermal environment and is assessed by subjective evaluation</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Thermostat">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/heating,_ventilation,_and_air_conditioning"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-iem;ThermostatState"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;ThermostatState">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasSettingValue"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>thermostat state</rdfs:label>
-		<skos:definition>numeric value at which the thermostat is set</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Time">
-		<rdf:type rdf:resource="&cmns-qtu;BaseQuantityKind"/>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Watt">
-		<rdf:type rdf:resource="&cmns-qtu;DerivedUnit"/>
-		<rdfs:label>watt</rdfs:label>
-		<skos:definition>unit of power equivalent to one joule per second</skos:definition>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;PerCubicSecond"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;SquareMeter"/>
-		<cmns-qtu:hasQuantityKind rdf:resource="&oe2022-iem;Work"/>
-		<cmns-qtu:isDerivedFrom rdf:resource="&oe2022-iem;Kilogram"/>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Window">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
-		<rdfs:label>window</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;WindowBlinds"/>
-		<skos:definition>room component that can optionally let air flow between inside and outside regions</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;WindowBlinds">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
-		<rdfs:label>window blinds</rdfs:label>
-		<skos:definition>room component that be open or closed, thereby letting in or blocking light, respectively</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Work">
-		<rdf:type rdf:resource="&cmns-qtu;DerivedQuantityKind"/>
-		<cmns-dsg:isDefinedIn rdf:resource="&cmns-qtu;InternationalSystemOfQuantities"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;PerCubicTime"/>
-		<cmns-qtu:hasFactor rdf:resource="&oe2022-iem;SquareLength"/>
-	</owl:NamedIndividual>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAttribute">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>has attribute</rdfs:label>
-		<owl:inverseOf rdf:resource="&oe2022-iem;isAttributeOf"/>
-		<skos:definition>has components that affect the nature of the whole with respect to relevant actors</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasBucket">
-		<rdfs:range rdf:resource="&oe2022-iem;Bucket"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
-		<rdfs:label>has effect</rdfs:label>
-		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasPossibleState">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>has possible state</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
-		<owl:inverseOf rdf:resource="&oe2022-iem;isPossibleStateOf"/>
-		<skos:definition>has the ability to be in some condition at a point in time</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasSettingValue">
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasSign">
-		<rdfs:range rdf:resource="&oe2022-iem;Sign"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasState">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>has state</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
-		<owl:inverseOf rdf:resource="&oe2022-iem;isStateOf"/>
-		<skos:definition>is currently in the condition, referring to objects that have some changeable condition</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/heating,_ventilation,_and_air_conditioning">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:label>heating, ventilation, and air conditioning</rdfs:label>
-		<skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
-	</owl:Class>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isAttributeOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>is attribute of</rdfs:label>
-		<skos:definition>is a component that affects the nature of the whole with respect to relevant actors</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isDefinedInTermsOf">
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isPossibleStateOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>is possible state of</rdfs:label>
-		<skos:definition>can be the condition of a given object at some point in time</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isQuantifiedBy">
-		<rdfs:label>is quantified by</rdfs:label>
-		<owl:inverseOf rdf:resource="&oe2022-iem;quatifies"/>
-		<skos:definition>is specified by the quantify of the object</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isStateOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>is currently the condition of</rdfs:label>
-		<rdfs:label>is state of</rdfs:label>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;quatifies">
-		<rdfs:label>quantifies</rdfs:label>
-		<skos:definition>specifies the quantify of the object</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:AllDifferent>
-		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Negative">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Positive">
-			</rdf:Description>
-		</owl:distinctMembers>
-	</owl:AllDifferent>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;AirQualityAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;AirSpeedAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;AirTemperatureAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;DaylightIntensityAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;RelativeHumidityAttribute">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Fan">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Radiator">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/heating,_ventilation,_and_air_conditioning">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-</rdf:RDF>
+# baseURI: https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/
+# imports: https://www.omg.org/spec/Commons/AnnotationVocabulary/
+# imports: https://www.omg.org/spec/Commons/Classifiers/
+# imports: https://www.omg.org/spec/Commons/Collections/
+# imports: https://www.omg.org/spec/Commons/DatesAndTimes/
+# imports: https://www.omg.org/spec/Commons/Designators/
+# imports: https://www.omg.org/spec/Commons/PartiesAndSituations/
+
+@base <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/> .
+@prefix : <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/> .
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix oe2022-iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/>
+	a owl:Ontology ;
+	rdfs:label "Indoor Environment Manager Ontology" ;
+	dct:abstract "" ;
+	owl:imports
+		<https://www.omg.org/spec/Commons/AnnotationVocabulary/> ,
+		<https://www.omg.org/spec/Commons/Classifiers/> ,
+		<https://www.omg.org/spec/Commons/Collections/> ,
+		<https://www.omg.org/spec/Commons/DatesAndTimes/> ,
+		<https://www.omg.org/spec/Commons/Designators/> ,
+		<https://www.omg.org/spec/Commons/PartiesAndSituations/>
+		;
+	.
+
+oe2022-iem:AirQuality
+	a
+		owl:NamedIndividual ,
+		owl:Class ,
+		oe2022-iem:QuantityKind
+		;
+	rdfs:subClassOf oe2022-iem:IndoorEnvironmentalQuality ;
+	rdfs:label "air quality" ;
+	owl:disjointWith oe2022-iem:ThermalComfort ;
+	skos:definition "Synthesis of various physical measurements of properties of air that threaten human health" ;
+	.
+
+oe2022-iem:AirQualityAttribute
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:EnvironmentAttribute ;
+	.
+
+oe2022-iem:AirQualityIndex
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:MeasurementUnit
+		;
+	rdfs:label "air quality index" ;
+	skos:definition "measurement that combines other meaurements of properties of air to indicate the level of danger to human health" ;
+	.
+
+oe2022-iem:AirSpeedAttribute
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:DeltaCapableMeasurement ,
+		oe2022-iem:EnvironmentAttribute
+		;
+	.
+
+oe2022-iem:AirTemperatureAttribute
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:DeltaCapableMeasurement ,
+		oe2022-iem:EnvironmentAttribute
+		;
+	.
+
+oe2022-iem:Argument
+	a owl:Class ;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty oe2022-iem:hasNumericValue ;
+		owl:onDataRange xsd:int ;
+		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	] ;
+	rdfs:label "argument" ;
+	.
+
+oe2022-iem:BaselineIndoorEnvironment
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:IndoorEnvironment ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:allValuesFrom [
+				a owl:Class ;
+				owl:complementOf oe2022-iem:EnvironmentAttributeDelta ;
+			] ;
+		]
+		;
+	owl:disjointWith oe2022-iem:ResultantIndoorEnvironment ;
+	.
+
+oe2022-iem:Bucket
+	a owl:Class ;
+	owl:equivalentClass [
+		a owl:Class ;
+		owl:oneOf (
+			oe2022-iem:High
+			oe2022-iem:Low
+			oe2022-iem:Medium
+		) ;
+	] ;
+	.
+
+oe2022-iem:ClosedState
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:ComponentState ;
+	rdfs:label "closed state" ;
+	owl:disjointWith oe2022-iem:OpenState ;
+	skos:definition "condition of being not open" ;
+	.
+
+oe2022-iem:ComponentState
+	a owl:Class ;
+	rdfs:label "component state" ;
+	skos:definition "an object in a room that can be used to alter relevant IEQ parameters" ;
+	.
+
+oe2022-iem:DaylightIntensityAttribute
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:EnvironmentAttribute ;
+	.
+
+oe2022-iem:Dehumidifier
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:Equipment ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasState ;
+			owl:allValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					oe2022-iem:OffState
+					oe2022-iem:OnState
+				) ;
+			] ;
+		]
+		;
+	rdfs:label "dehumidifier" ;
+	skos:definition "room component that can be on or off, thereby lowering indoor relative humidity or not, respectively" ;
+	.
+
+oe2022-iem:DeltaCapableMeasurement
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:Measurement ;
+	.
+
+oe2022-iem:DeltaDefinedEnvironment
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:Environment ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:allValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					oe2022-iem:EnvironmentAttributeDelta
+					[
+						a owl:Class ;
+						owl:complementOf [
+							a owl:Class ;
+							owl:intersectionOf (
+								oe2022-iem:DeltaCapableMeasurement
+								oe2022-iem:EnvironmentAttribute
+							) ;
+						] ;
+					]
+				) ;
+			] ;
+		]
+		;
+	.
+
+oe2022-iem:Energy
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:QuantityKind
+		;
+	rdfs:label "energy" ;
+	skos:definition "measurement of the ability of something to do work" ;
+	.
+
+oe2022-iem:EnergyUsage
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:Measurement ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasMeasurementUnit ;
+			owl:hasValue oe2022-iem:KilowattHour ;
+		]
+		;
+	rdfs:label "energy usage" ;
+	skos:definition "quantity of energy used to power some equipment, per unit time" ;
+	.
+
+oe2022-iem:Environment
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:onClass oe2022-iem:AirQualityAttribute ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:onClass oe2022-iem:AirSpeedAttribute ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:onClass oe2022-iem:AirTemperatureAttribute ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:onClass oe2022-iem:DaylightIntensityAttribute ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:onClass oe2022-iem:RelativeHumidityAttribute ;
+			owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	.
+
+oe2022-iem:EnvironmentAttribute
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:Measurement ;
+	rdfs:label "environment attribute" ;
+	skos:definition "a quantitative attribute of local environment" ;
+	.
+
+oe2022-iem:EnvironmentAttributeDelta
+	a owl:Class ;
+	rdfs:subClassOf [
+		a owl:Restriction ;
+		owl:onProperty oe2022-iem:hasSign ;
+		owl:onClass oe2022-iem:Sign ;
+		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	] ;
+	owl:equivalentClass [
+		a owl:Class ;
+		owl:intersectionOf (
+			oe2022-iem:DeltaCapableMeasurement
+			oe2022-iem:EnvironmentAttribute
+		) ;
+	] ;
+	.
+
+oe2022-iem:Equipment
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:RoomComponent ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasState ;
+			owl:onClass oe2022-iem:ComponentState ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:onClass oe2022-iem:EnergyUsage ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "equipment" ;
+	owl:disjointWith oe2022-iem:Furniture ;
+	skos:definition "room component that consumes energy" ;
+	.
+
+oe2022-iem:Fan
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:Equipment ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasState ;
+			owl:allValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					oe2022-iem:OffState
+					oe2022-iem:OnState
+				) ;
+			] ;
+		]
+		;
+	rdfs:label "fan" ;
+	skos:definition "HVAC equipment that can increase air speed" ;
+	.
+
+oe2022-iem:Furniture
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:RoomComponent ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasState ;
+			owl:allValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					oe2022-iem:ClosedState
+					oe2022-iem:OpenState
+				) ;
+			] ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasState ;
+			owl:onClass oe2022-iem:ComponentState ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "furniture" ;
+	skos:definition "room component that does not consume energy" ;
+	.
+
+oe2022-iem:High
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:Bucket
+		;
+	.
+
+oe2022-iem:IndoorEnvironment
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:Environment ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasAttribute ;
+			owl:onClass oe2022-iem:DaylightIntensityAttribute ;
+			owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+		]
+		;
+	owl:disjointWith oe2022-iem:OutdoorEnvironment ;
+	.
+
+oe2022-iem:IndoorEnvironmentalQuality
+	a owl:Class ;
+	rdfs:label "indoor environmental quality" ;
+	skos:definition "a perceived indoor experience of the building indoor including thermal comfort, indoor air quality, lighting, acoustics, and control systems" ;
+	.
+
+oe2022-iem:Kelvin
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:MeasurementUnit
+		;
+	rdfs:label "kelvin" ;
+	dct:source "https://ucum.org/ucum.html#section-Base-Units" ;
+	rdfs:seeAlso <https://www.nist.gov/pml/owm/si-units-temperature> ;
+	skos:definition "base unit of temperature that is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 ×10^−23 when expressed in the unit J K^−1, which is equal to kg m^2 s^−2 K^−1" ;
+	cmns-av:explanatoryNote "The temperature 0 K is commonly referred to as 'absolute zero.' On the widely used Celsius temperature scale, water freezes at 0 °C and boils at about 100 °C. One Celsius degree is an interval of 1 K, and zero degrees Celsius is 273.15 K. An interval of one Celsius degree corresponds to an interval of 1.8 Fahrenheit degrees on the Fahrenheit temperature scale." ;
+	cmns-av:symbol "K" ;
+	.
+
+oe2022-iem:Kilogram
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:MeasurementUnit
+		;
+	rdfs:label "kilogram" ;
+	dct:source "https://ucum.org/ucum.html#section-Base-Units" ;
+	rdfs:seeAlso <https://www.nist.gov/si-redefinition/kilogram> ;
+	skos:definition "conversion-based unit of mass" ;
+	skos:note "Note that in the International System of Units (SI), the kilogram is considered the base unit rather than the gram, which is the base unit in the UCUM." ;
+	cmns-av:symbol "kg" ;
+	.
+
+oe2022-iem:KilowattHour
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:MeasurementUnit
+		;
+	rdfs:label "kilowatt-hour" ;
+	skos:definition "measure of electrical energy equivalent to a power consumption of 1,000 watts for 1 hour" ;
+	.
+
+oe2022-iem:Low
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:Bucket
+		;
+	.
+
+oe2022-iem:Measurement
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasBucket ;
+			owl:onClass oe2022-iem:Bucket ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasMeasurementUnit ;
+			owl:someValuesFrom oe2022-iem:MeasurementUnit ;
+		]
+		;
+	rdfs:label "measurement" ;
+	skos:definition "amount of something" ;
+	.
+
+oe2022-iem:MeasurementUnit
+	a owl:Class ;
+	rdfs:label "measurement unit" ;
+	skos:definition "real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number" ;
+	.
+
+oe2022-iem:Medium
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:Bucket
+		;
+	.
+
+oe2022-iem:MetersPerSecond
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:MeasurementUnit
+		;
+	rdfs:label "meter per second" ;
+	skos:definition "measure of speed equipvalent to the moved meters for 1 second" ;
+	.
+
+oe2022-iem:Negative
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:Sign
+		;
+	.
+
+oe2022-iem:Occupant
+	a owl:Class ;
+	rdfs:subClassOf
+		cmns-pts:PartyRole ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-pts:isPlayedBy ;
+			owl:onClass oe2022-iem:Person ;
+			owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		]
+		;
+	rdfs:label "occupant"@en ;
+	skos:definition "someone that resides or is present in or using a building, vehicle, seat, place, etc., at a given time"@en ;
+	.
+
+oe2022-iem:OffState
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:ComponentState ;
+	rdfs:label "off state" ;
+	owl:disjointWith oe2022-iem:OnState ;
+	skos:definition "condition of not being activated" ;
+	.
+
+oe2022-iem:OnState
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:ComponentState ;
+	rdfs:label "on state" ;
+	skos:definition "condition of being currently in operation" ;
+	.
+
+oe2022-iem:OpenState
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:ComponentState ;
+	rdfs:label "open state" ;
+	skos:definition "condition of being not closed" ;
+	.
+
+oe2022-iem:Organization
+	a owl:Class ;
+	rdfs:subClassOf cmns-pts:Party ;
+	rdfs:label "organization"@en ;
+	rdfs:seeAlso <https://www.w3.org/TR/vocab-org/#org:Organization> ;
+	skos:definition "collection of one or more people, or groups of people formed together into a community or other social, commercial or political structure to act, or that is designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis"@en ;
+	skos:example "This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization."@en ;
+	cmns-av:adaptedFrom "https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en" ;
+	.
+
+oe2022-iem:OutdoorEnvironment
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:DeltaDefinedEnvironment ,
+		oe2022-iem:Environment
+		;
+	.
+
+oe2022-iem:PerCubicSecond
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:PerCubicTime
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:PerHour
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:PerSecond
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:PerTime
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:Person
+	a owl:Class ;
+	rdfs:subClassOf cmns-pts:Party ;
+	rdfs:label "person"@en ;
+	skos:definition "individual human being, with consciousness of self"@en ;
+	cmns-av:synonym "natural person"@en ;
+	.
+
+oe2022-iem:Positive
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:Sign
+		;
+	.
+
+oe2022-iem:QuantityKind
+	a owl:Class ;
+	rdfs:label "quantity kind" ;
+	skos:definition "aspect common to mutually comparable quantities" ;
+	.
+
+oe2022-iem:Radiator
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:Equipment ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasState ;
+			owl:allValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					oe2022-iem:OffState
+					oe2022-iem:OnState
+				) ;
+			] ;
+		]
+		;
+	rdfs:label "radiator" ;
+	skos:definition "HVAC equipment that can raise the indoor temperature by transferring heat from an internal system into a room" ;
+	.
+
+oe2022-iem:RelativeHumidity
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:QuantityKind
+		;
+	rdfs:label "relative humidity" ;
+	skos:definition "ratio of the mole fraction of water vapor to the mole fraction of water vapor saturated at the same temperature and barometric pressure." ;
+	.
+
+oe2022-iem:RelativeHumidityAttribute
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:DeltaCapableMeasurement ,
+		oe2022-iem:EnvironmentAttribute
+		;
+	.
+
+oe2022-iem:ResultantIndoorEnvironment
+	a owl:Class ;
+	rdfs:subClassOf
+		oe2022-iem:DeltaDefinedEnvironment ,
+		oe2022-iem:IndoorEnvironment
+		;
+	.
+
+oe2022-iem:Room
+	a owl:Class ;
+	rdfs:label "room" ;
+	skos:definition "region in a building in which occupant comfort and measurements apply" ;
+	.
+
+oe2022-iem:RoomComponent
+	a owl:Class ;
+	rdfs:label "room component" ;
+	skos:definition "an object in a room that can be used to alter relevant IEQ parameters" ;
+	.
+
+oe2022-iem:Second
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:Sign
+	a owl:Class ;
+	owl:equivalentClass [
+		a owl:Class ;
+		owl:oneOf (
+			oe2022-iem:Negative
+			oe2022-iem:Positive
+		) ;
+	] ;
+	.
+
+oe2022-iem:Speed
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:QuantityKind
+		;
+	.
+
+oe2022-iem:SquareLength
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:SquareMeter
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:Temperature
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:QuantityKind
+		;
+	rdfs:label "temperature" ;
+	dct:source "https://ucum.org/ucum.html#section-Base-Units" ;
+	skos:definition "base quantity kind that is the quantitative measure of the ability of a substance, or more generally of any physical system, to transfer heat energy to another physical system" ;
+	cmns-av:explanatoryNote "There are three types of temperature scale: those, such as the SI scale, that are defined in terms of the average translational kinetic energy per freely moving microscopic particle, such as atom, molecule, or electron, in a body; those that rely solely on purely macroscopic properties and thermodynamic principles, such as Kelvin's original definition; and those that are not defined by theoretical principles, but are defined by convenient empirical properties of particular materials." ;
+	cmns-av:symbol "T" ;
+	.
+
+oe2022-iem:ThermalComfort
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:IndoorEnvironmentalQuality ;
+	rdfs:label "thermal comfort" ;
+	skos:definition "the condition of mind which expresses satisfaction with the surrounding thermal environment and is assessed by subjective evaluation" ;
+	.
+
+oe2022-iem:Thermostat
+	a owl:Class ;
+	rdfs:subClassOf
+		<heating,_ventilation,_and_air_conditioning> ,
+		[
+			a owl:Restriction ;
+			owl:onProperty oe2022-iem:hasState ;
+			owl:someValuesFrom oe2022-iem:ThermostatState ;
+		]
+		;
+	.
+
+oe2022-iem:ThermostatState
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:ComponentState ;
+	rdfs:label "thermostat state" ;
+	skos:definition "numeric value at which the thermostat is set" ;
+	.
+
+oe2022-iem:Time
+	a
+		owl:NamedIndividual ,
+		oe2022-iem:QuantityKind
+		;
+	.
+
+oe2022-iem:Watt
+	a owl:NamedIndividual ;
+	rdfs:label "watt" ;
+	skos:definition "unit of power equivalent to one joule per second" ;
+	.
+
+oe2022-iem:Window
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:Furniture ;
+	rdfs:label "window" ;
+	owl:disjointWith oe2022-iem:WindowBlinds ;
+	skos:definition "room component that can optionally let air flow between inside and outside regions" ;
+	.
+
+oe2022-iem:WindowBlinds
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:Furniture ;
+	rdfs:label "window blinds" ;
+	skos:definition "room component that be open or closed, thereby letting in or blocking light, respectively" ;
+	.
+
+oe2022-iem:Work
+	a owl:NamedIndividual ;
+	.
+
+oe2022-iem:hasAttribute
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "has attribute" ;
+	owl:inverseOf oe2022-iem:isAttributeOf ;
+	skos:definition "has components that affect the nature of the whole with respect to relevant actors" ;
+	.
+
+oe2022-iem:hasBucket
+	a owl:ObjectProperty ;
+	rdfs:range oe2022-iem:Bucket ;
+	.
+
+oe2022-iem:hasEffect
+	a owl:ObjectProperty ;
+	rdfs:label "has effect" ;
+	skos:definition "specify how to achange the parameters of indoor environmental quality" ;
+	.
+
+oe2022-iem:hasMeasurementUnit
+	a owl:ObjectProperty ;
+	rdfs:label "has measurement unit" ;
+	rdfs:range oe2022-iem:MeasurementUnit ;
+	skos:definition "indicates the unit in which something is expressed" ;
+	.
+
+oe2022-iem:hasNumericValue
+	a owl:DatatypeProperty ;
+	rdfs:label "has numeric value" ;
+	rdfs:range xsd:int ;
+	skos:definition "indicates a particular magnitude or designation for a given observable characteristic that is a number" ;
+	.
+
+oe2022-iem:hasPossibleState
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "has possible state" ;
+	rdfs:domain oe2022-iem:RoomComponent ;
+	rdfs:range oe2022-iem:ComponentState ;
+	owl:inverseOf oe2022-iem:isPossibleStateOf ;
+	skos:definition "has the ability to be in some condition at a point in time" ;
+	.
+
+oe2022-iem:hasQuantityKind
+	a owl:ObjectProperty ;
+	rdfs:label "has quantity kind" ;
+	rdfs:range oe2022-iem:QuantityKind ;
+	skos:definition "indicates the mutually comparable quantities involves in the definitions of an individual quantity or factor" ;
+	.
+
+oe2022-iem:hasSign
+	a owl:ObjectProperty ;
+	rdfs:range oe2022-iem:Sign ;
+	.
+
+oe2022-iem:hasState
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "has state" ;
+	rdfs:domain oe2022-iem:RoomComponent ;
+	rdfs:range oe2022-iem:ComponentState ;
+	owl:inverseOf oe2022-iem:isStateOf ;
+	skos:definition "is currently in the condition, referring to objects that have some changeable condition" ;
+	.
+
+<heating,_ventilation,_and_air_conditioning>
+	a owl:Class ;
+	rdfs:subClassOf oe2022-iem:Equipment ;
+	rdfs:label "heating, ventilation, and air conditioning" ;
+	skos:definition "equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building" ;
+	.
+
+oe2022-iem:isAttributeOf
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "is attribute of" ;
+	skos:definition "is a component that affects the nature of the whole with respect to relevant actors" ;
+	.
+
+oe2022-iem:isPossibleStateOf
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "is possible state of" ;
+	skos:definition "can be the condition of a given object at some point in time" ;
+	.
+
+oe2022-iem:isQuantifiedBy
+	a owl:ObjectProperty ;
+	rdfs:label "is quantified by" ;
+	owl:inverseOf oe2022-iem:quatifies ;
+	skos:definition "is specified by the quantify of the object" ;
+	.
+
+oe2022-iem:isStateOf
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label
+		"is currently the condition of" ,
+		"is state of"
+		;
+	.
+
+oe2022-iem:quatifies
+	a owl:ObjectProperty ;
+	rdfs:label "quantifies" ;
+	skos:definition "specifies the quantify of the object" ;
+	.
+
+cmns-qtu:hasLowerBound
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf oe2022-iem:hasAttribute ;
+	rdfs:label "has lower bound" ;
+	rdfs:range oe2022-iem:Argument ;
+	skos:definition "specifies the quantity value that is the lower value of a pair of values representing a range" ;
+	.
+
+cmns-qtu:hasUpperBound
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf oe2022-iem:hasAttribute ;
+	rdfs:label "has upper bound" ;
+	rdfs:range oe2022-iem:Argument ;
+	skos:definition "specifies the quantity value that is the higher value of a pair of values representing a range" ;
+	.
+
+[]
+	a owl:AllDifferent ;
+	owl:distinctMembers (
+		oe2022-iem:Negative
+		oe2022-iem:Positive
+	) ;
+	.
+
+[]
+	a owl:AllDisjointClasses ;
+	owl:members (
+		oe2022-iem:AirQualityAttribute
+		oe2022-iem:AirSpeedAttribute
+		oe2022-iem:AirTemperatureAttribute
+		oe2022-iem:DaylightIntensityAttribute
+		oe2022-iem:RelativeHumidityAttribute
+	) ;
+	.
+
+[]
+	a owl:AllDisjointClasses ;
+	owl:members (
+		oe2022-iem:Dehumidifier
+		oe2022-iem:Fan
+		oe2022-iem:Radiator
+		<heating,_ventilation,_and_air_conditioning>
+	) ;
+	.
+
