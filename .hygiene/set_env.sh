@@ -24,8 +24,8 @@ HYGIENE_TEST_SUBDIR=".hygiene/tests"
 HYGIENE_FAIL_ON_WARNINGS=false
 
 # Relative path to ontology sources
-ONTPUB_SUBDIR=oe2020
+ONTPUB_SUBDIR=oe2022
 # If set, ontology files with paths that partially match this var will be excluded from checking
-ONTPUB_EXCLUDED=".*oe2020\/[^\/]+\/archived\/.*"
+ONTPUB_EXCLUDED=".*oe2022\/[^\/]+\/archived\/.*"
 
 set +a
