@@ -164,7 +164,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Ratings/hasRatingScore"/>
-				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Ratings/QualitativeRatingScore"/>
+				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Ratings/QuantitativeRatingScore"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>breed popularity rank</rdfs:label>
@@ -200,6 +200,13 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;City">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Municipality"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedIn"/>
+				<owl:onClass rdf:resource="&lcc-cr;CountrySubdivision"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>city</rdfs:label>
 		<skos:definition>municipality of greater size, population, or importance than a town or village</skos:definition>
 		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/city</cmns-av:adaptedFrom>
@@ -221,7 +228,7 @@
 				</owl:oneOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<skos:definition>potential adopter aspect describing how often teh potential adopter makes their residence free of mess</skos:definition>
+		<skos:definition>potential adopter aspect describing how often the potential adopter makes their residence free of mess</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;CoatLength">
@@ -539,7 +546,7 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedAt"/>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedIn"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;City"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -929,6 +936,12 @@
 		<skos:definition>has the level of disposable income willing to be spent on a specific activity of</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasCleaningLevel">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:range rdf:resource="&oe2022-dogs;CleaningFrequency"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isCleaningLevelOf"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasCoatLength">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
@@ -1116,6 +1129,11 @@
 		<skos:definition>given rise to by</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCleaningLevelOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;CleaningFrequency"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCoatLengthOf">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 		<rdfs:label>is coat length of</rdfs:label>
@@ -1153,7 +1171,8 @@
 		<skos:definition>is the frequency of activity requiring physical effort, carried out to sustain or improve health and fitness, performed by</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocatedAt">
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocatedIn">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label>is located at</rdfs:label>
 		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
 		<rdfs:range rdf:resource="&lcc-cr;Location"/>
