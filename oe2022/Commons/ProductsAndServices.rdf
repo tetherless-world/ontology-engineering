@@ -38,6 +38,12 @@
 		<cmns-av:copyright>Copyright (c) 2022 Object Management Group, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
+	<owl:AnnotationProperty rdf:about="&owl;qualifiedCardinality">
+	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="&cmns-cxtid;ContextualIdentifier">
+	</owl:Class>
+	
 	<owl:Class rdf:about="&cmns-prd;Capability">
 		<rdfs:label>capability</rdfs:label>
 		<skos:definition>ability to perform a directed process towards meeting an objective or according to some specification</skos:definition>
@@ -159,6 +165,7 @@
 		<rdfs:subPropertyOf rdf:resource="&cmns-prd;isProvidedBy"/>
 		<rdfs:label>is issued by</rdfs:label>
 		<rdfs:range rdf:resource="&cmns-pts;AgentRole"/>
+		<owl:inverseOf rdf:resource="&cmns-prd;issues"/>
 		<skos:definition>indicates a role played by a functional entity or party responsible for circulating, distributing, or publishing something</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -179,7 +186,6 @@
 		<rdfs:subPropertyOf rdf:resource="&cmns-prd;provides"/>
 		<rdfs:label>issues</rdfs:label>
 		<rdfs:domain rdf:resource="&cmns-pts;AgentRole"/>
-		<owl:inverseOf rdf:resource="&cmns-prd;isIssuedBy"/>
 		<skos:definition>officially makes something available</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -193,5 +199,8 @@
 		<rdfs:label>provides</rdfs:label>
 		<skos:definition>makes something available</skos:definition>
 	</owl:ObjectProperty>
-
+	
+	<rdf:Description>
+		<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+	</rdf:Description>
 </rdf:RDF>
