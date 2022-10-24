@@ -11,8 +11,8 @@
 
 ## Ontologies
 
-- [Version 2 (OE 7)](find-a-pet-10212022.rdf) CURRENT
-- [Version 1 (OE 6)](find-a-pet-10142022.rdf) 
+- [Version 2 (OE 7)](https://github.com/tetherless-world/ontology-engineering/blob/3ffedc3e1063ee3ddeb0f233c9d43d29989e17bc/oe2022/dog-breed-ontology/find-a-pet.rdf) CURRENT
+- [Version 1 (OE 6)](https://github.com/tetherless-world/ontology-engineering/blob/40b9433c732a6adc31d5fb0dd1c953f172dbd228/oe2022/dog-breed-ontology/find-a-pet.rdf) 
 
 ## Ontologies Reused
 
