@@ -5,6 +5,7 @@
 	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
 	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
 	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY cmns-rt "https://www.omg.org/spec/Commons/Ratings/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY lcc-cr "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/">
 	<!ENTITY oe2022-dogs "https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
@@ -20,6 +21,7 @@
 	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
 	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:cmns-rt="https://www.omg.org/spec/Commons/Ratings/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
 	xmlns:oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
@@ -153,18 +155,18 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;BreedPopularityRating">
-		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Ratings/Rating"/>
+		<rdfs:subClassOf rdf:resource="&cmns-rt;Rating"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Ratings/rates"/>
+				<owl:onProperty rdf:resource="&cmns-rt;rates"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;Breed"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Ratings/hasRatingScore"/>
-				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Ratings/QuantitativeRatingScore"/>
+				<owl:onProperty rdf:resource="&cmns-rt;hasRatingScore"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;QuantitativeRatingScore"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>breed popularity rank</rdfs:label>
@@ -1472,7 +1474,7 @@
 		</rdfs:subClassOf>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Ratings/RatingAgency">
+	<rdf:Description rdf:about="&cmns-rt;RatingAgency">
 		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
 	</rdf:Description>
 
