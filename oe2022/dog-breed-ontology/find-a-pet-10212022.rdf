@@ -1,0 +1,1460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
+	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY lcc-cr "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/">
+	<!ENTITY oe2022-dogs "https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
+	xmlns:oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
+		<rdfs:label>Find a Pet - Dog Breeds Ontology</rdfs:label>
+		<dct:abstract>The goal of this ontology is to recommend a dog breed based on the specifications of a particular household. The ontology evaluates breeds using the following characteristics: height, weight, grooming frequency, shedding, energy, trainability, demeanour, hypoallergenic status.</dct:abstract>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Ratings/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&oe2022-dogs;AgilityAthlete">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
+		<rdfs:label>agility athlete</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>athlete competing in ability to move quickly and easily</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Allergy">
+		<rdfs:label>allergy</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>damaging reaction to the presence of a substance such as pollen or fur</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ApartmentIndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;IndoorSpace"/>
+		<rdfs:label>apartment</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;HouseIndoorSpace"/>
+		<skos:definition>indoor space consisting of a suite of rooms forming one residence, typically in a building containing a number of these</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Athlete">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>athlete</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>functional role of moving animals from one place to another</skos:definition>
+		<skos:definition>functional role of performing in physical competitions</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Breed">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;CoatLength"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;CoatType"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasPopularityRanking"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isColored"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Color"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>breed</rdfs:label>
+		<rdfs:isDefinedBy>&quot;Dog breeds.&quot; VetStreet. http://www.vetstreet.com/dogs/breeds (accessed Sep 19, 2022).</rdfs:isDefinedBy>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedGroup"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>set of genetics and physical traits approved by the American Kennel Club</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedAspect">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>breed aspect</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>aspect that characterizes a breed</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;characterizes"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>breed characteristic</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>breed aspect describing a breed&apos;s typical needs and behaviors</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedGroup">
+		<rdfs:label>breed group</rdfs:label>
+		<rdfs:isDefinedBy>&quot;Dog breeds.&quot; VetStreet. http://www.vetstreet.com/dogs/breeds (accessed Sep 19, 2022).</rdfs:isDefinedBy>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&cmns-col;Collection">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-col;comprises"/>
+						<owl:allValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>collection of breeds grouped together by the American Kennel Club based on what the breeds were bred to do</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedPopularityRating">
+		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Ratings/Rating"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Ratings/rates"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Breed"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Ratings/hasRatingScore"/>
+				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Ratings/QualitativeRatingScore"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>breed popularity rank</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>breed aspect describing the relative standing of a breed in how many dogs were acquired and registered with an organization within a specified time period</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Budget">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:label>budget</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;largeBudget">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;mediumBudget">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;smallBudget">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>potential adopter aspect describing the level of income and expenditure for a set period of time</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Child">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Person"/>
+		<rdfs:label>child</rdfs:label>
+		<rdfs:isDefinedBy>K.E. Holland, &quot;Acquiring a pet dog: A review of factors affecting the decision-making of prospective dog owners,&quot; Animals, vol. 9, no. 124, Mar. 2019 , doi: 10.3390/ani9040124</rdfs:isDefinedBy>
+		<skos:definition>person under the age of 5</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;City">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Municipality"/>
+		<rdfs:label>city</rdfs:label>
+		<skos:definition>municipality of greater size, population, or importance than a town or village</skos:definition>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.merriam-webster.com/dictionary/city</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CleaningFrequency">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:label>cleaning frequency</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;highCleaningFrequency">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;lowCleaningFrequency">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;mediumCleaningFrequency">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>potential adopter aspect describing how often teh potential adopter makes their residence free of mess</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:label>coat length</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>breed aspect describing the average length of a dog&apos;s coat</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:label>coat type</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>characteristic describing the texture of a dog&apos;s coat</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Color">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>color</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>aspect describing the pigmentation that may be found on a breed&apos;s fur</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Companion">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>companion</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>functional role of spending time with another, sometimes to provide comfort</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CordedCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>corded coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type describing fur that naturally clump into thick strands</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;CurlyCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>curly coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type with swirls, curlicues, and twists in the fur</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Dog">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isClassifiedBy"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>dog</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>domestic mammal closely related to the grey wolf</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;DoubleCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>double coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type describing an undercoat that is typically shorter than the outer coat, and fur with a dense, woolly texture</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ExerciseLevel">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:label>exercise level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;highExerciseLevel">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;lowExerciseLevel">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;mediumExerciseLevel">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>potential adopter aspect describing how often the potential adopter performs activity requiring physical effort, carried out to sustain or improve health and fitness</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Family">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Person"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>Family</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>party describing a group of one or more adults and any children living together as a unit</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FamilyWithChildren">
+		<rdfs:label>family with children</rdfs:label>
+		<rdfs:isDefinedBy>K.E. Holland, &quot;Acquiring a pet dog: A review of factors affecting the decision-making of prospective dog owners,&quot; Animals, vol. 9, no. 124, Mar. 2019 , doi: 10.3390/ani9040124</rdfs:isDefinedBy>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;FamilyWithoutChildren"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Family">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
+						<owl:someValuesFrom rdf:resource="&oe2022-dogs;Child"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>family with at least one person under 5 years of age</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FamilyWithoutChildren">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
+		<rdfs:label>family without children</rdfs:label>
+		<rdfs:isDefinedBy>K.E. Holland, &quot;Acquiring a pet dog: A review of factors affecting the decision-making of prospective dog owners,&quot; Animals, vol. 9, no. 124, Mar. 2019 , doi: 10.3390/ani9040124</rdfs:isDefinedBy>
+		<skos:definition>family were all members are at least 5 years of age</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;FederalState">
+		<rdfs:subClassOf rdf:resource="&lcc-cr;CountrySubdivision"/>
+		<rdfs:label>federal state</rdfs:label>
+		<skos:definition>self-governing geopolitical unit which forms part of a wider geopolitical unit that is recognized as a country</skos:definition>
+		<cmns-av:explanatoryNote>This type of entity, variously referred to as a state, province or canton, has a level of self government including its own legal system and court jurisdiction, but cedes a level of autonomy to the federation of which it forms a part.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;GardenOutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;OutdoorSpace"/>
+		<rdfs:label>garden</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;YardOutdoorSpace"/>
+		<skos:definition>outdoor space used to grow vegetables, fruit, herbs, or flowers</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HairlessCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>hairless coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type describing a coat without fur</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Herder">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>herder</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>functional role of moving animals from one place to another</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HouseIndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;IndoorSpace"/>
+		<rdfs:label>house</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>indoor space for human habitation, especially one that is lived in by a family or small group of people</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Hunter">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>hunter</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>functional role of finding and catching prey</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HunterOfLargeGame">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Hunter"/>
+		<rdfs:label>hunter of large game</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>hunter whose prey is above ground, such as rabbits</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HunterOfSmallGame">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Hunter"/>
+		<rdfs:label>hunter of small game</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>hunter whose primary prey is underground, such as rodents</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;IndoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Space"/>
+		<rdfs:label>indoor</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>space situated, conducted, or used within a building or under cover</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;LongCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>long coat</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>coat length that requires regular grooming to keep it neat and free of mats</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Marking">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isColored"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Color"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasShape"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;Shape"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>marking</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>breed aspect describing potential patterns that may be found on a dog of a breed</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;MediumCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>medium coat</rdfs:label>
+		<skos:definition>coat length that requires regular brushing due to risk of feathering on legs and tail becoming matted</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Municipality">
+		<rdfs:subClassOf rdf:resource="&lcc-cr;GeopoliticalEntity"/>
+		<rdfs:label>municipality</rdfs:label>
+		<skos:definition>urban administrative division having corporate status and usually powers of self-government or jurisdiction</skos:definition>
+		<skos:example>A municipality can be any political jurisdiction from a sovereign state, such as the Principality of Monaco, or a small village, such as West Hampton Dunes, New York.</skos:example>
+		<skos:scopeNote>The territory over which a municipality has jurisdiction may encompass:
+- only one populated place such as a city, town, or village
+- several of such places (e.g., early jurisdictions in the state of New Jersey (1798-1899) as townships governing several villages, Municipalities of Mexico)
+- only parts of such places, sometimes boroughs of a city such as the 34 municipalities of Santiago, Chile.</skos:scopeNote>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://en.wikipedia.org/wiki/Municipality</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>A municipality is a general-purpose administrative subdivision, as opposed to a special-purpose district.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Organization">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:label xml:lang="en">organization</rdfs:label>
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/vocab-org/#org:Organization"/>
+		<skos:definition xml:lang="en">collection of one or more people, or groups of people formed together into a community or other social, commercial or political structure to act, or that is designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis</skos:definition>
+		<skos:example xml:lang="en">This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization.</skos:example>
+		<cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;OutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Space"/>
+		<rdfs:label>outdoor</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>space not within a building or under cover</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Person">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasAllergy"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Allergy"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasExerciseLevel"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isMemberOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Family"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">person</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
+		<cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;PotentialAdopter">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;primarilyResidesAt"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;wantsDogToPerform"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;FunctionalRole"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isRoleIn"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>potential adopter</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>a person who may legally take in a dog and bring it up as their own</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;PotentialAdopterAspect">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>potential adopter aspect</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>aspect describing a potential adopter</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Racer">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
+		<rdfs:label>racer</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>athlete competing in speed competitions</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Residence">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isLocatedAt"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;City"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;comprises"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Space"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>residence</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>potential adopter aspect describing the physical space in which the potential adopter lives</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;RoughCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>rough coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type that is always coarse to the touch</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Shape">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
+		<rdfs:label>shape</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>aspect describing the external form, contours, or outline</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ShortCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>short coat</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>coat length in which fur is naturally short and lays close to the body</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SilkyCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>silky coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type describing fur that flows and cascades with glossy sheen</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SmoothCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>smooth coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type describing silky fur that lays close to the body</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SocialMediaSubject">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
+		<rdfs:label>social media subject</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>functional role of being photogenic and posing for cameras</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;Space">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isIncludedIn"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Residence"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>space</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;PotentialAdopterAspect">
+					</rdf:Description>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;IndoorSpace">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe2022-dogs;OutdoorSpace">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>potential adopter aspect describing a continuous area or expanse which is free, available, or unoccupied for use by a pet</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;TravelingLevel">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PotentialAdopterAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;isTravelingLevelOf"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>traveling level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;frequentTravelingLevel">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;intermittentTravelingLevel">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;neverTravelingLevel">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;rareTravelingLevel">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>potential adopter aspect describing how often the potential adopter moves from one place to another temporarily</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;WavyCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>wavy coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type describing a coat with curls that tangles and knots easily and has a tendency to become dry</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;WiryCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>wiry coat</rdfs:label>
+		<rdfs:isDefinedBy>“A guide to dog coat types,” Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</rdfs:isDefinedBy>
+		<skos:definition>coat type describing fur with a wire-like texture that is harsh and stiff and stands away from the body</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;YardOutdoorSpace">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;OutdoorSpace"/>
+		<rdfs:label>yard</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>outdoor space adjoining a building or house</skos:definition>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;apricotColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;badgerShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;beigeColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;biscuitColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;blackColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;blanketShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;blueColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;brindleColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;buffColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;capShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;causes">
+		<rdfs:label>causes</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isCausedBy"/>
+		<skos:definition>gives rise to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;chestnutColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;chocolateColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;creamColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;darkBrownColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysAdaptabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays adaptability level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how easily a breed handles change</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysBarkingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays barking level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how often a breed barks or howls</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysCatFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays cat friendliness level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the tendency toward a tolerance for cats and a lower prey drive</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysCharacteristicLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:label>displays characeteristic level</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>specifies the level a breed displays a specific characteristic</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysChildFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays child friendliness level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the tendency to be more sturdy, playful, easygoing, and tolerant around children under 5</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysDroolingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays drooling level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how much a breed tends to drool</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysExerciseNeedsLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays exercise needs level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the level of daily activity needed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysGroomingLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays grooming level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>describing how frequently a breed requires bathing, brushing, trimming, or other kinds of coat maintenance</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysHealthIssueSusceptabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays health issue susceptability level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the level of health issues a breed tends to have</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysIntelligenceLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays intelligence level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the thinking and problem-solving ability</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysMentalStimulationNeedsLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays mental stimulation needs level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how much often a breed will need some form of mental activity to stimulate and enrich their mind</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysPlayfullnessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>Oxford Dictionary</rdfs:label>
+		<rdfs:label>displays playfullness level</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how spirited a dog tends to be as an adult</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysStrangerFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays stranger friendliness level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how welcoming a breed is likely to be towards strangers</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysTrainabilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays trainability level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing the level of ease in learning something new and a willingness to try new things</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysWatchDogAbilityLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays watchdog ability level</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how likely a breed is to alert their owner to the presence of strangers</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;dominoColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;dominoShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;fawnColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;feetShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;frequentTravelingLevel">
+		<rdf:type rdf:resource="&oe2022-dogs;TravelingLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;furnishingShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;goldColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;greyColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;grizzleShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasAllergy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;Allergy"/>
+		<skos:definition>experiences an allergic reaction when exposed to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasBreedValue">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:label>has breed value</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>specifies some physical or external aspect of a breed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasBudget">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isBudgetOf"/>
+		<skos:definition>has the level of disposable income willing to be spent on a specific activity of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasCoatLength">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;CoatLength"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isCoatLengthOf"/>
+		<skos:definition>has a coat with an average length of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasCoatType">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;CoatType"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isCoatTypeOf"/>
+		<skos:definition>has the fur texture</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasExerciseLevel">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isExerciseLevelOf"/>
+		<skos:definition>performs activity requiring physical effort, carried out to sustain or improve health and fitness with frequency</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasMarking">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;Marking"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isMarkingOf"/>
+		<skos:definition>has the potential to display the pattern</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxHeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has max height</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the maximum distance from ground to top of an adult dog&apos;s head while standing</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxLifespan">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has max life span</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>breed value measuring the maximum average length of life of an average dog in a healthy environment</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxPrice">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has max price</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value of the maximum average amount of money required to purchase a dog of a breed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMaxWeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has max weight</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the maximum potential of an adult dog&apos;s relative mass</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinHeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has min height</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the minimum distance from ground to top of an adult dog&apos;s head while standing</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinLifespan">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has min life span</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>breed value measuring the minimum average length of life of an average dog in a healthy environment</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinPrice">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has min price</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value of the minimum average amount of money required to purchase a dog of a breed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasMinWeight">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
+		<rdfs:label>has min weight</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>breed value measuring the minimum potential of an adult dog&apos;s relative mass</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberHours">
+		<rdfs:label>has number of hours</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Person"/>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>specifies the number of hours a person has available</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberHoursInResidence">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasNumberHours"/>
+		<rdfs:label>has number hours in residence</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>number of hours spent physically in the residence</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberInteractableHours">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasNumberHours"/>
+		<rdfs:label>has number interactable hours</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>number of hours not preoccupied with known and scheduled tasks</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasNumberOfIndividuals">
+		<rdfs:label>has number of individuals</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Family"/>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>specifies the number of people in a family</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasPopularityRanking">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isPopularityRankingOf"/>
+		<skos:definition>is placed in a popularity hierarchy at</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasShape">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;Shape"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isShapeOf"/>
+		<skos:definition>has the form or outline of a</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasSize">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:label>has size</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Space"/>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>specifies something&apos;s dimensions</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;highCleaningFrequency">
+		<rdf:type rdf:resource="&oe2022-dogs;CleaningFrequency"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;highExerciseLevel">
+		<rdf:type rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;intermittentTravelingLevel">
+		<rdf:type rdf:resource="&oe2022-dogs;TravelingLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isBudgetOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is budget of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Budget"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>is the level of disposable income willing to be spent on a specific activity of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCausedBy">
+		<rdfs:label>is caused by</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>given rise to by</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCoatLengthOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is coat length of</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>is the average length of the fur of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isCoatTypeOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is coat type of</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>is the texture of the fur of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isColorOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is color of</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isColored"/>
+		<skos:definition>is the primary pigment of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isColored">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;Color"/>
+		<skos:definition>is primarily pigmented</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isExerciseLevelOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is exercise level of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>is the frequency of activity requiring physical effort, carried out to sustain or improve health and fitness, performed by</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocatedAt">
+		<rdfs:label>is located at</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&lcc-cr;Location"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isLocationOf"/>
+		<skos:definition>relates something to a location, which might be physical or virtual</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isLocationOf">
+		<rdfs:label>is location of</rdfs:label>
+		<rdfs:domain rdf:resource="&lcc-cr;Location"/>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<skos:definition>indicates the physical location of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isMarkingOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is marking of</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>is a potential pattern displayed on</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isPopularityRankingOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is popularity ranking of</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>is the placement in a popularity heirarchy of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isPrimaryResidenceOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is primary residence of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;Residence"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;primarilyResidesAt"/>
+		<skos:definition>is the primary location of residence of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isShapeOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is shape of</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>is the outline or form of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isSimilarTo">
+		<rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/isDescribedBy"/>
+		<rdfs:label>is similar to</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isSimilarTo"/>
+		<skos:definition>resembles without being identical to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;isSizeInSqFt">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasSize"/>
+		<rdfs:label>is size in square feet</rdfs:label>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>size of a space in square feet</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;isTravelingLevelOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>is travelling level of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;TravelingLevel"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;travelsAt"/>
+		<skos:definition>is the frequency of temporarily changing location of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;largeBudget">
+		<rdf:type rdf:resource="&oe2022-dogs;Budget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;lightBrownColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;lightRedColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;liverColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;lowCleaningFrequency">
+		<rdf:type rdf:resource="&oe2022-dogs;CleaningFrequency"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;lowExerciseLevel">
+		<rdf:type rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;mahoganyColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;maskShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;mediumBudget">
+		<rdf:type rdf:resource="&oe2022-dogs;Budget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;mediumCleaningFrequency">
+		<rdf:type rdf:resource="&oe2022-dogs;CleaningFrequency"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;mediumExerciseLevel">
+		<rdf:type rdf:resource="&oe2022-dogs;ExerciseLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;mottledShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;muzzleShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;neverTravelingLevel">
+		<rdf:type rdf:resource="&oe2022-dogs;TravelingLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;noseShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;orangeColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;otherMarkingsShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;overlayShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;patchShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;pintoColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;pointShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;primarilyResidesAt">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>spends the majority of their time in</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;providedRanking">
+		<rdfs:label>provided ranking</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;wasRankedBy"/>
+		<skos:definition>gave a place within a hierarchy based on popularity</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;rareTravelingLevel">
+		<rdf:type rdf:resource="&oe2022-dogs;TravelingLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;redColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;roanColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;roseColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;rustColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;saddleShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;saltAndPepperColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;silverColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;smallBudget">
+		<rdf:type rdf:resource="&oe2022-dogs;Budget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;speckledShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;tanColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;tickedShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;tigerShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;tipShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;travelsAt">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<skos:definition>how frequently the potential adopter temporarily changes location</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;undercoatShape">
+		<rdf:type rdf:resource="&oe2022-dogs;Shape"/>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;wantsDogToPerform">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+		<rdfs:label>wants dog to perform</rdfs:label>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&cmns-pts;FunctionalRole"/>
+		<skos:definition>wants a dog to fulfill the specific role of</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;wasRanked">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:label>was ranked</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>specifies the standing in a heirarchy, with lower numbers specifying higher rank</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;wasRankedBy">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:label>was ranked by</rdfs:label>
+		<rdfs:domain rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+		<rdfs:isDefinedBy>Merriam-Webster Dictionary</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&oe2022-dogs;Organization"/>
+		<skos:definition>was given a place within a hierarchy based on popularity by</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;whiteColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;wolfgrayColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;year">
+		<rdf:type rdf:resource="&cmns-dt;ExplicitDuration"/>
+		<skos:definition>explicit period of 12 months</skos:definition>
+		<cmns-dt:hasDurationValue>P1Y</cmns-dt:hasDurationValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;yellowColor">
+		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
+	</owl:NamedIndividual>
+	
+	<rdf:Description rdf:about="&cmns-pts;Party">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasBudget"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Budget"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;travelsAt"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;TravelingLevel"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;hasPartyRole"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PotentialAdopter"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Ratings/RatingAgency">
+		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
+	</rdf:Description>
+
+</rdf:RDF>
