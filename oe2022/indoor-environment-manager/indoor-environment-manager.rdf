@@ -243,13 +243,6 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
 				<owl:onClass rdf:resource="&oe2022-iem;EnergyUsage"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -268,15 +261,14 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;Furniture">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>furniture</rdfs:label>
 		<skos:definition>room component that does not consume energy</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
+		<rdfs:label>heating, ventilation, and air conditioning</rdfs:label>
+		<skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;High">
@@ -471,6 +463,13 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;RoomComponent">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
+				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>room component</rdfs:label>
 		<skos:definition>an object in a room that can be used to alter relevant IEQ parameters</skos:definition>
 	</owl:Class>
@@ -521,7 +520,8 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-iem;ThermostatState"/>
+				<owl:onClass rdf:resource="&oe2022-iem;ThermostatState"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 	</owl:Class>
@@ -620,12 +620,6 @@
 		<skos:definition>is currently in the condition, referring to objects that have some changeable condition</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/heating,_ventilation,_and_air_conditioning">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:label>heating, ventilation, and air conditioning</rdfs:label>
-		<skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
-	</owl:Class>
-	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isAttributeOf">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is attribute of</rdfs:label>
@@ -700,9 +694,9 @@
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;Fan">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Radiator">
+			<rdf:Description rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
 			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/heating,_ventilation,_and_air_conditioning">
+			<rdf:Description rdf:about="&oe2022-iem;Radiator">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
