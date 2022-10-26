@@ -193,6 +193,12 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;displaysDogFriendlinessLevel"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;displaysDroolingLevel"/>
 				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
 			</owl:Restriction>
@@ -928,7 +934,6 @@
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysCharacteristicLevel">
-		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label>displays characeteristic level</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
 		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
@@ -943,6 +948,15 @@
 		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 		<skos:definition>level describing the tendency to be more sturdy, playful, easygoing, and tolerant around children under 5</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysDogFriendlinessLevel">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;displaysCharacteristicLevel"/>
+		<rdfs:label>displays dog friendliness level</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>level describing how likely a breed is to get along with other dogs</skos:definition>
+		<cmns-av:adaptedFrom>American Kenel Club</cmns-av:adaptedFrom>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;displaysDroolingLevel">
@@ -1079,7 +1093,6 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasBreedValue">
-		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label>has breed value</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:isDefinedBy>Oxford Dictionary</rdfs:isDefinedBy>
