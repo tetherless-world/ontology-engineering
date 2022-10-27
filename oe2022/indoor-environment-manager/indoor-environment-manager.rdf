@@ -512,6 +512,13 @@
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;isComponentOf"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Room"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>room component</rdfs:label>
 		<skos:definition>an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
 	</owl:Class>
@@ -635,6 +642,10 @@
 		<skos:definition>indicates the degree of enironmental effect by an environment attribute</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasComponent">
+		<owl:inverseOf rdf:resource="&oe2022-iem;isComponentOf"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
 		<rdfs:label>has effect</rdfs:label>
 		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
@@ -686,6 +697,9 @@
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is attribute of</rdfs:label>
 		<skos:definition>is a component that affects the nature of the whole with respect to relevant actors</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isPossibleStateOf">
