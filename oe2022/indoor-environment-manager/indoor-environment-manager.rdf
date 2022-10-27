@@ -50,7 +50,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQuality">
 		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKind"/>
+		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentalQuality"/>
 		<rdfs:label>air quality</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2022-iem;ThermalComfort"/>
@@ -63,8 +63,12 @@
 		<skos:definition>a quantitative attribute that affects air quality in a local environment</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;AirQualityBucket">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;BucketNew"/>
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityIndex">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnit"/>
+		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
 		<rdfs:label>air quality index</rdfs:label>
 		<skos:definition>measurement that combines other meaurements of properties of air to indicate the level of danger to human health</skos:definition>
 	</owl:NamedIndividual>
@@ -128,6 +132,9 @@
 		<skos:definition>qualitative measurement that represents the degree of environmental effect by an environment attribute</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;BucketNew">
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Closed">
 		<rdf:type rdf:resource="&oe2022-iem;ComponentState"/>
 		<rdfs:label>closed</rdfs:label>
@@ -152,7 +159,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;DeltaCapableMeasurement">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasSign"/>
@@ -187,13 +194,13 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Energy">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKind"/>
+		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
 		<rdfs:label>energy</rdfs:label>
 		<skos:definition>measurement of the ability of something to do work</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-iem;EnergyUsage">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasMeasurementUnit"/>
@@ -245,7 +252,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
 		<rdfs:label>environment attribute</rdfs:label>
 		<skos:definition>a quantitative attribute of local environment</skos:definition>
 	</owl:Class>
@@ -263,6 +270,56 @@
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>a quantitative change of an environmental parameter caused by environmental attributes</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;EnvironmentNew">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirSpeedValue"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirTemperatureValue"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericRelativeHumidityValue"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;integer">3</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">5</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Equipment">
@@ -323,7 +380,7 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Kelvin">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnit"/>
+		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
 		<rdfs:label>kelvin</rdfs:label>
 		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
 		<rdfs:seeAlso rdf:resource="https://www.nist.gov/pml/owm/si-units-temperature"/>
@@ -333,7 +390,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Kilogram">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnit"/>
+		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
 		<rdfs:label>kilogram</rdfs:label>
 		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
 		<rdfs:seeAlso rdf:resource="https://www.nist.gov/si-redefinition/kilogram"/>
@@ -343,7 +400,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;KilowattHour">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnit"/>
+		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
 		<rdfs:label>kilowatt-hour</rdfs:label>
 		<skos:definition>measure of electrical energy equivalent to a power consumption of 1,000 watts for 1 hour</skos:definition>
 	</owl:NamedIndividual>
@@ -354,7 +411,7 @@
 		<skos:definition>Qualitative meansurement that represents the low degree of enironmental effect by an environment attribute</skos:definition>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-iem;Measurement">
+	<owl:Class rdf:about="&oe2022-iem;MeasurementOld">
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasBucket"/>
@@ -366,7 +423,7 @@
 		<skos:definition>amount of something</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-iem;MeasurementUnit">
+	<owl:Class rdf:about="&oe2022-iem;MeasurementUnitOld">
 		<rdfs:label>measurement unit</rdfs:label>
 		<skos:definition>real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number</skos:definition>
 	</owl:Class>
@@ -378,7 +435,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;MetersPerSecond">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnit"/>
+		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
 		<rdfs:label>meter per second</rdfs:label>
 		<skos:definition>measure of speed equipvalent to the moved meters for 1 second</skos:definition>
 	</owl:NamedIndividual>
@@ -474,7 +531,7 @@
 		<skos:definition>plus sign that indicates how attributes affects the environment in a positive way</skos:definition>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-iem;QuantityKind">
+	<owl:Class rdf:about="&oe2022-iem;QuantityKindOld">
 		<rdfs:label>quantity kind</rdfs:label>
 		<skos:definition>aspect common to mutually comparable quantities</skos:definition>
 	</owl:Class>
@@ -486,7 +543,7 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;RelativeHumidity">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKind"/>
+		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
 		<rdfs:label>relative humidity</rdfs:label>
 		<skos:definition>ratio of the mole fraction of water vapor to the mole fraction of water vapor saturated at the same temperature and barometric pressure.</skos:definition>
 	</owl:NamedIndividual>
@@ -556,7 +613,7 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Speed">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKind"/>
+		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
 		<rdfs:label>speed</rdfs:label>
 		<skos:definition>the magnitude of a velocity irrespective of direction</skos:definition>
 	</owl:NamedIndividual>
@@ -572,7 +629,7 @@
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Temperature">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKind"/>
+		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
 		<rdfs:label>temperature</rdfs:label>
 		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
 		<skos:definition>base quantity kind that is the quantitative measure of the ability of a substance, or more generally of any physical system, to transfer heat energy to another physical system</skos:definition>
@@ -613,7 +670,7 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Time">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKind"/>
+		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
 		<rdfs:label>time</rdfs:label>
 		<skos:definition>the measured or measurable period during which an action, process, or condition exists or continues</skos:definition>
 	</owl:NamedIndividual>
@@ -665,13 +722,33 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasMeasurementUnit">
 		<rdfs:label>has measurement unit</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;MeasurementUnit"/>
+		<rdfs:range rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
 		<skos:definition>indicates the unit in which something is expressed</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirQualityValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirSpeedValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirTemperatureValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericDaylightIntensityValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericRelativeHumidityValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
+	</owl:DatatypeProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericValue">
 		<rdfs:label>has numeric value</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;int"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
 		<skos:definition>indicates a particular magnitude or designation for a given observable characteristic that is a number</skos:definition>
 	</owl:DatatypeProperty>
 	
@@ -686,7 +763,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasQuantityKind">
 		<rdfs:label>has quantity kind</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;QuantityKind"/>
+		<rdfs:range rdf:resource="&oe2022-iem;QuantityKindOld"/>
 		<skos:definition>indicates the mutually comparable quantities involves in the definitions of an individual quantity or factor</skos:definition>
 	</owl:ObjectProperty>
 	
