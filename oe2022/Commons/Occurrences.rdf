@@ -42,21 +42,18 @@
 		<cmns-av:copyright>Copyright (c) 2014-2022 Object Management Group, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
-	<owl:AnnotationProperty rdf:about="&owl;qualifiedCardinality">
-	</owl:AnnotationProperty>
-	
 	<owl:Class rdf:about="&cmns-oc;Occurrence">
 		<rdfs:subClassOf>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-oc;hasEventDate"/>
-						<owl:onClass rdf:resource="&cmns-dt;Date"/>
+						<owl:onProperty rdf:resource="&cmns-pts;holdsDuring"/>
+						<owl:onClass rdf:resource="&cmns-dt;DatePeriod"/>
 						<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 					</owl:Restriction>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-pts;holdsDuring"/>
-						<owl:onClass rdf:resource="&cmns-dt;DatePeriod"/>
+						<owl:onProperty rdf:resource="&cmns-oc;hasEventDate"/>
+						<owl:onClass rdf:resource="&cmns-dt;Date"/>
 						<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 					</owl:Restriction>
 					<owl:Restriction>
@@ -122,7 +119,6 @@
 		<rdfs:label>exemplifies</rdfs:label>
 		<rdfs:domain rdf:resource="&cmns-oc;Occurrence"/>
 		<rdfs:range rdf:resource="&cmns-oc;OccurrenceKind"/>
-		<owl:inverseOf rdf:resource="&cmns-oc;isExemplifiedBy"/>
 		<skos:definition>is a realization or example of</skos:definition>
 		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://www.merriam-webster.com/dictionary/exemplify</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -152,6 +148,7 @@
 		<rdfs:label>is exemplified by</rdfs:label>
 		<rdfs:domain rdf:resource="&cmns-oc;OccurrenceKind"/>
 		<rdfs:range rdf:resource="&cmns-oc;Occurrence"/>
+		<owl:inverseOf rdf:resource="&cmns-oc;exemplifies"/>
 		<skos:definition>identifies examples of a given concept</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -168,8 +165,5 @@
 		<skos:definition>is activated or initiated by</skos:definition>
 		<cmns-av:explanatoryNote>An occurrence-based date is triggered by an occurrence that exemplifies the occurrence kind.</cmns-av:explanatoryNote>
 	</owl:ObjectProperty>
-	
-	<rdf:Description>
-		<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-	</rdf:Description>
+
 </rdf:RDF>
