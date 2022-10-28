@@ -149,7 +149,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Dehumidifier">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>dehumidifier</rdfs:label>
 		<skos:definition>room component that can be on or off, thereby lowering indoor relative humidity or not, respectively</skos:definition>
 	</owl:Class>
@@ -351,34 +351,14 @@
 		</rdfs:subClassOf>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-iem;Equipment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;EnergyUsage"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>equipment</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;Furniture"/>
-		<skos:definition>room component that consumes energy</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2022-iem;Fan">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>fan</rdfs:label>
 		<skos:definition>piece of equipment that can increase air speed</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-iem;Furniture">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:label>furniture</rdfs:label>
-		<skos:definition>room component that does not consume energy</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>heating, ventilation, and air conditioning</rdfs:label>
 		<skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
 	</owl:Class>
@@ -734,6 +714,13 @@
 		<skos:definition>minus sign that indicates how attributes affects the environment in a negative way</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2022-iem;NonPowerConsumingComponent">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
+		<rdfs:label>non-power consuming component</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
+		<skos:definition>room component that does not consume energy</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Occupant">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
 		<rdfs:subClassOf>
@@ -819,8 +806,21 @@
 		<skos:definition>plus sign that indicates how attributes affects the environment in a positive way</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2022-iem;PowerConsumingComponent">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
+				<owl:onClass rdf:resource="&oe2022-iem;EnergyUsage"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>power consuming component</rdfs:label>
+		<skos:definition>room component that consumes energy</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Radiator">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>radiator</rdfs:label>
 		<skos:definition>heating, ventilation, and air conditioning equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
 	</owl:Class>
@@ -890,7 +890,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;SpaceHeater">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>space heater</rdfs:label>
 		<skos:definition>equipment that can raise the indoor temperature by heating the air around it</skos:definition>
 	</owl:Class>
@@ -927,7 +927,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Thermostat">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;NonPowerConsumingComponent"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
@@ -964,14 +964,14 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-iem;Window">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;NonPowerConsumingComponent"/>
 		<rdfs:label>window</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2022-iem;WindowBlinds"/>
 		<skos:definition>room component that can optionally let air flow between inside and outside regions</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;WindowBlinds">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;NonPowerConsumingComponent"/>
 		<rdfs:label>window blinds</rdfs:label>
 		<skos:definition>room component that be open or closed, thereby letting in or blocking light, respectively</skos:definition>
 	</owl:Class>
