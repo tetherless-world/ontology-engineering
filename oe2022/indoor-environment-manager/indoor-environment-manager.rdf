@@ -1,879 +1,1547 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rdf:RDF [
-	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
-	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
-	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
-	<!ENTITY cmns-dsg "https://www.omg.org/spec/Commons/Designators/">
-	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
-	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
-	<!ENTITY cmns-qtu "https://www.omg.org/spec/Commons/QuantitiesAndUnits/">
-	<!ENTITY dct "http://purl.org/dc/terms/">
-	<!ENTITY oe2022-iem "https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/">
-	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
-	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
-	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
-]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/"
-	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
-	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
-	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
-	xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
-	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
-	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
-	xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:oe2022-iem="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/"
-	xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-	
-	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/">
-		<rdfs:label>Indoor Environment Manager Ontology</rdfs:label>
-		<dct:abstract></dct:abstract>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
-	</owl:Ontology>
-	
-	<owl:AnnotationProperty rdf:about="&dct;creator">
-		<rdfs:label>creator</rdfs:label>
-		<rdfs:isDefinedBy>http://purl.org/dc/terms/</rdfs:isDefinedBy>
-		<skos:definition>entity responsible for making the resource</skos:definition>
-	</owl:AnnotationProperty>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQuality">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentalQuality"/>
-		<rdfs:label>air quality</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;ThermalComfort"/>
-		<skos:definition>synthesis of various physical measurements of properties of air that threaten human health</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;AirQualityAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-		<rdfs:label>air quality attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects air quality in a local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;AirQualityBucket">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;BucketNew"/>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityIndex">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
-		<rdfs:label>air quality index</rdfs:label>
-		<skos:definition>measurement that combines other meaurements of properties of air to indicate the level of danger to human health</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;AirSpeedAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-		<rdfs:label>air speed attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects air speed in a local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;AirTemperatureAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-		<rdfs:label>air temperature attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects air temperature in a local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Argument">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericValue"/>
-				<owl:onDataRange rdf:resource="&xsd;int"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>argument</rdfs:label>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:complementOf rdf:resource="&oe2022-iem;EnvironmentAttributeDelta"/>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>baseline indoor environment</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
-		<skos:definition>a collection of indoor environmental parameters before environmental attributes affect the indoor environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Bucket">
-		<rdfs:label>bucket</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:oneOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;High">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;Low">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;Medium">
-					</rdf:Description>
-				</owl:oneOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>qualitative measurement that represents the degree of environmental effect by an environment attribute</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;BucketNew">
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Closed">
-		<rdf:type rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>closed</rdfs:label>
-		<skos:definition>the condition of not being open</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;ComponentState">
-		<rdfs:label>component state</rdfs:label>
-		<skos:definition>the state of an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;DaylightIntensityAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-		<rdfs:label>daylight intensity attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects daylight intensity in a local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Dehumidifier">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:label>dehumidifier</rdfs:label>
-		<skos:definition>room component that can be on or off, thereby lowering indoor relative humidity or not, respectively</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;DeltaCapableMeasurement">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasSign"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Sign"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>delta capable measurement</rdfs:label>
-		<skos:definition>a measurement that can be expressed as a delta from a baseline absolute value</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
-							</rdf:Description>
-							<owl:Class>
-								<owl:complementOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-							</owl:Class>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>delta defined environment</rdfs:label>
-		<skos:definition>any environment that happens to be defined in terms of effectiveness with respect to some other environment</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Energy">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
-		<rdfs:label>energy</rdfs:label>
-		<skos:definition>measurement of the ability of something to do work</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnergyUsage">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasMeasurementUnit"/>
-				<owl:hasValue rdf:resource="&oe2022-iem;KilowattHour"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>energy usage</rdfs:label>
-		<skos:definition>quantity of energy used to power some equipment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Environment">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirQualityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirSpeedAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;RelativeHumidityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>environment</rdfs:label>
-		<skos:definition>the circumstances, objects, or conditions by which one is surrounded</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
-		<rdfs:label>environment attribute</rdfs:label>
-		<skos:definition>a quantitative attribute of local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
-		<rdfs:label>environment attribute delta</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;DeltaCapableMeasurement">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttribute">
-					</rdf:Description>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>a quantitative change of an environmental parameter caused by environmental attributes</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentNew">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirSpeedValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirTemperatureValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericRelativeHumidityValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:minInclusive rdf:datatype="&xsd;integer">3</xsd:minInclusive>
-							</rdf:Description>
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">5</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Equipment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;EnergyUsage"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>equipment</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;Furniture"/>
-		<skos:definition>room component that consumes energy</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Fan">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:label>fan</rdfs:label>
-		<skos:definition>piece of equipment that can increase air speed</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Furniture">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:label>furniture</rdfs:label>
-		<skos:definition>room component that does not consume energy</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:label>heating, ventilation, and air conditioning</rdfs:label>
-		<skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;High">
-		<rdf:type rdf:resource="&oe2022-iem;Bucket"/>
-		<skos:altLabel>high</skos:altLabel>
-		<skos:definition>Qualitative meansurement that represents the high degree of enironmental effect by an environment attribute</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>indoor environment</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
-		<skos:definition>the indoor circumstances, objects, or conditions by which one is surrounded</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironmentalQuality">
-		<rdfs:label>indoor environmental quality</rdfs:label>
-		<skos:definition>a perceived indoor experience of the building indoor including thermal comfort, indoor air quality, lighting, acoustics, and control systems</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Kelvin">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
-		<rdfs:label>kelvin</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<rdfs:seeAlso rdf:resource="https://www.nist.gov/pml/owm/si-units-temperature"/>
-		<skos:definition>base unit of temperature that is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 ×10^−23 when expressed in the unit J K^−1, which is equal to kg m^2 s^−2 K^−1</skos:definition>
-		<cmns-av:explanatoryNote>The temperature 0 K is commonly referred to as &apos;absolute zero.&apos; On the widely used Celsius temperature scale, water freezes at 0 °C and boils at about 100 °C. One Celsius degree is an interval of 1 K, and zero degrees Celsius is 273.15 K. An interval of one Celsius degree corresponds to an interval of 1.8 Fahrenheit degrees on the Fahrenheit temperature scale.</cmns-av:explanatoryNote>
-		<cmns-av:symbol>K</cmns-av:symbol>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Kilogram">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
-		<rdfs:label>kilogram</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<rdfs:seeAlso rdf:resource="https://www.nist.gov/si-redefinition/kilogram"/>
-		<skos:definition>conversion-based unit of mass</skos:definition>
-		<skos:note>Note that in the International System of Units (SI), the kilogram is considered the base unit rather than the gram, which is the base unit in the UCUM.</skos:note>
-		<cmns-av:symbol>kg</cmns-av:symbol>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;KilowattHour">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
-		<rdfs:label>kilowatt-hour</rdfs:label>
-		<skos:definition>measure of electrical energy equivalent to a power consumption of 1,000 watts for 1 hour</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Low">
-		<rdf:type rdf:resource="&oe2022-iem;Bucket"/>
-		<rdfs:label>low</rdfs:label>
-		<skos:definition>Qualitative meansurement that represents the low degree of enironmental effect by an environment attribute</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;MeasurementOld">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasBucket"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Bucket"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>measurement</rdfs:label>
-		<skos:definition>amount of something</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;MeasurementUnitOld">
-		<rdfs:label>measurement unit</rdfs:label>
-		<skos:definition>real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Medium">
-		<rdf:type rdf:resource="&oe2022-iem;Bucket"/>
-		<rdfs:label>medium</rdfs:label>
-		<skos:definition>Qualitative meansurement that represents the medium degree of enironmental effect by an environment attribute</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;MetersPerSecond">
-		<rdf:type rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
-		<rdfs:label>meter per second</rdfs:label>
-		<skos:definition>measure of speed equipvalent to the moved meters for 1 second</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Negative">
-		<rdf:type rdf:resource="&oe2022-iem;Sign"/>
-		<rdfs:label>negative</rdfs:label>
-		<skos:definition>minus sign that indicates how attributes affects the environment in a negative way</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Occupant">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;isPlayedBy"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Person"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">occupant</rdfs:label>
-		<skos:definition xml:lang="en">someone that resides or is present in or using a building, vehicle, seat, place, etc., at a given time</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Off">
-		<rdf:type rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>off</rdfs:label>
-		<skos:definition>condition of not currently being powered</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;On">
-		<rdf:type rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>on</rdfs:label>
-		<skos:definition>condition of being currently in operation</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Open">
-		<rdf:type rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:label>open</rdfs:label>
-		<skos:definition>condition of not being completely closed</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Organization">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
-		<rdfs:label xml:lang="en">organization</rdfs:label>
-		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/vocab-org/#org:Organization"/>
-		<skos:definition xml:lang="en">collection of one or more people, or groups of people formed together into a community or other social, commercial or political structure to act, or that is designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis</skos:definition>
-		<skos:example xml:lang="en">This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization.</skos:example>
-		<cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:label>outdoor environment</rdfs:label>
-		<skos:definition>a collection of outdoor environmental effects for baseline indoor environment</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerCubicSecond">
-		<rdfs:label>per cubic second</rdfs:label>
-		<skos:definition>the unit of volumetric flow rate equipvalent to the moved volume for 1 second</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerCubicTime">
-		<rdfs:label>per cubic time</rdfs:label>
-		<skos:definition>the unit of volumetric flow rate equipvalent to the moved volume for unit time</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerHour">
-		<rdfs:label>per hour</rdfs:label>
-		<skos:definition>the total sum for each hour</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerSecond">
-		<rdfs:label>per second</rdfs:label>
-		<skos:definition>the total sum for each second</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerTime">
-		<rdfs:label>per time</rdfs:label>
-		<skos:definition>the total sum for each unit time</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Person">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
-		<rdfs:label xml:lang="en">person</rdfs:label>
-		<skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
-		<cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Positive">
-		<rdf:type rdf:resource="&oe2022-iem;Sign"/>
-		<rdfs:label>positive</rdfs:label>
-		<skos:definition>plus sign that indicates how attributes affects the environment in a positive way</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;QuantityKindOld">
-		<rdfs:label>quantity kind</rdfs:label>
-		<skos:definition>aspect common to mutually comparable quantities</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Radiator">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:label>radiator</rdfs:label>
-		<skos:definition>heating, ventilation, and air conditioning equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;RelativeHumidity">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
-		<rdfs:label>relative humidity</rdfs:label>
-		<skos:definition>ratio of the mole fraction of water vapor to the mole fraction of water vapor saturated at the same temperature and barometric pressure.</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;RelativeHumidityAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-		<rdfs:label>relative humidity attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects relative humidity in a local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
-		<rdfs:label>resultant indoor environment</rdfs:label>
-		<skos:definition>a collection of indoor environmental parameters after environmental attributes affect the indoor environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Room">
-		<rdfs:label>room</rdfs:label>
-		<skos:definition>region in a building in which occupant comfort and measurements apply</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;RoomComponent">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;isComponentOf"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Room"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>room component</rdfs:label>
-		<skos:definition>an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Second">
-		<rdfs:label>second</rdfs:label>
-		<skos:definition>explicit period of 1/60 minute</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Sign">
-		<rdfs:label>sign</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:oneOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;Negative">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;Positive">
-					</rdf:Description>
-				</owl:oneOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>plus or minus sign that indicates how attributes affects the environment in a positive or negative way</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;SpaceHeater">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Equipment"/>
-		<rdfs:label>space heater</rdfs:label>
-		<skos:definition>equipment that can raise the indoor temperature by heating the air around it</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Speed">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
-		<rdfs:label>speed</rdfs:label>
-		<skos:definition>the magnitude of a velocity irrespective of direction</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;SquareLength">
-		<rdfs:label>square length</rdfs:label>
-		<skos:definition>the unit of area equipvalent to area of a square with sides unit length</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;SquareMeter">
-		<rdfs:label>sqaure meter</rdfs:label>
-		<skos:definition>the unit of area equipvalent to area of a square with sides one meter in length</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Temperature">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
-		<rdfs:label>temperature</rdfs:label>
-		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
-		<skos:definition>base quantity kind that is the quantitative measure of the ability of a substance, or more generally of any physical system, to transfer heat energy to another physical system</skos:definition>
-		<cmns-av:explanatoryNote>There are three types of temperature scale: those, such as the SI scale, that are defined in terms of the average translational kinetic energy per freely moving microscopic particle, such as atom, molecule, or electron, in a body; those that rely solely on purely macroscopic properties and thermodynamic principles, such as Kelvin&apos;s original definition; and those that are not defined by theoretical principles, but are defined by convenient empirical properties of particular materials.</cmns-av:explanatoryNote>
-		<cmns-av:symbol>T</cmns-av:symbol>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;ThermalComfort">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentalQuality"/>
-		<rdfs:label>thermal comfort</rdfs:label>
-		<skos:definition>the condition of mind that expresses satisfaction with the surrounding thermal environment and is assessed by subjective evaluation</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Thermostat">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ThermostatState"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>thermostat</rdfs:label>
-		<skos:definition>heating, ventilation, and air conditioning equipment that can control air conditioning</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;ThermostatState">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;ComponentState"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericValue"/>
-				<owl:onDataRange rdf:resource="&xsd;int"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>thermostat state</rdfs:label>
-		<skos:definition>numeric value at which the thermostat is set</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Time">
-		<rdf:type rdf:resource="&oe2022-iem;QuantityKindOld"/>
-		<rdfs:label>time</rdfs:label>
-		<skos:definition>the measured or measurable period during which an action, process, or condition exists or continues</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Watt">
-		<rdfs:label>watt</rdfs:label>
-		<skos:definition>unit of power equivalent to one joule per second</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;Window">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
-		<rdfs:label>window</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;WindowBlinds"/>
-		<skos:definition>room component that can optionally let air flow between inside and outside regions</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;WindowBlinds">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;Furniture"/>
-		<rdfs:label>window blinds</rdfs:label>
-		<skos:definition>room component that be open or closed, thereby letting in or blocking light, respectively</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Work">
-		<rdfs:label>work</rdfs:label>
-		<skos:definition>the work done on a charged particle by an electric field</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAttribute">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>has attribute</rdfs:label>
-		<owl:inverseOf rdf:resource="&oe2022-iem;isAttributeOf"/>
-		<skos:definition>has components that affect the nature of the whole with respect to relevant actors</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasBucket">
-		<rdfs:label>has bucket</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;Bucket"/>
-		<skos:definition>indicates the degree of enironmental effect by an environment attribute</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasComponent">
-		<owl:inverseOf rdf:resource="&oe2022-iem;isComponentOf"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
-		<rdfs:label>has effect</rdfs:label>
-		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasMeasurementUnit">
-		<rdfs:label>has measurement unit</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;MeasurementUnitOld"/>
-		<skos:definition>indicates the unit in which something is expressed</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirQualityValue">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirSpeedValue">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirTemperatureValue">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericDaylightIntensityValue">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericRelativeHumidityValue">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasNumericValue"/>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericValue">
-		<rdfs:label>has numeric value</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;integer"/>
-		<skos:definition>indicates a particular magnitude or designation for a given observable characteristic that is a number</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasPossibleState">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>has possible state</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
-		<owl:inverseOf rdf:resource="&oe2022-iem;isPossibleStateOf"/>
-		<skos:definition>has the ability to be in some condition at a point in time</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasQuantityKind">
-		<rdfs:label>has quantity kind</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;QuantityKindOld"/>
-		<skos:definition>indicates the mutually comparable quantities involves in the definitions of an individual quantity or factor</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasSign">
-		<rdfs:label>has sign</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;Sign"/>
-		<skos:definition>indicates how attributes affects the environment in a positive or negative way</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasState">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>has state</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2022-iem;RoomComponent"/>
-		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
-		<owl:inverseOf rdf:resource="&oe2022-iem;isStateOf"/>
-		<skos:definition>is currently in the condition, referring to objects that have some changeable condition</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isAttributeOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>is attribute of</rdfs:label>
-		<skos:definition>is a component that affects the nature of the whole with respect to relevant actors</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isPossibleStateOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>is possible state of</rdfs:label>
-		<skos:definition>can be the condition of a given object at some point in time</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isQuantifiedBy">
-		<rdfs:label>is quantified by</rdfs:label>
-		<owl:inverseOf rdf:resource="&oe2022-iem;quatifies"/>
-		<skos:definition>is specified by the quantify of the object</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isStateOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label>is currently the condition of</rdfs:label>
-		<rdfs:label>is state of</rdfs:label>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;quatifies">
-		<rdfs:label>quantifies</rdfs:label>
-		<skos:definition>specifies the quantify of the object</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&cmns-qtu;hasLowerBound">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasAttribute"/>
-		<rdfs:label>has lower bound</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;Argument"/>
-		<skos:definition>specifies the quantity value that is the lower value of a pair of values representing a range</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&cmns-qtu;hasUpperBound">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasAttribute"/>
-		<rdfs:label>has upper bound</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;Argument"/>
-		<skos:definition>specifies the quantity value that is the higher value of a pair of values representing a range</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:AllDifferent>
-		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Negative">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Positive">
-			</rdf:Description>
-		</owl:distinctMembers>
-	</owl:AllDifferent>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;AirQualityAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;AirSpeedAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;AirTemperatureAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;DaylightIntensityAttribute">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;RelativeHumidityAttribute">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Fan">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Radiator">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Fan">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Radiator">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;SpaceHeater">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/"
+     xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+     xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+     xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+     xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+     xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
+     xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+     xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
+     xmlns:oe2022-iem="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/">
+    <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/">
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+        <dct:abstract></dct:abstract>
+        <rdfs:label>Indoor Environment Manager Ontology</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator">
+        <rdfs:isDefinedBy>http://purl.org/dc/terms/</rdfs:isDefinedBy>
+        <rdfs:label>creator</rdfs:label>
+        <skos:definition>entity responsible for making the resource</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucket -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucket">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketHigh"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketLow"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketMedium"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketHigh -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketHigh"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketLow -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketLow"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketMedium -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucketMedium"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucket -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucket">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketHigh"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketLow"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketMedium"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketHigh -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketHigh"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketLow -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketLow"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketMedium -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucketMedium"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucket -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucket">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketHigh"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketLow"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketMedium"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketHigh -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketHigh"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketLow -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketLow"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketMedium -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucketMedium"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucket -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucket">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketHigh"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketLow"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketMedium"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketHigh -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketHigh"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketLow -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketLow"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketMedium -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucketMedium"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucket -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucket">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketHigh"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketLow"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketMedium"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketHigh -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketHigh"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketLow -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketLow"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketMedium -->
+
+    <rdfs:Datatype rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucketMedium"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isAttributeOf"/>
+        <rdfs:label>has attribute</rdfs:label>
+        <skos:definition>has components that affect the nature of the whole with respect to relevant actors</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasBucket -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasBucket">
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Bucket"/>
+        <rdfs:label>has bucket</rdfs:label>
+        <skos:definition>indicates the degree of enironmental effect by an environment attribute</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasComponent -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasComponent">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isComponentOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasEffect -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasEffect">
+        <rdfs:label>has effect</rdfs:label>
+        <skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasMeasurementUnit -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasMeasurementUnit">
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld"/>
+        <rdfs:label>has measurement unit</rdfs:label>
+        <skos:definition>indicates the unit in which something is expressed</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasPossibleState -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasPossibleState">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isPossibleStateOf"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>has possible state</rdfs:label>
+        <skos:definition>has the ability to be in some condition at a point in time</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasQuantityKind -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasQuantityKind">
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld"/>
+        <rdfs:label>has quantity kind</rdfs:label>
+        <skos:definition>indicates the mutually comparable quantities involves in the definitions of an individual quantity or factor</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasSign -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasSign">
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Sign"/>
+        <rdfs:label>has sign</rdfs:label>
+        <skos:definition>indicates how attributes affects the environment in a positive or negative way</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isStateOf"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>has state</rdfs:label>
+        <skos:definition>is currently in the condition, referring to objects that have some changeable condition</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isAttributeOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isAttributeOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is attribute of</rdfs:label>
+        <skos:definition>is a component that affects the nature of the whole with respect to relevant actors</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isComponentOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isComponentOf"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isPossibleStateOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isPossibleStateOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is possible state of</rdfs:label>
+        <skos:definition>can be the condition of a given object at some point in time</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isQuantifiedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isQuantifiedBy">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/quatifies"/>
+        <rdfs:label>is quantified by</rdfs:label>
+        <skos:definition>is specified by the quantify of the object</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isStateOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isStateOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is currently the condition of</rdfs:label>
+        <rdfs:label>is state of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/quatifies -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/quatifies">
+        <rdfs:label>quantifies</rdfs:label>
+        <skos:definition>specifies the quantify of the object</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasLowerBound -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasLowerBound">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Argument"/>
+        <rdfs:label>has lower bound</rdfs:label>
+        <skos:definition>specifies the quantity value that is the lower value of a pair of values representing a range</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasUpperBound -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasUpperBound">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Argument"/>
+        <rdfs:label>has upper bound</rdfs:label>
+        <skos:definition>specifies the quantity value that is the higher value of a pair of values representing a range</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirQualityValue -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirQualityValue">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucket"/>
+        <rdfs:label>has numeric air quality value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirSpeedValue -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirSpeedValue">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedBucket"/>
+        <rdfs:label>has numeric air speed value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirTemperatureValue -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirTemperatureValue">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureBucket"/>
+        <rdfs:label>has numeric air temperature value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericDaylightIntensityValue -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericDaylightIntensityValue">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityBucket"/>
+        <rdfs:label>has numeric daylight intensity value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericRelativeHumidityValue -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericRelativeHumidityValue">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityBucket"/>
+        <rdfs:label>has numeric relative humidity value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentNew"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>has numeric value</rdfs:label>
+        <skos:definition>indicates a particular magnitude or designation for a given observable characteristic that is a number</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermalComfort"/>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityAttribute -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityAttribute">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute"/>
+        <rdfs:label>air quality attribute</rdfs:label>
+        <skos:definition>a quantitative attribute that affects air quality in a local environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucket -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityBucket">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/BucketNew"/>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedAttribute -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedAttribute">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaCapableMeasurement"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute"/>
+        <rdfs:label>air speed attribute</rdfs:label>
+        <skos:definition>a quantitative attribute that affects air speed in a local environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureAttribute -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureAttribute">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaCapableMeasurement"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute"/>
+        <rdfs:label>air temperature attribute</rdfs:label>
+        <skos:definition>a quantitative attribute that affects air temperature in a local environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Argument -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Argument">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>argument</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/BaselineIndoorEnvironment -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/BaselineIndoorEnvironment">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttributeDelta"/>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ResultantIndoorEnvironment"/>
+        <rdfs:label>baseline indoor environment</rdfs:label>
+        <skos:definition>a collection of indoor environmental parameters before environmental attributes affect the indoor environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Bucket -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Bucket">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/High"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Low"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Medium"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>bucket</rdfs:label>
+        <skos:definition>qualitative measurement that represents the degree of environmental effect by an environment attribute</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/BucketNew -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/BucketNew"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState">
+        <rdfs:label>component state</rdfs:label>
+        <skos:definition>the state of an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityAttribute -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityAttribute">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute"/>
+        <rdfs:label>daylight intensity attribute</rdfs:label>
+        <skos:definition>a quantitative attribute that affects daylight intensity in a local environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Dehumidifier -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Dehumidifier">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:label>dehumidifier</rdfs:label>
+        <skos:definition>room component that can be on or off, thereby lowering indoor relative humidity or not, respectively</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaCapableMeasurement -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaCapableMeasurement">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementOld"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasSign"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Sign"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>delta capable measurement</rdfs:label>
+        <skos:definition>a measurement that can be expressed as a delta from a baseline absolute value</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaDefinedEnvironment -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaDefinedEnvironment">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Environment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttributeDelta"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute"/>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>delta defined environment</rdfs:label>
+        <skos:definition>any environment that happens to be defined in terms of effectiveness with respect to some other environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnergyUsage -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnergyUsage">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementOld"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasMeasurementUnit"/>
+                <owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/KilowattHour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>energy usage</rdfs:label>
+        <skos:definition>quantity of energy used to power some equipment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Environment -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Environment">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityAttribute"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedAttribute"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureAttribute"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityAttribute"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityAttribute"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>environment</rdfs:label>
+        <skos:definition>the circumstances, objects, or conditions by which one is surrounded</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementOld"/>
+        <rdfs:label>environment attribute</rdfs:label>
+        <skos:definition>a quantitative attribute of local environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttributeDelta -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttributeDelta">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaCapableMeasurement"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>environment attribute delta</rdfs:label>
+        <skos:definition>a quantitative change of an environmental parameter caused by environmental attributes</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentNew -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentNew">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirQualityValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirSpeedValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericAirTemperatureValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</xsd:minInclusive>
+                            </rdf:Description>
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">104</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericDaylightIntensityValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10000</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericRelativeHumidityValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnergyUsage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
+        <rdfs:label>equipment</rdfs:label>
+        <skos:definition>room component that consumes energy</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Fan -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Fan">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:label>fan</rdfs:label>
+        <skos:definition>piece of equipment that can increase air speed</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent"/>
+        <rdfs:label>furniture</rdfs:label>
+        <skos:definition>room component that does not consume energy</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/HeatingVentilationAndAirConditioning -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/HeatingVentilationAndAirConditioning">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:label>heating, ventilation, and air conditioning</rdfs:label>
+        <skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironment -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironment">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Environment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasAttribute"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityAttribute"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OutdoorEnvironment"/>
+        <rdfs:label>indoor environment</rdfs:label>
+        <skos:definition>the indoor circumstances, objects, or conditions by which one is surrounded</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality">
+        <rdfs:label>indoor environmental quality</rdfs:label>
+        <skos:definition>a perceived indoor experience of the building indoor including thermal comfort, indoor air quality, lighting, acoustics, and control systems</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementOld -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementOld">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasBucket"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Bucket"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>measurement</rdfs:label>
+        <skos:definition>amount of something</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld">
+        <rdfs:label>measurement unit</rdfs:label>
+        <skos:definition>real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Occupant -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Occupant">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/PartyRole"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isPlayedBy"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">occupant</rdfs:label>
+        <skos:definition xml:lang="en">someone that resides or is present in or using a building, vehicle, seat, place, etc., at a given time</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Organization -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Organization">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Party"/>
+        <rdfs:label xml:lang="en">organization</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://www.w3.org/TR/vocab-org/#org:Organization"/>
+        <skos:definition xml:lang="en">collection of one or more people, or groups of people formed together into a community or other social, commercial or political structure to act, or that is designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis</skos:definition>
+        <skos:example xml:lang="en">This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization.</skos:example>
+        <cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OutdoorEnvironment -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/OutdoorEnvironment">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaDefinedEnvironment"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Environment"/>
+        <rdfs:label>outdoor environment</rdfs:label>
+        <skos:definition>a collection of outdoor environmental effects for baseline indoor environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Person -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Person">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Party"/>
+        <rdfs:label xml:lang="en">person</rdfs:label>
+        <skos:definition xml:lang="en">individual human being, with consciousness of self</skos:definition>
+        <cmns-av:synonym xml:lang="en">natural person</cmns-av:synonym>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld">
+        <rdfs:label>quantity kind</rdfs:label>
+        <skos:definition>aspect common to mutually comparable quantities</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Radiator -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Radiator">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:label>radiator</rdfs:label>
+        <skos:definition>heating, ventilation, and air conditioning equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityAttribute -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityAttribute">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaCapableMeasurement"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/EnvironmentAttribute"/>
+        <rdfs:label>relative humidity attribute</rdfs:label>
+        <skos:definition>a quantitative attribute that affects relative humidity in a local environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ResultantIndoorEnvironment -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ResultantIndoorEnvironment">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DeltaDefinedEnvironment"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironment"/>
+        <rdfs:label>resultant indoor environment</rdfs:label>
+        <skos:definition>a collection of indoor environmental parameters after environmental attributes affect the indoor environment</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Room -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Room">
+        <rdfs:label>room</rdfs:label>
+        <skos:definition>region in a building in which occupant comfort and measurements apply</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RoomComponent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/isComponentOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Room"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>room component</rdfs:label>
+        <skos:definition>an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Sign -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Sign">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Negative"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Positive"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>sign</rdfs:label>
+        <skos:definition>plus or minus sign that indicates how attributes affects the environment in a positive or negative way</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SpaceHeater -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SpaceHeater">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Equipment"/>
+        <rdfs:label>space heater</rdfs:label>
+        <skos:definition>equipment that can raise the indoor temperature by heating the air around it</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermalComfort -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermalComfort">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/IndoorEnvironmentalQuality"/>
+        <rdfs:label>thermal comfort</rdfs:label>
+        <skos:definition>the condition of mind that expresses satisfaction with the surrounding thermal environment and is assessed by subjective evaluation</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Thermostat -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Thermostat">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasState"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>thermostat</rdfs:label>
+        <skos:definition>heating, ventilation, and air conditioning equipment that can control air conditioning</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ThermostatState">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/hasNumericValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>thermostat state</rdfs:label>
+        <skos:definition>numeric value at which the thermostat is set</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Window -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Window">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/WindowBlinds"/>
+        <rdfs:label>window</rdfs:label>
+        <skos:definition>room component that can optionally let air flow between inside and outside regions</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/WindowBlinds -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/WindowBlinds">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Furniture"/>
+        <rdfs:label>window blinds</rdfs:label>
+        <skos:definition>room component that be open or closed, thereby letting in or blocking light, respectively</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityIndex -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityIndex">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld"/>
+        <rdfs:label>air quality index</rdfs:label>
+        <skos:definition>measurement that combines other meaurements of properties of air to indicate the level of danger to human health</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Closed -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Closed">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>closed</rdfs:label>
+        <skos:definition>the condition of not being open</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Energy -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Energy">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld"/>
+        <rdfs:label>energy</rdfs:label>
+        <skos:definition>measurement of the ability of something to do work</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/High -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/High">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Bucket"/>
+        <skos:altLabel>high</skos:altLabel>
+        <skos:definition>Qualitative meansurement that represents the high degree of enironmental effect by an environment attribute</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Kelvin -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Kelvin">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld"/>
+        <dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
+        <rdfs:label>kelvin</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://www.nist.gov/pml/owm/si-units-temperature"/>
+        <skos:definition>base unit of temperature that is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 ×10^−23 when expressed in the unit J K^−1, which is equal to kg m^2 s^−2 K^−1</skos:definition>
+        <cmns-av:explanatoryNote>The temperature 0 K is commonly referred to as &apos;absolute zero.&apos; On the widely used Celsius temperature scale, water freezes at 0 °C and boils at about 100 °C. One Celsius degree is an interval of 1 K, and zero degrees Celsius is 273.15 K. An interval of one Celsius degree corresponds to an interval of 1.8 Fahrenheit degrees on the Fahrenheit temperature scale.</cmns-av:explanatoryNote>
+        <cmns-av:symbol>K</cmns-av:symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Kilogram -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Kilogram">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld"/>
+        <dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
+        <rdfs:label>kilogram</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://www.nist.gov/si-redefinition/kilogram"/>
+        <skos:definition>conversion-based unit of mass</skos:definition>
+        <skos:note>Note that in the International System of Units (SI), the kilogram is considered the base unit rather than the gram, which is the base unit in the UCUM.</skos:note>
+        <cmns-av:symbol>kg</cmns-av:symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/KilowattHour -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/KilowattHour">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld"/>
+        <rdfs:label>kilowatt-hour</rdfs:label>
+        <skos:definition>measure of electrical energy equivalent to a power consumption of 1,000 watts for 1 hour</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Low -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Low">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Bucket"/>
+        <rdfs:label>low</rdfs:label>
+        <skos:definition>Qualitative meansurement that represents the low degree of enironmental effect by an environment attribute</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Medium -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Medium">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Bucket"/>
+        <rdfs:label>medium</rdfs:label>
+        <skos:definition>Qualitative meansurement that represents the medium degree of enironmental effect by an environment attribute</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MetersPerSecond -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MetersPerSecond">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/MeasurementUnitOld"/>
+        <rdfs:label>meter per second</rdfs:label>
+        <skos:definition>measure of speed equipvalent to the moved meters for 1 second</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Negative -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Negative">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Sign"/>
+        <rdfs:label>negative</rdfs:label>
+        <skos:definition>minus sign that indicates how attributes affects the environment in a negative way</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Off -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Off">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>off</rdfs:label>
+        <skos:definition>condition of not currently being powered</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/On -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/On">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>on</rdfs:label>
+        <skos:definition>condition of being currently in operation</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Open -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Open">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/ComponentState"/>
+        <rdfs:label>open</rdfs:label>
+        <skos:definition>condition of not being completely closed</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerCubicSecond -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerCubicSecond">
+        <rdfs:label>per cubic second</rdfs:label>
+        <skos:definition>the unit of volumetric flow rate equipvalent to the moved volume for 1 second</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerCubicTime -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerCubicTime">
+        <rdfs:label>per cubic time</rdfs:label>
+        <skos:definition>the unit of volumetric flow rate equipvalent to the moved volume for unit time</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerHour -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerHour">
+        <rdfs:label>per hour</rdfs:label>
+        <skos:definition>the total sum for each hour</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerSecond -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerSecond">
+        <rdfs:label>per second</rdfs:label>
+        <skos:definition>the total sum for each second</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerTime -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/PerTime">
+        <rdfs:label>per time</rdfs:label>
+        <skos:definition>the total sum for each unit time</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Positive -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Positive">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Sign"/>
+        <rdfs:label>positive</rdfs:label>
+        <skos:definition>plus sign that indicates how attributes affects the environment in a positive way</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidity -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidity">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld"/>
+        <rdfs:label>relative humidity</rdfs:label>
+        <skos:definition>ratio of the mole fraction of water vapor to the mole fraction of water vapor saturated at the same temperature and barometric pressure.</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Second -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Second">
+        <rdfs:label>second</rdfs:label>
+        <skos:definition>explicit period of 1/60 minute</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Speed -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Speed">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld"/>
+        <rdfs:label>speed</rdfs:label>
+        <skos:definition>the magnitude of a velocity irrespective of direction</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SquareLength -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SquareLength">
+        <rdfs:label>square length</rdfs:label>
+        <skos:definition>the unit of area equipvalent to area of a square with sides unit length</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SquareMeter -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SquareMeter">
+        <rdfs:label>sqaure meter</rdfs:label>
+        <skos:definition>the unit of area equipvalent to area of a square with sides one meter in length</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Temperature -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Temperature">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld"/>
+        <dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
+        <rdfs:label>temperature</rdfs:label>
+        <skos:definition>base quantity kind that is the quantitative measure of the ability of a substance, or more generally of any physical system, to transfer heat energy to another physical system</skos:definition>
+        <cmns-av:explanatoryNote>There are three types of temperature scale: those, such as the SI scale, that are defined in terms of the average translational kinetic energy per freely moving microscopic particle, such as atom, molecule, or electron, in a body; those that rely solely on purely macroscopic properties and thermodynamic principles, such as Kelvin&apos;s original definition; and those that are not defined by theoretical principles, but are defined by convenient empirical properties of particular materials.</cmns-av:explanatoryNote>
+        <cmns-av:symbol>T</cmns-av:symbol>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Time -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Time">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/QuantityKindOld"/>
+        <rdfs:label>time</rdfs:label>
+        <skos:definition>the measured or measurable period during which an action, process, or condition exists or continues</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Watt -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Watt">
+        <rdfs:label>watt</rdfs:label>
+        <skos:definition>unit of power equivalent to one joule per second</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Work -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Work">
+        <rdfs:label>work</rdfs:label>
+        <skos:definition>the work done on a charged particle by an electric field</skos:definition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQuality">
+        <skos:definition>synthesis of various physical measurements of properties of air that threaten human health</skos:definition>
+        <rdfs:label>air quality</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirQualityAttribute"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirSpeedAttribute"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/AirTemperatureAttribute"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/DaylightIntensityAttribute"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/RelativeHumidityAttribute"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Dehumidifier"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Fan"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/HeatingVentilationAndAirConditioning"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Radiator"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Dehumidifier"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Fan"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/HeatingVentilationAndAirConditioning"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Radiator"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/SpaceHeater"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Negative"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/Positive"/>
+        </owl:distinctMembers>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
