@@ -46,6 +46,19 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 	</owl:Ontology>
 	
+	<owl:Class rdf:about="&oe2022-iem;AirConditioning">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;isControlledBy"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Thermostat"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>air conditioning</rdfs:label>
+		<skos:definition>equipment, distribution systems, and terminals that control the humidity, temperature, and ventilation in a building in order to maintain a cool atmosphere</skos:definition>
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQuality">
 		<rdf:type rdf:resource="&owl;Class"/>
 		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
@@ -355,12 +368,6 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>fan</rdfs:label>
 		<skos:definition>piece of equipment that can increase air speed</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
-		<rdfs:label>heating, ventilation, and air conditioning</rdfs:label>
-		<skos:definition>equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;High">
@@ -821,6 +828,13 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;Radiator">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;isControlledBy"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Thermostat"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>radiator</rdfs:label>
 		<skos:definition>heating, ventilation, and air conditioning equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
 	</owl:Class>
@@ -981,6 +995,12 @@
 		<skos:definition>the work done on a charged particle by an electric field</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;controls">
+		<rdfs:label>controls</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe2022-iem;isControlledBy"/>
+		<skos:definition>determines the behavior of</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAttribute">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>has attribute</rdfs:label>
@@ -1080,6 +1100,11 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isControlledBy">
+		<rdfs:label>is controlled by</rdfs:label>
+		<skos:definition>has its behavior determined by</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isPossibleStateOf">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is possible state of</rdfs:label>
@@ -1131,6 +1156,32 @@
 	</owl:AllDifferent>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe2022-iem;AirConditioning">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Fan">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Radiator">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe2022-iem;AirConditioning">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Fan">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Radiator">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;SpaceHeater">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2022-iem;AirQualityAttribute">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;AirSpeedAttribute">
@@ -1140,32 +1191,6 @@
 			<rdf:Description rdf:about="&oe2022-iem;DaylightIntensityAttribute">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;RelativeHumidityAttribute">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Fan">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Radiator">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Fan">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioning">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;Radiator">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;SpaceHeater">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
