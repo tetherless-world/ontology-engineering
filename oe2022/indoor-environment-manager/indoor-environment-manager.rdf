@@ -47,7 +47,7 @@
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&oe2022-iem;AirConditioning">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;isControlledBy"/>
@@ -92,17 +92,6 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 		<rdfs:label>air temperature attribute</rdfs:label>
 		<skos:definition>a quantitative attribute that affects air temperature in a local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;Argument">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-qtu;hasNumericValue"/>
-				<owl:onDataRange rdf:resource="&xsd;int"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>argument</rdfs:label>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironment">
@@ -362,12 +351,20 @@
 				</owl:onDataRange>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:label>environment (new)</rdfs:label>
+		<skos:definition>the circumstances, objects, or conditions by which one is surrounded</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Fan">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>fan</rdfs:label>
 		<skos:definition>piece of equipment that can increase air speed</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
+		<rdfs:label>heating, ventilation, and air conditioning equipment</rdfs:label>
+		<skos:definition>the equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;High">
@@ -827,7 +824,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Radiator">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;isControlledBy"/>
@@ -944,6 +941,13 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;NonPowerConsumingComponent"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;controls"/>
+				<owl:onClass rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
 				<owl:onClass rdf:resource="&oe2022-iem;ThermostatState"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -1015,7 +1019,9 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasComponent">
+		<rdfs:label>has component</rdfs:label>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isComponentOf"/>
+		<skos:definition>contains some object within itself, in a semi-permanent capacity</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
@@ -1023,48 +1029,52 @@
 		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasNumericAirQualityValue">
-		<rdfs:range rdf:resource="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucket"/>
-	</owl:ObjectProperty>
-	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorIndoorAirSpeedValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-indoor air speed value</rdfs:label>
+		<skos:definition>has the number representing the difference between two indoor air speed values at two points in time</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorIndoorAirTemperatureValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-indoor air temperature value</rdfs:label>
+		<skos:definition>has the number representing the difference between two indoor air temperature values at two points in time</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorIndoorRelativeHumidityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-indoor relative humidity value</rdfs:label>
+		<skos:definition>has the number representing the difference between two indoor humidity values at two points in time</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorAirQualityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-outdoor air quality value</rdfs:label>
+		<skos:definition>has the number representing the difference between some indoor and outdoor air quality values</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorAirSpeedValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-outdoor air speed value</rdfs:label>
+		<skos:definition>has the number representing the difference between some indoor and outdoor air speed values</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorAirTemperatureValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-outdoor air temperature value</rdfs:label>
+		<skos:definition>has the number representing the difference between some indoor and outdoor air temperature values</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorDaylightIntensityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-outdoor daylight intensity value</rdfs:label>
+		<skos:definition>has the number representing the difference between some indoor and outdoor daylight intensity values</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorRelativeHumidityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-outdoor relative humidity value</rdfs:label>
+		<skos:definition>has the number representing the difference between some indoor and outdoor relative humidity values</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasPossibleState">
@@ -1098,6 +1108,8 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
+		<rdfs:label>is component of</rdfs:label>
+		<skos:definition>physically exists in the space in a semi-permanent capacity</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isControlledBy">
@@ -1129,9 +1141,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&cmns-qtu;hasLowerBound">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasAttribute"/>
 		<rdfs:label>has lower bound</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;Argument"/>
 		<skos:definition>specifies the quantity value that is the lower value of a pair of values representing a range</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -1140,9 +1150,7 @@
 	</rdf:Description>
 	
 	<owl:ObjectProperty rdf:about="&cmns-qtu;hasUpperBound">
-		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasAttribute"/>
 		<rdfs:label>has upper bound</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;Argument"/>
 		<skos:definition>specifies the quantity value that is the higher value of a pair of values representing a range</skos:definition>
 	</owl:ObjectProperty>
 	
