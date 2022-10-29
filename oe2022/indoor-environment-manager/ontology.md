@@ -2,12 +2,12 @@
 
 ## Conceptual Model
 
-<iframe src="https://miro.com/app/live-embed/uXjVPNokmA4=/?moveToViewport=-1765,-385,2032,1412&embedId=641440842144" scrolling="no" allowfullscreen width="768" height="432" frameborder="0"></iframe>
-
+<iframe src="https://miro.com/app/live-embed/uXjVPKqt2Qc=/?moveToViewport=-1199,-757,3008,1724&embedId=49044941042" frameborder="0" scrolling="no" allowfullscreen width="768" height="432"></iframe>
 An overview of the relationship between several categories of concepts the ontology uses, including a room the system could operate in as well as its occupants, attributes pertaining to the room’s environment, items in the room that affect its environment, various relevant measurements, attributes of the occupants, and types of comfort the occupant may experience. The diagram also depicts the relationship between the state of said room and its energy usage.
 
 ### Previous Versions
 
+- [Version 3 (OE 8)](files/OE_8_IEQManagementSystem_ConceptualModel.pdf)
 - [Version 2 (OE 6)](files/OE_6_IEQManagementSystem_ConceptualModel.pdf)
 - [Version 1 (OE 5)](files/OE_5_IEQManagementSystem_ConceptualModel.pdf)
 
