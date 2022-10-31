@@ -20,6 +20,6 @@ WHERE {
   FILTER regex(str(?property1), "${NAMESPACE_REGEX}")
   FILTER regex(str(?property2), "${NAMESPACE_REGEX}")
   BIND (
-    concat ("PRODERROR: Crossed domains. ", afn:localname(?property1), " < ", afn:localname (?property2), " but the domain ", afn:localname (?D1), " is a superclass of ", afn:localname (?D2)) AS ?error
+    concat ("ERROR: Crossed domains. ", afn:localname(?property1), " < ", afn:localname (?property2), " but the domain ", afn:localname (?D1), " is a superclass of ", afn:localname (?D2)) AS ?error
   )
 }

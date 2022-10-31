@@ -18,5 +18,5 @@ WHERE {
   FILTER NOT EXISTS {?property2 owl:deprecated "true"^^xsd:boolean} .
   FILTER regex(str(?property1), "${NAMESPACE_REGEX}")
   FILTER regex(str(?property2), "${NAMESPACE_REGEX}")
-   BIND (concat ("PRODERROR: Crossed ranges. ", afn:localname(?property1), " < ", afn:localname (?property2), " but the range ", afn:localname (?D1), " is a superclass of ", afn:localname (?D2)) AS ?error)
+   BIND (concat ("ERROR: Crossed ranges. ", afn:localname(?property1), " < ", afn:localname (?property2), " but the range ", afn:localname (?D1), " is a superclass of ", afn:localname (?D2)) AS ?error)
 }
