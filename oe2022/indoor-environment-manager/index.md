@@ -21,11 +21,11 @@ This project aims to develop an ontology that recommends a viable solution to im
 
 ## Point of Contact
 
-Chung, Jihoon (chungj11@rpi.edu)
+Chung, Jihoon (chungj11@rpi.edu) [homepage](https://github.com/JChung-rpi)
 
-Rook, Kelsey (rookk@rpi.edu)
+Rook, Kelsey (rookk@rpi.edu) [homepage](https://github.com/shmewtep)
 
-Jacoby-Cooper, Gabriel (rensselaer@gabrieljc.me)
+Jacoby-Cooper, Gabriel (rensselaer@gabrieljc.me) [homepage](https://github.com/gerzer)
 
 ## List of Resources
 
