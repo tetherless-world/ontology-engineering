@@ -7,6 +7,6 @@ WHERE
 {
   ?resource ?property ?value .
   FILTER (STRLEN(STR(?resource)) > 255)
-  FILTER regex(str(?resource), <HYGIENE_TESTS_FILTER_PARAMETER>)
+  FILTER regex(str(?resource), "${NAMESPACE_REGEX}")
   BIND (concat("PRODERROR: IRI ", STR(?resource), " is longer than 255 chars.") AS ?error)
 }

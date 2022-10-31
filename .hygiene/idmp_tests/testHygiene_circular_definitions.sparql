@@ -14,7 +14,7 @@ WHERE {
   ?subject skos:definition ?definition .
   FILTER NOT EXISTS {?subject a owl:NamedIndividual} .
   FILTER (REGEX(?definition, "\\W"+?label+"\\W"))
-  FILTER regex(str(?subject), <HYGIENE_TESTS_FILTER_PARAMETER>)
+  FILTER regex(str(?subject), "${NAMESPACE_REGEX}")
 
 
   BIND (

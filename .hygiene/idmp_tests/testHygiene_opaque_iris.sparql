@@ -11,7 +11,7 @@ WHERE
   ?resource ?property ?object.
 
   FILTER (REGEX(afn:localname(?resource), "(\\d\\d\\d\\d+$)|([^A-Za-z][A-Za-z][^A-Za-z])"))
-  FILTER (REGEX(str(?resource), <HYGIENE_TESTS_FILTER_PARAMETER>))
+  FILTER (REGEX(str(?resource), "${NAMESPACE_REGEX}"))
   FILTER NOT EXISTS {?resource rdf:type owl:NamedIndividual.}
 
   BIND (concat ("PRODERROR: IRI ", STR(?resource), " may be opaque ") AS ?error)

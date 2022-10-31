@@ -19,8 +19,8 @@ UNION
 FILTER (?property1 != ?property2) 
 }
 FILTER NOT EXISTS {?property owl:deprecated "true"^^xsd:boolean} .
-FILTER regex(str(?property), <HYGIENE_TESTS_FILTER_PARAMETER>)
-FILTER regex(str(?property1), <HYGIENE_TESTS_FILTER_PARAMETER>)
-FILTER regex(str(?property2), <HYGIENE_TESTS_FILTER_PARAMETER>)
+FILTER regex(str(?property), "${NAMESPACE_REGEX}")
+FILTER regex(str(?property1), "${NAMESPACE_REGEX}")
+FILTER regex(str(?property2), "${NAMESPACE_REGEX}")
 BIND (concat ("PRODERROR: object property whose iri is ", str(?property), " has more than one inverse object property") AS ?error)
 } 

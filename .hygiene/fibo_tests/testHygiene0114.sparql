@@ -12,7 +12,7 @@ WHERE {
   ?subject ?p ?o .
   FILTER NOT EXISTS {?o owl:deprecated "true"^^xsd:boolean} .
   FILTER (DATATYPE(?o)=xsd:string)
-  FILTER regex(str(?subject), <HYGIENE_TESTS_FILTER_PARAMETER>) 
+  FILTER regex(str(?subject), "${NAMESPACE_REGEX}")
   BIND (afn:localname (?p) AS ?prop)
   BIND ("[ÁáÇçÉéÍíÕõÖöäÄèÈμΜσΣʻa-zA-Z\\\\;'?@$%#&:/\"<*>,._+÷=)(\\[\\]{}0-9\n\t -]" AS ?reg)
   BIND (REPLACE (xsd:string (?o), ?reg, "")  AS ?bads)

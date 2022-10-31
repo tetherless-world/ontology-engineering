@@ -14,7 +14,7 @@ SELECT DISTINCT ?error
 WHERE {
   ?subject a ?c .
   FILTER NOT EXISTS {?subject owl:deprecated "true"^^xsd:boolean} .
-  FILTER regex(str(?subject), <HYGIENE_TESTS_FILTER_PARAMETER>)
+  FILTER regex(str(?subject), "${NAMESPACE_REGEX}")
   FILTER NOT EXISTS {?subject owl:deprecated "true"^^xsd:boolean} .
   FILTER (?c in (owl:Class,
           owl:ObjectProperty,

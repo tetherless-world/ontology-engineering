@@ -16,7 +16,7 @@ WHERE {
   ?s ?property ?object .
   FILTER NOT EXISTS {?object owl:deprecated "true"^^xsd:boolean} .
   FILTER (ISIRI (?object))
-  FILTER regex(str(?object), <HYGIENE_TESTS_FILTER_PARAMETER>)
+  FILTER regex(str(?object), "${NAMESPACE_REGEX}")
   FILTER NOT EXISTS {?object a []}
   FILTER (! (?property IN (owl:versionIRI, sm:dependsOn , owl:imports , sm:specificationVersionURL,
                     rdfs:seeAlso, dct:isPartOf, lcc-cr:isPartOf, lcc-cr:hasPart, dct:hasPart))) 

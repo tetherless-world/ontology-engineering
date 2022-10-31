@@ -10,6 +10,6 @@ WHERE
 {
     ?property rdfs:subPropertyOf*/rdf:type owl:DatatypeProperty.
     ?property rdfs:subPropertyOf*/rdf:type owl:ObjectProperty.
-    FILTER regex(str(?property), <HYGIENE_TESTS_FILTER_PARAMETER>)
+    FILTER regex(str(?property), "${NAMESPACE_REGEX}")
     BIND (concat ("ERROR: Property ", str(?property), " is declared both as an object and a datatype property.") AS ?error)
 }

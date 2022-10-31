@@ -17,8 +17,8 @@ WHERE {
   ?D2 rdfs:subClassOf+ ?D1 .
   FILTER NOT EXISTS {?property1 owl:deprecated "true"^^xsd:boolean} .
   FILTER NOT EXISTS {?property2 owl:deprecated "true"^^xsd:boolean} .
-  FILTER regex(str(?property1), <HYGIENE_TESTS_FILTER_PARAMETER>)
-  FILTER regex(str(?property2), <HYGIENE_TESTS_FILTER_PARAMETER>)
+  FILTER regex(str(?property1), "${NAMESPACE_REGEX}")
+  FILTER regex(str(?property2), "${NAMESPACE_REGEX}")
   BIND (
     concat ("PRODERROR: Crossed domains. ", afn:localname(?property1), " < ", afn:localname (?property2), " but the domain ", afn:localname (?D1), " is a superclass of ", afn:localname (?D2)) AS ?error
   )

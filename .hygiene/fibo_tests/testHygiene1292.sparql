@@ -11,7 +11,7 @@ WHERE
 {
     ?resource ?property owl:Class .
     FILTER NOT EXISTS {?resource owl:deprecated "true"^^xsd:boolean} .
-    FILTER regex(str(?resource), <HYGIENE_TESTS_FILTER_PARAMETER>)
+    FILTER regex(str(?resource), "${NAMESPACE_REGEX}")
     FILTER (REGEX(str(?resource), "/[^/]+(And|Or)[A-Z0-9][^/]+$") )
     FILTER (!CONTAINS(str(?resource), "InvestmentOrDepositAccount"))
     FILTER (!CONTAINS(str(?resource), "LoanOrCreditAccount"))  

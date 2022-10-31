@@ -14,7 +14,7 @@ SELECT DISTINCT ?error
 WHERE {
   ?ont a owl:Ontology .
   FILTER NOT EXISTS {?ont owl:deprecated "true"^^xsd:boolean} .
-  FILTER regex(str(?ont), <HYGIENE_TESTS_FILTER_PARAMETER>)	
+  FILTER regex(str(?ont), "${NAMESPACE_REGEX}")
   FILTER NOT EXISTS {
 	?ont rdfs:label ?l  ;
 	cmns-av:copyright|sm:copyright ?cr ;

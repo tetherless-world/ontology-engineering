@@ -12,6 +12,6 @@ WHERE
     ?resource owl:propertyChainAxiom ?axiom.
     ?axiom rdf:rest*/rdf:first ?property .
     ?property rdfs:subPropertyOf*/rdf:type owl:DatatypeProperty.
-    FILTER regex(str(?property), <HYGIENE_TESTS_FILTER_PARAMETER>)
+    FILTER regex(str(?property), "${NAMESPACE_REGEX}")
     BIND (concat ("WARN: Datatype property ", str(?property), " occurs in a property chain") AS ?error)
 }

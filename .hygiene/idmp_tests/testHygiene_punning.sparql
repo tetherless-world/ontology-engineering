@@ -8,7 +8,7 @@ WHERE
 {
     ?property rdf:type ?propertyType.
     FILTER (REGEX(STR(?propertyType), "ObjectProperty|AnnotationProperty|DatatypeProperty"))
-    FILTER regex(str(?property), <HYGIENE_TESTS_FILTER_PARAMETER>)
+    FILTER regex(str(?property), "${NAMESPACE_REGEX}")
 }
 GROUP BY ?property
 HAVING (COUNT(?propertyType) > 1)

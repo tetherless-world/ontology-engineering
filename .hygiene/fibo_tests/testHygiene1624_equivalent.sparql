@@ -9,7 +9,7 @@ SELECT DISTINCT ?error ?property1 ?property2
 WHERE
 {
     ?property1 owl:equivalentProperty ?property2.
-    FILTER (regex(str(?property1), <HYGIENE_TESTS_FILTER_PARAMETER>) || regex(str(?property2), <HYGIENE_TESTS_FILTER_PARAMETER>))
+    FILTER (regex(str(?property1), "${NAMESPACE_REGEX}") || regex(str(?property2), "${NAMESPACE_REGEX}"))
     {
         ?property1 rdfs:subPropertyOf*/rdf:type owl:DatatypeProperty.
         ?property2 rdfs:subPropertyOf*/rdf:type owl:ObjectProperty.

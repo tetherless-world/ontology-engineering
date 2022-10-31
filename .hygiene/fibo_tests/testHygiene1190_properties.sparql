@@ -8,7 +8,7 @@ prefix xsd:   <http://www.w3.org/2001/XMLSchema#>
 SELECT DISTINCT ?error ?property
 WHERE 
 {
-  FILTER regex(str(?property), <HYGIENE_TESTS_FILTER_PARAMETER>)
+  FILTER regex(str(?property), "${NAMESPACE_REGEX}")
   ?property rdfs:subPropertyOf+ ?property .
   FILTER NOT EXISTS {?property owl:deprecated "true"^^xsd:boolean} .
 

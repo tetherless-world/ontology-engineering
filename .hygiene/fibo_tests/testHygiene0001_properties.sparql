@@ -15,7 +15,7 @@ SELECT DISTINCT ?error
 WHERE {
   ?s ?property ?o .
   FILTER NOT EXISTS {?property owl:deprecated "true"^^xsd:boolean} .
-  FILTER regex(str(?property), <HYGIENE_TESTS_FILTER_PARAMETER>)
+  FILTER regex(str(?property), "${NAMESPACE_REGEX}")
   FILTER NOT EXISTS {?property a []}
   FILTER (! (?property IN (owl:versionIRI, sm:dependsOn , owl:imports , sm:specificationVersionURL,
                     rdfs:seeAlso, dct:isPartOf, lcc-cr:isPartOf, lcc-cr:hasPart, dct:hasPart))) 

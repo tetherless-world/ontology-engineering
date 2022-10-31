@@ -9,6 +9,6 @@ WHERE
 {
     ?ontology owl:imports+ ?ontology.
     FILTER NOT EXISTS {?ontology owl:deprecated "true"^^xsd:boolean} .
-    FILTER regex(str(?ontology), <HYGIENE_TESTS_FILTER_PARAMETER>)
+    FILTER regex(str(?ontology), "${NAMESPACE_REGEX}")
     BIND (concat ("ERROR: ", str(?ontology), " imports itself.") AS ?error)
 }
