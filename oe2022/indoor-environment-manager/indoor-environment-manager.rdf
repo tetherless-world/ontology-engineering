@@ -111,6 +111,10 @@
 		<skos:definition>a collection of indoor environmental parameters before environmental attributes affect the indoor environment</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironmentNew">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentNew"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Bucket">
 		<rdfs:label>bucket</rdfs:label>
 		<owl:equivalentClass>
@@ -189,6 +193,10 @@
 		</rdfs:subClassOf>
 		<rdfs:label>delta defined environment</rdfs:label>
 		<skos:definition>any environment that happens to be defined in terms of effectiveness with respect to some other environment</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironmentNew">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Energy">
@@ -273,8 +281,8 @@
 	<owl:Class rdf:about="&oe2022-iem;EnvironmentNew">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericIndoorOutdoorRelativeHumidityValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericRelativeHumidityValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
@@ -289,7 +297,39 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericIndoorOutdoorDaylightIntensityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirTemperatureValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">104</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirSpeedValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">30</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
@@ -305,39 +345,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericIndoorOutdoorAirTemperatureValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">104</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericIndoorOutdoorAirSpeedValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">30</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericIndoorOutdoorAirQualityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
@@ -385,6 +393,42 @@
 		<rdfs:label>indoor environment</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
 		<skos:definition>the indoor circumstances, objects, or conditions by which one is surrounded</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironmentNew">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">400</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironmentalQuality">
@@ -491,39 +535,6 @@
 		<rdfs:label>indoor-indoor relative humidity delta bucket medium</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucket">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;BucketNew"/>
-		<rdfs:label>indoor-outdoor air quality delta bucket</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:oneOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucketHigh">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucketLow">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucketMedium">
-					</rdf:Description>
-				</owl:oneOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>qualitative air quality measurement that represents the degree of environmental effect by outdoor environment</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucketHigh">
-		<rdf:type rdf:resource="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucket"/>
-		<rdfs:label>indoor-outdoor air quality delta bucket high</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucketLow">
-		<rdf:type rdf:resource="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucket"/>
-		<rdfs:label>indoor-outdoor air quality delta bucket low</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucketMedium">
-		<rdf:type rdf:resource="&oe2022-iem;IndoorOutdoorAirQualityDeltaBucket"/>
-		<rdfs:label>indoor-outdoor air quality delta bucket medium</rdfs:label>
-	</owl:NamedIndividual>
-	
 	<owl:Class rdf:about="&oe2022-iem;IndoorOutdoorAirSpeedDeltaBucket">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;BucketNew"/>
 		<rdfs:label>indoor-outdoor air speed delta bucket</rdfs:label>
@@ -588,39 +599,6 @@
 	<owl:NamedIndividual rdf:about="&oe2022-iem;IndoorOutdoorAirTemperatureDeltaBucketMedium">
 		<rdf:type rdf:resource="&oe2022-iem;IndoorOutdoorAirTemperatureDeltaBucket"/>
 		<rdfs:label>indoor-outdoor air temperature delta bucket medium</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucket">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;BucketNew"/>
-		<rdfs:label>indoor-outdoor daylight intensity delta bucket</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:oneOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucketHigh">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucketLow">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucketMedium">
-					</rdf:Description>
-				</owl:oneOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>qualitative daylight intensity measurement that represents the degree of environmental effect by outdoor environment</skos:definition>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucketHigh">
-		<rdf:type rdf:resource="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucket"/>
-		<rdfs:label>indoor-outdoor daylight intensity delta bucket high</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucketLow">
-		<rdf:type rdf:resource="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucket"/>
-		<rdfs:label>indoor-outdoor daylight intensity delta bucket low</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucketMedium">
-		<rdf:type rdf:resource="&oe2022-iem;IndoorOutdoorDaylightIntensityDeltaBucket"/>
-		<rdfs:label>indoor-outdoor daylight intensity delta bucket medium</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-iem;IndoorOutdoorRelativeHumidityDeltaBucket">
@@ -765,6 +743,72 @@
 		<cmns-av:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;OutdoorAirQualityBucket">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;BucketNew"/>
+		<rdfs:label>outdoor air quality bucket</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-iem;OutdoorAirQualityBucketHigh">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;OutdoorAirQualityBucketLow">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;OutdoorAirQualityBucketMedium">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>qualitative air quality measurement that represents the degree of environmental effect by outdoor environment</skos:definition>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;OutdoorAirQualityBucketHigh">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorAirQualityBucket"/>
+		<rdfs:label>indoor-outdoor air quality delta bucket high</rdfs:label>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;OutdoorAirQualityBucketLow">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorAirQualityBucket"/>
+		<rdfs:label>indoor-outdoor air quality delta bucket low</rdfs:label>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;OutdoorAirQualityBucketMedium">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorAirQualityBucket"/>
+		<rdfs:label>indoor-outdoor air quality delta bucket medium</rdfs:label>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-iem;OutdoorDaylightIntensityBucket">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;BucketNew"/>
+		<rdfs:label>outdoor daylight intensity bucket</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-iem;OutdoorDaylightIntensityBucketHigh">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;OutdoorDaylightIntensityBucketLow">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;OutdoorDaylightIntensityBucketMedium">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>qualitative daylight intensity measurement that represents the degree of environmental effect by outdoor environment</skos:definition>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;OutdoorDaylightIntensityBucketHigh">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorDaylightIntensityBucket"/>
+		<rdfs:label>indoor-outdoor daylight intensity delta bucket high</rdfs:label>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;OutdoorDaylightIntensityBucketLow">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorDaylightIntensityBucket"/>
+		<rdfs:label>indoor-outdoor daylight intensity delta bucket low</rdfs:label>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;OutdoorDaylightIntensityBucketMedium">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorDaylightIntensityBucket"/>
+		<rdfs:label>indoor-outdoor daylight intensity delta bucket medium</rdfs:label>
+	</owl:NamedIndividual>
+	
 	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
@@ -772,30 +816,42 @@
 		<skos:definition>a collection of outdoor environmental effects for baseline indoor environment</skos:definition>
 	</owl:Class>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerCubicSecond">
-		<rdfs:label>per cubic second</rdfs:label>
-		<skos:definition>the unit of volumetric flow rate equipvalent to the moved volume for 1 second</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerCubicTime">
-		<rdfs:label>per cubic time</rdfs:label>
-		<skos:definition>the unit of volumetric flow rate equipvalent to the moved volume for unit time</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerHour">
-		<rdfs:label>per hour</rdfs:label>
-		<skos:definition>the total sum for each hour</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerSecond">
-		<rdfs:label>per second</rdfs:label>
-		<skos:definition>the total sum for each second</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;PerTime">
-		<rdfs:label>per time</rdfs:label>
-		<skos:definition>the total sum for each unit time</skos:definition>
-	</owl:NamedIndividual>
+	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironmentNew">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironmentNew"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">400</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Person">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
@@ -856,6 +912,11 @@
 		<skos:definition>a collection of indoor environmental parameters after environmental attributes affect the indoor environment</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironmentNew">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironmentNew"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentNew"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Room">
 		<rdfs:label>room</rdfs:label>
 		<skos:definition>region in a building in which occupant comfort and measurements apply</skos:definition>
@@ -880,11 +941,6 @@
 		<skos:definition>an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
 	</owl:Class>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Second">
-		<rdfs:label>second</rdfs:label>
-		<skos:definition>explicit period of 1/60 minute</skos:definition>
-	</owl:NamedIndividual>
-	
 	<owl:Class rdf:about="&oe2022-iem;Sign">
 		<rdfs:label>sign</rdfs:label>
 		<owl:equivalentClass>
@@ -897,7 +953,7 @@
 				</owl:oneOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<skos:definition>plus or minus sign that indicates how attributes affects the environment in a positive or negative way</skos:definition>
+		<skos:definition>&quot;plus&quot; or &quot;minus&quot; indicator that indicates how attributes affect the environment in a positive or negative way, respectively</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;SpaceHeater">
@@ -910,16 +966,6 @@
 		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
 		<rdfs:label>speed</rdfs:label>
 		<skos:definition>the magnitude of a velocity irrespective of direction</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;SquareLength">
-		<rdfs:label>square length</rdfs:label>
-		<skos:definition>the unit of area equipvalent to area of a square with sides unit length</skos:definition>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;SquareMeter">
-		<rdfs:label>sqaure meter</rdfs:label>
-		<skos:definition>the unit of area equipvalent to area of a square with sides one meter in length</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Temperature">
@@ -976,11 +1022,6 @@
 		<skos:definition>the measured or measurable period during which an action, process, or condition exists or continues</skos:definition>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Watt">
-		<rdfs:label>watt</rdfs:label>
-		<skos:definition>unit of power equivalent to one joule per second</skos:definition>
-	</owl:NamedIndividual>
-	
 	<owl:Class rdf:about="&oe2022-iem;Window">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;NonPowerConsumingComponent"/>
 		<rdfs:label>window</rdfs:label>
@@ -993,11 +1034,6 @@
 		<rdfs:label>window blinds</rdfs:label>
 		<skos:definition>room component that be open or closed, thereby letting in or blocking light, respectively</skos:definition>
 	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;Work">
-		<rdfs:label>work</rdfs:label>
-		<skos:definition>the work done on a charged particle by an electric field</skos:definition>
-	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;controls">
 		<rdfs:label>controls</rdfs:label>
@@ -1029,52 +1065,34 @@
 		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorIndoorAirSpeedValue">
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirQualityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric indoor-indoor air speed value</rdfs:label>
-		<skos:definition>has the number representing the difference between two indoor air speed values at two points in time</skos:definition>
+		<rdfs:label>has numeric air quality value</rdfs:label>
+		<skos:definition>has the number representing an air quality value</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorIndoorAirTemperatureValue">
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirSpeedValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric indoor-indoor air temperature value</rdfs:label>
-		<skos:definition>has the number representing the difference between two indoor air temperature values at two points in time</skos:definition>
+		<rdfs:label>has numeric air speed value</rdfs:label>
+		<skos:definition>has the number representing an air speed value</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorIndoorRelativeHumidityValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric indoor-indoor relative humidity value</rdfs:label>
-		<skos:definition>has the number representing the difference between two indoor humidity values at two points in time</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorAirQualityValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric indoor-outdoor air quality value</rdfs:label>
-		<skos:definition>has the number representing the difference between some indoor and outdoor air quality values</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorAirSpeedValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric indoor-outdoor air speed value</rdfs:label>
-		<skos:definition>has the number representing the difference between some indoor and outdoor air speed values</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorAirTemperatureValue">
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirTemperatureValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric indoor-outdoor air temperature value</rdfs:label>
-		<skos:definition>has the number representing the difference between some indoor and outdoor air temperature values</skos:definition>
+		<skos:definition>has the number representing an air temperature value</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorDaylightIntensityValue">
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericDaylightIntensityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric indoor-outdoor daylight intensity value</rdfs:label>
-		<skos:definition>has the number representing the difference between some indoor and outdoor daylight intensity values</skos:definition>
+		<rdfs:label>has numeric daylight intensity value</rdfs:label>
+		<skos:definition>has the number representing a daylight intensity value</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericIndoorOutdoorRelativeHumidityValue">
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericRelativeHumidityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric indoor-outdoor relative humidity value</rdfs:label>
-		<skos:definition>has the number representing the difference between some indoor and outdoor relative humidity values</skos:definition>
+		<rdfs:label>has numeric relative humidity value</rdfs:label>
+		<skos:definition>has the number representing a relative humidity value</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasPossibleState">
@@ -1144,10 +1162,6 @@
 		<rdfs:label>has lower bound</rdfs:label>
 		<skos:definition>specifies the quantity value that is the lower value of a pair of values representing a range</skos:definition>
 	</owl:ObjectProperty>
-	
-	<rdf:Description rdf:about="&cmns-qtu;hasNumericValue">
-		<rdfs:domain rdf:resource="&oe2022-iem;EnvironmentNew"/>
-	</rdf:Description>
 	
 	<owl:ObjectProperty rdf:about="&cmns-qtu;hasUpperBound">
 		<rdfs:label>has upper bound</rdfs:label>
