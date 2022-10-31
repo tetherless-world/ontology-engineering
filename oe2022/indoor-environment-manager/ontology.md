@@ -13,7 +13,10 @@ An overview of the relationship between several categories of concepts the ontol
 
 ## Ontology
 
-[Latest](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf)
+- [Latest](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf)
+- [Version 3 (OE 8)](files/OE_8_IEQManagementSystem_Ontology.pdf)
+- [Version 2 (OE 7)](files/OE_7_IEQManagementSystem_Ontology.pdf)
+- [Version 1 (OE 6)](files/OE_6_IEQManagementSystem_Ontology.rdf)
 
 ### Accompanying Suite of Ontologies
 
