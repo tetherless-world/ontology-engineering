@@ -9,6 +9,6 @@ title: presentations
 
 ### Previous Versions
 
-- [Version 3 (OE 7)](files/OE_7_IEQManagementSystem_Presentation.pdf)
-- [Version 2 (OE 5)](files/OE_5_IEQManagementSystem_Presentation.pdf)
-- [Version 1 (OE 3)](files/OE_3_IEQManagementSystem_Presentation.pdf)
+- [Version 3 (OE 7)](https://docs.google.com/presentation/d/e/2PACX-1vS2Ff3Mug4JClBPS-iqRxoI5fw27bEP-bJhA7tASfqklgvdF3l-GcPklp0wMdY-LzfY3igIn2dVekWA/pub?start=false&loop=false&delayms=3000)
+- [Version 2 (OE 5)](https://docs.google.com/presentation/d/e/2PACX-1vQR-yoya2GNqqyLAr_KV9dRD_NXeEPn8fje0OUQEleVcQSBfT0IIbNcf26DgwVP0zG6Fb0Etbuh09_w/pub?start=false&loop=false&delayms=3000)
+- [Version 1 (OE 3)](https://docs.google.com/presentation/d/e/2PACX-1vTc6Da5VLCCrz4AyOQAl109nofvueaYAg6qu0TBhT6s8fV0qgSGlxHjy4swdlWTwBSTmU3s1w6Whzm9/pub?start=false&loop=false&delayms=3000)
