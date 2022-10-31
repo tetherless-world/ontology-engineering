@@ -23,7 +23,7 @@ This application recommends dog breeds to households given some specific charact
 
 Ashley Choi, choia5@rpi.edu
 
-Debjani Ray-Majumder, raymad@rpi.edu
+Debjani Ray-Majumder
 
 Danielle Villa, villad4@rpi.edu
 

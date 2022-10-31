@@ -18,7 +18,7 @@ HYGIENE_WORKSPACE=${HYGIENE_WORKSPACE:-"$(cd "${REPO_DIR}" && cd .. && pwd)"}
 HYGIENE_NAMESPACE_REGEX="^https:\/\/tw\.rpi\.edu\/ontology-engineering\/"
 
 # Relative path to the test directory
-HYGIENE_TEST_SUBDIR=".hygiene/tests"
+HYGIENE_TEST_SUBDIR=".hygiene/curated_tests_only_warnings"
 
 # If true, fail tests that produce warnings
 HYGIENE_FAIL_ON_WARNINGS=false
