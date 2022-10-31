@@ -7,16 +7,17 @@ An overview of the relationship between several categories of concepts the ontol
 
 ### Previous Versions
 
-- [Version 3 (OE 8)](files/OE_8_IEQManagementSystem_ConceptualModel.pdf)
-- [Version 2 (OE 6)](files/OE_6_IEQManagementSystem_ConceptualModel.pdf)
-- [Version 1 (OE 5)](files/OE_5_IEQManagementSystem_ConceptualModel.pdf)
+- [Version 3 (OE 8)](https://drive.google.com/file/d/1TKyZMECKkrVbj1IumNUA7Mr-ySvIPOyF/view?usp=sharing)
+- [Version 2 (OE 6)](https://drive.google.com/file/d/1flNzd0NzZzrsa6nSemaQal0lpTnElB1l/view?usp=sharing)
+- [Version 1 (OE 5)](https://drive.google.com/file/d/1yJqxKVTRcumLYXdhePVD13OTwe4al6JT/view?usp=sharing)
 
 ## Ontology
 
 - [Latest](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf)
-- [Version 3 (OE 8)](files/OE_8_IEQManagementSystem_Ontology.pdf)
-- [Version 2 (OE 7)](files/OE_7_IEQManagementSystem_Ontology.pdf)
-- [Version 1 (OE 6)](files/OE_6_IEQManagementSystem_Ontology.rdf)
+- [Version 3 (OE 8_Individual)](https://drive.google.com/file/d/1gspmaP-d7qbCS4ZU1jS9XG0_4Nj6MljA/view?usp=sharing)
+- [Version 3 (OE 8)](https://drive.google.com/file/d/1CQ9toPMEqJIb5dmBIoXTL2tqsq8NUYY_/view?usp=sharing)
+- [Version 2 (OE 7)](https://drive.google.com/file/d/1kZn1TZ6qzmR0K9AIHrB7CrPFo4l4MAuw/view?usp=sharing)
+- [Version 1 (OE 6)](https://drive.google.com/file/d/1qHudx_rdA53kvdJMw_BnMlFNXQtTLNBy/view?usp=sharing)
 
 ### Accompanying Suite of Ontologies
 

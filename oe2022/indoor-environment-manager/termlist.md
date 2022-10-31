@@ -17,8 +17,8 @@ title: term list
 
 ## Previous Versions
 
-- [Version 5 (OE 8)](files/OE_8_IEQManagementSystem_CuratedTermList.xlsx)
-- [Version 4 (OE 6)](files/OE_6_IEQManagementSystem_CuratedTermList.xlsx)
-- [Version 3 (OE 5)](files/OE_5_IEQManagementSystem_CuratedTermList.xlsx)
-- [Version 2 (OE 4 final)](files/OE_4_IEQManagementSystem_CuratedTermList.xlsx)
-- [Version 1 (OE 4 Prelim)](files/OE_4_IEQManagementSystem_TermList_Prelim.xlsx)
+- [Version 5 (OE 8)](https://docs.google.com/spreadsheets/d/e/2PACX-1vT5v-2pI7QlArfLg8KzZR3nHr2DFwaRc_ZOHFJW8HANoOBipwvxkSnMxuV1HupybA/pubhtml)
+- [Version 4 (OE 6)](https://docs.google.com/spreadsheets/d/e/2PACX-1vQH-u9aaqHCftIYVhVGPw8EzVH6dP_5ju-pRFy5EJKt8WVYJGtg7M3_zJc6XQoSbw/pubhtml)
+- [Version 3 (OE 5)](https://docs.google.com/spreadsheets/d/e/2PACX-1vT09i2YarLS6WhF7Q84qC4y9JvgkJVaErCttZg7XRDMMw9OT4IJjZ8T-7wdQHiHHQ/pubhtml)
+- [Version 2 (OE 4 final)](https://docs.google.com/spreadsheets/d/e/2PACX-1vQpG5FyC-Tyt8HQp4p1DCEeIrXXetM0pRVwekXrtvqvKrFhTVynrqZmcXTSgTzA_w/pubhtml)
+- [Version 1 (OE 4 Prelim)](https://docs.google.com/spreadsheets/d/e/2PACX-1vQUyscYsNcqeF_b3Ix9Kq11K9sJJV5BcCLxlFiIktJj7_BroP1epvg-EA_4Pf3Flg/pubhtml)
