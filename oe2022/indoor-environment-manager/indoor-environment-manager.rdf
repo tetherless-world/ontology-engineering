@@ -133,6 +133,20 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;BucketNew">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasLowerBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasUpperBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>bucket</rdfs:label>
 		<skos:definition>qualitative measurement that represents the degree of environmental effect by an environment attribute</skos:definition>
 	</owl:Class>
@@ -297,6 +311,22 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirTemperatureValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
@@ -329,24 +359,8 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
@@ -400,7 +414,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
@@ -411,12 +424,12 @@
 						</owl:withRestrictions>
 					</rdfs:Datatype>
 				</owl:onDataRange>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
@@ -427,6 +440,7 @@
 						</owl:withRestrictions>
 					</rdfs:Datatype>
 				</owl:onDataRange>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 	</owl:Class>
@@ -819,38 +833,6 @@
 	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironmentNew">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironmentNew"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">400</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Person">
@@ -1065,6 +1047,10 @@
 		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasLowerBound">
+		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
+	</owl:DatatypeProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirQualityValue">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has numeric air quality value</rdfs:label>
@@ -1118,6 +1104,10 @@
 		<owl:inverseOf rdf:resource="&oe2022-iem;isStateOf"/>
 		<skos:definition>is currently in the condition, referring to objects that have some changeable condition</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasUpperBound">
+		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isAttributeOf">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
