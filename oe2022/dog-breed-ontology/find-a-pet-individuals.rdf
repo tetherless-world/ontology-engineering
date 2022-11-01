@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY Documents "https://www.omg.org/spec/Commons/Documents/">
 	<!ENTITY Identifiers "https://www.omg.org/spec/Commons/Identifiers/">
 	<!ENTITY LanguageRepresentation "https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/">
+	<!ENTITY ProductsAndServices "https://www.omg.org/spec/Commons/ProductsAndServices/">
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
 	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
@@ -19,8 +21,10 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/"
+	xmlns:Documents="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:Identifiers="https://www.omg.org/spec/Commons/Identifiers/"
 	xmlns:LanguageRepresentation="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"
+	xmlns:ProductsAndServices="https://www.omg.org/spec/Commons/ProductsAndServices/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
 	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
@@ -63,8 +67,19 @@
 		<rdf:type rdf:resource="&cmns-rt;RatingAssessmentEvent"/>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;AmericanKennelClub2021PublishedRankingsDate">
+		<rdf:type rdf:resource="&cmns-dt;ExplicitDate"/>
+		<cmns-dt:hasDateValue>2022-03-15</cmns-dt:hasDateValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency">
+		<rdf:type rdf:resource="&cmns-rt;RatingAgency"/>
+		<cmns-dt:hasDateValue>2022-03-15</cmns-dt:hasDateValue>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;TheAmericanKennelClub">
 		<rdf:type rdf:resource="&oe2022-dogs;Organization"/>
+		<cmns-pts:playsRole rdf:resource="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;VetStreet">
@@ -130,6 +145,19 @@
 		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;blackColor"/>
 		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;whiteColor"/>
 		<cmns-cls:isClassifiedBy rdf:resource="&oe2022-dogs-ind;houndBreedGroup"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;greyhound2021PopularityRanking">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+		<Documents:hasDateOfIssuance rdf:resource="&oe2022-dogs-ind;AmericanKennelClub2021PublishedRankingsDate"/>
+		<ProductsAndServices:isIssuedBy rdf:resource="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency"/>
+		<cmns-rt:hasRatingScore rdf:resource="&oe2022-dogs-ind;greyhound2021RatingScore"/>
+		<cmns-rt:rates rdf:resource="&oe2022-dogs-ind;greyhound"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;greyhound2021RatingScore">
+		<rdf:type rdf:resource="&cmns-rt;QuantitativeRatingScore"/>
+		<cmns-rt:hasMeasureWithinScale rdf:datatype="&xsd;decimal">132.0</cmns-rt:hasMeasureWithinScale>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;greyhoundBreedCharacteristicProfile">
