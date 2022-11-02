@@ -46,6 +46,23 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 	</owl:Ontology>
 	
+	<owl:Class rdf:about="&oe2022-iem;Action">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;causesNewState"/>
+				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;produces"/>
+				<owl:onClass rdf:resource="&oe2022-iem;ResultantIndoorEnvironmentNew"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;AirConditioning">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
 		<rdfs:subClassOf>
@@ -900,11 +917,32 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Room">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasComponent"/>
+				<owl:onClass rdf:resource="&oe2022-iem;RoomComponent"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasEnvironment"/>
+				<owl:onClass rdf:resource="&oe2022-iem;BaselineIndoorEnvironmentNew"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>room</rdfs:label>
 		<skos:definition>region in a building in which occupant comfort and measurements apply</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;RoomComponent">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAvailableAction"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Action"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasState"/>
@@ -1017,6 +1055,10 @@
 		<skos:definition>room component that be open or closed, thereby letting in or blocking light, respectively</skos:definition>
 	</owl:Class>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;causesNewState">
+		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;controls">
 		<rdfs:label>controls</rdfs:label>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isControlledBy"/>
@@ -1028,6 +1070,10 @@
 		<rdfs:label>has attribute</rdfs:label>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isAttributeOf"/>
 		<skos:definition>has components that affect the nature of the whole with respect to relevant actors</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAvailableAction">
+		<rdfs:range rdf:resource="&oe2022-iem;Action"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasBucket">
@@ -1045,6 +1091,10 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
 		<rdfs:label>has effect</rdfs:label>
 		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEnvironment">
+		<rdfs:range rdf:resource="&oe2022-iem;EnvironmentNew"/>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasLowerBound">
@@ -1141,6 +1191,9 @@
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is currently the condition of</rdfs:label>
 		<rdfs:label>is state of</rdfs:label>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;produces">
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;quatifies">
