@@ -46,23 +46,6 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 	</owl:Ontology>
 	
-	<owl:Class rdf:about="&oe2022-iem;Action">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;causesNewState"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;produces"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ResultantIndoorEnvironmentNew"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2022-iem;AirConditioning">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
 		<rdfs:subClassOf>
@@ -1029,7 +1012,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasAvailableAction"/>
-				<owl:onClass rdf:resource="&oe2022-iem;Action"/>
+				<owl:onClass rdf:resource="&oe2022-iem;RoomComponentAction"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -1049,6 +1032,30 @@
 		</rdfs:subClassOf>
 		<rdfs:label>room component</rdfs:label>
 		<skos:definition>an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;RoomComponentAction">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;causesNewState"/>
+				<owl:onClass rdf:resource="&oe2022-iem;ComponentState"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;produces"/>
+				<owl:onClass rdf:resource="&oe2022-iem;ResultantIndoorEnvironmentNew"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;isAvailableActionFor"/>
+				<owl:onClass rdf:resource="&oe2022-iem;RoomComponent"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Sign">
@@ -1171,7 +1178,8 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAvailableAction">
-		<rdfs:range rdf:resource="&oe2022-iem;Action"/>
+		<rdfs:range rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<owl:inverseOf rdf:resource="&oe2022-iem;isAvailableActionFor"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasBucket">
@@ -1265,6 +1273,10 @@
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is attribute of</rdfs:label>
 		<skos:definition>is a component that affects the nature of the whole with respect to relevant actors</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isAvailableActionFor">
+		<rdfs:domain rdf:resource="&oe2022-iem;RoomComponentAction"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
