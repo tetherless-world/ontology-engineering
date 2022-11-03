@@ -228,6 +228,81 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironmentNew">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class>
+						<owl:complementOf>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirSpeedValue"/>
+								<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+							</owl:Restriction>
+						</owl:complementOf>
+					</owl:Class>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-iem;hasAirSpeedSign"/>
+						<owl:someValuesFrom rdf:resource="&oe2022-iem;Sign"/>
+					</owl:Restriction>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class>
+						<owl:complementOf>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirTemperatureValue"/>
+								<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+							</owl:Restriction>
+						</owl:complementOf>
+					</owl:Class>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-iem;hasAirTemperatureSign"/>
+						<owl:someValuesFrom rdf:resource="&oe2022-iem;Sign"/>
+					</owl:Restriction>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class>
+						<owl:complementOf>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-iem;hasNumericRelativeHumidityValue"/>
+								<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+							</owl:Restriction>
+						</owl:complementOf>
+					</owl:Class>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-iem;hasRelativeHumiditySign"/>
+						<owl:someValuesFrom rdf:resource="&oe2022-iem;Sign"/>
+					</owl:Restriction>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirSpeedSign"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Sign"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirTemperatureSign"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Sign"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasRelativeHumiditySign"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Sign"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Energy">
@@ -1080,6 +1155,14 @@
 		<skos:definition>determines the behavior of</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirSpeedSign">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasSign"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirTemperatureSign">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasSign"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAttribute">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>has attribute</rdfs:label>
@@ -1153,6 +1236,10 @@
 		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isPossibleStateOf"/>
 		<skos:definition>has the ability to be in some condition at a point in time</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasRelativeHumiditySign">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasSign"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasSign">
