@@ -1,1119 +1,683 @@
-<?xml version="1.0"?>
-<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/"
-     xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/"
-     xmlns:dct="http://purl.org/dc/terms/"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
-     xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
-     xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
-     xmlns:cmns-rt="https://www.omg.org/spec/Commons/Ratings/"
-     xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
-     xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
-     xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
-     xmlns:Documents="https://www.omg.org/spec/Commons/Documents/"
-     xmlns:Identifiers="https://www.omg.org/spec/Commons/Identifiers/"
-     xmlns:oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
-     xmlns:oe2022-dogs-ind="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/"
-     xmlns:ProductsAndServices="https://www.omg.org/spec/Commons/ProductsAndServices/"
-     xmlns:LanguageRepresentation="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/">
-    <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/">
-        <owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Ratings/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/LCC/20221001/Countries/Regions/ISO3166-2-SubdivisionCodes-US/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
-        <dct:abstract></dct:abstract>
-        <dct:creator>Ashley Choi</dct:creator>
-        <dct:creator>Danielle Villa : https://tw.rpi.edu/person/danielle-villa</dct:creator>
-        <dct:creator>Debjani Ray-Majumder: https://ise.rpi.edu/people/debjani-ray-majumder</dct:creator>
-        <rdfs:label>Find a Pet - Dog Breeds Individuals Ontology</rdfs:label>
-    </owl:Ontology>
-    
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY Documents "https://www.omg.org/spec/Commons/Documents/">
+	<!ENTITY Identifiers "https://www.omg.org/spec/Commons/Identifiers/">
+	<!ENTITY LanguageRepresentation "https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/">
+	<!ENTITY ProductsAndServices "https://www.omg.org/spec/Commons/ProductsAndServices/">
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
+	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY cmns-rt "https://www.omg.org/spec/Commons/Ratings/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY lcc-cr "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/">
+	<!ENTITY oe2022-dogs "https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/">
+	<!ENTITY oe2022-dogs-ind "https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/"
+	xmlns:Documents="https://www.omg.org/spec/Commons/Documents/"
+	xmlns:Identifiers="https://www.omg.org/spec/Commons/Identifiers/"
+	xmlns:LanguageRepresentation="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"
+	xmlns:ProductsAndServices="https://www.omg.org/spec/Commons/ProductsAndServices/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:cmns-rt="https://www.omg.org/spec/Commons/Ratings/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
+	xmlns:oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
+	xmlns:oe2022-dogs-ind="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/">
+		<rdfs:label>Find a Pet - Dog Breeds Individuals Ontology</rdfs:label>
+		<dct:abstract></dct:abstract>
+		<dct:creator>Ashley Choi</dct:creator>
+		<dct:creator>Danielle Villa: https://tw.rpi.edu/person/danielle-villa</dct:creator>
+		<dct:creator>Debjani Ray-Majumder: https://ise.rpi.edu/people/debjani-ray-majumder</dct:creator>
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Ratings/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/20221001/Countries/Regions/ISO3166-2-SubdivisionCodes-US/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&dct;contributor">
+		<rdfs:isDefinedBy rdf:resource="&dct;contributor"/>
+		<skos:definition>An entity responsible for making contributions to the resource.</skos:definition>
+	</rdf:Description>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;2021AmericanKennelClubRating">
+		<rdf:type rdf:resource="&cmns-rt;RatingAssessmentEvent"/>
+		<ProductsAndServices:isProvidedBy rdf:resource="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;AmericanKennelClub2021PublishedRankingsDate">
+		<rdf:type rdf:resource="&cmns-dt;ExplicitDate"/>
+		<cmns-dt:hasDateValue>2022-03-15</cmns-dt:hasDateValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency">
+		<rdf:type rdf:resource="&cmns-rt;RatingAgency"/>
+		<cmns-dt:hasDateValue>2022-03-15</cmns-dt:hasDateValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;TheAmericanKennelClub">
+		<rdf:type rdf:resource="&oe2022-dogs;Organization"/>
+		<cmns-pts:playsRole rdf:resource="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;VetStreet">
+		<rdf:type rdf:resource="&oe2022-dogs;Organization"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;blackMask">
+		<rdf:type rdf:resource="&oe2022-dogs;Marking"/>
+		<oe2022-dogs:hasShape rdf:resource="&oe2022-dogs;maskShape"/>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;blackColor"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;blackPoints">
+		<rdf:type rdf:resource="&oe2022-dogs;Marking"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;curlyOnlyCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CurlyCoatType"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;dogAllergy">
+		<rdf:type rdf:resource="&oe2022-dogs;Allergy"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;doubleMultiCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;DoubleCoatType"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;goldendoodle">
+		<rdf:type rdf:resource="&oe2022-dogs;Breed"/>
+		<oe2022-dogs:hasCoatType rdf:resource="&oe2022-dogs-ind;smoothMultiCoatType"/>
+		<oe2022-dogs:hasMaxHeight rdf:datatype="&xsd;decimal">15.0</oe2022-dogs:hasMaxHeight>
+		<oe2022-dogs:hasMaxHeight rdf:datatype="&xsd;decimal">24.0</oe2022-dogs:hasMaxHeight>
+		<oe2022-dogs:hasMaxLifespan rdf:datatype="&xsd;decimal">15.0</oe2022-dogs:hasMaxLifespan>
+		<oe2022-dogs:hasMaxPrice rdf:datatype="&xsd;decimal">5000.0</oe2022-dogs:hasMaxPrice>
+		<oe2022-dogs:hasMaxWeight rdf:datatype="&xsd;decimal">100.0</oe2022-dogs:hasMaxWeight>
+		<oe2022-dogs:hasMinHeight rdf:datatype="&xsd;decimal">13.0</oe2022-dogs:hasMinHeight>
+		<oe2022-dogs:hasMinLifespan rdf:datatype="&xsd;decimal">10.0</oe2022-dogs:hasMinLifespan>
+		<oe2022-dogs:hasMinPrice rdf:datatype="&xsd;decimal">1000.0</oe2022-dogs:hasMinPrice>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;GoldColor"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;goldendoodleBreedCharacteristicProfile">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+		<oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysAdaptabilityLevel>
+		<oe2022-dogs:displaysBarkingLevel rdf:datatype="&xsd;decimal">0.6</oe2022-dogs:displaysBarkingLevel>
+		<oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysCatFriendlinessLevel>
+		<oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysChildFriendlinessLevel>
+		<oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysDogFriendlinessLevel>
+		<oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="&xsd;decimal">0.8</oe2022-dogs:displaysExerciseNeedsLevel>
+		<oe2022-dogs:displaysGroomingLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysGroomingLevel>
+		<oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="&xsd;decimal">0.8</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
+		<oe2022-dogs:displaysIntelligenceLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysIntelligenceLevel>
+		<oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysStrangerFriendlinessLevel>
+		<oe2022-dogs:displaysTrainabilityLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysTrainabilityLevel>
+		<oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="&xsd;decimal">0.6</oe2022-dogs:displaysWatchDogAbilityLevel>
+		<cmns-cls:characterizes rdf:resource="&oe2022-dogs-ind;goldendoodle"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;greyhound">
+		<rdf:type rdf:resource="&oe2022-dogs;Breed"/>
+		<oe2022-dogs:causes rdf:resource="&oe2022-dogs-ind;dogAllergy"/>
+		<oe2022-dogs:hasCoatLength rdf:resource="&oe2022-dogs-ind;shortOnlyCoatLength"/>
+		<oe2022-dogs:hasCoatType rdf:resource="&oe2022-dogs-ind;smoothOnlyCoatType"/>
+		<oe2022-dogs:hasMarking rdf:resource="&oe2022-dogs-ind;blackMask"/>
+		<oe2022-dogs:hasMaxHeight rdf:datatype="&xsd;decimal">30.0</oe2022-dogs:hasMaxHeight>
+		<oe2022-dogs:hasMaxLifespan rdf:datatype="&xsd;decimal">13.0</oe2022-dogs:hasMaxLifespan>
+		<oe2022-dogs:hasMaxPrice rdf:datatype="&xsd;decimal">2500.0</oe2022-dogs:hasMaxPrice>
+		<oe2022-dogs:hasMaxWeight rdf:datatype="&xsd;decimal">70.0</oe2022-dogs:hasMaxWeight>
+		<oe2022-dogs:hasMinHeight rdf:datatype="&xsd;decimal">27.0</oe2022-dogs:hasMinHeight>
+		<oe2022-dogs:hasMinLifespan rdf:datatype="&xsd;decimal">10.0</oe2022-dogs:hasMinLifespan>
+		<oe2022-dogs:hasMinPrice rdf:datatype="&xsd;decimal">1500.0</oe2022-dogs:hasMinPrice>
+		<oe2022-dogs:hasMinWeight rdf:datatype="&xsd;decimal">60.0</oe2022-dogs:hasMinWeight>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;blackColor"/>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;whiteColor"/>
+		<cmns-cls:isClassifiedBy rdf:resource="&oe2022-dogs-ind;houndBreedGroup"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;greyhound2021PopularityRanking">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+		<Documents:hasDateOfIssuance rdf:resource="&oe2022-dogs-ind;AmericanKennelClub2021PublishedRankingsDate"/>
+		<ProductsAndServices:isIssuedBy rdf:resource="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency"/>
+		<cmns-rt:hasRatingScore rdf:resource="&oe2022-dogs-ind;greyhound2021RatingScore"/>
+		<cmns-rt:rates rdf:resource="&oe2022-dogs-ind;greyhound"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;greyhound2021RatingScore">
+		<rdf:type rdf:resource="&cmns-rt;QuantitativeRatingScore"/>
+		<cmns-rt:hasMeasureWithinScale rdf:datatype="&xsd;decimal">132.0</cmns-rt:hasMeasureWithinScale>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;greyhoundBreedCharacteristicProfile">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+		<oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="&xsd;decimal">.4</oe2022-dogs:displaysAdaptabilityLevel>
+		<oe2022-dogs:displaysBarkingLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysBarkingLevel>
+		<oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="&xsd;decimal">.4</oe2022-dogs:displaysCatFriendlinessLevel>
+		<oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysChildFriendlinessLevel>
+		<oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysDogFriendlinessLevel>
+		<oe2022-dogs:displaysDroolingLevel rdf:datatype="&xsd;decimal">.2</oe2022-dogs:displaysDroolingLevel>
+		<oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="&xsd;decimal">.4</oe2022-dogs:displaysExerciseNeedsLevel>
+		<oe2022-dogs:displaysGroomingLevel rdf:datatype="&xsd;decimal">.2</oe2022-dogs:displaysGroomingLevel>
+		<oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
+		<oe2022-dogs:displaysIntelligenceLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysIntelligenceLevel>
+		<oe2022-dogs:displaysMentalStimulationNeedsLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysMentalStimulationNeedsLevel>
+		<oe2022-dogs:displaysPlayfullnessLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysPlayfullnessLevel>
+		<oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysStrangerFriendlinessLevel>
+		<oe2022-dogs:displaysTrainabilityLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysTrainabilityLevel>
+		<oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysWatchDogAbilityLevel>
+		<cmns-cls:characterizes rdf:resource="&oe2022-dogs-ind;greyhound"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;houndBreedGroup">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedGroup"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;mediumOnlyCoatLength">
+		<rdf:type rdf:resource="&oe2022-dogs;MediumCoatLength"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;nonSportingGroup">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedGroup"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;poodle">
+		<rdf:type rdf:resource="&oe2022-dogs;Breed"/>
+		<oe2022-dogs:hasCoatLength rdf:resource="&oe2022-dogs-ind;mediumOnlyCoatLength"/>
+		<oe2022-dogs:hasCoatType rdf:resource="&oe2022-dogs-ind;curlyOnlyCoatType"/>
+		<oe2022-dogs:hasMarking rdf:resource="&oe2022-dogs-ind;blackMask"/>
+		<oe2022-dogs:hasMarking rdf:resource="&oe2022-dogs-ind;blackPoints"/>
+		<oe2022-dogs:hasMarking rdf:resource="&oe2022-dogs-ind;whiteMask"/>
+		<oe2022-dogs:hasMaxHeight rdf:datatype="&xsd;decimal">24.0</oe2022-dogs:hasMaxHeight>
+		<oe2022-dogs:hasMaxLifespan rdf:datatype="&xsd;decimal">18.0</oe2022-dogs:hasMaxLifespan>
+		<oe2022-dogs:hasMaxPrice rdf:datatype="&xsd;decimal">2500.0</oe2022-dogs:hasMaxPrice>
+		<oe2022-dogs:hasMaxWeight rdf:datatype="&xsd;decimal">70.0</oe2022-dogs:hasMaxWeight>
+		<oe2022-dogs:hasMinHeight rdf:datatype="&xsd;decimal">15.0</oe2022-dogs:hasMinHeight>
+		<oe2022-dogs:hasMinLifespan rdf:datatype="&xsd;decimal">10.0</oe2022-dogs:hasMinLifespan>
+		<oe2022-dogs:hasMinPrice rdf:datatype="&xsd;decimal">1200.0</oe2022-dogs:hasMinPrice>
+		<oe2022-dogs:hasMinWeight rdf:datatype="&xsd;decimal">40.0</oe2022-dogs:hasMinWeight>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;apricotColor"/>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;blackColor"/>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;blueColor"/>
+		<cmns-cls:isClassifiedBy rdf:resource="&oe2022-dogs-ind;nonSportingGroup"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;poodle2021PopularityRanking">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+		<Documents:hasDateOfIssuance rdf:resource="&oe2022-dogs-ind;AmericanKennelClub2021PublishedRankingsDate"/>
+		<ProductsAndServices:isIssuedBy rdf:resource="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency"/>
+		<cmns-rt:hasRatingScore rdf:resource="&oe2022-dogs-ind;poodle2021RatingScore"/>
+		<cmns-rt:rates rdf:resource="&oe2022-dogs-ind;poodle"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;poodle2021RatingScore">
+		<rdf:type rdf:resource="&cmns-rt;QuantitativeRatingScore"/>
+		<cmns-rt:hasMeasureWithinScale rdf:datatype="&xsd;decimal">5.0</cmns-rt:hasMeasureWithinScale>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;poodleBreedCharacteristicProfile">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+		<oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysAdaptabilityLevel>
+		<oe2022-dogs:displaysBarkingLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysBarkingLevel>
+		<oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysCatFriendlinessLevel>
+		<oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysChildFriendlinessLevel>
+		<oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysDogFriendlinessLevel>
+		<oe2022-dogs:displaysDroolingLevel rdf:datatype="&xsd;decimal">.2</oe2022-dogs:displaysDroolingLevel>
+		<oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysExerciseNeedsLevel>
+		<oe2022-dogs:displaysGroomingLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysGroomingLevel>
+		<oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
+		<oe2022-dogs:displaysIntelligenceLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysIntelligenceLevel>
+		<oe2022-dogs:displaysMentalStimulationNeedsLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysMentalStimulationNeedsLevel>
+		<oe2022-dogs:displaysPlayfullnessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysPlayfullnessLevel>
+		<oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysStrangerFriendlinessLevel>
+		<oe2022-dogs:displaysTrainabilityLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysTrainabilityLevel>
+		<oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysWatchDogAbilityLevel>
+		<cmns-cls:characterizes rdf:resource="&oe2022-dogs-ind;poodle"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;question1Family">
+		<rdf:type rdf:resource="&oe2022-dogs;FamilyWithSmallChildren"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;question4Family">
+		<rdf:type rdf:resource="&oe2022-dogs;FamilyWithSmallChildren"/>
+		<oe2022-dogs:ownsPet rdf:resource="&oe2022-dogs-ind;question4FamilyPetCat"/>
+		<oe2022-dogs:ownsPet rdf:resource="&oe2022-dogs-ind;question4FamilyPetDog"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;question4FamilyPetCat">
+		<rdf:type rdf:resource="&oe2022-dogs;Cat"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;question4FamilyPetDog">
+		<rdf:type rdf:resource="&oe2022-dogs;Dog"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;question5Family">
+		<rdf:type rdf:resource="&oe2022-dogs;Family"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;question5PotentialAdopter">
+		<rdf:type rdf:resource="&oe2022-dogs;PotentialAdopter"/>
+		<cmns-pts:isPlayedBy rdf:resource="&oe2022-dogs-ind;question5Family"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;roughMultiCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;RoughCoatType"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;saintBernard">
+		<rdf:type rdf:resource="&oe2022-dogs;Breed"/>
+		<oe2022-dogs:causes rdf:resource="&oe2022-dogs-ind;dogAllergy"/>
+		<oe2022-dogs:hasCoatLength rdf:resource="&oe2022-dogs-ind;shortOnlyCoatLength"/>
+		<oe2022-dogs:hasCoatType rdf:resource="&oe2022-dogs-ind;doubleMultiCoatType"/>
+		<oe2022-dogs:hasCoatType rdf:resource="&oe2022-dogs-ind;roughMultiCoatType"/>
+		<oe2022-dogs:hasCoatType rdf:resource="&oe2022-dogs-ind;smoothMultiCoatType"/>
+		<oe2022-dogs:hasMarking rdf:resource="&oe2022-dogs-ind;blackMask"/>
+		<oe2022-dogs:hasMaxHeight rdf:datatype="&xsd;decimal">30.0</oe2022-dogs:hasMaxHeight>
+		<oe2022-dogs:hasMaxLifespan rdf:datatype="&xsd;decimal">10.0</oe2022-dogs:hasMaxLifespan>
+		<oe2022-dogs:hasMaxPrice rdf:datatype="&xsd;decimal">2000.0</oe2022-dogs:hasMaxPrice>
+		<oe2022-dogs:hasMaxWeight rdf:datatype="&xsd;decimal">180.0</oe2022-dogs:hasMaxWeight>
+		<oe2022-dogs:hasMinHeight rdf:datatype="&xsd;decimal">26.0</oe2022-dogs:hasMinHeight>
+		<oe2022-dogs:hasMinLifespan rdf:datatype="&xsd;decimal">8.0</oe2022-dogs:hasMinLifespan>
+		<oe2022-dogs:hasMinPrice rdf:datatype="&xsd;decimal">1000.0</oe2022-dogs:hasMinPrice>
+		<oe2022-dogs:hasMinWeight rdf:datatype="&xsd;decimal">120.0</oe2022-dogs:hasMinWeight>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;RustColor"/>
+		<oe2022-dogs:isColored rdf:resource="&oe2022-dogs;WhiteColor"/>
+		<cmns-cls:isClassifiedBy rdf:resource="&oe2022-dogs-ind;workingGroup"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;saintBernard2021PopularityRanking">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedPopularityRating"/>
+		<Documents:hasDateOfIssuance rdf:resource="&oe2022-dogs-ind;AmericanKennelClub2021PublishedRankingsDate"/>
+		<ProductsAndServices:isIssuedBy rdf:resource="&oe2022-dogs-ind;AmericanKennelClubAsDogRatingAgency"/>
+		<cmns-rt:hasRatingScore rdf:resource="&oe2022-dogs-ind;saintBernard2021RatingScore"/>
+		<cmns-rt:rates rdf:resource="&oe2022-dogs-ind;saintBernard"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;saintBernard2021RatingScore">
+		<rdf:type rdf:resource="&cmns-rt;QuantitativeRatingScore"/>
+		<cmns-rt:hasMeasureWithinScale rdf:datatype="&xsd;decimal">53.0</cmns-rt:hasMeasureWithinScale>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;saintBernardBreedCharacteristicProfile">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
+		<oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="&xsd;decimal">.8</oe2022-dogs:displaysAdaptabilityLevel>
+		<oe2022-dogs:displaysBarkingLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysBarkingLevel>
+		<oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="&xsd;decimal">.2</oe2022-dogs:displaysCatFriendlinessLevel>
+		<oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysChildFriendlinessLevel>
+		<oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysDogFriendlinessLevel>
+		<oe2022-dogs:displaysDroolingLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysDroolingLevel>
+		<oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="&xsd;decimal">.4</oe2022-dogs:displaysExerciseNeedsLevel>
+		<oe2022-dogs:displaysGroomingLevel rdf:datatype="&xsd;decimal">.4</oe2022-dogs:displaysGroomingLevel>
+		<oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
+		<oe2022-dogs:displaysIntelligenceLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysIntelligenceLevel>
+		<oe2022-dogs:displaysMentalStimulationNeedsLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysMentalStimulationNeedsLevel>
+		<oe2022-dogs:displaysPlayfullnessLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysPlayfullnessLevel>
+		<oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysStrangerFriendlinessLevel>
+		<oe2022-dogs:displaysTrainabilityLevel rdf:datatype="&xsd;decimal">.6</oe2022-dogs:displaysTrainabilityLevel>
+		<oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="&xsd;decimal">1.0</oe2022-dogs:displaysWatchDogAbilityLevel>
+		<cmns-cls:characterizes rdf:resource="&oe2022-dogs-ind;saintBernard"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;shortOnlyCoatLength">
+		<rdf:type rdf:resource="&oe2022-dogs;ShortCoatLength"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;smoothMultiCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;SmoothCoatType"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;smoothOnlyCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;SmoothCoatType"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;whiteMask">
+		<rdf:type rdf:resource="&oe2022-dogs;Marking"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs-ind;workingGroup">
+		<rdf:type rdf:resource="&oe2022-dogs;BreedGroup"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;apricotColor">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;blackColor">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;blueColor">
+	</owl:NamedIndividual>
+	
+	<rdf:Description rdf:about="&oe2022-dogs;hasClimateZone">
+		<rdfs:range rdf:resource="&oe2022-dogs;ClimateZone"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isClimateZoneOf"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&oe2022-dogs;isClimateZoneOf">
+		<rdfs:domain rdf:resource="&oe2022-dogs;ClimateZone"/>
+	</rdf:Description>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;maskShape">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;whiteColor">
+	</owl:NamedIndividual>
+	
+	<owl:AnnotationProperty rdf:about="&Documents;hasDateOfIssuance">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&ProductsAndServices;isIssuedBy">
+	</owl:AnnotationProperty>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AK-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone7"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone8"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AL-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AR-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AS-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AZ-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CO-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone7"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CT-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-DC-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-DE-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-FL-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-GA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-GU-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-HI-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ID-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IL-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IN-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-KS-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-KY-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-LA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MD-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ME-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone7"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MI-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone7"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MN-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone7"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MO-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MP-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MS-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MT-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NC-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ND-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone7"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NE-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NH-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NJ-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NM-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NV-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NY-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OH-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OK-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OR-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-PA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-PR-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-RI-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-SC-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-SD-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-TN-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-TX-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone2"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-UT-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone3"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VI-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone1"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VT-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WA-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WI-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WV-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone4"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WY-Subdivision">
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone5"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone6"/>
+		<oe2022-dogs:hasClimateZone rdf:resource="&oe2022-dogs;ClimateZone7"/>
+	</rdf:Description>
 
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/Documents/hasDateOfIssuance -->
-
-    <owl:AnnotationProperty rdf:about="https://www.omg.org/spec/Commons/Documents/hasDateOfIssuance"/>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/ProductsAndServices/isIssuedBy -->
-
-    <owl:AnnotationProperty rdf:about="https://www.omg.org/spec/Commons/ProductsAndServices/isIssuedBy"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasClimateZone -->
-
-    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/hasClimateZone">
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isClimateZoneOf"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isClimateZoneOf -->
-
-    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/isClimateZoneOf">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone"/>
-    </rdf:Description>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClub2021PublishedRankingsDate -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClub2021PublishedRankingsDate">
-        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/ExplicitDate"/>
-        <cmns-dt:hasDateValue>2022-03-15</cmns-dt:hasDateValue>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClubAsDogRatingAgency -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClubAsDogRatingAgency">
-        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/Ratings/RatingAgency"/>
-        <cmns-dt:hasDateValue>2022-03-15</cmns-dt:hasDateValue>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/TheAmericanKennelClub -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/TheAmericanKennelClub">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Organization"/>
-        <cmns-pts:playsRole rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClubAsDogRatingAgency"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/VetStreet -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/VetStreet">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Organization"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackMask -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackMask">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Marking"/>
-        <oe2022-dogs:hasShape rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/maskShape"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blackColor"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackPoints -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackPoints">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Marking"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/curlyOnlyCoatType -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/curlyOnlyCoatType">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/CurlyCoatType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/dogAllergy -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/dogAllergy">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Allergy"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/doubleMultiCoatType -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/doubleMultiCoatType">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/DoubleCoatType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/goldendoodle -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/goldendoodle">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <oe2022-dogs:hasCoatType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/smoothMultiCoatType"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/GoldColor"/>
-        <oe2022-dogs:hasMaxHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</oe2022-dogs:hasMaxHeight>
-        <oe2022-dogs:hasMaxHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">24.0</oe2022-dogs:hasMaxHeight>
-        <oe2022-dogs:hasMaxLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</oe2022-dogs:hasMaxLifespan>
-        <oe2022-dogs:hasMaxPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5000.0</oe2022-dogs:hasMaxPrice>
-        <oe2022-dogs:hasMaxWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100.0</oe2022-dogs:hasMaxWeight>
-        <oe2022-dogs:hasMinHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</oe2022-dogs:hasMinHeight>
-        <oe2022-dogs:hasMinLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</oe2022-dogs:hasMinLifespan>
-        <oe2022-dogs:hasMinPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1000.0</oe2022-dogs:hasMinPrice>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/goldendoodleBreedCharacteristicProfile -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/goldendoodleBreedCharacteristicProfile">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile"/>
-        <cmns-cls:characterizes rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/goldendoodle"/>
-        <oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysAdaptabilityLevel>
-        <oe2022-dogs:displaysBarkingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.6</oe2022-dogs:displaysBarkingLevel>
-        <oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysCatFriendlinessLevel>
-        <oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysChildFriendlinessLevel>
-        <oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysDogFriendlinessLevel>
-        <oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.8</oe2022-dogs:displaysExerciseNeedsLevel>
-        <oe2022-dogs:displaysGroomingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysGroomingLevel>
-        <oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.8</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
-        <oe2022-dogs:displaysIntelligenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysIntelligenceLevel>
-        <oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysStrangerFriendlinessLevel>
-        <oe2022-dogs:displaysTrainabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysTrainabilityLevel>
-        <oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.6</oe2022-dogs:displaysWatchDogAbilityLevel>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <oe2022-dogs:causes rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/dogAllergy"/>
-        <oe2022-dogs:hasCoatLength rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/shortOnlyCoatLength"/>
-        <oe2022-dogs:hasCoatType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/smoothOnlyCoatType"/>
-        <oe2022-dogs:hasMarking rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackMask"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blackColor"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/whiteColor"/>
-        <cmns-cls:isClassifiedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/houndBreedGroup"/>
-        <oe2022-dogs:hasMaxHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.0</oe2022-dogs:hasMaxHeight>
-        <oe2022-dogs:hasMaxLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.0</oe2022-dogs:hasMaxLifespan>
-        <oe2022-dogs:hasMaxPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2500.0</oe2022-dogs:hasMaxPrice>
-        <oe2022-dogs:hasMaxWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.0</oe2022-dogs:hasMaxWeight>
-        <oe2022-dogs:hasMinHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">27.0</oe2022-dogs:hasMinHeight>
-        <oe2022-dogs:hasMinLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</oe2022-dogs:hasMinLifespan>
-        <oe2022-dogs:hasMinPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1500.0</oe2022-dogs:hasMinPrice>
-        <oe2022-dogs:hasMinWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60.0</oe2022-dogs:hasMinWeight>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound2021PopularityRanking -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound2021PopularityRanking">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedPopularityRating"/>
-        <Documents:hasDateOfIssuance rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClub2021PublishedRankingsDate"/>
-        <ProductsAndServices:isIssuedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClubAsDogRatingAgency"/>
-        <cmns-rt:hasRatingScore rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound2021RatingScore"/>
-        <cmns-rt:rates rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound2021RatingScore -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound2021RatingScore">
-        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/Ratings/QuantitativeRatingScore"/>
-        <cmns-rt:hasMeasureWithinScale rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">132.0</cmns-rt:hasMeasureWithinScale>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhoundBreedCharacteristicProfile -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhoundBreedCharacteristicProfile">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile"/>
-        <cmns-cls:characterizes rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/greyhound"/>
-        <oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.4</oe2022-dogs:displaysAdaptabilityLevel>
-        <oe2022-dogs:displaysBarkingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysBarkingLevel>
-        <oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.4</oe2022-dogs:displaysCatFriendlinessLevel>
-        <oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysChildFriendlinessLevel>
-        <oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysDogFriendlinessLevel>
-        <oe2022-dogs:displaysDroolingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.2</oe2022-dogs:displaysDroolingLevel>
-        <oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.4</oe2022-dogs:displaysExerciseNeedsLevel>
-        <oe2022-dogs:displaysGroomingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.2</oe2022-dogs:displaysGroomingLevel>
-        <oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
-        <oe2022-dogs:displaysIntelligenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysIntelligenceLevel>
-        <oe2022-dogs:displaysMentalStimulationNeedsLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysMentalStimulationNeedsLevel>
-        <oe2022-dogs:displaysPlayfullnessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysPlayfullnessLevel>
-        <oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysStrangerFriendlinessLevel>
-        <oe2022-dogs:displaysTrainabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysTrainabilityLevel>
-        <oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysWatchDogAbilityLevel>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/houndBreedGroup -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/houndBreedGroup">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/mediumOnlyCoatLength -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/mediumOnlyCoatLength">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/MediumCoatLength"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/nonSportingGroup -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/nonSportingGroup">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <oe2022-dogs:hasCoatLength rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/mediumOnlyCoatLength"/>
-        <oe2022-dogs:hasCoatType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/curlyOnlyCoatType"/>
-        <oe2022-dogs:hasMarking rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackMask"/>
-        <oe2022-dogs:hasMarking rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackPoints"/>
-        <oe2022-dogs:hasMarking rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/whiteMask"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/apricotColor"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blackColor"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blueColor"/>
-        <cmns-cls:isClassifiedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/nonSportingGroup"/>
-        <oe2022-dogs:hasMaxHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">24.0</oe2022-dogs:hasMaxHeight>
-        <oe2022-dogs:hasMaxLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">18.0</oe2022-dogs:hasMaxLifespan>
-        <oe2022-dogs:hasMaxPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2500.0</oe2022-dogs:hasMaxPrice>
-        <oe2022-dogs:hasMaxWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70.0</oe2022-dogs:hasMaxWeight>
-        <oe2022-dogs:hasMinHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15.0</oe2022-dogs:hasMinHeight>
-        <oe2022-dogs:hasMinLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</oe2022-dogs:hasMinLifespan>
-        <oe2022-dogs:hasMinPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1200.0</oe2022-dogs:hasMinPrice>
-        <oe2022-dogs:hasMinWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.0</oe2022-dogs:hasMinWeight>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle2021PopularityRanking -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle2021PopularityRanking">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedPopularityRating"/>
-        <Documents:hasDateOfIssuance rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClub2021PublishedRankingsDate"/>
-        <ProductsAndServices:isIssuedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClubAsDogRatingAgency"/>
-        <cmns-rt:hasRatingScore rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle2021RatingScore"/>
-        <cmns-rt:rates rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle2021RatingScore -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle2021RatingScore">
-        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/Ratings/QuantitativeRatingScore"/>
-        <cmns-rt:hasMeasureWithinScale rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</cmns-rt:hasMeasureWithinScale>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodleBreedCharacteristicProfile -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodleBreedCharacteristicProfile">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile"/>
-        <cmns-cls:characterizes rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/poodle"/>
-        <oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysAdaptabilityLevel>
-        <oe2022-dogs:displaysBarkingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysBarkingLevel>
-        <oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysCatFriendlinessLevel>
-        <oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysChildFriendlinessLevel>
-        <oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysDogFriendlinessLevel>
-        <oe2022-dogs:displaysDroolingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.2</oe2022-dogs:displaysDroolingLevel>
-        <oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysExerciseNeedsLevel>
-        <oe2022-dogs:displaysGroomingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysGroomingLevel>
-        <oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
-        <oe2022-dogs:displaysIntelligenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysIntelligenceLevel>
-        <oe2022-dogs:displaysMentalStimulationNeedsLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysMentalStimulationNeedsLevel>
-        <oe2022-dogs:displaysPlayfullnessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysPlayfullnessLevel>
-        <oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysStrangerFriendlinessLevel>
-        <oe2022-dogs:displaysTrainabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysTrainabilityLevel>
-        <oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysWatchDogAbilityLevel>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question1Family -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question1Family">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FamilyWithSmallChildren"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4Family -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4Family">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/FamilyWithSmallChildren"/>
-        <oe2022-dogs:ownsPet rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4FamilyPetCat"/>
-        <oe2022-dogs:ownsPet rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4FamilyPetDog"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4FamilyPetCat -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4FamilyPetCat">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Cat"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4FamilyPetDog -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question4FamilyPetDog">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Dog"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question5Family -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question5Family">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Family"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question5PotentialAdopter -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question5PotentialAdopter">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/PotentialAdopter"/>
-        <cmns-pts:isPlayedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/question5Family"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/roughMultiCoatType -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/roughMultiCoatType">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/RoughCoatType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Breed"/>
-        <oe2022-dogs:causes rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/dogAllergy"/>
-        <oe2022-dogs:hasCoatLength rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/shortOnlyCoatLength"/>
-        <oe2022-dogs:hasCoatType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/doubleMultiCoatType"/>
-        <oe2022-dogs:hasCoatType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/roughMultiCoatType"/>
-        <oe2022-dogs:hasCoatType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/smoothMultiCoatType"/>
-        <oe2022-dogs:hasMarking rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/blackMask"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/RustColor"/>
-        <oe2022-dogs:isColored rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/WhiteColor"/>
-        <cmns-cls:isClassifiedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/workingGroup"/>
-        <oe2022-dogs:hasMaxHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">30.0</oe2022-dogs:hasMaxHeight>
-        <oe2022-dogs:hasMaxLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</oe2022-dogs:hasMaxLifespan>
-        <oe2022-dogs:hasMaxPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2000.0</oe2022-dogs:hasMaxPrice>
-        <oe2022-dogs:hasMaxWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">180.0</oe2022-dogs:hasMaxWeight>
-        <oe2022-dogs:hasMinHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">26.0</oe2022-dogs:hasMinHeight>
-        <oe2022-dogs:hasMinLifespan rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.0</oe2022-dogs:hasMinLifespan>
-        <oe2022-dogs:hasMinPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1000.0</oe2022-dogs:hasMinPrice>
-        <oe2022-dogs:hasMinWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">120.0</oe2022-dogs:hasMinWeight>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard2021PopularityRanking -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard2021PopularityRanking">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedPopularityRating"/>
-        <Documents:hasDateOfIssuance rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClub2021PublishedRankingsDate"/>
-        <ProductsAndServices:isIssuedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClubAsDogRatingAgency"/>
-        <cmns-rt:hasRatingScore rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard2021RatingScore"/>
-        <cmns-rt:rates rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard2021RatingScore -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard2021RatingScore">
-        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/Ratings/QuantitativeRatingScore"/>
-        <cmns-rt:hasMeasureWithinScale rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">53.0</cmns-rt:hasMeasureWithinScale>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernardBreedCharacteristicProfile -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernardBreedCharacteristicProfile">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedCharacteristicProfile"/>
-        <cmns-cls:characterizes rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/saintBernard"/>
-        <oe2022-dogs:displaysAdaptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.8</oe2022-dogs:displaysAdaptabilityLevel>
-        <oe2022-dogs:displaysBarkingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysBarkingLevel>
-        <oe2022-dogs:displaysCatFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.2</oe2022-dogs:displaysCatFriendlinessLevel>
-        <oe2022-dogs:displaysChildFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysChildFriendlinessLevel>
-        <oe2022-dogs:displaysDogFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysDogFriendlinessLevel>
-        <oe2022-dogs:displaysDroolingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysDroolingLevel>
-        <oe2022-dogs:displaysExerciseNeedsLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.4</oe2022-dogs:displaysExerciseNeedsLevel>
-        <oe2022-dogs:displaysGroomingLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.4</oe2022-dogs:displaysGroomingLevel>
-        <oe2022-dogs:displaysHealthIssueSusceptabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysHealthIssueSusceptabilityLevel>
-        <oe2022-dogs:displaysIntelligenceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysIntelligenceLevel>
-        <oe2022-dogs:displaysMentalStimulationNeedsLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysMentalStimulationNeedsLevel>
-        <oe2022-dogs:displaysPlayfullnessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysPlayfullnessLevel>
-        <oe2022-dogs:displaysStrangerFriendlinessLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysStrangerFriendlinessLevel>
-        <oe2022-dogs:displaysTrainabilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">.6</oe2022-dogs:displaysTrainabilityLevel>
-        <oe2022-dogs:displaysWatchDogAbilityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</oe2022-dogs:displaysWatchDogAbilityLevel>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/shortOnlyCoatLength -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/shortOnlyCoatLength">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ShortCoatLength"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/smoothMultiCoatType -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/smoothMultiCoatType">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SmoothCoatType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/smoothOnlyCoatType -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/smoothOnlyCoatType">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/SmoothCoatType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/whiteMask -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/whiteMask">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/Marking"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/workingGroup -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/workingGroup">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/BreedGroup"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/2021AmericanKennelClubRating -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/2021AmericanKennelClubRating">
-        <rdf:type rdf:resource="https://www.omg.org/spec/Commons/Ratings/RatingAssessmentEvent"/>
-        <ProductsAndServices:isProvidedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/AmericanKennelClubAsDogRatingAgency"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/apricotColor -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/apricotColor"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blackColor -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blackColor"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blueColor -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/blueColor"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/maskShape -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/maskShape"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/whiteColor -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/whiteColor"/>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AK-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AK-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone7"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone8"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AL-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AL-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AR-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AR-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AS-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AS-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AZ-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-AZ-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CO-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CO-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone7"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CT-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-CT-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-DC-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-DC-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-DE-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-DE-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-FL-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-FL-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-GA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-GA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-GU-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-GU-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-HI-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-HI-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ID-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ID-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IL-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IL-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IN-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-IN-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-KS-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-KS-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-KY-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-KY-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-LA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-LA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MD-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MD-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ME-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ME-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone7"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MI-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MI-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone7"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MN-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MN-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone7"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MO-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MO-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MP-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MP-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MS-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MS-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MT-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-MT-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NC-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NC-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ND-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-ND-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone7"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NE-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NE-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NH-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NH-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NJ-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NJ-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NM-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NM-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NV-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NV-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NY-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-NY-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OH-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OH-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OK-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OK-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OR-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-OR-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-PA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-PA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-PR-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-PR-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-RI-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-RI-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-SC-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-SC-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-SD-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-SD-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-TN-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-TN-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-TX-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-TX-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone2"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-UT-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-UT-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone3"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VI-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VI-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone1"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VT-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-VT-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WA-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WA-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WI-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WI-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WV-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WV-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone4"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WY-Subdivision -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/US-WY-Subdivision">
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone5"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone6"/>
-        <oe2022-dogs:hasClimateZone rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/ClimateZone7"/>
-    </rdf:Description>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
-        <skos:definition>An entity responsible for making contributions to the resource.</skos:definition>
-        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/contributor"/>
-    </rdf:Description>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
-
