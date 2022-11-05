@@ -71,7 +71,7 @@
 	<owl:Class rdf:about="&oe2022-iem;AirQualityAttribute">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 		<rdfs:label>air quality attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects air quality in a local environment</skos:definition>
+		<skos:definition>a quantitative attribute that affects air pollution in a local environment</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityIndex">
@@ -84,14 +84,14 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 		<rdfs:label>air speed attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects air speed in a local environment</skos:definition>
+		<skos:definition>a quantitative attribute that affects wind speed in a local environment</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;AirTemperatureAttribute">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 		<rdfs:label>air temperature attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects air temperature in a local environment</skos:definition>
+		<skos:definition>a quantitative attribute that affects ambient temperature in a local environment</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironment">
@@ -507,13 +507,16 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
 						<owl:withRestrictions rdf:parseType="Collection">
 							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
+								<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">400</xsd:maxInclusive>
 							</rdf:Description>
 						</owl:withRestrictions>
 					</rdfs:Datatype>
@@ -523,13 +526,16 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
 						<owl:withRestrictions rdf:parseType="Collection">
 							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">400</xsd:maxInclusive>
+								<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
 							</rdf:Description>
 						</owl:withRestrictions>
 					</rdfs:Datatype>
@@ -767,7 +773,7 @@
 		<rdfs:label>kelvin</rdfs:label>
 		<dct:source>https://ucum.org/ucum.html#section-Base-Units</dct:source>
 		<rdfs:seeAlso rdf:resource="https://www.nist.gov/pml/owm/si-units-temperature"/>
-		<skos:definition>base unit of temperature that is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 ×10e(-23) when expressed in the unit J Ke(-1), which is equal to kg me(2) se(-2) Ke(-1)</skos:definition>
+		<skos:definition>base unit of temperature that is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380 649 *10e(-23) when expressed in the unit J Ke(-1), which is equal to kg me(2) se(-2) Ke(-1)</skos:definition>
 		<cmns-av:explanatoryNote>The temperature 0 K is commonly referred to as &apos;absolute zero.&apos; On the widely used Celsius temperature scale, water freezes at 0 C and boils at about 100 C. One Celsius degree is an interval of 1 K, and zero degrees Celsius is 273.15 K. An interval of one Celsius degree corresponds to an interval of 1.8 Fahrenheit degrees on the Fahrenheit temperature scale.</cmns-av:explanatoryNote>
 		<cmns-av:symbol>K</cmns-av:symbol>
 	</owl:NamedIndividual>
@@ -947,14 +953,14 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
 		<rdfs:label>outdoor environment</rdfs:label>
-		<skos:definition>a collection of outdoor environmental effects for baseline indoor environment</skos:definition>
+		<skos:definition>a collection of environmental effects from outside of a building</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironmentNew">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironmentNew"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
 		<rdfs:label>outdoor environment (new)</rdfs:label>
-		<skos:definition>a collection of outdoor environmental effects for baseline indoor environment</skos:definition>
+		<skos:definition>a collection of environmental effects from outside of a building</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Person">
@@ -993,7 +999,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>radiator</rdfs:label>
-		<skos:definition>heating, ventilation, and air conditioning equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
+		<skos:definition>equipment that can raise the indoor temperature by transferring heat from an internal system into a room</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;RelativeHumidity">
@@ -1006,7 +1012,7 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
 		<rdfs:label>relative humidity attribute</rdfs:label>
-		<skos:definition>a quantitative attribute that affects relative humidity in a local environment</skos:definition>
+		<skos:definition>a quantitative attribute that affects humidity in a local environment</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironment">
@@ -1251,7 +1257,7 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasLowerBound">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has lower bound</rdfs:label>
+		<rdfs:label>has lower bound (old)</rdfs:label>
 		<skos:definition>indicates a lower bound of a delta bucket for an indoor environmental quality parameter</skos:definition>
 	</owl:DatatypeProperty>
 	
@@ -1317,7 +1323,7 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasUpperBound">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has upper bound</rdfs:label>
+		<rdfs:label>has upper bound (old)</rdfs:label>
 		<skos:definition>indicates a upper bound of a delta bucket for an indoor environmental quality parameter</skos:definition>
 	</owl:DatatypeProperty>
 	
