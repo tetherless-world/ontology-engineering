@@ -17,8 +17,10 @@ An overview of the relationship between several categories of concepts the ontol
 ## Ontology
 
 - [Latest](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf)
-<!--- [Version 3 (OE 8_Individual)](https://drive.google.com/file/d/1gspmaP-d7qbCS4ZU1jS9XG0_4Nj6MljA/view?usp=sharing)-->
-<!--- [Version 3 (OE 8)](https://drive.google.com/file/d/1CQ9toPMEqJIb5dmBIoXTL2tqsq8NUYY_/view?usp=sharing)-->
+<!--- - [Version 4 (OE 9_Individual)](https://drive.google.com/file/d/1ZpGk-20tPBv9HFSCIzYNEfKFIdDXIsbm/view?usp=sharing)-->
+<!--- - [Version 4 (OE 9)](https://drive.google.com/file/d/1QiKPg36jOS_NoAcNAliklzrmH8wYVLt1/view?usp=sharing)-->
+- [Version 3 (OE 8_Individual)](https://drive.google.com/file/d/1gspmaP-d7qbCS4ZU1jS9XG0_4Nj6MljA/view?usp=sharing)
+- [Version 3 (OE 8)](https://drive.google.com/file/d/1CQ9toPMEqJIb5dmBIoXTL2tqsq8NUYY_/view?usp=sharing)
 - [Version 2 (OE 7)](https://drive.google.com/file/d/1kZn1TZ6qzmR0K9AIHrB7CrPFo4l4MAuw/view?usp=sharing)
 - [Version 1 (OE 6)](https://drive.google.com/file/d/1qHudx_rdA53kvdJMw_BnMlFNXQtTLNBy/view?usp=sharing)
 
