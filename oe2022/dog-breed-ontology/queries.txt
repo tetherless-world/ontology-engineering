@@ -3,3 +3,25 @@ SPARQL Query for Competancy Question 1:
 SPARQL Query for Competancy Question 3:
 
 SPARQL Query for Competancy Question 5:
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
+PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+SELECT ?breed
+	#WHERE { ?subject rdfs:subClassOf oe2022-dogs:BreedAspect}
+	WHERE { ?breed a oe2022-dogs:Breed.
+		?profile a oe2022-dogs:BreedCharacteristicProfile;
+			cmns-cls:characterizes ?breed;
+			oe2022-dogs:displaysDroolingLevel ?droolinglevel;
+			oe2022-dogs:displaysSheddingLevel ?sheddinglevel;
+			Filter(?droolinglevel < 0.5 && ?sheddinglevel < 0.5).
+		?popularityRating a oe2022-dogs:BreedPopularityRating;
+			cmns-rt:rates ?breed;
+			cmns-rt:hasRatingScore ?ratingScore.
+		?ratingScore cmns-rt:hasMeasureWithinScale ?popularityQuantitativeScore.
+}
+ORDER BY ASC(?popularityQuantitativeScore) ASC(?sheddinglevel) ASC(?droolinglevel)
