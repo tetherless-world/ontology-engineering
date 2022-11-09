@@ -1,6 +1,39 @@
 SPARQL Query for Competancy Question 1:
 
-SPARQL Query for Competancy Question 3:
+SPARQL Query for Competancy Question 4:
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX cmns-col: <https://www.omg.org/spec/Commons/Collections/>
+PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
+ask {
+	?family rdfs:label "question 4 family" .
+	?breed rdfs:label "greyhound";
+		a oe2022-dogs:Breed .
+
+	bind( if(exists{?family a oe2022-dogs:FamilyWithSmallChildren}, 
+		0.5, 0) as ?neededChildFriendlinessLevel)
+	bind( if(exists{?family a oe2022-dogs:FamilyWithSmallChildren}, 
+		0.5, 0) as ?neededPlayfulnessLevel)
+	bind( if(exists{?family oe2022-dogs:ownsPet ?dog .
+			?dog a oe2022-dogs:Dog .}, 
+		0.5, 0) as ?neededDogFriendlinessLevel)
+	bind( if(exists{?family oe2022-dogs:ownsPet ?cat .
+			?cat a oe2022-dogs:Cat .}, 
+		0.5, 0) as ?neededCatFriendlinessLevel)
+
+	?profile a oe2022-dogs:BreedCharacteristicProfile;
+		cmns-cls:characterizes ?breed ;
+		oe2022-dogs:displaysChildFriendlinessLevel ?childFriendlinessLevel;
+		oe2022-dogs:displaysCatFriendlinessLevel ?catFriendlinessLevel;
+		oe2022-dogs:displaysDogFriendlinessLevel ?dogFriendlinessLevel;
+		oe2022-dogs:displaysPlayfullnessLevel ?playfullnessLevel.
+
+	Filter( ?childFriendlinessLevel >= ?neededChildFriendlinessLevel &&
+		?catFriendlinessLevel >= ?neededCatFriendlinessLevel &&
+		?dogFriendlinessLevel >= ?neededDogFriendlinessLevel &&
+		?playfullnessLevel >= ?neededPlayfullnessLevel)
+}
 
 SPARQL Query for Competancy Question 5:
 
