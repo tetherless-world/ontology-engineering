@@ -105,7 +105,7 @@
 					<owl:Class>
 						<owl:complementOf>
 							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirSpeedValue"/>
+								<owl:onProperty rdf:resource="&oe2022-iem;hasAirSpeedValue"/>
 								<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 							</owl:Restriction>
 						</owl:complementOf>
@@ -123,7 +123,7 @@
 					<owl:Class>
 						<owl:complementOf>
 							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirTemperatureValue"/>
+								<owl:onProperty rdf:resource="&oe2022-iem;hasAirTemperatureValue"/>
 								<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 							</owl:Restriction>
 						</owl:complementOf>
@@ -141,7 +141,7 @@
 					<owl:Class>
 						<owl:complementOf>
 							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2022-iem;hasNumericRelativeHumidityValue"/>
+								<owl:onProperty rdf:resource="&oe2022-iem;hasRelativeHumidityValue"/>
 								<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 							</owl:Restriction>
 						</owl:complementOf>
@@ -187,7 +187,7 @@
 	<owl:Class rdf:about="&oe2022-iem;Environment">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirQualityValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
@@ -206,7 +206,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirSpeedValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirSpeedValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
@@ -225,7 +225,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirTemperatureValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirTemperatureValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
@@ -244,7 +244,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasDaylightIntensityValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
@@ -263,7 +263,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericRelativeHumidityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasRelativeHumidityValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
 					<rdfs:Datatype>
@@ -306,7 +306,7 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirQualityValue"/>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
@@ -322,7 +322,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericDaylightIntensityValue"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasDaylightIntensityValue"/>
 				<owl:onDataRange>
 					<rdfs:Datatype>
 						<owl:onDatatype rdf:resource="&xsd;integer"/>
@@ -672,17 +672,29 @@
 		<skos:definition>determines the behavior of</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirQualityValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasEnvironmentAttributeValue"/>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirSpeedSign">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasSign"/>
 		<rdfs:label>has air speed sign</rdfs:label>
 		<skos:definition>indicates how attributes affects the air speed in a positive or negative way</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirSpeedValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasEnvironmentAttributeValue"/>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirTemperatureSign">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasSign"/>
 		<rdfs:label>has air temperature sign</rdfs:label>
 		<skos:definition>indicates how attributes affects the air temperature in a positive or negative way</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirTemperatureValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasEnvironmentAttributeValue"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAttribute">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
@@ -709,6 +721,10 @@
 		<skos:definition>contains some object within itself, in a semi-permanent capacity</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasDaylightIntensityValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasEnvironmentAttributeValue"/>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
 		<rdfs:label>has effect</rdfs:label>
 		<skos:definition>specify how to achange the parameters of indoor environmental quality</skos:definition>
@@ -720,40 +736,14 @@
 		<skos:definition>indicates the environmental condition that consists of indoor and outdoor environmental parameters</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasEnvironmentAttributeValue">
+		<rdfs:range rdf:resource="&xsd;integer"/>
+	</owl:DatatypeProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasLowerBound">
 		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
 		<rdfs:label>has lower bound (old)</rdfs:label>
 		<skos:definition>indicates a lower bound of a delta bucket for an indoor environmental quality parameter</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirQualityValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric air quality value</rdfs:label>
-		<skos:definition>has the number representing an air quality value</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirSpeedValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric air speed value</rdfs:label>
-		<skos:definition>has the number representing an air speed value</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericAirTemperatureValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric air temperature value</rdfs:label>
-		<skos:definition>has the number representing an air temperature value</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericDaylightIntensityValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric daylight intensity value</rdfs:label>
-		<skos:definition>has the number representing a daylight intensity value</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasNumericRelativeHumidityValue">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has numeric relative humidity value</rdfs:label>
-		<skos:definition>has the number representing a relative humidity value</skos:definition>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasPossibleState">
@@ -770,6 +760,10 @@
 		<rdfs:label>has relative humidity sign</rdfs:label>
 		<skos:definition>indicates how attributes affects the relative humidity in a positive or negative way</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasRelativeHumidityValue">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasEnvironmentAttributeValue"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasSign">
 		<rdfs:label>has sign</rdfs:label>
