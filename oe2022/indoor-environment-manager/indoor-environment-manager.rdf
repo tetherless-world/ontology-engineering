@@ -96,23 +96,6 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:complementOf rdf:resource="&oe2022-iem;EnvironmentAttributeDelta"/>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>baseline indoor environment</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
-		<skos:definition>a collection of indoor environmental parameters before environmental attributes affect the indoor environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironmentNew">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentNew"/>
 		<rdfs:label>baseline indoor environment (new)</rdfs:label>
 		<skos:definition>a collection of indoor environmental parameters before environmental attributes affect the indoor environment</skos:definition>
 	</owl:Class>
@@ -191,28 +174,6 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:allValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
-							</rdf:Description>
-							<owl:Class>
-								<owl:complementOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
-							</owl:Class>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:allValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>delta defined environment</rdfs:label>
-		<skos:definition>any environment that happens to be defined in terms of effectiveness with respect to some other environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironmentNew">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
 		<rdfs:subClassOf>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
@@ -313,67 +274,6 @@
 	<owl:Class rdf:about="&oe2022-iem;Environment">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirQualityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirSpeedAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;RelativeHumidityAttribute"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>environment</rdfs:label>
-		<skos:definition>the circumstances, objects, or conditions by which one is surrounded</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttribute">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
-		<rdfs:label>environment attribute</rdfs:label>
-		<skos:definition>a quantitative attribute of local environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
-		<rdfs:label>environment attribute delta</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-iem;DeltaCapableMeasurement">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttribute">
-					</rdf:Description>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>a quantitative change of an environmental parameter caused by environmental attributes</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;EnvironmentNew">
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
@@ -471,6 +371,27 @@
 		<skos:definition>the circumstances, objects, or conditions by which one is surrounded</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;MeasurementOld"/>
+		<rdfs:label>environment attribute</rdfs:label>
+		<skos:definition>a quantitative attribute of local environment</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
+		<rdfs:label>environment attribute delta</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-iem;DeltaCapableMeasurement">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;EnvironmentAttribute">
+					</rdf:Description>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a quantitative change of an environmental parameter caused by environmental attributes</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Fan">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>fan</rdfs:label>
@@ -492,20 +413,6 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
-				<owl:onClass rdf:resource="&oe2022-iem;DaylightIntensityAttribute"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>indoor environment</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
-		<skos:definition>the indoor circumstances, objects, or conditions by which one is surrounded</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironmentNew">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasNumericAirQualityValue"/>
@@ -950,13 +857,6 @@
 	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
-		<rdfs:label>outdoor environment</rdfs:label>
-		<skos:definition>a collection of environmental effects from outside of a building</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironmentNew">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironmentNew"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentNew"/>
 		<rdfs:label>outdoor environment (new)</rdfs:label>
 		<skos:definition>a collection of environmental effects from outside of a building</skos:definition>
 	</owl:Class>
@@ -1014,15 +914,8 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironment">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;BaselineIndoorEnvironment"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
-		<rdfs:label>resultant indoor environment</rdfs:label>
-		<skos:definition>a collection of indoor environmental parameters after environmental attributes affect the indoor environment</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironmentNew">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;BaselineIndoorEnvironmentNew"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironmentNew"/>
 		<rdfs:label>resultant indoor environment (new)</rdfs:label>
 		<skos:definition>a collection of indoor environmental parameters after environmental attributes affect the indoor environment</skos:definition>
 	</owl:Class>
@@ -1038,7 +931,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasEnvironment"/>
-				<owl:onClass rdf:resource="&oe2022-iem;BaselineIndoorEnvironmentNew"/>
+				<owl:onClass rdf:resource="&oe2022-iem;BaselineIndoorEnvironment"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -1083,7 +976,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;produces"/>
-				<owl:onClass rdf:resource="&oe2022-iem;ResultantIndoorEnvironmentNew"/>
+				<owl:onClass rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -1249,7 +1142,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEnvironment">
 		<rdfs:label>has environment</rdfs:label>
-		<rdfs:range rdf:resource="&oe2022-iem;EnvironmentNew"/>
+		<rdfs:range rdf:resource="&oe2022-iem;Environment"/>
 		<skos:definition>indicates the environmental condition that consists of indoor and outdoor environmental parameters</skos:definition>
 	</owl:ObjectProperty>
 	
