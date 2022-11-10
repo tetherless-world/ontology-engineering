@@ -887,7 +887,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;travelsAt"/>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasTravelingLevel"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;TravelingLevel"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 			</owl:Restriction>
@@ -1294,6 +1294,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasBudget">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:label>has budget</rdfs:label>
+		<rdfs:range rdf:resource="&oe2022-dogs;Budget"/>
 		<owl:inverseOf rdf:resource="&oe2022-dogs;isBudgetOf"/>
 		<skos:definition>has the level of disposable income willing to be spent on a specific activity of</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
@@ -1311,6 +1312,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasClimateZone">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:label>has climate zone</rdfs:label>
+		<rdfs:range rdf:resource="&oe2022-dogs;ClimateZone"/>
 		<skos:definition>experiences climate conditions that can be described by</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -1338,6 +1340,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasExerciseLevel">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:label>has exercise level</rdfs:label>
+		<rdfs:range rdf:resource="&oe2022-dogs;ExerciseLevel"/>
 		<owl:inverseOf rdf:resource="&oe2022-dogs;isExerciseLevelOf"/>
 		<skos:definition>performs activity requiring physical effort, carried out to sustain or improve health and fitness with frequency</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
@@ -1511,6 +1514,15 @@
 		<skos:definition>specifies something&apos;s dimensions</skos:definition>
 	</owl:DatatypeProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-dogs;hasTravelingLevel">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
+		<rdfs:label>travels at</rdfs:label>
+		<rdfs:range rdf:resource="&oe2022-dogs;TravelingLevel"/>
+		<owl:inverseOf rdf:resource="&oe2022-dogs;isTravelingLevelOf"/>
+		<skos:definition>how frequently the potential adopter temporarily changes location</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasWeight">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-dogs;hasBreedValue"/>
 		<rdfs:label>has weight</rdfs:label>
@@ -1653,7 +1665,6 @@
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 		<rdfs:label>is travelling level of</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2022-dogs;TravelingLevel"/>
-		<owl:inverseOf rdf:resource="&oe2022-dogs;travelsAt"/>
 		<skos:definition>is the frequency of temporarily changing location of</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -1672,13 +1683,6 @@
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-dogs;travelsAt">
-		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
-		<rdfs:label>travels at</rdfs:label>
-		<skos:definition>how frequently the potential adopter temporarily changes location</skos:definition>
-		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&oe2022-dogs;wantsDogToPerform">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 		<rdfs:label>wants dog to perform</rdfs:label>
@@ -1686,27 +1690,6 @@
 		<skos:definition>wants a dog to fulfill the specific role of</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
-	
-	<rdf:Description rdf:about="&cmns-pts;Party">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasBudget"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Budget"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;travelsAt"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;TravelingLevel"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;playsRole"/>
-				<owl:someValuesFrom rdf:resource="&oe2022-dogs;PotentialAdopter"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-	</rdf:Description>
 	
 	<rdf:Description rdf:about="&cmns-rt;RatingAgency">
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
