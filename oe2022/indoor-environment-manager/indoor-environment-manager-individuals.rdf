@@ -48,36 +48,65 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 	</owl:Ontology>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2BaselineEnvironment">
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2ActionDecreaseThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question2ThermostatStateLower"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question2Thermostat"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question2EnvironmentDecreasedThermostat"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2ActionIncreaseThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question2ThermostatStateHigher"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question2Thermostat"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question2EnvironmentIncreasedThermostat"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2ActionSpaceHeaterOn">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question2SpaceHeater"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question2EnvironmentSpaceHeaterOn"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2EnvironmentBaseline">
+		<rdf:type rdf:resource="&oe2022-iem;BaselineIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">75</oe2022-iem:hasAirTemperatureValue>
 		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">75</oe2022-iem:hasNumericAirTemperatureValue>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2DecreaseThermostatAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question2ThermostatStateLower"/>
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2EnvironmentDecreasedThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Negative"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2EnvironmentIncreasedThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Negative"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2EnvironmentOutdoor">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Negative"/>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">18</oe2022-iem:hasAirTemperatureValue>
+		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">18</oe2022-iem:hasNumericAirTemperatureValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2EnvironmentSpaceHeaterOn">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Positive"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2EnvironmentTarget">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">75</oe2022-iem:hasAirTemperatureValue>
+		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">75</oe2022-iem:hasNumericAirTemperatureValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2HeatingVentilationAndAirConditioning">
 		<rdf:type rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
 		<oe2022-iem:hasState rdf:resource="&oe2022-iem;On"/>
 		<oe2022-iem:isComponentOf rdf:resource="&oe2022-iem-ind;Question2Room"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2IncreaseThermostatAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question2ThermostatStateHigher"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2IndoorOutdoorTemperatureDelta">
-		<rdf:type rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
-		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;High"/>
-		<oe2022-iem:hasSign rdf:resource="&oe2022-iem;Negative"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2OutdoorEnvironment">
-		<rdf:type rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question2IndoorOutdoorTemperatureDelta"/>
-		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">18</oe2022-iem:hasNumericAirTemperatureValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2Room">
@@ -88,16 +117,6 @@
 		<rdf:type rdf:resource="&oe2022-iem;SpaceHeater"/>
 		<oe2022-iem:hasState rdf:resource="&oe2022-iem;Off"/>
 		<oe2022-iem:isComponentOf rdf:resource="&oe2022-iem-ind;Question2Room"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2SpaceHeaterOnAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question2SpaceHeater"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2TargetEnvironment">
-		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">75</oe2022-iem:hasNumericAirTemperatureValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2Thermostat">
@@ -119,28 +138,38 @@
 		<rdf:type rdf:resource="&oe2022-iem;ThermostatState"/>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4ActionDecreaseThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question4ThermostatStateLower"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Thermostat"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question4EnvironmentDecreasedThermostat"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4ActionDehumidifierOn">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Dehumidifier"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question4EnvironmentDehumidifierOn"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4ActionFanOn">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Fan"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question4EnvironmentFanOn"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4ActionIncreaseThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question4ThermostatStateHigher"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Thermostat"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question4EnvironmentIncreasedThermostat"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4AirConditioner">
 		<rdf:type rdf:resource="&oe2022-iem;AirConditioning"/>
 		<oe2022-iem:hasState rdf:resource="&oe2022-iem;Off"/>
 		<oe2022-iem:isComponentOf rdf:resource="&oe2022-iem-ind;Question4Room"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4AirConditionerOnAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4AirConditioner"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4BaselineEnvironment">
-		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasNumericAirSpeedValue>
-		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">85</oe2022-iem:hasNumericAirTemperatureValue>
-		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">67</oe2022-iem:hasNumericRelativeHumidityValue>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4DecreaseThermostatAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question4ThermostatStateLower"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Thermostat"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4Dehumidifier">
@@ -149,11 +178,56 @@
 		<oe2022-iem:isComponentOf rdf:resource="&oe2022-iem-ind;Question4Room"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4DehumidifierOnAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Dehumidifier"/>
-		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question4TargetEnvironment"/>
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentBaseline">
+		<rdf:type rdf:resource="&oe2022-iem;BaselineIndoorEnvironment"/>
+		<oe2022-iem:hasAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasAirSpeedValue>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">85</oe2022-iem:hasAirTemperatureValue>
+		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasNumericAirSpeedValue>
+		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">85</oe2022-iem:hasNumericAirTemperatureValue>
+		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">67</oe2022-iem:hasNumericRelativeHumidityValue>
+		<oe2022-iem:hasRelativeHumidityValue rdf:datatype="&xsd;integer">67</oe2022-iem:hasRelativeHumidityValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentDecreasedThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Negative"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentDehumidifierOn">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasRelativeHumiditySign rdf:resource="&oe2022-iem;Negative"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentFanOn">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Negative"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentIncreasedThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Positive"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentOutdoor">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
+		<oe2022-iem:hasAirQualityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasAirQualityValue>
+		<oe2022-iem:hasAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasAirSpeedValue>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">89</oe2022-iem:hasAirTemperatureValue>
+		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question4OutdoorAirQuality"/>
+		<oe2022-iem:hasNumericAirQualityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasNumericAirQualityValue>
+		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasNumericAirSpeedValue>
+		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">89</oe2022-iem:hasNumericAirTemperatureValue>
+		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">70</oe2022-iem:hasNumericRelativeHumidityValue>
+		<oe2022-iem:hasRelativeHumidityValue rdf:datatype="&xsd;integer">70</oe2022-iem:hasRelativeHumidityValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentTarget">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasAirSpeedValue>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">75</oe2022-iem:hasAirTemperatureValue>
+		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasNumericAirSpeedValue>
+		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">22</oe2022-iem:hasNumericRelativeHumidityValue>
+		<oe2022-iem:hasRelativeHumidityValue rdf:datatype="&xsd;integer">22</oe2022-iem:hasRelativeHumidityValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4Fan">
@@ -162,60 +236,13 @@
 		<oe2022-iem:isComponentOf rdf:resource="&oe2022-iem-ind;Question4Room"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4FanOnAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Fan"/>
-		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question4TargetEnvironment"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4IncreaseThermostatAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question4ThermostatStateHigher"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question4Thermostat"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4IndoorOutdoorAirSpeedDelta">
-		<rdf:type rdf:resource="&oe2022-iem;AirQualityAttribute"/>
-		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;Medium"/>
-		<oe2022-iem:hasSign rdf:resource="&oe2022-iem;Positive"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4IndoorOutdoorHumidityDelta">
-		<rdf:type rdf:resource="&oe2022-iem;RelativeHumidityAttribute"/>
-		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;Low"/>
-		<oe2022-iem:hasSign rdf:resource="&oe2022-iem;Positive"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4IndoorOutdoorTemperatureDelta">
-		<rdf:type rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
-		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;Low"/>
-		<oe2022-iem:hasSign rdf:resource="&oe2022-iem;Positive"/>
-	</owl:NamedIndividual>
-	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4OutdoorAirQuality">
 		<rdf:type rdf:resource="&oe2022-iem;AirQualityAttribute"/>
 		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;High"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4OutdoorEnvironment">
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question4IndoorOutdoorAirSpeedDelta"/>
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question4IndoorOutdoorHumidityDelta"/>
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question4IndoorOutdoorTemperatureDelta"/>
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question4OutdoorAirQuality"/>
-		<oe2022-iem:hasNumericAirQualityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasNumericAirQualityValue>
-		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasNumericAirSpeedValue>
-		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">89</oe2022-iem:hasNumericAirTemperatureValue>
-		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">70</oe2022-iem:hasNumericRelativeHumidityValue>
-	</owl:NamedIndividual>
-	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4Room">
 		<rdf:type rdf:resource="&oe2022-iem;Room"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4TargetEnvironment">
-		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasNumericAirSpeedValue>
-		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">22</oe2022-iem:hasNumericRelativeHumidityValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4Thermostat">
@@ -236,76 +263,77 @@
 		<rdf:type rdf:resource="&oe2022-iem;ThermostatState"/>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5ActionDecreaseThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question5ThermostatStateLower"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question5Thermostat"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question5EnvironmentDecreasedThermostat"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5ActionIncreaseThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question5ThermostatStateHigher"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question5Thermostat"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question5EnvironmentIncreasedThermostat"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5ActionOpenWindow1">
+		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;Open"/>
+		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question5Window1"/>
+		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question5EnvironmentWindow1Open"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5AirConditioner">
 		<rdf:type rdf:resource="&oe2022-iem;AirConditioning"/>
 		<oe2022-iem:hasState rdf:resource="&oe2022-iem;Off"/>
 		<oe2022-iem:isComponentOf rdf:resource="&oe2022-iem-ind;Question5Room"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5AirConditionerOnAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;On"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question5AirConditioner"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5BaselineEnvironment">
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5EnvironmentBaseline">
+		<rdf:type rdf:resource="&oe2022-iem;BaselineIndoorEnvironment"/>
+		<oe2022-iem:hasAirQualityValue rdf:datatype="&xsd;integer">38</oe2022-iem:hasAirQualityValue>
+		<oe2022-iem:hasAirSpeedValue rdf:datatype="&xsd;integer">0</oe2022-iem:hasAirSpeedValue>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">82</oe2022-iem:hasAirTemperatureValue>
 		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">0</oe2022-iem:hasNumericAirSpeedValue>
 		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">82</oe2022-iem:hasNumericAirTemperatureValue>
 		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">38</oe2022-iem:hasNumericRelativeHumidityValue>
+		<oe2022-iem:hasRelativeHumidityValue rdf:datatype="&xsd;integer">38</oe2022-iem:hasRelativeHumidityValue>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5DecreaseThermostatAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question5ThermostatStateLower"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question5Thermostat"/>
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5EnvironmentDecreasedThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Negative"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5IncreaseThermostatAction">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem-ind;Question5ThermostatStateHigher"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question5Thermostat"/>
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5EnvironmentIncreasedThermostat">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Positive"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5IndoorOutdoorAirSpeedDelta">
-		<rdf:type rdf:resource="&oe2022-iem;AirSpeedAttribute"/>
-		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;Medium"/>
-		<oe2022-iem:hasSign rdf:resource="&oe2022-iem;Positive"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5IndoorOutdoorHumidityDelta">
-		<rdf:type rdf:resource="&oe2022-iem;RelativeHumidityAttribute"/>
-		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;Low"/>
-		<oe2022-iem:hasSign rdf:resource="&oe2022-iem;Negative"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5IndoorOutdoorTemperatureDelta">
-		<rdf:type rdf:resource="&oe2022-iem;AirTemperatureAttribute"/>
-		<oe2022-iem:hasBucket rdf:resource="&oe2022-iem;Low"/>
-		<oe2022-iem:hasSign rdf:resource="&oe2022-iem;Negative"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5OpenWindow1Action">
-		<rdf:type rdf:resource="&oe2022-iem;RoomComponentAction"/>
-		<oe2022-iem:causesNewState rdf:resource="&oe2022-iem;Open"/>
-		<oe2022-iem:isAvailableActionFor rdf:resource="&oe2022-iem-ind;Question5Window1"/>
-		<oe2022-iem:produces rdf:resource="&oe2022-iem-ind;Question5TargetEnvironment"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5OutdoorEnvironment">
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question5IndoorOutdoorAirSpeedDelta"/>
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question5IndoorOutdoorHumidityDelta"/>
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question5IndoorOutdoorTemperatureDelta"/>
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5EnvironmentOutdoor">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
+		<oe2022-iem:hasAirSpeedValue rdf:datatype="&xsd;integer">2</oe2022-iem:hasAirSpeedValue>
+		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">80</oe2022-iem:hasAirTemperatureValue>
 		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">2</oe2022-iem:hasNumericAirSpeedValue>
 		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">80</oe2022-iem:hasNumericAirTemperatureValue>
 		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasNumericRelativeHumidityValue>
+		<oe2022-iem:hasRelativeHumidityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasRelativeHumidityValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5EnvironmentTarget">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirSpeedSign rdf:resource="&oe2022-iem;Positive"/>
+		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">2</oe2022-iem:hasNumericAirSpeedValue>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5EnvironmentWindow1Open">
+		<rdf:type rdf:resource="&oe2022-iem;ResultantIndoorEnvironment"/>
+		<oe2022-iem:hasAirSpeedSign rdf:resource="&oe2022-iem;Positive"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5Room">
 		<rdf:type rdf:resource="&oe2022-iem;Room"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5TargetEnvironment">
-		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">2</oe2022-iem:hasNumericAirSpeedValue>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5Thermostat">
