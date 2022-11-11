@@ -1,5 +1,27 @@
 SPARQL Query for Competancy Question 1:
 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
+PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+SELECT ?breed
+	#WHERE { ?subject rdfs:subClassOf oe2022-dogs:BreedAspect}
+	WHERE { ?breed a oe2022-dogs:Breed.
+		?profile a oe2022-dogs:BreedCharacteristicProfile;
+			cmns-cls:characterizes ?breed;
+			oe2022-dogs:displaysChildFriendlinessLevel ?childfriendlinesslevel;
+			oe2022-dogs:displaysExerciseNeedsLevel ?exerciseneedslevel;
+			Filter(?childfriendlinesslevel = 1.0 && ?exerciseneedslevel > 0.5).
+		
+}
+ORDER BY ASC(?childfriendlinesslevel) ASC(?exerciseneedslevel)
+
+
+
+
 SPARQL Query for Competancy Question 4:
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
