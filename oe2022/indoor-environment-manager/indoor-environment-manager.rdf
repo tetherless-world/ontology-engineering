@@ -67,11 +67,31 @@
 		<skos:definition>synthesis of various physical measurements of properties of air that threaten human health</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2022-iem;AirQualityAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
+		<rdfs:label>air quality attribute</rdfs:label>
+		<skos:definition>quantitative attribute that affects air pollution in a local environment</skos:definition>
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityIndex">
 		<rdf:type rdf:resource="&cmns-qtu;MeasurementUnit"/>
 		<rdfs:label>air quality index</rdfs:label>
 		<skos:definition>measurement that combines other meaurements of properties of air to indicate the level of danger to human health</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-iem;AirSpeedAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
+		<rdfs:label>air speed attribute</rdfs:label>
+		<skos:definition>quantitative attribute that affects wind speed in a local environment</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;AirTemperatureAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
+		<rdfs:label>air temperature attribute</rdfs:label>
+		<skos:definition>quantitative attribute that affects ambient temperature in a local environment</skos:definition>
+	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
@@ -90,10 +110,29 @@
 		<skos:definition>the state of an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;DaylightIntensityAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
+		<rdfs:label>daylight intensity attribute</rdfs:label>
+		<skos:definition>quantitative attribute that affects daylight intensity in a local environment</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Dehumidifier">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>dehumidifier</rdfs:label>
 		<skos:definition>room component that can be on or off, thereby lowering indoor relative humidity or not, respectively</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;DeltaCapableMeasurement">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasSign"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Sign"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>delta cabable measurement</rdfs:label>
+		<skos:definition>a measurement that can be expressed as a delta from a baseline absolute value</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;DeltaDefinedEnvironment">
@@ -283,6 +322,19 @@
 		<skos:definition>the circumstances, objects, or conditions by which one is surrounded</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;Measurement"/>
+		<rdfs:label>environment attribute</rdfs:label>
+		<skos:definition>quantitative attribute of local environment</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;EnvironmentAttributeDelta">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
+		<rdfs:label>environment attribute delta</rdfs:label>
+		<skos:definition>quantitative change of an environmental parameter caused by environmental attributes</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Fan">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>fan</rdfs:label>
@@ -366,6 +418,11 @@
 		<rdfs:label>kilowatt-hour</rdfs:label>
 		<skos:definition>measure of electrical energy equivalent to a power consumption of 1,000 watts for 1 hour</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-iem;Measurement">
+		<rdfs:label>measurement</rdfs:label>
+		<skos:definition>amount of something</skos:definition>
+	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;MetersPerSecond">
 		<rdf:type rdf:resource="&cmns-qtu;MeasurementUnit"/>
@@ -470,6 +527,13 @@
 		<rdfs:label>relative humidity</rdfs:label>
 		<skos:definition>ratio of the mole fraction of water vapor to the mole fraction of water vapor saturated at the same temperature and barometric pressure.</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-iem;RelativeHumidityAttribute">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaCapableMeasurement"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;EnvironmentAttribute"/>
+		<rdfs:label>relative humidity attribute</rdfs:label>
+		<skos:definition>quantitative attribute that affects humidity in a local environment</skos:definition>
+	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
