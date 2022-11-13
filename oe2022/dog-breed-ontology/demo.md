@@ -1,5 +1,3 @@
----
----
 
 ## Queries
 
@@ -27,10 +25,10 @@ ORDER BY ASC(?childfriendlinesslevel) ASC(?exerciseneedslevel)
 ```
 
 #### Result 1: 
-| breed |
-| --- |
-| Poodle |
-| Goldendoodle |
+|breed|
+|-----|
+|Poodle|
+|Goldendoodle|
 
 
 ### Query 2 (CQ 4): Is a greyhound a good breed for a large family with multiple pets, including cats and other dogs?
@@ -101,7 +99,7 @@ ORDER BY ASC(?popularityQuantitativeScore) ASC(?sheddinglevel) ASC(?droolingleve
 ```
 
 #### Result 3: 
-| breed |
-| --- |
-| Poodle |
-| Greyhound |
+|breed|
+|-----|
+|Poodle|
+|Greyhound|
