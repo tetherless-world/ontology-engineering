@@ -21,5 +21,41 @@
 - [Version 1 (OE 6)](https://github.com/tetherless-world/ontology-engineering/blob/40b9433c732a6adc31d5fb0dd1c953f172dbd228/oe2022/dog-breed-ontology/find-a-pet.rdf) 
 
 ## Ontologies Reused
+- [OMG Annotation Vocabulary](https://www.omg.org/spec/Commons/AnnotationVocabulary/)
+- [OMG Classifiers](https://www.omg.org/spec/Commons/Classifiers/)
+- [OMG Collections](https://www.omg.org/spec/Commons/Collections/)
+- [OMG Documents](https://www.omg.org/spec/Commons/Documents/)
+- [OMG Dates & Times](https://www.omg.org/spec/Commons/DatesAndTimes/)
+- [OMG Products & Services](https://www.omg.org/spec/Commons/ProductsAndServices/)
+- [OMG Parties & Situations](https://www.omg.org/spec/Commons/PartiesAndSituations/)
+- [OMG Ratings](https://www.omg.org/spec/Commons/Ratings/)
+- [Purl DC Terms](http://purl.org/dc/terms/)
+- [LCC Country Representation](https://www.omg.org/spec/LCC/Countries/CountryRepresentation/)
+- [LCC ISO3166-2 US Subdivision Codes](https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/)
+- [W3C OWL](http://www.w3.org/2002/07/owl#)
+- [W3C RDF](http://www.w3.org/1999/02/22-rdf-syntax-ns#)
+- [W3C RDFS](http://www.w3.org/2000/01/rdf-schema#)
+- [W3C SKOS](http://www.w3.org/2004/02/skos/core#)
+- [W3C XSD](http://www.w3.org/2001/XMLSchema#)
+
+## Ontology Prefixes
+- cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+- cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+- cmns-col="https://www.omg.org/spec/Commons/Collections/"
+- cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+- cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+- cmns-prd="https://www.omg.org/spec/Commons/ProductsAndServices/"
+- cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+- cmns-rt="https://www.omg.org/spec/Commons/Ratings/"
+- dct="http://purl.org/dc/terms/"
+- lcc-3166-2-us="https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/"
+- lcc-cr="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
+- oe2022-dogs="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/"
+- oe2022-dogs-ind="https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/"
+- owl="http://www.w3.org/2002/07/owl#"
+- rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+- rdfs="http://www.w3.org/2000/01/rdf-schema#"
+- skos="http://www.w3.org/2004/02/skos/core#"
+- xsd="http://www.w3.org/2001/XMLSchema#"
 
 
