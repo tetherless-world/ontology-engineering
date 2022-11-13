@@ -81,12 +81,6 @@
 		<skos:definition>the rate of air movement at a point, without regard to direction.</skos:definition>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-iem;BaselineIndoorEnvironment">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
-		<rdfs:label>baseline indoor environment</rdfs:label>
-		<skos:definition>a collection of indoor environmental parameters before environmental attributes affect the indoor environment</skos:definition>
-	</owl:Class>
-	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Closed">
 		<rdf:type rdf:resource="&oe2022-iem;ComponentState"/>
 		<rdfs:label>closed</rdfs:label>
@@ -94,8 +88,15 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-iem;ComponentState">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Classifier"/>
 		<rdfs:label>component state</rdfs:label>
 		<skos:definition>the state of an object in a room that can be used to alter relevant indoor environment quality parameters</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;CurrentIndoorEnvironment">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
+		<rdfs:label>current indoor environment</rdfs:label>
+		<skos:definition>a collection of indoor environmental parameters before environmental attributes affect the indoor environment</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;DaylightIntensity">
@@ -309,6 +310,13 @@
 		<skos:definition>the equipment, distribution systems, and terminals that provide, either collectively or individually, the processes of heating, ventilating, or air conditioning to a building or portion of a building</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;IdealIndoorEnvironment">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
+		<rdfs:label>ideal indoor environment</rdfs:label>
+		<skos:definition>a collection of indoor environmental parameters that represent the target towards which actions should make progress</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
 		<rdfs:subClassOf>
@@ -493,6 +501,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Room">
+		<rdfs:subClassOf rdf:resource="&cmns-col;Collection"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasComponent"/>
@@ -503,7 +512,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasEnvironment"/>
-				<owl:onClass rdf:resource="&oe2022-iem;BaselineIndoorEnvironment"/>
+				<owl:onClass rdf:resource="&oe2022-iem;CurrentIndoorEnvironment"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -512,6 +521,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;RoomComponent">
+		<rdfs:subClassOf rdf:resource="&cmns-col;Constituent"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasAvailableAction"/>
@@ -797,6 +807,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-col;isPartOf"/>
 		<rdfs:label>is component of</rdfs:label>
 		<skos:definition>physically exists in the space in a semi-permanent capacity</skos:definition>
 	</owl:ObjectProperty>
