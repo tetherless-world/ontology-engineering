@@ -92,3 +92,8 @@ SELECT ?airSpeedRoomComponent ?airSpeedNewState WHERE {
 
 #### Example Results
 Open windows
+
+
+## Previous Versions
+
+- [Version 1 (OE 10)](https://docs.google.com/document/d/e/2PACX-1vSia6C1iOhK7PO1pVppIlTEVVB7-Y7DabGDwYeMTdnhEVHru-PrsXzPd_GkEVOqXg/pub)
