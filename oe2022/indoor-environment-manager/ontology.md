@@ -1,4 +1,4 @@
-[Concept Map](#conceptual-model) | [Ontology File](#ontologies) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+[Concept Map](#conceptual-model) | [Ontology File](#ontologies) 
 
 ## Conceptual Model
 
