@@ -4,11 +4,10 @@ title: related_work
 ---
 
 ## Related Work and References
-
-<p class="message-highlight">
-  Please replace the below citations with that with citations to work that can be considered as related work for your project. You can also include reference links to resources you used for the project. To retrieve citations you can use the get citation button against publications on <a href="https://scholar.google.com">Google Scholar</a>. Please try listing out the full author list for publications, the Chicago format allows you this provision.
-</p>
-
-- Seneviratne, Oshani, Sabbir M. Rashid, Shruthi Chari, James P. McCusker, Kristin P. Bennett, James A. Hendler, and Deborah L. McGuinness. "Knowledge integration for disease characterization: A breast cancer example." In International Semantic Web Conference, pp. 223-238. Springer, Cham, 2018.
-- Haussmann, Steven, Oshani Seneviratne, Yu Chen, Yarden Ne’eman, James Codella, Ching-Hua Chen, Deborah L. McGuinness, and Mohammed J. Zaki. "FoodKG: a semantics-driven knowledge graph for food recommendation." In International Semantic Web Conference, pp. 146-162. Springer, Cham, 2019.
-- Chari, Shruthi, Miao Qi, Nkechinyere N. Agu, Oshani Seneviratne, James P. McCusker, Kristin P. Bennett, Amar K. Das, and Deborah L. McGuinness. "Making study populations visible through knowledge graphs." In International Semantic Web Conference, pp. 53-68. Springer, Cham, 2019.
+- Hasan, Mohammad H., Fadi M. Alsaleem, and Mostafa Rafaie. "Sensitivity analysis for the PMV thermal comfort model and the use of wearable devices to enhance its accuracy." (2016).
+- Hasson, Rebecca E., Cheryl A. Howe, Bryce L. Jones, and Patty S. Freedson. "Accuracy of four resting metabolic rate prediction equations: effects of sex, body mass index, age, and race/ethnicity." Journal of Science and Medicine in Sport 14, no. 4 (2011): 344-351.
+- Kendall, Elisa F., and Deborah L. McGuinness. "Ontology engineering." Synthesis Lectures on The Semantic Web: Theory and Technology 9, no. 1 (2019): i-102.
+- Luo, Maohui, Zhe Wang, Kevin Ke, Bin Cao, Yongchao Zhai, and Xiang Zhou. "Human metabolic rate and thermal comfort in buildings: The problem and challenge." Building and Environment 131 (2018): 44-52.
+- Standard, A. S. H. R. A. E. (2017). Standard 55–2017 thermal environmental conditions for human occupancy. Ashrae: Atlanta, GA, USA., available at https://hogiaphat.vn/upload/docs/ASHRAE55-version2017.pdf
+- Tartarini, Federico, Stefano Schiavon, Toby Cheung, and Tyler Hoyt. "CBE Thermal Comfort Tool: Online tool for thermal comfort calculations and visualizations." SoftwareX 12 (2020): 100563.
+- US Energy Information Administration. “Technical Assistance Document for the Reporting of Daily Air Quality – the Air Quality Index (AQI)”, available at https://www.airnow.gov/sites/default/files/2020-05/aqi-technical-assistance-document-sept2018.pdf
