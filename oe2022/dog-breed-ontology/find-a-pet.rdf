@@ -49,7 +49,6 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Ratings/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
-		<owl:priorVersion>https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/5.0</owl:priorVersion>
 		<owl:versionIRI rdf:resource="&oe2022-dogs;6.0"/>
 	</owl:Ontology>
 	
@@ -807,6 +806,32 @@
 		<rdfs:label>hunter of small game</rdfs:label>
 		<skos:definition>hunter whose primary prey is underground, such as rodents</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HypoallergenicBreed">
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Breed">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;causes"/>
+						<owl:allValuesFrom>
+							<owl:Class>
+								<owl:complementOf>
+									<owl:Class>
+										<owl:oneOf rdf:parseType="Collection">
+											<rdf:Description rdf:about="&oe2022-dogs;DogAllergy">
+											</rdf:Description>
+										</owl:oneOf>
+									</owl:Class>
+								</owl:complementOf>
+							</owl:Class>
+						</owl:allValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;IndoorSpace">
