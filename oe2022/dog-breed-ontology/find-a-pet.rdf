@@ -126,33 +126,28 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:onClass rdf:resource="&oe2022-dogs;BreedPhysicalProfile"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;CoatLength"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;CoatType"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxHeight"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxLifespan"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -163,31 +158,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinHeight"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinLifespan"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinPrice"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
 				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -336,6 +307,46 @@
 		<rdfs:label>breed group</rdfs:label>
 		<skos:definition>collection of breeds grouped together by the American Kennel Club based on what the breeds were bred to do</skos:definition>
 		<cmns-av:adaptedFrom>&quot;Dog breeds.&quot; VetStreet. http://www.vetstreet.com/dogs/breeds (accessed Sep 19, 2022).</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;BreedPhysicalProfile">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxHeight"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxLifespan"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinHeight"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinLifespan"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;BreedPopularityRating">
@@ -509,17 +520,11 @@
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-dogs;CordedCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>corded coat</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;HairlessCoatType"/>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;CordedCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>corded coat type</rdfs:label>
 		<skos:definition>coat type describing fur that naturally clump into thick strands</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;CordedOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;CordedCoatType"/>
-		<rdfs:label>corded only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;CreamColor">
@@ -527,17 +532,11 @@
 		<rdfs:label>cream color</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;CurlyCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>curly coat</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;HairlessCoatType"/>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;CurlyCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>curly coat type</rdfs:label>
 		<skos:definition>coat type with swirls, curlicues, and twists in the fur</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;CurlyOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;CurlyCoatType"/>
-		<rdfs:label>curly only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;DarkBrownColor">
@@ -573,17 +572,11 @@
 		<rdfs:label>domino shape</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;DoubleCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>double coat</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;HairlessCoatType"/>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;DoubleCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>double coat type</rdfs:label>
 		<skos:definition>coat type describing an undercoat that is typically shorter than the outer coat, and fur with a dense, woolly texture</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;DoubleOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;DoubleCoatType"/>
-		<rdfs:label>double only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;ExerciseLevel">
@@ -697,22 +690,64 @@
 		<rdfs:label>grizzle shape</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;HairlessCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>hairless coat</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;RoughCoatType"/>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;SilkyCoatType"/>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;SmoothCoatType"/>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;WavyCoatType"/>
-		<owl:disjointWith rdf:resource="&oe2022-dogs;WiryCoatType"/>
-		<skos:definition>coat type describing a coat without fur</skos:definition>
-		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
+	<owl:Class rdf:about="&oe2022-dogs;HairlessBreed">
+		<owl:disjointWith rdf:resource="&oe2022-dogs;HairyBreed"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Breed">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+						<owl:hasValue rdf:resource="&oe2022-dogs;HairlessCoatType"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;HairlessOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;HairlessCoatType"/>
-		<rdfs:label>hairless only coat type</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;HairlessCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>hairless coat type</rdfs:label>
+		<skos:definition>coat type describing a coat without fur</skos:definition>
+		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HairyBreed">
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Breed">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+						<owl:allValuesFrom>
+							<owl:Class>
+								<owl:oneOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2022-dogs;CordedCoatType">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2022-dogs;CurlyCoatType">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2022-dogs;DoubleCoatType">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2022-dogs;RoughCoatType">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2022-dogs;SilkyCoatType">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2022-dogs;SmoothCoatType">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2022-dogs;WavyCoatType">
+									</rdf:Description>
+									<rdf:Description rdf:about="&oe2022-dogs;WiryCoatType">
+									</rdf:Description>
+								</owl:oneOf>
+							</owl:Class>
+						</owl:allValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;Herder">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;FunctionalRole"/>
@@ -773,6 +808,32 @@
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-dogs;HypoallergenicBreed">
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Breed">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;causes"/>
+						<owl:allValuesFrom>
+							<owl:Class>
+								<owl:complementOf>
+									<owl:Class>
+										<owl:oneOf rdf:parseType="Collection">
+											<rdf:Description rdf:about="&oe2022-dogs;DogAllergy">
+											</rdf:Description>
+										</owl:oneOf>
+									</owl:Class>
+								</owl:complementOf>
+							</owl:Class>
+						</owl:allValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;IndoorSpace">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Space"/>
 		<rdfs:label>indoor</rdfs:label>
@@ -784,6 +845,41 @@
 		<rdf:type rdf:resource="&oe2022-dogs;TravelingLevel"/>
 		<rdfs:label>intermittent traveling level</rdfs:label>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-dogs;LargeBreed">
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Breed">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:intersectionOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
+									</rdf:Description>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
+										<owl:someValuesFrom>
+											<rdfs:Datatype>
+												<owl:onDatatype rdf:resource="&xsd;decimal"/>
+												<owl:withRestrictions rdf:parseType="Collection">
+													<rdf:Description>
+														<xsd:minInclusive rdf:datatype="&xsd;decimal">55</xsd:minInclusive>
+													</rdf:Description>
+												</owl:withRestrictions>
+											</rdfs:Datatype>
+										</owl:someValuesFrom>
+									</owl:Restriction>
+								</owl:intersectionOf>
+							</owl:Class>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;LargeBudget">
 		<rdf:type rdf:resource="&oe2022-dogs;Budget"/>
@@ -805,16 +901,11 @@
 		<rdfs:label>liver color</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;LongCoatLength">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
-		<rdfs:label>long coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;LongCoatLength">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>long coat length</rdfs:label>
 		<skos:definition>coat length that requires regular grooming to keep it neat and free of mats</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;LongOnlyCoatLength">
-		<rdf:type rdf:resource="&oe2022-dogs;LongCoatLength"/>
-		<rdfs:label>long only coat length</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;LowCleaningFrequency">
@@ -858,6 +949,58 @@
 		<rdfs:label>mask shape</rdfs:label>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2022-dogs;MediumBreed">
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Breed">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:intersectionOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
+									</rdf:Description>
+									<owl:Class>
+										<owl:intersectionOf rdf:parseType="Collection">
+											<owl:Restriction>
+												<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
+												<owl:someValuesFrom>
+													<rdfs:Datatype>
+														<owl:onDatatype rdf:resource="&xsd;decimal"/>
+														<owl:withRestrictions rdf:parseType="Collection">
+															<rdf:Description>
+																<xsd:minExclusive rdf:datatype="&xsd;decimal">35</xsd:minExclusive>
+															</rdf:Description>
+														</owl:withRestrictions>
+													</rdfs:Datatype>
+												</owl:someValuesFrom>
+											</owl:Restriction>
+											<owl:Restriction>
+												<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
+												<owl:someValuesFrom>
+													<rdfs:Datatype>
+														<owl:onDatatype rdf:resource="&xsd;decimal"/>
+														<owl:withRestrictions rdf:parseType="Collection">
+															<rdf:Description>
+																<xsd:maxExclusive rdf:datatype="&xsd;decimal">55</xsd:maxExclusive>
+															</rdf:Description>
+														</owl:withRestrictions>
+													</rdfs:Datatype>
+												</owl:someValuesFrom>
+											</owl:Restriction>
+										</owl:intersectionOf>
+									</owl:Class>
+								</owl:intersectionOf>
+							</owl:Class>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;MediumBudget">
 		<rdf:type rdf:resource="&oe2022-dogs;Budget"/>
 		<rdfs:label>medium budget</rdfs:label>
@@ -868,21 +1011,16 @@
 		<rdfs:label>medium cleaning frequency</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;MediumCoatLength">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
-		<rdfs:label>medium coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;MediumCoatLength">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>medium coat length</rdfs:label>
 		<skos:definition>coat length that requires regular brushing due to risk of feathering on legs and tail becoming matted</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
-	</owl:Class>
+	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;MediumExerciseLevel">
 		<rdf:type rdf:resource="&oe2022-dogs;ExerciseLevel"/>
 		<rdfs:label>medium exercise level</rdfs:label>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;MediumOnlyCoatLength">
-		<rdf:type rdf:resource="&oe2022-dogs;MediumCoatLength"/>
-		<rdfs:label>medium only coat length</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;MiscellaneousBreedGroup">
@@ -1099,16 +1237,11 @@
 		<rdfs:label>rose color</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;RoughCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>rough coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;RoughCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>rough coat type</rdfs:label>
 		<skos:definition>coat type that is always coarse to the touch</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;RoughOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;RoughCoatType"/>
-		<rdfs:label>rough only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;RustColor">
@@ -1133,34 +1266,59 @@
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-dogs;ShortCoatLength">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
-		<rdfs:label>short coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;ShortCoatLength">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdfs:label>short coat length</rdfs:label>
 		<skos:definition>coat length in which fur is naturally short and lays close to the body</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;ShortOnlyCoatLength">
-		<rdf:type rdf:resource="&oe2022-dogs;ShortCoatLength"/>
-		<rdfs:label>short only coat length</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;SilkyCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>silky coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;SilkyCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>silky coat type</rdfs:label>
 		<skos:definition>coat type describing fur that flows and cascades with glossy sheen</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;SilkyOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;SilkyCoatType"/>
-		<rdfs:label>silky only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;SilverColor">
 		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
 		<rdfs:label>silver color</rdfs:label>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-dogs;SmallBreed">
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;Breed">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:intersectionOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
+									</rdf:Description>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
+										<owl:someValuesFrom>
+											<rdfs:Datatype>
+												<owl:onDatatype rdf:resource="&xsd;decimal"/>
+												<owl:withRestrictions rdf:parseType="Collection">
+													<rdf:Description>
+														<xsd:maxInclusive rdf:datatype="&xsd;decimal">35</xsd:maxInclusive>
+													</rdf:Description>
+												</owl:withRestrictions>
+											</rdfs:Datatype>
+										</owl:someValuesFrom>
+									</owl:Restriction>
+								</owl:intersectionOf>
+							</owl:Class>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;SmallBudget">
 		<rdf:type rdf:resource="&oe2022-dogs;Budget"/>
@@ -1174,16 +1332,11 @@
 		<cmns-av:adaptedFrom>K.E. Holland, &quot;Acquiring a pet dog: A review of factors affecting the decision-making of prospective dog owners,&quot; Animals, vol. 9, no. 124, Mar. 2019 , doi: 10.3390/ani9040124</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-dogs;SmoothCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>smooth coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;SmoothCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>smooth coat type</rdfs:label>
 		<skos:definition>coat type describing silky fur that lays close to the body</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;SmoothOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;SmoothCoatType"/>
-		<rdfs:label>smooth only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;SocialMediaSubject">
@@ -1270,16 +1423,11 @@
 		<rdfs:label>undercoat shape</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;WavyCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>wavy coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;WavyCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>wavy coat type</rdfs:label>
 		<skos:definition>coat type describing a coat with curls that tangles and knots easily and has a tendency to become dry</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;WavyOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;WavyCoatType"/>
-		<rdfs:label>wavy only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;WhiteColor">
@@ -1287,16 +1435,11 @@
 		<rdfs:label>white color</rdfs:label>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="&oe2022-dogs;WiryCoatType">
-		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
-		<rdfs:label>wiry coat</rdfs:label>
+	<owl:NamedIndividual rdf:about="&oe2022-dogs;WiryCoatType">
+		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdfs:label>wiry coat type</rdfs:label>
 		<skos:definition>coat type describing fur with a wire-like texture that is harsh and stiff and stands away from the body</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:NamedIndividual rdf:about="&oe2022-dogs;WiryOnlyCoatType">
-		<rdf:type rdf:resource="&oe2022-dogs;WiryCoatType"/>
-		<rdfs:label>wiry only coat type</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;WolfgrayColor">
@@ -1901,5 +2044,15 @@
 	<rdf:Description rdf:about="&cmns-rt;RatingAgency">
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</rdf:Description>
-
+	
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe2022-dogs;LargeBreed">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;MediumBreed">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-dogs;SmallBreed">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
 </rdf:RDF>
