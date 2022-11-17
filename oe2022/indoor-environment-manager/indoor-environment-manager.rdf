@@ -36,7 +36,7 @@
 		<dct:abstract>The goal of this ontology is to assist occupants to improve indoor environmental quality (IEQ) and minimize energy use in a small room. This process considers components of the room that can change environmental conditions or allow the outdoor environment to affect the indoor environment, as well as sensors to record various environment attributes, and the occupants&apos; comfort ranges.</dct:abstract>
 		<dct:creator>Gabriel Jacoby-Cooper</dct:creator>
 		<dct:creator>Jihoon Chung</dct:creator>
-        <dct:creator>Kelsey Rook</dct:creator>
+		<dct:creator>Kelsey Rook</dct:creator>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
@@ -418,6 +418,48 @@
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirSpeedComfortRangeLowerBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirSpeedComfortRangeUpperBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirTemperatureComfortRangeLowerBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirTemperatureComfortRangeUpperBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasRelativeHumidityComfortRangeLowerBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasRelativeHumidityComfortRangeUpperBound"/>
+				<owl:onDataRange rdf:resource="&xsd;integer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">occupant</rdfs:label>
 		<skos:definition xml:lang="en">someone that resides or is present in or using a building, vehicle, seat, place, etc., at a given time</skos:definition>
 	</owl:Class>
@@ -680,6 +722,14 @@
 		<skos:definition>specifies an actual literal (explicit) values of air quality index</skos:definition>
 	</owl:DatatypeProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirSpeedComfortRangeLowerBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeLowerBound"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirSpeedComfortRangeUpperBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeUpperBound"/>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirSpeedSign">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasSign"/>
 		<rdfs:label>has air speed sign</rdfs:label>
@@ -690,6 +740,14 @@
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasEnvironmentAttributeValue"/>
 		<rdfs:label>has air speed value</rdfs:label>
 		<skos:definition>specifies an actual literal (explicit) values of air speed</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirTemperatureComfortRangeLowerBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeLowerBound"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirTemperatureComfortRangeUpperBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeUpperBound"/>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirTemperatureSign">
@@ -717,6 +775,18 @@
 		<owl:inverseOf rdf:resource="&oe2022-iem;isAvailableActionFor"/>
 		<skos:definition>indicates what actions are available for a room component</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasComfortRangeBound">
+		<rdfs:range rdf:resource="&xsd;integer"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasComfortRangeLowerBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeBound"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasComfortRangeUpperBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeBound"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasComponent">
 		<rdfs:label>has component</rdfs:label>
@@ -761,6 +831,14 @@
 		<owl:inverseOf rdf:resource="&oe2022-iem;isPossibleStateOf"/>
 		<skos:definition>has the ability to be in some condition at a point in time</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasRelativeHumidityComfortRangeLowerBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeLowerBound"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasRelativeHumidityComfortRangeUpperBound">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasComfortRangeUpperBound"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasRelativeHumiditySign">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasSign"/>
