@@ -59,6 +59,19 @@ ask {
 
 SPARQL Query for Competancy Question 5:
 
+Question:
+What is a cute dog breed that can do well in an apartment that doesn’t get cleaned very often?
+
+Explanation: 
+Query first requires apartment friendly characteristics (which will require a low barking, high stranger friendliness level,
+and a small or medium sized breed). It also requires that the dog have low shedding and drooling to account for the lack of 
+cleaning in this apartment. It prioritizes our hard apartment constraints (barking and stranger friendliness) but ranks by 
+popularity to account for the "cuteness" expectation
+
+Sample answer:
+Poodle
+
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -66,17 +79,24 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
 PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
-SELECT ?breed
-	#WHERE { ?subject rdfs:subClassOf oe2022-dogs:BreedAspect}
-	WHERE { ?breed a oe2022-dogs:Breed.
-		?profile a oe2022-dogs:BreedCharacteristicProfile;
+SELECT ?label ?popularityQuantitativeScore ?barkinglevel ?strangerFriendliness ?sheddinglevel ?droolinglevel ?maxWeight
+	WHERE { ?breed a oe2022-dogs:ApartmentFriendlyBreed;
+			a oe2022-dogs:LowSheddingBreed;
+			a oe2022-dogs:LowDroolingBreed;
+			rdfs:label ?label.
+		?char_profile a oe2022-dogs:BreedCharacteristicProfile;
 			cmns-cls:characterizes ?breed;
 			oe2022-dogs:displaysDroolingLevel ?droolinglevel;
 			oe2022-dogs:displaysSheddingLevel ?sheddinglevel;
-			Filter(?droolinglevel < 0.5 && ?sheddinglevel < 0.5).
+			oe2022-dogs:displaysBarkingLevel ?barkinglevel;
+			oe2022-dogs:displaysStrangerFriendlinessLevel ?strangerfriendlinesslevel.
+		?phys_profile a oe2022-dogs:BreedPhysicalProfile;
+			cmns-cls:characterizes ?breed;
+			oe2022-dogs:hasMaxWeight ?maxWeight.
 		?popularityRating a oe2022-dogs:BreedPopularityRating;
 			cmns-rt:rates ?breed;
 			cmns-rt:hasRatingScore ?ratingScore.
 		?ratingScore cmns-rt:hasMeasureWithinScale ?popularityQuantitativeScore.
 }
-ORDER BY ASC(?popularityQuantitativeScore) ASC(?sheddinglevel) ASC(?droolinglevel)
+ORDER BY ?popularityQuantitativeScore ?barkinglevel DESC(?strangerfriendlinesslevel) ?sheddinglevel ?droolinglevel 
+LIMIT 10
