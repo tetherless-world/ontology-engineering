@@ -26,6 +26,7 @@
 
 | Ontology           | Individuals       |
 |--------------------|-------------------|
+| [OE 11][oe-11-ont] | [OE 10][oe-11-ind] |
 | [OE 10][oe-10-ont] | [OE 10][oe-10-ind] |
 | [OE 9][oe-9-ont]   | [OE 11][oe-9-ind] |
 | [OE 8][oe-8-ont]   | [OE 8][oe-8-ind]  |
@@ -35,6 +36,8 @@
 [oe-current]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
 [oe-current-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
 
+[oe-11-ont]: https://drive.google.com/file/d/1gOtpz000tBmWOUtOfVh8W2RF1SHovrD8/view?usp=sharing
+[oe-11-ind]: https://drive.google.com/file/d/1ZcgGlIWQOYBKQWuUiqO4qNrhIUYw5X9j/view?usp=sharing
 [oe-10-ont]: https://drive.google.com/file/d/1M_FfvxS6xvrCq5pnMeRqFJcIN969zbwc/view?usp=sharing
 [oe-10-ind]: https://drive.google.com/file/d/1r4iUpwzEIUncyLHu_VcJzimzkoXJqX3M/view?usp=sharing
 [oe-9-ont]: https://drive.google.com/file/d/1QiKPg36jOS_NoAcNAliklzrmH8wYVLt1/view?usp=sharing

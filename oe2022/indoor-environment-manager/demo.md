@@ -20,16 +20,19 @@ What IEQ parameters, such as temperature, humidity, airflow, etc., make the mult
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/>
 PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager-individuals/>
 
-SELECT ?roomComponent ?newState WHERE {
-        ?roomComponent iem:hasAvailableAction ?action .
-        ?action iem:causesNewState ?newState .
-        ?action iem:produces ?resultantEnvironment .
-        ?resultantEnvironment iem:hasAirTemperatureSign ?airTemperatureSign .
-        ind:Question2EnvironmentTarget iem:hasAirTemperatureSign ?airTemperatureSign .
+SELECT DISTINCT ?roomComponent ?newState WHERE {
+    ?roomComponent iem:isComponentOf ind:Question2Room .
+    ?roomComponent iem:hasAvailableAction ?action .
+  	?action iem:causesNewState ?newState .
+  	?action iem:produces ?resultantEnvironment .
+  	?resultantEnvironment iem:hasAirTemperatureSign ?airTemperatureSign .
+  	ind:Question2EnvironmentTarget iem:hasAirTemperatureSign ?airTemperatureSign .
 }
+
 ```
 
 #### Example Results
@@ -46,22 +49,26 @@ What IEQ parameters, such as temperature, humidity, airflow, etc., make the mult
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/>
 PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager-individuals/>
 
-SELECT ?airTemperatureRoomComponent ?airTemperatureNewState ?relativeHumidityRoomComponent ?relativeHumidityNewState WHERE {
-        ?airTemperatureRoomComponent iem:hasAvailableAction ?airTemperatureAction .
-        ?airTemperatureAction iem:causesNewState ?airTemperatureNewState .
-        ?airTemperatureAction iem:produces ?airTemperatureResultantEnvironment .
-        ?airTemperatureResultantEnvironment iem:hasAirTemperatureSign ?airTemperatureSign .
-        ind:Question4EnvironmentTarget iem:hasAirTemperatureSign ?airTemperatureSign .       
-
-        ?relativeHumidityRoomComponent iem:hasAvailableAction ?airHumidityAction .
-        ?relativeHumidityAction iem:causesNewState ?relativeHumidityNewState .
-        ?relativeHumidityAction iem:produces ?relativeHumidityResultantEnvironment .
-        ?relativeHumidityResultantEnvironment iem:hasRelativeHumiditySign ?relativeHumiditySign .
-        ind:Question4EnvironmentTarget iem:hasRelativeHumiditySign ?relativeHumiditySign .
+SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState ?relativeHumidityRoomComponent ?relativeHumidityNewState WHERE {
+  	?airSpeedRoomComponent iem:isComponentOf ind:Question4Room .
+    ?airSpeedRoomComponent iem:hasAvailableAction ?airSpeedAction .
+    ?airSpeedAction iem:causesNewState ?airSpeedNewState .
+    ?airSpeedAction iem:produces ?airSpeedResultantEnvironment .
+    ?airSpeedResultantEnvironment iem:hasAirSpeedSign ?airSpeedSign .
+  	ind:Question4EnvironmentTarget iem:hasAirSpeedSign ?airSpeedSign .
+  	
+  	?relativeHumidityRoomComponent iem:isComponentOf ind:Question4Room .
+    ?relativeHumidityRoomComponent iem:hasAvailableAction ?relativeHumidityAction .
+  	?relativeHumidityAction iem:causesNewState ?relativeHumidityNewState .
+  	?relativeHumidityAction iem:produces ?relativeHumidityResultantEnvironment .
+  	?relativeHumidityResultantEnvironment iem:hasRelativeHumiditySign ?relativeHumiditySign .
+  	ind:Question4EnvironmentTarget iem:hasRelativeHumiditySign ?relativeHumiditySign .
 }
+
 ```
 
 #### Example Results
@@ -78,22 +85,99 @@ In a small gym, three people are working out. 22-year-old male Jason walking on 
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/>
 PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager-individuals/>
 
-SELECT ?airSpeedRoomComponent ?airSpeedNewState WHERE {
-        ?airSpeedRoomComponent iem:hasAvailableAction ?airSpeedAction .
-        ?airSpeedAction iem:causesNewState ?airSpeedNewState .
-        ?airSpeedAction iem:produces ?airSpeedResultantEnvironment .
-        ?airSpeedResultantEnvironment iem:hasAirSpeedSign ?airSpeedSign .
-        ind:Question5EnvironmentTarget iem:hasAirSpeedSign ?airSpeedSign .
+SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState WHERE {
+  	?airSpeedRoomComponent iem:isComponentOf ind:Question5Room .
+  	?airSpeedRoomComponent iem:hasAvailableAction ?airSpeedAction .
+  	?airSpeedAction iem:causesNewState ?airSpeedNewState .
+  	?airSpeedAction iem:produces ?airSpeedResultantEnvironment .
+  	?airSpeedResultantEnvironment iem:hasAirSpeedSign ?airSpeedSign .
+  	ind:Question5EnvironmentTarget iem:hasAirSpeedSign ?airSpeedSign .
 }
+
 ```
 
 #### Example Results
 Open windows
 
 
+### Competency Question 4
+
+#### Question
+In a room, only one occupant sits on a chair. Is this occupant feel comfortable? The occupant has a preferred temperature range of 72°F to 80°F and a preferred humidity range of 28% to 40%. The room temperature is 75°F and the relative humidity is 55%.
+
+#### Query
+```sparql
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager-individuals/>
+
+SELECT ?occupant WHERE {
+	?occupant iem:occupies ind:Question6Room .
+	?occupant iem:hasAirTemperatureComfortRangeLowerBound ?AirTemperatureLowerBound .
+    ?occupant iem:hasRelativeHumidityComfortRangeLowerBound ?RelativeHumidityLowerBound .
+	?occupant iem:hasAirTemperatureComfortRangeUpperBound ?AirTemperatureUpperBound .
+	?occupant iem:hasRelativeHumidityComfortRangeUpperBound ?RelativeHumidityUpperBound .
+	ind:Question6EnvironmentCurrent iem:hasAirTemperatureValue ?AirTemperatureValue .
+	ind:Question6EnvironmentCurrent iem:hasRelativeHumidityValue ?RelativeHumidityValue .
+	FILTER(?AirTemperatureValue <= ?AirTemperatureUpperBound) .
+    FILTER(?AirTemperatureValue >= ?AirTemperatureLowerBound) .
+	FILTER(?RelativeHumidityValue <= ?RelativeHumidityUpperBound) .
+	FILTER(?RelativeHumidityValue >= ?RelativeHumidityLowerBound) .
+ }
+
+```
+
+#### Example Results
+he occupant don’t feel comfortable
+
+
+### Competency Question 5
+
+#### Question
+In a small office space with three occupants, who is currently comfortable? Occupant 1 has a preferred temperature range of 64°F to 68°F, prefers lower humidity (25% to 35%), and enjoys a light breeze (1 m/s to 2 m/s). Occupant 2 has a preferred temperature range of 70°F to 75°F, is comfortable in varied humidity (30% to 40%), and likes a light to moderate breeze (1 m/s to 3 m/s). Occupant 3 has a preferred temperature range of 68°F to 74°F, is comfortable in most humidity settings (30% to 50%), and prefers no breeze (0 m/s to 1 m/s). The office temperature is 70°F, the relative humidity is 30%, and the air speed is 2 m/s.
+
+#### Query
+```sparql
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager-individuals/>
+
+SELECT ?occupant WHERE {
+	?occupant iem:occupies ind:Question7Room .
+	?occupant iem:hasAirSpeedComfortRangeLowerBound ?AirSpeedLowerBound .
+	?occupant iem:hasAirTemperatureComfortRangeLowerBound ?AirTemperatureLowerBound .
+    ?occupant iem:hasRelativeHumidityComfortRangeLowerBound ?RelativeHumidityLowerBound .
+	?occupant iem:hasAirSpeedComfortRangeUpperBound ?AirSpeedUpperBound .
+	?occupant iem:hasAirTemperatureComfortRangeUpperBound ?AirTemperatureUpperBound .
+	?occupant iem:hasRelativeHumidityComfortRangeUpperBound ?RelativeHumidityUpperBound .
+	ind:Question7EnvironmentCurrent iem:hasAirTemperatureValue ?AirTemperatureValue .
+	ind:Question7EnvironmentCurrent iem:hasAirSpeedValue ?AirSpeedValue .
+	ind:Question7EnvironmentCurrent iem:hasRelativeHumidityValue ?RelativeHumidityValue .
+	FILTER(?AirTemperatureValue <= ?AirTemperatureUpperBound) .
+    FILTER(?AirTemperatureValue >= ?AirTemperatureLowerBound) .
+	FILTER(?AirSpeedValue <= ?AirSpeedUpperBound) .
+	FILTER(?AirSpeedValue >= ?AirSpeedLowerBound) .
+	FILTER(?RelativeHumidityValue <= ?RelativeHumidityUpperBound) .
+	FILTER(?RelativeHumidityValue >= ?RelativeHumidityLowerBound) .
+ }
+
+```
+
+#### Example Results
+Occupant 2 is comfortable
+
+
 ## Previous Versions
 
+- [Version 2 (OE 11)](https://docs.google.com/document/d/e/2PACX-1vQmp9z2kZzc8exMiONkRynBHpT4CQ1Jzr70PcYHPggBXrvBiSJe7M078M75pGt7Vw/pub)
 - [Version 1 (OE 10)](https://docs.google.com/document/d/e/2PACX-1vSia6C1iOhK7PO1pVppIlTEVVB7-Y7DabGDwYeMTdnhEVHru-PrsXzPd_GkEVOqXg/pub)
