@@ -8,7 +8,6 @@ PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
 PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
 SELECT ?breed
-	#WHERE { ?subject rdfs:subClassOf oe2022-dogs:BreedAspect}
 	WHERE { ?breed a oe2022-dogs:Breed.
 		?profile a oe2022-dogs:BreedCharacteristicProfile;
 			cmns-cls:characterizes ?breed;
@@ -32,7 +31,7 @@ select ?breedLabel ?fulfillsKidRequirement ?fulfillsDogRequirement ?fulfillsCatR
 where {
 	bind( (oe2022-dogs-ind:Question4Family) as ?family)
 	bind( (oe2022-dogs-ind:Greyhound) as ?breed)
-	?breed rdfs:label ?breedLabel
+	?breed rdfs:label ?breedLabel .
     
  	bind( if(exists{?family a oe2022-dogs:FamilyWithSmallChildren}, 
 		oe2022-dogs:GoodForChildrenBreed, oe2022-dogs:Breed) as ?needsToBeGoodWithKids)
