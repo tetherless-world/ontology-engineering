@@ -26,35 +26,26 @@ SPARQL Query for Competancy Question 4:
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
 PREFIX cmns-col: <https://www.omg.org/spec/Commons/Collections/>
-PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
-ask {
-	?family rdfs:label "question 4 family" .
-	?breed rdfs:label "greyhound";
-		a oe2022-dogs:Breed .
-
-	bind( if(exists{?family a oe2022-dogs:FamilyWithSmallChildren}, 
-		0.5, 0) as ?neededChildFriendlinessLevel)
-	bind( if(exists{?family a oe2022-dogs:FamilyWithSmallChildren}, 
-		0.5, 0) as ?neededPlayfulnessLevel)
+select ?breedLabel ?fulfillsKidRequirement ?fulfillsDogRequirement ?fulfillsCatRequirement
+where {
+	bind( (oe2022-dogs-ind:Question4Family) as ?family)
+	bind( (oe2022-dogs-ind:Greyhound) as ?breed)
+	?breed rdfs:label ?breedLabel
+    
+ 	bind( if(exists{?family a oe2022-dogs:FamilyWithSmallChildren}, 
+		oe2022-dogs:GoodForChildrenBreed, oe2022-dogs:Breed) as ?needsToBeGoodWithKids)
 	bind( if(exists{?family oe2022-dogs:ownsPet ?dog .
 			?dog a oe2022-dogs:Dog .}, 
-		0.5, 0) as ?neededDogFriendlinessLevel)
+		oe2022-dogs:DogFriendlyBreed, oe2022-dogs:Breed) as ?needsToBeDogFriendly)
 	bind( if(exists{?family oe2022-dogs:ownsPet ?cat .
 			?cat a oe2022-dogs:Cat .}, 
-		0.5, 0) as ?neededCatFriendlinessLevel)
-
-	?profile a oe2022-dogs:BreedCharacteristicProfile;
-		cmns-cls:characterizes ?breed ;
-		oe2022-dogs:displaysChildFriendlinessLevel ?childFriendlinessLevel;
-		oe2022-dogs:displaysCatFriendlinessLevel ?catFriendlinessLevel;
-		oe2022-dogs:displaysDogFriendlinessLevel ?dogFriendlinessLevel;
-		oe2022-dogs:displaysPlayfullnessLevel ?playfullnessLevel.
-
-	Filter( ?childFriendlinessLevel >= ?neededChildFriendlinessLevel &&
-		?catFriendlinessLevel >= ?neededCatFriendlinessLevel &&
-		?dogFriendlinessLevel >= ?neededDogFriendlinessLevel &&
-		?playfullnessLevel >= ?neededPlayfullnessLevel)
+		oe2022-dogs:CatFriendlyBreed, oe2022-dogs:Breed) as ?needsToBeCatFriendly)
+    
+	bind( if(exists{?breed a ?needsToBeGoodWithKids}, "Yes", "No") as ?fulfillsKidRequirement)
+	bind( if(exists{?breed a ?needsToBeDogFriendly}, "Yes", "No") as ?fulfillsDogRequirement)
+	bind( if(exists{?breed a ?needsToBeCatFriendly}, "Yes", "No") as ?fulfillsCatRequirement)
 }
 
 SPARQL Query for Competancy Question 5:
