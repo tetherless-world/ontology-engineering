@@ -2,29 +2,29 @@
 
 ## Conceptual Model
 
-<img src="images/ConceptualModel_BreedTypes.jpg" width="100%"/>
+<img src="images/ConceptualModel_BreedTypes.png" width="100%"/>
 Our ontology models dog breeds and classifies them based on what potential adopters might require or prefer. These are the types of breeds that our system can infer. 
-<img src="images/ConceptualModel_BreedCharacteristics.jpg" width="100%"/>
+<img src="images/ConceptualModel_BreedCharacteristics.png" width="100%"/>
 The above image describes our conceptual model with regards to how we model dog breeds. This includes the object properties that connect each breed with the classes that describe it.
-<img src="images/ConceptualModel_BreedCharacteristicProfile.jpg" width="50%"/>
-<img src="images/ConceptualModel_BreedCharacteristics.jpg" width="50%"/>
+<img src="images/ConceptualModel_BreedCharacteristicProfile.png" width="50%"/>
+<img src="images/ConceptualModel_BreedCharacteristics.png" width="50%"/>
 Each of these profiles are sets of data properties that describe a breed. Each object property in the breed characteristic profile is a value between 0 and 1 that indicate how much a breed embodies that characteristic.
-<img src="images/ConceptualModel_ProfileProvenance.jpg" width="50%"/>
+<img src="images/ConceptualModel_ProfileProvenance.png" width="50%"/>
 Each profile is attributed to the organization (eg. The American Kennel Club) that provided the information.
-<img src="images/ConceptualModel_PetOwnership.jpg" width="50%"/>
-<img src="images/ConceptualModel_MarkingColors.jpg" width="50%"/>
+<img src="images/ConceptualModel_PetOwnership.png" width="50%"/>
+<img src="images/ConceptualModel_MarkingColors.png" width="50%"/>
 Potential adopters may have existing pets that a new dog would have to get along with, and this is how we model that. Markings are also broken up as a shape and its color(s). We use the 2022 AKC colors and marking names as instances. 
-<img src="images/ConceptualModel_Ratings.jpg" width="100%"/>
+<img src="images/ConceptualModel_Ratings.png" width="100%"/>
 Since we cannot model cuteness, since that's subjective, we model the popularity rankings for each breed, currently as reported by the AKC. This model shows how we do that. Since we allow for any organization could be the rating provider, additional rankings could be added.
-<img src="images/ConceptualModel_Adopter.jpg" width="100%"/>
+<img src="images/ConceptualModel_Adopter.png" width="100%"/>
 The above image describes our conceptual model with regards to how we model potential adopters. This includes the object properties that connect each adopter with the classes that describe it. It also shows how we model famililies and allergies (a dog allergy is an instance of the Allergy class).
-<img src="images/ConceptualModel_FunctionalRoles.jpg" width="100%"/>
+<img src="images/ConceptualModel_FunctionalRoles.png" width="100%"/>
 Some adopters may want a dog for a certain purpose, such as herding, and most breeds were bred for a certain purpose, such as hunting. We model that using roles.
-<img src="images/ConceptualModel_Residences.jpg" width="100%"/>
+<img src="images/ConceptualModel_Residences.png" width="100%"/>
 We model an adopter's residence with its location so that we can recommend breeds that are well suited for the climate. We use the IECC climate zones. 
-<img src="images/ConceptualModel_Spaces.jpg" width="50%"/>
+<img src="images/ConceptualModel_Spaces.png" width="50%"/>
 Each residence is made up of a set of spaces, some indoors and some outdoors. Spaces that are covered but not temperature controlled, such as patios or screened-in porches, are considered outdoor spaces. 
-<img src="images/ConceptualModel_Aspects.jpg" width="100%"/>
+<img src="images/ConceptualModel_Aspects.png" width="100%"/>
 This model shows how the varous characteristics of other entities are organized. 
 
 ### Previous Versions
