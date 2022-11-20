@@ -1,9 +1,5 @@
+SPARQL Query for Competancy Question 1:
 
-## Queries
-
-### Query 1 (CQ 1): What dog breed would meet the needs of a large family with allergies in a large home?
-
-```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -21,18 +17,12 @@ SELECT ?breed
 		
 }
 ORDER BY ASC(?childfriendlinesslevel) ASC(?exerciseneedslevel)
-```
-
-#### Result 1: 
-| breed        |
-| ------------ |
-| Poodle       |
-| Goldendoodle |
 
 
-### Query 2 (CQ 4): Is a greyhound a good breed for a large family with multiple pets, including cats and other dogs?
 
-```sparql
+
+SPARQL Query for Competancy Question 4:
+
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
 PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
@@ -56,20 +46,24 @@ where {
 	bind( if(exists{?breed a ?needsToBeDogFriendly}, "Yes", "No") as ?fulfillsDogRequirement)
 	bind( if(exists{?breed a ?needsToBeCatFriendly}, "Yes", "No") as ?fulfillsCatRequirement)
 }
-```
 
-#### Result 2: 
-| breedLabel | fulfillsKidRequirement | fulfillsDogRequirement | fulfillsCatRequirement |
-| ---------- | ---------------------- | ---------------------- | ---------------------- |
-| greyhound  | Yes                    | Yes                    | No                     |
+[Is a greyhound a good breed for a large family with multiple pets, including cats and other dogs?] This query is specifically using the family in competancy question 4 and seeing if a greyhound is an appropriate dog for them. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on playfullness and child safety values), good with other dogs (inferred based on dog friendliness value), and good with cats (inferred based on cat friendliness value). 
+
+SPARQL Query for Competancy Question 5:
+
+Question:
+What is a cute dog breed that can do well in an apartment that doesn’t get cleaned very often?
+
+Explanation: 
+Query first requires apartment friendly characteristics (which will require a low barking, high stranger friendliness level,
+and a small or medium sized breed). It also requires that the dog have low shedding and drooling to account for the lack of 
+cleaning in this apartment. It prioritizes our hard apartment constraints (barking and stranger friendliness) but ranks by 
+popularity to account for the "cuteness" expectation
+
+Sample answer:
+Poodle
 
 
-#### Explanation: 
-
-
-### Query 3 (CQ 5): What is a cute dog breed that can do well in an apartment that doesn’t get cleaned very often?
-
-```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -98,20 +92,3 @@ SELECT ?label ?popularityQuantitativeScore ?barkinglevel ?strangerFriendliness ?
 }
 ORDER BY ?popularityQuantitativeScore ?barkinglevel DESC(?strangerfriendlinesslevel) ?sheddinglevel ?droolinglevel 
 LIMIT 10
-```
-
-#### Result 3: 
-| breed     |
-| --------- |
-| Poodle    |
-| Greyhound |
-
-#### Explanation: 
-Query first requires apartment friendly characteristics (which will require a low barking, high stranger friendliness level,
-and a small or medium sized breed). It also requires that the dog have low shedding and drooling to account for the lack of 
-cleaning in this apartment. It prioritizes our hard apartment constraints (barking and stranger friendliness) but ranks by 
-popularity to account for the "cuteness" expectation
-
-### Previous Versions
-- [Version 2 (OE 11)](files/queries_v2.txt) CURRENT
-- [version 1 (OE 10)](files/queries_v1.txt)
