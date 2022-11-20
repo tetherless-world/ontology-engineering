@@ -24,14 +24,14 @@
 
 ### Previous Versions
 
-| Ontology           | Individuals       |
-|--------------------|-------------------|
+| Ontology           | Individuals        |
+|--------------------|--------------------|
 | [OE 11][oe-11-ont] | [OE 10][oe-11-ind] |
 | [OE 10][oe-10-ont] | [OE 10][oe-10-ind] |
-| [OE 9][oe-9-ont]   | [OE 11][oe-9-ind] |
-| [OE 8][oe-8-ont]   | [OE 8][oe-8-ind]  |
-| [OE 7][oe-7-ont]   |                   |
-| [OE 6][oe-6-ont]   |                   |
+| [OE 9][oe-9-ont]   | [OE 9][oe-9-ind]   |
+| [OE 8][oe-8-ont]   | [OE 8][oe-8-ind]   |
+| [OE 7][oe-7-ont]   |                    |
+| [OE 6][oe-6-ont]   |                    |
 
 [oe-current]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
 [oe-current-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
