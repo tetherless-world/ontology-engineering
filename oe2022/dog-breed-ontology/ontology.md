@@ -2,29 +2,29 @@
 
 ## Conceptual Model
 
-<img style="float: center;" src="images/ConceptualModel_BreedTypes.png" width="100%"/>
+<img style="float: center;" src="images/ConceptualModel_BreedTypes.png"/>
 Our ontology models dog breeds and classifies them based on what potential adopters might require or prefer. These are the types of breeds that our system can infer. 
-<img style="float: center;" src="images/ConceptualModel_BreedCharacteristics.png" width="100%"/>
+<img style="float: center;" src="images/ConceptualModel_BreedCharacteristics.png"/>
 The above image describes our conceptual model with regards to how we model dog breeds. This includes the object properties that connect each breed with the classes that describe it.
-<img style="float: center;" src="images/ConceptualModel_BreedCharacteristicProfile.png" width="50%"/>
-<img style="float: center;" src="images/ConceptualModel_BreedPhysicalCharacteristics.png" width="50%"/>
+<img style="float: center;" src="images/ConceptualModel_BreedCharacteristicProfile.png"/>
+<img style="float: center;" src="images/ConceptualModel_BreedPhysicalProfile.png"/>
 Each of these profiles are sets of data properties that describe a breed. Each object property in the breed characteristic profile is a value between 0 and 1 that indicate how much a breed embodies that characteristic.
-<img style="float: center;" src="images/ConceptualModel_ProfileProvenance.png" width="50%"/>
+<img style="float: center;" src="images/ConceptualModel_ProfileProvenance.png"/>
 Each profile is attributed to the organization (eg. The American Kennel Club) that provided the information.
-<img style="float: center;" src="images/ConceptualModel_PetOwnership.png" width="50%"/>
-<img style="float: center;" src="images/ConceptualModel_MarkingColors.png" width="50%"/>
+<img style="float: center;" src="images/ConceptualModel_PetOwnership.png"/>
+<img style="float: center;" src="images/ConceptualModel_MarkingColors.png"/>
 Potential adopters may have existing pets that a new dog would have to get along with, and this is how we model that. Markings are also broken up as a shape and its color(s). We use the 2022 AKC colors and marking names as instances. 
-<img style="float: center;" src="images/ConceptualModel_Ratings.png" width="100%"/>
+<img style="float: center;" src="images/ConceptualModel_Ratings.png"/>
 Since we cannot model cuteness, since that's subjective, we model the popularity rankings for each breed, currently as reported by the AKC. This model shows how we do that. Since we allow for any organization could be the rating provider, additional rankings could be added.
-<img style="float: center;" src="images/ConceptualModel_Adopter.png" width="100%"/>
+<img style="float: center;" src="images/ConceptualModel_Adopter.png"/>
 The above image describes our conceptual model with regards to how we model potential adopters. This includes the object properties that connect each adopter with the classes that describe it. It also shows how we model famililies and allergies (a dog allergy is an instance of the Allergy class).
-<img style="float: center;" src="images/ConceptualModel_FunctionalRoles.png" width="100%"/>
+<img style="float: center;" src="images/ConceptualModel_FunctionalRoles.png"/>
 Some adopters may want a dog for a certain purpose, such as herding, and most breeds were bred for a certain purpose, such as hunting. We model that using roles.
-<img style="float: center;" src="images/ConceptualModel_Residences.png" width="100%"/>
+<img style="float: center;" src="images/ConceptualModel_Residences.png"/>
 We model an adopter's residence with its location so that we can recommend breeds that are well suited for the climate. We use the IECC climate zones. 
-<img style="float: center;" src="images/ConceptualModel_Spaces.png" width="50%"/>
+<img style="float: center;" src="images/ConceptualModel_Spaces.png"/>
 Each residence is made up of a set of spaces, some indoors and some outdoors. Spaces that are covered but not temperature controlled, such as patios or screened-in porches, are considered outdoor spaces. 
-<img style="float: center;" src="images/ConceptualModel_Aspects.png" width="100%"/>
+<img style="float: center;" src="images/ConceptualModel_Aspects.png"/>
 This model shows how the varous characteristics of other entities are organized. 
 
 ### Previous Versions
