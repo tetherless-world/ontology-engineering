@@ -7,6 +7,8 @@ title: About
 
 This application recommends dog breeds to households given some specific characteristics of the homeowners. Additionally, the recommendation would provide a list of other potential dog breeds that may suit the family’s needs to account for any potential subjective factors like cuteness.
 
+<img src="images/dog1.jpg"/>
+
 ## Workflow Diagram
 
 <iframe src="files/workflowDiagram.pdf" style="width:100%; height: 500px"></iframe>
@@ -47,3 +49,5 @@ Danielle Villa, villad4@rpi.edu
 ## Acknowledgements
 
 This work is undertaken as a part of Fall 2022 CSCI 4340 Ontologies. We would like to thank our professors Dr. Deborah McGuinness and Ms. Elisa Kendall, and our mentors Jade Franklin and Sola Shirai. 
+
+<img src="images/dog2.jpg"/>
