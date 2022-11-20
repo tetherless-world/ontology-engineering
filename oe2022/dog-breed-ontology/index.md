@@ -46,4 +46,4 @@ Danielle Villa, villad4@rpi.edu
 
 ## Acknowledgements
 
-This work is undertaken as a part of the [Health Empowerement by Analytics, Learning and Semantics (HEALS)](https://science.rpi.edu/biology/news/ibm-and-rensselaer-team-research-chronic-diseases-cognitive-computing) project , and is partially supported by IBM Research AI through the AI Horizons Network. We thank our colleagues from IBM Research, Dan Gruen, Morgan Foreman and Ching-Hua Chen, and from RPI, John Erickson, Alexander New, Neha Keshan and Rebecca Cowan, who provided insight and expertise that greatly assisted the research.
+This work is undertaken as a part of Fall 2022 CSCI 4340 Ontologies. We would like to thank our professors Dr. Deborah McGuinness and Ms. Elisa Kendall, and our mentors Jade Franklin and Sola Shirai. 
