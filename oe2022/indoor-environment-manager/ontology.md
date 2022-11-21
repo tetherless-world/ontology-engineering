@@ -26,7 +26,7 @@
 
 | Ontology           | Individuals        |
 |--------------------|--------------------|
-| [OE 11][oe-11-ont] | [OE 10][oe-11-ind] |
+| [OE 11][oe-11-ont] | [OE 11][oe-11-ind] |
 | [OE 10][oe-10-ont] | [OE 10][oe-10-ind] |
 | [OE 9][oe-9-ont]   | [OE 9][oe-9-ind]   |
 | [OE 8][oe-8-ont]   | [OE 8][oe-8-ind]   |
