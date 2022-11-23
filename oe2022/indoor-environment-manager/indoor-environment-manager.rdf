@@ -57,6 +57,47 @@
 	<owl:AnnotationProperty rdf:about="&owl;versionIRI">
 	</owl:AnnotationProperty>
 	
+	<owl:Class rdf:about="&oe2022-iem;AcceptableAirQualityLevel">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelGood">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelModerate">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;AcceptableRoomComponentAction">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;RoomComponentAction"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-iem;RoomComponentAction">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-iem;produces"/>
+						<owl:someValuesFrom>
+							<owl:Class>
+								<owl:intersectionOf rdf:parseType="Collection">
+									<rdf:Description rdf:about="&oe2022-iem;ResultantIndoorEnvironment">
+									</rdf:Description>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&oe2022-iem;hasAirQualityLevel"/>
+										<owl:allValuesFrom rdf:resource="&oe2022-iem;AcceptableAirQualityLevel"/>
+									</owl:Restriction>
+								</owl:intersectionOf>
+							</owl:Class>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;AirConditioning">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
 		<rdfs:subClassOf>
@@ -88,10 +129,62 @@
 		<skos:definition>measurement that combines other meaurements of properties of air to indicate the level of danger to human health</skos:definition>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem;AirSpeed">
-		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
-		<rdfs:label>air speed</rdfs:label>
-		<skos:definition>the rate of air movement at a point, without regard to direction.</skos:definition>
+	<owl:Class rdf:about="&oe2022-iem;AirQualityLevel">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Classifier"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;isBetterThan"/>
+				<owl:onClass rdf:resource="&oe2022-iem;AirQualityLevel"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelGood">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelHazardous">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelModerate">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelUnhealthy">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelUnhealthyForSensitiveGroups">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-iem;AirQualityLevelVeryUnhealthy">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelGood">
+		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelModerate"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelHazardous">
+		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelModerate">
+		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelUnhealthyForSensitiveGroups"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelUnhealthy">
+		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelVeryUnhealthy"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelUnhealthyForSensitiveGroups">
+		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelUnhealthy"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelVeryUnhealthy">
+		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelHazardous"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Closed">
@@ -215,25 +308,6 @@
 	<owl:Class rdf:about="&oe2022-iem;Environment">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasAirQualityValue"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
-							</rdf:Description>
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">400</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;hasAirSpeedValue"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 				<owl:onDataRange>
@@ -264,25 +338,6 @@
 							</rdf:Description>
 							<rdf:Description>
 								<xsd:maxInclusive rdf:datatype="&xsd;integer">104</xsd:maxInclusive>
-							</rdf:Description>
-						</owl:withRestrictions>
-					</rdfs:Datatype>
-				</owl:onDataRange>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe2022-iem;hasDaylightIntensityValue"/>
-				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-				<owl:onDataRange>
-					<rdfs:Datatype>
-						<owl:onDatatype rdf:resource="&xsd;integer"/>
-						<owl:withRestrictions rdf:parseType="Collection">
-							<rdf:Description>
-								<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
-							</rdf:Description>
-							<rdf:Description>
-								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
 							</rdf:Description>
 						</owl:withRestrictions>
 					</rdfs:Datatype>
@@ -518,8 +573,53 @@
 	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;Environment"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasDaylightIntensityValue"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">10000</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:onDataRange>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirQualityValue"/>
+				<owl:someValuesFrom>
+					<rdfs:Datatype>
+						<owl:onDatatype rdf:resource="&xsd;integer"/>
+						<owl:withRestrictions rdf:parseType="Collection">
+							<rdf:Description>
+								<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
+							</rdf:Description>
+							<rdf:Description>
+								<xsd:maxInclusive rdf:datatype="&xsd;integer">400</xsd:maxInclusive>
+							</rdf:Description>
+						</owl:withRestrictions>
+					</rdfs:Datatype>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;isOutsideOf"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-iem;Room"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>outdoor environment</rdfs:label>
+		<rdfs:label>outdoor environment (new)</rdfs:label>
 		<dct:source>&quot;Environment&quot;, ASHRAE Terminology, 2022. [Online] Available: https://terminology.ashrae.org/?term=environment</dct:source>
+		<skos:definition>a collection of environmental effects from outside of a building</skos:definition>
 		<skos:definition>all of the outdoor elements over which a designer has no control and that affect a system and its input or output</skos:definition>
 	</owl:Class>
 	
@@ -566,6 +666,17 @@
 	<owl:Class rdf:about="&oe2022-iem;ResultantIndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAirQualityLevel"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-cls;classifies"/>
+						<owl:hasValue rdf:resource="&oe2022-iem;SingletonOutdoorEnvironment"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>resultant indoor environment</rdfs:label>
 		<skos:definition>a collection of indoor environmental parameters after environmental attributes affect the indoor environment</skos:definition>
 	</owl:Class>
@@ -662,6 +773,10 @@
 		<skos:definition>a fundamental linguistic unit that designates an object or relation or has a purely syntactic function</skos:definition>
 	</owl:Class>
 	
+	<owl:NamedIndividual rdf:about="&oe2022-iem;SingletonOutdoorEnvironment">
+		<rdf:type rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
+	</owl:NamedIndividual>
+	
 	<owl:Class rdf:about="&oe2022-iem;SpaceHeater">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
 		<rdfs:label>space heater</rdfs:label>
@@ -729,6 +844,27 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;Window">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;NonPowerConsumingComponent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAvailableAction"/>
+				<owl:allValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-iem;produces"/>
+						<owl:allValuesFrom>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-iem;hasAirQualityLevel"/>
+								<owl:allValuesFrom>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&cmns-cls;classifies"/>
+										<owl:hasValue rdf:resource="&oe2022-iem;SingletonOutdoorEnvironment"/>
+									</owl:Restriction>
+								</owl:allValuesFrom>
+							</owl:Restriction>
+						</owl:allValuesFrom>
+					</owl:Restriction>
+				</owl:allValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>window</rdfs:label>
 		<dct:bibliographicCitation>D. Heinzerling, S. Schiavon, T. Webster, and E. Arens, &apos;Indoor Environmental Quality Assessment models: A literature review and a proposed weighting and classification scheme,&apos; Building and Environment, vol. 70, pp. 210 to 222, 2013.  P. Antoniadou and A. M. Papadopoulos, &apos;Occupants&apos; thermal comfort: State of the art and the prospects of personalized assessment in office buildings,&apos; Energy and Buildings, vol. 153, pp. 136 to 149, 2017.  J. Xie, H. Li, C. Li, J. Zhang, and M. Luo, &apos;Review on occupant-centric thermal comfort sensing, predicting, and controlling,&apos; Energy and Buildings, vol. 226, p. 110392, 2020.</dct:bibliographicCitation>
 		<dct:source>&quot;Window,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/window</dct:source>
@@ -753,6 +889,11 @@
 		<dct:source>&quot;Control,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/control</dct:source>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isControlledBy"/>
 		<skos:definition>to exercise restraining or directing influence over</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirQualityLevel">
+		<rdfs:range rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<owl:inverseOf rdf:resource="&oe2022-iem;isAirQualityLevelFor"/>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirQualityValue">
@@ -937,6 +1078,11 @@
 		<skos:definition>indicates a upper bound of a delta bucket for an indoor environmental quality parameter</skos:definition>
 	</owl:DatatypeProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isAirQualityLevelFor">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;classifies"/>
+		<rdfs:domain rdf:resource="&oe2022-iem;AirQualityLevel"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isAttributeOf">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is attribute of</rdfs:label>
@@ -947,6 +1093,10 @@
 		<rdfs:label>is available action for</rdfs:label>
 		<rdfs:domain rdf:resource="&oe2022-iem;RoomComponentAction"/>
 		<skos:definition>indicates what room components have the available actions</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isBetterThan">
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
@@ -960,10 +1110,19 @@
 		<skos:definition>has its behavior determined by</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isOutsideOf">
+		<rdfs:label>is outside of</rdfs:label>
+		<skos:definition>is physically adjacent to beyond the bounds of an interior space</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isPossibleStateOf">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is possible state of</rdfs:label>
 		<skos:definition>can be the condition of a given object at some point in time</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isProducedBy">
+		<owl:inverseOf rdf:resource="&oe2022-iem;produces"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isQuantifiedBy">
