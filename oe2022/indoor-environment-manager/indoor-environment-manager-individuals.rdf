@@ -54,7 +54,6 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:priorVersion rdf:resource="https://drive.google.com/file/d/1ZcgGlIWQOYBKQWuUiqO4qNrhIUYw5X9j/view?usp=sharing"/>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/20221125/indoor-environment-manager-individuals"/>
-		<skos:changeNote>Header information was modified to include appropriate terms. Annotations were updated.</skos:changeNote>
 	</owl:Ontology>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2ActionDecreaseThermostat">
@@ -99,6 +98,7 @@
 		<oe2022-iem:hasAirTemperatureSign rdf:resource="&oe2022-iem;Negative"/>
 		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">18</oe2022-iem:hasAirTemperatureValue>
 		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">18</oe2022-iem:hasNumericAirTemperatureValue>
+		<oe2022-iem:isOutsideOf rdf:resource="&oe2022-iem-ind;Question2Room"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2EnvironmentSpaceHeaterOn">
@@ -141,6 +141,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2Room">
 		<rdf:type rdf:resource="&oe2022-iem;Room"/>
+		<oe2022-iem:hasCurrentIndoorEnvironment rdf:resource="&oe2022-iem-ind;Question2EnvironmentCurrent"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question2SpaceHeater">
@@ -244,15 +245,16 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentOutdoor">
 		<rdf:type rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
+		<oe2022-iem:hasAirQualityLevel rdf:resource="&oe2022-iem;AirQualityLevelGood"/>
 		<oe2022-iem:hasAirQualityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasAirQualityValue>
 		<oe2022-iem:hasAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasAirSpeedValue>
 		<oe2022-iem:hasAirTemperatureValue rdf:datatype="&xsd;integer">89</oe2022-iem:hasAirTemperatureValue>
-		<oe2022-iem:hasAttribute rdf:resource="&oe2022-iem-ind;Question4OutdoorAirQuality"/>
 		<oe2022-iem:hasNumericAirQualityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasNumericAirQualityValue>
 		<oe2022-iem:hasNumericAirSpeedValue rdf:datatype="&xsd;integer">1</oe2022-iem:hasNumericAirSpeedValue>
 		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">89</oe2022-iem:hasNumericAirTemperatureValue>
 		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">70</oe2022-iem:hasNumericRelativeHumidityValue>
 		<oe2022-iem:hasRelativeHumidityValue rdf:datatype="&xsd;integer">70</oe2022-iem:hasRelativeHumidityValue>
+		<oe2022-iem:isOutsideOf rdf:resource="&oe2022-iem-ind;Question4Room"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4EnvironmentTarget">
@@ -303,12 +305,9 @@
 		<oe2022-iem:occupies rdf:resource="&oe2022-iem-ind;Question4Room"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4OutdoorAirQuality">
-		<rdf:type rdf:resource="&oe2022-iem;AirQualityAttribute"/>
-	</owl:NamedIndividual>
-	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4Room">
 		<rdf:type rdf:resource="&oe2022-iem;Room"/>
+		<oe2022-iem:hasCurrentIndoorEnvironment rdf:resource="&oe2022-iem-ind;Question4EnvironmentCurrent"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question4Thermostat">
@@ -386,6 +385,7 @@
 		<oe2022-iem:hasNumericAirTemperatureValue rdf:datatype="&xsd;integer">80</oe2022-iem:hasNumericAirTemperatureValue>
 		<oe2022-iem:hasNumericRelativeHumidityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasNumericRelativeHumidityValue>
 		<oe2022-iem:hasRelativeHumidityValue rdf:datatype="&xsd;integer">34</oe2022-iem:hasRelativeHumidityValue>
+		<oe2022-iem:isOutsideOf rdf:resource="&oe2022-iem-ind;Question5Room"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5EnvironmentTarget">
@@ -411,10 +411,12 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5Occupant3">
 		<rdf:type rdf:resource="&oe2022-iem;Occupant"/>
+		<oe2022-iem:occupies rdf:resource="&oe2022-iem-ind;Question5Room"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question5Room">
 		<rdf:type rdf:resource="&oe2022-iem;Room"/>
+		<oe2022-iem:hasCurrentIndoorEnvironment rdf:resource="&oe2022-iem-ind;Question5EnvironmentCurrent"/>
 		<oe2022-iem:hasOccupant rdf:resource="&oe2022-iem-ind;Question5Occupant1"/>
 		<oe2022-iem:hasOccupant rdf:resource="&oe2022-iem-ind;Question5Occupant2"/>
 		<oe2022-iem:hasOccupant rdf:resource="&oe2022-iem-ind;Question5Occupant3"/>
@@ -467,6 +469,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question6Room">
 		<rdf:type rdf:resource="&oe2022-iem;Room"/>
+		<oe2022-iem:hasCurrentIndoorEnvironment rdf:resource="&oe2022-iem-ind;Question6EnvironmentCurrent"/>
 		<oe2022-iem:hasOccupant rdf:resource="&oe2022-iem-ind;Question6Occupant1"/>
 	</owl:NamedIndividual>
 	
@@ -512,6 +515,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem-ind;Question7Room">
 		<rdf:type rdf:resource="&oe2022-iem;Room"/>
+		<oe2022-iem:hasCurrentIndoorEnvironment rdf:resource="&oe2022-iem-ind;Question7EnvironmentCurrent"/>
 		<oe2022-iem:hasOccupant rdf:resource="&oe2022-iem-ind;Question7Occupant1"/>
 		<oe2022-iem:hasOccupant rdf:resource="&oe2022-iem-ind;Question7Occupant2"/>
 		<oe2022-iem:hasOccupant rdf:resource="&oe2022-iem-ind;Question7Occupant3"/>
