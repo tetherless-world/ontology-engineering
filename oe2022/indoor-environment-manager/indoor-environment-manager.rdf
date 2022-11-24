@@ -51,7 +51,6 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:priorVersion rdf:resource="https://drive.google.com/file/d/1gOtpz000tBmWOUtOfVh8W2RF1SHovrD8/view?usp=sharing"/>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2022/20221125/indoor-environment-manager"/>
-		<skos:changeNote>Header information was modified to include appropriate terms. Annotations were updated.</skos:changeNote>
 	</owl:Ontology>
 	
 	<owl:AnnotationProperty rdf:about="&dct;bibliographicCitation">
@@ -108,6 +107,8 @@
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:label>air quality level</rdfs:label>
+		<dct:source>Air Quality Index (AQI) Basics, AirNow.gov, 2022. [Online]. Available: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.</dct:source>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:oneOf rdf:parseType="Collection">
@@ -126,6 +127,7 @@
 				</owl:oneOf>
 			</owl:Class>
 		</owl:equivalentClass>
+		<skos:definition>Six categories of air quality index. that corresponds to a different level of health concern</skos:definition>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelGood">
@@ -556,6 +558,8 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>outdoor-affected room component action</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
+		<skos:definition>An action to change the state of the room component connected to outdoor environment, in order to alter relevant indoor environment quality parameters</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;OutdoorEnvironment">
@@ -736,6 +740,7 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>room component action</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<skos:definition>An action to change the state of the room component to alter relevant indoor environment quality parameters</skos:definition>
 	</owl:Class>
 	
@@ -833,6 +838,8 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;WindowOpenAction">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;OutdoorAffectedAction"/>
+		<rdfs:label>window-open action</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -849,10 +856,12 @@
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
+		<skos:definition>An action to open or close the window to alter relevant indoor environment quality parameters</skos:definition>
 	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;causesNewState">
 		<rdfs:label>causes new state</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;ComponentState"/>
 		<skos:definition>determines the state of the room component</skos:definition>
 	</owl:ObjectProperty>
@@ -866,8 +875,10 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAirQualityLevel">
 		<rdfs:label>has air quality level</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;AirQualityLevel"/>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isAirQualityLevelFor"/>
+		<skos:definition>indicates the category of air quality index to represents the level of danger to human health</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasAirQualityValue">
@@ -933,12 +944,15 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasAvailableAction">
 		<rdfs:label>has available action</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;RoomComponentAction"/>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isAvailableActionFor"/>
 		<skos:definition>indicates what actions are available for a room component</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasBetterAirQualityLevelThan">
+		<rdfs:label>has better air uality level than</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2022-iem;hasAirQualityLevel">
 			</rdf:Description>
@@ -947,6 +961,7 @@
 			<rdf:Description rdf:about="&oe2022-iem;isAirQualityLevelFor">
 			</rdf:Description>
 		</owl:propertyChainAxiom>
+		<skos:definition>indicates that indoor environment has higher air quality index than outdoor environment, or vice versa</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasComfortRangeBound">
@@ -976,6 +991,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasCurrentIndoorEnvironment">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasEnvironment"/>
 		<rdfs:label>has current indoor environment</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;CurrentIndoorEnvironment"/>
 		<skos:definition>indicates the current environmental condition that consists of indoor environmental parameters</skos:definition>
 	</owl:ObjectProperty>
@@ -989,8 +1005,10 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasDetectedAirQualityLevel">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasAirQualityLevel"/>
 		<rdfs:label>has detected air quality level</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;AirQualityLevel"/>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isDetectedAirQualityLevelFor"/>
+		<skos:definition>indicates the category of the detected air quality index to represents the level of danger to human health</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
@@ -1001,6 +1019,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEnvironment">
 		<rdfs:label>has environment</rdfs:label>
 		<rdfs:label>indicates the environmental condition that consists of indoor and outdoor environmental parameters</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;Environment"/>
 	</owl:ObjectProperty>
 	
@@ -1013,6 +1032,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasInferredAirQualityLevel">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasAirQualityLevel"/>
 		<rdfs:label>has inferred air quality level</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;AirQualityLevel"/>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isInferredAirQualityLevelFor"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
@@ -1025,6 +1045,7 @@
 			<rdf:Description rdf:about="&oe2022-iem;hasDetectedAirQualityLevel">
 			</rdf:Description>
 		</owl:propertyChainAxiom>
+		<skos:definition>indicates the category of the inferred air quality index to represents the level of danger to human health</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasLowerBound">
@@ -1042,6 +1063,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasOutdoorNeighbor">
 		<rdfs:label>has outdoor neighbor</rdfs:label>
+		<dct:source>&quot;outside,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/outside</dct:source>
 		<owl:inverseOf rdf:resource="&oe2022-iem;isOutsideOf"/>
 		<skos:definition>is physically adjacent to across the bounds of an interior space</skos:definition>
 	</owl:ObjectProperty>
@@ -1102,6 +1124,7 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;interactsWithOutdoorEnvironment">
 		<rdfs:label>interacts with outdoor environment</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:range rdf:resource="&oe2022-iem;OutdoorEnvironment"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2022-iem;isComponentOf">
@@ -1109,6 +1132,7 @@
 			<rdf:Description rdf:about="&oe2022-iem;hasOutdoorNeighbor">
 			</rdf:Description>
 		</owl:propertyChainAxiom>
+		<skos:definition>indicates components that directly interface with outdoor environments</skos:definition>
 		<cmns-av:explanatoryNote>This property directly relates components with outdoor environments, chaining through the individual of which the subject of this property is a component.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote>This property contributes to the inference that for certain room component actions, the resultant indoor environment must have the same value for a particular environment metric as the relevant outdoor environment.</cmns-av:usageNote>
 	</owl:ObjectProperty>
@@ -1116,6 +1140,8 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isAirQualityLevelFor">
 		<rdfs:subPropertyOf rdf:resource="&cmns-cls;classifies"/>
 		<rdfs:label>is air quality level for</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
+		<skos:definition>indicates the object that has the category of air quality index</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isAttributeOf">
@@ -1126,12 +1152,16 @@
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isAvailableActionFor">
 		<rdfs:label>is available action for</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:domain rdf:resource="&oe2022-iem;RoomComponentAction"/>
 		<skos:definition>indicates what room components have the available actions</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isBetterThan">
 		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:label>is better than</rdfs:label>
+		<dct:source>&quot;better,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/better</dct:source>
+		<skos:definition>has a greater qualitative or quantitative value than</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isComponentOf">
@@ -1148,7 +1178,9 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isDetectedAirQualityLevelFor">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;isAirQualityLevelFor"/>
 		<rdfs:label>is detected air quality level for</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:domain rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<skos:definition>indicates the object that has the category of the detected air quality index</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isInRoomWithOutdoorEnvironment">
@@ -1157,6 +1189,7 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isInferredAirQualityLevelFor">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;isAirQualityLevelFor"/>
 		<rdfs:label>is inferred air quality level for</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:domain rdf:resource="&oe2022-iem;AirQualityLevel"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2022-iem;isDetectedAirQualityLevelFor">
@@ -1170,10 +1203,12 @@
 			<rdf:Description rdf:about="&oe2022-iem;producesWithOutdoorEffects">
 			</rdf:Description>
 		</owl:propertyChainAxiom>
+		<skos:definition>indicates the object that has the category of the inferred air quality index</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isOutsideOf">
 		<rdfs:label>is outside of</rdfs:label>
+		<dct:source>&quot;outside,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/outside</dct:source>
 		<skos:definition>is physically adjacent to beyond the bounds of an interior space</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -1226,7 +1261,9 @@
 	<owl:ObjectProperty rdf:about="&oe2022-iem;producesWithOutdoorEffects">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;produces"/>
 		<rdfs:label>produces with outdoor effects</rdfs:label>
+		<dct:source>IEQ Management System</dct:source>
 		<rdfs:domain rdf:resource="&oe2022-iem;OutdoorAffectedAction"/>
+		<skos:definition>causes to change environmental paraterms by outdoor environment</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;quatifies">
@@ -1239,14 +1276,20 @@
 		<dct:source>&quot;day,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/day</dct:source>
 	</rdf:Description>
 	
+	<rdf:Description rdf:about="&cmns-dsg;isNameOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
+	</rdf:Description>
+	
 	<owl:Class rdf:about="&cmns-qtu;MeasurementUnit">
 		<rdfs:label>measurement unit</rdfs:label>
+		<dct:source>&quot;unit,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/unit</dct:source>
 		<skos:definition>a standarized system of units and measurements</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&cmns-qtu;QuantityKind">
 		<rdfs:label>quantity kind</rdfs:label>
-		<skos:definition>a measurement  that can be quantified as a numeric value</skos:definition>
+		<dct:source>&quot;quantity,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/quantity</dct:source>
+		<skos:definition>the aspect in which a thing is measurable in terms of greater, less, or equal or of increasing or decreasing magnitude</skos:definition>
 	</owl:Class>
 	
 	<owl:DatatypeProperty rdf:about="&cmns-qtu;hasFactorValue">
