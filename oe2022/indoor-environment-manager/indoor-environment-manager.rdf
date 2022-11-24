@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY SpecificationMetadata "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
 	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
@@ -13,10 +14,10 @@
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/"
+	xmlns:SpecificationMetadata="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
 	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
@@ -30,7 +31,6 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/">
@@ -42,7 +42,7 @@
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
 		<dct:modified rdf:datatype="&xsd;dateTime">2022-11-25T23:59:59</dct:modified>
 		<dct:publisher>IEQ Management System</dct:publisher>
-		<sm:copyright>Copyright (c) 2022 Gabriel Jacoby-Cooper, Jihoon Chung, and Kelsey Rook</sm:copyright>
+		<SpecificationMetadata:copyright>Copyright (c) 2022 Gabriel Jacoby-Cooper, Jihoon Chung, and Kelsey Rook</SpecificationMetadata:copyright>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
@@ -60,7 +60,7 @@
 	<owl:AnnotationProperty rdf:about="&dct;creator">
 	</owl:AnnotationProperty>
 	
-	<owl:AnnotationProperty rdf:about="&sm;copyright">
+	<owl:AnnotationProperty rdf:about="&SpecificationMetadata;copyright">
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&owl;versionIRI">
@@ -130,30 +130,48 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelGood">
 		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<rdfs:label>air quality level good</rdfs:label>
+		<dct:source>Air Quality Index (AQI) Basics, AirNow.gov, 2022. [Online]. Available: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.</dct:source>
+		<skos:definition>Air quality is satisfactory, and air pollution poses little or no risk.</skos:definition>
 		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelModerate"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelHazardous">
 		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<rdfs:label>air quality level hazardous</rdfs:label>
+		<dct:source>Air Quality Index (AQI) Basics, AirNow.gov, 2022. [Online]. Available: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.</dct:source>
+		<skos:definition>Health warning of emergency conditions: everyone is more likely to be affected.</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelModerate">
 		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<rdfs:label>air quality level moderate</rdfs:label>
+		<dct:source>Air Quality Index (AQI) Basics, AirNow.gov, 2022. [Online]. Available: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.</dct:source>
+		<skos:definition>Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.</skos:definition>
 		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelUnhealthyForSensitiveGroups"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelUnhealthy">
 		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<rdfs:label>air quality level unhealthy</rdfs:label>
+		<dct:source>Air Quality Index (AQI) Basics, AirNow.gov, 2022. [Online]. Available: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.</dct:source>
+		<skos:definition>Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.</skos:definition>
 		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelVeryUnhealthy"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelUnhealthyForSensitiveGroups">
 		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<rdfs:label>air quality level unhealthy for sensitive groups</rdfs:label>
+		<dct:source>Air Quality Index (AQI) Basics, AirNow.gov, 2022. [Online]. Available: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.</dct:source>
+		<skos:definition>Members of sensitive groups may experience health effects. The general public is less likely to be affected.</skos:definition>
 		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelUnhealthy"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityLevelVeryUnhealthy">
 		<rdf:type rdf:resource="&oe2022-iem;AirQualityLevel"/>
+		<rdfs:label>air quality level very unhealthy</rdfs:label>
+		<dct:source>Air Quality Index (AQI) Basics, AirNow.gov, 2022. [Online]. Available: https://www.airnow.gov/aqi/aqi-basics/#:~:text=How%20does%20the%20AQI%20work,300%20represents%20hazardous%20air%20quality.</dct:source>
+		<skos:definition>Health alert: The risk of health effects is increased for everyone.</skos:definition>
 		<oe2022-iem:isBetterThan rdf:resource="&oe2022-iem;AirQualityLevelHazardous"/>
 	</owl:NamedIndividual>
 	
@@ -285,6 +303,8 @@
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Energy">
 		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
 		<rdfs:label>energy</rdfs:label>
+		<dct:bibliographicCitation>D. Heinzerling, S. Schiavon, T. Webster, and E. Arens, &apos;Indoor Environmental Quality Assessment models: A literature review and a proposed weighting and classification scheme,&apos; Building and Environment, vol. 70, pp. 210 to 222, 2013.  P. Antoniadou and A. M. Papadopoulos, &apos;Occupants&apos; thermal comfort: State of the art and the prospects of personalized assessment in office buildings,&apos; Energy and Buildings, vol. 153, pp. 136 to 149, 2017.</dct:bibliographicCitation>
+		<dct:source>&apos;What are energy and work?,&apos; Khan Academy. [Online]. Available: https://www.khanacademy.org/science/physics/work-and-energy/work-and-energy-tutorial/a/what-is-work. [Accessed: 22-Sep-2022].</dct:source>
 		<skos:definition>measurement of the ability of something to do work</skos:definition>
 	</owl:NamedIndividual>
 	
@@ -513,6 +533,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Open">
 		<rdf:type rdf:resource="&oe2022-iem;ComponentState"/>
 		<rdfs:label>open</rdfs:label>
+		<dct:source>&quot;Open,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/open</dct:source>
 		<skos:definition>being in a position or adjustment to permit passage</skos:definition>
 	</owl:NamedIndividual>
 	
@@ -629,6 +650,8 @@
 	<owl:NamedIndividual rdf:about="&oe2022-iem;RelativeHumidity">
 		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
 		<rdfs:label>relative humidity</rdfs:label>
+		<dct:bibliographicCitation>P. Antoniadou and A. M. Papadopoulos, &apos;Occupants&apos; thermal comfort: State of the art and the prospects of personalized assessment in office buildings,&apos; Energy and Buildings, vol. 153, pp. 136 to 149, 2017.</dct:bibliographicCitation>
+		<dct:source>&quot;Relative humidity&quot;, ASHRAE Terminology, 2022. [Online] Available: https://xp20.ashrae.org/terminology/index.php?term=humidity&amp;submit=Search</dct:source>
 		<skos:definition>ratio of the mole fraction of water vapor to the mole fraction of water vapor saturated at the same temperature and barometric pressure.</skos:definition>
 	</owl:NamedIndividual>
 	
@@ -1211,6 +1234,10 @@
 		<dct:source>&quot;Quantify,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/quantify</dct:source>
 		<skos:definition>to make explicit the logical quantity of</skos:definition>
 	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="&cmns-dt;Day">
+		<dct:source>&quot;day,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/day</dct:source>
+	</rdf:Description>
 	
 	<owl:Class rdf:about="&cmns-qtu;MeasurementUnit">
 		<rdfs:label>measurement unit</rdfs:label>
