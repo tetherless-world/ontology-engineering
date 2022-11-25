@@ -65,6 +65,14 @@
 	<owl:AnnotationProperty rdf:about="&owl;versionIRI">
 	</owl:AnnotationProperty>
 	
+	<owl:Class rdf:about="&oe2022-iem;ActivityLevel">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;Age">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;AirConditioning">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment"/>
 		<rdfs:subClassOf>
@@ -198,6 +206,10 @@
 		<dct:source>&quot;Closed,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/closed</dct:source>
 		<skos:definition>being not open</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="&oe2022-iem;ClothingInsulation">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
+	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;ComponentState">
 		<rdfs:subClassOf rdf:resource="&cmns-cls;Classifier"/>
@@ -416,6 +428,10 @@
 		<cmns-av:acronym>HVAC</cmns-av:acronym>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;Height">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;IdealIndoorEnvironment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;DeltaDefinedEnvironment"/>
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironment"/>
@@ -458,6 +474,38 @@
 		<skos:definition>a perceived indoor experience of the building indoor including thermal comfort, indoor air quality, lighting, acoustics, and control systems</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;MetabolicRate">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Age"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Height"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Sex"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Weight"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</owl:equivalentClass>
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Negative">
 		<rdf:type rdf:resource="&oe2022-iem;Sign"/>
 		<rdfs:label>negative</rdfs:label>
@@ -475,6 +523,13 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;Occupant">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;hasAttribute"/>
+				<owl:onClass rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-pts;isPlayedBy"/>
@@ -528,6 +583,9 @@
 		<dct:bibliographicCitation>D. Heinzerling, S. Schiavon, T. Webster, and E. Arens, &apos;Indoor Environmental Quality Assessment models: A literature review and a proposed weighting and classification scheme,&apos; Building and Environment, vol. 70, pp. 210 to 222, 2013.  P. Antoniadou and A. M. Papadopoulos, &apos;Occupants&apos; thermal comfort: State of the art and the prospects of personalized assessment in office buildings,&apos; Energy and Buildings, vol. 153, pp. 136 to 149, 2017.  J. Xie, H. Li, C. Li, J. Zhang, and M. Luo, &apos;Review on occupant-centric thermal comfort sensing, predicting, and controlling,&apos; Energy and Buildings, vol. 226, p. 110392, 2020.</dct:bibliographicCitation>
 		<dct:source>&apos;Occupant,&apos; Legal Information Institute. [Online]. Available: https://www.law.cornell.edu/wex/occupant. [Accessed: 22 Sep 2022].</dct:source>
 		<skos:definition xml:lang="en">someone that resides or is present in or using a building, vehicle, seat, place, etc., at a given time</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;OccupantCharacteristic">
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;Off">
@@ -757,6 +815,10 @@
 		<skos:definition>An action to change the state of the room component to alter relevant indoor environment quality parameters</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe2022-iem;Sex">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-iem;Sign">
 		<rdfs:label>sign</rdfs:label>
 		<dct:source>&quot;Sign,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/sign</dct:source>
@@ -832,6 +894,10 @@
 		<rdfs:label>thermostat state</rdfs:label>
 		<dct:source>IEQ Management System</dct:source>
 		<skos:definition>numeric value at which the thermostat is set</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-iem;Weight">
+		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Window">
@@ -1378,6 +1444,24 @@
 	</owl:AllDifferent>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe2022-iem;ActivityLevel">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Age">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;ClothingInsulation">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Height">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;MetabolicRate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Sex">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;Weight">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="&oe2022-iem;AirConditioning">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;Dehumidifier">
@@ -1399,6 +1483,44 @@
 			<rdf:Description rdf:about="&oe2022-iem;Radiator">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;SpaceHeater">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe2022-iem;Environment">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;IndoorEnvironmentalQuality">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;OccupantCharacteristic">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe2022-iem;RoomComponentAction">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-cls;Aspect">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-col;Arrangement">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-col;Collection">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-col;Constituent">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/ContextualDesignators/Context">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-dt;TemporalEntity">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-dsg;Designation">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-pts;Agent">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-pts;Constituency">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-pts;Role">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-pts;Situation">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-qtu;MeasurementUnit">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-qtu;QuantityKind">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
