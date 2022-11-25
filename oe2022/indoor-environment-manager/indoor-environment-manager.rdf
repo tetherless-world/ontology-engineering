@@ -88,14 +88,7 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQuality">
-		<rdf:type rdf:resource="&owl;Class"/>
 		<rdf:type rdf:resource="&cmns-qtu;QuantityKind"/>
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentalQuality"/>
-		<rdfs:label>air quality</rdfs:label>
-		<dct:bibliographicCitation>D. Heinzerling, S. Schiavon, T. Webster, and E. Arens, &apos;Indoor Environmental Quality Assessment models: A literature review and a proposed weighting and classification scheme,&apos; Building and Environment, vol. 70, pp. 210 to 222, 2013.  P. Antoniadou and A. M. Papadopoulos, &apos;Occupants&apos; thermal comfort: State of the art and the prospects of personalized assessment in office buildings,&apos; Energy and Buildings, vol. 153, pp. 136 to 149, 2017.</dct:bibliographicCitation>
-		<dct:source>&apos;Center for Science Education,&apos; What Is Air Quality? [Online]. Available: https://scied.ucar.edu/learning-zone/air-quality/what-is-air-quality. [Accessed: 22-Sep-2022].</dct:source>
-		<owl:disjointWith rdf:resource="&oe2022-iem;ThermalComfort"/>
-		<skos:definition>synthesis of various physical measurements of properties of air that threaten human health</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-iem;AirQualityIndex">
@@ -467,39 +460,32 @@
 		<skos:example>Current Indoor Environment, Ideal Indoor Environment, Resultant Indoor Environment</skos:example>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe2022-iem;IndoorEnvironmentalQuality">
-		<rdfs:label>indoor environmental quality</rdfs:label>
-		<dct:source>&quot;Indoor environmental quality&quot;, ASHRAE Terminology, 2022. [Online]. Available: https://xp20.ashrae.org/terminology/index.php?term=thermal&amp;submit=Search</dct:source>
-		<rdfs:seeAlso>D. Heinzerling, S. Schiavon, T. Webster, and E. Arens, &apos;Indoor Environmental Quality Assessment models: A literature review and a proposed weighting and classification scheme,&apos; Building and Environment, vol. 70, pp. 210 to 222, 2013.</rdfs:seeAlso>
-		<skos:definition>a perceived indoor experience of the building indoor including thermal comfort, indoor air quality, lighting, acoustics, and control systems</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe2022-iem;MetabolicRate">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;OccupantCharacteristic"/>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;isEstimatedFrom"/>
 				<owl:onClass rdf:resource="&oe2022-iem;Age"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</owl:equivalentClass>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;isEstimatedFrom"/>
 				<owl:onClass rdf:resource="&oe2022-iem;Height"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</owl:equivalentClass>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;isEstimatedFrom"/>
 				<owl:onClass rdf:resource="&oe2022-iem;Sex"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</owl:equivalentClass>
 		<owl:equivalentClass>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;isAffectedBy"/>
+				<owl:onProperty rdf:resource="&oe2022-iem;isEstimatedFrom"/>
 				<owl:onClass rdf:resource="&oe2022-iem;Weight"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -851,14 +837,6 @@
 		<cmns-av:explanatoryNote>There are three types of temperature scale: those, such as the SI scale, that are defined in terms of the average translational kinetic energy per freely moving microscopic particle, such as atom, molecule, or electron, in a body; those that rely solely on purely macroscopic properties and thermodynamic principles, such as Kelvin&apos;s original definition; and those that are not defined by theoretical principles, but are defined by convenient empirical properties of particular materials.</cmns-av:explanatoryNote>
 		<cmns-av:symbol>T</cmns-av:symbol>
 	</owl:NamedIndividual>
-	
-	<owl:Class rdf:about="&oe2022-iem;ThermalComfort">
-		<rdfs:subClassOf rdf:resource="&oe2022-iem;IndoorEnvironmentalQuality"/>
-		<rdfs:label>thermal comfort</rdfs:label>
-		<dct:bibliographicCitation>D. Heinzerling, S. Schiavon, T. Webster, and E. Arens, &apos;Indoor Environmental Quality Assessment models: A literature review and a proposed weighting and classification scheme,&apos; Building and Environment, vol. 70, pp. 210 to 222, 2013.</dct:bibliographicCitation>
-		<dct:source>&quot;Thermal comfort&quot;, ASHRAE Terminology, 2022. [Online]. Available: https://terminology.ashrae.org/?entry=thermal%20comfort</dct:source>
-		<skos:definition>the condition of mind that expresses satisfaction with the surrounding thermal environment and is assessed by subjective evaluation</skos:definition>
-	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-iem;Thermostat">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;NonPowerConsumingComponent"/>
@@ -1293,6 +1271,9 @@
 		<skos:definition>indicates the object that has the category of the detected air quality index</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe2022-iem;isEstimatedFrom">
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isInRoomWithOutdoorEnvironment">
 		<rdfs:label>is in room with outdoor environment</rdfs:label>
 	</owl:ObjectProperty>
@@ -1483,44 +1464,6 @@
 			<rdf:Description rdf:about="&oe2022-iem;Radiator">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe2022-iem;SpaceHeater">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;Environment">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;IndoorEnvironmentalQuality">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;OccupantCharacteristic">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;RoomComponentAction">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-cls;Aspect">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-col;Arrangement">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-col;Collection">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-col;Constituent">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/ContextualDesignators/Context">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-dt;TemporalEntity">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-dsg;Designation">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-pts;Agent">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-pts;Constituency">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-pts;Role">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-pts;Situation">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-qtu;MeasurementUnit">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-qtu;QuantityKind">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
