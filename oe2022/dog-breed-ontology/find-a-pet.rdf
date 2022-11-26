@@ -53,14 +53,7 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Ratings/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 		<owl:versionIRI rdf:resource="&oe2022-dogs;6.0"/>
-		<skos:changeNote>Removed hasCoatType and hasCoatLength restrictions on Breed, removed data property restrictions on profiles, added defined breed subclasses, added ability to attribute profiles to organizations</skos:changeNote>
-		<cmns-av:copyright>Copyright (c) 2022 Ashley Choi, Debjani Ray-majumder, Danielle Villa</cmns-av:copyright>
 	</owl:Ontology>
-	
-	<rdf:Description rdf:about="&dct;contributor">
-		<rdfs:isDefinedBy rdf:resource="&dct;contributor"/>
-		<skos:definition>An entity responsible for making contributions to the resource.</skos:definition>
-	</rdf:Description>
 	
 	<owl:Class rdf:about="&oe2022-dogs;AgilityAthlete">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Athlete"/>
@@ -77,6 +70,8 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;ApartmentFriendlyBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;LowBarkingBreed"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;StrangerFriendlyBreed"/>
 		<rdfs:label>apartment friendly breed</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
@@ -209,6 +204,12 @@
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&prov;wasAttributedTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Organization"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-cls;characterizes"/>
 				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
 			</owl:Restriction>
@@ -234,6 +235,18 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;BreedPhysicalProfile">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;BreedAspect"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&prov;wasAttributedTo"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Organization"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;characterizes"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;Breed"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>breed physical profile</rdfs:label>
 		<skos:definition>breed aspect describing a breed&apos;s typical physical characteristics</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
@@ -292,38 +305,33 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;CatFriendlyBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>cat friendly breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysCatFriendlinessLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysCatFriendlinessLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that usually gets along well with cats</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -336,38 +344,33 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;ChildSafeBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>child safe breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysChildFriendlinessLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysChildFriendlinessLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that is not aggressive towards small children</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -493,38 +496,28 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;ColdClimateAppropriateBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>cold climate appropriate breed</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Class>
-						<owl:intersectionOf rdf:parseType="Collection">
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
-								<owl:someValuesFrom>
-									<owl:Class>
-										<owl:oneOf rdf:parseType="Collection">
-											<rdf:Description rdf:about="&oe2022-dogs;LongCoatLength">
-											</rdf:Description>
-											<rdf:Description rdf:about="&oe2022-dogs;MediumCoatLength">
-											</rdf:Description>
-										</owl:oneOf>
-									</owl:Class>
-								</owl:someValuesFrom>
-							</owl:Restriction>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
-								<owl:hasValue rdf:resource="&oe2022-dogs;DoubleCoatType"/>
-							</owl:Restriction>
-						</owl:intersectionOf>
-					</owl:Class>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
+						<owl:someValuesFrom rdf:resource="&oe2022-dogs;ColdClimateAppropriateCoatLength"/>
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+						<owl:hasValue rdf:resource="&oe2022-dogs;DoubleCoatType"/>
+					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>breed that has the endurance to be outside in cold or snowy enviornments</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;ColdClimateAppropriateCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;Color">
@@ -546,6 +539,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;CordedCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>corded coat type</rdfs:label>
 		<skos:definition>coat type describing fur that naturally clump into thick strands</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -559,6 +553,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;CurlyCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>curly coat type</rdfs:label>
 		<skos:definition>coat type with swirls, curlicues, and twists in the fur</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -586,38 +581,33 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;DogFriendlyBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>dog friendly breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysDogFriendlinessLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysDogFriendlinessLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that usually gets along well with other dogs</skos:definition>
 		<cmns-av:adaptedFrom>American Kennel Club</cmns-av:adaptedFrom>
@@ -662,42 +652,22 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;FamilyWithSmallChildren">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
 		<rdfs:label>family with small children</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2022-dogs;FamilyWithoutSmallChildren"/>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Family">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
-						<owl:someValuesFrom rdf:resource="&oe2022-dogs;SmallChild"/>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;SmallChild"/>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>family with at least one person under 5 years of age</skos:definition>
 		<cmns-av:adaptedFrom>K.E. Holland, &quot;Acquiring a pet dog: A review of factors affecting the decision-making of prospective dog owners,&quot; Animals, vol. 9, no. 124, Mar. 2019 , doi: 10.3390/ani9040124</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;FamilyWithoutSmallChildren">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Family"/>
 		<rdfs:label>family without small children</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Family">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-col;hasMember"/>
-						<owl:allValuesFrom>
-							<owl:Class>
-								<owl:complementOf rdf:resource="&oe2022-dogs;SmallChild"/>
-							</owl:Class>
-						</owl:allValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
 		<skos:definition>family were all members are at least 5 years of age</skos:definition>
 		<cmns-av:adaptedFrom>K.E. Holland, &quot;Acquiring a pet dog: A review of factors affecting the decision-making of prospective dog owners,&quot; Animals, vol. 9, no. 124, Mar. 2019 , doi: 10.3390/ani9040124</cmns-av:adaptedFrom>
 	</owl:Class>
@@ -757,6 +727,8 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;GoodForChildrenBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;ChildSafeBreed"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;PlayfulBreed"/>
 		<rdfs:label>good for children breed</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
@@ -799,6 +771,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;HairlessCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>hairless coat type</rdfs:label>
 		<skos:definition>coat type describing a coat without fur</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -873,87 +846,65 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HighExerciseNeedingBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>high exercise needing breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysExerciseNeedsLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysExerciseNeedsLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does need a lot of daily activity and does not need to be encouraged to exercise</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HotClimateAppropriateBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>hot climate appropriate breed</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Class>
-						<owl:intersectionOf rdf:parseType="Collection">
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
-								<owl:someValuesFrom>
-									<owl:Class>
-										<owl:oneOf rdf:parseType="Collection">
-											<rdf:Description rdf:about="&oe2022-dogs;MediumCoatLength">
-											</rdf:Description>
-											<rdf:Description rdf:about="&oe2022-dogs;ShortCoatLength">
-											</rdf:Description>
-										</owl:oneOf>
-									</owl:Class>
-								</owl:someValuesFrom>
-							</owl:Restriction>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
-								<owl:allValuesFrom>
-									<owl:Class>
-										<owl:complementOf>
-											<owl:Class>
-												<owl:oneOf rdf:parseType="Collection">
-													<rdf:Description rdf:about="&oe2022-dogs;DoubleCoatType">
-													</rdf:Description>
-												</owl:oneOf>
-											</owl:Class>
-										</owl:complementOf>
-									</owl:Class>
-								</owl:allValuesFrom>
-							</owl:Restriction>
-						</owl:intersectionOf>
-					</owl:Class>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatLength"/>
+						<owl:someValuesFrom rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatLength"/>
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+						<owl:allValuesFrom rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>breed that has the endurance to be outside in hot or humid enviornments</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster Dictionary</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HotClimateAppropriateCoatLength">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatLength"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe2022-dogs;HotClimateAppropriateCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;HoundBreedGroup">
@@ -996,30 +947,9 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HypoallergenicBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>hypoallergenic breed</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2022-dogs;causes"/>
-						<owl:allValuesFrom>
-							<owl:Class>
-								<owl:complementOf>
-									<owl:Class>
-										<owl:oneOf rdf:parseType="Collection">
-											<rdf:Description rdf:about="&oe2022-dogs;DogAllergy">
-											</rdf:Description>
-										</owl:oneOf>
-									</owl:Class>
-								</owl:complementOf>
-							</owl:Class>
-						</owl:allValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
+		<owl:disjointWith rdf:resource="&oe2022-dogs;LikelyAllergenicBreed"/>
 		<skos:definition>breed that is relatively unlikely to cause an allergic reaction</skos:definition>
 		<cmns-av:directSource>Oxford Dictionary</cmns-av:directSource>
 	</owl:Class>
@@ -1041,38 +971,33 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LargeBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>large breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">55</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">55.0</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that usually weighs above 55 lbs</skos:definition>
 		<cmns-av:adaptedFrom>American Kennel Club</cmns-av:adaptedFrom>
@@ -1085,6 +1010,19 @@
 		<cmns-av:adaptedFrom>DogBreedOntology</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2022-dogs;LikelyAllergenicBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
+		<rdfs:label>likely allergenic breed</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;causes"/>
+				<owl:hasValue rdf:resource="&oe2022-dogs;DogAllergy"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
+		<skos:definition>breed that is likely to cause an allergic reaction</skos:definition>
+		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;LiverColor">
 		<rdf:type rdf:resource="&oe2022-dogs;Color"/>
 		<rdfs:label>liver color</rdfs:label>
@@ -1093,44 +1031,40 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;LongCoatLength">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdf:type rdf:resource="&oe2022-dogs;ColdClimateAppropriateCoatLength"/>
 		<rdfs:label>long coat length</rdfs:label>
 		<skos:definition>coat length that requires regular grooming to keep it neat and free of mats</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowBarkingBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>low barking breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysBarkingLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysBarkingLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does not tend to bark frequently or loudly</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -1144,38 +1078,33 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowDroolingBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>low drooling breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysDroolingLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysDroolingLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does not tend to drool</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -1189,44 +1118,40 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowExerciseNeedingBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>low exercise needing breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysExerciseNeedsLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysExerciseNeedsLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does not need much daily activity and may need to be encouraged to exercise</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowExpenseBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;LowHealthSusceptabilityBreed"/>
 		<rdfs:label>low expense breed</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
@@ -1248,7 +1173,7 @@
 								<owl:onDatatype rdf:resource="&xsd;decimal"/>
 								<owl:withRestrictions rdf:parseType="Collection">
 									<rdf:Description>
-										<xsd:maxInclusive rdf:datatype="&xsd;decimal">1000</xsd:maxInclusive>
+										<xsd:maxInclusive rdf:datatype="&xsd;decimal">1000.0</xsd:maxInclusive>
 									</rdf:Description>
 								</owl:withRestrictions>
 							</rdfs:Datatype>
@@ -1262,82 +1187,75 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowGroomingBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>low grooming breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysGroomingLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysGroomingLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does not require bathing, brushing, trimming, or other kinds of coat maintenance more than monthly</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowHealthSusceptabilityBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>low health susceptability breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysHealthIssueSusceptabilityLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysHealthIssueSusceptabilityLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does not typically have serious health issues</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowMaintenanceBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;LowExerciseNeedingBreed"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;LowGroomingBreed"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;LowMentalStimulationNeedingBreed"/>
 		<rdfs:label>low maintenance breed</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
@@ -1356,44 +1274,41 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowMentalStimulationNeedingBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>low mental stimulation needing breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysMentalStimulationNeedsLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysMentalStimulationNeedsLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does not require a significant amount of external mental activity to stimulate and enrich their mind</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowMessBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;LowDroolingBreed"/>
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;LowSheddingBreed"/>
 		<rdfs:label>low mess breed</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
@@ -1410,38 +1325,33 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;LowSheddingBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>low shedding breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysSheddingLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysSheddingLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxExclusive rdf:datatype="&xsd;decimal">0.5</xsd:maxExclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that does not lose much fur from their coat</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -1482,55 +1392,50 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;MediumBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>medium breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
+							</rdf:Description>
 							<owl:Class>
 								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
-									</rdf:Description>
-									<owl:Class>
-										<owl:intersectionOf rdf:parseType="Collection">
-											<owl:Restriction>
-												<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
-												<owl:someValuesFrom>
-													<rdfs:Datatype>
-														<owl:onDatatype rdf:resource="&xsd;decimal"/>
-														<owl:withRestrictions rdf:parseType="Collection">
-															<rdf:Description>
-																<xsd:minExclusive rdf:datatype="&xsd;decimal">35</xsd:minExclusive>
-															</rdf:Description>
-														</owl:withRestrictions>
-													</rdfs:Datatype>
-												</owl:someValuesFrom>
-											</owl:Restriction>
-											<owl:Restriction>
-												<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
-												<owl:someValuesFrom>
-													<rdfs:Datatype>
-														<owl:onDatatype rdf:resource="&xsd;decimal"/>
-														<owl:withRestrictions rdf:parseType="Collection">
-															<rdf:Description>
-																<xsd:maxExclusive rdf:datatype="&xsd;decimal">55</xsd:maxExclusive>
-															</rdf:Description>
-														</owl:withRestrictions>
-													</rdfs:Datatype>
-												</owl:someValuesFrom>
-											</owl:Restriction>
-										</owl:intersectionOf>
-									</owl:Class>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
+										<owl:someValuesFrom>
+											<rdfs:Datatype>
+												<owl:onDatatype rdf:resource="&xsd;decimal"/>
+												<owl:withRestrictions rdf:parseType="Collection">
+													<rdf:Description>
+														<xsd:minExclusive rdf:datatype="&xsd;decimal">35.0</xsd:minExclusive>
+													</rdf:Description>
+												</owl:withRestrictions>
+											</rdfs:Datatype>
+										</owl:someValuesFrom>
+									</owl:Restriction>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="&oe2022-dogs;hasMinWeight"/>
+										<owl:someValuesFrom>
+											<rdfs:Datatype>
+												<owl:onDatatype rdf:resource="&xsd;decimal"/>
+												<owl:withRestrictions rdf:parseType="Collection">
+													<rdf:Description>
+														<xsd:maxExclusive rdf:datatype="&xsd;decimal">55.0</xsd:maxExclusive>
+													</rdf:Description>
+												</owl:withRestrictions>
+											</rdfs:Datatype>
+										</owl:someValuesFrom>
+									</owl:Restriction>
 								</owl:intersectionOf>
 							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that usually weighs between 35 lbs and 55 lbs</skos:definition>
 		<cmns-av:adaptedFrom>American Kennel Club</cmns-av:adaptedFrom>
@@ -1556,6 +1461,8 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;MediumCoatLength">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdf:type rdf:resource="&oe2022-dogs;ColdClimateAppropriateCoatLength"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatLength"/>
 		<rdfs:label>medium coat length</rdfs:label>
 		<skos:definition>coat length that requires regular brushing due to risk of feathering on legs and tail becoming matted</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -1691,38 +1598,33 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe2022-dogs;PlayfulBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>playful breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysPlayfullnessLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysPlayfullnessLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that is very spirited as an adult</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -1834,6 +1736,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;RoughCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>rough coat type</rdfs:label>
 		<skos:definition>coat type that is always coarse to the touch</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -1863,6 +1766,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;ShortCoatLength">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatLength"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatLength"/>
 		<rdfs:label>short coat length</rdfs:label>
 		<skos:definition>coat length in which fur is naturally short and lays close to the body</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -1870,6 +1774,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;SilkyCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>silky coat type</rdfs:label>
 		<skos:definition>coat type describing fur that flows and cascades with glossy sheen</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -1882,38 +1787,33 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;SmallBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>small breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:maxInclusive rdf:datatype="&xsd;decimal">35</xsd:maxInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedPhysicalProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxWeight"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:maxInclusive rdf:datatype="&xsd;decimal">35.0</xsd:maxInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that usually weighs below 35 lbs</skos:definition>
 		<cmns-av:adaptedFrom>American Kennel Club</cmns-av:adaptedFrom>
@@ -1935,6 +1835,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;SmoothCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>smooth coat type</rdfs:label>
 		<skos:definition>coat type describing silky fur that lays close to the body</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -1976,38 +1877,33 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;StrangerFriendlyBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>stranger friendly breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysStrangerFriendlinessLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysStrangerFriendlinessLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that usually gets along well with people they are not familiar with</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -2048,38 +1944,33 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;TrainableBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>trainable breed</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
-						<owl:someValuesFrom>
-							<owl:Class>
-								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
-									</rdf:Description>
-									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe2022-dogs;displaysTrainabilityLevel"/>
-										<owl:someValuesFrom>
-											<rdfs:Datatype>
-												<owl:onDatatype rdf:resource="&xsd;decimal"/>
-												<owl:withRestrictions rdf:parseType="Collection">
-													<rdf:Description>
-														<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
-													</rdf:Description>
-												</owl:withRestrictions>
-											</rdfs:Datatype>
-										</owl:someValuesFrom>
-									</owl:Restriction>
-								</owl:intersectionOf>
-							</owl:Class>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:intersectionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe2022-dogs;BreedCharacteristicProfile">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe2022-dogs;displaysTrainabilityLevel"/>
+								<owl:someValuesFrom>
+									<rdfs:Datatype>
+										<owl:onDatatype rdf:resource="&xsd;decimal"/>
+										<owl:withRestrictions rdf:parseType="Collection">
+											<rdf:Description>
+												<xsd:minInclusive rdf:datatype="&xsd;decimal">0.5</xsd:minInclusive>
+											</rdf:Description>
+										</owl:withRestrictions>
+									</rdfs:Datatype>
+								</owl:someValuesFrom>
+							</owl:Restriction>
+						</owl:intersectionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed that can easily learn something new and is willing to try new things</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
@@ -2109,6 +2000,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;WavyCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>wavy coat type</rdfs:label>
 		<skos:definition>coat type describing a coat with curls that tangles and knots easily and has a tendency to become dry</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -2128,6 +2020,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;WiryCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
 		<rdfs:label>wiry coat type</rdfs:label>
 		<skos:definition>coat type describing fur with a wire-like texture that is harsh and stiff and stands away from the body</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -2366,7 +2259,6 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-dogs;hasBreedValue">
 		<rdfs:label>has breed value</rdfs:label>
-		<rdfs:domain rdf:resource="&oe2022-dogs;Breed"/>
 		<skos:definition>specifies some physical or external aspect of a breed</skos:definition>
 		<cmns-av:adaptedFrom>Oxford Dictionary</cmns-av:adaptedFrom>
 	</owl:DatatypeProperty>
