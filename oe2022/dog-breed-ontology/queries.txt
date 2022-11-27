@@ -27,6 +27,7 @@ order by ?rating
 
 
 SPARQL Query for Competancy Question 2: What dog breeds are good for students living in apartments?
+Usage scenario covered: A group of 4 college students is looking to adopt a dog.
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -55,11 +56,15 @@ oe2022-dogs-ind:Question2Student a oe2022-dogs:Student ;
 
 ?popularityRating a oe2022-dogs:BreedPopularityRating ;
  cmns-rt:rates ?breed ;
- cmns-rt:hasRatingScore ?rating .
+ cmns-rt:hasRatingScore ?ratingScore .
+?ratingScore cmns-rt:hasMeasureWithinScale ?rating .
 }
 order by ?rating
 
+This query specifically uses the person in competancy question 2 and seeing which dogs are a good fit. It returns the dogs that are a good fit based on: apartment friendliness (based on size, barking value, and stranger friendliness value), ability to care for on a low budget (based on size, initial cost, and health susceptability values), and ability to care for on minimal time (based on mental stimulation needing value, exercise needing value, and grooming value). The query returns the japanese chin. 
+
 SPARQL Query for Competancy Question 3: What dog breeds are good for a farm environment in Texas? 
+Usage scenario covered:A family with small kids are looking for a dog to help around their farm in Texas
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -69,9 +74,10 @@ PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
 PREFIX cmns-cols: <https://www.omg.org/spec/Commons/Collections/>
 PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
 PREFIX cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
 PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
-select ?breedLabel ?barkingLevel ?rating
+select Distinct ?breedLabel ?barkingLevel ?profileLabel ?rating
 where {
 oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
  cmns-pts:playsRole ?adopter .
@@ -93,13 +99,17 @@ oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
 
 ?profile a oe2022-dogs:BreedCharacteristicProfile;
  cmns-cls:characterizes ?breed;
+ rdfs:label ?profileLabel ;
  oe2022-dogs:displaysBarkingLevel ?barkingLevel .
 
 ?popularityRating a oe2022-dogs:BreedPopularityRating ;
  cmns-rt:rates ?breed ;
- cmns-rt:hasRatingScore ?rating .
+ cmns-rt:hasRatingScore ?ratingScore .
+?ratingScore cmns-rt:hasMeasureWithinScale ?rating .
 }
 order by ?barkingLevel ?rating
+
+This query specifically uses the person in competancy question 3 and seeing which dogs are a good fit. It returns the dogs that are a good fit based on: the location (since the home is in Texas, a warm climate, the dog must be tollerant to heat), good with other animals (such as cats and dogs which are inferred based on dog/cat friendliness values), able to be trained to be a herder (based on trainability value), and its ability to do a lot of physical work (based on exercise needing value). The query returns 2 results, both for australian cattle dog. This is because barking is important for herding, but the AKC and VetStreet give different values for how loud the dog is.
 
 SPARQL Query for Competancy Question 4: Is a greyhound a good breed for a large family with multiple pets, including cats and other dogs?
 Usage scenario covered: A large family consisting of 3 kids is looking for a dog; A family just came into a pet store looking to get a new dog
@@ -122,7 +132,7 @@ oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
  rdfs:label ?breedLabel .
 }
 
-[Is a greyhound a good breed for a large family with multiple pets, including cats and other dogs?] This query is specifically using the family in competancy question 4 and seeing if a greyhound is an appropriate dog for them. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on playfullness and child safety values), good with other dogs (inferred based on dog friendliness value), and good with cats (inferred based on cat friendliness value). 
+This query is specifically using the family in competancy question 4 and seeing if a greyhound is an appropriate dog for them. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on playfullness and child safety values), good with other dogs (inferred based on dog friendliness value), and good with cats (inferred based on cat friendliness value). The query returns nothing, since a greyhound is not a good choice for this type of family. 
 
 SPARQL Query for Competancy Question 5:
 
