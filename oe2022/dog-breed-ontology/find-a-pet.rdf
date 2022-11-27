@@ -145,6 +145,26 @@
 	
 	<owl:Class rdf:about="&oe2022-dogs;Breed">
 		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;HairlessBreed">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;HairyBreed">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe2022-dogs;HypoallergenicBreed">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe2022-dogs;LikelyAllergenicBreed">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-cls;isCharacterizedBy"/>
 				<owl:onClass rdf:resource="&oe2022-dogs;BreedCharacteristicProfile"/>
@@ -161,13 +181,13 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasMaxPrice"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-dogs;hasMinPrice"/>
-				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -761,19 +781,14 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HairlessBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>hairless breed</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe2022-dogs;HairyBreed"/>
 		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
-						<owl:hasValue rdf:resource="&oe2022-dogs;HairlessCoatType"/>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+				<owl:hasValue rdf:resource="&oe2022-dogs;HairlessCoatType"/>
+			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>breed whose skin is not covered by a coat</skos:definition>
 		<cmns-av:adaptedFrom>American Kennel Club</cmns-av:adaptedFrom>
@@ -788,40 +803,8 @@
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&oe2022-dogs;HairyBreed">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>hairy breed</rdfs:label>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;Breed">
-					</rdf:Description>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
-						<owl:allValuesFrom>
-							<owl:Class>
-								<owl:oneOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe2022-dogs;CordedCoatType">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2022-dogs;CurlyCoatType">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2022-dogs;DoubleCoatType">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2022-dogs;RoughCoatType">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2022-dogs;SilkyCoatType">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2022-dogs;SmoothCoatType">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2022-dogs;WavyCoatType">
-									</rdf:Description>
-									<rdf:Description rdf:about="&oe2022-dogs;WiryCoatType">
-									</rdf:Description>
-								</owl:oneOf>
-							</owl:Class>
-						</owl:allValuesFrom>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
 		<skos:definition>breed whose skin is covered by a coat</skos:definition>
 		<cmns-av:adaptedFrom>American Kennel Club</cmns-av:adaptedFrom>
 	</owl:Class>
