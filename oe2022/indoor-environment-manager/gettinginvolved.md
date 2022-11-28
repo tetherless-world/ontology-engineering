@@ -5,7 +5,13 @@ title: gtting_involved
 
 ## Maintenenance Policy
 
-Our maintainance policy is primarily focused on ensuring that our data remains available for use as long as possible. We will never change the name of our ontology or its URL. This will ensure that references to our ontology will always be valid and that we will not break applications that may come to rely on our ontology in the future. Any future changes to the ontology will be appropriately documented both in the headers of the ontology itself and in accompanying documentation. Future versions of the ontology with “breaking changes” will be hosted at new URLs so that previous versions of the ontology continue to be available.
+Our maintainance policy is primarily focused on ensuring that our data remains available for use as long as possible. After the end of the Fall 2022 semester, the final versions of the ontology and all the artifacts will remain available on our website.
+
+- We will never change the name of our ontology or its URL. This will ensure that references to our ontology will always be valid and that we will not break applications that may come to rely on our ontology in the future.
+- Periodic updates may be made to the content, and all changes will be documented and updated on the website to show the accurate representation of our project.
+- Upon any major changes to the ontology, a new version of it should be created, and the previous version should be archived properly. These changes shall be reflected in the use case, conceptual model, term list, and SPARQL queries.
+- Anyone who is interested in working more in-depth with and contributing to our ontology can contact the current team members.
+
 
 ## Getting Involved
 
