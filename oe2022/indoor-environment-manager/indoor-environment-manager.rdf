@@ -102,8 +102,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe2022-iem;isBetterThan"/>
-				<owl:onClass rdf:resource="&oe2022-iem;AirQualityLevel"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+				<owl:allValuesFrom rdf:resource="&oe2022-iem;AirQualityLevel"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>air quality level</rdfs:label>
@@ -967,20 +966,6 @@
 		<skos:definition>indicates what actions are available for a room component</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasBetterAirQualityLevelThan">
-		<rdfs:label>has better air uality level than</rdfs:label>
-		<dct:source>IEQ Management System</dct:source>
-		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe2022-iem;hasAirQualityLevel">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;isBetterThan">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe2022-iem;isAirQualityLevelFor">
-			</rdf:Description>
-		</owl:propertyChainAxiom>
-		<skos:definition>indicates that indoor environment has higher air quality index than outdoor environment, or vice versa</skos:definition>
-	</owl:ObjectProperty>
-	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasClothingInsulationValue">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasOccupantAttributeValue"/>
 		<rdfs:label>has clothing insulation value</rdfs:label>
@@ -1216,7 +1201,6 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isAirQualityLevelFor">
-		<rdfs:subPropertyOf rdf:resource="&cmns-cls;classifies"/>
 		<rdfs:label>is air quality level for</rdfs:label>
 		<dct:source>IEQ Management System</dct:source>
 		<skos:definition>indicates the object that has the category of air quality index</skos:definition>
