@@ -146,16 +146,6 @@
 		<rdfs:subClassOf>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe2022-dogs;HairlessBreed">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe2022-dogs;HairyBreed">
-					</rdf:Description>
-				</owl:unionOf>
-			</owl:Class>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
 					<rdf:Description rdf:about="&oe2022-dogs;HypoallergenicBreed">
 					</rdf:Description>
 					<rdf:Description rdf:about="&oe2022-dogs;LikelyAllergenicBreed">
@@ -562,6 +552,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;CordedCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
 		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>corded coat type</rdfs:label>
 		<skos:definition>coat type describing fur that naturally clump into thick strands</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -576,6 +567,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;CurlyCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
 		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>curly coat type</rdfs:label>
 		<skos:definition>coat type with swirls, curlicues, and twists in the fur</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -644,6 +636,7 @@
 	
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;DoubleCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>double coat type</rdfs:label>
 		<skos:definition>coat type describing an undercoat that is typically shorter than the outer coat, and fur with a dense, woolly texture</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -803,6 +796,12 @@
 	<owl:Class rdf:about="&oe2022-dogs;HairyBreed">
 		<rdfs:subClassOf rdf:resource="&oe2022-dogs;Breed"/>
 		<rdfs:label>hairy breed</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-dogs;hasCoatType"/>
+				<owl:someValuesFrom rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>breed whose skin is covered by a coat</skos:definition>
 		<cmns-av:adaptedFrom>American Kennel Club</cmns-av:adaptedFrom>
 	</owl:Class>
@@ -1527,6 +1526,10 @@
 		<cmns-av:directSource>American Kennel Club</cmns-av:directSource>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="&oe2022-dogs;NotHairlessCoatType">
+		<rdfs:subClassOf rdf:resource="&oe2022-dogs;CoatType"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe2022-dogs;Organization">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
 		<rdfs:label xml:lang="en">organization</rdfs:label>
@@ -1731,6 +1734,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;RoughCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
 		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>rough coat type</rdfs:label>
 		<skos:definition>coat type that is always coarse to the touch</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -1769,6 +1773,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;SilkyCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
 		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>silky coat type</rdfs:label>
 		<skos:definition>coat type describing fur that flows and cascades with glossy sheen</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -1830,6 +1835,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;SmoothCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
 		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>smooth coat type</rdfs:label>
 		<skos:definition>coat type describing silky fur that lays close to the body</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -2002,6 +2008,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;WavyCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
 		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>wavy coat type</rdfs:label>
 		<skos:definition>coat type describing a coat with curls that tangles and knots easily and has a tendency to become dry</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
@@ -2022,6 +2029,7 @@
 	<owl:NamedIndividual rdf:about="&oe2022-dogs;WiryCoatType">
 		<rdf:type rdf:resource="&oe2022-dogs;CoatType"/>
 		<rdf:type rdf:resource="&oe2022-dogs;HotClimateAppropriateCoatType"/>
+		<rdf:type rdf:resource="&oe2022-dogs;NotHairlessCoatType"/>
 		<rdfs:label>wiry coat type</rdfs:label>
 		<skos:definition>coat type describing fur with a wire-like texture that is harsh and stiff and stands away from the body</skos:definition>
 		<cmns-av:adaptedFrom>&quot;A guide to dog coat types,&quot; Orvis News, 25-May-2022. [Online]. Available: https://news.orvis.com/dogs/a-guide-to-dog-coat-types. [Accessed: 19-Sep-2022].</cmns-av:adaptedFrom>
