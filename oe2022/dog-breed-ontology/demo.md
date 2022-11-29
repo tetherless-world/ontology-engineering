@@ -81,7 +81,7 @@ order by ?rating
 
 #### Result 2:
 | breedLabel | rating |
-| ---------- | ------ |
+| --- | --- |
 | japanese chin | 105.0 |
 
 #### Explanation:
@@ -102,7 +102,7 @@ PREFIX cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
 PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
-select Distinct ?breedLabel ?barkingLevel ?profileLabel ?rating
+select Distinct ?breedLabel ?barkingLevel ?barkingLevelSource ?rating
 where {
 oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
  cmns-pts:playsRole ?adopter .
@@ -124,8 +124,10 @@ oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
 
 ?profile a oe2022-dogs:BreedCharacteristicProfile;
  cmns-cls:characterizes ?breed;
- rdfs:label ?profileLabel ;
+ prov:wasAttributedTo ?source ;
  oe2022-dogs:displaysBarkingLevel ?barkingLevel .
+
+?source rdfs:label ?brakingLevelSource .
 
 ?popularityRating a oe2022-dogs:BreedPopularityRating ;
  cmns-rt:rates ?breed ;
@@ -136,10 +138,10 @@ order by ?barkingLevel ?rating
 ```
 
 #### Result 3: 
-| breedLabel | barkingLevel | profileLabel | rating |
-| ---------- | ------------ | ------------ | ------ |
-| australian cattle dog | 0.2 | australian cattle dog AKC breed characteristic profile | 51.0 |
-| australian cattle dog | 0.8 | australian cattle dog VetStreet breed characteristic profile | 51.0 |
+| breedLabel | barkingLevel | barkingLevelSource | rating |
+| --- | --- | --- | --- |
+| australian cattle dog | 0.2 | The American Kennel Club | 51.0 |
+| australian cattle dog | 0.8 | cattle dog VetStreet | 51.0 |
 
 #### Explanation:
 This query specifically uses the person in competancy question 3 and seeing which dogs are a good fit. It returns the dogs that are a good fit based on: the location (since the home is in Texas, a warm climate, the dog must be tollerant to heat), good with other animals (such as cats and dogs which are inferred based on dog/cat friendliness values), able to be trained to be a herder (based on trainability value), and its ability to do a lot of physical work (based on exercise needing value). The query returns 2 results, both for australian cattle dog. This is because barking is important for herding, but the AKC and VetStreet give different values for how loud the dog is.
@@ -169,7 +171,7 @@ oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
 
 #### Result 4:
 | breedLabel |
-| ---------- |
+| --- |
 
 Nothing is returned. This is expected behavior since a greyhound would not be a good fit for the family. 
 
@@ -212,7 +214,7 @@ ORDER BY ?popularityQuantitativeScore ?barkinglevel DESC(?strangerfriendlinessle
 
 #### Result 5: 
 | label     | popularityQuantitativeScore | barkinglevel | strangerFriendliness | sheddinglevel | droolinglevel | maxWeight | 
-| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| --- | --- | --- | --- | --- | --- | --- |
 | poodle (standard) | 165.0 | 0.4 | 1.0 | 0.2 | 0.2 | 50.0 |
 
 
