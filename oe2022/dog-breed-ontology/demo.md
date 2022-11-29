@@ -13,26 +13,31 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
 PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
-PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
-select ?breedLabel ?rating
-	WHERE { ?breed a oe2022-dogs:Breed.
-		?profile a oe2022-dogs:BreedCharacteristicProfile;
+SELECT ?label ?popularityQuantitativeScore ?childfriendlinesslevel ?exerciseneedslevel 
+	WHERE { ?breed a oe2022-dogs:GoodForChildrenBreed;
+			rdfs:label ?label.
+		?char_profile a oe2022-dogs:BreedCharacteristicProfile;
 			cmns-cls:characterizes ?breed;
 			oe2022-dogs:displaysChildFriendlinessLevel ?childfriendlinesslevel;
-			oe2022-dogs:displaysExerciseNeedsLevel ?exerciseneedslevel;
-			Filter(?childfriendlinesslevel = 1.0 && ?exerciseneedslevel > 0.5).
-		rdfs:label ?breedLabel .
-
-?popularityRating a oe2022-dogs:BreedPopularityRating ;
- cmns-rt:rates ?breed ;
- cmns-rt:hasRatingScore ?rating .
+			oe2022-dogs:displaysExerciseNeedsLevel ?exerciseneedslevel.
+        ?popularityRating a oe2022-dogs:BreedPopularityRating;
+			cmns-rt:rates ?breed;
+			cmns-rt:hasRatingScore ?ratingScore.
+		?ratingScore cmns-rt:hasMeasureWithinScale ?popularityQuantitativeScore.
 }
-order by ?rating
+ORDER BY ?popularityQuantitativeScore
 ```
 
 #### Result 1:
+Top 5 results shown
 
-TODO: will not run in this form
+| label | popularityQuantitativeScore | childfriendlinesslevel | exerciseneedslevel | 
+| --- | --- | --- | --- |
+| labrador retriever | 1.0 | 1.0 | 1.0 |
+| golden retriever | 3.0 | 1.0 | 1.0|
+| german shepherd dog | 4.0 | 1.0 | 0.6 |
+| great dane | 17.0 | 0.6 | 0.4 |
+| pomeranian | 24.0 | 0.2 | 0.4 |
 
 #### Explanation:
 This query is specifically using the family in competancy question 1. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on childfriendliness), and since there are multiple children the dog will need to have high activity level (inferred based on exercise level value).
@@ -203,7 +208,6 @@ SELECT ?label ?popularityQuantitativeScore ?barkinglevel ?strangerfriendlinessle
 		?ratingScore cmns-rt:hasMeasureWithinScale ?popularityQuantitativeScore.
 }
 ORDER BY ?popularityQuantitativeScore ?barkinglevel DESC(?strangerfriendlinesslevel) ?sheddinglevel ?droolinglevel 
-LIMIT 10
 ```
 
 #### Result 5: 
