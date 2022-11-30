@@ -175,6 +175,7 @@ oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
 
 | breedLabel |
 | --- |
+|     |
 
 Nothing is returned. This is expected behavior since a greyhound would not be a good fit for the family. 
 
