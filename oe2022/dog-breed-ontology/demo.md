@@ -80,6 +80,7 @@ order by ?rating
 ```
 
 #### Result 2:
+
 | breedLabel | rating |
 | --- | --- |
 | japanese chin | 105.0 |
@@ -138,6 +139,7 @@ order by ?barkingLevel ?rating
 ```
 
 #### Result 3: 
+
 | breedLabel | barkingLevel | barkingLevelSource | rating |
 | --- | --- | --- | --- |
 | australian cattle dog | 0.2 | The American Kennel Club | 51.0 |
@@ -170,6 +172,7 @@ oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
 ```
 
 #### Result 4:
+
 | breedLabel |
 | --- |
 
@@ -213,6 +216,7 @@ ORDER BY ?popularityQuantitativeScore ?barkinglevel DESC(?strangerfriendlinessle
 ```
 
 #### Result 5: 
+
 | label     | popularityQuantitativeScore | barkinglevel | strangerFriendliness | sheddinglevel | droolinglevel | maxWeight | 
 | --- | --- | --- | --- | --- | --- | --- |
 | poodle (standard) | 165.0 | 0.4 | 1.0 | 0.2 | 0.2 | 50.0 |
