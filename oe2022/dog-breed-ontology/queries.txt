@@ -77,7 +77,7 @@ PREFIX cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
 PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
-select Distinct ?breedLabel ?barkingLevel ?profileLabel ?rating
+select Distinct ?breedLabel ?barkingLevel ?barkingLevelSource ?rating
 where {
 oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
  cmns-pts:playsRole ?adopter .
@@ -99,8 +99,10 @@ oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
 
 ?profile a oe2022-dogs:BreedCharacteristicProfile;
  cmns-cls:characterizes ?breed;
- rdfs:label ?profileLabel ;
+ prov:wasAttributedTo ?source ;
  oe2022-dogs:displaysBarkingLevel ?barkingLevel .
+
+?source rdfs:label ?barkingLevelSource .
 
 ?popularityRating a oe2022-dogs:BreedPopularityRating ;
  cmns-rt:rates ?breed ;
