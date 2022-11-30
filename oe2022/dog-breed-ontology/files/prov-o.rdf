@@ -14,6 +14,9 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="http://www.w3.org/ns/prov#">
+	</owl:Ontology>
+	
+	<owl:Ontology rdf:about="http://www.w3.org/ns/prov-o#">
 		<rdfs:label xml:lang="en">W3C PROVenance Interchange Ontology (PROV-O)</rdfs:label>
 		<rdfs:comment xml:lang="en">This document is published by the Provenance Working Group (http://www.w3.org/2011/prov/wiki/Main_Page). 
 
@@ -47,33 +50,6 @@ If you wish to make comments regarding this document, please send them to public
 	</owl:Class>
 	
 	<owl:AnnotationProperty rdf:about="&owl;versionInfo">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/category">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/component">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/constraints">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/definition">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/dm">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/editorialNote">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/editorsDefinition">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/inverse">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/n">
 	</owl:AnnotationProperty>
 	
 	<owl:Class rdf:about="&prov;Activity">
@@ -1394,32 +1370,19 @@ prov:wasInfluencedBy should not be used without also using one of its subpropert
 		<prov:qualifiedForm rdf:resource="&prov;qualifiedStart"/>
 	</owl:ObjectProperty>
 	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/qualifiedForm">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/sharesDefinitionWith">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/specializationOf">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/unqualifiedForm">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="http://www.w3.org/ns/wasRevisionOf">
-	</owl:AnnotationProperty>
-	
 	<owl:Axiom>
 		<rdfs:comment xml:lang="en">A collection is an entity that provides a structure to some constituents, which are themselves entities. These constituents are said to be member of the collections.</rdfs:comment>
 		<owl:annotatedProperty rdf:resource="&rdfs;range"/>
 		<owl:annotatedSource rdf:resource="&prov;hadMember"/>
 		<owl:annotatedTarget rdf:resource="&prov;Entity"/>
+		<prov:dm>http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-collection</prov:dm>
 	</owl:Axiom>
 	<owl:Axiom>
 		<rdfs:comment>Attribution is a particular case of trace (see http://www.w3.org/TR/prov-dm/#concept-trace), in the sense that it links an entity to the agent that ascribed it.</rdfs:comment>
 		<owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
 		<owl:annotatedSource rdf:resource="&prov;wasAttributedTo"/>
 		<owl:annotatedTarget rdf:resource="&prov;wasInfluencedBy"/>
+		<prov:definition>IF wasAttributedTo(e2,ag1,aAttr) holds, THEN wasInfluencedBy(e2,ag1) also holds.</prov:definition>
 	</owl:Axiom>
 	<owl:Axiom>
 		<rdfs:comment>Derivation is a particular case of trace (see http://www.w3.org/TR/prov-dm/#term-trace), since it links an entity to another entity that contributed to its existence.</rdfs:comment>
@@ -1445,5 +1408,41 @@ http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#term-Revision 23 April 
 		<owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
 		<owl:annotatedSource rdf:resource="&prov;hadPrimarySource"/>
 		<owl:annotatedTarget rdf:resource="&prov;wasDerivedFrom"/>
+	</owl:Axiom>
+	<owl:Axiom>
+		<owl:annotatedProperty rdf:resource="&rdfs;domain"/>
+		<owl:annotatedSource rdf:resource="&prov;wasInfluencedBy"/>
+		<owl:annotatedTarget>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&prov;Activity">
+					</rdf:Description>
+					<rdf:Description rdf:about="&prov;Agent">
+					</rdf:Description>
+					<rdf:Description rdf:about="&prov;Entity">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</owl:annotatedTarget>
+		<prov:definition>influencee: an identifier (o2) for an entity, activity, or agent;</prov:definition>
+		<prov:dm>http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-influence</prov:dm>
+	</owl:Axiom>
+	<owl:Axiom>
+		<owl:annotatedProperty rdf:resource="&rdfs;range"/>
+		<owl:annotatedSource rdf:resource="&prov;wasInfluencedBy"/>
+		<owl:annotatedTarget>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&prov;Activity">
+					</rdf:Description>
+					<rdf:Description rdf:about="&prov;Agent">
+					</rdf:Description>
+					<rdf:Description rdf:about="&prov;Entity">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</owl:annotatedTarget>
+		<prov:definition>influencer: an identifier (o1) for an ancestor entity, activity, or agent that the former depends on;</prov:definition>
+		<prov:dm>http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-influence</prov:dm>
 	</owl:Axiom>
 </rdf:RDF>

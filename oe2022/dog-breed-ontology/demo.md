@@ -127,7 +127,7 @@ oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
  prov:wasAttributedTo ?source ;
  oe2022-dogs:displaysBarkingLevel ?barkingLevel .
 
-?source rdfs:label ?brakingLevelSource .
+?source rdfs:label ?barkingLevelSource .
 
 ?popularityRating a oe2022-dogs:BreedPopularityRating ;
  cmns-rt:rates ?breed ;
