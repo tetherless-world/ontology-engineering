@@ -5,7 +5,7 @@ title: About
 
 ## Abstract
 
-This application recommends dog breeds to households given some specific characteristics of the homeowners. Additionally, the recommendation would provide a list of other potential dog breeds that may suit the family’s needs to account for any potential subjective factors like cuteness.
+When looking for a dog to adopt, there is no automated method to match potential owner preferences to appropriate dog breeds. Currently potential owners need to go to the internet and try to manually find a breed that will meet specific needs of an individual or a family. It is often difficult to find a breed if there are multiple criteria and constraints. Some sites offer breed selector quizzes, but few explain their rankings and different quizes are rarely in agreement. To address this need to meet multiple, sometimes conflicting, requirements of finding a matching breed of dog to adopt, we propose an ontology-based solution that  ultimately forms the basis of a recommender of dog breeds to households, given some specific characteristics of the homeowner, their home, family, and personal preferences. The proposed ontology-supported application recommends dog breeds to households given some specific characteristics of the homeowners like home size, activity level, child friendliness. Additionally, the recommendation will provide a list of other potential dog breeds that may suit the family’s needs, to account for any potential subjective factors like cuteness.
 
 <img src="images/dog1.jpg"/>
 
