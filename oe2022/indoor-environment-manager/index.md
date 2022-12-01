@@ -36,4 +36,4 @@ Jacoby-Cooper, Gabriel (rensselaer@gabrieljc.me)
 
 ## Acknowledgements
 
-<p>We greatly appreciate our professor Deborah McGuinness' and Elisa Kendall's help and insight during the development of our Indoor Environmental Management System Ontology. Thank you to Jade Franklin and Solar Shirai for providing feedbacks on our artifacts and presentations. Furthermore, we are thankful to Professor Dennis Shelden for sharing his insight with us as a domain expert.</p>
+<p>We greatly appreciate our professor Deborah McGuinness' and Elisa Kendall's help and insight during the development of our Indoor Environmental Management System Ontology. Thank you to Jade Franklin and Sola Shirai for providing feedbacks on our artifacts and presentations. Furthermore, we are thankful to Professor Dennis Shelden for sharing his insight with us as a domain expert.</p>
