@@ -375,6 +375,13 @@
 	
 	<owl:Class rdf:about="&oe2022-iem;HeatingVentilationAndAirConditioningEquipment">
 		<rdfs:subClassOf rdf:resource="&oe2022-iem;PowerConsumingComponent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe2022-iem;isControlledBy"/>
+				<owl:onClass rdf:resource="&oe2022-iem;Thermostat"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>heating, ventilation, and air conditioning equipment</rdfs:label>
 		<dct:bibliographicCitation>J. Xie, H. Li, C. Li, J. Zhang, and M. Luo, &apos;Review on occupant-centric thermal comfort sensing, predicting, and controlling,&apos; Energy and Buildings, vol. 226, p. 110392, 2020.</dct:bibliographicCitation>
 		<dct:source>&quot;HVAC system&quot;, ASHRAE Terminology, 2022. [Online] Available: https://xp20.ashrae.org/terminology/index.php?term=hvac&amp;submit=Search</dct:source>
@@ -970,12 +977,6 @@
 		<skos:definition>indicates the category of the detected air quality index to represents the level of danger to human health</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEffect">
-		<rdfs:label>has effect</rdfs:label>
-		<dct:source>&quot;effect,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/effect</dct:source>
-		<skos:definition>has power to bring about a result</skos:definition>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasEnvironment">
 		<rdfs:label>has environment</rdfs:label>
 		<dct:source>IEQ Management System</dct:source>
@@ -1016,13 +1017,6 @@
 		<skos:definition>indicates the category of the inferred air quality index to represents the level of danger to human health</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasLowerBound">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has lower bound (old)</rdfs:label>
-		<dct:source>IEQ Management System</dct:source>
-		<skos:definition>indicates a lower bound of a delta bucket for an indoor environmental quality parameter</skos:definition>
-	</owl:DatatypeProperty>
-	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasMetabolicRateValue">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasOccupantAttributeValue"/>
 		<rdfs:label>has metabolic rate value</rdfs:label>
@@ -1047,6 +1041,7 @@
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;hasOccupantSex">
+		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasAttribute"/>
 		<rdfs:label>has occupant sex</rdfs:label>
 		<dct:source>&quot;sex,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/sex</dct:source>
 		<rdfs:domain rdf:resource="&oe2022-iem;Occupant"/>
@@ -1115,13 +1110,6 @@
 		<owl:inverseOf rdf:resource="&oe2022-iem;isStateOf"/>
 		<skos:definition>has a mode or condition of being</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasUpperBound">
-		<rdfs:subPropertyOf rdf:resource="&cmns-qtu;hasNumericValue"/>
-		<rdfs:label>has upper bound (old)</rdfs:label>
-		<dct:source>IEQ Management System</dct:source>
-		<skos:definition>indicates a upper bound of a delta bucket for an indoor environmental quality parameter</skos:definition>
-	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe2022-iem;hasWeightValue">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;hasOccupantAttributeValue"/>
@@ -1193,18 +1181,6 @@
 		<skos:definition>indicates the object that has the category of the detected air quality index</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isEstimatedFrom">
-		<rdfs:label>is estimated from</rdfs:label>
-		<dct:source>&quot;estimate,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/estimate</dct:source>
-		<skos:definition>a value is judged tentatively or approximately from</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isInRoomWithOutdoorEnvironment">
-		<rdfs:label>is in room with outdoor environment</rdfs:label>
-		<skos:definition>IEQ Management System</skos:definition>
-		<skos:definition>maps a room component to the outdoor environment that is outside of the room that contains the component</skos:definition>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isInferredAirQualityLevelFor">
 		<rdfs:subPropertyOf rdf:resource="&oe2022-iem;isAirQualityLevelFor"/>
 		<rdfs:label>is inferred air quality level for</rdfs:label>
@@ -1254,13 +1230,6 @@
 		<skos:definition>is caused to change environmental parameters by outdoor environment</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;isQuantifiedBy">
-		<rdfs:label>is quantified by</rdfs:label>
-		<dct:source>&quot;Quantify,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/quantify</dct:source>
-		<owl:inverseOf rdf:resource="&oe2022-iem;quatifies"/>
-		<skos:definition>is made of the logical quantity by</skos:definition>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&oe2022-iem;isStateOf">
 		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 		<rdfs:label>is state of</rdfs:label>
@@ -1288,12 +1257,6 @@
 		<dct:source>IEQ Management System</dct:source>
 		<rdfs:domain rdf:resource="&oe2022-iem;OutdoorAffectedAction"/>
 		<skos:definition>causes to change environmental parameters with outdoor environment</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe2022-iem;quatifies">
-		<rdfs:label>quantifies</rdfs:label>
-		<dct:source>&quot;Quantify,&quot; Merriam-Webster.com, 2022. [Online]. Available: https://www.merriam-webster.com/dictionary/quantify</dct:source>
-		<skos:definition>makes explicit the logical quantity of</skos:definition>
 	</owl:ObjectProperty>
 	
 	<rdf:Description rdf:about="&cmns-dt;Day">
