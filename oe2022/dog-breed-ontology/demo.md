@@ -3,7 +3,7 @@
 
 ### Live Demo
 
-To run a live demo, load the small individuals ontology (found [here]()) into your prefered triple store that can run SNAP SPARQL queries. We tested the following queries using the [Protege](https://protege.stanford.edu/) editor running the [Pellet](https://github.com/stardog-union/pellet) reasoner. A reasoner must be run for the queries to work, and Pellet is expected to take approximately 20 min.
+To run a live demo, load the small individuals ontology (found [here](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/3db93d1b10911829c64fb1d1fda0dd4b033ac006/oe2022/dog-breed-ontology/find-a-pet-individuals-small.rdf)) into your prefered triple store that can run SNAP SPARQL queries. We tested the following queries using the [Protege](https://protege.stanford.edu/) editor running the [Pellet](https://github.com/stardog-union/pellet) reasoner. A reasoner must be run for the queries to work, and Pellet is expected to take approximately 20 min.
 
 ### Static Demo
 
