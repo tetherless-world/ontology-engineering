@@ -10,7 +10,8 @@ To run a live demo, load the small individuals ontology (found [here]()) into yo
 <iframe src="files/queryStaticDemo.pdf" style="width: 100%; height: 600px;border: none;"></iframe>
 
 ## Queries
-These queries are meant to be run in the SNAP SPARQL tab in Protege. They can be run with normal SPARQL, but since that doesn't use the reasoner's inferences most of the queries will not return any results.
+
+These queries are meant to be run in SNAP SPARQL, and we used that tab in Protege. They can be run with normal SPARQL, but since that doesn't use the reasoner's inferences most of the queries will not return any results unless the inferences are made explicit.
 
 ### Query 1: What dog breed would meet the needs of a large family with allergies in a large home?
 Usage scenario covered: A large family consisting of 3 kids is looking for a dog.
