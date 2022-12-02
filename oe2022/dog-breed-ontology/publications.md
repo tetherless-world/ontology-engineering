@@ -5,6 +5,14 @@ title: publications
 
 ## Publications
 
-<p class="message-highlight">You would add a PDF version of your final write-up to the files directory and render it such as the below</p>
+### Final Report
 
-<!--<iframe src="files/samplepublication.pdf" style="width: 100%;height: 700px;border: none;"></iframe>--?
+<p class="message-highlight"> DRAFT </p>
+<iframe src="files/FinalReport.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+
+[PDF verison (DRAFT)](files/FinalReport.pdf)
+[Word version (DRAFT)](files/FinalReport.docx)
+
+### Other Publications
+
+None at this time
