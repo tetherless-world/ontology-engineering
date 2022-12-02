@@ -33,7 +33,6 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
 PREFIX cmns-cols: <https://www.omg.org/spec/Commons/Collections/>
 PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
 PREFIX cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/>
@@ -119,7 +118,6 @@ Usage scenario covered: A large family consisting of 3 kids is looking for a dog
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
 PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
-PREFIX cmns-col: <https://www.omg.org/spec/Commons/Collections/>
 select ?breedLabel
 where {
 oe2022-dogs-ind:Question4Family a oe2022-dogs:FamilyWithSmallChildren ;
@@ -135,6 +133,44 @@ oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
 }
 
 This query is specifically using the family in competancy question 4 and seeing if a greyhound is an appropriate dog for them. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on playfullness and child safety values), good with other dogs (inferred based on dog friendliness value), and good with cats (inferred based on cat friendliness value). The query returns nothing, since a greyhound is not a good choice for this type of family. 
+For additional details, each part of the query can be run individually. Due to the nature of SNAP SPARQL, ask queries must be written as select queries that return nothing if the result would be false. The first and third queries return the label since greyhound is a good for children breed and a dog friendly breed. The second does not return anything since greyhound is not a cat friendly breed. 
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family a oe2022-dogs:FamilyWithSmallChildren .
+
+oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
+ rdfs:label ?breedLabel .
+}
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family oe2022-dogs:ownsPet ?cat .
+?cat a oe2022-dogs:Cat .
+
+oe2022-dogs-ind:Greyhound a oe2022-dogs:CatFriendlyBreed ;
+ rdfs:label ?breedLabel .
+}
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family oe2022-dogs:ownsPet ?dog .
+?dog a oe2022-dogs:Dog .
+
+oe2022-dogs-ind:Greyhound a oe2022-dogs:DogFriendlyBreed ;
+ rdfs:label ?breedLabel .
+}
+
+
 
 SPARQL Query for Competancy Question 5:
 
