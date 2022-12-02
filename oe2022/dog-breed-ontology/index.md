@@ -40,7 +40,7 @@ Danielle Villa: <villad4@rpi.edu>
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="https://github.com/tetherless-world/ontology-engineering/tree/dog-breed-ontology/oe2022/dog-breed-ontology">Base Ontology</a> <br> (b) <a href="https://github.com/tetherless-world/ontology-engineering/tree/dog-breed-ontology/oe2022/dog-breed-ontology">Small Individuals Ontology</a> <br> (c) <a href="https://github.com/tetherless-world/ontology-engineering/tree/dog-breed-ontology/oe2022/dog-breed-ontology">Large Individuals</a> </td>
+    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/411a147b864f13eecf2c84701550626bf3190622/oe2022/dog-breed-ontology/find-a-pet.rdf">Base Ontology</a> <br> (b) <a href="https://raw.githubusercontent.com/tetherless-world/ontology-engineering/411a147b864f13eecf2c84701550626bf3190622/oe2022/dog-breed-ontology/find-a-pet-individuals-small.rdf">Small Set of Individuals Ontology</a> <br> (c) <a href="https://github.com/tetherless-world/ontology-engineering/raw/411a147b864f13eecf2c84701550626bf3190622/oe2022/dog-breed-ontology/find-a-pet-individuals.rdf">Large Set of Individuals</a> </td>
   </tr>
   <tr>
     <td>2. Term List</td>

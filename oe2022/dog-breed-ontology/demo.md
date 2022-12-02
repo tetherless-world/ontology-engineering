@@ -1,4 +1,14 @@
 
+## Demonstrations
+
+### Live Demo
+
+To run a live demo, load the small individuals ontology (found [here]()) into your prefered triple store that can run SNAP SPARQL queries. We tested the following queries using the [Protege](https://protege.stanford.edu/) editor running the [Pellet](https://github.com/stardog-union/pellet) reasoner. A reasoner must be run for the queries to work, and Pellet is expected to take approximately 20 min.
+
+### Static Demo
+
+<iframe src="files/queryStaticDemo.pdf" style="width: 100%; height: 600px;border: none;"></iframe>
+
 ## Queries
 These queries are meant to be run in the SNAP SPARQL tab in Protege. They can be run with normal SPARQL, but since that doesn't use the reasoner's inferences most of the queries will not return any results.
 
@@ -179,9 +189,71 @@ oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
 
 Nothing is returned. This is expected behavior since a greyhound would not be a good fit for the family. 
 
-
 #### Explanation:
 This query is specifically using the family in competancy question 4 and seeing if a greyhound is an appropriate dog for them. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on playfullness and child safety values), good with other dogs (inferred based on dog friendliness value), and good with cats (inferred based on cat friendliness value). The query returns nothing, since a greyhound is not a good choice for this type of family.  
+
+### Alternate Query 4: Additional Details
+
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family a oe2022-dogs:FamilyWithSmallChildren .
+
+oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
+ rdfs:label ?breedLabel .
+}
+```
+
+#### Result 4.1:
+
+| breedLabel |
+| --- |
+| greyhound |
+
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family oe2022-dogs:ownsPet ?cat .
+?cat a oe2022-dogs:Cat .
+
+oe2022-dogs-ind:Greyhound a oe2022-dogs:CatFriendlyBreed ;
+ rdfs:label ?breedLabel .
+}
+```
+
+#### Result 4.2:
+
+| breedLabel |
+| --- |
+|     |
+
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family oe2022-dogs:ownsPet ?dog .
+?dog a oe2022-dogs:Dog .
+
+oe2022-dogs-ind:Greyhound a oe2022-dogs:DogFriendlyBreed ;
+ rdfs:label ?breedLabel .
+}
+```
+
+#### Result 4.3:
+
+| breedLabel |
+| --- |
+| greyhound |
+
+#### Explanation: For additional details, each part of the query can be run individually. Due to the nature of SNAP SPARQL, ask queries must be written as select queries that return nothing if the result would be false. The first and third queries return the label since greyhound is a good for children breed and a dog friendly breed. The second does not return anything since greyhound is not a cat friendly breed. 
 
 
 ### Query 5: What is a cute dog breed that can do well in an apartment that doesn’t get cleaned very often?
@@ -227,6 +299,7 @@ ORDER BY ?popularityQuantitativeScore ?barkinglevel DESC(?strangerfriendlinessle
 Query first requires apartment friendly characteristics (which will require a low barking, high stranger friendliness level, and a small or medium sized breed). It also requires that the dog have low shedding and drooling to account for the lack of cleaning in this apartment. It prioritizes our hard apartment constraints (barking and stranger friendliness) but ranks by popularity to account for the "cuteness" expectation.
 
 ### Previous Versions
-- [Version 3 (OE 12)](files/queries_v3.txt) CURRENT
+- [Version 4 (OE 13)](files/queries_v4.txt) CURRENT
+- [Version 3 (OE 12)](files/queries_v3.txt) 
 - [Version 2 (OE 11)](files/queries_v2.txt)
 - [version 1 (OE 10)](files/queries_v1.txt)
