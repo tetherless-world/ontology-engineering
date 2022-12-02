@@ -30,7 +30,7 @@ This model shows how the varous characteristics of other entities are organized.
 
 ### Previous Versions
 
-- [Version 5 (OE 10)](files/ConceptualModel_v6.pdf) [SVG](files/ConceptualModel_v6.svg) CURRENT
+- [Version 6 (OE 12)](files/ConceptualModel_v6.pdf) [SVG](files/ConceptualModel_v6.svg) CURRENT
 - [Version 5 (OE 10)](files/ConceptualModel_v5.pdf) [SVG](files/ConceptualModel_v5.svg) 
 - [Version 4 (OE 9)](files/ConceptualModel_v4.pdf) [SVG](files/ConceptualModel_v4.svg)
 - [Version 3 (OE 8)](files/ConceptualModel_v3.pdf)
