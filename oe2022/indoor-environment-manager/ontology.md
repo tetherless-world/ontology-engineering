@@ -49,7 +49,7 @@ This diagram shows how our ontology models the relationship between outdoor and 
 | [OE 6][oe-6-ont]   |                    |
 
 [oe-current]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
-[oe-current-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
+[oe-current-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager-individuals.rdf
 
 [oe-12-ont]: https://drive.google.com/file/d/163wP6_7lnsurJFzRiVUyjKO954ZL0PIa/view?usp=sharing
 [oe-12-ind]: https://drive.google.com/file/d/1OOd6jBaszlkFgTx0_n9utCOoqBs2COxM/view?usp=sharing
