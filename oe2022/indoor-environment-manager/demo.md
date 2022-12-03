@@ -21,13 +21,16 @@ PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-m
 ```
 
 ## Competency Questions
+#### Note
+With the latest additions to our main ontology, some of these queries now require nontrivial reasoning. This means that they must be executed in “Snap SPARQL Query” instead of Protégé’s built-in SPARQL query feature. Additionally, we’re still investigating a problem with running Pellet on our ontology, so we recommend that you activate HermiT before executing a query.
+
 ### Competency Question 1
 
 #### Question
 What IEQ parameters, such as temperature, humidity, airflow, etc., make the multiple occupants feel comfortable in an office room? There are three occupants who prefer temperatures in the range of 73°F to 77°F, 74°F to 78°F, and 75° to 78°F, respectively. All other factors are already ideal. The outdoor temperature is 18°F. The current HVAC thermostat setting is 75°F, which is the current indoor temperature. An electric space heater is available but currently switched off.
 
 #### Description
-With the latest additions to our main ontology, some of these queries now require nontrivial reasoning. This means that they must be executed in “Snap SPARQL Query” instead of Protégé’s built-in SPARQL query feature. Additionally, we’re still investigating a problem with running Pellet on our ontology, so we recommend that you activate HermiT before executing a query.
+This query shouldn’t return any results because in the relevant competency question, the current environment is already ideal. Therefore, no actions need to be suggested or taken.
 
 #### Query
 ```sparql
@@ -44,7 +47,9 @@ SELECT DISTINCT ?roomComponent ?newState WHERE {
 ```
 
 #### Example Results
-This query shouldn’t return any results because in the relevant competency question, the current environment is already ideal. Therefore, no actions need to be suggested or taken.
+
+| ?roomComponent | ?newState |
+|----------------|-----------|
 
 
 ### Competency Question 2
@@ -53,18 +58,18 @@ This query shouldn’t return any results because in the relevant competency que
 What IEQ parameters, such as temperature, humidity, airflow, etc., make the multiple occupants feel comfortable in a living room during summer? The occupants’ profile is a 26-year-old son typing something on his laptop (metabolic rate: 1.1, Long-sleeve coveralls, t-shirt: 0.72 clo), a 59-year-old mother dancing (metabolic rate: 3.4, Long-sleeve coveralls, t-shirt: 0.72 clo), and a 32-year-old daughter cleaning the house (metabolic rate: 2.7, Long-sleeve coveralls, t-shirt: 0.72 clo). The outdoor weather is 89°F, relative humidity is 70%, air-speed is 1.2m/s, and outdoor air quality index is 34, ‘Good’. Indoor temperature is 85°F, relative humidity is 67%, and air-speed is 0.8m/s. Air-conditioner, a fan, and a dehumidifier are available. 
 
 #### Description
-This query looks for two different actions: one to change the air temperature and one to change the relative humidity. Each action must be available for a particular room component that’s, in turn, part of the room individual that’s associated with the relevant competency question. The actions are selected by ensuring that they produce respective resultant environments with the same environment attribute delta signs as the target environment.
+This query looks for two different actions: one to change the air speed and one to change the relative humidity. Each action must be available for a particular room component that’s, in turn, part of the room individual that’s associated with the relevant competency question. The actions are selected by ensuring that they produce respective resultant environments with the same environment attribute delta signs as the target environment.
 
 #### Query
 ```sparql
 
-SELECT DISTINCT ?airTemperatureRoomComponent ?airTemperatureNewState ?relativeHumidityRoomComponent ?relativeHumidityNewState WHERE {
-	?airTemperatureRoomComponent iem:isComponentOf ind:Question4Room .
-	?airTemperatureRoomComponent iem:hasAvailableAction ?airTemperatureAction .
-	?airTemperatureAction iem:causesNewState ?airTemperatureNewState .
-	?airTemperatureAction iem:produces ?airTemperatureResultantEnvironment .
-	?airTemperatureResultantEnvironment iem:hasAirTemperatureSign ?airTemperatureSign .
-	ind:Question4EnvironmentTarget iem:hasAirTemperatureSign ?airTemperatureSign .
+SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState ?relativeHumidityRoomComponent ?relativeHumidityNewState WHERE {
+	?airSpeedRoomComponent iem:isComponentOf ind:Question4Room .
+	?airSpeedRoomComponent iem:hasAvailableAction ?airSpeedAction .
+	?airSpeedAction iem:causesNewState ?airSpeedNewState .
+	?airSpeedAction iem:produces ?airSpeedResultantEnvironment .
+	?airSpeedResultantEnvironment iem:hasAirSpeedSign ?airSpeedSign .
+	ind:Question4EnvironmentTarget iem:hasAirSpeedSign ?airSpeedSign .
 	
 	?relativeHumidityRoomComponent iem:isComponentOf ind:Question4Room .
 	?relativeHumidityRoomComponent iem:hasAvailableAction ?relativeHumidityAction .
@@ -78,9 +83,9 @@ SELECT DISTINCT ?airTemperatureRoomComponent ?airTemperatureNewState ?relativeHu
 
 #### Example Results
 
-| Ontology     | Individuals | Individuals           | Individuals |
-|--------------|-------------|-----------------------|-------------|
-| Question4Fan | On          | Question4Dehumidifier | On          |
+| ?airSpeedRoomComponent | ?airSpeedNewState | ?relativeHumidityRoomComponent | ?relativeHumidityNewState |
+|------------------------|-------------------|--------------------------------|---------------------------|
+| ind:Question4Fan       | iem:On            | ind:Question4Dehumidifier      | iem:On                    |
 
 
 ### Competency Question 3
@@ -107,7 +112,10 @@ SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState WHERE {
 ```
 
 #### Example Results
-Open windows
+
+| ?airSpeedRoomComponent | ?airSpeedNewState |
+|------------------------|-------------------|
+| ind:Question5Window    | iem:Open          |
 
 
 ### Competency Question 4
@@ -138,7 +146,10 @@ SELECT ?occupant WHERE {
 ```
 
 #### Example Results
-Since there are no currently comfortable occupants in competency question 6, this query intentionally returns no results.
+
+| ?occupant          |
+|--------------------|
+
 
 
 ### Competency Question 5
@@ -175,7 +186,7 @@ SELECT ?occupant WHERE {
 
 #### Example Results
 
-| occupant           |
+| ?occupant          |
 |--------------------|
 | Question7Occupant2 |
 
