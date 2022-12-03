@@ -77,7 +77,10 @@ SELECT DISTINCT ?airTemperatureRoomComponent ?airTemperatureNewState ?relativeHu
 ```
 
 #### Example Results
-Turned on the fan and dehumidifier
+
+| Ontology     | Individuals | Individuals           | Individuals |
+|--------------|-------------|-----------------------|-------------|
+| Question4Fan | On          | Question4Dehumidifier | On          |
 
 
 ### Competency Question 3
@@ -171,7 +174,10 @@ SELECT ?occupant WHERE {
 ```
 
 #### Example Results
-Occupant 2 is comfortable
+
+| occupant           |
+|--------------------|
+| Question7Occupant2 |
 
 
 ## Previous Versions
