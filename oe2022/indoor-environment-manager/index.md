@@ -9,10 +9,21 @@ This project aims to develop an ontology that recommends a viable solution to im
 
 ![System architecture diagram](images/OE_13_IEQ_Management_System_Abstract_Diagram.jpg)
 
-## Project Overview Diagram
+## Project Overview Diagrams
+
+### System Diagram
 
 ![System architecture diagram](images/SystemDiagram.jpg)
+
+This diagram shows how the main actors in our system interact, particularly the occupant carrying out possible interactions with the system through the interface. The interface is able to display or update information from a room's sensor network, the recommender system itself, and the system's database, while the underlying ontology utilizes the database and supports the recommender system.
+
+### Activity Diagram
+
 ![Activity diagram](images/ActivityDiagram.png)
+
+The above activity diagram elaborates on the interaction of system components in a normal activity flow. The user, an occupant in the room that the system is currently acting on, initiates the flow by launching the application, which displays the current status of the environment via available sensors. Additionally, the user profiles of the current occupants are requested from the database, and appropriate calculations to determine a user's optimal environment are carried out if needed. Before running the recommender, the user may augment the calculated ideal environment with their current environmental preferences.
+
+Initialization of the recommender system requires the support of the ontology, which creates a knowledge graph based on the current status of the database. Using inference and queries, the ontology relays a possible solution, based on an action that can be imposed on some room component, to the recommender system, which displays said solution to the user. From here, the user may take this advice and choose to run the recommender again at any point, repeating the latter steps of the system's normal flow.
 
 ## Point of Contact
 
