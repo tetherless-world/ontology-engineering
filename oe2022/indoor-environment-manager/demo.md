@@ -50,7 +50,7 @@ SELECT DISTINCT ?roomComponent ?newState WHERE {
 
 | ?roomComponent | ?newState |
 |----------------|-----------|
-
+|                |           |
 
 ### Competency Question 2
 
@@ -147,9 +147,9 @@ SELECT ?occupant WHERE {
 
 #### Example Results
 
-| ?occupant          |
-|--------------------|
-
+| ?occupant |
+|-----------|
+|           |
 
 
 ### Competency Question 5
