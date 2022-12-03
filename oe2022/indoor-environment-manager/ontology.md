@@ -51,15 +51,15 @@ This diagram shows how our ontology models the relationship between outdoor and 
 [oe-current]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
 [oe-current-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
 
-[oe-12-ont]: https://drive.google.com/file/d/11uVhW-qgY005TOwi-H152UvaQTYIiOUY/view?usp=sharing
-[oe-12-ind]: https://drive.google.com/file/d/1N55UUCLIGEq-8gVhx3f_b5eE49TrrC01/view?usp=sharing
-[oe-11-ont]: https://drive.google.com/file/d/1gOtpz000tBmWOUtOfVh8W2RF1SHovrD8/view?usp=sharing
-[oe-11-ind]: https://drive.google.com/file/d/1ZcgGlIWQOYBKQWuUiqO4qNrhIUYw5X9j/view?usp=sharing
-[oe-10-ont]: https://drive.google.com/file/d/1M_FfvxS6xvrCq5pnMeRqFJcIN969zbwc/view?usp=sharing
-[oe-10-ind]: https://drive.google.com/file/d/1r4iUpwzEIUncyLHu_VcJzimzkoXJqX3M/view?usp=sharing
-[oe-9-ont]: https://drive.google.com/file/d/1QiKPg36jOS_NoAcNAliklzrmH8wYVLt1/view?usp=sharing
-[oe-9-ind]: https://drive.google.com/file/d/1ZpGk-20tPBv9HFSCIzYNEfKFIdDXIsbm/view?usp=sharing
-[oe-8-ont]: https://drive.google.com/file/d/1CQ9toPMEqJIb5dmBIoXTL2tqsq8NUYY_/view?usp=sharing
-[oe-8-ind]: https://drive.google.com/file/d/1gspmaP-d7qbCS4ZU1jS9XG0_4Nj6MljA/view?usp=sharing
-[oe-7-ont]: https://drive.google.com/file/d/1kZn1TZ6qzmR0K9AIHrB7CrPFo4l4MAuw/view?usp=sharing
-[oe-6-ont]: https://drive.google.com/file/d/1qHudx_rdA53kvdJMw_BnMlFNXQtTLNBy/view?usp=sharing
+[oe-12-ont]: https://drive.google.com/file/d/163wP6_7lnsurJFzRiVUyjKO954ZL0PIa/view?usp=sharing
+[oe-12-ind]: https://drive.google.com/file/d/1OOd6jBaszlkFgTx0_n9utCOoqBs2COxM/view?usp=sharing
+[oe-11-ont]: https://drive.google.com/file/d/1XtraM1W_y4D_L-pubxanNSri4vryW80t/view?usp=sharing
+[oe-11-ind]: https://drive.google.com/file/d/1BlrUgyI8UzMUdmbOg-BKcu15iROlOkXJ/view?usp=sharing
+[oe-10-ont]: https://drive.google.com/file/d/1BtQrXq5zChT-ZGwCXyW8THV615Ppe5o8/view?usp=sharing
+[oe-10-ind]: https://drive.google.com/file/d/17Ie0SSndCoWPiWMl3wj7VhdtMU0AvML6/view?usp=sharing
+[oe-9-ont]: https://drive.google.com/file/d/13iBBe-5aJmbTNVseWYV-ZhUIzVuZ3SMb/view?usp=sharing
+[oe-9-ind]: https://drive.google.com/file/d/1XO-PXqexPTZ2O4cIBCV2Ccc0bhMNhBoE/view?usp=sharing
+[oe-8-ont]: https://drive.google.com/file/d/1X9NW2gPrfn2bKI22yidyKDglUxtjOJCO/view?usp=sharing
+[oe-8-ind]: https://drive.google.com/file/d/1qLbnwGmGNuiXDlMiTI534nDgBdnLOVHK/view?usp=sharing
+[oe-7-ont]: https://drive.google.com/file/d/1y_wbfqx8kfL1v-gwhOmNouOI81pz6AY8/view?usp=sharing
+[oe-6-ont]: https://drive.google.com/file/d/1xO0Oi_e_AuzzqE3LZpJdHwQkIVfQtHPt/view?usp=sharing
