@@ -83,9 +83,13 @@ SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState ?relativeHumidityRoomCo
 
 #### Example Results
 
-| ?airSpeedRoomComponent | ?airSpeedNewState | ?relativeHumidityRoomComponent | ?relativeHumidityNewState |
-|------------------------|-------------------|--------------------------------|---------------------------|
-| ind:Question4Fan       | iem:On            | ind:Question4Dehumidifier      | iem:On                    |
+| ?airSpeedRoomComponent | ?airSpeedNewState |
+|------------------------|-------------------|
+| ind:Question4Fan       | iem:On            |
+
+| ?relativeHumidityRoomComponent | ?relativeHumidityNewState |
+|--------------------------------|---------------------------|
+| ind:Question4Dehumidifier      | iem:On                    |
 
 
 ### Competency Question 3

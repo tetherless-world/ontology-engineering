@@ -7,7 +7,7 @@ title: term list
 
 ### Curated Terminology List
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSq9UlUuAayNchMkcHams1xjRCk_QhYK8TsXfrJc0zeASltNHzhlFSGAMdj83CFg/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_5FazqWHaHCAQQ80Iri9OFj1GO5S6Ju10Toam_8T4mtet3Lp6WJ0fVOCpY5vKAQ/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
 
 <br />
 <br />
