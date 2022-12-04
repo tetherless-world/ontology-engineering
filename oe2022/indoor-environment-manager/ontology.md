@@ -38,6 +38,7 @@ This occupant shows the attributes associated with an Occupant in our ontology. 
 
 ### Previous Versions
 
+- [Version 6 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vQylY9mn8MdmqGYpoH_aO8xqncU3q8qgM0bVfN_cicqdNd_aeedkyW_PFIrupZSy_AX94yfTG0xE-EJ/pub) CURRENT
 - [Version 5 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vSw7lUhroHhFwmxZBdyKkvm6LnfRIOyQBr9keHI-LKNRx5j0NTQQxeY5LHw033ltmrAoSu5JqzxsjZ2/pub)
 - [Version 4 (OE 10)](https://drive.google.com/file/d/1KBWr0WCVRvt_qdKMcTlZXjD_QgQer4YE/view?usp=sharing)
 - [Version 3 (OE 8)](https://drive.google.com/file/d/1TKyZMECKkrVbj1IumNUA7Mr-ySvIPOyF/view?usp=sharing)
@@ -51,19 +52,22 @@ This occupant shows the attributes associated with an Occupant in our ontology. 
 
 ### Previous Versions
 
-| Ontology           | Individuals        |
-|--------------------|--------------------|
-| [OE 12][oe-12-ont] | [OE 12][oe-12-ind] |
-| [OE 11][oe-11-ont] | [OE 11][oe-11-ind] |
-| [OE 10][oe-10-ont] | [OE 10][oe-10-ind] |
-| [OE 9][oe-9-ont]   | [OE 9][oe-9-ind]   |
-| [OE 8][oe-8-ont]   | [OE 8][oe-8-ind]   |
-| [OE 7][oe-7-ont]   |                    |
-| [OE 6][oe-6-ont]   |                    |
+| Ontology                   | Individuals        |
+|----------------------------|--------------------|
+| [OE 13][oe-13-ont] CURRENT | [OE 13][oe-13-ind] CURRENT |
+| [OE 12][oe-12-ont]         | [OE 12][oe-12-ind] |
+| [OE 11][oe-11-ont]         | [OE 11][oe-11-ind] |
+| [OE 10][oe-10-ont]         | [OE 10][oe-10-ind] |
+| [OE 9][oe-9-ont]           | [OE 9][oe-9-ind]   |
+| [OE 8][oe-8-ont]           | [OE 8][oe-8-ind]   |
+| [OE 7][oe-7-ont]           |                    |
+| [OE 6][oe-6-ont]           |                    |
 
 [oe-current]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf
 [oe-current-ind]: https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager-individuals.rdf
 
+[oe-13-ont]: https://drive.google.com/file/d/1h9NlJgBPecFV3bnhgzx_Z4ZnwIR8DevD/view?usp=sharing
+[oe-13-ind]: https://drive.google.com/file/d/1P3N7OYgSOJvUAa04GMwaPEmxjXh11Q8j/view?usp=sharing
 [oe-12-ont]: https://drive.google.com/file/d/163wP6_7lnsurJFzRiVUyjKO954ZL0PIa/view?usp=sharing
 [oe-12-ind]: https://drive.google.com/file/d/1OOd6jBaszlkFgTx0_n9utCOoqBs2COxM/view?usp=sharing
 [oe-11-ont]: https://drive.google.com/file/d/1XtraM1W_y4D_L-pubxanNSri4vryW80t/view?usp=sharing
