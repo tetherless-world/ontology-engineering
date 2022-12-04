@@ -7,7 +7,7 @@ title: gtting_involved
 
 Our maintainance policy is primarily focused on ensuring that our data remains available for use as long as possible. 
 
-- After the end of the Fall 2022 semester, the final versions of the ontology and all the artifacts will remain available on our website.
+- After the end of the Fall 2022 semester, the final versions of the ontology and all the artifacts will remain available on our website and [Github repo](https://github.com/tetherless-world/ontology-engineering/tree/master/oe2022/indoor-environment-manager)
 - We will never change the name of our ontology or its URL. This will ensure that references to our ontology will always be valid and that we will not break applications that may come to rely on our ontology in the future.
 - Periodic updates may be made to the content, and all changes will be documented and updated on the website to show the accurate representation of our project.
 - Upon any major changes to the ontology, a new version of it should be created, and the previous version should be archived properly. These changes shall be reflected in the use case, conceptual model, term list, and SPARQL queries.
