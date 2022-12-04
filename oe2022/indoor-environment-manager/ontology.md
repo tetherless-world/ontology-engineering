@@ -38,7 +38,7 @@ This occupant shows the attributes associated with an Occupant in our ontology. 
 
 ### Previous Versions
 
-- [Version 6 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vQylY9mn8MdmqGYpoH_aO8xqncU3q8qgM0bVfN_cicqdNd_aeedkyW_PFIrupZSy_AX94yfTG0xE-EJ/pub) CURRENT
+- [Version 6 (OE 13)](https://docs.google.com/document/d/e/2PACX-1vQylY9mn8MdmqGYpoH_aO8xqncU3q8qgM0bVfN_cicqdNd_aeedkyW_PFIrupZSy_AX94yfTG0xE-EJ/pub) CURRENT
 - [Version 5 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vSw7lUhroHhFwmxZBdyKkvm6LnfRIOyQBr9keHI-LKNRx5j0NTQQxeY5LHw033ltmrAoSu5JqzxsjZ2/pub)
 - [Version 4 (OE 10)](https://drive.google.com/file/d/1KBWr0WCVRvt_qdKMcTlZXjD_QgQer4YE/view?usp=sharing)
 - [Version 3 (OE 8)](https://drive.google.com/file/d/1TKyZMECKkrVbj1IumNUA7Mr-ySvIPOyF/view?usp=sharing)
