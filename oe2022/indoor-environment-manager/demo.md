@@ -3,11 +3,17 @@ layout: default
 title: Static Demo
 ---
 
-## Static Demo
+## Demonstration
+### Static Demo
 
+#### Note
 To run the demo, load the Individuals ontology (which can be found [here](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf))
 into your favorite triplestore that is able to run SPARQL queries. 
-We have tested the following queries using [Blazegraph](https://blazegraph.com/).
+With the latest additions to our main ontology, some of these queries now require nontrivial reasoning. This means that they must be executed in “Snap SPARQL Query” instead of Protégé’s built-in SPARQL query feature. Additionally, we’re still investigating a problem with running Pellet on our ontology, so we recommend that you activate HermiT before executing a query.
+
+### Static Demo
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQH2Dap7LI4H7aTQLuTJtaw_rCzSf4CGWNejClGBeN_tFJNbGVpfijwOSstbkRiCMU9bSoOOaxIXoaQ/embed?start=false&loop=false&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 
 ### Query Prefix
 ```sparql
@@ -20,9 +26,7 @@ PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-m
 
 ```
 
-## Competency Questions
-#### Note
-With the latest additions to our main ontology, some of these queries now require nontrivial reasoning. This means that they must be executed in “Snap SPARQL Query” instead of Protégé’s built-in SPARQL query feature. Additionally, we’re still investigating a problem with running Pellet on our ontology, so we recommend that you activate HermiT before executing a query.
+## Query
 
 ### Competency Question 1
 
