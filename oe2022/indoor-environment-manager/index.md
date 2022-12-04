@@ -48,11 +48,10 @@ Jacoby-Cooper, Gabriel (rensselaer@gabrieljc.me)
 6. [Getting Involved](gettinginvolved.md)
 
 ## Link to Our Class
-[Ontology Engineering](https://github.com/tetherless-world/ontology-engineering/tree/master/oe2022/indoor-environment-manager)
+[Ontology Engineering 2022 at RPI](https://github.com/tetherless-world/ontology-engineering/tree/master/oe2022/indoor-environment-manager)
 
 ## Call to Action
-Buildings are some of the largest energy consumers on this planet, and the frequency of using HVAC systems has upsurged due to global warming. As such, we need to increase our attention towards exploring efficient usage of the HVAC system, since a tremendous amount of energy consumption accelerates carbon footprint. Therefore, join our community and contribute to this project. Even some feedback is helpful. Let's transform a way of making occupants feel comfortable in a building for our planet!
+Buildings are some of the largest energy consumers on this planet, and the frequency of using HVAC systems has upsurged due to global warming. As such, we need to increase our attention towards exploring efficient usage of the HVAC system, since a tremendous amount of energy consumption accelerates carbon footprint. Therefore, please join our community and contribute to this project. Even some feedback will be helpful. Let's transform a way of making occupants feel comfortable in a building for our planet!
 
 ## Acknowledgements
-
-<p>We greatly appreciate our professor Deborah McGuinness' and Elisa Kendall's help and insight during the development of our Indoor Environmental Management System Ontology. Thank you to Jade Franklin and Sola Shirai for providing feedbacks on our artifacts and presentations. Furthermore, we are thankful to Professor Dennis Shelden for sharing his insight with us as a domain expert.</p>
+We greatly appreciate our professor Deborah McGuinness' and Elisa Kendall's help and insight during the development of our Indoor Environmental Management System Ontology. Thank you to Jade Franklin and Sola Shirai for providing feedbacks on our artifacts and presentations. Furthermore, we are thankful to Professor Dennis Shelden for sharing his insight with us as a domain expert.
