@@ -15,6 +15,8 @@ With the latest additions to our main ontology, some of these queries now requir
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQH2Dap7LI4H7aTQLuTJtaw_rCzSf4CGWNejClGBeN_tFJNbGVpfijwOSstbkRiCMU9bSoOOaxIXoaQ/embed?start=false&loop=false&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
+## Query
+
 ### Query Prefix
 ```sparql
 
@@ -25,8 +27,6 @@ PREFIX iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-m
 PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager-individuals/>
 
 ```
-
-## Query
 
 ### Competency Question 1
 
