@@ -7,8 +7,6 @@ title: About
 
 This project aims to develop an ontology that recommends a viable solution to improve indoor environmental quality (IEQ) for occupants and reduce energy use in a room. Buildings consume one-third of the world’s energy and are some of the major energy consumers on the planet. In commercial and residential buildings, 46.2% of the energy is consumed for heating, cooling, ventilation, and lighting. Occupants use this energy for enhancing IEQ which is affected by many factors including temperature, humidity, airflow, air quality, etc.; however, it is difficult to find a suitable solution for the improvement because each building is under different environmental conditions, and every occupant has different clothing level and metabolic rate.  In this project, we propose an ontology that suggests a viable solution to enhance IEQ and decrease energy use by combining several sets of knowledge: indoor environmental conditions, outdoor environmental conditions, and occupant profile. In future works, this ontology can be a basis to develop an industrial-scale IEQ management system by integrating 3D geometric models and thermodynamic simulation modules.
 
-[Link to the class](https://github.com/tetherless-world/ontology-engineering/tree/master/oe2022/indoor-environment-manager)
-
 ![System architecture diagram](images/OE_13_IEQ_Management_System_Abstract_Diagram.jpg)
 
 ## Project Overview Diagrams
@@ -48,6 +46,12 @@ Jacoby-Cooper, Gabriel (rensselaer@gabrieljc.me)
 5. [Presentations](presentations.md)
 
 6. [Getting Involved](gettinginvolved.md)
+
+## Link to Our Class
+[Ontology Engineering](https://github.com/tetherless-world/ontology-engineering/tree/master/oe2022/indoor-environment-manager)
+
+## Call to Action
+Buildings are some of the largest energy consumers on this planet, and the frequency of using HVAC systems has upsurged due to global warming. As such, we need to increase our attention towards exploring efficient usage of the HVAC system, since a tremendous amount of energy consumption accelerates carbon footprint. Therefore, join our community and contribute to this project. Even some feedback is helpful. Let's transform a way of making occupants feel comfortable in a building for our planet!
 
 ## Acknowledgements
 
