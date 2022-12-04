@@ -14,6 +14,7 @@ title: term list
 
 ## Previous Versions
 
+- [Version 8 (OE 13)](https://docs.google.com/spreadsheets/d/e/2PACX-1vR_5FazqWHaHCAQQ80Iri9OFj1GO5S6Ju10Toam_8T4mtet3Lp6WJ0fVOCpY5vKAQ/pubhtml) CURRENT
 - [Version 7 (OE 12)](https://docs.google.com/spreadsheets/d/e/2PACX-1vQSq9UlUuAayNchMkcHams1xjRCk_QhYK8TsXfrJc0zeASltNHzhlFSGAMdj83CFg/pubhtml)
 - [Version 6 (OE 10)](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-7pb_e7GLU1fmKCjKscl9ZQ0a9PdgHti4wUUEDVGNMfwWDOGUImUR4KIKlJ-FFw/pubhtml)
 - [Version 5 (OE 8)](https://docs.google.com/spreadsheets/d/e/2PACX-1vT5v-2pI7QlArfLg8KzZR3nHr2DFwaRc_ZOHFJW8HANoOBipwvxkSnMxuV1HupybA/pubhtml)
@@ -28,7 +29,7 @@ title: term list
 
 ## Previous Versions
 
-- [Version 6 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vRNyPzR8eG680Dezem-Woz9ZbGZdq_GKZl9opWS_W85aY3W9ew1aQt_dFUR6HmsEWLUXe8bCo4dbzNi/pub)
+- [Version 6 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vRNyPzR8eG680Dezem-Woz9ZbGZdq_GKZl9opWS_W85aY3W9ew1aQt_dFUR6HmsEWLUXe8bCo4dbzNi/pub) CURRENT
 - [Version 5 (OE 10)](https://docs.google.com/document/d/e/2PACX-1vQQEdAt7m88jMisFz4bgh18cGVt_Un2iwWqZCV8nyyXiBe_aHRJ7ShD23d_foQuWX19rf32hxTKHHqu/pub)
 - [Version 4 (OE 9)](https://docs.google.com/document/d/e/2PACX-1vTdt_HGtmKHTtKqTWT-pwwdqbivHPVSJesu4CZIydT5z1W4E9u9IpnmrNf797XZh0PDU3weIJ5k6ZuP/pub)
 - [Version 3 (OE 8)](https://docs.google.com/document/d/e/2PACX-1vTGH4eLAyhkfY10Hfl9GBAg2RVm4Dp7pe8aSa-DS2TMqqbSo4xSMmPpj8N7U33zMDFdwhGKGUdPlByu/pub)
