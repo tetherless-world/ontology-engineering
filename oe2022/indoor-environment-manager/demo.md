@@ -12,7 +12,7 @@ into your favorite triplestore that is able to run SPARQL queries.
 With the latest additions to our main ontology, some of these queries now require nontrivial reasoning. This means that they must be executed in “Snap SPARQL Query” instead of Protégé’s built-in SPARQL query feature. Additionally, we’re still investigating a problem with running Pellet on our ontology, so we recommend that you activate HermiT before executing a query.
 
 ### Static Demo
-The static demo file can be found [here](https://docs.google.com/presentation/d/e/2PACX-1vQH2Dap7LI4H7aTQLuTJtaw_rCzSf4CGWNejClGBeN_tFJNbGVpfijwOSstbkRiCMU9bSoOOaxIXoaQ/pub?start=false&loop=false&delayms=3000)
+Full screen mode is available [here](https://docs.google.com/presentation/d/e/2PACX-1vQH2Dap7LI4H7aTQLuTJtaw_rCzSf4CGWNejClGBeN_tFJNbGVpfijwOSstbkRiCMU9bSoOOaxIXoaQ/pub?start=false&loop=false&delayms=3000)
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQH2Dap7LI4H7aTQLuTJtaw_rCzSf4CGWNejClGBeN_tFJNbGVpfijwOSstbkRiCMU9bSoOOaxIXoaQ/embed?start=false&loop=false&delayms=10000" frameborder="0" width="640" height="379" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
