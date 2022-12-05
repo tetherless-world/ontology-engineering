@@ -254,7 +254,9 @@ oe2022-dogs-ind:Greyhound a oe2022-dogs:DogFriendlyBreed ;
 | --- |
 | greyhound |
 
-#### Explanation: For additional details, each part of the query can be run individually. Due to the nature of SNAP SPARQL, ask queries must be written as select queries that return nothing if the result would be false. The first and third queries return the label since greyhound is a good for children breed and a dog friendly breed. The second does not return anything since greyhound is not a cat friendly breed. 
+#### Explanation: 
+
+For additional details, each part of the query can be run individually. Due to the nature of SNAP SPARQL, ask queries must be written as select queries that return nothing if the result would be false. The first and third queries return the label since greyhound is a good for children breed and a dog friendly breed. The second does not return anything since greyhound is not a cat friendly breed. 
 
 
 ### Query 5: What is a cute dog breed that can do well in an apartment that doesn’t get cleaned very often?
