@@ -5,6 +5,14 @@
 The most recent full version of our conceptual model is available as a [drawio file](files/ConceptualModel_v7.drawio).
 The ontology is split into two main parts: describing the breeds, and describing the potential adopters. Our scope is limited to the United States, so we only consider breeds that are recognized by the American Kennel Club and are only model characteristics of dog adopters in the United States. Below is an overview of our conceptual model.
 
+In our conceptual models the colors denote different type of entities:
+- white: class that we created
+- grey: class that we imported from another ontology
+- light blue: object property that we created, connected to the arrow that show the classes in the relation and any cardinality restrictions
+- dark blue: object property that we imported from another ontology
+- red: data value, shown is its datatype
+The names without boxes along arrows are data properties.
+
 #### Breeds
 
 <img style="float: center;" src="images/ConceptualModel_BreedTypes.png"/>
@@ -33,7 +41,7 @@ Some adopters may want a dog for a certain purpose, such as herding, and most br
 
 ## Ontologies
 
-- [Version 8 (OE 13)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/3db93d1b10911829c64fb1d1fda0dd4b033ac006/oe2022/dog-breed-ontology/find-a-pet.rdf) [Large Individuals](https://github.com/tetherless-world/ontology-engineering/raw/411a147b864f13eecf2c84701550626bf3190622/oe2022/dog-breed-ontology/find-a-pet-individuals.rdf) [Small Individuals](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/411a147b864f13eecf2c84701550626bf3190622/oe2022/dog-breed-ontology/find-a-pet-individuals-small.rdf) CURRENT
+- [Version 8 (OE 13)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/3db93d1b10911829c64fb1d1fda0dd4b033ac006/oe2022/dog-breed-ontology/find-a-pet.rdf) [Large Individuals](https://github.com/tetherless-world/ontology-engineering/raw/c78b8c60b6f6687c8d719997c7fe1d45fb20c664/oe2022/dog-breed-ontology/find-a-pet-individuals.rdf) [Small Individuals](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/411a147b864f13eecf2c84701550626bf3190622/oe2022/dog-breed-ontology/find-a-pet-individuals-small.rdf) CURRENT
 - [Version 7 (OE 12)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/c4c5af171820eedcb7108cc069a69637fe25a02a/oe2022/dog-breed-ontology/find-a-pet.rdf) [Large Individuals](https://github.com/tetherless-world/ontology-engineering/raw/c4c5af171820eedcb7108cc069a69637fe25a02a/oe2022/dog-breed-ontology/find-a-pet-individuals.rdf) [Small Individuals](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/c4c5af171820eedcb7108cc069a69637fe25a02a/oe2022/dog-breed-ontology/find-a-pet-individuals-small.rdf) 
 - [Version 6 (OE 11)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/68ee5cc09ddc8a4af8b5d85b31565d2733f38613/oe2022/dog-breed-ontology/find-a-pet.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/raw/68ee5cc09ddc8a4af8b5d85b31565d2733f38613/oe2022/dog-breed-ontology/find-a-pet-individuals.rdf) 
 - [Version 5 (OE 10)](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/c1f3e28aecb3212c01b1f88fa362049ae3272d31/oe2022/dog-breed-ontology/find-a-pet.rdf) [Individuals](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/c1f3e28aecb3212c01b1f88fa362049ae3272d31/oe2022/dog-breed-ontology/find-a-pet-individuals.rdf)

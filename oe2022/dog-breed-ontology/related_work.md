@@ -25,7 +25,29 @@ Many other systems exist for recommending dog breeds. Our project was inspired b
 
 - [The American Kennel Club Breed Selector Tool](https://www.akc.org/breed-selector-tool/) This tool asks 6 questions about desired dog characteristics and 7 about individual/household characteristics, then returns the top 5 breeds that match.
 - [Bow Wow Meow Breed Selector](https://www.selectadogbreed.com/) This tool asks 18 total questions, with the option to select multiple or no preferences on many questions. It returns the top 6 results, but does not give details on what characteristics do or do not match the user's input.
-- [IAMS Dog Breed Selector Quiz](https://www.iams.com/dog-breed-selector) This tool asks 13 questions and asks the user to rank which characteristics are most important to them. It shows only the top match with compatability percentages on various characteristics.
+- [IAMS Dog Breed Selector Quiz](https://www.iams.com/dog-breed-selector) This tool asks 13 questions and asks the user to rank which characteristics are most important to them. It shows only the top match with compatability percentages on various characteristics. It was the only one of the recommendation systems we looked at that did not ask about dog allergies in the household.
+
+There were some questions that other recommenders asked about that our system does not account for. Our system has no way to model an experienced vs inexperienced dog owner, and no way to model pets that are not cats and dogs. Other recommenders asked about level of experience in dog ownership and usually allowed for a catch-all category of pets such as 'other small mammal' or 'other small animal.' It was unclear what data was being used to categorize breeds as 'good for inexperienced owners' or 'good for small animal' so we did not include those categories.
+
+We ran an experiment to compare the results of our recommender with the other recommenders. We used the same situation for each:
+*Adopter already has a dog and multiple small children, one of whom is mildly allergic to dogs. They live in an apartment and don't have much time to clean, but is willing to give the dog basic obedience training.*
+We encoded this as the following characteristics that we wanted in a dog:
+- hypoallergenic
+- apartment friendly
+- low barking
+- stranger friendly
+- small or medium size (or extra small size when offered)
+- low shedding
+- low drooling
+- dog friendly
+- child friendly
+- playful/affectionate
+- trainable
+When the recommenders asked about preferences that are not included in the above description, no preference or the most neutral option was selected. The top results from each recommender were:
+- AKC Breed Selector: **Mastif**, extra large size, not hypoallergenic, very high shedding
+- BWM Breed Selector: **German Spitz**, not hypoallergenic, high shedding, high barking, not stranger friendly
+- IAMS Dog Breed Quiz: **Soft-Coated Wheaten Terrier**, slightly higher barking tendencies than desired, though the quiz did not ask about hypoallergenic status so we suspect it was coincidence that this dog meets that requirement
+- Find a Friend (Our System): **Coton de Tulear**, met all of the preferences (we wrote a custom SNAP SPARQL query since we do not have a proper UI)
 
 ## References
 
