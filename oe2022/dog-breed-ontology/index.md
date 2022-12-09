@@ -58,6 +58,6 @@ Danielle Villa: <villad4@rpi.edu>
 
 ## Acknowledgements
 
-This work is undertaken as a part of Fall 2022 CSCI 4340 Ontologies. We would like to thank our professors Dr. Deborah McGuinness and Ms. Elisa Kendall for their teaching and guidance. We would also like to thank our mentors Jade Franklin and Sola Shirai for their help and feedback, and Sabbir Rashid for his advice on query writing. 
+This work is undertaken as a part of Fall 2022 CSCI 6340 Ontologies. We would like to thank our professors Dr. Deborah McGuinness and Ms. Elisa Kendall for their teaching and guidance. We would also like to thank our mentors Jade Franklin and Sola Shirai for their help and feedback, and Sabbir Rashid for his advice on query writing. 
 
 <img src="images/dog2.jpg"/>
