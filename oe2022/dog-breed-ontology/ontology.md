@@ -11,6 +11,7 @@ In our conceptual models the colors denote different type of entities:
 - light blue: object property that we created, connected to the arrow that show the classes in the relation and any cardinality restrictions
 - dark blue: object property that we imported from another ontology
 - red: data value, shown is its datatype
+
 The names without boxes along arrows are data properties.
 
 #### Breeds

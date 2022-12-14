@@ -40,7 +40,6 @@ We encoded this as the following characteristics that we wanted in a dog:
 - small or medium size (or extra small size when offered)
 - low shedding
 - low drooling
-- dog friendly
 - child friendly
 - playful/affectionate
 - trainable
