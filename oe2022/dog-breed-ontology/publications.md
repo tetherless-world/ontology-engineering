@@ -11,7 +11,7 @@ title: publications
 <iframe src="files/FinalReport.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 [PDF verison (DRAFT)](files/FinalReport.pdf)
-[Word version (DRAFT)](files/FinalReport.docx)
+[LaTex files](files/FinalReport_Latex.zip)
 
 ### Other Publications
 
