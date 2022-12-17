@@ -1,364 +1,204 @@
 ---
+layout: default
+title: Static Demo
 ---
 
-## Queries
+## Demonstration
+### Static Demo
 
-<p class="message-highlight">List your SPARQL queries to your competency questions along with answers retrieved from your ontology/KG such as the below.</p>
+#### Note
+To run the demo, load the Individuals ontology (which can be found [here](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/indoor-environment-manager/oe2022/indoor-environment-manager/indoor-environment-manager.rdf))
+into your favorite triplestore that is able to run SPARQL queries. 
+With the latest additions to our main ontology, some of these queries now require nontrivial reasoning. This means that they must be executed in “Snap SPARQL Query” instead of Protégé’s built-in SPARQL query feature. Additionally, we’re still investigating a problem with running Pellet on our ontology, so we recommend that you activate HermiT before executing a query.
 
-### Study Match: Is there a study that matches this patient on a feature (s)?
+### Static Demo
+Full screen mode is available [here](https://docs.google.com/presentation/d/e/2PACX-1vQH2Dap7LI4H7aTQLuTJtaw_rCzSf4CGWNejClGBeN_tFJNbGVpfijwOSstbkRiCMU9bSoOOaxIXoaQ/pub?start=false&loop=false&delayms=3000)
 
-#### Query 1: SPARQL Query to fetch study titles that match a patient's race and gender
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQH2Dap7LI4H7aTQLuTJtaw_rCzSf4CGWNejClGBeN_tFJNbGVpfijwOSstbkRiCMU9bSoOOaxIXoaQ/embed?start=false&loop=false&delayms=10000" frameborder="0" width="640" height="379" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
+
+## Query
+
+### Query Prefix
 ```sparql
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
 
-SELECT DISTINCT ?studyTitle ?study
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty [a ?studyIntervention] .
-  {
-    ?subPatient rdfs:subClassOf ?studyArm .
-    ?subPatient rdfs:subClassOf ?restriction .
-    ?restriction a owl:Restriction .
-    ?restriction owl:someValuesFrom ncit:C16352 .
-  }
-  {
-    ?subPatient1 rdfs:subClassOf ?studyArm .
-    ?subPatient1 rdfs:subClassOf ?restriction1 .
-    ?restriction1 a owl:Restriction .
-    ?restriction1 owl:someValuesFrom sio:Male .
-  }
-}
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX iem: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2022/indoor-environment-manager-individuals/>
+
 ```
 
-#### Result 1: Study titles retrieved from the study match query to find all studies in which African American Males are represented
+### Competency Question 1
 
-|Study Title|
+#### Question
+How to meet all requirements of the multiple occupants’ comfort ranges in an office room? There are three occupants who prefer temperatures in the range of 73°F to 77°F, 74°F to 78°F, and 75° to 78°F, respectively. All other factors are already ideal. The outdoor temperature is 18°F. The current HVAC thermostat setting is 75°F, which is the current indoor temperature. An electric space heater is available but is currently switched off.
+
+#### Description
+This query shouldn’t return any results because in the relevant competency question, the current environment is already ideal. Therefore, no actions need to be suggested or taken.
+
+#### Query
+```sparql
+
+SELECT DISTINCT ?roomComponent ?newState WHERE {
+	?roomComponent iem:isComponentOf ind:Question2Room .
+	?roomComponent iem:hasAvailableAction ?action .
+	?action iem:causesNewState ?newState .
+	?action iem:produces ?resultantEnvironment .
+	?resultantEnvironment iem:hasAirTemperatureSign ?airTemperatureSign .
+	ind:Question2EnvironmentTarget iem:hasAirTemperatureSign ?airTemperatureSign .
+}
+
+```
+
+#### Example Results
+
+| ?roomComponent | ?newState |
+|----------------|-----------|
+|                |           |
+
+### Competency Question 2
+
+#### Question
+How should IEQ parameters, such as temperature, humidity, airflow, etc., be changed to make the multiple occupants feel comfortable in a living room during summer? The occupants’ profile is a 26-year-old son typing something on his laptop (metabolic rate: 1.1, Long-sleeve coveralls, t-shirt: 0.72 clo, the blue area in Figure 5), a 59-year-old mother dancing (metabolic rate: 3.4, Long-sleeve coveralls, t-shirt: 0.72 clo, the grey area in Figure 5), and a 32-year-old daughter cleaning the house (metabolic rate: 2.7, Long-sleeve coveralls, t-shirt: 0.72 clo, the purple area in Figure 5). The outdoor weather is 89°F, relative humidity is 70%, and outdoor air quality index is 34, ‘Good’. Indoor temperature is 85°F and relative humidity is 67%. A fan and a dehumidifier are available.
+
+#### Description
+This query looks for two different actions: one to change the air speed and one to change the relative humidity. Each action must be available for a particular room component that’s, in turn, part of the room individual that’s associated with the relevant competency question. The actions are selected by ensuring that they produce respective resultant environments with the same environment attribute delta signs as the target environment.
+
+#### Query
+```sparql
+
+SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState ?relativeHumidityRoomComponent ?relativeHumidityNewState WHERE {
+	?airSpeedRoomComponent iem:isComponentOf ind:Question4Room .
+	?airSpeedRoomComponent iem:hasAvailableAction ?airSpeedAction .
+	?airSpeedAction iem:causesNewState ?airSpeedNewState .
+	?airSpeedAction iem:produces ?airSpeedResultantEnvironment .
+	?airSpeedResultantEnvironment iem:hasAirSpeedSign ?airSpeedSign .
+	ind:Question4EnvironmentTarget iem:hasAirSpeedSign ?airSpeedSign .
+	
+	?relativeHumidityRoomComponent iem:isComponentOf ind:Question4Room .
+	?relativeHumidityRoomComponent iem:hasAvailableAction ?relativeHumidityAction .
+	?relativeHumidityAction iem:causesNewState ?relativeHumidityNewState .
+	?relativeHumidityAction iem:produces ?relativeHumidityResultantEnvironment .
+	?relativeHumidityResultantEnvironment iem:hasRelativeHumiditySign ?relativeHumiditySign .
+	ind:Question4EnvironmentTarget iem:hasRelativeHumiditySign ?relativeHumiditySign .
+}
+
+```
+
+#### Example Results
+
+| ?airSpeedRoomComponent | ?airSpeedNewState | ?relativeHumidityRoomComponent | ?relativeHumidityNewState |
+|------------------------|-------------------|--------------------------------|---------------------------|
+| ind:Question4Fan       | iem:On            | ind:Question4Dehumidifier      | iem:On                    |
+
+
+### Competency Question 3
+
+#### Question
+In a small gym, three people are working out. 22-year-old male Jason walking on a treadmill lifting 45kg bars (metabolic rate: 4.0, wearing shorts & short-sleeve shirt: 0.36 clo, the blue area in Figure 6), 44-year-old male Bob seated with heavy limb movement (metabolic rate: 2.2, wearing typical summer indoor clothing: 0.5 clo, the grey area in Figure 6), and 52-year-old female Sarah walking on a treadmill with 3 mph (metabolic rate: 3.8, wearing a short-sleeve shirt: 0.57 clo, the purple area in Figure 6). How should IEQ parameters, such as temperature, humidity, airflow, etc., be changed to make the multiple occupants feel comfortable in a gym? Indoor air-speed is 0.3m/s, outdoor air-speed is 2m/s, and outdoor air quality index is 38, ‘Good’. An air conditioner is available, and windows are closed.
+
+#### Description
+This query looks for a single action to change the air speed. The action must be available for a particular room component that’s, in turn, part of the room individual that’s associated with the relevant competency question. The action is selected by ensuring that it produces a resultant environment with the same air speed environment attribute delta sign as the target environment. The query also requires that the resultant environment have a “good” air quality level, which is inferred by the reasoner from the fact that opening a window must produce a resultant environment with the same air quality level as the relevant outdoor environment.
+
+#### Query
+```sparql
+
+SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState WHERE {
+	?airSpeedRoomComponent iem:isComponentOf ind:Question5Room .
+	?airSpeedRoomComponent iem:hasAvailableAction ?airSpeedAction .
+	?airSpeedAction iem:causesNewState ?airSpeedNewState .
+	?airSpeedAction iem:produces ?airSpeedResultantEnvironment .
+	?airSpeedResultantEnvironment iem:hasAirQualityLevel iem:AirQualityLevelGood .
+	?airSpeedResultantEnvironment iem:hasAirSpeedSign ?airSpeedSign .
+	ind:Question5EnvironmentTarget iem:hasAirSpeedSign ?airSpeedSign .
+}
+
+```
+
+#### Example Results
+
+| ?airSpeedRoomComponent | ?airSpeedNewState |
+|------------------------|-------------------|
+| ind:Question5Window    | iem:Open          |
+
+
+### Competency Question 4
+
+#### Question
+In a room, only one occupant sits on a chair. Is this occupant feel comfortable? The occupant has a preferred temperature range of 72°F to 80°F and a preferred humidity range of 28% to 40%. The room temperature is 75°F and the relative humidity is 55%.
+
+#### Description
+This query corresponds with competency question 6. Given a specific room, it returns the occupants whose corresponding comfort ranges include the environment values and who therefore currently feel comfortable. Since there are no currently comfortable occupants in competency question 6, this query intentionally returns no results.
+
+#### Query
+```sparql
+
+SELECT ?occupant WHERE {
+	?occupant iem:occupies ind:Question6Room .
+	?occupant iem:hasAirTemperatureComfortRangeLowerBound ?airTemperatureLowerBound .
+	?occupant iem:hasRelativeHumidityComfortRangeLowerBound ?relativeHumidityLowerBound .
+	?occupant iem:hasAirTemperatureComfortRangeUpperBound ?airTemperatureUpperBound .
+	?occupant iem:hasRelativeHumidityComfortRangeUpperBound ?relativeHumidityUpperBound .
+	ind:Question6EnvironmentCurrent iem:hasAirTemperatureValue ?airTemperatureValue .
+	ind:Question6EnvironmentCurrent iem:hasRelativeHumidityValue ?relativeHumidityValue .
+	FILTER(?airTemperatureValue <= ?airTemperatureUpperBound) .
+	FILTER(?airTemperatureValue >= ?airTemperatureLowerBound) .
+	FILTER(?relativeHumidityValue <= ?relativeHumidityUpperBound) .
+	FILTER(?relativeHumidityValue >= ?relativeHumidityLowerBound) .
+}
+
+```
+
+#### Example Results
+
+| ?occupant |
 |-----------|
-| 10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes|
-| New insulin glargine 300 U/ml compared with glargine 100 U/ml in insulin-nave people with type 2 diabetes on oral glucose-lowering drugs: a randomized controlled trial (EDITION 3) |
-| Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes
-| Patientdirected titration for achieving glycaemic goals using a once daily basal insulin analogue: an assessment of two different fasting plasma glucose targets the TITRATETM study |
-| Glycaemic control and hypoglycaemia with new insulin glargine 300 U/ml versus insulin glargine 100 U/ml in people with type 2 diabetes using basal insulin and oral antihyperglycaemic drugs: the EDITION 2 randomized 12-month trial including 6-month extension. |
-| Glycaemic control and hypoglycaemia with new insulin glargine 300 U/ml versus insulin glargine 100 U/ml in people with type 2 diabetes using basal insulin and oral antihyperglycaemic drugs: the EDITION 2 randomized 12-month trial including 6-month extension |
-| Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH) diet. DASH-Sodium Collaborative Research Group |
-| Telmisartan, ramipril, or both in patients at high risk for vascular events |
-| Combined angiotensin inhibition for the treatment of diabetic nephropathy |
-| Effect of Finerenone on Albuminuria in Patients With Diabetic Nephropathy: A Randomized Clinical Trial |
-| A randomized trial of therapies for type 2 diabetes and coronary artery disease |
-| Effects of combination lipid therapy in type 2 diabetes mellitus |
-| Randomized controlled trial comparing impact on platelet reactivity of twice-daily with once-daily aspirin in people with Type 2 diabetes |
-| Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults with and without glucose disorders: a report from the ALLHAT study |
-| Effects of intensive blood-pressure control in type 2 diabetes mellitus |
+|           |
 
-### Study Limitations: Are there absence or underrepresentation of population groups in this study?
 
-#### Query 2: SPARQL Query to fetch study titles and range of values reported for Age
+### Competency Question 5
 
+#### Question
+In a small office space with three occupants, who are currently comfortable? Occupant 1 has a preferred temperature range of 64°F to 68°F, prefers lower humidity (25% to 35%), and enjoys a light breeze (1 m/s to 2 m/s). Occupant 2 has a preferred temperature range of 70°F to 75°F, is comfortable in varied humidity (30% to 40%), and likes a light to moderate breeze (1 m/s to 3 m/s). Occupant 3 has a preferred temperature range of 68°F to 74°F, is comfortable in most humidity settings (30% to 50%), and prefers no breeze (0 m/s to 1 m/s). The office temperature is 70°F, the relative humidity is 30%, and the air speed is 2 m/s.
+
+#### Description
+This query corresponds with competency question 7. Given a specific room, it returns the occupants whose corresponding comfort ranges include the environment values and who therefore currently feel comfortable.
+
+#### Query
 ```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
 
-SELECT DISTINCT ?studyTitle ?propType ?lowerBound ?propVal ?upperBound
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasAttribute | sio:hasProperty ?prop .
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Mean .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a sio:StandardDeviation .
-    ?attr2 sio:hasValue ?propVal2 .
-    BIND((?propVal2  + 2*?propVal) AS ?upperBound) .
-    BIND((?propVal  - 2*?propVal2) AS ?lowerBound) .
-  }
-  UNION
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Median .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a stato:0000164 .
-    ?prop sio:hasAttribute sio:MaximalValue .
-    ?attr2 sio:hasValue ?upperBound .
-    ?prop sio:hasAttribute sio:MinimalValue .
-    ?attr2 sio:hasValue ?lowerBound .
-  }
-  FILTER (?upperBound <= 70) .
-  FILTER (?propType IN (sio:Age)) .
+SELECT ?occupant WHERE {
+	?occupant iem:occupies ind:Question7Room .
+	?occupant iem:hasAirSpeedComfortRangeLowerBound ?airSpeedLowerBound .
+	?occupant iem:hasAirTemperatureComfortRangeLowerBound ?airTemperatureLowerBound .
+	?occupant iem:hasRelativeHumidityComfortRangeLowerBound ?relativeHumidityLowerBound .
+	?occupant iem:hasAirSpeedComfortRangeUpperBound ?airSpeedUpperBound .
+	?occupant iem:hasAirTemperatureComfortRangeUpperBound ?airTemperatureUpperBound .
+	?occupant iem:hasRelativeHumidityComfortRangeUpperBound ?relativeHumidityUpperBound .
+	ind:Question7EnvironmentCurrent iem:hasAirTemperatureValue ?airTemperatureValue .
+	ind:Question7EnvironmentCurrent iem:hasAirSpeedValue ?airSpeedValue .
+	ind:Question7EnvironmentCurrent iem:hasRelativeHumidityValue ?relativeHumidityValue .
+	FILTER(?airTemperatureValue <= ?airTemperatureUpperBound) .
+	FILTER(?airTemperatureValue >= ?airTemperatureLowerBound) .
+	FILTER(?airSpeedValue <= ?airSpeedUpperBound) .
+	FILTER(?airSpeedValue >= ?airSpeedLowerBound) .
+	FILTER(?relativeHumidityValue <= ?relativeHumidityUpperBound) .
+	FILTER(?relativeHumidityValue >= ?relativeHumidityLowerBound) .
 }
+
 ```
 
-## Result 2: Study Titles and Age Ranges retrieved from the study limitation query to find studies where old adults above 70 are not represented
+#### Example Results
 
-<table style="width:100%">
-  <tr>
-    <th>Study Title </th>
-    <th>Lower Bound</th>
-    <th>Median/Mean Age</th>
-    <th>Upper Bound</th>
-  </tr>
-  <tr>
-    <td>Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH)
-      diet., DASH-Sodium Collaborative Research Group</td>
-    <td> 37</td>
-    <td>47</td>
-    <td>57 </td>
-  </tr>
-  <tr>
-    <td>Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH)
-      diet., DASH-Sodium Collaborative Research Group</td>
-    <td> 39</td>
-    <td>49</td>
-    <td> 59</td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>56.6</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>57.2</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>56.9</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Randomized controlled trial comparing impact on platelet reactivity of twice-daily with once-daily aspirin in
-      people with Type 2 diabetes</td>
-    <td>44 </td>
-    <td>51</td>
-    <td> 58</td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>66</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>66</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-</table>
+| ?occupant          |
+|--------------------|
+| Question7Occupant2 |
 
-### Study Quality Evaluation: Are there adequate population sizes and is there a heterogeneity of treatment effect among arms?
 
-#### Query 3: SPARQL query to find large scale studies with intervention arms size being at least 1/3rd the overall cohort size
+## Previous Versions
 
-```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
-
-SELECT DISTINCT ?studyTitle ?medicationLabel ?popSize ?totalCohortSize
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty ?intervention .
-  ?intervention a ?interventionType .
-  ?intervention prov:used ?medication .
-  ?medication rdfs:label ?medicationLabel .
-  ?studyArm sio:hasAttribute ?prop .
-  ?prop a sco:PopulationSize .
-  ?prop sio:hasValue ?popSize .
-  {
-    SELECT DISTINCT ?study (SUM(?popSize) AS ?totalCohortSize)
-    WHERE {
-      ?study sio:hasParticipant ?studyArm .
-      ?studyArm sio:hasAttribute ?prop .
-      ?prop a sco:PopulationSize .
-      ?prop sio:hasValue ?popSize .
-    }
-    GROUP BY ?study
-    HAVING (?totalCohortSize > 1000)
-  }
-  FILTER (?popSize >= (?totalCohortSize/3)) .
-  FILTER (
-    (?interventionType rdfs:subClassOf* provcare:Intervention )
-    && (?medication rdfs:subClassOf* chebi:24436 )
-  ) .
-}
-```
-
-#### Result 3: Cohort sizes and individual study arm sizes of clinical trials retrieved from a query to find the studies having a cohort population ≥ 1000 and individual study arm population sizes are at least 1rd ⁄3 the cohort size
-
-<table style="width:100%">
-  <tr>
-    <th>Study Title</th>
-    <th>Cohort Size</th>
-    <th>Study Arm</th>
-    <th>Arm Size</th>
-  </tr>
-  <tr>
-    <td>Long-term Metformin Use and Vitamin B12 Deficiency in the Diabetes Prevention Program Outcomes Study</td>
-    <td> 1800 </td>
-    <td> Metformin</td>
-    <td> 753</td>
-  </tr>
-  <tr>
-    <td>Long-term Metformin Use and Vitamin B12 Deficiency in the Diabetes Prevention Program Outcomes Study</td>
-    <td> 1800 </td>
-    <td>Metformin </td>
-    <td> 859</td>
-  </tr>
-  <tr>
-    <td>Effects of combination lipid therapy in type 2 diabetes mellitus </td>
-    <td> 5518 </td>
-    <td> Metformin</td>
-    <td> 2765</td>
-  </tr>
-  <tr>
-    <td> Effects of combination lipid therapy in type 2 diabetes mellitus</td>
-    <td> 5518 </td>
-    <td> Metformin</td>
-    <td> 2753 </td>
-  </tr>
-  <tr>
-    <td> Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes </td>
-    <td> 7637 </td>
-    <td> Metformin</td>
-    <td> 3818</td>
-  </tr>
-  <tr>
-    <td> Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes </td>
-    <td>7637 </td>
-    <td> Metformin</td>
-    <td> 3819 </td>
-  </tr>
-</table>
-
-## Value Retrieval Query for Visualization 
-
-### Star Plot Code
-
-We present a query below that is used to retrieve the central value, and upper and lower bounds for continuous characteristics of a study arm. The characteristics are those that overlap with the patient features that we gather for diabetic patients in NHANES, i.e. age, body mass index, systolic blood pressure, diastolic blood pressure, Hemoglobin A1C. This query is triggered in the faceted browser to generate the visualization.
-This query can flexibly retrieve values for both mean +/- standard deviation, median and interquartile range representations with being agnostic of the expression of the characteristic. Also, if we were to constrain the query for values of other parameters, we would just included them in the filter clause. Hence, this query is a generalized faceted browser query.
-
-To run the code, please follow the steps as below:
-
-1. `cd study-cohort-ontology`
-1. `python3 -m venv env`
-1. `source env/bin/activate`
-1. `pip install -r ../requirements.txt`
-1. `python3 starplot.py`
-
-The star plot code can be browsed at: [https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py)
-
-```sparql
-PREFIX sco: <small><https://idea.tw.rpi.edu/projects/heals/studycohort/></small>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-PREFIX stato: <http://purl.obolibrary.org/obo/STATO_>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
-
-SELECT DISTINCT ?studyTitle ?propType ?lowerBound ?propVal ?upperBound
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasAttribute | sio:hasProperty ?prop .
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Mean .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a sio:StandardDeviation .
-    ?attr2 sio:hasValue ?propVal2 .
-    BIND((?propVal2  + ?propVal) AS ?upperBound) .
-    BIND((?propVal  - ?propVal2) AS ?lowerBound) .
-  }
-  UNION
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Median .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a stato:0000164 .
-    ?prop sio:hasAttribute sio:MaximalValue .
-    ?attr2 sio:hasValue ?upperBound .
-    ?prop sio:hasAttribute sio:MinimalValue .
-    ?attr2 sio:hasValue ?lowerBound .
-  }
-  FILTER  (
-    ?propType IN (
-      sio:Age,
-      ncit:C64796,
-      sco:SystolicBloodPressure,
-      sco:DiastolicBloodPressure
-    )
-  ) .
-}
-```
+- [Version 3 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vT6GlxiJcW366IP9Q9z8ll9hKZYGSwCQGsf3LUQsGIhDnA1J-5PNSHjzCqTdXFpHQ/pub)
+- [Version 2 (OE 11)](https://docs.google.com/document/d/e/2PACX-1vS4y9207qJCeofMWqARRhKca6QTTlc-uFwEmmDvxB6ejVSF0k8LVK3YXE1qalDzsg/pub)
+- [Version 1 (OE 10)](https://docs.google.com/document/d/e/2PACX-1vSia6C1iOhK7PO1pVppIlTEVVB7-Y7DabGDwYeMTdnhEVHru-PrsXzPd_GkEVOqXg/pub)
