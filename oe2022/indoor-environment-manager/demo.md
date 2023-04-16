@@ -58,7 +58,8 @@ SELECT DISTINCT ?roomComponent ?newState WHERE {
 |----------------|-----------|
 |                |           |
 
-### Competency Question 2
+<div id="CQ2"></div>
+### Competency Question 2 
 
 #### Question
 How should IEQ parameters, such as temperature, humidity, airflow, etc., be changed to make the multiple occupants feel comfortable in a living room during summer? The occupants’ profile is a 26-year-old son typing something on his laptop (metabolic rate: 1.1, Long-sleeve coveralls, t-shirt: 0.72 clo), a 59-year-old mother dancing (metabolic rate: 3.4, Long-sleeve coveralls, t-shirt: 0.72 clo), and a 32-year-old daughter cleaning the house (metabolic rate: 2.7, Long-sleeve coveralls, t-shirt: 0.72 clo). The outdoor weather is 89°F, relative humidity is 70%, and outdoor air quality index is 34, ‘Good’. Indoor temperature is 85°F and relative humidity is 67%. A fan and a dehumidifier are available.
@@ -93,7 +94,7 @@ SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState ?relativeHumidityRoomCo
 |------------------------|-------------------|--------------------------------|---------------------------|
 | ind:Question4Fan       | iem:On            | ind:Question4Dehumidifier      | iem:On                    |
 
-
+<div id="CQ3"></div>
 ### Competency Question 3
 
 #### Question
