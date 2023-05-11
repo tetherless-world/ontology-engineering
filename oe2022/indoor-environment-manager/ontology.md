@@ -7,27 +7,27 @@ We aim to create a system that, given a small room containing specified environm
 
 ### Ontology Overview
 
-![Ontology Overview Diagram](images/OE_1_IEQ_Management_System_ConceptualModel_1.PNG)
+![Ontology Overview Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_1.jpg)
 
 This concept map shows how the most important high-level resources are connected in our ontology. Central to our project is a Room, which has Room Components— objects in the room that have some effect on the room’s environment— and one or more Occupants, which have various characteristics from which we may calculate a comfort range. Room components are either Power Consuming or Non-Power Consuming, with priority given to actions that use Non-Power Consuming Components during action recommendation. Each Room Component has multiple possible Component States and Component Actions; each action produces a new component state, as well as a different Environment. Additionally, each Room has one or more associated environments, including Indoor Environments, which refer to the Current Indoor Environment and some set of possible indoor environments, and Delta-Defined Environments, which are Environments defined by their difference from some other Environment. The Current Indoor Environment is defined in absolutes, while Resultant Indoor Environments are also Delta-Defined Environments. One Ideal Environment should exist, representing some environment that satisfies the comfort needs of the occupants as closely and possible. An Outdoor Environment is some environment associated with an Indoor Environment such that there is some influence on the Indoor Environment that can be exerted by opening a Window. This Outdoor Environment is expressed as the difference from the Current Indoor Environment, as its effect on the Indoor Environment is dependent on whether it has a negative or positive difference from the Indoor Environment’s attributes.
 
 ### Room Component
-![Room Component Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_2.PNG)
+![Room Component Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_2.jpg)
 
 This diagram shows, in more detail, what Room Components are considered in our system as well as their possible states. Each Room Component Action is associated with a particular Room Component, causes the component to have a new Component State, and produces a new Environment— specifically a Resultant Environment, defined in terms of the change the Room Component Action produces.
 
 ### Environment
-![Environment Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_3.PNG)
+![Environment Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_3.jpg)
 
 This diagram reiterates the various subclasses of Environment created in our ontology, as well as a clarification of the attributes each type of Environment should have. The Current Indoor Environment is defined in absolute terms of air speed, relative humidity, and air temperature. The Outdoor Environment associated with an Indoor Environment has its air speed, humidity, and temperature defined in relative terms, but also has two absolute attributes, air quality and daylight intensity, which are so defined because of the assumption that the default Indoor Environment air quality is Good, and lack of daylight will never affect air speed and humidity, or decrease indoor temperature. The remainder of Outdoor Environment attributes, as well as Resultant and Ideal Indoor Environment attributes, are, for the scope of this project, described in general terms as having a Positive or Negative difference from the Current Indoor Environment.
 
 ### Air Quality
-![Air Quality Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_4.PNG)
+![Air Quality Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_4.jpg)
 
 This diagram shows how our ontology models the relationship between outdoor and indoor air quality, which is a special case: while turning some component on and off will be one-to-one with an increase or decrease in some environment attribute, actions that allow an Outdoor Environment to start or stop affecting the Current Indoor Environment depend on the status of the Outdoor Environment to determine what the Resultant Indoor Environment will be. To infer such a result, we use a specific Outdoor Affected Action, which takes into account some Outdoor Environment to produce a Resultant Indoor Environment with an inferred Air Quality Level.
 
 ### Occupants
-![Occupant Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_5.PNG)
+![Occupant Diagram](images/OE_15_IEQ_Management_System_ConceptualModel_5.jpg)
 
 This occupant shows the attributes associated with an Occupant in our ontology. Each Occupant occupies exactly one room, and has associated data attributes from which their ideal environments can be calculated, externally to the ontology, in multiple optional ways.
 
@@ -35,6 +35,11 @@ This occupant shows the attributes associated with an Occupant in our ontology. 
 - cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
 - cmns-col="https://www.omg.org/spec/Commons/Collections/"
 - cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+- saref="https://saref.etsi.org/core/"
+- s4bldg="https://saref.etsi.org/saref4bldg/"
+- op="http://bimerr.iot.linkeddata.es/def/occupancy-profile#"
+- ic-user="http://ontology.tno.nl/interconnect/user#"
+- unit="http://qudt.org/vocab/unit/"
 
 ### Previous Versions
 
