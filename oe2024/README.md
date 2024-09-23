@@ -6,7 +6,7 @@
 
 <strong>Guest Lecturer:</strong> Ms. Elisa Kendall - ekendall at thematix dot com
 
-<strong>Course Manager:</strong>
+<strong>Course Managers: Jade Franklin - frankj6, Kelsey Rook - rookk, Danielle Villa - villad4 at rpi dot edu; Vládia Pinheiro - vladiacelia at gmail dot com</strong>
 
 <br />
 
