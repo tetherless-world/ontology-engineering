@@ -5,7 +5,7 @@
   Debug messages will be renedered if this is true
   Use this to debug issues on the GitHub Pages site.
 {%- endcomment -%}
-{% assign debug_mode = false %}
+{% assign debug_mode = true %}
 
 {%comment%} Determine if the current page is for a particular year or project {%endcomment%}
 
@@ -135,6 +135,10 @@
                   {% assign project_path = project.path %}
                 {% else %}
                   {% assign project_path = year_path | append: '/' | append: project.path %}
+                {% endif %}
+                {% if debug_mode %}
+                  <p>project.path: {{project.path | inspect }}</p>
+                  <p>project_path: {{project_path | inspect }}</p>
                 {% endif %}
                 <li class="nav-link">
                   <a href="{{project_path}}">{{project.name}}</a>
