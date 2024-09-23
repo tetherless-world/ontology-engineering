@@ -33,13 +33,11 @@
       {% if debug_mode %}
         <p>project.path: {{project.path | inspect }}</p>
       {% endif %}
-      {% capture project_path %}
-        {% if project.path contains "://" %}
-          {{project.path}}
-        {% else %}
-          {{year_path}}/{{project.path}}
-        {% endif %}
-      {% endcapture %}
+      {% if project.path contains "://" %}
+        {% assign project_path = project.path %}
+      {% else %}
+        {% assign project_path = year_path | append: '/' | append: project.path %}
+      {% endif %}
       {% if debug_mode %}
         <p>project_path: {{project_path | inspect }}</p>
       {% endif %}
