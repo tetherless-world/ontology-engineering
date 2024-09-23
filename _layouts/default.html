@@ -30,7 +30,12 @@
   {% assign active_year = year%}
   {% if url contains year_path %}
     {% for project in year.projects %}
-      {% assign project_path = year_path | append: '/' | append: project.path %}
+      {% capture project_path %}
+        {% if project.path contains "://" %}
+          {{project.path}}
+        {% else %}
+          {{year_path}}/{{project.path}}
+      {% endcapture %}
       {% if debug_mode %}
         <p>project_path: {{project_path | inspect }}</p>
       {% endif %}
