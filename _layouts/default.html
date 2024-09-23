@@ -131,7 +131,15 @@
             {% if active_year.path == year.path %}
               <div class="sub-menu">
               {% for project in year.projects %}
-                {% assign project_path = year_path | append: '/' | append: project.path %}
+                {% if project.path contains "://" %}
+                  {% assign project_path = project.path %}
+                {% else %}
+                  {% assign project_path = year_path | append: '/' | append: project.path %}
+                {% endif %}
+                {% if debug_mode %}
+                  <p>project.path: {{project.path | inspect }}</p>
+                  <p>project_path: {{project_path | inspect }}</p>
+                {% endif %}
                 <li class="nav-link">
                   <a href="{{project_path}}">{{project.name}}</a>
                 </li>
