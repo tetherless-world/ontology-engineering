@@ -9,8 +9,6 @@ title: term list
 
 ## Previous Versions
 
-<p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
+<p class="message-highlight">Below are links to the previous versions of the term list.</p>
 
-- [Version 3](files/termlist.xlsx)
-- [Version 2](files/termlist.xlsx)
-- [Version 1](files/termlist.xlsx)
+- [Version 1]((files/TermLists/OE_4_PDTO_TermList_Prelim.xlsx))
