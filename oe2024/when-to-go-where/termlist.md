@@ -11,6 +11,4 @@ title: term list
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 
-- [Version 3](files/termlist.xlsx)
-- [Version 2](files/termlist.xlsx)
-- [Version 1](files/termlist.xlsx)
+- [Version 1](files/OE_4_WhenToGoWhere_TermList_Prelim.xlsx)
