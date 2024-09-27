@@ -5,7 +5,7 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="files/_OE4_WhenToGoWhere_UseCase_Clean.docx" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/_OE4_WhenToGoWhere_UseCase_Clean.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
