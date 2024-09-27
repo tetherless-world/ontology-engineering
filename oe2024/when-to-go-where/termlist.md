@@ -5,7 +5,7 @@ title: term list
 
 ## Terminology List
 
-<iframe src="https://rb.gy/qr3aqa" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/OE_4_WhentoGoWhere_CuratedTermList.xlsx" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
