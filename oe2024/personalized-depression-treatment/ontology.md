@@ -2,7 +2,9 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/ConceptMap_SubjectModel.png)
+[Psychiatric Model](images/DepressionModel.png)
+
+[Genetics Sub-Model](images/GeneticsModel.png)
 
 An overview of the main classes and their property associations. Some property associations exist only upon
 representation of the Table 1 data, and so we highlight instances in pink
