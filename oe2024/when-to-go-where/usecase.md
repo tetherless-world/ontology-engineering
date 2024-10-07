@@ -9,4 +9,6 @@ title: use case
 
 ## Previous Versions
 
-- [Version 1 (OE4)](files/OE4_WhenToGoWhere_UseCase_Clean.docx)
+- [Version 3 (OE4)](files/OE4_WhenToGoWhere_UseCase_Clean.docx)
+- [Version 2 (OE3)](files/OE_3_WhenToGoWhere_UseCase.docx)
+- [Version 1 (OE2)](files/OE_2_BenRodgers_UseCase.docx)
