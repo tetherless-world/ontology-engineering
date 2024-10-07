@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cxtdsg "https://www.omg.org/spec/Commons/ContextualDesignators/">
+	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
+	<!ENTITY cmns-id "https://www.omg.org/spec/Commons/Identifiers/">
+	<!ENTITY cmns-loc "https://www.omg.org/spec/Commons/Locations/">
+	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY cmns-rga "https://www.omg.org/spec/Commons/RegulatoryAgencies/">
+	<!ENTITY cmns-rlcmp "https://www.omg.org/spec/Commons/RolesAndCompositions/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://www.omg.org/spec/Commons/RegulatoryAgencies/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cxtdsg="https://www.omg.org/spec/Commons/ContextualDesignators/"
+	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+	xmlns:cmns-id="https://www.omg.org/spec/Commons/Identifiers/"
+	xmlns:cmns-loc="https://www.omg.org/spec/Commons/Locations/"
+	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:cmns-rga="https://www.omg.org/spec/Commons/RegulatoryAgencies/"
+	xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://www.omg.org/spec/Commons/RegulatoryAgencies/">
+		<rdfs:label>Commons Regulatory Agencies Ontology</rdfs:label>
+		<dct:abstract>This ontology defines general purpose concepts for representation of regulatory agencies, also known as regulatory authorities or regulators. It was derived from the FIBO Regulatory Agencies, Legal Capacity, and Jurisdictions ontologies and simplified/adapted for broader use.</dct:abstract>
+		<dct:license>Copyright (c) 2015-2024 EDM Council, Inc.
+		Copyright (c) 2015-2024 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.</dct:license>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Identifiers/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Locations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20240801/RegulatoryAgencies/"/>
+		<cmns-av:copyright>Copyright (c) 2015-2024 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2015-2024 Object Management Group, Inc.</cmns-av:copyright>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&cmns-org;LegalEntity">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rga;isOrganizedIn"/>
+				<owl:onClass rdf:resource="&cmns-rga;Jurisdiction"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-org;LegalPerson">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rga;isRecognizedIn"/>
+				<owl:onClass rdf:resource="&cmns-rga;Jurisdiction"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rga;Jurisdiction">
+		<rdfs:subClassOf rdf:resource="&cmns-cxtdsg;Context"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rga;hasReach"/>
+				<owl:someValuesFrom rdf:resource="&cmns-loc;GeographicRegion"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">jurisdiction</rdfs:label>
+		<skos:definition>power of a court or regulatory agency to adjudicate cases, issue orders, and interpret and apply the law with respect to some specific geographic area</skos:definition>
+		<cmns-av:adaptedFrom>https://www.law.cornell.edu/wex/jurisdiction</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rga;RegulatoryAgency">
+		<rdfs:subClassOf rdf:resource="&cmns-org;ServiceProvider"/>
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Actor"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rga;regulates"/>
+				<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-org;provides"/>
+				<owl:onClass rdf:resource="&cmns-rga;RegulatoryService"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rga;hasJurisdiction"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rga;Jurisdiction"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>regulatory agency</rdfs:label>
+		<skos:definition>public authority or government agency responsible for exercising authority over something in a regulatory or supervisory capacity</skos:definition>
+		<skos:example>See http://www.finra.org/AboutFINRA/ for an example describing a regulatory agency.</skos:example>
+		<cmns-av:explanatoryNote>Typically, a regulatory agency is chartered to protect some constituancy, (e.g., investors in the financial industry, consumers with respect to product safety), to ensure the fairness and integrity of some market, and fair and safe business practices among the service providers in that market.</cmns-av:explanatoryNote>
+		<cmns-av:synonym>regulator</cmns-av:synonym>
+		<cmns-av:synonym>regulatory authority</cmns-av:synonym>
+		<cmns-av:synonym>regulatory body</cmns-av:synonym>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rga;RegulatoryReport">
+		<rdfs:subClassOf rdf:resource="&cmns-doc;Record"/>
+		<rdfs:subClassOf rdf:resource="&cmns-doc;ReferenceDocument"/>
+		<rdfs:label>regulatory report</rdfs:label>
+		<skos:definition>document required to support operational transparency that demonstrates compliance with some specification, law, policy, restriction, or other rule specified by a regulatory agency</skos:definition>
+		<cmns-av:explanatoryNote>Such a report may be needed for licensing, monitoring, taxation, or for other purposes that demonstrate the integrity, fairness, safety, or other capacity of a given industry, organization, or product.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rga;RegulatoryService">
+		<rdfs:subClassOf rdf:resource="&cmns-org;Service"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-org;isProvidedBy"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rga;RegulatoryAgency"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>regulatory service</rdfs:label>
+		<skos:definition>service provided by a regulatory agency, which may include, but not be limited to, examination, monitoring, supervision, testing, or other capabilities required to ensure the integrity, fairness, safety, or other capacity of a given industry, organization, or product</skos:definition>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;governs">
+		<rdfs:label>governs</rdfs:label>
+		<skos:definition>has and exercises authority over</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;hasJurisdiction">
+		<rdfs:subPropertyOf rdf:resource="&cmns-rga;governs"/>
+		<rdfs:label>has jurisdiction</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-rga;Jurisdiction"/>
+		<skos:definition>relates a polity, government entity or regulatory agency to a jurisdiction over which it has some level of legal authority</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;hasReach">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cxtdsg;isApplicableIn"/>
+		<rdfs:label>has reach</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rga;Jurisdiction"/>
+		<rdfs:range rdf:resource="&cmns-loc;GeographicRegion"/>
+		<skos:definition>indicates the geographic region covered by the jurisdiction</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;isApplicableInJurisdiction">
+		<rdfs:label>is applicable in jurisdiction</rdfs:label>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&cmns-cxtdsg;isApplicableIn">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-rga;hasReach">
+			</rdf:Description>
+			<rdf:Description rdf:about="&cmns-id;isIdentifiedBy">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition>indicates the geopolitical region identifier for the jurisdiction in which something is applicable</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;isGovernedBy">
+		<rdfs:label>is governed by</rdfs:label>
+		<owl:inverseOf rdf:resource="&cmns-rga;governs"/>
+		<skos:definition>relates a contract, agreement, jurisdiction, or other legal construct and the regulation, policy, procedure, or legal person that regulates or oversees (governs) it</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;isJurisdictionOf">
+		<rdfs:subPropertyOf rdf:resource="&cmns-rga;isGovernedBy"/>
+		<rdfs:label>is jurisdiction of</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rga;Jurisdiction"/>
+		<owl:inverseOf rdf:resource="&cmns-rga;hasJurisdiction"/>
+		<skos:definition>relates a jurisdiction to a polity or other government entity or court that has some level of legal authority over it</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;isOrganizedIn">
+		<rdfs:subPropertyOf rdf:resource="&cmns-rga;isRecognizedIn"/>
+		<rdfs:label>is organized in</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-org;LegalEntity"/>
+		<rdfs:range rdf:resource="&cmns-rga;Jurisdiction"/>
+		<skos:definition>indicates the jurisdiction whose laws a legal entity is organized under</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;isRecognizedIn">
+		<rdfs:subPropertyOf rdf:resource="&cmns-rga;isGovernedBy"/>
+		<rdfs:label>is recognized in</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-rga;Jurisdiction"/>
+		<skos:definition>indicates the jurisdiction in which a legal person is considered competent to enter into a contract, conduct business, or participate in other activities, or in which an agreement may be acknowledged and possibly enforceable</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;isRegulatedBy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasPartyRole"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-rga;isGovernedBy"/>
+		<rdfs:label>is regulated by</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-rga;RegulatoryAgency"/>
+		<skos:definition>specifies a regulatory agency that has regulatory authority for something</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rga;regulates">
+		<rdfs:subPropertyOf rdf:resource="&cmns-rga;governs"/>
+		<rdfs:label>regulates</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rga;RegulatoryAgency"/>
+		<skos:definition>has regulatory authority over or directs according to rule or law, typically an industry, organization, or product</skos:definition>
+		<cmns-av:adaptedFrom>http://www.merriam-webster.com/dictionary/regulate</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+
+</rdf:RDF>
