@@ -2,9 +2,13 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/Model.png)
+![Concept Map Subject Model](images/updated_model.png)
 
 An overview of the main classes.
+
+### Previous versions
+
+[Version 1 (OE 5)](images/Model.png)
 
 ## Ontologies
 
