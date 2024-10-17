@@ -2,9 +2,11 @@
 
 ## Conceptual Model
 
-[Psychiatric Model](images/DepressionModel.png)
+[Patient / Illness Model](images/ConceptModel/w6PatientModel.png)
 
-[Genetics Sub-Model](images/GeneticsModel.png)
+[Treatment Model](images/ConceptModel/w6TreatmentModel.png)
+
+[Genetics Model](images/ConceptModel/w6GeneticModel.png)
 
 An overview of the main classes and their property associations. Some property associations exist only upon
 representation of the Table 1 data, and so we highlight instances in pink
@@ -64,6 +66,7 @@ representation of the Table 1 data, and so we highlight instances in pink
     - Immediate Superclass: None
     - Example: Mean
     - Reused From: ProvCaRe
+
 
 ### Accompanying Suite of Ontologies
 
