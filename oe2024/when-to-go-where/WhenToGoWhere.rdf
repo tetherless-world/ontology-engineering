@@ -1,131 +1,243 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rdf:RDF [
-	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
-	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
-	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
-	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
-	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
-	<!ENTITY cmns-rlcmp "https://www.omg.org/spec/Commons/RolesAndCompositions/">
-	<!ENTITY dtc "http://purl.org/dc/terms/">
-	<!ENTITY oe-wtgw "https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/">
-	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
-	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
-	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
-]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
-	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
-	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
-	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
-	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
-	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
-	xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:oe-wtgw="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
-	xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-	
-	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/">
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
-	</owl:Ontology>
-	
-	<owl:Class rdf:about="&oe-wtgw;License">
-		<rdfs:subClassOf rdf:resource="&cmns-doc;LegalDocument"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;holdsDuring"/>
-				<owl:onClass rdf:resource="&cmns-dt;DatePeriod"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-wtgw;isIssuedBy"/>
-				<owl:someValuesFrom rdf:resource="&oe-wtgw;Licensor"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;hasPartyRole"/>
-				<owl:someValuesFrom rdf:resource="&oe-wtgw;Licensee"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>license</rdfs:label>
-		<skos:definition>grant of permission needed to do something</skos:definition>
-		<cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
-		<cmns-av:explanatoryNote>Note that in some cases, a license may also be considered an agreement or contract, depending on the specifics of the license and jurisdiction.</cmns-av:explanatoryNote>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe-wtgw;Licensee">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-rlcmp;isPlayedBy"/>
-				<owl:someValuesFrom>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-pts;isAPartyTo"/>
-						<owl:someValuesFrom rdf:resource="&oe-wtgw;License"/>
-					</owl:Restriction>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>licensee</rdfs:label>
-		<skos:definition>a party to whom a license has been granted</skos:definition>
-		<cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe-wtgw;Licensor">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-wtgw;licenses"/>
-				<owl:someValuesFrom rdf:resource="&owl;Thing"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-wtgw;issues"/>
-				<owl:someValuesFrom rdf:resource="&oe-wtgw;License"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-rlcmp;isPlayedBy"/>
-				<owl:someValuesFrom>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&cmns-pts;isAPartyTo"/>
-						<owl:someValuesFrom rdf:resource="&oe-wtgw;License"/>
-					</owl:Restriction>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>licensor</rdfs:label>
-		<skos:definition>a party who grants a license</skos:definition>
-		<cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:ObjectProperty rdf:about="&oe-wtgw;issues">
-		<rdfs:subPropertyOf rdf:resource="&cmns-org;provides"/>
-		<rdfs:label>issues</rdfs:label>
-		<rdfs:domain rdf:resource="&cmns-pts;AgentRole"/>
-		<owl:inverseOf rdf:resource="&oe-wtgw;isIssuedBy"/>
-		<skos:definition>officially makes something available</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-wtgw;isIssuedBy">
-		<rdfs:subPropertyOf rdf:resource="&cmns-org;isProvidedBy"/>
-		<rdfs:label>is issued by</rdfs:label>
-		<rdfs:range rdf:resource="&cmns-pts;AgentRole"/>
-		<skos:definition>indicates a role played by a functional entity or party responsible for circulating, distributing, or publishing something</skos:definition>
-	</owl:ObjectProperty>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
+     xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
+     xmlns:dtc="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+     xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+     xmlns:oe-wtgw="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
+     xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+     xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
+     xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+     xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/">
+    <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/">
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+    </owl:Ontology>
+    
 
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/isIssuedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/isIssuedBy">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Organizations/isProvidedBy"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/issues"/>
+        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/AgentRole"/>
+        <rdfs:label>is issued by</rdfs:label>
+        <skos:definition>indicates a role played by a functional entity or party responsible for circulating, distributing, or publishing something</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/issues -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/issues">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Organizations/provides"/>
+        <rdfs:domain rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/AgentRole"/>
+        <rdfs:label>issues</rdfs:label>
+        <skos:definition>officially makes something available</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/licenses -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/licenses"/>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Organizations/isProvidedBy -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Organizations/isProvidedBy"/>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Organizations/provides -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Organizations/provides"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Accomodations -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Accomodations">
+        <skos:definition>Temporary lodgings, sometimes also including board.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Activities -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Activities">
+        <rdfs:label>Activities</rdfs:label>
+        <skos:definition>A use of the park by visitors</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Animal -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Animal">
+        <rdfs:label>Animal</rdfs:label>
+        <skos:definition>A living organism that feeds on organic matter, typically having specialized sense organs and nervous systems and able to move voluntarily.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Climate -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Climate">
+        <rdfs:label>Climate</rdfs:label>
+        <skos:definition>The average weather conditions in a particular region over a long period, including temperature, humidity, wind patterns, and precipitation.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/License -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/License">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/LegalDocument"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/isIssuedBy"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Licensor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/hasPartyRole"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Licensee"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/holdsDuring"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/DatePeriod"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>license</rdfs:label>
+        <skos:definition>grant of permission needed to do something</skos:definition>
+        <cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Note that in some cases, a license may also be considered an agreement or contract, depending on the specifics of the license and jurisdiction.</cmns-av:explanatoryNote>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Licensee -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Licensee">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/PartyRole"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAPartyTo"/>
+                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/License"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>licensee</rdfs:label>
+        <skos:definition>a party to whom a license has been granted</skos:definition>
+        <cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Licensor -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Licensor">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/PartyRole"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/issues"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/License"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/licenses"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAPartyTo"/>
+                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/License"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>licensor</rdfs:label>
+        <skos:definition>a party who grants a license</skos:definition>
+        <cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/NationalPark -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/NationalPark">
+        <rdfs:label>NationalPark</rdfs:label>
+        <skos:definition>A large area of land or water that is protected by a government for the preservation of its natural environment, history, or culture</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/ParkStatistics -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/ParkStatistics">
+        <rdfs:label>ParkStatistics</rdfs:label>
+        <skos:definition>Statistics about a park, including visitation numbers, trail usage, wildlife sightings, and other relevant data to monitor park activity and health.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Terrain -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Terrain">
+        <rdfs:label>Terrain</rdfs:label>
+        <skos:definition>The physical features of a piece of land, including its elevation, slope, and orientation, often used to describe hiking or camping environments.</skos:definition>
+    </owl:Class>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
