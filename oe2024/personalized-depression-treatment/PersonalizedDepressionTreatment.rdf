@@ -24,6 +24,9 @@
         <owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+        <dtc:license>placeholder</dtc:license>
+        <rdfs:label>personalized depression treatment ontology</rdfs:label>
+        <cmns-av:copyright>placeholder</cmns-av:copyright>
     </owl:Ontology>
     
 
@@ -54,20 +57,22 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasBrandName -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasBrandName">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/hasName"/>
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/isSignifiedBy"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/isBrandNameOf"/>
+        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/Designators/Name"/>
         <rdfs:label>has brand name</rdfs:label>
         <skos:definition>is a brand name by which the object is known by</skos:definition>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasDisorder -->
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasDiagnosis -->
 
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasDisorder">
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/experiences"/>
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasDiagnosis">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Patient"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
-        <rdfs:label>has disorder</rdfs:label>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Diagnosis"/>
+        <rdfs:label>has diagnosis</rdfs:label>
         <skos:definition>a subsection of &quot;experiences&quot; denoting specifically the psychiatric disorder that a patient suffers from</skos:definition>
     </owl:ObjectProperty>
     
@@ -79,6 +84,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Patient"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Genome"/>
         <rdfs:label>has genome</rdfs:label>
+        <skos:definition>refers to the genetic data of a patient</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -124,6 +130,18 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DiseaseAssociatedGene"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
         <rdfs:label>is associated with</rdfs:label>
+        <skos:definition>placeholder the disorder with which these genes are associated.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/isBrandNameOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/isBrandNameOf">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/denotes"/>
+        <rdfs:domain rdf:resource="https://www.omg.org/spec/Commons/Designators/Name"/>
+        <rdfs:label>is brand name of</rdfs:label>
+        <skos:definition>brand names are attributed to specific drugs</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -134,6 +152,8 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/MajorDepressiveDisorder"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DepressionRatingScale"/>
         <rdfs:label>is diagnosed by</rdfs:label>
+        <skos:definition>the relationship between a disorder and the methods by which a patient would be diagnosed with that disorder.</skos:definition>
+        <skos:example>Depression Rating Scales are used to diagnose people with major depressive disorder.</skos:example>
     </owl:ObjectProperty>
     
 
@@ -155,6 +175,8 @@
         <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Symptom"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
+        <rdfs:label>is symptom of</rdfs:label>
+        <skos:definition>refers to a disorder with which this symptom is associated</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -165,6 +187,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/ReuptakeInhibitor"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Neurotransmitter"/>
         <rdfs:label>prevents reuptake of</rdfs:label>
+        <skos:definition>reuptake inhibitors affect the ability for the brain to reuptake certain neurotransmitters.</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -187,7 +210,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Treatment"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
         <rdfs:label>treats</rdfs:label>
-        <skos:definition>for any treatment X and psychiatric disorder Y, X treats Y if X mitigates the symptoms of Y</skos:definition>
+        <skos:definition>placeholder for any treatment X and psychiatric disorder Y, X t Y if X mitigates the symptoms of Y</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -246,8 +269,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/AnxietyDisorder">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
-        <rdfs:isDefinedBy>A group of disorders characterized by a persistent anxiety that can can interfere with daily activities such as job performance, schoolwork, and relationships</rdfs:isDefinedBy>
         <rdfs:label>anxiety disorder</rdfs:label>
+        <skos:definition>A group of disorders characterized by a persistent anxiety that can can interfere with daily activities such as job performance, schoolwork, and relationships</skos:definition>
     </owl:Class>
     
 
@@ -256,8 +279,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/BipolarDisorder">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
-        <rdfs:isDefinedBy>A mental illness that causes unusual shifts in a person’s mood, energy, activity levels, and concentration. These shifts can make it difficult to carry out day-to-day tasks.</rdfs:isDefinedBy>
         <rdfs:label>bipolar disorder</rdfs:label>
+        <skos:definition>A mental illness that causes unusual shifts in mood, energy, activity levels, and concentration. These shifts can make it difficult to carry out daily tasks.</skos:definition>
     </owl:Class>
     
 
@@ -266,8 +289,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/ChronicPain">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Symptom"/>
-        <rdfs:isDefinedBy>Pain that lasts for over three months.</rdfs:isDefinedBy>
         <rdfs:label>chronic pain</rdfs:label>
+        <skos:definition>Pain that lasts for over three months.</skos:definition>
     </owl:Class>
     
 
@@ -313,6 +336,25 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DepressionRatingScale">
         <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MaterialMeasure"/>
+        <rdfs:label>depression rating scale</rdfs:label>
+        <skos:definition>placeholder a test used to determine whether a patient has depression</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Diagnosis -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Diagnosis">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Situation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/diagnoses"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>diagnosis</rdfs:label>
+        <skos:definition>the disorder with which a patient has been diagnosed as having</skos:definition>
     </owl:Class>
     
 
@@ -332,8 +374,8 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:isDefinedBy>An allele which is more prevalent than expected among populations with a given disease.</rdfs:isDefinedBy>
         <rdfs:label>disease-associated gene</rdfs:label>
+        <skos:definition>An allele which is more prevalent than expected among populations with a given disease.</skos:definition>
     </owl:Class>
     
 
@@ -341,7 +383,8 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Dosage -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Dosage">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure"/>
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Variable"/>
+        <rdfs:label>dosage</rdfs:label>
         <skos:definition>The amount of medicine that you should take at one time</skos:definition>
     </owl:Class>
     
@@ -350,7 +393,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DrugTreatment -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DrugTreatment">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Undergoer"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Treatment"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasBrandName"/>
@@ -426,7 +469,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Lithium">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DrugTreatment"/>
         <rdfs:label>lithium</rdfs:label>
-        <skos:definition>referring, in this context, to lithium carbonate or another lithium salt, used as a mood-stabilizing drug.</skos:definition>
+        <skos:definition>the metal with atomic number 3, but referring, in this context, to the carbonate or another salt, used as a mood-stabilizing drug.</skos:definition>
     </owl:Class>
     
 
@@ -445,8 +488,15 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/MedicalProfessional -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/MedicalProfessional">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Agent"/>
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/PartyRole"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>medical professional</rdfs:label>
+        <skos:definition>someone who provides treatments to patients</skos:definition>
     </owl:Class>
     
 
@@ -489,9 +539,15 @@
         <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/AgentRole"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasDisorder"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasDiagnosis"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Diagnosis"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -521,10 +577,20 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Person -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Person">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Agent"/>
+        <rdfs:label>person</rdfs:label>
+        <skos:definition>an individual human</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Situation"/>
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/Specification"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasSymptom"/>
@@ -611,7 +677,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TherapeuticTreatment -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TherapeuticTreatment">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Undergoer"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Treatment"/>
         <rdfs:label>thearpeutic treatment</rdfs:label>
         <skos:definition>Treatment and care of a patient for the purpose of both preventing and combating disease or alleviating pain or injury.</skos:definition>
     </owl:Class>
@@ -642,19 +708,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasOnset"/>
                 <owl:allValuesFrom rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/Duration"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DrugTreatment"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TherapeuticTreatment"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dtc:description>Something that plays the role of &quot;treatment&quot; is something that, whether a medicine or a therapeutic treatment, serves to mitigate the symptoms of a psychiatric disorder.</dtc:description>
@@ -689,7 +742,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Situation"/>
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/Specification"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/isResponseTo"/>
@@ -697,7 +750,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>treatment response</rdfs:label>
-        <skos:definition>The degree to which a patient’s symptoms improve as a result of a particular treatment.</skos:definition>
+        <skos:definition>The degree to which symptoms improve as a result of a particular treatment.</skos:definition>
     </owl:Class>
     
 
@@ -716,20 +769,6 @@
 
     <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/Agent">
         <owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Situation"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/RolesAndCompositions/FunctionalRole -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/FunctionalRole">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/treats"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </rdf:Description>
     
 
