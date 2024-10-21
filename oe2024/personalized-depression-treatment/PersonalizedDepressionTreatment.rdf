@@ -243,7 +243,13 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-pdt;Patient">
-		<rdfs:subClassOf rdf:resource="&cmns-pts;AgentRole"/>
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;experiences"/>
+				<owl:allValuesFrom rdf:resource="&oe-pdt;Symptom"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe-pdt;hasDiagnosis"/>
@@ -255,13 +261,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe-pdt;hasGenome"/>
 				<owl:onClass rdf:resource="&oe-pdt;Genome"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;experiences"/>
-				<owl:onClass rdf:resource="&oe-pdt;Symptom"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
