@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
+	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
 	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
+	<!ENTITY cmns-dsg "https://www.omg.org/spec/Commons/Designators/">
 	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
 	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
 	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
 	<!ENTITY cmns-qtu "https://www.omg.org/spec/Commons/QuantitiesAndUnits/">
 	<!ENTITY cmns-rlcmp "https://www.omg.org/spec/Commons/RolesAndCompositions/">
+	<!ENTITY cmns-txt "https://www.omg.org/spec/Commons/TextDatatype/">
 	<!ENTITY dtc "http://purl.org/dc/terms/">
 	<!ENTITY oe-pdt "https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
@@ -18,12 +22,16 @@
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/"
 	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+	xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
 	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
 	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
 	xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
 	xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/"
+	xmlns:cmns-txt="https://www.omg.org/spec/Commons/TextDatatype/"
 	xmlns:dtc="http://purl.org/dc/terms/"
 	xmlns:oe-pdt="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -36,12 +44,16 @@
 		<rdfs:label>personalized depression treatment ontology</rdfs:label>
 		<dtc:license>placeholder</dtc:license>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/TextDatatype/"/>
 		<cmns-av:copyright>placeholder</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -79,7 +91,7 @@
 		<rdfs:subClassOf rdf:resource="&cmns-rlcmp;Composition"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/hasConstituent"/>
+				<owl:onProperty rdf:resource="&cmns-col;hasConstituent"/>
 				<owl:someValuesFrom rdf:resource="&oe-pdt;Gene"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -148,13 +160,13 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe-pdt;hasBrandName"/>
-				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Designators/Name"/>
+				<owl:someValuesFrom rdf:resource="&cmns-dsg;Name"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Designators/hasName"/>
-				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Designators/Name"/>
+				<owl:onProperty rdf:resource="&cmns-dsg;hasName"/>
+				<owl:someValuesFrom rdf:resource="&cmns-dsg;Name"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>drug treatment</rdfs:label>
@@ -162,16 +174,16 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-pdt;Gene">
-		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Collections/Constituent"/>
+		<rdfs:subClassOf rdf:resource="&cmns-col;Constituent"/>
 		<rdfs:label>gene</rdfs:label>
 		<skos:definition>distinct sequence of nucleotides forming part of a chromosome, the order of which determines the order of monomers in a polypeptide or nucleic acid molecule which a cell (or virus) may synthesize</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-pdt;GeneExpression">
-		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Collections/Constituent"/>
+		<rdfs:subClassOf rdf:resource="&cmns-col;Constituent"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isConstituentOf"/>
+				<owl:onProperty rdf:resource="&cmns-col;isConstituentOf"/>
 				<owl:allValuesFrom rdf:resource="&oe-pdt;Transcriptome"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -183,7 +195,7 @@
 		<rdfs:subClassOf rdf:resource="&cmns-rlcmp;Composition"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/hasConstituent"/>
+				<owl:onProperty rdf:resource="&cmns-col;hasConstituent"/>
 				<owl:someValuesFrom rdf:resource="&oe-pdt;Gene"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -246,7 +258,7 @@
 		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-pts;experiences"/>
+				<owl:onProperty rdf:resource="&oe-pdt;hasSymptom"/>
 				<owl:allValuesFrom rdf:resource="&oe-pdt;Symptom"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -278,7 +290,8 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>patient</rdfs:label>
-		<skos:definition>person receiving or registered to receive medical treatment.</skos:definition>
+		<skos:definition>role of a person receiving or registered to receive medical treatment</skos:definition>
+		<skos:editorialNote>In the pattern in Commons, experiences is a property chain from an individual thing to a role that thing plays to another role that thing undergoes. Thus saying that patient (role) &apos;experiences&apos; (property chain whose range is a role) &apos;symptom&apos; (which is a characteristic, not a role in your current ontology) would be logically inconsistent (role and agent are disjoint). What you want here is &apos;patient (role) &apos;acts in&apos; some &apos;situation&apos; (e.g. &apos;person with a condition&apos;, as a subclass of situation) that is characterized by one or more symptoms. The restriction on diagnosis stating that it diagnoses a psychiatric disorder is also not consistent with the way its domain and range are modeled. Linking the characteristic symptoms of the disorder to the &apos;person with a condition&apos; situation would likely need a different property chain that would be local to your model to indicate which symptom(s) the patient actually has of those that are characteristics. As a short term fix, I&apos;ve replaced &apos;experiences&apos; with &apos;has symptom&apos;, and deleted the domain on has symptom, as that originally was limited to the disorder. I think patients have symptoms, and disorders are characterized by those symptoms, rather than the other way around.</skos:editorialNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-pdt;Person">
@@ -332,7 +345,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-pdt;Symptom">
-		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/Aspect"/>
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Aspect"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-dt;hasEndDate"/>
@@ -341,7 +354,7 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
+				<owl:onProperty rdf:resource="&cmns-cls;characterizes"/>
 				<owl:someValuesFrom rdf:resource="&oe-pdt;PsychiatricDisorder"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -365,7 +378,7 @@
 		<rdfs:subClassOf rdf:resource="&cmns-rlcmp;Composition"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/hasConstituent"/>
+				<owl:onProperty rdf:resource="&cmns-col;hasConstituent"/>
 				<owl:allValuesFrom rdf:resource="&oe-pdt;GeneExpression"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -426,9 +439,9 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-pdt;hasBrandName">
-		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/isSignifiedBy"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-dsg;isSignifiedBy"/>
 		<rdfs:label>has brand name</rdfs:label>
-		<rdfs:range rdf:resource="https://www.omg.org/spec/Commons/Designators/Name"/>
+		<rdfs:range rdf:resource="&cmns-dsg;Name"/>
 		<owl:inverseOf rdf:resource="&oe-pdt;isBrandNameOf"/>
 		<skos:definition>is a brand name by which the object is known by</skos:definition>
 	</owl:ObjectProperty>
@@ -449,7 +462,7 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe-pdt;hasName">
-		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/TextDatatype/hasTextValue"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-txt;hasTextValue"/>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-pdt;hasOnset">
@@ -469,9 +482,8 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-pdt;hasSymptom">
-		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/isCharacterizedBy"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isCharacterizedBy"/>
 		<rdfs:label>has symptom</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-pdt;PsychiatricDisorder"/>
 		<rdfs:range rdf:resource="&oe-pdt;Symptom"/>
 		<owl:inverseOf rdf:resource="&oe-pdt;isSymptomOf"/>
 		<skos:definition>psychiatric disorders have symptoms that manifest in the patient</skos:definition>
@@ -485,9 +497,9 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-pdt;isBrandNameOf">
-		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Designators/denotes"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-dsg;denotes"/>
 		<rdfs:label>is brand name of</rdfs:label>
-		<rdfs:domain rdf:resource="https://www.omg.org/spec/Commons/Designators/Name"/>
+		<rdfs:domain rdf:resource="&cmns-dsg;Name"/>
 		<skos:definition>brand names are attributed to specific drugs</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -507,10 +519,9 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-pdt;isSymptomOf">
-		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Classifiers/characterizes"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;characterizes"/>
 		<rdfs:label>is symptom of</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-pdt;Symptom"/>
-		<rdfs:range rdf:resource="&oe-pdt;PsychiatricDisorder"/>
 		<skos:definition>refers to a disorder with which this symptom is associated</skos:definition>
 	</owl:ObjectProperty>
 	
