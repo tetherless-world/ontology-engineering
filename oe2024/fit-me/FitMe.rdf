@@ -1,44 +1,645 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
-	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
-	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
-	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
-	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
-	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
-	<!ENTITY cmns-qtu "https://www.omg.org/spec/Commons/QuantitiesAndUnits/">
-	<!ENTITY cmns-rlcmp "https://www.omg.org/spec/Commons/RolesAndCompositions/">
-	<!ENTITY dtc "http://purl.org/dc/terms/">
-	<!ENTITY oe-ftme "https://tw.rpi.edu/ontology-engineering/oe2024/fit-me/FitMe/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
-	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/fit-me/FitMe/"
-	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
-	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
-	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
-	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
-	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
-	xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
-	xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:oe-ftme="https://tw.rpi.edu/ontology-engineering/oe2024/fit-me/FitMe/"
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
-	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/fit-me/FitMe/">
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe">
 	</owl:Ontology>
-
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Antioxidant">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Micronutrient"/>
+		<rdfs:label xml:lang="en">antioxidant</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">molecule that inhibits the oxidation of other molecules</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Beef">
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+		<rdfs:label xml:lang="en">beef</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">A piece of boneless meat derived from a cow</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#hasCalorieValue"/>
+				<owl:someValuesFrom rdf:resource="&xsd;float"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#isBurnedBy"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">calorie</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">A measure of energy.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Carbohydrate">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Macronutrient"/>
+		<rdfs:label xml:lang="en">carbohydrate</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Formed by green plants and which constitute a major class of animal foods</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Chicken">
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+		<rdfs:label xml:lang="en">chicken</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">refers to the meat derived from domesticated chickens, primarily used as a source of protein in various cuisines globally</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Dairy">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">dairy</rdfs:label>
+		<rdfs:isDefinedBy>food made primarily of or from milk</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Fat">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Macronutrient"/>
+		<rdfs:label xml:lang="en">Fat</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">esters of three fatty acid chains and the alcohol glycerol, one of the three main macronutrients, also known as triglycerides</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#FatMaterial">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">fat material</rdfs:label>
+		<rdfs:isDefinedBy>a solid or semisolid fat as distinguished from an oil</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Fiber">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Macronutrient"/>
+		<rdfs:label xml:lang="en">fiber</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">non-digestible constituent that makes up the plant cell wall.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Fish">
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+		<rdfs:label xml:lang="en">fish</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">refers to the edible flesh of aquatic animals, typically from oceans, seas, and freshwater sources</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Fruit">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">fruit</rdfs:label>
+		<rdfs:isDefinedBy>the usually edible reproductive body of a seed plant</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Grain">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">grain</rdfs:label>
+		<rdfs:isDefinedBy>edible seed of grass plant</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#GreenBean">
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable"/>
+		<rdfs:label xml:lang="en">green bean</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">refers to the immature, unripe pods of the common bean (Phaseolus vulgaris), typically consumed as a vegetable</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+				<owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">ingredient</rdfs:label>
+		<rdfs:isDefinedBy>general concept for substances which are parts of a mixture, product, or recipe</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Legume">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">legume</rdfs:label>
+		<rdfs:isDefinedBy>the fruit or seeds of a legume plant (such as the peanut or tamarind) used for food</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Macronutrient">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+		<rdfs:label xml:lang="en">macronutrient</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Nutrients body needs in large quantities</rdfs:isDefinedBy>
+		<owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Micronutrient"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Micronutrient">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+		<rdfs:label xml:lang="en">micronutrient</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">vitamins and minerals needed by the body in very small amounts</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Milk">
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Dairy"/>
+		<rdfs:label xml:lang="en">milk</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">fluid that mothers feed their babies</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Mineral">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Micronutrient"/>
+		<rdfs:label xml:lang="en">mineral</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">a valuable or useful chemical substance that is formed naturally in the ground</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nut">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">nut</rdfs:label>
+		<rdfs:isDefinedBy>Interior Kernal part of hard-shelled seed</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+				<owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">nutrient</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">substance or ingredient that promotes growth, provides energy, and maintains life</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Omega3">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Unsaturated"/>
+		<rdfs:label xml:lang="en">omega-3</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">essential fatty acid</rdfs:isDefinedBy>
+		<owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Omega6"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Omega6">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Unsaturated"/>
+		<rdfs:label xml:lang="en">omega-6</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">family of fats</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Pork">
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#FatMaterial"/>
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+		<rdfs:label xml:lang="en">pork</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">a food product made from domestic pig meat</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Potato">
+		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable"/>
+		<rdfs:label xml:lang="en">potato</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">refers to the starchy tuber from the plant species Solanum tuberosum, widely used in global cuisine</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Protein">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Macronutrient"/>
+		<rdfs:label xml:lang="en">protein</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Include many essential biological compounds (such as enzymes, hormones, or antibodies)</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">protein material</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Class of food that is rich in protein</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Saturated">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Fat"/>
+		<rdfs:label xml:lang="en">saturated fat</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Unhealthy Fats</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Seed">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">seed</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Start of plant life</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Spice">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">spice</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Part of plant that gives flavor</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Trans">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Fat"/>
+		<rdfs:label xml:lang="en">trans fat</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Fat found in processed foods</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Unsaturated">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Fat"/>
+		<rdfs:label xml:lang="en">unsaturated fat</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Fats found naturally in food</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+		<rdfs:label xml:lang="en">vegetable</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Plant that is edible</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Vitamin">
+		<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Micronutrient"/>
+		<rdfs:label xml:lang="en">vitamin</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Substances needed for function and developement</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#belongsTo">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label xml:lang="en">belongs to</rdfs:label>
+		<rdfs:isDefinedBy>X belongsTo Y if Y is a type of conceptual entity and X is a physical realization of that concept</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#has">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label xml:lang="en">has</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">X has Y iff Y constitutes a portion of X&apos;s entire composistion</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#hasCalorieValue">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:label xml:lang="en">has caloric value</rdfs:label>
+		<rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie"/>
+		<rdfs:isDefinedBy xml:lang="en">Edible food that contains caloric value.</rdfs:isDefinedBy>
+		<rdfs:range rdf:resource="&xsd;float"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#isA">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label xml:lang="en">is a</rdfs:label>
+		<rdfs:isDefinedBy>X isA Y iff X is a sub-class of Y</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:AnnotationProperty rdf:about="&rdfs;isDefinedBy">
+		<rdfs:label>rdfs:isDefinedBy</rdfs:label>
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&rdfs;label">
+		<rdfs:label>rdfs:label</rdfs:label>
+	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AbdominalMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CoreMuscles"/>
+		<rdfs:label xml:lang="en">abdominal muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Any of the muscles of the abdomen that comprise the abdominal wall; these muscles include the rectus abdominis, the external and internal oblique muscles, the transversus abdominis, and the quadratus abdominis.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AerobicExercise">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+		<rdfs:label xml:lang="en">aerobic exercise</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Endurance type exercises</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ArmMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles"/>
+		<rdfs:label xml:lang="en">arm muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles on your arms</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#BackInjury">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+		<rdfs:label xml:lang="en">back injury</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Trauma to the posterior trunk.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Bicep">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ArmMuscles"/>
+		<rdfs:label xml:lang="en">bicep</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">the large flexor muscle of the front of the upper arm</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#BodyWeightExercise">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#StrengthExercise"/>
+		<rdfs:label xml:lang="en">body weight exercise</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">exercises done with body weight</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#BoneInjury">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+		<rdfs:label xml:lang="en">bone injury</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Trauma to the bone</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ChestMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles"/>
+		<rdfs:label xml:lang="en">chest muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles on your chest</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CoreMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles"/>
+		<rdfs:label xml:lang="en">core muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">The group of muscles in the torso that are involved in maintaining stability and posture, including the rectus abdominis, obliques, and transverse abdominis.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Cycling">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AerobicExercise"/>
+		<rdfs:label xml:lang="en">cycling</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">riding a bike</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Deltoid">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ShoulderMuscles"/>
+		<rdfs:label xml:lang="en">deltoid</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">shoulder muscle</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#DynamicStretching">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#FlexibilityExercise"/>
+		<rdfs:label xml:lang="en">dynamic stretching</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Stretching that involves the person to move</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#burns"/>
+				<owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">exercise</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Activity that requires physical or mental exertion, especially when performed to develop or maintain fitness.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#FlexibilityExercise">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+		<rdfs:label xml:lang="en">flexibility exercise</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Exercise that trains flexibility of muscles, normally helpful for strength training</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Food">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+				<owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">food</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">material consisting essentially of protein, carbohydrate, and fat used in the body of an organism to sustain growth, repair, and vital processes and to furnish energy</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#GlutealMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBodyMuscles"/>
+		<rdfs:label xml:lang="en">gluteal muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles on your glutes</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#GluteusMaximus">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#GlutealMuscles"/>
+		<rdfs:label xml:lang="en">gluteus maximus</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">outer Muscle of butt</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#GluteusMedius">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#GlutealMuscles"/>
+		<rdfs:label xml:lang="en">gluteus medius</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">middle muscle of butt</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Hamstring">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LegMuscles"/>
+		<rdfs:label xml:lang="en">hamstring</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">group of muscles including the biceps femoris, semimembranosus and semitendinosus that extend down the back of the thigh</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury">
+		<rdfs:label xml:lang="en">injury</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Damage inflicted on the body as the direct or indirect result of an external force, with or without disruption of structural continuity.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#IsometricExercise">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#StrengthExercise"/>
+		<rdfs:label xml:lang="en">isometric exercise</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Exercises that involves staying still while applying load to muscle</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LegMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBodyMuscles"/>
+		<rdfs:label xml:lang="en">leg muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles on your legs</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBackMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CoreMuscles"/>
+		<rdfs:label xml:lang="en">lower back muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles on your lower back</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBodyMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
+		<rdfs:label xml:lang="en">lower body muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles located in the lower part of the body, including the quadriceps, hamstrings, calves, and gluteal muscles.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle">
+		<rdfs:label xml:lang="en">muscle</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">One of the contractile organs of the body.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#PullUps">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#BodyWeightExercise"/>
+		<rdfs:label xml:lang="en">pull-ups</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">hang on bar and pull yourself up</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#PushUps">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#BodyWeightExercise"/>
+		<rdfs:label xml:lang="en">push ups</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">exercise where one goes up and down from the plank position</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+				<owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">recipe</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">a set of instructions telling you how to prepare and cook food</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ResistanceExercise">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#StrengthExercise"/>
+		<rdfs:label xml:lang="en">resistance exercise</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Exercise that requires pushing against resistance</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Running">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AerobicExercise"/>
+		<rdfs:label xml:lang="en">running</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">walking but at a faster pace and lifting feet off the ground</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ShoulderMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles"/>
+		<rdfs:label xml:lang="en">shoulder muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles on your shoulders</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Sprain">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+		<rdfs:label xml:lang="en">sprain</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">A stretching or tearing of a ligament.</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#StaticStretching">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#FlexibilityExercise"/>
+		<rdfs:label xml:lang="en">static stretching</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Stretching that involves the person staying still</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#StrengthExercise">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+		<rdfs:label xml:lang="en">strength exercise</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Exercise that trains strength, normally creates heavy strain</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Swimming">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AerobicExercise"/>
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ResistanceExercise"/>
+		<rdfs:label xml:lang="en">swimming</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">the act, art, or sport of one that moves in water and divest</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Triceps">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ArmMuscles"/>
+		<rdfs:label xml:lang="en">triceps</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">A skeletal muscle of the limb comprised of three muscular bundles called the heads that originate seperately and join together.</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
+		<rdfs:label xml:lang="en">upper body muscles</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Muscles specifically above the torso</rdfs:isDefinedBy>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Walking">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AerobicExercise"/>
+		<rdfs:label xml:lang="en">walking</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">the activity of going for a walk</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Weightlifting">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ResistanceExercise"/>
+		<rdfs:label xml:lang="en">weightlifting</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Lifting any sort of weight that is not your bodyweight</rdfs:isDefinedBy>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#affects">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label xml:lang="en">affects</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">What an injury does to a muscle</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#burns">
+		<rdfs:label xml:lang="en">burns</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">how many calories lost when doing a specific exercise</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#isBurnedBy"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#contains">
+		<rdfs:label xml:lang="en">contains</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">includes what it is pointing at in its composition</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#developedBy">
+		<rdfs:label xml:lang="en">developed by</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">What exercise makes a muscle grow</rdfs:isDefinedBy>
+		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#targets"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#formOf">
+		<rdfs:label xml:lang="en">form of</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">Similar to isA but for exercises specifically</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#isBurnedBy">
+		<rdfs:label xml:lang="en">is burned by</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">calories burned by exercise</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#targets">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label xml:lang="en">targets</rdfs:label>
+		<rdfs:isDefinedBy xml:lang="en">An exercise hits a muscle group</rdfs:isDefinedBy>
+	</owl:ObjectProperty>
+	
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Antioxidant">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Mineral">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Vitamin">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Carbohydrate">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Fat">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Fiber">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Protein">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Dairy">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Fruit">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Grain">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Legume">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nut">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Seed">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Spice">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Saturated">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Trans">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Unsaturated">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CoreMuscles">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBodyMuscles">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointProperties>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#belongsTo">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#has">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#isA">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointProperties>
 </rdf:RDF>
