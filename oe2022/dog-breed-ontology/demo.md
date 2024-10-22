@@ -1,364 +1,308 @@
----
----
+
+## Demonstrations
+
+### Live Demo
+
+To run a live demo, load the small individuals ontology (found [here](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/3db93d1b10911829c64fb1d1fda0dd4b033ac006/oe2022/dog-breed-ontology/find-a-pet-individuals-small.rdf)) into your prefered triple store that can run SNAP SPARQL queries. We tested the following queries using the [Protege](https://protege.stanford.edu/) editor running the [Pellet](https://github.com/stardog-union/pellet) reasoner. A reasoner must be run for the queries to work, and Pellet is expected to take approximately 20 min.
+
+### Static Demo
+
+<iframe src="files/queryStaticDemo.pdf" style="width: 100%; height: 600px;border: none;"></iframe>
 
 ## Queries
 
-<p class="message-highlight">List your SPARQL queries to your competency questions along with answers retrieved from your ontology/KG such as the below.</p>
+These queries are meant to be run in SNAP SPARQL, and we used that tab in Protege. They can be run with normal SPARQL, but since that doesn't use the reasoner's inferences most of the queries will not return any results unless the inferences are made explicit.
 
-### Study Match: Is there a study that matches this patient on a feature (s)?
-
-#### Query 1: SPARQL Query to fetch study titles that match a patient's race and gender
+### Query 1: What dog breed would meet the needs of a large family with allergies in a large home?
+Usage scenario covered: A large family consisting of 3 kids is looking for a dog.
 
 ```sparql
-PREFIX resource: <http://semanticscience.org/resource/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
+PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+SELECT ?label ?popularityQuantitativeScore ?childfriendlinesslevel ?exerciseneedslevel 
+	WHERE { ?breed a oe2022-dogs:GoodForChildrenBreed;
+			rdfs:label ?label.
+		?char_profile a oe2022-dogs:BreedCharacteristicProfile;
+			cmns-cls:characterizes ?breed;
+			oe2022-dogs:displaysChildFriendlinessLevel ?childfriendlinesslevel;
+			oe2022-dogs:displaysExerciseNeedsLevel ?exerciseneedslevel.
+        ?popularityRating a oe2022-dogs:BreedPopularityRating;
+			cmns-rt:rates ?breed;
+			cmns-rt:hasRatingScore ?ratingScore.
+		?ratingScore cmns-rt:hasMeasureWithinScale ?popularityQuantitativeScore.
+}
+ORDER BY ?popularityQuantitativeScore
+```
 
-SELECT DISTINCT ?studyTitle ?study
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty [a ?studyIntervention] .
-  {
-    ?subPatient rdfs:subClassOf ?studyArm .
-    ?subPatient rdfs:subClassOf ?restriction .
-    ?restriction a owl:Restriction .
-    ?restriction owl:someValuesFrom ncit:C16352 .
-  }
-  {
-    ?subPatient1 rdfs:subClassOf ?studyArm .
-    ?subPatient1 rdfs:subClassOf ?restriction1 .
-    ?restriction1 a owl:Restriction .
-    ?restriction1 owl:someValuesFrom sio:Male .
-  }
+#### Result 1:
+Top 5 results shown
+
+| label | popularityQuantitativeScore | childfriendlinesslevel | exerciseneedslevel | 
+| --- | --- | --- | --- |
+| labrador retriever | 1.0 | 1.0 | 1.0 |
+| golden retriever | 3.0 | 1.0 | 1.0|
+| german shepherd dog | 4.0 | 1.0 | 0.6 |
+| great dane | 17.0 | 0.6 | 0.4 |
+| pomeranian | 24.0 | 0.2 | 0.4 |
+
+#### Explanation:
+This query is specifically using the family in competancy question 1. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on childfriendliness), and since there are multiple children the dog will need to have high activity level (inferred based on exercise level value).
+
+### Query 2: What dog breeds are good for students living in apartments?
+Usage scenario covered: A group of 4 college students is looking to adopt a dog.
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
+PREFIX cmns-cols: <https://www.omg.org/spec/Commons/Collections/>
+PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
+PREFIX cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel ?rating
+where {
+oe2022-dogs-ind:Question2Student a oe2022-dogs:Student ;
+ cmns-pts:playsRole ?adopter .
+?adopter a oe2022-dogs:PotentialAdopter ; 
+ oe2022-dogs:primarilyResidesAt ?residence . 
+?residence a oe2022-dogs:Residence ;
+ cmns-cols:comprises ?space .
+?space a oe2022-dogs:ApartmentIndoorSpace .
+
+?breed a oe2022-dogs:LowMaintenanceBreed ;
+ a oe2022-dogs:LowExpenseBreed ;
+ a oe2022-dogs:ApartmentFriendlyBreed ;
+ rdfs:label ?breedLabel .
+
+?popularityRating a oe2022-dogs:BreedPopularityRating ;
+ cmns-rt:rates ?breed ;
+ cmns-rt:hasRatingScore ?ratingScore .
+?ratingScore cmns-rt:hasMeasureWithinScale ?rating .
+}
+order by ?rating
+```
+
+#### Result 2:
+
+| breedLabel | rating |
+| --- | --- |
+| japanese chin | 105.0 |
+
+#### Explanation:
+This query specifically uses the person in competancy question 2 and seeing which dogs are a good fit. It returns the dogs that are a good fit based on: apartment friendliness (based on size, barking value, and stranger friendliness value), ability to care for on a low budget (based on size, initial cost, and health susceptability values), and ability to care for on minimal time (based on mental stimulation needing value, exercise needing value, and grooming value). The query returns the japanese chin. 
+
+### Query 3: What dog breeds are good for a farm environment in Texas? 
+Usage scenario covered: A family with small kids are looking for a dog to help around their farm in Texas
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
+PREFIX cmns-cols: <https://www.omg.org/spec/Commons/Collections/>
+PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
+PREFIX cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select Distinct ?breedLabel ?barkingLevel ?barkingLevelSource ?rating
+where {
+oe2022-dogs-ind:Question3FarmOwner a oe2022-dogs:Person ;
+ cmns-pts:playsRole ?adopter .
+?adopter a oe2022-dogs:PotentialAdopter ; 
+ oe2022-dogs:primarilyResidesAt ?residence . 
+?residence a oe2022-dogs:Residence ;
+ cmns-cols:comprises ?space ;
+ oe2022-dogs:isLocatedIn ?state .
+?space a oe2022-dogs:OutdoorSpace .
+?state oe2022-dogs:hasClimateZone ?zone .
+?zone oe2022-dogs:isHotterClimateZoneThan oe2022-dogs:ClimateZone5 .
+
+?breed a oe2022-dogs:HotClimateAppropriateBreed ;
+ a oe2022-dogs:TrainableBreed ;
+ a oe2022-dogs:HighExerciseNeedingBreed ;
+ a oe2022-dogs:DogFriendlyBreed ;
+ a oe2022-dogs:CatFriendlyBreed ;
+ rdfs:label ?breedLabel .
+
+?profile a oe2022-dogs:BreedCharacteristicProfile;
+ cmns-cls:characterizes ?breed;
+ prov:wasAttributedTo ?source ;
+ oe2022-dogs:displaysBarkingLevel ?barkingLevel .
+
+?source rdfs:label ?barkingLevelSource .
+
+?popularityRating a oe2022-dogs:BreedPopularityRating ;
+ cmns-rt:rates ?breed ;
+ cmns-rt:hasRatingScore ?ratingScore .
+?ratingScore cmns-rt:hasMeasureWithinScale ?rating .
+}
+order by ?barkingLevel ?rating
+```
+
+#### Result 3: 
+
+| breedLabel | barkingLevel | barkingLevelSource | rating |
+| --- | --- | --- | --- |
+| australian cattle dog | 0.2 | The American Kennel Club | 51.0 |
+| australian cattle dog | 0.8 | cattle dog VetStreet | 51.0 |
+
+#### Explanation:
+This query specifically uses the person in competancy question 3 and seeing which dogs are a good fit. It returns the dogs that are a good fit based on: the location (since the home is in Texas, a warm climate, the dog must be tollerant to heat), good with other animals (such as cats and dogs which are inferred based on dog/cat friendliness values), able to be trained to be a herder (based on trainability value), and its ability to do a lot of physical work (based on exercise needing value). The query returns 2 results, both for australian cattle dog. This is because barking is important for herding, but the AKC and VetStreet give different values for how loud the dog is.
+
+### Query 4: Is a greyhound a good breed for a large family with multiple pets, including cats and other dogs?
+Usage scenario covered: A large family consisting of 3 kids is looking for a dog; A family just came into a pet store looking to get a new dog
+
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+PREFIX cmns-col: <https://www.omg.org/spec/Commons/Collections/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family a oe2022-dogs:FamilyWithSmallChildren ;
+ oe2022-dogs:ownsPet ?dog ;
+ oe2022-dogs:ownsPet ?cat .
+?dog a oe2022-dogs:Dog .
+?cat a oe2022-dogs:Cat .
+
+oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
+ a oe2022-dogs:DogFriendlyBreed ;
+ a oe2022-dogs:CatFriendlyBreed ;
+ rdfs:label ?breedLabel .
 }
 ```
 
-#### Result 1: Study titles retrieved from the study match query to find all studies in which African American Males are represented
+#### Result 4:
 
-|Study Title|
-|-----------|
-| 10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes|
-| New insulin glargine 300 U/ml compared with glargine 100 U/ml in insulin-nave people with type 2 diabetes on oral glucose-lowering drugs: a randomized controlled trial (EDITION 3) |
-| Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes
-| Patientdirected titration for achieving glycaemic goals using a once daily basal insulin analogue: an assessment of two different fasting plasma glucose targets the TITRATETM study |
-| Glycaemic control and hypoglycaemia with new insulin glargine 300 U/ml versus insulin glargine 100 U/ml in people with type 2 diabetes using basal insulin and oral antihyperglycaemic drugs: the EDITION 2 randomized 12-month trial including 6-month extension. |
-| Glycaemic control and hypoglycaemia with new insulin glargine 300 U/ml versus insulin glargine 100 U/ml in people with type 2 diabetes using basal insulin and oral antihyperglycaemic drugs: the EDITION 2 randomized 12-month trial including 6-month extension |
-| Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH) diet. DASH-Sodium Collaborative Research Group |
-| Telmisartan, ramipril, or both in patients at high risk for vascular events |
-| Combined angiotensin inhibition for the treatment of diabetic nephropathy |
-| Effect of Finerenone on Albuminuria in Patients With Diabetic Nephropathy: A Randomized Clinical Trial |
-| A randomized trial of therapies for type 2 diabetes and coronary artery disease |
-| Effects of combination lipid therapy in type 2 diabetes mellitus |
-| Randomized controlled trial comparing impact on platelet reactivity of twice-daily with once-daily aspirin in people with Type 2 diabetes |
-| Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults with and without glucose disorders: a report from the ALLHAT study |
-| Effects of intensive blood-pressure control in type 2 diabetes mellitus |
+| breedLabel |
+| --- |
+|     |
 
-### Study Limitations: Are there absence or underrepresentation of population groups in this study?
+Nothing is returned. This is expected behavior since a greyhound would not be a good fit for the family. 
 
-#### Query 2: SPARQL Query to fetch study titles and range of values reported for Age
+#### Explanation:
+This query is specifically using the family in competancy question 4 and seeing if a greyhound is an appropriate dog for them. It returns whether or not the breed is a good fit based on some of the potential characteristic of the family: since it's a large family we use good with kids (inferred based on playfullness and child safety values), good with other dogs (inferred based on dog friendliness value), and good with cats (inferred based on cat friendliness value). The query returns nothing, since a greyhound is not a good choice for this type of family.  
+
+### Alternate Query 4: Additional Details
 
 ```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family a oe2022-dogs:FamilyWithSmallChildren .
 
-SELECT DISTINCT ?studyTitle ?propType ?lowerBound ?propVal ?upperBound
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasAttribute | sio:hasProperty ?prop .
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Mean .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a sio:StandardDeviation .
-    ?attr2 sio:hasValue ?propVal2 .
-    BIND((?propVal2  + 2*?propVal) AS ?upperBound) .
-    BIND((?propVal  - 2*?propVal2) AS ?lowerBound) .
-  }
-  UNION
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Median .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a stato:0000164 .
-    ?prop sio:hasAttribute sio:MaximalValue .
-    ?attr2 sio:hasValue ?upperBound .
-    ?prop sio:hasAttribute sio:MinimalValue .
-    ?attr2 sio:hasValue ?lowerBound .
-  }
-  FILTER (?upperBound <= 70) .
-  FILTER (?propType IN (sio:Age)) .
+oe2022-dogs-ind:Greyhound a oe2022-dogs:GoodForChildrenBreed ;
+ rdfs:label ?breedLabel .
 }
 ```
 
-## Result 2: Study Titles and Age Ranges retrieved from the study limitation query to find studies where old adults above 70 are not represented
+#### Result 4.1:
 
-<table style="width:100%">
-  <tr>
-    <th>Study Title </th>
-    <th>Lower Bound</th>
-    <th>Median/Mean Age</th>
-    <th>Upper Bound</th>
-  </tr>
-  <tr>
-    <td>Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH)
-      diet., DASH-Sodium Collaborative Research Group</td>
-    <td> 37</td>
-    <td>47</td>
-    <td>57 </td>
-  </tr>
-  <tr>
-    <td>Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH)
-      diet., DASH-Sodium Collaborative Research Group</td>
-    <td> 39</td>
-    <td>49</td>
-    <td> 59</td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>56.6</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>57.2</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>56.9</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Randomized controlled trial comparing impact on platelet reactivity of twice-daily with once-daily aspirin in
-      people with Type 2 diabetes</td>
-    <td>44 </td>
-    <td>51</td>
-    <td> 58</td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>66</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>66</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-</table>
-
-### Study Quality Evaluation: Are there adequate population sizes and is there a heterogeneity of treatment effect among arms?
-
-#### Query 3: SPARQL query to find large scale studies with intervention arms size being at least 1/3rd the overall cohort size
+| breedLabel |
+| --- |
+| greyhound |
 
 ```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family oe2022-dogs:ownsPet ?cat .
+?cat a oe2022-dogs:Cat .
 
-SELECT DISTINCT ?studyTitle ?medicationLabel ?popSize ?totalCohortSize
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty ?intervention .
-  ?intervention a ?interventionType .
-  ?intervention prov:used ?medication .
-  ?medication rdfs:label ?medicationLabel .
-  ?studyArm sio:hasAttribute ?prop .
-  ?prop a sco:PopulationSize .
-  ?prop sio:hasValue ?popSize .
-  {
-    SELECT DISTINCT ?study (SUM(?popSize) AS ?totalCohortSize)
-    WHERE {
-      ?study sio:hasParticipant ?studyArm .
-      ?studyArm sio:hasAttribute ?prop .
-      ?prop a sco:PopulationSize .
-      ?prop sio:hasValue ?popSize .
-    }
-    GROUP BY ?study
-    HAVING (?totalCohortSize > 1000)
-  }
-  FILTER (?popSize >= (?totalCohortSize/3)) .
-  FILTER (
-    (?interventionType rdfs:subClassOf* provcare:Intervention )
-    && (?medication rdfs:subClassOf* chebi:24436 )
-  ) .
+oe2022-dogs-ind:Greyhound a oe2022-dogs:CatFriendlyBreed ;
+ rdfs:label ?breedLabel .
 }
 ```
 
-#### Result 3: Cohort sizes and individual study arm sizes of clinical trials retrieved from a query to find the studies having a cohort population ≥ 1000 and individual study arm population sizes are at least 1rd ⁄3 the cohort size
+#### Result 4.2:
 
-<table style="width:100%">
-  <tr>
-    <th>Study Title</th>
-    <th>Cohort Size</th>
-    <th>Study Arm</th>
-    <th>Arm Size</th>
-  </tr>
-  <tr>
-    <td>Long-term Metformin Use and Vitamin B12 Deficiency in the Diabetes Prevention Program Outcomes Study</td>
-    <td> 1800 </td>
-    <td> Metformin</td>
-    <td> 753</td>
-  </tr>
-  <tr>
-    <td>Long-term Metformin Use and Vitamin B12 Deficiency in the Diabetes Prevention Program Outcomes Study</td>
-    <td> 1800 </td>
-    <td>Metformin </td>
-    <td> 859</td>
-  </tr>
-  <tr>
-    <td>Effects of combination lipid therapy in type 2 diabetes mellitus </td>
-    <td> 5518 </td>
-    <td> Metformin</td>
-    <td> 2765</td>
-  </tr>
-  <tr>
-    <td> Effects of combination lipid therapy in type 2 diabetes mellitus</td>
-    <td> 5518 </td>
-    <td> Metformin</td>
-    <td> 2753 </td>
-  </tr>
-  <tr>
-    <td> Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes </td>
-    <td> 7637 </td>
-    <td> Metformin</td>
-    <td> 3818</td>
-  </tr>
-  <tr>
-    <td> Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes </td>
-    <td>7637 </td>
-    <td> Metformin</td>
-    <td> 3819 </td>
-  </tr>
-</table>
-
-## Value Retrieval Query for Visualization 
-
-### Star Plot Code
-
-We present a query below that is used to retrieve the central value, and upper and lower bounds for continuous characteristics of a study arm. The characteristics are those that overlap with the patient features that we gather for diabetic patients in NHANES, i.e. age, body mass index, systolic blood pressure, diastolic blood pressure, Hemoglobin A1C. This query is triggered in the faceted browser to generate the visualization.
-This query can flexibly retrieve values for both mean +/- standard deviation, median and interquartile range representations with being agnostic of the expression of the characteristic. Also, if we were to constrain the query for values of other parameters, we would just included them in the filter clause. Hence, this query is a generalized faceted browser query.
-
-To run the code, please follow the steps as below:
-
-1. `cd study-cohort-ontology`
-1. `python3 -m venv env`
-1. `source env/bin/activate`
-1. `pip install -r ../requirements.txt`
-1. `python3 starplot.py`
-
-The star plot code can be browsed at: [https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py)
+| breedLabel |
+| --- |
+|     |
 
 ```sparql
-PREFIX sco: <small><https://idea.tw.rpi.edu/projects/heals/studycohort/></small>
-PREFIX resource: <http://semanticscience.org/resource/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-PREFIX stato: <http://purl.obolibrary.org/obo/STATO_>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+PREFIX oe2022-dogs-ind: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet-individuals/>
+select ?breedLabel
+where {
+oe2022-dogs-ind:Question4Family oe2022-dogs:ownsPet ?dog .
+?dog a oe2022-dogs:Dog .
 
-SELECT DISTINCT ?studyTitle ?propType ?lowerBound ?propVal ?upperBound
-WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasAttribute | sio:hasProperty ?prop .
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Mean .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a sio:StandardDeviation .
-    ?attr2 sio:hasValue ?propVal2 .
-    BIND((?propVal2  + ?propVal) AS ?upperBound) .
-    BIND((?propVal  - ?propVal2) AS ?lowerBound) .
-  }
-  UNION
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Median .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a stato:0000164 .
-    ?prop sio:hasAttribute sio:MaximalValue .
-    ?attr2 sio:hasValue ?upperBound .
-    ?prop sio:hasAttribute sio:MinimalValue .
-    ?attr2 sio:hasValue ?lowerBound .
-  }
-  FILTER  (
-    ?propType IN (
-      sio:Age,
-      ncit:C64796,
-      sco:SystolicBloodPressure,
-      sco:DiastolicBloodPressure
-    )
-  ) .
+oe2022-dogs-ind:Greyhound a oe2022-dogs:DogFriendlyBreed ;
+ rdfs:label ?breedLabel .
 }
 ```
+
+#### Result 4.3:
+
+| breedLabel |
+| --- |
+| greyhound |
+
+#### Explanation: 
+
+For additional details, each part of the query can be run individually. Due to the nature of SNAP SPARQL, ask queries must be written as select queries that return nothing if the result would be false. The first and third queries return the label since greyhound is a good for children breed and a dog friendly breed. The second does not return anything since greyhound is not a cat friendly breed. 
+
+
+### Query 5: What is a cute dog breed that can do well in an apartment that doesn’t get cleaned very often?
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>
+PREFIX cmns-rt: <https://www.omg.org/spec/Commons/Ratings/>
+PREFIX oe2022-dogs: <https://tw.rpi.edu/ontology-engineering/oe2022/find-a-pet/>
+SELECT ?label ?popularityQuantitativeScore ?barkinglevel ?strangerfriendlinesslevel ?sheddinglevel ?droolinglevel ?maxWeight
+	WHERE { ?breed a oe2022-dogs:ApartmentFriendlyBreed;
+			a oe2022-dogs:LowSheddingBreed;
+			a oe2022-dogs:LowDroolingBreed;
+			rdfs:label ?label.
+		?char_profile a oe2022-dogs:BreedCharacteristicProfile;
+			cmns-cls:characterizes ?breed;
+			oe2022-dogs:displaysDroolingLevel ?droolinglevel;
+			oe2022-dogs:displaysSheddingLevel ?sheddinglevel;
+			oe2022-dogs:displaysBarkingLevel ?barkinglevel;
+			oe2022-dogs:displaysStrangerFriendlinessLevel ?strangerfriendlinesslevel.
+		?phys_profile a oe2022-dogs:BreedPhysicalProfile;
+			cmns-cls:characterizes ?breed;
+			oe2022-dogs:hasMaxWeight ?maxWeight.
+		?popularityRating a oe2022-dogs:BreedPopularityRating;
+			cmns-rt:rates ?breed;
+			cmns-rt:hasRatingScore ?ratingScore.
+		?ratingScore cmns-rt:hasMeasureWithinScale ?popularityQuantitativeScore.
+}
+ORDER BY ?popularityQuantitativeScore ?barkinglevel DESC(?strangerfriendlinesslevel) ?sheddinglevel ?droolinglevel 
+```
+
+#### Result 5: 
+
+| label     | popularityQuantitativeScore | barkinglevel | strangerFriendliness | sheddinglevel | droolinglevel | maxWeight | 
+| --- | --- | --- | --- | --- | --- | --- |
+| poodle (standard) | 165.0 | 0.4 | 1.0 | 0.2 | 0.2 | 50.0 |
+
+
+#### Explanation: 
+Query first requires apartment friendly characteristics (which will require a low barking, high stranger friendliness level, and a small or medium sized breed). It also requires that the dog have low shedding and drooling to account for the lack of cleaning in this apartment. It prioritizes our hard apartment constraints (barking and stranger friendliness) but ranks by popularity to account for the "cuteness" expectation.
+
+### Previous Versions
+- [Version 4 (OE 13)](files/queries_v4.txt) CURRENT
+- [Version 3 (OE 12)](files/queries_v3.txt) 
+- [Version 2 (OE 11)](files/queries_v2.txt)
+- [version 1 (OE 10)](files/queries_v1.txt)

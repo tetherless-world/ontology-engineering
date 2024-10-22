@@ -6,7 +6,7 @@
 
 <strong>Guest Lecturer:</strong> Ms. Elisa Kendall - ekendall at thematix dot com
 
-<strong>Course Manager:</strong> Jade Franklin - frankj6 at rpi dot edu, Sola Shirai - shiras2 at rpi dot edu
+<strong>Course Managers: Jade Franklin - frankj6, Kelsey Rook - rookk, Danielle Villa - villad4 at rpi dot edu; Vládia Pinheiro - vladiacelia at gmail dot com </strong>
 
 <br />
 
@@ -41,10 +41,14 @@ To learn how to build human and machine-interpretable definitions of concepts an
 </ul>
 
 <strong>Recommended Books:</strong>
-1. Elisa Kendall and Deborah L. McGuinness.  Ontology Engineering.  Synthesis Lectures on the Semantic Web: Theory and Technology, ISBN: 9781681733081, Morgan & Claypool, 2019.  (http://www.morganclaypoolpublishers.com/catalog_Orig/product_info.php?products_id=1395)
+1. Elisa Kendall and Deborah L. McGuinness.  Ontology Engineering. Synthesis Lectures on Data, Semantics, & Knowledge, Springer Nature Switzerland AG, 2019. [ISBN: softcover - 978-3-031-79485-8, eBook - 978-3-031-79486-5], (Available at https://www.amazon.com/Ontology-Engineering-Synthesis-Semantics-Knowledge/dp/3031794850)
 
-2. Allemang, D., & Hendler, J. Semantic Web for the Working Ontologist, Second Edition: Effective Modeling in RDFS and OWL. Morgan Kaufmann Publishers, Waltham, MA, 2011. [ISBN:978-0-12-385965-5] (https://www.amazon.com/Semantic-Web-Working-Ontologist-Second/dp/0123859654)
+2. Dean Allemang, James Hendler, and Fabien Gandon. Semantic Web for the Working Ontologist, Third Edition: Effective Modeling in Linked Data, RDFS and OWL. Association for Computing Machinery (ACM), Morgan & Claypool Publishers, 2020. [ISBN: 9781450376143], (Available at https://www.amazon.com/Semantic-Web-Working-Ontologist-Effective/dp/1450376142)
 
-3. Tom Heath and Christian Bizer (2011). Linked Data: Evolving the Web into a Global Data Space (1st edition). Synthesis Lectures on the Semantic Web: Theory and Technology, 1:1, 1-136. Morgan & Claypool.
+3. Juan Sequeda and Ora Lassila. Designing and Building Enterprise Knowledge Graphs. Synthesis Lectures on Data, Semantics, & Knowledge. Morgan & Claypool, 2021. [ISBN: 9781636391748]. (Available at https://www.amazon.com/Designing-Enterprise-Knowledge-Synthesis-Semantics/dp/3031007883) (optional)
 
-4. Franz Baader, Diego Calvanese, Deborah L. McGuinness, Daniele Nardi, and Peter F. Patel-Schneider, editors.  The Description Logic Handbook: Theory, Implementation and Applications, Second Edition. Cambridge University Press, June 28, 2010. [ISBN: 978-0521150118].
+4. Tom Heath and Christian Bizer (2011). Linked Data: Evolving the Web into a Global Data Space (1st edition). Synthesis Lectures on the Semantic Web: Theory and Technology, 1:1, 1-136. Morgan & Claypool. (optional)
+
+5. Franz Baader, Ian Horrocks, Carsten Lutz, and Uli Sattler (2017). An Introduction to Description Logic. ISBN: 9781139025355. Cambridge.University Press, June 2017. (optional)
+
+6. Franz Baader, Diego Calvanese, Deborah L. McGuinness, Daniele Nardi, and Peter F. Patel-Schneider, editors.  The Description Logic Handbook: Theory, Implementation and Applications, Second Edition. Cambridge University Press, June 28, 2010. [ISBN: 978-0521150118]. (optional)
