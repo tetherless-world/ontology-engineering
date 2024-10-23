@@ -58,10 +58,11 @@ SELECT DISTINCT ?roomComponent ?newState WHERE {
 |----------------|-----------|
 |                |           |
 
-### Competency Question 2
+<div id="CQ2"></div>
+### Competency Question 2 
 
 #### Question
-How should IEQ parameters, such as temperature, humidity, airflow, etc., be changed to make the multiple occupants feel comfortable in a living room during summer? The occupants’ profile is a 26-year-old son typing something on his laptop (metabolic rate: 1.1, Long-sleeve coveralls, t-shirt: 0.72 clo, the blue area in Figure 5), a 59-year-old mother dancing (metabolic rate: 3.4, Long-sleeve coveralls, t-shirt: 0.72 clo, the grey area in Figure 5), and a 32-year-old daughter cleaning the house (metabolic rate: 2.7, Long-sleeve coveralls, t-shirt: 0.72 clo, the purple area in Figure 5). The outdoor weather is 89°F, relative humidity is 70%, and outdoor air quality index is 34, ‘Good’. Indoor temperature is 85°F and relative humidity is 67%. A fan and a dehumidifier are available.
+How should IEQ parameters, such as temperature, humidity, airflow, etc., be changed to make the multiple occupants feel comfortable in a living room during summer? The occupants’ profile is a 26-year-old daughter typing something on his laptop (metabolic rate: 1.1, Long-sleeve coveralls, t-shirt: 0.72 clo), a 59-year-old mother dancing (metabolic rate: 3.4, Long-sleeve coveralls, t-shirt: 0.72 clo), and a 32-year-old son cleaning the house (metabolic rate: 2.7, Long-sleeve coveralls, t-shirt: 0.72 clo). The outdoor weather is 89°F, relative humidity is 70%, and outdoor air quality index is 34, ‘Good’. Indoor temperature is 85°F and relative humidity is 67%. A fan and a dehumidifier are available.
 
 #### Description
 This query looks for two different actions: one to change the air speed and one to change the relative humidity. Each action must be available for a particular room component that’s, in turn, part of the room individual that’s associated with the relevant competency question. The actions are selected by ensuring that they produce respective resultant environments with the same environment attribute delta signs as the target environment.
@@ -93,11 +94,11 @@ SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState ?relativeHumidityRoomCo
 |------------------------|-------------------|--------------------------------|---------------------------|
 | ind:Question4Fan       | iem:On            | ind:Question4Dehumidifier      | iem:On                    |
 
-
+<div id="CQ3"></div>
 ### Competency Question 3
 
 #### Question
-In a small gym, three people are working out. 22-year-old male Jason walking on a treadmill lifting 45kg bars (metabolic rate: 4.0, wearing shorts & short-sleeve shirt: 0.36 clo, the blue area in Figure 6), 44-year-old male Bob seated with heavy limb movement (metabolic rate: 2.2, wearing typical summer indoor clothing: 0.5 clo, the grey area in Figure 6), and 52-year-old female Sarah walking on a treadmill with 3 mph (metabolic rate: 3.8, wearing a short-sleeve shirt: 0.57 clo, the purple area in Figure 6). How should IEQ parameters, such as temperature, humidity, airflow, etc., be changed to make the multiple occupants feel comfortable in a gym? Indoor air-speed is 0.3m/s, outdoor air-speed is 2m/s, and outdoor air quality index is 38, ‘Good’. An air conditioner is available, and windows are closed.
+In a small gym, three people are working out. 22-year-old male Jason walking on a treadmill lifting 45kg bars (metabolic rate: 4.0, wearing shorts & short-sleeve shirt: 0.36 clo), 44-year-old male Bob seated with heavy limb movement (metabolic rate: 2.2, wearing typical summer indoor clothing: 0.5 clo), and 52-year-old female Sarah walking on a treadmill with 3 mph (metabolic rate: 3.8, wearing a short-sleeve shirt: 0.57 clo). How should IEQ parameters, such as temperature, humidity, airflow, etc., be changed to make the multiple occupants feel comfortable in a gym? Indoor air-speed is 0.3m/s, outdoor air-speed is 2m/s, and outdoor air quality index is 38, ‘Good’. An air conditioner is available, and windows are closed.
 
 #### Description
 This query looks for a single action to change the air speed. The action must be available for a particular room component that’s, in turn, part of the room individual that’s associated with the relevant competency question. The action is selected by ensuring that it produces a resultant environment with the same air speed environment attribute delta sign as the target environment. The query also requires that the resultant environment have a “good” air quality level, which is inferred by the reasoner from the fact that opening a window must produce a resultant environment with the same air quality level as the relevant outdoor environment.
@@ -127,26 +128,29 @@ SELECT DISTINCT ?airSpeedRoomComponent ?airSpeedNewState WHERE {
 ### Competency Question 4
 
 #### Question
-In a room, only one occupant sits on a chair. Is this occupant feel comfortable? The occupant has a preferred temperature range of 72°F to 80°F and a preferred humidity range of 28% to 40%. The room temperature is 75°F and the relative humidity is 55%.
+In a room, only one occupant sits on a chair. Does this occupant feel comfortable? The occupant has a preferred temperature range of 72°F to 80°F, a preferred humidity range of 28% to 40%, and a maximum sound pressure level of 50 dBA in the room. The room temperature is 75°F, the relative humidity is 35%, and the sound pressure level is 64 dBA.
 
 #### Description
-This query corresponds with competency question 6. Given a specific room, it returns the occupants whose corresponding comfort ranges include the environment values and who therefore currently feel comfortable. Since there are no currently comfortable occupants in competency question 6, this query intentionally returns no results.
+This query corresponds with competency question 6 in the use-case document. Given a specific room, it returns the occupants whose corresponding comfort ranges include the environment values and who therefore currently feel comfortable. Since there are no currently comfortable occupants in competency question 6, this query intentionally returns no results.
 
 #### Query
 ```sparql
 
 SELECT ?occupant WHERE {
-	?occupant iem:occupies ind:Question6Room .
-	?occupant iem:hasAirTemperatureComfortRangeLowerBound ?airTemperatureLowerBound .
-	?occupant iem:hasRelativeHumidityComfortRangeLowerBound ?relativeHumidityLowerBound .
-	?occupant iem:hasAirTemperatureComfortRangeUpperBound ?airTemperatureUpperBound .
-	?occupant iem:hasRelativeHumidityComfortRangeUpperBound ?relativeHumidityUpperBound .
-	ind:Question6EnvironmentCurrent iem:hasAirTemperatureValue ?airTemperatureValue .
-	ind:Question6EnvironmentCurrent iem:hasRelativeHumidityValue ?relativeHumidityValue .
-	FILTER(?airTemperatureValue <= ?airTemperatureUpperBound) .
-	FILTER(?airTemperatureValue >= ?airTemperatureLowerBound) .
-	FILTER(?relativeHumidityValue <= ?relativeHumidityUpperBound) .
-	FILTER(?relativeHumidityValue >= ?relativeHumidityLowerBound) .
+  	?occupant iem:occupies ind:Question6Room .
+  	?occupant iem:hasAirTemperatureComfortRangeLowerBound ?airTemperatureLowerBound .
+  	?occupant iem:hasRelativeHumidityComfortRangeLowerBound ?relativeHumidityLowerBound .
+  	?occupant iem:hasAirTemperatureComfortRangeUpperBound ?airTemperatureUpperBound .
+  	?occupant iem:hasRelativeHumidityComfortRangeUpperBound ?relativeHumidityUpperBound .
+	?occupant iem:hasAcousticComfortRangeUpperBound ?soundPressureUpperBound .
+  	ind:Question6EnvironmentCurrent iem:hasAirTemperatureValue ?airTemperatureValue .
+  	ind:Question6EnvironmentCurrent iem:hasRelativeHumidityValue ?relativeHumidityValue .
+	ind:Question6EnvironmentCurrent iem:hasSoundPressureValue ?soundPressureValue .
+  	FILTER(?airTemperatureValue <= ?airTemperatureUpperBound) .
+  	FILTER(?airTemperatureValue >= ?airTemperatureLowerBound) .
+  	FILTER(?relativeHumidityValue <= ?relativeHumidityUpperBound) .
+  	FILTER(?relativeHumidityValue >= ?relativeHumidityLowerBound) .
+	FILTER(?soundPressureValue <= ?soundPressureUpperBound) .
 }
 
 ```
@@ -164,7 +168,7 @@ SELECT ?occupant WHERE {
 In a small office space with three occupants, who are currently comfortable? Occupant 1 has a preferred temperature range of 64°F to 68°F, prefers lower humidity (25% to 35%), and enjoys a light breeze (1 m/s to 2 m/s). Occupant 2 has a preferred temperature range of 70°F to 75°F, is comfortable in varied humidity (30% to 40%), and likes a light to moderate breeze (1 m/s to 3 m/s). Occupant 3 has a preferred temperature range of 68°F to 74°F, is comfortable in most humidity settings (30% to 50%), and prefers no breeze (0 m/s to 1 m/s). The office temperature is 70°F, the relative humidity is 30%, and the air speed is 2 m/s.
 
 #### Description
-This query corresponds with competency question 7. Given a specific room, it returns the occupants whose corresponding comfort ranges include the environment values and who therefore currently feel comfortable.
+This query corresponds with competency question 7 in the use-case document. Given a specific room, it returns the occupants whose corresponding comfort ranges include the environment values and who therefore currently feel comfortable.
 
 #### Query
 ```sparql
@@ -197,8 +201,39 @@ SELECT ?occupant WHERE {
 | Question7Occupant2 |
 
 
+### Competency Question 6
+
+#### Question
+In an office room, an occupant is working on a computer. Indoor luminous intensity at the desk surface is 8 foot-candles (fc), and the lighting is turned off. How should IEQ parameters be changed to make the occupant visually feel comfortable in the room?
+
+#### Description
+This query looks for a single action to change the luminosity. Given a specific room whose luminosity is out of the occupant’s comfort range, the action is selected by ensuring that it produces a resultant environment with the same luminosity environment attribute delta sign as the target environment. 
+
+#### Query
+```sparql
+
+SELECT DISTINCT ?luminosityRoomComponent ?luminosityNewState WHERE {
+  	?luminosityRoomComponent iem:isComponentOf ind:Question8Room .
+  	?luminosityRoomComponent iem:hasAvailableAction ?luminosityAction .
+  	?luminosityAction iem:causesNewState ?luminosityNewState .
+  	?luminosityAction iem:produces ?luminosityResultantEnvironment .
+	?luminosityResultantEnvironment iem:hasLuminositySign ?luminositySign .
+  	ind:Question8EnvironmentTarget iem:hasLuminositySign ?luminositySign .
+}
+
+```
+
+#### Example Results
+
+| ?luminosityRoomComponent | ?luminosityNewState |
+|--------------------------|---------------------|
+| ind:Question8Lighting    | iem:On              |
+
+
 ## Previous Versions
 
+- [Version 5 (OE 15)](https://docs.google.com/document/d/e/2PACX-1vQoX4UBUXWBkhMqsEQ6cyh6O4FSYfaVXiq157-BKLRq3-rT5lNHsl7ZSz5WNVrKgw/pub) CURRENT
+- [Version 4 (OE 13)](https://docs.google.com/document/d/e/2PACX-1vTTJ-TTxoMOH1Opf7Moe5axCr-mlHkdil3DqJoiY7poTRe_u_tLgN82nsMfJ-jzWw/pub)
 - [Version 3 (OE 12)](https://docs.google.com/document/d/e/2PACX-1vT6GlxiJcW366IP9Q9z8ll9hKZYGSwCQGsf3LUQsGIhDnA1J-5PNSHjzCqTdXFpHQ/pub)
 - [Version 2 (OE 11)](https://docs.google.com/document/d/e/2PACX-1vS4y9207qJCeofMWqARRhKca6QTTlc-uFwEmmDvxB6ejVSF0k8LVK3YXE1qalDzsg/pub)
 - [Version 1 (OE 10)](https://docs.google.com/document/d/e/2PACX-1vSia6C1iOhK7PO1pVppIlTEVVB7-Y7DabGDwYeMTdnhEVHru-PrsXzPd_GkEVOqXg/pub)
