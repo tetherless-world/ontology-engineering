@@ -145,6 +145,18 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy"/>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isPreparedBy -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isPreparedBy">
@@ -168,7 +180,7 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#hasCalorieValue">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
         <rdfs:isDefinedBy xml:lang="en">Edible food that contains caloric value.</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">has caloric value</rdfs:label>
@@ -197,9 +209,9 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/FOODON_03400793#Calorie -->
+    <!-- http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount">
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#isBurnedBy"/>
@@ -213,7 +225,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">A measure of energy.</rdfs:isDefinedBy>
-        <rdfs:label xml:lang="en">calorie</rdfs:label>
+        <rdfs:label xml:lang="en">calorie count</rdfs:label>
     </owl:Class>
     
 
@@ -360,7 +372,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">substance or ingredient that promotes growth, provides energy, and maintains life</rdfs:isDefinedBy>
@@ -571,6 +583,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isPreparedBy"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe"/>
             </owl:Restriction>
@@ -596,8 +614,8 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#burns"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie"/>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">Activity that requires physical or mental exertion, especially when performed to develop or maintain fitness.</rdfs:isDefinedBy>
@@ -755,6 +773,34 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
         <rdfs:isDefinedBy xml:lang="en">Muscles specifically above the torso</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">upper body muscles</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">The amount of energy the body uses to perform physical activities</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">The amount of energy gained by our body on consuming any food</rdfs:isDefinedBy>
     </owl:Class>
     
 
@@ -991,7 +1037,7 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Calorie"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Dish"/>
@@ -999,6 +1045,21 @@
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Dish"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
