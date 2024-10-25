@@ -234,10 +234,23 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasAge -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasAge">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label>has age</rdfs:label>
+        <skos:definition>the number of years a person has been alive</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasName -->
 
     <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasName">
         <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/TextDatatype/hasTextValue"/>
+        <rdfs:label>has name</rdfs:label>
+        <skos:definition>deprecated</skos:definition>
     </owl:DatatypeProperty>
     
 
@@ -289,6 +302,16 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder"/>
         <rdfs:label>anxiety disorder</rdfs:label>
         <skos:definition>A group of disorders characterized by a persistent anxiety that can can interfere with daily activities such as job performance, schoolwork, and relationships</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/AugmentationTherapy -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/AugmentationTherapy">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DrugTreatment"/>
+        <rdfs:label>augmentation therapy</rdfs:label>
+        <skos:definition>A treatment strategy that adds a second medication to enhance the effect of the primary antidepressant.</skos:definition>
     </owl:Class>
     
 
@@ -493,6 +516,16 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Illness -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Illness">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/Specification"/>
+        <rdfs:label>illness</rdfs:label>
+        <skos:definition>disease of the body or mind</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Ketamine -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Ketamine">
@@ -506,7 +539,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Lithium -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Lithium">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DrugTreatment"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/MoodStabilizer"/>
         <rdfs:label>lithium</rdfs:label>
         <skos:definition>metal carbonate used as a mood-stabilizing drug</skos:definition>
     </owl:Class>
@@ -547,6 +580,16 @@
         <rdfs:label>mindfulness-based cognitive therapy</rdfs:label>
         <skos:altLabel>MBCT</skos:altLabel>
         <skos:definition>therapeutic treatment that combines mindfulness practices with elements of cognitive therapy to help individuals better understand and manage their thoughts and emotions to reduce mental distress</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/MoodStabilizer -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/MoodStabilizer">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DrugTreatment"/>
+        <rdfs:label>mood stabilizer</rdfs:label>
+        <skos:definition>placeholder</skos:definition>
     </owl:Class>
     
 
@@ -632,8 +675,24 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Person">
         <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Agent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasAge"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>person</rdfs:label>
         <skos:definition>an individual human</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PhysicalIllness -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PhysicalIllness">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Illness"/>
+        <rdfs:label>physical illness</rdfs:label>
+        <skos:definition>state of poor health or disease that affects the body&apos;s functioning and can be observed and diagnosed based on physical symptoms</skos:definition>
     </owl:Class>
     
 
@@ -641,7 +700,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/PsychiatricDisorder">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/Specification"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Illness"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasSymptom"/>
@@ -649,6 +708,7 @@
                 <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Symptom"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse"/>
         <rdfs:label>psychiatric disorder</rdfs:label>
         <skos:definition>behavioral, emotional, or cognitive dysfunction that is not readily controlled by the individual and are related to clinically significant distress or impairment in one or more areas including social, occupational, and interpersonal functioning</skos:definition>
     </owl:Class>
