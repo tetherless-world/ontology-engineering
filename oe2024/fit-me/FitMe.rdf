@@ -38,6 +38,12 @@
     
 
 
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
     <!-- http://www.w3.org/2004/02/skos/core#isDefinedBy -->
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#isDefinedBy"/>
@@ -55,16 +61,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/FOODON_03400793#belongsTo -->
-
-    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#belongsTo">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:label xml:lang="en">belongs to</rdfs:label>
-        <skos:definition>X belongsTo Y if Y is a type of conceptual entity and X is a physical realization of that concept</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/FOODON_03400793#has -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#has">
@@ -75,12 +71,10 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/FOODON_03400793#isA -->
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#affectedBy -->
 
-    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#isA">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:label xml:lang="en">is a</rdfs:label>
-        <skos:definition>X isA Y iff X is a sub-class of Y</skos:definition>
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#affectedBy">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#affects"/>
     </owl:ObjectProperty>
     
 
@@ -105,30 +99,10 @@
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#contains -->
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasStrainValue -->
 
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#contains">
-        <rdfs:label xml:lang="en">contains</rdfs:label>
-        <skos:definition xml:lang="en">includes what it is pointing at in its composition</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#developedBy -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#developedBy">
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#targets"/>
-        <rdfs:label xml:lang="en">developed by</rdfs:label>
-        <skos:definition xml:lang="en">What exercise makes a muscle grow</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#formOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#formOf">
-        <rdfs:label xml:lang="en">form of</rdfs:label>
-        <skos:definition xml:lang="en">Similar to isA but for exercises specifically</skos:definition>
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasStrainValue">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#isStrainValueOf"/>
     </owl:ObjectProperty>
     
 
@@ -142,6 +116,21 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#isStrainValueOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#isStrainValueOf"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#targetedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#targetedBy">
+        <rdfs:label xml:lang="en">targeted by</rdfs:label>
+        <skos:definition>What exercise makes a muscle grow</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#targets -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#targets">
@@ -149,6 +138,20 @@
         <rdfs:label xml:lang="en">targets</rdfs:label>
         <skos:definition xml:lang="en">An exercise hits a muscle group</skos:definition>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#usedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#usedBy">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#uses"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#uses -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#uses"/>
     
 
 
@@ -202,9 +205,57 @@
     <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#hasCalorieValue">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:label xml:lang="en">has caloric value</rdfs:label>
         <skos:definition xml:lang="en">Edible food that contains caloric value.</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasAge -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasAge">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasCaloricBudget -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasCaloricBudget">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasGoal -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasGoal">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasHeight -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasHeight">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasSex -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasSex">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasWeight -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasWeight">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     </owl:DatatypeProperty>
     
 
@@ -242,7 +293,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#hasCalorieValue"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">calorie count</rdfs:label>
@@ -533,6 +584,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Age -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Age">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Biometrics"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ArmMuscles -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ArmMuscles">
@@ -549,6 +608,14 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
         <rdfs:label xml:lang="en">back injury</rdfs:label>
         <skos:definition xml:lang="en">Trauma to the posterior trunk.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Biometrics -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Biometrics">
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CaloricBudget"/>
     </owl:Class>
     
 
@@ -573,6 +640,19 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CaloricBudget -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CaloricBudget">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasCaloricBudget"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ChestMuscles -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ChestMuscles">
@@ -587,6 +667,7 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CoreMuscles">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBodyMuscles"/>
         <rdfs:label xml:lang="en">core muscles</rdfs:label>
         <skos:definition xml:lang="en">The group of muscles in the torso that are involved in maintaining stability and posture, including the rectus abdominis, obliques, and transverse abdominis.</skos:definition>
     </owl:Class>
@@ -715,6 +796,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Height -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Height">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Biometrics"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#IncreaseCardiovascularEndurance -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#IncreaseCardiovascularEndurance">
@@ -752,6 +841,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Light -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Light">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LoseFat -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LoseFat">
@@ -784,6 +881,14 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
         <rdfs:label xml:lang="en">lower body muscles</rdfs:label>
         <skos:definition xml:lang="en">Muscles located in the lower part of the body, including the quadriceps, hamstrings, calves, and gluteal muscles.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Moderate -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Moderate">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
     </owl:Class>
     
 
@@ -830,6 +935,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Sex -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Sex">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Biometrics"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ShoulderMuscles -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ShoulderMuscles">
@@ -860,6 +973,12 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#StrengthExercise -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#StrengthExercise">
@@ -870,12 +989,28 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strenuous -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strenuous">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
         <rdfs:label xml:lang="en">upper body muscles</rdfs:label>
         <skos:definition xml:lang="en">Muscles specifically above the torso</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Weight -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Weight">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Biometrics"/>
     </owl:Class>
     
 
@@ -924,6 +1059,59 @@
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Antioxidant"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Mineral"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Vitamin"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Biometrics"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Dish"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Goal"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CaloricBudget"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Dish"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Goal"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Dish"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Goal"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Light"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Muscle"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Recipe"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -982,22 +1170,6 @@
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Saturated"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Trans"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Unsaturated"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CoreMuscles"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBodyMuscles"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#UpperBodyMuscles"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#belongsTo"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#isA"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
