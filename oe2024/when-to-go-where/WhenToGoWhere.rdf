@@ -76,7 +76,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasCapacity -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasCapacity">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
     </owl:ObjectProperty>
     
 
@@ -114,7 +114,7 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasFacility">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/NationalPark"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
     </owl:ObjectProperty>
     
 
@@ -238,7 +238,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasAcessibility -->
 
     <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasAcessibility">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
     
@@ -302,9 +302,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Amphitheatre -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Amphitheatre">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities"/>
-        <rdfs:label>Amphitheatre</rdfs:label>
-        <skos:definition>A circular or oval open-air venue with seating around a central performance area, often used for events in parks or natural settings.</skos:definition>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
+        <rdfs:label>amphitheatre</rdfs:label>
+        <skos:definition>a circular or oval open-air venue with seating around a central performance area, often used for events in parks or natural settings</skos:definition>
     </owl:Class>
     
 
@@ -312,6 +312,18 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Animal -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Animal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasDietaryHabit"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/DietaryPattern"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasHabit"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Habit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>animal</rdfs:label>
         <skos:definition>a living organism that feeds on organic matter, typically having specialized sense organs and nervous systems and able to move voluntarily</skos:definition>
     </owl:Class>
@@ -382,6 +394,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Carnivore">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/DietaryPattern"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Herbivore"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Omnivore"/>
         <dtc:description>an animal that primarily eats other animals, or meat</dtc:description>
         <rdfs:label>carnivore</rdfs:label>
     </owl:Class>
@@ -410,9 +424,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/ComfortStation -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/ComfortStation">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities"/>
-        <rdfs:label>ComfortStation</rdfs:label>
-        <skos:definition>A facility with restrooms, sinks, and sometimes showers, provided for public use, especially in camping or recreational areas.</skos:definition>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
+        <rdfs:label>comfort station</rdfs:label>
+        <skos:definition>a facility with restrooms, sinks, and sometimes showers, provided for public use, especially in camping or recreational areas</skos:definition>
     </owl:Class>
     
 
@@ -440,17 +454,27 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Dryland">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Terrain"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasClimate"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy"/>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny"/>
+                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy"/>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>dryland</rdfs:label>
         <skos:definition>land characterized by low rainfall, often used for agricultural purposes or recreation in deserts and other arid regions</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities">
-        <rdfs:label>facility</rdfs:label>
-        <skos:definition>improvements and other material things provided for the use, accommodation, and convenience of park visitors</skos:definition>
     </owl:Class>
     
 
@@ -459,7 +483,7 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility">
         <rdfs:label>facility</rdfs:label>
-        <skos:definition>Improvements and other material things provided for the use, accommodation, and convenience of park visitors</skos:definition>
+        <skos:definition>improvements and other material things provided for the use, accommodation, and convenience of park visitors</skos:definition>
     </owl:Class>
     
 
@@ -487,6 +511,7 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Herbivore">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/DietaryPattern"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Omnivore"/>
         <rdfs:label>herbivore</rdfs:label>
         <skos:definition>an animal that only eats plant</skos:definition>
     </owl:Class>
@@ -517,6 +542,21 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Ice-land">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Terrain"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasClimate"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Cold"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Rainy"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>ice-land</rdfs:label>
         <skos:definition>a region characterized by permanent or seasonal ice and snow cover, such as glaciers or polar areas, offering unique ecosystems and recreational opportunities</skos:definition>
     </owl:Class>
@@ -526,9 +566,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/InformationStation -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/InformationStation">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities"/>
-        <rdfs:label>InformationStation</rdfs:label>
-        <skos:definition>A booth or building where visitors can receive assistance, guides, and information regarding their surroundings in parks, campsites, or other public areas.</skos:definition>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
+        <rdfs:label>information station</rdfs:label>
+        <skos:definition>a booth or building where visitors can receive assistance, guides, and information regarding their surroundings in parks, campsites, or other public areas</skos:definition>
     </owl:Class>
     
 
@@ -654,6 +694,21 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Mountain">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Terrain"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasClimate"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Cold"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Rainy"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>mountain</rdfs:label>
         <skos:definition>a large natural elevation of the earth’s surface rising abruptly from the surrounding level, often forming prominent features in parks and wilderness areas</skos:definition>
     </owl:Class>
@@ -707,8 +762,49 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasAnimal"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Animal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasFacility"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasParkStatistic"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/ParkStatistic"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasClimate"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Cold"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Rainy"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasTerrain"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Dryland"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Ice-land"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Mountain"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Wetland"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>national park</rdfs:label>
@@ -759,9 +855,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Parking -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Parking">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facilities"/>
-        <rdfs:label>Parking</rdfs:label>
-        <skos:definition>A space or lot where vehicles can be parked, typically found at entrances to parks, trails, or campsites.</skos:definition>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Facility"/>
+        <rdfs:label>parking</rdfs:label>
+        <skos:definition>a space or lot where vehicles can be parked, typically found at entrances to parks, trails, or campsites</skos:definition>
     </owl:Class>
     
 
@@ -770,6 +866,7 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Rainy">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Climate"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny"/>
         <rdfs:label>rainy</rdfs:label>
         <skos:definition>marked by more rain than usual</skos:definition>
     </owl:Class>
@@ -782,6 +879,16 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Animal"/>
         <rdfs:label>reptile</rdfs:label>
         <skos:definition>a cold-blooded vertebrate animal that has dry, scaly skin and typically lays soft-shelled eggs on land, such as snakes, lizards, and turtles</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Climate"/>
+        <rdfs:label>sunny</rdfs:label>
+        <skos:definition>exposed to, brightened by, or warmed by the sun</skos:definition>
     </owl:Class>
     
 
@@ -819,15 +926,29 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Wetland">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Terrain"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/hasClimate"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Rainy"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Sunny"/>
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>wetland</rdfs:label>
         <skos:definition>an area of land that is saturated with water either permanently or seasonally, such as marshes, swamps, and bogs, providing unique ecosystems</skos:definition>
     </owl:Class>
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Wind -->
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy -->
 
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Wind">
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Windy">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/Climate"/>
         <rdfs:label>windy</rdfs:label>
         <skos:definition>marked by strong wind or by more wind than usual</skos:definition>
