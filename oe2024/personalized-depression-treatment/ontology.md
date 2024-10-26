@@ -16,7 +16,7 @@ representation of the Table 1 data, and so we highlight instances in pink
 ### Study Cohort Ontology (SCO)
 
 **Link:**
-[https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl)
+[https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek7.rdf](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek7.rdf)
 
 **View the ontology documentation at:**
 [https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
