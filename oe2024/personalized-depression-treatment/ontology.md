@@ -13,7 +13,7 @@ representation of the Table 1 data, and so we highlight instances in pink
 
 ## Ontologies
 
-### Study Cohort Ontology (SCO)
+### Personalized Depression Treatment Ontology
 
 **Link:**
 [https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek7.rdf](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek7.rdf)
