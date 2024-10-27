@@ -185,6 +185,12 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMadeOf -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMadeOf">
@@ -612,6 +618,14 @@
     
 
 
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AbCrunches -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AbCrunches">
@@ -983,6 +997,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Egg">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">Hard-shelled reproductive body produced by a common domestic chicken</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">egg</rdfs:label>
     </owl:Class>
@@ -1072,6 +1092,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Fungi">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">Spore producing organisms that feed on living matter</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">fungi</rdfs:label>
     </owl:Class>
@@ -1945,6 +1971,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Beef">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">A piece of boneless meat derived from a cow</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">beef</rdfs:label>
     </owl:Class>
@@ -1965,6 +1997,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Chicken">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">A type of poultry meat, widely consumed and prepared in various ways including roasting or frying</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">chicken</rdfs:label>
     </owl:Class>
@@ -2005,6 +2043,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Fish">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">A gill-bearing aquatic animals lacking limbs with digits used for food</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">fish</rdfs:label>
     </owl:Class>
@@ -2022,10 +2066,24 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial">
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pork -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pork">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="en">A food product made from domestic pig meat (Sus domesticus or Sus scrofa scrofa).</rdfs:isDefinedBy>
         <rdfs:label xml:lang="en">pork</rdfs:label>
     </owl:Class>
@@ -2046,9 +2104,21 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SweetPotato">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CarbohydrateMaterial"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">sweetPotato</rdfs:label>
         <skos:definition xml:lang="en">A starchy root vegetable with a sweet taste, often used in various dishes.</skos:definition>
     </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial"/>
     
 
 
