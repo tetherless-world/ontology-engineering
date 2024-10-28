@@ -2,7 +2,7 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/ConceptMap_SubjectModel.png)
+![Concept Map Subject Model](images/ConceptModel_Journalism.png)
 
 An overview of the main classes and their property associations. Some property associations exist only upon
 representation of the Table 1 data, and so we highlight instances in pink
