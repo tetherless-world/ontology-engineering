@@ -34,19 +34,19 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl">Your Ontology</a></td>
+    <td>(a) <a href="./ontology">PDT Ontology</a></td>
   </tr>
   <tr>
     <td>2. Term List</td>
-    <td>(a) <a href="./knowledge-graph.html">Mapped Vocabularies</a> </td>
+    <td>(a) <a href="./knowledge-graph">Mapped Vocabularies</a> </td>
   </tr>
   <tr>
     <td>2. Competency Questions</td>
-    <td>(a) <a href="./knowledge-graph.html">SPARQL Queries</a> </td>
+    <td>(a) <a href="./knowledge-graph">SPARQL Queries</a> </td>
   </tr>
   <tr>
     <td>3. Presentations:</td>
-    <td>(a) <a href="./ontology-resource.html#ontologyreused">Project presentations during class</a> </td>
+    <td>(a) <a href="./presentations">Project presentations during class</a> </td>
   </tr>
 </table>
 
