@@ -17,6 +17,6 @@ WHERE {
   BIND ("[ÁáÇçÉéÍíÕõÖöäÄèÈμΜσΣʻa-zA-Z\\\\;'?@$%#&:/\"<*>,._+÷=)(\\[\\]{}0-9\n\t -]" AS ?reg)
   BIND (REPLACE (xsd:string (?o), ?reg, "")  AS ?bads)
   FILTER (?bads != "")
-  BIND (concat ("WARN:", xsd:string(?o), " has a bad character |", ?bads, "|")
+  BIND (concat ("WARN:", xsd:string(?o), " has a nonstandard character |", ?bads, "|")
 	  AS ?error)
  } 
