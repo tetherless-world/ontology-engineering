@@ -11,9 +11,10 @@ We provide you with a template of what we want to see from your project pages, t
 
 ## Abstract
 
-<p class="message-highlight">Overview of project goes here, an example is below</p>
+<p class="message-highlight">Overview</p>
 
-Treatment recommendations within Clinical Practice Guidelines (CPGs) are largely based on findings from clinical trials, referred here as research studies, that are often based on highly selective clinical populations, referred here as study cohorts. In applying CPG recommendations in clinical practice, physicians will need to understand how well their patient population matches the characteristics of those in the study cohort, and thus are confronted with the challenges of locating the study cohort information and making the analytic comparison. To address these challenges, we develop an ontology-enabled prototype workflow, which exposes the population descriptions in research studies in a declarative manner, with the ultimate goal of allowing physicians to better understand the applicability and generalizability of treatment recommendations. We build a Study Cohort Ontology (SCO) to encode the vocabulary of descriptions of study populations, that are often reported in the first table in the published work, thus often referred to as Table 1. We leverage the well-used Semanticscience Integrated Ontology (SIO) for defining property associations between classes. Further, we model the key components of Table 1s, i.e., collections of study subjects, subject characteristics and statistical measures in RDF knowledge graphs. Utilizing a tool we developed, medical professional can perform population analysis and cohort similarity assessment to determine the applicability of a study population to the clinical population. Our semantic approach to make study populations visible by standardized representations of Table 1s, allows users to quickly derive clinically relevant inferences about study populations.</p>
+FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.
+</p>
 
 ## Workflow Diagram
 
