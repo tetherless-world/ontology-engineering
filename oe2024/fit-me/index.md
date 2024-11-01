@@ -11,22 +11,17 @@ We provide you with a template of what we want to see from your project pages, t
 
 ## Abstract
 
-<p class="message-highlight">Overview</p>
+<p class="message-highlight">Overview </p>
 
 FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.
 </p>
 
 ## Workflow Diagram
 
-<iframe src="files/CohortAnalyticsWorkflowDiagramISWCPaper.pdf" style="width:100%; height: 500px"></iframe>
+<iframe src="files/WorkflowDiagram.png" style="width:100%; height: 500px"></iframe>
 
-<p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
-
-Our knowledge representation approach backed by our study cohort ontology and the knowledge graphs instantiating Table 1 data, are built to support analytical applications to determine applicability of a study population to a patient. Our [data sources](./papers-used.html) include cited research studies from the pharmacologic and cardiovascular complications chapters of the ADA Standards of Medical Care guidelines, and patient records selected from the NHANES 2015-2016 questionnaire. Our population analysis scenarios are designed to determine if studies match, if there are limitations and to evaluate their quality. Additionally, we visualize similarity of a group of study subjects (arm) to a patient.
 
 ## List of Resources
-
-List resources you think a reader would benefit from to use your project. We list some examples you could make available below.
 
 <table>
   <tr>
@@ -35,7 +30,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl">Your Ontology</a></td>
+    <td>(a) <a href="https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf">Our Ontology</a></td>
   </tr>
   <tr>
     <td>2. Term List</td>
@@ -53,5 +48,3 @@ List resources you think a reader would benefit from to use your project. We lis
 
 ## Acknowledgements
 
-<p class="message-highlight">Please acknowledge people who have helped you in this work. An example is below</p><br/>
-This work is undertaken as a part of the [Health Empowerement by Analytics, Learning and Semantics (HEALS)](https://science.rpi.edu/biology/news/ibm-and-rensselaer-team-research-chronic-diseases-cognitive-computing) project , and is partially supported by IBM Research AI through the AI Horizons Network. We thank our colleagues from IBM Research, Dan Gruen, Morgan Foreman and Ching-Hua Chen, and from RPI, John Erickson, Alexander New, Neha Keshan and Rebecca Cowan, who provided insight and expertise that greatly assisted the research.
