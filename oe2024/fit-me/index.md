@@ -18,7 +18,7 @@ FitMe is a personalized health assistant that empowers users to achieve their un
 
 ## Workflow Diagram
 
-<iframe src="files/WorkflowDiagram.png" style="width:100%; height: 500px"></iframe>
+<iframe src="files/WorkflowDiagram.pdf" style="width:100%; height: 500px"></iframe>
 
 
 ## List of Resources
