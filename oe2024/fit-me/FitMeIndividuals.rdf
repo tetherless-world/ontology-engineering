@@ -1,281 +1,169 @@
-<?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/anirban/ontologies/2024/9/food/"
-     xml:base="http://www.semanticweb.org/anirban/ontologies/2024/9/food/"
-     xmlns:dct="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:dct1="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:dct:"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:FitMe="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#"
-     xmlns:terms="http://purl.org/dc/terms/"
-     xmlns:zzzns0001="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#"
-     xmlns:Individuals="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/"
-     xmlns:FOODON_03400793="http://purl.obolibrary.org/obo/FOODON_03400793#">
-    <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals">
-        <owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe"/>
-    </owl:Ontology>
-    
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY FOODON_03400793 "http://purl.obolibrary.org/obo/FOODON_03400793#">
+	<!ENTITY FitMe "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#">
+	<!ENTITY Individuals "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/">
+	<!ENTITY dct "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:">
+	<!ENTITY dct1 "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:dct:">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY terms "http://purl.org/dc/terms/">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+	<!ENTITY zzzns0001 "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals"
+	xmlns="http://www.semanticweb.org/anirban/ontologies/2024/9/food/"
+	xmlns:FOODON_03400793="http://purl.obolibrary.org/obo/FOODON_03400793#"
+	xmlns:FitMe="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#"
+	xmlns:Individuals="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/"
+	xmlns:dct="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:"
+	xmlns:dct1="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:dct:"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:terms="http://purl.org/dc/terms/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:zzzns0001="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals">
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&FOODON_03400793;Ingredient">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasDietMaterial"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial">
+							</rdf:Description>
+							<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&FitMe;hasStrainValue">
+		<rdfs:domain rdf:resource="&FitMe;Exercise"/>
+		<rdfs:range rdf:resource="&FitMe;Strain"/>
+	</rdf:Description>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;ChickenBreastRaw1">
+		<rdf:type rdf:resource="&FitMe;ChickenBreast"/>
+		<FOODON_03400793:hasCalorieValue rdf:datatype="&xsd;decimal">227</FOODON_03400793:hasCalorieValue>
+		<FitMe:hasCarbohydratePercent rdf:datatype="&xsd;decimal">0</FitMe:hasCarbohydratePercent>
+		<FitMe:hasFatPercent rdf:datatype="&xsd;decimal">21</FitMe:hasFatPercent>
+		<FitMe:hasMassGrams rdf:datatype="&xsd;decimal">189</FitMe:hasMassGrams>
+		<FitMe:hasProteinPercent rdf:datatype="&xsd;decimal">79</FitMe:hasProteinPercent>
+		<dct:creator>Anirban</dct:creator>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;CottageCheese1">
+		<rdf:type rdf:resource="&FitMe;CottageCheese"/>
+		<FOODON_03400793:hasCalorieValue rdf:datatype="&xsd;decimal">107</FOODON_03400793:hasCalorieValue>
+		<FitMe:hasCarbohydratePercent rdf:datatype="&xsd;decimal">14</FitMe:hasCarbohydratePercent>
+		<FitMe:hasFatPercent rdf:datatype="&xsd;decimal">40</FitMe:hasFatPercent>
+		<FitMe:hasMassGrams rdf:datatype="&xsd;decimal">109</FitMe:hasMassGrams>
+		<FitMe:hasProteinPercent rdf:datatype="&xsd;decimal">46</FitMe:hasProteinPercent>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;GreekYogurt1">
+		<rdf:type rdf:resource="&FitMe;GreekYogurt"/>
+		<FOODON_03400793:hasCalorieValue rdf:datatype="&xsd;decimal">100</FOODON_03400793:hasCalorieValue>
+		<FitMe:hasCarbohydratePercent rdf:datatype="&xsd;decimal">25</FitMe:hasCarbohydratePercent>
+		<FitMe:hasFatPercent rdf:datatype="&xsd;decimal">6</FitMe:hasFatPercent>
+		<FitMe:hasMassGrams rdf:datatype="&xsd;decimal">170</FitMe:hasMassGrams>
+		<FitMe:hasProteinPercent rdf:datatype="&xsd;decimal">69</FitMe:hasProteinPercent>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;Light">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;LightCalories">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;Moderate">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;ModerateCalories">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;OliveOil1">
+		<rdf:type rdf:resource="&FitMe;OliveOil"/>
+		<FOODON_03400793:hasCalorieValue rdf:datatype="&xsd;decimal">119</FOODON_03400793:hasCalorieValue>
+		<FitMe:hasCarbohydratePercent rdf:datatype="&xsd;decimal">0</FitMe:hasCarbohydratePercent>
+		<FitMe:hasFatPercent rdf:datatype="&xsd;decimal">100</FitMe:hasFatPercent>
+		<FitMe:hasMassGrams rdf:datatype="&xsd;decimal">14</FitMe:hasMassGrams>
+		<FitMe:hasProteinPercent rdf:datatype="&xsd;decimal">0</FitMe:hasProteinPercent>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;RawEgg1">
+		<rdf:type rdf:resource="&FitMe;Egg"/>
+		<FOODON_03400793:hasCalorieValue rdf:datatype="&xsd;decimal">72</FOODON_03400793:hasCalorieValue>
+		<FitMe:hasCarbohydratePercent rdf:datatype="&xsd;decimal">2</FitMe:hasCarbohydratePercent>
+		<FitMe:hasFatPercent rdf:datatype="&xsd;decimal">62</FitMe:hasFatPercent>
+		<FitMe:hasMassGrams rdf:datatype="&xsd;decimal">50</FitMe:hasMassGrams>
+		<FitMe:hasProteinPercent rdf:datatype="&xsd;decimal">36</FitMe:hasProteinPercent>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;Rice1">
+		<rdf:type rdf:resource="&FitMe;Rice"/>
+		<FOODON_03400793:hasCalorieValue rdf:datatype="&xsd;decimal">205</FOODON_03400793:hasCalorieValue>
+		<FitMe:hasCarbohydratePercent rdf:datatype="&xsd;decimal">89</FitMe:hasCarbohydratePercent>
+		<FitMe:hasFatPercent rdf:datatype="&xsd;decimal">2</FitMe:hasFatPercent>
+		<FitMe:hasMassGrams rdf:datatype="&xsd;decimal">158</FitMe:hasMassGrams>
+		<FitMe:hasProteinPercent rdf:datatype="&xsd;decimal">9</FitMe:hasProteinPercent>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;Running1">
+		<rdf:type rdf:resource="&FitMe;Running"/>
+		<FitMe:burns rdf:resource="&zzzns0001;SignificantCalories"/>
+		<FitMe:hasStrainValue rdf:resource="&zzzns0001;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;SetOfBentOverBarbellRows1">
+		<rdf:type rdf:resource="&FitMe;SetOfBentOverBarbellRows"/>
+		<FitMe:hasStrainValue rdf:resource="&zzzns0001;LightCalories"/>
+		<FitMe:hasStrainValue rdf:resource="&zzzns0001;Strenuous"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;SetOfLateralRaises1">
+		<rdf:type rdf:resource="&FitMe;SetOfLateralRaises"/>
+		<FitMe:burns rdf:resource="&zzzns0001;LightCalories"/>
+		<FitMe:hasStrainValue rdf:resource="&zzzns0001;Moderate"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;SetOfPushUps1">
+		<rdf:type rdf:resource="&FitMe;SetOfPushups"/>
+		<FitMe:burns rdf:resource="&zzzns0001;ModerateCalories"/>
+		<FitMe:hasStrainValue rdf:resource="&zzzns0001;Moderate"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;SignificantCalories">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&zzzns0001;Strenuous">
+		<rdf:type rdf:resource="&FitMe;Strain"/>
+	</owl:NamedIndividual>
+	
+	<owl:AnnotationProperty rdf:about="&dct;dct:creator">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct1;dct:dct:creator">
+	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="&Individuals;FatMaterial">
+	</owl:Class>
+	
+	<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType">
+		<rdfs:domain rdf:resource="&FOODON_03400793;Ingredient"/>
+	</rdf:Description>
 
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:creator -->
-
-    <owl:AnnotationProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:creator"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:dct:creator -->
-
-    <owl:AnnotationProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#dct:dct:creator"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasStrainValue -->
-
-    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#hasStrainValue">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType -->
-
-    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType">
-        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
-    </rdf:Description>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient -->
-
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasDietMaterial"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/FatMaterial -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/FatMaterial"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#ChickenBreastRaw1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#ChickenBreastRaw1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ChickenBreast"/>
-        <FOODON_03400793:hasCalorieValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">227</FOODON_03400793:hasCalorieValue>
-        <FitMe:hasCarbohydratePercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</FitMe:hasCarbohydratePercent>
-        <FitMe:hasFatPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">21</FitMe:hasFatPercent>
-        <FitMe:hasMassGrams rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">189</FitMe:hasMassGrams>
-        <FitMe:hasProteinPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">79</FitMe:hasProteinPercent>
-        <dct:creator>Anirban</dct:creator>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#CottageCheese1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#CottageCheese1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#CottageCheese"/>
-        <FOODON_03400793:hasCalorieValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">107</FOODON_03400793:hasCalorieValue>
-        <FitMe:hasCarbohydratePercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14</FitMe:hasCarbohydratePercent>
-        <FitMe:hasFatPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40</FitMe:hasFatPercent>
-        <FitMe:hasMassGrams rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">109</FitMe:hasMassGrams>
-        <FitMe:hasProteinPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">46</FitMe:hasProteinPercent>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#GreekYogurt1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#GreekYogurt1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#GreekYogurt"/>
-        <FOODON_03400793:hasCalorieValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100</FOODON_03400793:hasCalorieValue>
-        <FitMe:hasCarbohydratePercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25</FitMe:hasCarbohydratePercent>
-        <FitMe:hasFatPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6</FitMe:hasFatPercent>
-        <FitMe:hasMassGrams rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">170</FitMe:hasMassGrams>
-        <FitMe:hasProteinPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">69</FitMe:hasProteinPercent>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Light -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Light"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#LightCalories -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#LightCalories"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Moderate -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Moderate"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#ModerateCalories -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#ModerateCalories"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#OliveOil1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#OliveOil1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#OliveOil"/>
-        <FOODON_03400793:hasCalorieValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">119</FOODON_03400793:hasCalorieValue>
-        <FitMe:hasCarbohydratePercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</FitMe:hasCarbohydratePercent>
-        <FitMe:hasFatPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100</FitMe:hasFatPercent>
-        <FitMe:hasMassGrams rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14</FitMe:hasMassGrams>
-        <FitMe:hasProteinPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</FitMe:hasProteinPercent>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#RawEgg1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#RawEgg1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Egg"/>
-        <FOODON_03400793:hasCalorieValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">72</FOODON_03400793:hasCalorieValue>
-        <FitMe:hasCarbohydratePercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</FitMe:hasCarbohydratePercent>
-        <FitMe:hasFatPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">62</FitMe:hasFatPercent>
-        <FitMe:hasMassGrams rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50</FitMe:hasMassGrams>
-        <FitMe:hasProteinPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">36</FitMe:hasProteinPercent>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Rice1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Rice1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Rice"/>
-        <FOODON_03400793:hasCalorieValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">205</FOODON_03400793:hasCalorieValue>
-        <FitMe:hasCarbohydratePercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">89</FitMe:hasCarbohydratePercent>
-        <FitMe:hasFatPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</FitMe:hasFatPercent>
-        <FitMe:hasMassGrams rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">158</FitMe:hasMassGrams>
-        <FitMe:hasProteinPercent rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9</FitMe:hasProteinPercent>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Running1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Running1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Running"/>
-        <FitMe:burns rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SignificantCalories"/>
-        <FitMe:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Light"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SetOfBentOverBarbellRows1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SetOfBentOverBarbellRows1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#SetOfBentOverBarbellRows"/>
-        <FitMe:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#LightCalories"/>
-        <FitMe:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Strenuous"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SetOfLateralRaises1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SetOfLateralRaises1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#SetOfLateralRaises"/>
-        <FitMe:burns rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#LightCalories"/>
-        <FitMe:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Moderate"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SetOfPushUps1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SetOfPushUps1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#SetOfPushups"/>
-        <FitMe:burns rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#ModerateCalories"/>
-        <FitMe:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Moderate"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SignificantCalories -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#SignificantCalories"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Strenuous -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Strenuous">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Strain"/>
-    </owl:NamedIndividual>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
