@@ -2,7 +2,7 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/OE_6_FitMe_Concept_Map.jpg)
+![Concept Map Subject Model](images/OE_8_FitMe_Concept_Map.jpg)
 
 An overview of the main classes and their property associations. Some property associations exist only upon
 representation of the Table 1 data, and so we highlight instances in pink
