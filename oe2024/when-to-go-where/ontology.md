@@ -2,12 +2,13 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/model_v3.PNG)
+![Concept Map Subject Model](images/WhenToGoWhere.drawio.png)
 
 An overview of the main classes.
 
 ### Previous versions
 
+[Version 4 (OE 8)](images/WhenToGoWhere.drawio.png)
 [Version 3 (OE 6)](images/model_v3.PNG)
 [Version 2 (OE 5)](images/updated_model.png)
 [Version 1 (OE 5)](images/Model.png)
