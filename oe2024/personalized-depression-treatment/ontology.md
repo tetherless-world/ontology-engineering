@@ -2,14 +2,15 @@
 
 ## Conceptual Model
 
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTKf97PhTPJl4P0H46J_9uDp2wto6eaxaNrJXGjX7lq0z0CeHO45ZNemQx3ewr1_qie1A_kiVNid19G/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+Week 6 Versions:
 [Patient / Illness Model](images/ConceptModel/w6PatientModel.png)
 
 [Treatment Model](images/ConceptModel/w6TreatmentModel.png)
 
 [Genetics Model](images/ConceptModel/w6GeneticModel.png)
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
 
 ## Ontologies
 
