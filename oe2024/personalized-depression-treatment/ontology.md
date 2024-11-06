@@ -24,49 +24,46 @@ Week 6 Versions:
 
 #### Primary Classes and Definitions
 
-1. Research Study
-    - Definition: A scientific investigation that involves testing a hypothesis
-    - Immediate Superclass: None
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: Hasco
-1. Clinical Trial
-    - Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
-    - Immediate Superclass: Research Study
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: National Cancer Institute Thesarus (NCIT)
-1. Cohort
-    - Definition: A cohort is the group of subjects enrolled in a study
-    - Immediate Superclass: None
-    - Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: The Statistical Methods Ontology (STATO)
-1. Study Arm
-    - Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
-    or no intervention, according to the trial's protocol
-    - Immediate Superclass: Cohort
-    - Example: Metformin Conventional Therapy Arm
+1. Patient
+    - Definition: role of a person receiving or registered to receive medical treatment
+    - Immediate Superclass: party role
+    - Example: John Doe, a 45-year-old man admitted to the hospital for suicidal ideations.
     - Reused From: None
-1. Study Subject
-    - Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
-    professional or institution with the purpose to receive medical care when necessary
-    - Immediate Superclass: None
-    - Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: SemanticScience Integrated Ontology (SIO)
-1. Study Intervention
-    - Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
-    procedures, vaccines, and other products that are either investigational or already available
-    - Immediate Superclass: None
-    - Example: Metformin
-    - Reused From: ProvCaRe
-1. Subject Characteristic
-    - Definition: Property that summarizes important attributes of the participants enrolled in a study
-    - Immediate Superclass: None
-    - Example: Age
+2. Treatment
+    - Definition: something used to manage, alleviate, or cure a medical condition or disease
+    - Immediate Superclass: functional role
+    - Example: Cognitive Behavioral Therapy
     - Reused From: None
-1. Statistical Measure
-    - Definition: a standard unit used to express the size, amount, or degree of something
-    - Immediate Superclass: None
-    - Example: Mean
-    - Reused From: ProvCaRe
+3. Condition
+    - Definition: state of being, such as a state of health
+    - Immediate Superclass: situation
+    - Example: Major Depressive Disorder 
+    - Reused From: Identification of Medicinal Products (IDMP)
+4. Diagnosis
+    - Definition: disorder with which a patient has been identified as having
+    - Immediate Superclass: specification
+    - Example: persistent depressive disorder
+    - Reused From: None
+5. Medicinal Product
+    - Definition: specification for a pharmaceutical product or combination of pharmaceutical products that may be administered to human beings (or animals) for treating or preventing disease, with the aim/purpose of making a medical diagnosis or to restore, correct or modify physiological functions
+    - Immediate Superclass: specification
+    - Example: Fluoxetine
+    - Reused From: Identification of Medicinal Products (IDMP)
+6. Gene
+    - Definition: distinct sequence of nucleotides forming part of a chromosome, the order of which determines the order of monomers in a polypeptide or nucleic acid molecule which a cell (or virus) may synthesize
+    - Immediate Superclass: constituent
+    - Example: SLC6A4
+    - Reused From: None
+7. Symptom
+    - Definition: physical or mental feature which is regarded as indicating a condition of disease
+    - Immediate Superclass: aspect
+    - Example: anhedonia
+    - Reused From: None
+8. Undesirable Effect
+    - Definition: specification of any potential undesirable side effect, adverse reaction or event, complication, or other similar potential consequence associated with the medicinal product as authorized or under investigation
+    - Immediate Superclass: specification
+    - Example: Nausea
+    - Reused From: Identification of Medicinal Products (IDMP)
 
 
 ### Accompanying Suite of Ontologies
