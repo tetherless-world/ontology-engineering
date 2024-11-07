@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY Locations "https://www.omg.org/spec/Commons/Locations/">
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY oe-wtgw "https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/">
@@ -12,6 +13,7 @@
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/"
 	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/"
+	xmlns:Locations="https://www.omg.org/spec/Commons/Locations/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:oe-wtgw="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
@@ -32,9 +34,16 @@
 		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"/>
 	</owl:Ontology>
 	
+	<owl:NamedIndividual rdf:about="&oe-wtgw-ind;AcadiaLocation">
+		<rdf:type rdf:resource="&Locations;PhysicalLocation"/>
+		<Locations:hasLatitude rdf:datatype="&xsd;decimal">44.33</Locations:hasLatitude>
+		<Locations:hasLongitude rdf:datatype="&xsd;decimal">-68</Locations:hasLongitude>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-wtgw-ind;AcadiaNationalPark">
 		<rdf:type rdf:resource="&oe-wtgw;NationalPark"/>
 		<rdfs:label>Acadia National Park</rdfs:label>
+		<Locations:hasLocation rdf:resource="&oe-wtgw-ind;AcadiaLocation"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-wtgw-ind;AlumCaveTrail">
