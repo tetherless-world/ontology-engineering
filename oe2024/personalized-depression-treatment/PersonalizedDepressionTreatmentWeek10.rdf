@@ -301,6 +301,15 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasTreatmentEffectiveness -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasTreatmentEffectiveness">
+        <rdfs:label>has treatment effectiveness</rdfs:label>
+        <skos:definition>the effectiveness of a given treatment</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasUndesirableEffect -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasUndesirableEffect">
@@ -1670,7 +1679,7 @@ The convention applied for naming a medicinal product can differ between medicin
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Tolerability">
         <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/Specification"/>
-        <rdfs:label>Tolerability</rdfs:label>
+        <rdfs:label>tolerability</rdfs:label>
         <skos:definition>degree to which a patient can endure the side effects of a treatment without severe discomfort or the need to discontinue use</skos:definition>
     </owl:Class>
     
@@ -1712,6 +1721,16 @@ The convention applied for naming a medicinal product can differ between medicin
         <dct:description>something that serves to mitigate the symptoms of a medical disorder</dct:description>
         <rdfs:label>treatment</rdfs:label>
         <skos:definition>something used to manage, alleviate, or cure a medical condition or disease</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentEffectiveness -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentEffectiveness">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/Specification"/>
+        <rdfs:label>treatment effectiveness</rdfs:label>
+        <skos:definition>Degree to which a treatment is successful</skos:definition>
     </owl:Class>
     
 
@@ -1766,14 +1785,21 @@ The convention applied for naming a medicinal product can differ between medicin
         <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Documents/Specification"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/isResponseOf"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Patient"/>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasTreatmentEffectiveness"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentEffectiveness"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/isResponseTo"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Treatment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/isResponseOf"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Patient"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>treatment response</rdfs:label>
@@ -1979,6 +2005,22 @@ The convention applied for naming a medicinal product can differ between medicin
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-L -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-L">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DiseaseAssociatedGene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-S -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-S">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/DiseaseAssociatedGene"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Sertraline -->
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Sertraline">
@@ -2024,6 +2066,30 @@ The convention applied for naming a medicinal product can differ between medicin
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Norepinephrine-DopamineReuptakeInhibitor"/>
         <cmns-rlcmp:isPlayedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Bupropion"/>
         <rdfs:label>bupropion</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/high -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/high">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentEffectiveness"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/low -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/low">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentEffectiveness"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/medium -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/medium">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentEffectiveness"/>
     </owl:NamedIndividual>
     
 
