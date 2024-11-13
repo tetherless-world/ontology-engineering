@@ -247,7 +247,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasResponse -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasResponse">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Patient"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse"/>
         <rdfs:label>has response</rdfs:label>
         <skos:definition>patients can have responses to treatments. Ideally positive responses.</skos:definition>
@@ -1016,6 +1015,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Gene">
         <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Collections/Constituent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/hasResponse"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>gene</rdfs:label>
         <skos:definition>distinct sequence of nucleotides forming part of a chromosome, the order of which determines the order of monomers in a polypeptide or nucleic acid molecule which a cell (or virus) may synthesize</skos:definition>
     </owl:Class>
@@ -1992,6 +1997,71 @@ The convention applied for naming a medicinal product can differ between medicin
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/MedicinalProduct"/>
         <hasName>Paxil</hasName>
         <rdfs:label>paroxetine</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-L -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-L">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Gene"/>
+        <hasResponse rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SSRI-High"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-S -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SLC6A4-S">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Gene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SSRI-High -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SSRI-High">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse"/>
+        <hasTreatmentEffectiveness rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/high"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Citalopram"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Escitalopram"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Fluoxetine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Fluvoxamine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Paroxetine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Sertraline"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Vilazodone"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SSRI-Low -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SSRI-Low">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse"/>
+        <hasTreatmentEffectiveness rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/low"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Citalopram"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Escitalopram"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Fluoxetine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Fluvoxamine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Paroxetine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Sertraline"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Vilazodone"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SSRI-Medium -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/SSRI-Medium">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/TreatmentResponse"/>
+        <hasTreatmentEffectiveness rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/medium"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Citalopram"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Escitalopram"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Fluoxetine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Fluvoxamine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Paroxetine"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Sertraline"/>
+        <isResponseTo rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/Vilazodone"/>
     </owl:NamedIndividual>
     
 
