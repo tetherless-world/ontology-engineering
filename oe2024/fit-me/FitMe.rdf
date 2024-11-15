@@ -274,7 +274,14 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#hasCalorieValue">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment xml:lang="en">this is not needed as hasValue exists. But keeping it in just in case.</rdfs:comment>
         <rdfs:label xml:lang="en">has caloric value</rdfs:label>
