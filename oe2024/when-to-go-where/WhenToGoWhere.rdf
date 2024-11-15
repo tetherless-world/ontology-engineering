@@ -90,6 +90,25 @@
 		<skos:definition>a motor vehicle equipped for living in, typically used for recreational purposes, often referred to as a camper van or motorhome.</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-wtgw;AvgSeasonalTemperature">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;AvgTemperature"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;temperatureHasSeason"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Season"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;AvgTemperature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasTemperature"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-wtgw;BaldEagle">
 		<rdfs:subClassOf rdf:resource="&oe-wtgw;Bird"/>
 		<rdfs:label>bald eagle</rdfs:label>
@@ -466,6 +485,12 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasAvgSeasonalTemperature"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe-wtgw;hasFacility"/>
 				<owl:someValuesFrom rdf:resource="&oe-wtgw;Facility"/>
 			</owl:Restriction>
@@ -627,6 +652,11 @@
 		<skos:definition>a living organism that feeds on organic matter, typically having specialized sense organs and nervous systems and able to move voluntarily</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAvgSeasonalTemperature">
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasCapacity">
 		<rdfs:label>hasCapacity</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
@@ -635,8 +665,10 @@
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasClimate">
 		<rdfs:label>has climate</rdfs:label>
+		<rdfs:label>has temperature</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
 		<rdfs:range rdf:resource="&oe-wtgw;Climate"/>
+		<skos:definition>a measure of the warmth or coldness of an environment or substance, typically expressed in degrees Celsius or Fahrenheit</skos:definition>
 		<skos:definition>the average weather conditions in a particular region over a long period, including temperature, humidity, wind patterns, and precipitation</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -654,7 +686,17 @@
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe-wtgw;hasDistance">
-		<rdfs:range rdf:resource="&xsd;float"/>
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:onDatatype rdf:resource="&xsd;decimal"/>
+				<owl:withRestrictions rdf:parseType="Collection">
+					<rdf:Description>
+						<xsd:minInclusive rdf:datatype="&xsd;decimal">0</xsd:minInclusive>
+					</rdf:Description>
+				</owl:withRestrictions>
+			</rdfs:Datatype>
+		</rdfs:range>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasFacility">
@@ -694,12 +736,13 @@
 		<skos:definition>statistics about a park, including visitation numbers, trail usage, wildlife sightings, and other relevant data to monitor park activity and health</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-wtgw;hasTemperature">
-		<rdfs:label>has temperature</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
-		<rdfs:range rdf:resource="&oe-wtgw;Climate"/>
-		<skos:definition>a measure of the warmth or coldness of an environment or substance, typically expressed in degrees Celsius or Fahrenheit</skos:definition>
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasSeason">
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-wtgw;hasTemperature">
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasTerrain">
 		<rdfs:label>terrain</rdfs:label>
@@ -742,6 +785,12 @@
 	<owl:ObjectProperty rdf:about="&oe-wtgw;licenses">
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;temperatureHasSeason">
+		<rdfs:subPropertyOf rdf:resource="&oe-wtgw;hasSeason"/>
+		<rdfs:domain rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
+	</owl:ObjectProperty>
+	
 	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/PhysicalLocation">
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -762,5 +811,9 @@
 	
 	<owl:ObjectProperty rdf:about="&cmns-org;provides">
 	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="&cmns-pts;Situation">
+		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantity"/>
+	</rdf:Description>
 
 </rdf:RDF>
