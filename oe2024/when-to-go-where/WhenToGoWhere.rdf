@@ -15,6 +15,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
@@ -740,6 +741,21 @@
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;licenses">
 	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/PhysicalLocation">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Locations/hasLatitude"/>
+				<owl:someValuesFrom rdf:resource="&xsd;long"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Locations/hasLongitude"/>
+				<owl:someValuesFrom rdf:resource="&xsd;long"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
 	
 	<owl:ObjectProperty rdf:about="&cmns-org;isProvidedBy">
 	</owl:ObjectProperty>
