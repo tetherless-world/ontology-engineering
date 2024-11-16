@@ -477,6 +477,20 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasAvgSeasonalTemperature"/>
+				<owl:onClass rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasState"/>
+				<owl:onClass rdf:resource="&oe-wtgw;State"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe-wtgw;hasActivity"/>
 				<owl:someValuesFrom rdf:resource="&oe-wtgw;Activity"/>
 			</owl:Restriction>
@@ -485,12 +499,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&oe-wtgw;hasAnimal"/>
 				<owl:someValuesFrom rdf:resource="&oe-wtgw;Animal"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-wtgw;hasAvgSeasonalTemperature"/>
-				<owl:someValuesFrom rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -570,6 +578,13 @@
 	
 	<owl:Class rdf:about="&oe-wtgw;State">
 		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Locations/Location"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasPark"/>
+				<owl:onClass rdf:resource="&oe-wtgw;NationalPark"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>state</rdfs:label>
 		<skos:definition>the 50 territories that make up the United States of America</skos:definition>
 	</owl:Class>
@@ -746,6 +761,12 @@
 		<skos:definition>the amount of water vapor present in the air, expressed as a percentage, influencing comfort levels and weather patterns</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasPark">
+		<rdfs:label>has park</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasState"/>
+		<skos:definition>a state has a national park</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasParkStatistic">
 		<rdfs:label>has park statistic</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
@@ -757,6 +778,11 @@
 		<rdfs:label>has season</rdfs:label>
 		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
 		<skos:definition>each of the four divisions of the year (spring, summer, fall, and winter) marked by particular weather patterns and daylight hours, resulting from the earth&apos;s changing position with regard to the sun</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasState">
+		<rdfs:label>has state</rdfs:label>
+		<skos:definition>A park has a national territory of the United States</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe-wtgw;hasTemperature">
@@ -842,6 +868,10 @@
 	
 	<rdf:Description rdf:about="&cmns-pts;Situation">
 		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantity"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasExpression">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
 	</rdf:Description>
 
 </rdf:RDF>
