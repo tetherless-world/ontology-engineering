@@ -24,9 +24,6 @@ Week 6 Versions:
 **Link:**
 [https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek10.rdf](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek10.rdf)
 
-## **View the ontology documentation at:**
-## [https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
-
 #### Primary Classes and Definitions
 
 1. Patient
@@ -71,15 +68,6 @@ Week 6 Versions:
     - Reused From: Identification of Medicinal Products (IDMP)
 
 
-### Accompanying Suite of Ontologies
-
-## - [Diseases](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/diseases.owl)
-## - [Lab results](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/labresults.owl)
-## - [Medications](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/medications.owl)
-## - [Therapies](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/therapies.owl)
-## - [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
-## - [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
-
 ## Ontologies Reused
 
 IDMP - Identification of Medicinal Products Ontology
@@ -121,11 +109,11 @@ QV - Commons "Quantity and Units"
     <td> <a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
   </tr>
   <tr>
-    <td>skos</td>
+    <td>idmp</td>
     <td> <a href="https://spec.edmcouncil.org/idmp/">Identification of Medicinal Products</a></td>
   </tr>
   <tr>
-    <td>skos</td>
+    <td>qv</td>
     <td> <a href="https://www.omg.org/spec/Commons/QuantitiesAndUnits/">Commons Quantities and Units</a></td>
   </tr>
 </table>
