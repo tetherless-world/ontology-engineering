@@ -185,4 +185,3 @@ ORDER BY DESC(?distance)
 | Hike              | Distance |
 |-------------------|----------|
 | Lakes Trail       | 12.2 mi  |
-```
