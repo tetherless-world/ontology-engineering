@@ -5,12 +5,13 @@ title: term list
 
 ## Terminology List
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTB3C5Df92aA8QeAs_kDly7A03Jtqoe8mwoUeiGhGedSRx82cKwGzvjBCrgTGr4Fg/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSWEGJR56wRG8okWekYFSIGivg_gJPT-hQozGY1SjAqITTaZ0o7SVkUxXA-o-mSbA/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 
+- [Version 6 (OE 10)](files/OE_10_WhentoGoWhere_CuratedTermList.xlsx)
 - [Version 5 (OE 8)](files/OE_8_WhentoGoWhere_CuratedTermList_Clean.xlsx)
 - [Version 4 (OE 6)](files/OE_6_WhentoGoWhere_CuratedTermList_Clean.xlsx)
 - [Version 3 (OE 5)](files/OE_5_WhentoGoWhere_CuratedTermList_Clean.xlsx)
