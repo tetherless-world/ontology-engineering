@@ -7,36 +7,21 @@
 
 ### Study Match: Is there a study that matches this patient on a feature (s)?
 
-#### Query 1: SPARQL Query to fetch study titles that match a patient's race and gender
+#### Query 1: SPARQL Query to fetch treatments with high effectiveness in patients with the SLC64A-L allele
 
 ```sparql
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
+PREFIX pdt: <https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/>
 
-SELECT DISTINCT ?studyTitle ?study
+SELECT ?treatment ?effectiveness
 WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty [a ?studyIntervention] .
-  {
-    ?subPatient rdfs:subClassOf ?studyArm .
-    ?subPatient rdfs:subClassOf ?restriction .
-    ?restriction a owl:Restriction .
-    ?restriction owl:someValuesFrom ncit:C16352 .
-  }
-  {
-    ?subPatient1 rdfs:subClassOf ?studyArm .
-    ?subPatient1 rdfs:subClassOf ?restriction1 .
-    ?restriction1 a owl:Restriction .
-    ?restriction1 owl:someValuesFrom sio:Male .
-  }
+  ?gene rdf:type pdt:Gene .
+  ?gene rdfs:label "SLC6A4-L" .
+  ?gene pdt:hasResponse ?treatmentResponse .
+  ?treatmentResponse pdt:isResponseTo ?treatment .
+  ?treatmentResponse pdt:hasTreatmentEffectiveness ?effectiveness .
+  ?effectiveness rdfs:label "high" .
 }
+
 ```
 
 #### Result 1: Study titles retrieved from the study match query to find all studies in which African American Males are represented
@@ -64,46 +49,22 @@ WHERE {
 #### Query 2: SPARQL Query to fetch study titles and range of values reported for Age
 
 ```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX pdt: <https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/>
+PREFIX qv: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>
 
-SELECT DISTINCT ?studyTitle ?propType ?lowerBound ?propVal ?upperBound
+SELECT ?medicinalProduct
 WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasAttribute | sio:hasProperty ?prop .
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Mean .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a sio:StandardDeviation .
-    ?attr2 sio:hasValue ?propVal2 .
-    BIND((?propVal2  + 2*?propVal) AS ?upperBound) .
-    BIND((?propVal  - 2*?propVal2) AS ?lowerBound) .
-  }
-  UNION
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Median .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a stato:0000164 .
-    ?prop sio:hasAttribute sio:MaximalValue .
-    ?attr2 sio:hasValue ?upperBound .
-    ?prop sio:hasAttribute sio:MinimalValue .
-    ?attr2 sio:hasValue ?lowerBound .
-  }
-  FILTER (?upperBound <= 70) .
-  FILTER (?propType IN (sio:Age)) .
+  ?indication rdf:type pdt:TherapeuticIndication .
+  ?indication pdt:hasTargetPopulation ?population .
+  ?population rdf:type pdt:AgePopulationCharacteristic .
+  ?population qv:hasQuantityValueRange ?range .
+  ?range qv:hasLowerBound ?lb .
+  ?lb rdfs:label ?lowerBound .
+  ?range qv:hasUpperBound ?ub .
+  ?up rdfs:label ?upperBound .
+  ?medicinalProduct rdf:type pdt:MedicinalProduct .
+  ?medicinalProduct pdt:hasTherapeuticIndication ?indication .
+  FILTER(?upperBound >= 35 && ?lowerBound <= 35) 
 }
 ```
 
@@ -207,43 +168,18 @@ WHERE {
 #### Query 3: SPARQL query to find large scale studies with intervention arms size being at least 1/3rd the overall cohort size
 
 ```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
+PREFIX pdt: <https://tw.rpi.edu/ontology-engineering/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatment/>
 
-SELECT DISTINCT ?studyTitle ?medicationLabel ?popSize ?totalCohortSize
+SELECT ?treatment
 WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty ?intervention .
-  ?intervention a ?interventionType .
-  ?intervention prov:used ?medication .
-  ?medication rdfs:label ?medicationLabel .
-  ?studyArm sio:hasAttribute ?prop .
-  ?prop a sco:PopulationSize .
-  ?prop sio:hasValue ?popSize .
-  {
-    SELECT DISTINCT ?study (SUM(?popSize) AS ?totalCohortSize)
-    WHERE {
-      ?study sio:hasParticipant ?studyArm .
-      ?studyArm sio:hasAttribute ?prop .
-      ?prop a sco:PopulationSize .
-      ?prop sio:hasValue ?popSize .
-    }
-    GROUP BY ?study
-    HAVING (?totalCohortSize > 1000)
-  }
-  FILTER (?popSize >= (?totalCohortSize/3)) .
-  FILTER (
-    (?interventionType rdfs:subClassOf* provcare:Intervention )
-    && (?medication rdfs:subClassOf* chebi:24436 )
-  ) .
+  ?patient rdf:type pdt:Patient .
+  ?patient pdt:hasResponse ?response .
+  ?response rdfs:label "SSRI-Low" .
+  ?treatmentResponse rdf:type pdt:TreatmentResponse .
+  ?treatmentResponse pdt:isResponseOf ?patient .
+  ?treatmentResponse pdt:hasTreatmentEffectiveness ?treatmentEffectiveness .
+  ?treatmentEffectiveness rdfs:label "high" .
+  ?treatmentResponse pdt:isResponseTo ?treatment . 
 }
 ```
 
