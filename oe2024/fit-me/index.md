@@ -46,5 +46,4 @@ FitMe is a personalized health assistant that empowers users to achieve their un
   </tr>
 </table>
 
-## Acknowledgements
 
