@@ -40,6 +40,7 @@ FitMe is a personalized health assistant that empowers users to achieve their un
     <td>3. SPARQL Queries</td>
     <td>(a) <a href="files/OE_10_FitMe_Queries.txt">Queries</a> </td>
   </tr>
+  <tr>
     <td>3. Presentations:</td>
     <td>(a) <a href="https://docs.google.com/presentation/d/1nHYzogMAkcqTyn-nqbX5JLb3dWY_kAnER-vgqp66eJM/edit?usp=sharing">Project presentations during class</a> </td>
   </tr>
