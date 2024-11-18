@@ -35,7 +35,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>2. Competency Questions</td>
-    <td>(a) <a href="./ontology">SPARQL Queries</a> </td>
+    <td>(a) <a href="./demo">SPARQL Queries</a> </td>
   </tr>
   <tr>
     <td>3. Presentations:</td>

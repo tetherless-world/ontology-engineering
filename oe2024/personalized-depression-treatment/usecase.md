@@ -11,7 +11,7 @@ title: use case
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 
-## [Week 10 Version](files/UseCases/OE_10_UseCase.pdf)
+## [Week 10 Version](files/UseCases/OE_10_PDTO_UseCase.docx.pdf)
 - [Week 8 Version](files/UseCases/OE_8_UseCase.docx)
 - [Week 6 Version](files/UseCases/OE_6_PDTO_UseCase.docx.pdf)
 - [Week 5 Version](files/UseCases/OE_5_PDTO_UseCase.pdf)
