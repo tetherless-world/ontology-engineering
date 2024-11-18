@@ -21,7 +21,7 @@ This perverse media incentive structure naturally results in outlets finding a p
 
 ## Workflow Diagram
 
-<iframe src="files/CohortAnalyticsWorkflowDiagramISWCPaper.pdf" style="width:100%; height: 500px"></iframe>
+<iframe src="files/JournalismCMDv2.2.pdf" style="width:100%; height: 500px"></iframe>
 
 <p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
 
@@ -38,7 +38,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl">Your Ontology</a></td>
+    <td>(a) <a href="PoliticalJournalism.rdf">Your Ontology</a></td>
   </tr>
   <tr>
     <td>2. Term List</td>
