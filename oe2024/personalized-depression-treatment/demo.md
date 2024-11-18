@@ -59,7 +59,7 @@ WHERE {
 }
 ```
 
-## Result 2: Effective treatments for 35 year olds
+#### Result 2: Effective treatments for 35 year olds
 |Treatment Name|
 |-----------|
 | Citalopram |
@@ -87,7 +87,7 @@ WHERE {
 }
 ```
 
-#### Result 3: Treatments effective on patients who resist SSRIs.
+#### Result 3: Treatments effective on patients who resist SSRIs
 
 | Treatment Name | 
 | -------------- | 

@@ -71,7 +71,6 @@ Week 6 Versions:
 ## Ontologies Reused
 
 IDMP - Identification of Medicinal Products Ontology
-
 [Link](https://spec.edmcouncil.org/idmp/)
 
 QV - Commons "Quantity and Units"

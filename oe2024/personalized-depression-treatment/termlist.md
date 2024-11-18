@@ -11,7 +11,7 @@ title: term list
 
 <p class="message-highlight">Below are links to the previous versions of the term list.</p>
 
-## - [Week 10 Version](files/TermLists/OE_10_PDTO_CuratedTermList.xlsx)
+- [Week 10 Version](files/TermLists/OE_10_PDTO_CuratedTermList.xlsx)
 - [Week 8 Version](files/TermLists/OE_8_PDTO_CuratedTermList.xlsx)
 - [Week 6 Version](files/TermLists/OE_6_PDTO_Terms.xlsx )
 - [Week 5 Version](files/TermLists/OE_5_PDTO_Terms.xlsx)
