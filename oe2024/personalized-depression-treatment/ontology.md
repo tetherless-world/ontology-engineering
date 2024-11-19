@@ -22,9 +22,13 @@ Week 6 Versions:
 ### Personalized Depression Treatment Ontology
 
 Week 10 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek10.rdf)
+
 Week 9 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek9.rdf)
+
 Week 8 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek8.rdf)
+
 Week 7 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek7.rdf)
+
 Week 6 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatment.rdf)
 
 #### Primary Classes and Definitions
