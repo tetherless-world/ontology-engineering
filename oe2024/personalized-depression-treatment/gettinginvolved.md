@@ -3,10 +3,6 @@ layout: default
 title: About
 ---
 
-## Note to students
-
-<p class="message-highlight">Please edit the below to be project specific.</p>
-
 ## Maintenenance Policy
 
 <p class="message-highlight">Overview of policy goes here, an example is below</p>

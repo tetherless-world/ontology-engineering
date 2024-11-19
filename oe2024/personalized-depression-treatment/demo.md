@@ -60,6 +60,7 @@ WHERE {
 ```
 
 #### Result 2: Effective treatments for 35 year olds
+
 |Treatment Name|
 |-----------|
 | Citalopram |
