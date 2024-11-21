@@ -34,17 +34,16 @@ FitMe is a personalized health assistant that empowers users to achieve their un
   </tr>
   <tr>
     <td>2. Term List</td>
-    <td>(a) <a href="./knowledge-graph.html">Mapped Vocabularies</a> </td>
+    <td>(a) <a href="https://docs.google.com/spreadsheets/d/1efFU8ZUGuIGOMg345_aX_AWrYFzsCGbB/edit?usp=sharing&ouid=116184630494634068360&rtpof=true&sd=true">Mapped Vocabularies</a> </td>
   </tr>
   <tr>
-    <td>2. Competency Questions</td>
-    <td>(a) <a href="./knowledge-graph.html">SPARQL Queries</a> </td>
+    <td>3. SPARQL Queries</td>
+    <td>(a) <a href="files/OE_10_FitMe_Queries.txt">Queries</a> </td>
   </tr>
   <tr>
     <td>3. Presentations:</td>
-    <td>(a) <a href="./ontology-resource.html#ontologyreused">Project presentations during class</a> </td>
+    <td>(a) <a href="https://docs.google.com/presentation/d/1nHYzogMAkcqTyn-nqbX5JLb3dWY_kAnER-vgqp66eJM/edit?usp=sharing">Project presentations during class</a> </td>
   </tr>
 </table>
 
-## Acknowledgements
 
