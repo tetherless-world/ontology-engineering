@@ -11,8 +11,8 @@ We provide you with a template of what we want to see from your project pages, t
 
 ## Abstract
 
-We plan to develop an ontology-enabled system that allows a comparison between these various outlets and journalists that accounts for a difference in terminology and content focus that results from media outlets appealing to different audiences.
-Users need to be able to connect various articles across media outlets to the same journalist or editor. The ontology serves the purpose of providing a way to link these articles and events that is robust to biased reporting.
+We plan to develop an ontology-enabled system that allows a comparison between various news outlets and journalists that accounts for a difference in terminology and content focus that results from media outlets appealing to different audiences.
+Users need to be able to connect various articles across media outlets to the same journalist or events. The ontology serves the purpose of providing a way to link these articles and events that is robust to biased reporting.
 Users need a way to connect politicians or prominent figures to pieces of legislation, political issues, other politicians, political parties, elections, and articles.
 
 A critical component of functioning democracies is a voting populace with the information necessary to make an informed vote. The relaying of this information should naturally facilitate rational citizens in voting in a manner that best suits their well-being and beliefs. Due in part to the advent of the digital age and the ad-view revenue model dominating media, there are perverse incentives that favour viewer engagement over unbiased and factual reporting.
@@ -21,7 +21,7 @@ This perverse media incentive structure naturally results in outlets finding a p
 
 ## Workflow Diagram
 
-<iframe src="files/CohortAnalyticsWorkflowDiagramISWCPaper.pdf" style="width:100%; height: 500px"></iframe>
+<iframe src="files/JournalismCMDv2.2.pdf" style="width:100%; height: 500px"></iframe>
 
 <p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
 
@@ -38,7 +38,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl">Your Ontology</a></td>
+    <td>(a) <a href="PoliticalJournalism.rdf">Your Ontology</a></td>
   </tr>
   <tr>
     <td>2. Term List</td>
