@@ -74,6 +74,18 @@
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasAuthor"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Author"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasPublisher"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>article</rdfs:label>
 		<skos:definition>a piece of writing on a particular subject in a newspaper or magazine</skos:definition>
 	</owl:Class>
@@ -86,6 +98,12 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Author">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Contributor"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isAuthorOf"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>author</rdfs:label>
 		<skos:definition>a contributor who is responsible for the writing on an article</skos:definition>
 	</owl:Class>
@@ -105,6 +123,19 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ExecutiveUSPoliticalOffice"/>
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice"/>
 		<rdfs:label>cabinet level official</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ExecutiveUSPoliticalOffice">
+					</rdf:Description>
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice">
+					</rdf:Description>
+					<owl:Class>
+						<owl:complementOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#President"/>
+					</owl:Class>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CabinetOfficial">
@@ -122,6 +153,12 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Contributor">
 		<rdfs:subClassOf rdf:resource="&cmns-rlcmp;FunctionalRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isContributorTo"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>contributor</rdfs:label>
 		<skos:definition>a person who contributes to the creation of a news article</skos:definition>
 	</owl:Class>
@@ -152,6 +189,19 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalEvent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-dt;hasDate"/>
+				<owl:onClass rdf:resource="&cmns-dt;Date"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasCandidate"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>election</rdfs:label>
 		<skos:definition>a political event where votes are cast to choose someone to occupy a poltical office</skos:definition>
 	</owl:Class>
@@ -205,12 +255,38 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice"/>
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeUSPoliticalOffice"/>
 		<rdfs:label>federal representative</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice">
+					</rdf:Description>
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeUSPoliticalOffice">
+					</rdf:Description>
+					<owl:Class>
+						<owl:complementOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalSenator"/>
+					</owl:Class>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalSenator">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice"/>
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeUSPoliticalOffice"/>
 		<rdfs:label>federal senator</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice">
+					</rdf:Description>
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeUSPoliticalOffice">
+					</rdf:Description>
+					<owl:Class>
+						<owl:complementOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalRepresentative"/>
+					</owl:Class>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice">
@@ -306,13 +382,27 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalArticle">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasTopic"/>
-				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalTopic"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>political article</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article">
+					</rdf:Description>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasSubject"/>
+								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalEvent"/>
+							</owl:Restriction>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasTopic"/>
+								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalTopic"/>
+							</owl:Restriction>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition>an article on a political subject</skos:definition>
 	</owl:Class>
 	
@@ -356,6 +446,19 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ExecutiveUSPoliticalOffice"/>
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice"/>
 		<rdfs:label>president</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ExecutiveUSPoliticalOffice">
+					</rdf:Description>
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice">
+					</rdf:Description>
+					<owl:Class>
+						<owl:complementOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CabinetLevelOfficial"/>
+					</owl:Class>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher">
@@ -509,6 +612,7 @@
 		<rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasContributor"/>
 		<rdfs:label>has author</rdfs:label>
 		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Author"/>
+		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isAuthorOf"/>
 		<skos:definition>relates an article to its author</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -523,7 +627,8 @@
 		<rdfs:label>has contributor</rdfs:label>
 		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
 		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Contributor"/>
-		<skos:definition>relate an article to someone who contributed to its creation</skos:definition>
+		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isContributorTo"/>
+		<skos:definition>relates an article to someone who contributed to its creation</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasEconomicTopic">
@@ -635,6 +740,17 @@
 		<skos:definition>relates an article with a concept discussed within that article</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isAuthorOf">
+		<rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isContributorTo"/>
+		<rdfs:label>is author of</rdfs:label>
+		<skos:definition>relates someone to an article they authored</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isContributorTo">
+		<rdfs:label>is contributor to</rdfs:label>
+		<rdfs:label>relates someone to an article they contributed to</rdfs:label>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isSubjectOf">
 		<rdfs:label>is subject of</rdfs:label>
 		<skos:definition>relates a person, place, or thing with an article which discusses it</skos:definition>
@@ -701,11 +817,19 @@
 		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CabinetLevelOfficial">
 			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CabinetOfficial">
-			</rdf:Description>
 			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Governor">
 			</rdf:Description>
 			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#President">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ExecutiveUSPoliticalOffice">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#JudicialUSPoliticalOffice">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeUSPoliticalOffice">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
