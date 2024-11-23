@@ -3,7 +3,7 @@
 ## Conceptual Model
 
 Current Version:
-<iframe src="images/ConceptModel/OE10_PTDO_ConceptModel.pdf" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR4b1IdEObVOhmgrxNvRIIS3bOkymzAROhrp9vp7i4RMpKkvBeX-iY-9U6KARi2N7xkKsrplWmZhgxR/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 Week 10 Version:
 [Week 10 Concept Model](images/ConceptModel/OE10_PTDO_ConceptModel.pdf)
@@ -21,7 +21,11 @@ Week 6 Versions:
 
 ### Personalized Depression Treatment Ontology
 
-Week 10 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek10.rdf)
+Week 11 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek11.rdf)
+
+Week 11, with Individuals: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek11Individuals.rdf)
+
+Week 10 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek10.rdf)
 
 Week 9 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek9.rdf)
 
