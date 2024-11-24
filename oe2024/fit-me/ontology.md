@@ -4,13 +4,19 @@
 
 ![Concept Map Subject Model](images/OE_8_FitMe_Concept_Map.jpg)
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSvyawef3mKamM-c2H3PzQ4cn0R4WX59beK51Qxhr75LX1eyo829xfQXESxCT5-3iJynYI7DhN_YLPx/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ## Ontologies
 
 **Link to ontology:**
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf)
+
+### Previous Ontology Versions
+- [Version 5](archived/oldOntologies/FitMeV4.rdf)
+- [Version 4](archived/oldOntologies/FitMeV3.rdf)
+- [Version 3](archived/oldOntologies/FitMeV2.rdf)
+- [Version 2](archived/oldOntologies/FitMeV1.rdf)
+- [Version 1](archived/oldOntologies/FitMeV0.rdf)
 
 **View the individuals ontology**
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf]
@@ -59,23 +65,20 @@ representation of the Table 1 data, and so we highlight instances in pink
     <td>skos</td>
     <td> <a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
   </tr>
-    <tr>
-    <td>ind</td>
-    <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/">Individuals</a></td>
+  <tr>
+  <td>ind</td>
+  <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/    ">Individuals</a></td>
   </tr>
     <tr>
     <td>ind2</td>
     <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#">Individuals2</a></td>
   </tr>
-    </tr>
     <tr>
     <td>ex</td>
     <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#">FitMe Parent Class</a></td>
   </tr>
-    </tr>
     <tr>
     <td>ex2</td>
     <td> <a href="http://purl.obolibrary.org/obo/FOODON_0340079">FOODON</a></td>
   </tr>
-
 </table>
