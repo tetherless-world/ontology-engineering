@@ -103,7 +103,7 @@ select ?workout ?strain where{
 #### Query 2: SPARQL Query to fetch workout plan aimed at strengthening back
 
 PULL 1
-```
+```sparql
 SELECT ?workout
 WHERE {
   {
@@ -128,7 +128,7 @@ WHERE {
 }
 ```
 PULL 2
-```
+```sparql
 SELECT ?workout
 WHERE {
   {
@@ -155,7 +155,8 @@ OFFSET 2
 }
 ```
 DO NOT
-```select ?workout ?strain where{
+```sparql
+select ?workout ?strain where{
   ?workout rdf:type ex:Exercise .
   ?workout ex:targets ind2:BackMuscles .
   ?workout ex:hasStrainValue ?strain .

@@ -14,7 +14,7 @@ We provide you with a template of what we want to see from your project pages, t
 <p class="message-highlight">Overview </p>
 
 FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.
-</p>
+Many people want to start their gym journey for their own specific goal, but most people don’t know how to start. While there are coaching services, many beginners don’t want to spend money on something they might not want to pursue and end up quitting the gym after not seeing progress for a month doing exercises that are not efficient for their goal. This use case covers a part of this problem and will recommend efficient workout and recipes  for all skill levels as well as what to avoid.
 
 ## Workflow Diagram
 
