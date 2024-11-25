@@ -16,7 +16,6 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
@@ -182,6 +181,22 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CabinetLevelOfficial"/>
 		<rdfs:label>director of the office of management and budget</rdfs:label>
 		<skos:definition>the cabinet-level official who is responsible for overseeing the US Office of Management and Budget</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#EconomicArticle">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasTopic"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#EconomicTopic"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#EconomicRole">
