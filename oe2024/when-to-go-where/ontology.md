@@ -24,6 +24,7 @@ Currently we have two ontologies. Our main ontology is the when to go where onto
 
 #### Previous Versions
 
+* [OE 11](https://github.com/tetherless-world/ontology-engineering/blob/114aa8ad617d0eeea3570d8d0f7a65eb21b862a9/oe2024/when-to-go-where/WhenToGoWhere.rdf)
 * [OE 10](https://github.com/tetherless-world/ontology-engineering/blob/dac8dda75fb576d8551123076e10627d716549d9/oe2024/when-to-go-where/WhenToGoWhere.rdf)
 * [OE 9](https://github.com/tetherless-world/ontology-engineering/blob/0dab7dba2bad974dbc2be7e40d342d4812061be4/oe2024/when-to-go-where/WhenToGoWhere.rdf)
 * [OE 8](https://github.com/tetherless-world/ontology-engineering/blob/d8dbcde8a9a0cd9575f6ed39444b6270ad35dffb/oe2024/when-to-go-where/WhenToGoWhere.rdf)
@@ -39,6 +40,7 @@ Currently we have two ontologies. Our main ontology is the when to go where onto
 
 #### Previous Versions
 
+* [OE 11](https://github.com/tetherless-world/ontology-engineering/blob/114aa8ad617d0eeea3570d8d0f7a65eb21b862a9/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
 * [OE 10](https://github.com/tetherless-world/ontology-engineering/blob/dac8dda75fb576d8551123076e10627d716549d9/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
 * [OE 9](https://github.com/tetherless-world/ontology-engineering/blob/0dab7dba2bad974dbc2be7e40d342d4812061be4/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
 * [OE 8](https://github.com/tetherless-world/ontology-engineering/blob/d8dbcde8a9a0cd9575f6ed39444b6270ad35dffb/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
