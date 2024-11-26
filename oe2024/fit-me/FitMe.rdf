@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
-     xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe"
+     xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
      xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -120,6 +120,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affectedBy -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affectedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affects"/>
         <rdfs:label xml:lang="en">affected by</rdfs:label>
         <skos:definition xml:lang="en">what muscle is hurt by an injury</skos:definition>
@@ -140,9 +141,22 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/burns -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/burns">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isBurnedBy"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
         <rdfs:label xml:lang="en">burns</rdfs:label>
         <skos:definition xml:lang="en">how many calories lost when doing a specific exercise</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">causes</rdfs:label>
+        <skos:definition xml:lang="en">x creates y to happen</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -150,9 +164,37 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasAttribute -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasAttribute">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label xml:lang="en">has attribute</rdfs:label>
         <skos:definition xml:lang="en">contains a certain measurement</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasDietMaterial -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasDietMaterial">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recipe"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DietMaterial"/>
+        <rdfs:label xml:lang="en">has diet material</rdfs:label>
+        <skos:definition xml:lang="en">what dietary material a food has</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasNutrient -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasNutrient">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+        <rdfs:label xml:lang="en">has nutrient</rdfs:label>
+        <skos:definition xml:lang="en">stating that object has a general nutrient</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -160,7 +202,10 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
         <rdfs:label xml:lang="en">has strain value</rdfs:label>
         <skos:definition xml:lang="en">how much strain an exercise has</skos:definition>
     </owl:ObjectProperty>
@@ -170,6 +215,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label xml:lang="en">is attribute of</rdfs:label>
         <skos:definition xml:lang="en">a measurement of</skos:definition>
     </owl:ObjectProperty>
@@ -185,9 +233,62 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType">
+        <rdfs:label xml:lang="en">is diet material type</rdfs:label>
+        <skos:definition xml:lang="en">type of dietary material for a given food item</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMadeOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMadeOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recipe"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+        <rdfs:label xml:lang="en">is made of</rdfs:label>
+        <skos:definition xml:lang="en">what ingredients are in a recipe</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+        <rdfs:label xml:lang="en">is measured by</rdfs:label>
+        <skos:definition xml:lang="en">how to find specific value for x</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isPreparedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isPreparedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Dish"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recipe"/>
+        <rdfs:label xml:lang="en">is prepared by</rdfs:label>
+        <skos:definition xml:lang="en">a dish is prepared by following one or more Recipes.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:label xml:lang="en">is strain value of</rdfs:label>
         <skos:definition xml:lang="en">what the strain value of an exercise is</skos:definition>
     </owl:ObjectProperty>
@@ -197,6 +298,10 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targetedBy -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targetedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targets"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
         <rdfs:label xml:lang="en">targeted by</rdfs:label>
         <skos:definition>what exercise makes a muscle grow</skos:definition>
     </owl:ObjectProperty>
@@ -216,6 +321,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/usedBy -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/usedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/uses"/>
         <rdfs:label xml:lang="en">used by</rdfs:label>
         <skos:definition xml:lang="en">what exercise helps target the muscle</skos:definition>
@@ -228,71 +334,6 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/uses">
         <rdfs:label xml:lang="en">uses</rdfs:label>
         <skos:definition xml:lang="en">what muscle is targeted by the exercise</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes">
-        <rdfs:label xml:lang="en">causes</rdfs:label>
-        <skos:definition xml:lang="en">x creates y to happen</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasDietMaterial -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasDietMaterial">
-        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
-        <rdfs:label xml:lang="en">has diet material</rdfs:label>
-        <skos:definition xml:lang="en">what dietary material a food has</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasNutrient -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasNutrient">
-        <rdfs:label xml:lang="en">has nutrient</rdfs:label>
-        <skos:definition xml:lang="en">stating that object has a general nutrient</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType">
-        <rdfs:label xml:lang="en">is diet material type</rdfs:label>
-        <skos:definition xml:lang="en">type of dietary material for a given food item</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMadeOf -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMadeOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:label xml:lang="en">is made of</rdfs:label>
-        <skos:definition xml:lang="en">what ingredients are in a recipe</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy">
-        <rdfs:label xml:lang="en">is measured by</rdfs:label>
-        <skos:definition xml:lang="en">how to find specific value for x</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isPreparedBy -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isPreparedBy">
-        <rdfs:label xml:lang="en">is prepared by</rdfs:label>
-        <skos:definition xml:lang="en">a dish is prepared by following one or more Recipes.</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -407,6 +448,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/Macronutrient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/Macronutrient"/>
     
 
 
@@ -880,6 +927,22 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Beef -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Beef">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">beef</rdfs:label>
+        <skos:definition xml:lang="en">a piece of boneless meat derived from a cow</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BellPepper -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BellPepper">
@@ -945,6 +1008,60 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CarbohydrateMaterial -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CarbohydrateMaterial">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasCarbohydratePercent"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasFatPercent"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasProteinPercent"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="en">carbohydrateMaterial</rdfs:label>
+        <skos:definition xml:lang="en">Sugars, starches, and fibers that provide energy.</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Carrot -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Carrot">
@@ -991,6 +1108,22 @@
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Seed"/>
         <rdfs:label xml:lang="en">chia seed</rdfs:label>
         <skos:definition xml:lang="en">edible seeds of the chia plant</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Chicken -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Chicken">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">chicken</rdfs:label>
+        <skos:definition xml:lang="en">a type of poultry meat, widely consumed and prepared in various ways including roasting or frying</skos:definition>
     </owl:Class>
     
 
@@ -1045,9 +1178,41 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DietMaterial -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DietMaterial">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#ProteinMaterial"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CarbohydrateMaterial"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatMaterial"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="en">dietMaterial</rdfs:label>
+        <skos:definition xml:lang="en">An umbrella term covering three different types of nutrition materials which are - Protein Material, Carbohydrate Material and Fat Material</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Dish -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Dish">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recipe"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes"/>
@@ -1098,6 +1263,36 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
         <rdfs:label xml:lang="en">elbow ligament injury</rdfs:label>
         <skos:definition xml:lang="en">damage to ligament or joint in elbow</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">energy expenditure</rdfs:label>
+        <skos:definition xml:lang="en">amount of energy the body uses to perform physical activities</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">energy gain</rdfs:label>
+        <skos:definition xml:lang="en">amount of energy gained by our body on consuming any food</skos:definition>
     </owl:Class>
     
 
@@ -1157,6 +1352,76 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
         <rdfs:label xml:lang="en">fat loss</rdfs:label>
         <skos:definition>decrease body fat percentage</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatMaterial -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatMaterial">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasCarbohydratePercent"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasFatPercent"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasProteinPercent"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="en">fatMaterial</rdfs:label>
+        <skos:definition xml:lang="en">Sugars, starches, and fibers that provide energy.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Fish -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Fish">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">fish</rdfs:label>
+        <skos:definition xml:lang="en">a gill-bearing aquatic animals lacking limbs with digits used for food</skos:definition>
     </owl:Class>
     
 
@@ -1289,6 +1554,17 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Yogurt"/>
         <rdfs:label xml:lang="en">greek yogurt</rdfs:label>
         <skos:definition xml:lang="en">fermented semisolid food made of milk and milk solids</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GreenBean -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GreenBean">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Potato"/>
+        <rdfs:label xml:lang="en">green bean</rdfs:label>
+        <skos:definition xml:lang="en">an unripe, young fruit of various cultivars of a common bean plant (Phaseolus vulgaris).</skos:definition>
     </owl:Class>
     
 
@@ -1511,6 +1787,16 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial">
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial"/>
+        <rdfs:label xml:lang="en">non vegetarian material</rdfs:label>
+        <skos:definition xml:lang="en">material that contains meat</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Oil -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Oil">
@@ -1577,6 +1863,32 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise"/>
         <rdfs:label xml:lang="en">plank</rdfs:label>
         <skos:definition xml:lang="en">hold your bodyweight up with your elbows and toes touching the floor and keeping your body straight</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pork -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pork">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">pork</rdfs:label>
+        <skos:definition xml:lang="en">a food product made from domestic pig meat (Sus domesticus or Sus scrofa scrofa).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Potato -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Potato">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable"/>
+        <rdfs:label xml:lang="en">potato</rdfs:label>
+        <skos:definition xml:lang="en">refers to the starchy tuber from the plant species Solanum tuberosum, widely used in global cuisine.</skos:definition>
     </owl:Class>
     
 
@@ -2253,6 +2565,15 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial">
+        <rdfs:label xml:lang="en">vegetarian material</rdfs:label>
+        <skos:definition xml:lang="en">food made out of material that vegetarians can eat</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking">
@@ -2359,248 +2680,6 @@
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Beef -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Beef">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">beef</rdfs:label>
-        <skos:definition xml:lang="en">a piece of boneless meat derived from a cow</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CarbohydrateMaterial -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CarbohydrateMaterial">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasCarbohydratePercent"/>
-                        <owl:someValuesFrom>
-                            <rdfs:Datatype>
-                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-                                <owl:withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34</xsd:minInclusive>
-                                    </rdf:Description>
-                                </owl:withRestrictions>
-                            </rdfs:Datatype>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasFatPercent"/>
-                        <owl:someValuesFrom>
-                            <rdfs:Datatype>
-                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-                                <owl:withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </owl:withRestrictions>
-                            </rdfs:Datatype>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasProteinPercent"/>
-                        <owl:someValuesFrom>
-                            <rdfs:Datatype>
-                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-                                <owl:withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </owl:withRestrictions>
-                            </rdfs:Datatype>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:label xml:lang="en">carbohydrateMaterial</rdfs:label>
-        <skos:definition xml:lang="en">Sugars, starches, and fibers that provide energy.</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Chicken -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Chicken">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">chicken</rdfs:label>
-        <skos:definition xml:lang="en">a type of poultry meat, widely consumed and prepared in various ways including roasting or frying</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">energy expenditure</rdfs:label>
-        <skos:definition xml:lang="en">amount of energy the body uses to perform physical activities</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isMeasuredBy"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">energy gain</rdfs:label>
-        <skos:definition xml:lang="en">amount of energy gained by our body on consuming any food</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatMaterial -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatMaterial">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasCarbohydratePercent"/>
-                        <owl:someValuesFrom>
-                            <rdfs:Datatype>
-                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-                                <owl:withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </owl:withRestrictions>
-                            </rdfs:Datatype>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasFatPercent"/>
-                        <owl:someValuesFrom>
-                            <rdfs:Datatype>
-                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-                                <owl:withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34</xsd:minInclusive>
-                                    </rdf:Description>
-                                </owl:withRestrictions>
-                            </rdfs:Datatype>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasProteinPercent"/>
-                        <owl:someValuesFrom>
-                            <rdfs:Datatype>
-                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-                                <owl:withRestrictions rdf:parseType="Collection">
-                                    <rdf:Description>
-                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33</xsd:maxInclusive>
-                                    </rdf:Description>
-                                </owl:withRestrictions>
-                            </rdfs:Datatype>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:label xml:lang="en">fatMaterial</rdfs:label>
-        <skos:definition xml:lang="en">Sugars, starches, and fibers that provide energy.</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Fish -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Fish">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">fish</rdfs:label>
-        <skos:definition xml:lang="en">a gill-bearing aquatic animals lacking limbs with digits used for food</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GreenBean -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GreenBean">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable"/>
-        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Potato"/>
-        <rdfs:label xml:lang="en">green bean</rdfs:label>
-        <skos:definition xml:lang="en">an unripe, young fruit of various cultivars of a common bean plant (Phaseolus vulgaris).</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial">
-        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial"/>
-        <rdfs:label xml:lang="en">non vegetarian material</rdfs:label>
-        <skos:definition xml:lang="en">material that contains meat</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pork -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pork">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isDietMaterialType"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/NonVegetarianMaterial"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">pork</rdfs:label>
-        <skos:definition xml:lang="en">a food product made from domestic pig meat (Sus domesticus or Sus scrofa scrofa).</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Potato -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Potato">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Vegetable"/>
-        <rdfs:label xml:lang="en">potato</rdfs:label>
-        <skos:definition xml:lang="en">refers to the starchy tuber from the plant species Solanum tuberosum, widely used in global cuisine.</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/VegetarianMaterial">
-        <rdfs:label xml:lang="en">vegetarian material</rdfs:label>
-        <skos:definition xml:lang="en">food made out of material that vegetarians can eat</skos:definition>
-    </owl:Class>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -2645,13 +2724,27 @@
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Biometrics"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Dish"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recipe"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -2671,28 +2764,14 @@
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
             <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Dish"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recipe"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient"/>
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Nutrient"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recipe"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyExpenditure"/>
-            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/EnergyGain"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
