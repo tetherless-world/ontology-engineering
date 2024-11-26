@@ -184,6 +184,14 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
         <rdfs:label xml:lang="en">has strain value</rdfs:label>
         <skos:definition xml:lang="en">how much strain an exercise has</skos:definition>
@@ -610,6 +618,21 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IncreaseCardiovascularEndurance -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IncreaseCardiovascularEndurance">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
         <rdfs:label xml:lang="en">increase cardiovascular endurance</rdfs:label>
         <skos:definition xml:lang="en">strengthen the heart and lungs</skos:definition>
@@ -694,6 +717,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Light -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Light">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle">
@@ -706,9 +737,33 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Moderate -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Moderate">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGain -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGain">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue"/>
+                                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
         <rdfs:label xml:lang="en">muscle gain</rdfs:label>
         <skos:definition xml:lang="en">increase body weight while body fat decreases</skos:definition>
@@ -1325,9 +1380,40 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthGain -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthGain">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Moderate"/>
+                                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strenuous"/>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
         <rdfs:label xml:lang="en">strength gain</rdfs:label>
         <skos:definition xml:lang="en">lift heavier weights</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strenuous -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strenuous">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
     </owl:Class>
     
 
@@ -1450,6 +1536,14 @@
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Running"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StairMachine"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Light"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Moderate"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strenuous"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
