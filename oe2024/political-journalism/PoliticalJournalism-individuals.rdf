@@ -34,10 +34,35 @@
 		<rdf:type rdf:resource="&PoliticalJournalism;PoliticalParty"/>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism-individuals#GeneralElection">
+		<rdfs:subClassOf rdf:resource="&PoliticalJournalism;Election"/>
+	</owl:Class>
+	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism-individuals#HerschelWalker">
 		<rdf:type rdf:resource="&PoliticalJournalism;Person"/>
 		<rdfs:comment>a political candidate Herschel Walker</rdfs:comment>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism-individuals#PrimaryElection">
+		<rdfs:subClassOf rdf:resource="&PoliticalJournalism;Election"/>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&PoliticalJournalism;Election">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&PoliticalJournalism;hasCandidate"/>
+						<owl:allValuesFrom>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/hasParty"/>
+								<owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+							</owl:Restriction>
+						</owl:allValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism-individuals#RaphaelWarnock">
 		<rdf:type rdf:resource="&PoliticalJournalism;Person"/>
