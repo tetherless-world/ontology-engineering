@@ -16,6 +16,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
@@ -39,6 +40,7 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+		<owl:versionIRI rdf:resource="&oe-pjo;6.0.0"/>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#AbortionTopic">
@@ -123,8 +125,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Bill">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeItem"/>
-		<rdfs:subClassOf rdf:resource="&cmns-doc;LegalDocument"/>
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeDocument"/>
 		<rdfs:label>bill</rdfs:label>
 		<skos:definition>a formal statement of a planned new law that is discussed before being voted on</skos:definition>
 	</owl:Class>
@@ -183,8 +184,16 @@
 		<skos:definition>the cabinet-level official who is responsible for overseeing the US Office of Management and Budget</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DocumentSubject">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Subject"/>
+		<rdfs:subClassOf rdf:resource="&cmns-doc;Document"/>
+		<rdfs:label>document subject</rdfs:label>
+		<skos:definition>a subject which is a document</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#EconomicArticle">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+		<rdfs:label>economic article</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -197,6 +206,7 @@
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
+		<skos:definition>an article on an economic subject</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#EconomicRole">
@@ -348,12 +358,6 @@
 		<skos:definition>a poltical topic which relates to inflation</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ItemSubject">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Subject"/>
-		<rdfs:label>item subject</rdfs:label>
-		<skos:definition>a subject which is an item</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#JudicialUSPoliticalOffice">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#USPoliticalOffice"/>
 		<rdfs:label>judicial US political office</rdfs:label>
@@ -364,10 +368,11 @@
 		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ElectionMargin"/>
 	</owl:NamedIndividual>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeItem">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ItemSubject"/>
-		<rdfs:label>legislative item</rdfs:label>
-		<skos:definition>an item which is important to the process of lawmaking</skos:definition>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeDocument">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DocumentSubject"/>
+		<rdfs:subClassOf rdf:resource="&cmns-doc;LegalDocument"/>
+		<rdfs:label>legislative document</rdfs:label>
+		<skos:definition>a document which is important to the process of lawmaking</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeUSPoliticalOffice">
@@ -403,9 +408,15 @@
 		<skos:definition>a natural event that usually results in serious damage and many deaths</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PersonSubject">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Subject"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Person">
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Party"/>
+		<rdfs:label>person</rdfs:label>
+		<skos:definition>a human being</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PersonSubject">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Person"/>
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Subject"/>
 		<rdfs:label>person subject</rdfs:label>
 		<skos:definition>a subject who is a person</skos:definition>
 	</owl:Class>
@@ -611,6 +622,12 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Subject">
 		<rdfs:label>subject</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isSubjectOf"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition>a person, thing, or event that is discussed, written about, or referenced</skos:definition>
 	</owl:Class>
 	
@@ -721,7 +738,7 @@
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasItemSubject">
 		<rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasSubject"/>
 		<rdfs:label>has item subject</rdfs:label>
-		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ItemSubject"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DocumentSubject"/>
 		<skos:definition>relates an article with an item discussed within the article</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -742,7 +759,6 @@
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasPoliticalParty">
 		<rdfs:label>has political party</rdfs:label>
 		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
-		<rdfs:domain rdf:resource="&cmns-org;LegalPerson"/>
 		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalParty"/>
 		<skos:definition>relates a person or candidate with a political party</skos:definition>
 	</owl:ObjectProperty>
