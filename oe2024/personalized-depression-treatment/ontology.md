@@ -5,6 +5,16 @@
 Current Version:
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR4b1IdEObVOhmgrxNvRIIS3bOkymzAROhrp9vp7i4RMpKkvBeX-iY-9U6KARi2N7xkKsrplWmZhgxR/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
+
+Figure 1 in the model above serves as the overview diagram, showcasing the top level concepts represented by the ontology. The central concepts are Patients, the Symptoms they suffer from, the Conditions they are diagnosed with, and the Treatments that address those conditions. Also included in the overview are the patient's Genome, and the Genes that are associated with conditions.
+
+Figure 2 goes into further detail about patients and conditions, showcasing subclasses of Condition and Symptom, and data properties of the classes which appeared in Figure 1. 
+
+Figures 3a and 3b go into further detail with Treatments, with Figure 3a showcasing the subclasses of Treatment, and 3b focusing on other classes that connect to Treatment, such as Medicinal Product and other terms from the IDMP.
+
+Figure 4 centers on the terms used to capture genetic information, namely Genome, Gene, and Disease-Associated Gene.
+
+
 Week 10 Version:
 [Week 10 Concept Model](images/ConceptModel/OE10_PTDO_ConceptModel.pdf)
 
