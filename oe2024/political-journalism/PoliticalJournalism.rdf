@@ -16,7 +16,6 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
@@ -40,7 +39,7 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
-		<owl:versionIRI rdf:resource="&oe-pjo;6.0.0"/>
+		<owl:versionIRI rdf:resource="&oe-pjo;6.1.0"/>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#AbortionTopic">
@@ -160,6 +159,29 @@
 		<skos:definition>a political office within the Cabinet of the US President</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CentristMediaBias">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#MediaBias"/>
+		<rdfs:label>centrist media bias</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CentristPublisher">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher"/>
+		<rdfs:label>centrist publisher</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasMediaBias"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CentristMediaBias"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a publisher with a centrist media bias rating</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ChairmanOfTheCouncilOfEconomicAdvisors">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CabinetLevelOfficial"/>
 		<rdfs:label>chairman of the council of economic advisors</rdfs:label>
@@ -179,6 +201,28 @@
 		</rdfs:subClassOf>
 		<rdfs:label>contributor</rdfs:label>
 		<skos:definition>a person who contributes to the creation of a news article</skos:definition>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DemocratParty">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalParty"/>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DemocratPoliticalCandidate">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
+		<rdfs:label>democrat political candidate</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasPoliticalParty"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DemocratParty"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a political candidate who is running in the Democrat Party during this candidacy</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DirectorOfTheOfficeOfManagementAndBudget">
@@ -401,6 +445,29 @@
 		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ElectionMargin"/>
 	</owl:NamedIndividual>
 	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LeftWingMediaBias">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#MediaBias"/>
+		<rdfs:label>left-wing media bias</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LeftWingPublisher">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher"/>
+		<rdfs:label>left-wing publisher</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasMediaBias"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LeftWingMediaBias"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a publisher with a left or lean-left media bias rating</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LegislativeDocument">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DocumentSubject"/>
 		<rdfs:subClassOf rdf:resource="&cmns-doc;LegalDocument"/>
@@ -570,6 +637,51 @@
 		<rdfs:subClassOf rdf:resource="&cmns-org;LegalEntity"/>
 		<rdfs:label>publisher</rdfs:label>
 		<skos:definition>an organization that publishes books, magazines, newspapers, or other text-based content</skos:definition>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RepublicanParty">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalParty"/>
+	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RepublicanPoliticalCandidate">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
+		<rdfs:label>republican political candidate</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasPoliticalParty"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RepublicanParty"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a political candidate who is running in the Republican Party during this candidacy</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RightWingMediaBias">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#MediaBias"/>
+		<rdfs:label>right-wing media bias</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RightWingPublisher">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher"/>
+		<rdfs:label>right-wing publisher</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasMediaBias"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RightWingMediaBias"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a publisher with a right or lean-right media bias rating</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RoleSubject">
@@ -760,6 +872,7 @@
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasAuthor">
 		<rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasContributor"/>
 		<rdfs:label>has author</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-doc;Document"/>
 		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Author"/>
 		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isAuthorOf"/>
 		<skos:definition>relates an article to its author</skos:definition>
