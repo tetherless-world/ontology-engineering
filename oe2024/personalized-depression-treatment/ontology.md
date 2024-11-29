@@ -14,6 +14,8 @@ Figures 3a and 3b go into further detail with Treatments, with Figure 3a showcas
 
 Figure 4 centers on the terms used to capture genetic information, namely Genome, Gene, and Disease-Associated Gene.
 
+Week 11 Version:
+[Week 11 Concept Model](images/ConceptModel/OE11_PTDO_ConceptModel.pdf)
 
 Week 10 Version:
 [Week 10 Concept Model](images/ConceptModel/OE10_PTDO_ConceptModel.pdf)
@@ -35,11 +37,15 @@ Week 11 Ontology: [Link](https://github.com/tetherless-world/ontology-engineerin
 
 Week 11, with Individuals: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek11Individuals.rdf)
 
-Week 10 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek10.rdf)
+Week 10 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek10_Individuals.rdf)
+
+Week 10, with Individuals: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek10.rdf)
 
 Week 9 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek9.rdf)
 
 Week 8 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek8.rdf)
+
+Week 8, with Individuals: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek8Individuals.rdf)
 
 Week 7 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/archived/PersonalizedDepressionTreatmentWeek7.rdf)
 
