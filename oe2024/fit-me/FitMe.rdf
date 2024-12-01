@@ -1,1105 +1,1637 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rdf:RDF [
-	<!ENTITY dct "http://purl.org/dc/terms/">
-	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
-	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
-	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
-]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
-	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-	
-	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe">
-		<dct:abstract>FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.</dct:abstract>
-		<dct:creator>Abhirup Dasgupta</dct:creator>
-		<dct:creator>Anirban Acharya</dct:creator>
-		<dct:creator>Dominick Iadevaia</dct:creator>
-		<dct:creator>Johnny Sun</dct:creator>
-		<dct:modified>11/21/2024</dct:modified>
-		<dct:publisher>FitMe</dct:publisher>
-		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/FitMeV4.rdf</owl:priorVersion>
-		<owl:versionIRI>&quot;https://tw.rpi.edu/ontology-engineering/oe2024/FitMe&quot;</owl:versionIRI>
-		<skos:changeNote>Added DLs for back exercise semantics</skos:changeNote>
-		<skos:changeNote>Added DLs for bicep exercise semantics</skos:changeNote>
-		<skos:changeNote>Fixed issue with inconsistent labeling</skos:changeNote>
-	</owl:Ontology>
-	
-	<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#has">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-	</owl:ObjectProperty>
-	
-	<owl:AnnotationProperty rdf:about="&dct;abstract">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&dct;creator">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&dct;modified">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&dct;publisher">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&dct;source">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&rdfs;isDefinedBy">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&rdfs;label">
-	</owl:AnnotationProperty>
-	
-	<rdf:Description rdf:about="&owl;Thing">
-		<rdfs:subClassOf rdf:resource="&owl;Thing"/>
-	</rdf:Description>
-	
-	<owl:AnnotationProperty rdf:about="&owl;versionIRI">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&skos;changeNote">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&skos;definition">
-	</owl:AnnotationProperty>
-	
-	<owl:AnnotationProperty rdf:about="&skos;isDefinedBy">
-	</owl:AnnotationProperty>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#DoNot">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-		<rdfs:label xml:lang="en">do not</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">a list of exercises focused on what not to do</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Enforce">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">enforce</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">to strengthen muscles around an injury</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#SetOfSuperman">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise"/>
-		<rdfs:label xml:lang="en">set of superman</rdfs:label>
-		<dct:source>https://www.healthline.com/health/fitness/superman-exercise#:~:text=Lie%20on%20the%20floor%20in,Superman%20flying%20in%20the%20air.</dct:source>
-		<skos:definition xml:lang="en">lie on floor and flex muscles until only your pelvis is on the floor</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#User">
-		<rdfs:label xml:lang="en">user</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/user</dct:source>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
-						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affects"/>
-						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/focus"/>
-						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition xml:lang="en">a person using the application</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#WeightLoss">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">weight loss</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">decrease body weight</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
-		<rdfs:label xml:lang="en">aerobic exercise</rdfs:label>
-		<dct:source>https://my.clevelandclinic.org/health/articles/7050-aerobic-exercise</dct:source>
-		<skos:definition xml:lang="en">endurance type exercises</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AnkleLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
-		<rdfs:label xml:lang="en">ankle ligament injury</rdfs:label>
-		<dct:source>https://my.clevelandclinic.org/health/body/21609-ankle-ligament</dct:source>
-		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WristLigamentInjury"/>
-		<skos:definition xml:lang="en">damage to ligament in ankle</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmBoneInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
-		<rdfs:label xml:lang="en">arm bone injury</rdfs:label>
-		<dct:source>https://www.columbiadoctors.org/health-library/symptom/arm-injuries/</dct:source>
-		<skos:definition xml:lang="en">fracture or break of a bone in the arm</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmMuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
-		<rdfs:label xml:lang="en">arm muscle injury</rdfs:label>
-		<dct:source>https://www.columbiadoctors.org/health-library/symptom/arm-injuries/</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your arm</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackBoneInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
-		<rdfs:label xml:lang="en">back bone injury</rdfs:label>
-		<dct:source>https://www.healthdirect.gov.au/back-injuries</dct:source>
-		<skos:definition xml:lang="en">fracture or break of a bone in the back</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackDay">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-		<rdfs:label xml:lang="en">back day</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">a list of exercises focused on back and biceps</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackMuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
-		<rdfs:label xml:lang="en">back injury</rdfs:label>
-		<dct:source>https://www.healthdirect.gov.au/back-injuries</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your back</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise"/>
-		<rdfs:label xml:lang="en">body weight exercise</rdfs:label>
-		<dct:source>https://www.kaggle.com/datasets/aadhavvignesh/calories-burned-during-exercise-and-activities?resource=download</dct:source>
-		<skos:definition xml:lang="en">exercises done with body weight</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
-		<rdfs:label xml:lang="en">bone injury</rdfs:label>
-		<dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C35487&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">trauma to the bone</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CardioDay">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-		<rdfs:label xml:lang="en">cardio day</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">a list of exercises focused on cardiovasular endurance</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestBoneInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
-		<rdfs:label xml:lang="en">chest bone injury</rdfs:label>
-		<dct:source>https://www.healthdirect.gov.au/chest-injuries#:~:text=of%20chest%20injuries-,What%20are%20chest%20injuries?,including%20your%20heart%20and%20lungs)</dct:source>
-		<skos:definition xml:lang="en">fracture or break of a bone in the chest</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestDay">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-		<rdfs:label xml:lang="en">chest day</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">a list of exercises focused on chest, triceps, and deltoids</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestMuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
-		<rdfs:label xml:lang="en">chest muscle injury</rdfs:label>
-		<dct:source>https://www.healthdirect.gov.au/chest-injuries#:~:text=of%20chest%20injuries-,What%20are%20chest%20injuries?,including%20your%20heart%20and%20lungs)</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your chest</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CoreMuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
-		<rdfs:label xml:lang="en">core muscle injury</rdfs:label>
-		<dct:source>https://www.kansashealthsystem.com/care/conditions/core-muscle-injury</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your core</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Cycling">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
-		<rdfs:label xml:lang="en">cycling</rdfs:label>
-		<dct:source>https://www.britannica.com/sports/cycling</dct:source>
-		<skos:definition xml:lang="en">riding a bike</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DynamicStretching">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FlexibilityExercise"/>
-		<rdfs:label xml:lang="en">dynamic stretching</rdfs:label>
-		<dct:source>https://www.medicalnewstoday.com/articles/dynamic-stretching</dct:source>
-		<skos:definition xml:lang="en">stretching that involves the person to move</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ElbowLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
-		<rdfs:label xml:lang="en">elbow ligament injury</rdfs:label>
-		<dct:source>https://stanfordhealthcare.org/medical-conditions/bones-joints-and-muscles/elbow-ligament-injury.html</dct:source>
-		<skos:definition xml:lang="en">damage to ligament or joint in elbow</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise">
-		<rdfs:label xml:lang="en">exercise</rdfs:label>
-		<dct:source xml:lang="en">https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C16567&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">activity that requires physical or mental exertion, especially when performed to develop or maintain fitness</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatLoss">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">fat loss</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition>decrease body fat percentage</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FlexibilityExercise">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
-		<rdfs:label xml:lang="en">flexibility exercise</rdfs:label>
-		<dct:source>https://www.heart.org/en/healthy-living/fitness/fitness-basics/flexibility-exercise-stretching#:~:text=Flexibility%20exercises%20stretch%20your%20muscles,well%20as%20for%20everyday%20activities.</dct:source>
-		<skos:definition xml:lang="en">exercise that trains flexibility of muscles, normally helpful for strength training</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FunctionalTraining">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">functional training</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">be able to do more outside of the gym</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GainExplosiveness">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">gain explosiveness</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">gain stronger fast twitch muscles</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GainFlexibility">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">gain flexibility</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">have muscles stretch further</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GlutealMuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
-		<rdfs:label xml:lang="en">gluteal muscle injury</rdfs:label>
-		<dct:source>https://www.medicinenet.com/gluteal_injury/article.htm</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your gluteal</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMaximus">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGlutealMuscles"/>
-		<rdfs:label xml:lang="en">gluteus maximus</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/gluteus%20maximus</dct:source>
-		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMedius"/>
-		<skos:definition xml:lang="en">outer Muscle of your butt</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMedius">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGlutealMuscles"/>
-		<rdfs:label xml:lang="en">gluteus medius</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/medical/gluteus%20medius</dct:source>
-		<skos:definition xml:lang="en">middle muscle of your butt</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue"/>
-				<owl:allValuesFrom rdf:resource="&xsd;string"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">goal</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/goal</dct:source>
-		<owl:equivalentClass>
-			<owl:Class>
-				<owl:intersectionOf rdf:parseType="Collection">
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#has"/>
-						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/preferredStrain"/>
-						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
-					</owl:Restriction>
-				</owl:intersectionOf>
-			</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition xml:lang="en">what user is training for</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/HipLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
-		<rdfs:label xml:lang="en">hip ligament injury</rdfs:label>
-		<dct:source>https://www.orthowisconsin.com/hip-ligament-injuries-orthopaedic-surgeon-wisconsin.html#:~:text=Injuries%20to%20the%20hip%20ligaments,the%20acetabulum%20of%20the%20pelvis.</dct:source>
-		<skos:definition xml:lang="en">damage to ligament or joint in hip</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IncreaseCardiovascularEndurance">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">increase cardiovascular endurance</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">strengthen the heart and lungs</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury">
-		<rdfs:label xml:lang="en">injury</rdfs:label>
-		<dct:source xml:lang="en">https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C3671&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">damage inflicted on the body as the direct or indirect result of an external force, with or without disruption of structural continuity</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise"/>
-		<rdfs:label xml:lang="en">isometric exercise</rdfs:label>
-		<dct:source>https://en.wikipedia.org/wiki/Isometric_exercise</dct:source>
-		<skos:definition xml:lang="en">exercises that involves staying still while applying load to muscle</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/JumpingRope">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
-		<rdfs:label xml:lang="en">jumping rope</rdfs:label>
-		<dct:source>https://dictionary.cambridge.org/us/dictionary/english/jump-rope</dct:source>
-		<skos:definition xml:lang="en">taking a jump rope and using it</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/KneeLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
-		<rdfs:label xml:lang="en">knee ligament injury</rdfs:label>
-		<dct:source>https://www.uwmedicine.org/conditions-symptoms/bone-joint-muscle/knee-ligament-injuries#:~:text=What%20is%20a%20knee%20ligament,injury%20in%20basketball%20or%20skiing.</dct:source>
-		<skos:definition xml:lang="en">damage to ligament or joint in knee</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegBoneInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
-		<rdfs:label xml:lang="en">leg bone injury</rdfs:label>
-		<dct:source>https://medlineplus.gov/leginjuriesanddisorders.html#:~:text=Common%20leg%20injuries%20include%20sprains,cause%20pain%20and%20limited%20motion.</dct:source>
-		<skos:definition xml:lang="en">fracture or break of a bone in the leg</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegDay">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-		<rdfs:label xml:lang="en">leg day</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">a list of exercises focused on quadriceps, hamstrings, and glutes</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegMuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
-		<rdfs:label xml:lang="en">leg muscle injury</rdfs:label>
-		<dct:source>https://medlineplus.gov/leginjuriesanddisorders.html#:~:text=Common%20leg%20injuries%20include%20sprains,cause%20pain%20and%20limited%20motion.</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your leg</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
-		<rdfs:label xml:lang="en">ligament injury</rdfs:label>
-		<dct:source xml:lang="en">https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C35035&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">a stretching or tearing of a ligament</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
-		<rdfs:label xml:lang="en">lower body muscles</rdfs:label>
-		<dct:source>https://training.seer.cancer.gov/anatomy/muscular/groups/lower.html</dct:source>
-		<skos:definition xml:lang="en">muscles located in the lower part of the body, including the quadriceps, hamstrings, calves, and gluteal muscles</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGain">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">muscle gain</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">increase body weight while body fat decreases</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targetedBy"/>
-				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">muscle group</rdfs:label>
-		<dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C13056&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">one of the contractile organs of the body</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
-		<rdfs:label xml:lang="en">muscle injury</rdfs:label>
-		<dct:source>https://www.physio-pedia.com/Muscle_Injuries</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Plank">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise"/>
-		<rdfs:label xml:lang="en">plank</rdfs:label>
-		<dct:source>https://www.health.harvard.edu/blog/straight-talk-on-planking-2019111318304#:~:text=Here&apos;s%20how%20to%20do%20a,and%20neck%20to%20your%20feet.</dct:source>
-		<skos:definition xml:lang="en">hold your bodyweight up with your elbows and toes touching the floor and keeping your body straight</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner">
-		<rdfs:label xml:lang="en">planner</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">a way to categorize different exercise cycles</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">pressing</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/press</dct:source>
-		<skos:definition xml:lang="en">pushing weight away from your body using your chest and triceps</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recovery">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">recovery</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">focus on light exercise to restrengthen injured areas</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/RecoveryDay">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-		<rdfs:label xml:lang="en">recovery day</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">a list of exercises focused on recovering from injury or the gym</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise"/>
-		<rdfs:label xml:lang="en">resistance exercise</rdfs:label>
-		<dct:source>https://www.betterhealth.vic.gov.au/health/healthyliving/resistance-training-health-benefits</dct:source>
-		<skos:definition xml:lang="en">exercise that requires pushing against resistance</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">row</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/row</dct:source>
-		<skos:definition xml:lang="en">bringing weight closer to your body using your back and biceps</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Running">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
-		<rdfs:label xml:lang="en">running</rdfs:label>
-		<dct:source>https://dictionary.cambridge.org/us/dictionary/english/run</dct:source>
-		<skos:definition xml:lang="en">walking but at a faster pace and lifting feet off the ground</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfAbCrunches">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
-		<rdfs:label xml:lang="en">set of ab crunches</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/crunches</dct:source>
-		<skos:definition xml:lang="en">collection of exercise performed from a supine position by raising and lowering the upper torso without reaching a sitting position</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfAbdominalMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCoreMuscles"/>
-		<rdfs:label xml:lang="en">setOfAbdominalMuscles</rdfs:label>
-		<dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C32040&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">any of the muscles of the abdomen that comprise the abdominal wall</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfArmMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
-		<rdfs:label xml:lang="en">set of arm muscles</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/arms</dct:source>
-		<skos:definition xml:lang="en">muscles on your arms</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBackMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
-		<rdfs:label xml:lang="en">set of back muscle</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/back</dct:source>
-		<skos:definition xml:lang="en">muscles on your back</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBarbellBackSquats">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat"/>
-		<rdfs:label xml:lang="en">set of barbell back squats</rdfs:label>
-		<dct:source>https://www.masterclass.com/articles/barbell-squat-guide</dct:source>
-		<skos:definition xml:lang="en">squat with bar on your back</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBenchPress">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing"/>
-		<rdfs:label xml:lang="en">set of bench press</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/bench%20press</dct:source>
-		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfOverheadShoulderPress"/>
-		<skos:definition xml:lang="en">laying on a bench, pressing weight up</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBentOverBarbellRows">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row"/>
-		<rdfs:label xml:lang="en">set of bent over barbell rows</rdfs:label>
-		<dct:source>https://www.muscleandstrength.com/exercises/bent-over-barbell-row.html</dct:source>
-		<skos:definition xml:lang="en">row with a barbell and bent over the barbell</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBicepCurls">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of bicep curls</rdfs:label>
-		<dct:source>https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675#:~:text=Campbell%3A%20To%20do%20a%20biceps,front%20of%20your%20upper%20arm.</dct:source>
-		<skos:definition xml:lang="en">using elbow as pivot point, lift weight</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBiceps">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfArmMuscles"/>
-		<rdfs:label xml:lang="en">set of biceps</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/biceps</dct:source>
-		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTriceps"/>
-		<skos:definition xml:lang="en">the large flexor muscle of the front of the upper arm</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBulgarianSplitSquats">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat"/>
-		<rdfs:label xml:lang="en">set of bulgarian split squats</rdfs:label>
-		<dct:source>https://www.menshealth.com/uk/how-tos/a735581/barbell-bulgarian-split-squat1/</dct:source>
-		<skos:definition xml:lang="en">keeping one leg ahead of the other, squat using mainly that leg</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCableRows">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row"/>
-		<rdfs:label xml:lang="en">set of cable rows</rdfs:label>
-		<dct:source>https://www.verywellfit.com/how-to-do-the-cable-row-3498605</dct:source>
-		<skos:definition xml:lang="en">rowing specifically using a cable</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfChestMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
-		<rdfs:label xml:lang="en">set of chest muscles</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/chest</dct:source>
-		<skos:definition xml:lang="en">muscles on your chest</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCoreMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
-		<rdfs:label xml:lang="en">set of core muscles</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/core</dct:source>
-		<skos:definition xml:lang="en">the group of muscles in the torso that are involved in maintaining stability and posture</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeadlifts">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of deadlifts</rdfs:label>
-		<dct:source>https://www.nerdfitness.com/blog/strength-training-101-the-deadlift/</dct:source>
-		<skos:definition xml:lang="en">lift weight off the ground using good form</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeltoids">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfShoulderMuscles"/>
-		<rdfs:label xml:lang="en">set of deltoids</rdfs:label>
-		<dct:source xml:lang="en">https://www.merriam-webster.com/dictionary/deltoid</dct:source>
-		<skos:definition xml:lang="en">shoulder muscles</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDips">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
-		<rdfs:label xml:lang="en">set of dips</rdfs:label>
-		<dct:source>https://en.wikipedia.org/wiki/Dip_(exercise)#:~:text=To%20perform%20a%20dip%2C%20the,returning%20to%20the%20starting%20position.</dct:source>
-		<skos:definition xml:lang="en">pushing bodyweight up using only hands</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDumbbellRows">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row"/>
-		<rdfs:label xml:lang="en">set of dumbbell rows</rdfs:label>
-		<dct:source>https://www.issaonline.com/blog/post/dumbbell-row-muscles-worked-proper-form-variations-more#:~:text=Dumbbell%20Row%20Form%20and%20Lifting%20Technique&amp;text=Place%20the%20arm%20closest%20to,is%20closer%20to%20the%20chest.</dct:source>
-		<skos:definition xml:lang="en">row using dumbbells</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfFacePulls">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of face pulls</rdfs:label>
-		<dct:source>https://www.puregym.com/exercises/arms-and-shoulders/rear-delt-exercises/face-pulls/</dct:source>
-		<skos:definition xml:lang="en">pull rope to your face using your arms and back</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGluteBridge">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
-		<rdfs:label xml:lang="en">set of glute bridge</rdfs:label>
-		<dct:source>https://www.webmd.com/fitness-exercise/how-to-do-glute-bridge</dct:source>
-		<skos:definition xml:lang="en">flex glutes to straighten out body</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGlutealMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle"/>
-		<rdfs:label xml:lang="en">set of gluteal muscles</rdfs:label>
-		<dct:source>https://www.ncbi.nlm.nih.gov/books/NBK538193/#:~:text=The%20gluteal%20muscles%20are%20a,gluteus%20medius%2C%20and%20gluteus%20minimus.</dct:source>
-		<skos:definition xml:lang="en">muscles on your glutes</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHamstrings">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLegMuscles"/>
-		<rdfs:label xml:lang="en">set of hamstring</rdfs:label>
-		<dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C53042&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">group of muscles including the biceps femoris, semimembranosus and semitendinosus that extend down the back of the thigh</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHeavyFrontSquats">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat"/>
-		<rdfs:label xml:lang="en">set of heavy front squats</rdfs:label>
-		<dct:source>https://www.stack.com/a/front-squat/</dct:source>
-		<skos:definition xml:lang="en">squat weight with bar in front of you</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfInclineDumbbellPress">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBenchPress"/>
-		<rdfs:label xml:lang="en">set of incline dumbbell press</rdfs:label>
-		<dct:source>https://www.verywellfit.com/how-to-do-incline-dumbbell-press-4588212</dct:source>
-		<skos:definition xml:lang="en">pressing a dumbbell up on a bench with more than 0 less than 90 degree angle</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPulldowns">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of lat pulldowns</rdfs:label>
-		<dct:source>https://blog.nasm.org/biomechanics-of-the-lat-pulldown#:~:text=low%2Dback).-,Movement%20Pattern,squeeze%20your%20shoulder%20blades%20together).</dct:source>
-		<skos:definition xml:lang="en">while seated, pull bar down to chest using lats</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPullovers">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of lat pullovers</rdfs:label>
-		<dct:source>https://www.tidalflow.com/blog/lat-pullover-guide-build-a-stronger-wider-back-effectively#:~:text=Lower%20the%20weight%20in%20an,before%20beginning%20the%20next%20repetition.</dct:source>
-		<skos:definition xml:lang="en">pull the bar to your body using your lats</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLateralRaises">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of lateral raises</rdfs:label>
-		<dct:source>https://www.masterclass.com/articles/lateral-raise-guide</dct:source>
-		<skos:definition xml:lang="en">raising weight sideways</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLegMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle"/>
-		<rdfs:label xml:lang="en">set of leg muscles</rdfs:label>
-		<dct:source>https://my.clevelandclinic.org/health/body/22220-leg-muscles</dct:source>
-		<skos:definition xml:lang="en">muscles on your legs</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLowerBackMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCoreMuscles"/>
-		<rdfs:label xml:lang="en">set of lower back muscles</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/medical/low-back</dct:source>
-		<skos:definition xml:lang="en">muscles on your lower back</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfOverheadShoulderPress">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing"/>
-		<rdfs:label xml:lang="en">set of overhead shoulder press</rdfs:label>
-		<dct:source>https://stronglifts.com/overhead-press/</dct:source>
-		<skos:definition xml:lang="en">pressing weight over your head</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfPullups">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
-		<rdfs:label xml:lang="en">set of pullups</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/pull-up#:~:text=%CB%88pu%CC%87l%2D%CB%8C%C9%99p,facing%20outward%20compare%20chin%2Dup</dct:source>
-		<skos:definition xml:lang="en">hang on bar and pull yourself up</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfPushups">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
-		<rdfs:label xml:lang="en">set of pushups</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/push-up#:~:text=%3A%20a%20conditioning%20exercise%20performed%20in,on%20the%20hands%20and%20toes</dct:source>
-		<skos:definition xml:lang="en">exercise where one goes up and down from the plank position</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfQuadriceps">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLegMuscles"/>
-		<rdfs:label xml:lang="en">set of quadriceps</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/quadriceps</dct:source>
-		<skos:definition xml:lang="en">group of muscles in the front side of your thigh</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfRomanianDeadlifts">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeadlifts"/>
-		<rdfs:label xml:lang="en">set of  romanian deadlifts</rdfs:label>
-		<dct:source>https://www.nsca.com/education/articles/kinetic-select/romanian-deadlift-rdl/?srsltid=AfmBOoraCvo3E_F550MnQV4YgE5r3CEjCL8byYXPsVxMUAwg30GAgVCB</dct:source>
-		<skos:definition xml:lang="en">focus on lifting weight from standing to bending over</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfRussianTwists">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
-		<rdfs:label xml:lang="en">set of russian twists</rdfs:label>
-		<dct:source>https://www.webmd.com/fitness-exercise/how-to-russian-twist</dct:source>
-		<skos:definition xml:lang="en">sitting down and keeping legs in the air, twist upper body</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedLegExtensions">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of seated leg extensions</rdfs:label>
-		<dct:source>https://www.puregym.com/exercises/legs/quad-exercises/leg-extensions/#:~:text=Adjust%20the%20machine%20so%20that,back%20to%20the%20starting%20position.</dct:source>
-		<skos:definition xml:lang="en">in a seat, extend your legs with weights at the end</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedRows">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCableRows"/>
-		<rdfs:label xml:lang="en">set of seated rows</rdfs:label>
-		<dct:source>https://www.verywellfit.com/how-to-do-the-cable-row-3498605#:~:text=The%20seated%20cable%20row%20is%20a%20pulling%20exercise%20that%20generally,to%20stability%20in%20your%20shoulders.</dct:source>
-		<skos:definition xml:lang="en">pulling weight towards you while seated using your back, normally done with cable</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfShoulderMuscles">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
-		<rdfs:label xml:lang="en">set of shoulder muscles</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/shoulder</dct:source>
-		<skos:definition xml:lang="en">muscles on your shoulders</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTricepPushdowns">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">set of tricep pushdowns</rdfs:label>
-		<dct:source>https://www.puregym.com/exercises/arms-and-shoulders/tricep-extension/tricep-pushdowns/#:~:text=What%20Is%20A%20Tricep%20Pushdown&amp;text=The%20tricep%20pushdown%20uses%20a,be%20used%20for%20this%20exercise.</dct:source>
-		<skos:definition xml:lang="en">pushing weight down using your elbow as a pivot point</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTriceps">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfArmMuscles"/>
-		<rdfs:label xml:lang="en">set of triceps</rdfs:label>
-		<dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C33812&amp;p=classes</dct:source>
-		<skos:definition xml:lang="en">a skeletal muscle of the limb comprised of three muscular bundles called the heads that originate seperately and join together</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfWallAngels">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DynamicStretching"/>
-		<rdfs:label xml:lang="en">wall angels</rdfs:label>
-		<dct:source>https://transformchiropractic.com/posture/beginner-wall-angel-postural-exercise/</dct:source>
-		<skos:definition xml:lang="en">move arms up and down keeping body on wall</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderBoneInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
-		<rdfs:label xml:lang="en">shoulder bone injury</rdfs:label>
-		<dct:source>https://orthoinfo.aaos.org/en/diseases--conditions/common-shoulder-injuries/</dct:source>
-		<skos:definition xml:lang="en">fracture or break of a bone in the shoulder</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
-		<rdfs:label xml:lang="en">shoulder ligament injury</rdfs:label>
-		<dct:source>https://nyulangone.org/conditions/shoulder-sprains-strains#:~:text=Ligaments%20are%20the%20cords%20of,or%20tendons%20overstretch%20or%20tear.</dct:source>
-		<skos:definition xml:lang="en">damage to ligament or joint in shoulder</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderMuscleInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
-		<rdfs:label xml:lang="en">shoulder muscle injury</rdfs:label>
-		<dct:source>https://orthoinfo.aaos.org/en/diseases--conditions/common-shoulder-injuries/</dct:source>
-		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your shoulder</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
-		<rdfs:label xml:lang="en">squat</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/squat</dct:source>
-		<skos:definition xml:lang="en">bringing body lower and back up with or without weight</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StairMachine">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
-		<rdfs:label xml:lang="en">stair machine</rdfs:label>
-		<dct:source>https://www.dictionary.com/browse/stairmaster</dct:source>
-		<skos:definition xml:lang="en">walking a flight of never ending stairs</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StaticStretching">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FlexibilityExercise"/>
-		<rdfs:label xml:lang="en">static stretching</rdfs:label>
-		<dct:source>https://www.hss.edu/article_static_dynamic_stretching.asp</dct:source>
-		<skos:definition xml:lang="en">stretching that involves the person staying still</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StationaryCycling">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Cycling"/>
-		<rdfs:label xml:lang="en">stationary cycling</rdfs:label>
-		<dct:source>https://en.wikipedia.org/wiki/Stationary_bicycle#:~:text=A%20stationary%20bicycle%20(also%20known,on%20a%20(stationary)%20bicycle.</dct:source>
-		<skos:definition xml:lang="en">riding on a stationary bike, normally machine</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain">
-		<rdfs:label xml:lang="en">strain</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/strain</dct:source>
-		<skos:definition xml:lang="en">how hard an exercise is</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
-		<rdfs:label xml:lang="en">strength exercise</rdfs:label>
-		<dct:source>https://en.wikipedia.org/wiki/Strength_training</dct:source>
-		<skos:definition xml:lang="en">exercise that trains strength, normally creates heavy strain</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthGain">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:label xml:lang="en">strength gain</rdfs:label>
-		<dct:source>FitMe</dct:source>
-		<skos:definition xml:lang="en">lift heavier weights</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Swimming">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
-		<rdfs:label xml:lang="en">swimming</rdfs:label>
-		<dct:source>https://www.merriam-webster.com/dictionary/swimming</dct:source>
-		<skos:definition xml:lang="en">the act, art, or sport of one that moves in water</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
-		<rdfs:label xml:lang="en">upper body muscles</rdfs:label>
-		<dct:source>https://training.seer.cancer.gov/anatomy/muscular/groups/upper.html#:~:text=The%20muscles%20of%20the%20upper,forearm%2C%20wrist%2C%20and%20hand.</dct:source>
-		<skos:definition xml:lang="en">muscles specifically above the torso</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
-		<rdfs:label xml:lang="en">walking</rdfs:label>
-		<dct:source>https://dictionary.cambridge.org/us/dictionary/english/walking</dct:source>
-		<skos:definition xml:lang="en">the activity of going for a walk</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WristLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
-		<rdfs:label xml:lang="en">wrist ligament injury</rdfs:label>
-		<dct:source>https://orthoinfo.aaos.org/en/diseases--conditions/wrist-sprains/#:~:text=Wrist%20sprains%20are%20common%20injuries,fall%20onto%20an%20outstretched%20hand.</dct:source>
-		<skos:definition xml:lang="en">damage to ligament in wrist</skos:definition>
-	</owl:Class>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affectedBy">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">affected by</rdfs:label>
-		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affects"/>
-		<skos:definition xml:lang="en">what muscle is hurt by an injury</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affects">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">affects</rdfs:label>
-		<skos:definition xml:lang="en">what an injury does to a muscle</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">causes</rdfs:label>
-		<skos:definition xml:lang="en">x creates y to happen</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/containsExercise">
-		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/focus">
-		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#User"/>
-		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasAttribute">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">has attribute</rdfs:label>
-		<rdfs:domain rdf:resource="&owl;Thing"/>
-		<rdfs:range rdf:resource="&owl;Thing"/>
-		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf"/>
-		<skos:definition xml:lang="en">contains a certain measurement</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">has strain value</rdfs:label>
-		<rdfs:domain>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise">
-					</rdf:Description>
-					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal">
-					</rdf:Description>
-				</owl:unionOf>
-			</owl:Class>
-		</rdfs:domain>
-		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
-		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf"/>
-		<skos:definition xml:lang="en">how much strain an exercise has</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue">
-		<rdfs:label xml:lang="en">has value</rdfs:label>
-		<rdfs:range>
-			<rdfs:Datatype>
-				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&xsd;int">
-					</rdf:Description>
-					<rdf:Description rdf:about="&xsd;string">
-					</rdf:Description>
-				</owl:unionOf>
-			</rdfs:Datatype>
-		</rdfs:range>
-		<skos:definition xml:lang="en">what value a certain attribute contains</skos:definition>
-	</owl:DatatypeProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">is attribute of</rdfs:label>
-		<rdfs:domain rdf:resource="&owl;Thing"/>
-		<rdfs:range rdf:resource="&owl;Thing"/>
-		<skos:definition xml:lang="en">a measurement of</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">is strain value of</rdfs:label>
-		<skos:definition xml:lang="en">what the strain value of an exercise is</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/preferredStrain">
-		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
-		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targetedBy">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">targeted by</rdfs:label>
-		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targets"/>
-		<skos:definition>what exercise makes a muscle grow</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targets">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">targets</rdfs:label>
-		<skos:definition xml:lang="en">an exercise hits a muscle group</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/usedBy">
-		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
-		<rdfs:label xml:lang="en">used by</rdfs:label>
-		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/uses"/>
-		<skos:definition xml:lang="en">what exercise helps target the muscle</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/uses">
-		<rdfs:label xml:lang="en">uses</rdfs:label>
-		<skos:definition xml:lang="en">what muscle is targeted by the exercise</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AnkleLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ElbowLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/HipLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/KneeLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WristLigamentInjury">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmBoneInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackBoneInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestBoneInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegBoneInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderBoneInjury">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmMuscleInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackMuscleInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestMuscleInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CoreMuscleInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GlutealMuscleInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegMuscleInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderMuscleInjury">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Cycling">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/JumpingRope">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Running">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StairMachine">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBicepCurls">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeadlifts">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfFacePulls">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPulldowns">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPullovers">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLateralRaises">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedLegExtensions">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTricepPushdowns">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBarbellBackSquats">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBulgarianSplitSquats">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHeavyFrontSquats">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBentOverBarbellRows">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCableRows">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDumbbellRows">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
+     xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe">
+        <dct:abstract>FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.</dct:abstract>
+        <dct:creator>Abhirup Dasgupta</dct:creator>
+        <dct:creator>Anirban Acharya</dct:creator>
+        <dct:creator>Dominick Iadevaia</dct:creator>
+        <dct:creator>Johnny Sun</dct:creator>
+        <dct:modified>12/1/2024</dct:modified>
+        <dct:publisher>FitMe</dct:publisher>
+        <dct:license>https://creativecommons.org/licenses/by/4.0/</dct:license>
+        <owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/FitMeV4.rdf</owl:priorVersion>
+        <owl:versionIRI>&quot;https://tw.rpi.edu/ontology-engineering/oe2024/FitMe&quot;</owl:versionIRI>
+        <skos:changeNote>Added DLs for back exercise semantics</skos:changeNote>
+        <skos:changeNote>Added DLs for bicep exercise semantics</skos:changeNote>
+        <skos:changeNote>Fixed issue with inconsistent labeling</skos:changeNote>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/abstract -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/abstract"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#isDefinedBy -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#versionIRI -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionIRI"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#changeNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#changeNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#isDefinedBy -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#isDefinedBy"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affectedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affectedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affects"/>
+        <rdfs:label xml:lang="en">affected by</rdfs:label>
+        <skos:definition xml:lang="en">what muscle is hurt by an injury</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affects -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/affects">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">affects</rdfs:label>
+        <skos:definition xml:lang="en">what an injury does to a muscle</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/aids -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/aids">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">aids</rdfs:label>
+        <skos:definition xml:lang="en">to promote the progress or accomplishment of</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">causes</rdfs:label>
+        <skos:definition xml:lang="en">x creates y to happen</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/containsExercise -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/containsExercise">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+        <rdfs:label xml:lang="en">contains exercise</rdfs:label>
+        <skos:definition xml:lang="en">contains a certain exercise movement</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/focus -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/focus">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/User"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <rdfs:label xml:lang="en">focus</rdfs:label>
+        <skos:definition xml:lang="en">a point of concentration</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasAttribute -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasAttribute">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">has attribute</rdfs:label>
+        <skos:definition xml:lang="en">contains a certain measurement</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasGoal -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasGoal">
+        <rdfs:label xml:lang="en">has goal</rdfs:label>
+        <skos:definition xml:lang="en">a user&apos;s goal</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
+        <rdfs:label xml:lang="en">has strain value</rdfs:label>
+        <skos:definition xml:lang="en">how much strain an exercise has</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isAttributeOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">is attribute of</rdfs:label>
+        <skos:definition xml:lang="en">a measurement of</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/isStrainValueOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">is strain value of</rdfs:label>
+        <skos:definition xml:lang="en">what the strain value of an exercise is</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/preferredStrain -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/preferredStrain">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain"/>
+        <rdfs:label xml:lang="en">preferred strain</rdfs:label>
+        <skos:definition xml:lang="en">a strain amount that the user is most comfortable with</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targetedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targetedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targets"/>
+        <rdfs:label xml:lang="en">targeted by</rdfs:label>
+        <skos:definition>what exercise makes a muscle grow</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targets -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targets">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">targets</rdfs:label>
+        <skos:definition xml:lang="en">an exercise hits a muscle group</skos:definition>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/usedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/usedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/uses"/>
+        <rdfs:label xml:lang="en">used by</rdfs:label>
+        <skos:definition xml:lang="en">what exercise helps target the muscle</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/uses -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/uses">
+        <rdfs:label xml:lang="en">uses</rdfs:label>
+        <skos:definition xml:lang="en">what muscle is targeted by the exercise</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#int"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">has value</rdfs:label>
+        <skos:definition xml:lang="en">what value a certain attribute contains</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+        <dct:source>https://my.clevelandclinic.org/health/articles/7050-aerobic-exercise</dct:source>
+        <rdfs:label xml:lang="en">aerobic exercise</rdfs:label>
+        <skos:definition xml:lang="en">endurance type exercises</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AnkleLigamentInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AnkleLigamentInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WristLigamentInjury"/>
+        <dct:source>https://my.clevelandclinic.org/health/body/21609-ankle-ligament</dct:source>
+        <rdfs:label xml:lang="en">ankle ligament injury</rdfs:label>
+        <skos:definition xml:lang="en">damage to ligament in ankle</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmBoneInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmBoneInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
+        <dct:source>https://www.columbiadoctors.org/health-library/symptom/arm-injuries/</dct:source>
+        <rdfs:label xml:lang="en">arm bone injury</rdfs:label>
+        <skos:definition xml:lang="en">fracture or break of a bone in the arm</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmMuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmMuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        <dct:source>https://www.columbiadoctors.org/health-library/symptom/arm-injuries/</dct:source>
+        <rdfs:label xml:lang="en">arm muscle injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your arm</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackBoneInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackBoneInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
+        <dct:source>https://www.healthdirect.gov.au/back-injuries</dct:source>
+        <rdfs:label xml:lang="en">back bone injury</rdfs:label>
+        <skos:definition xml:lang="en">fracture or break of a bone in the back</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackDay -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackDay">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">back day</rdfs:label>
+        <skos:definition xml:lang="en">a list of exercises focused on back and biceps</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackMuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackMuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        <dct:source>https://www.healthdirect.gov.au/back-injuries</dct:source>
+        <rdfs:label xml:lang="en">back injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your back</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise"/>
+        <dct:source>https://www.kaggle.com/datasets/aadhavvignesh/calories-burned-during-exercise-and-activities?resource=download</dct:source>
+        <rdfs:label xml:lang="en">body weight exercise</rdfs:label>
+        <skos:definition xml:lang="en">exercises done with body weight</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
+        <dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C35487&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">bone injury</rdfs:label>
+        <skos:definition xml:lang="en">trauma to the bone</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CardioDay -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CardioDay">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">cardio day</rdfs:label>
+        <skos:definition xml:lang="en">a list of exercises focused on cardiovasular endurance</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestBoneInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestBoneInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
+        <dct:source>https://www.healthdirect.gov.au/chest-injuries#:~:text=of%20chest%20injuries-,What%20are%20chest%20injuries?,including%20your%20heart%20and%20lungs)</dct:source>
+        <rdfs:label xml:lang="en">chest bone injury</rdfs:label>
+        <skos:definition xml:lang="en">fracture or break of a bone in the chest</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestDay -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestDay">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">chest day</rdfs:label>
+        <skos:definition xml:lang="en">a list of exercises focused on chest, triceps, and deltoids</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestMuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestMuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        <dct:source>https://www.healthdirect.gov.au/chest-injuries#:~:text=of%20chest%20injuries-,What%20are%20chest%20injuries?,including%20your%20heart%20and%20lungs)</dct:source>
+        <rdfs:label xml:lang="en">chest muscle injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your chest</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CoreMuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CoreMuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        <dct:source>https://www.kansashealthsystem.com/care/conditions/core-muscle-injury</dct:source>
+        <rdfs:label xml:lang="en">core muscle injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your core</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Cycling -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Cycling">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
+        <dct:source>https://www.britannica.com/sports/cycling</dct:source>
+        <rdfs:label xml:lang="en">cycling</rdfs:label>
+        <skos:definition xml:lang="en">riding a bike</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DoNot -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DoNot">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">do not</rdfs:label>
+        <skos:definition xml:lang="en">a list of exercises focused on what not to do</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DynamicStretching -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DynamicStretching">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FlexibilityExercise"/>
+        <dct:source>https://www.medicalnewstoday.com/articles/dynamic-stretching</dct:source>
+        <rdfs:label xml:lang="en">dynamic stretching</rdfs:label>
+        <skos:definition xml:lang="en">stretching that involves the person to move</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ElbowLigamentInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ElbowLigamentInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
+        <dct:source>https://stanfordhealthcare.org/medical-conditions/bones-joints-and-muscles/elbow-ligament-injury.html</dct:source>
+        <rdfs:label xml:lang="en">elbow ligament injury</rdfs:label>
+        <skos:definition xml:lang="en">damage to ligament or joint in elbow</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Enforce -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Enforce">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">enforce</rdfs:label>
+        <skos:definition xml:lang="en">to strengthen muscles around an injury</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise">
+        <dct:source xml:lang="en">https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C16567&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">exercise</rdfs:label>
+        <skos:definition xml:lang="en">activity that requires physical or mental exertion, especially when performed to develop or maintain fitness</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatLoss -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatLoss">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">fat loss</rdfs:label>
+        <skos:definition>decrease body fat percentage</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FlexibilityExercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FlexibilityExercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+        <dct:source>https://www.heart.org/en/healthy-living/fitness/fitness-basics/flexibility-exercise-stretching#:~:text=Flexibility%20exercises%20stretch%20your%20muscles,well%20as%20for%20everyday%20activities.</dct:source>
+        <rdfs:label xml:lang="en">flexibility exercise</rdfs:label>
+        <skos:definition xml:lang="en">exercise that trains flexibility of muscles, normally helpful for strength training</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FunctionalTraining -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FunctionalTraining">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">functional training</rdfs:label>
+        <skos:definition xml:lang="en">be able to do more outside of the gym</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GainExplosiveness -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GainExplosiveness">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">gain explosiveness</rdfs:label>
+        <skos:definition xml:lang="en">gain stronger fast twitch muscles</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GainFlexibility -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GainFlexibility">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">gain flexibility</rdfs:label>
+        <skos:definition xml:lang="en">have muscles stretch further</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GlutealMuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GlutealMuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        <dct:source>https://www.medicinenet.com/gluteal_injury/article.htm</dct:source>
+        <rdfs:label xml:lang="en">gluteal muscle injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your gluteal</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMaximus -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMaximus">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGlutealMuscles"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMedius"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/gluteus%20maximus</dct:source>
+        <rdfs:label xml:lang="en">gluteus maximus</rdfs:label>
+        <skos:definition xml:lang="en">outer Muscle of your butt</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMedius -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GluteusMedius">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGlutealMuscles"/>
+        <dct:source>https://www.merriam-webster.com/medical/gluteus%20medius</dct:source>
+        <rdfs:label xml:lang="en">gluteus medius</rdfs:label>
+        <skos:definition xml:lang="en">middle muscle of your butt</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dct:source>https://www.merriam-webster.com/dictionary/goal</dct:source>
+        <rdfs:label xml:lang="en">goal</rdfs:label>
+        <skos:definition xml:lang="en">what user is training for</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/HipLigamentInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/HipLigamentInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
+        <dct:source>https://www.orthowisconsin.com/hip-ligament-injuries-orthopaedic-surgeon-wisconsin.html#:~:text=Injuries%20to%20the%20hip%20ligaments,the%20acetabulum%20of%20the%20pelvis.</dct:source>
+        <rdfs:label xml:lang="en">hip ligament injury</rdfs:label>
+        <skos:definition xml:lang="en">damage to ligament or joint in hip</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IncreaseCardiovascularEndurance -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IncreaseCardiovascularEndurance">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">increase cardiovascular endurance</rdfs:label>
+        <skos:definition xml:lang="en">strengthen the heart and lungs</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury">
+        <dct:source xml:lang="en">https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C3671&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">injury</rdfs:label>
+        <skos:definition xml:lang="en">damage inflicted on the body as the direct or indirect result of an external force, with or without disruption of structural continuity</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise"/>
+        <dct:source>https://en.wikipedia.org/wiki/Isometric_exercise</dct:source>
+        <rdfs:label xml:lang="en">isometric exercise</rdfs:label>
+        <skos:definition xml:lang="en">exercises that involves staying still while applying load to muscle</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/JumpingRope -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/JumpingRope">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
+        <dct:source>https://dictionary.cambridge.org/us/dictionary/english/jump-rope</dct:source>
+        <rdfs:label xml:lang="en">jumping rope</rdfs:label>
+        <skos:definition xml:lang="en">taking a jump rope and using it</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/KneeLigamentInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/KneeLigamentInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
+        <dct:source>https://www.uwmedicine.org/conditions-symptoms/bone-joint-muscle/knee-ligament-injuries#:~:text=What%20is%20a%20knee%20ligament,injury%20in%20basketball%20or%20skiing.</dct:source>
+        <rdfs:label xml:lang="en">knee ligament injury</rdfs:label>
+        <skos:definition xml:lang="en">damage to ligament or joint in knee</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegBoneInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegBoneInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
+        <dct:source>https://medlineplus.gov/leginjuriesanddisorders.html#:~:text=Common%20leg%20injuries%20include%20sprains,cause%20pain%20and%20limited%20motion.</dct:source>
+        <rdfs:label xml:lang="en">leg bone injury</rdfs:label>
+        <skos:definition xml:lang="en">fracture or break of a bone in the leg</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegDay -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegDay">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">leg day</rdfs:label>
+        <skos:definition xml:lang="en">a list of exercises focused on quadriceps, hamstrings, and glutes</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegMuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegMuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        <dct:source>https://medlineplus.gov/leginjuriesanddisorders.html#:~:text=Common%20leg%20injuries%20include%20sprains,cause%20pain%20and%20limited%20motion.</dct:source>
+        <rdfs:label xml:lang="en">leg muscle injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your leg</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
+        <dct:source xml:lang="en">https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C35035&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">ligament injury</rdfs:label>
+        <skos:definition xml:lang="en">a stretching or tearing of a ligament</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
+        <dct:source>https://training.seer.cancer.gov/anatomy/muscular/groups/lower.html</dct:source>
+        <rdfs:label xml:lang="en">lower body muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles located in the lower part of the body, including the quadriceps, hamstrings, calves, and gluteal muscles</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGain -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGain">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">muscle gain</rdfs:label>
+        <skos:definition xml:lang="en">increase body weight while body fat decreases</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/targetedBy"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C13056&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">muscle group</rdfs:label>
+        <skos:definition xml:lang="en">one of the contractile organs of the body</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
+        <dct:source>https://www.physio-pedia.com/Muscle_Injuries</dct:source>
+        <rdfs:label xml:lang="en">muscle injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Plank -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Plank">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise"/>
+        <dct:source>https://www.health.harvard.edu/blog/straight-talk-on-planking-2019111318304#:~:text=Here&apos;s%20how%20to%20do%20a,and%20neck%20to%20your%20feet.</dct:source>
+        <rdfs:label xml:lang="en">plank</rdfs:label>
+        <skos:definition xml:lang="en">hold your bodyweight up with your elbows and toes touching the floor and keeping your body straight</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner">
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">planner</rdfs:label>
+        <skos:definition xml:lang="en">a way to categorize different exercise cycles</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/press</dct:source>
+        <rdfs:label xml:lang="en">pressing</rdfs:label>
+        <skos:definition xml:lang="en">pushing weight away from your body using your chest and triceps</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recovery -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Recovery">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">recovery</rdfs:label>
+        <skos:definition xml:lang="en">focus on light exercise to restrengthen injured areas</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/RecoveryDay -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/RecoveryDay">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Planner"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">recovery day</rdfs:label>
+        <skos:definition xml:lang="en">a list of exercises focused on recovering from injury or the gym</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise"/>
+        <dct:source>https://www.betterhealth.vic.gov.au/health/healthyliving/resistance-training-health-benefits</dct:source>
+        <rdfs:label xml:lang="en">resistance exercise</rdfs:label>
+        <skos:definition xml:lang="en">exercise that requires pushing against resistance</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/row</dct:source>
+        <rdfs:label xml:lang="en">row</rdfs:label>
+        <skos:definition xml:lang="en">bringing weight closer to your body using your back and biceps</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Running -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Running">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
+        <dct:source>https://dictionary.cambridge.org/us/dictionary/english/run</dct:source>
+        <rdfs:label xml:lang="en">running</rdfs:label>
+        <skos:definition xml:lang="en">walking but at a faster pace and lifting feet off the ground</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfAbCrunches -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfAbCrunches">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/crunches</dct:source>
+        <rdfs:label xml:lang="en">set of ab crunches</rdfs:label>
+        <skos:definition xml:lang="en">collection of exercise performed from a supine position by raising and lowering the upper torso without reaching a sitting position</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfAbdominalMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfAbdominalMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCoreMuscles"/>
+        <dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C32040&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">setOfAbdominalMuscles</rdfs:label>
+        <skos:definition xml:lang="en">any of the muscles of the abdomen that comprise the abdominal wall</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfArmMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfArmMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/arms</dct:source>
+        <rdfs:label xml:lang="en">set of arm muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles on your arms</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBackMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBackMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/back</dct:source>
+        <rdfs:label xml:lang="en">set of back muscle</rdfs:label>
+        <skos:definition xml:lang="en">muscles on your back</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBarbellBackSquats -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBarbellBackSquats">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat"/>
+        <dct:source>https://www.masterclass.com/articles/barbell-squat-guide</dct:source>
+        <rdfs:label xml:lang="en">set of barbell back squats</rdfs:label>
+        <skos:definition xml:lang="en">squat with bar on your back</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBenchPress -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBenchPress">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfOverheadShoulderPress"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/bench%20press</dct:source>
+        <rdfs:label xml:lang="en">set of bench press</rdfs:label>
+        <skos:definition xml:lang="en">laying on a bench, pressing weight up</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBentOverBarbellRows -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBentOverBarbellRows">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row"/>
+        <dct:source>https://www.muscleandstrength.com/exercises/bent-over-barbell-row.html</dct:source>
+        <rdfs:label xml:lang="en">set of bent over barbell rows</rdfs:label>
+        <skos:definition xml:lang="en">row with a barbell and bent over the barbell</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBicepCurls -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBicepCurls">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675#:~:text=Campbell%3A%20To%20do%20a%20biceps,front%20of%20your%20upper%20arm.</dct:source>
+        <rdfs:label xml:lang="en">set of bicep curls</rdfs:label>
+        <skos:definition xml:lang="en">using elbow as pivot point, lift weight</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBiceps -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBiceps">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfArmMuscles"/>
+        <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTriceps"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/biceps</dct:source>
+        <rdfs:label xml:lang="en">set of biceps</rdfs:label>
+        <skos:definition xml:lang="en">the large flexor muscle of the front of the upper arm</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBulgarianSplitSquats -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBulgarianSplitSquats">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat"/>
+        <dct:source>https://www.menshealth.com/uk/how-tos/a735581/barbell-bulgarian-split-squat1/</dct:source>
+        <rdfs:label xml:lang="en">set of bulgarian split squats</rdfs:label>
+        <skos:definition xml:lang="en">keeping one leg ahead of the other, squat using mainly that leg</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCableRows -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCableRows">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row"/>
+        <dct:source>https://www.verywellfit.com/how-to-do-the-cable-row-3498605</dct:source>
+        <rdfs:label xml:lang="en">set of cable rows</rdfs:label>
+        <skos:definition xml:lang="en">rowing specifically using a cable</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfChestMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfChestMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/chest</dct:source>
+        <rdfs:label xml:lang="en">set of chest muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles on your chest</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCoreMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCoreMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/core</dct:source>
+        <rdfs:label xml:lang="en">set of core muscles</rdfs:label>
+        <skos:definition xml:lang="en">the group of muscles in the torso that are involved in maintaining stability and posture</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeadlifts -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeadlifts">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.nerdfitness.com/blog/strength-training-101-the-deadlift/</dct:source>
+        <rdfs:label xml:lang="en">set of deadlifts</rdfs:label>
+        <skos:definition xml:lang="en">lift weight off the ground using good form</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeltoids -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeltoids">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfShoulderMuscles"/>
+        <dct:source xml:lang="en">https://www.merriam-webster.com/dictionary/deltoid</dct:source>
+        <rdfs:label xml:lang="en">set of deltoids</rdfs:label>
+        <skos:definition xml:lang="en">shoulder muscles</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDips -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDips">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
+        <dct:source>https://en.wikipedia.org/wiki/Dip_(exercise)#:~:text=To%20perform%20a%20dip%2C%20the,returning%20to%20the%20starting%20position.</dct:source>
+        <rdfs:label xml:lang="en">set of dips</rdfs:label>
+        <skos:definition xml:lang="en">pushing bodyweight up using only hands</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDumbbellRows -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDumbbellRows">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row"/>
+        <dct:source>https://www.issaonline.com/blog/post/dumbbell-row-muscles-worked-proper-form-variations-more#:~:text=Dumbbell%20Row%20Form%20and%20Lifting%20Technique&amp;text=Place%20the%20arm%20closest%20to,is%20closer%20to%20the%20chest.</dct:source>
+        <rdfs:label xml:lang="en">set of dumbbell rows</rdfs:label>
+        <skos:definition xml:lang="en">row using dumbbells</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfFacePulls -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfFacePulls">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.puregym.com/exercises/arms-and-shoulders/rear-delt-exercises/face-pulls/</dct:source>
+        <rdfs:label xml:lang="en">set of face pulls</rdfs:label>
+        <skos:definition xml:lang="en">pull rope to your face using your arms and back</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGluteBridge -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGluteBridge">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
+        <dct:source>https://www.webmd.com/fitness-exercise/how-to-do-glute-bridge</dct:source>
+        <rdfs:label xml:lang="en">set of glute bridge</rdfs:label>
+        <skos:definition xml:lang="en">flex glutes to straighten out body</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGlutealMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfGlutealMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle"/>
+        <dct:source>https://www.ncbi.nlm.nih.gov/books/NBK538193/#:~:text=The%20gluteal%20muscles%20are%20a,gluteus%20medius%2C%20and%20gluteus%20minimus.</dct:source>
+        <rdfs:label xml:lang="en">set of gluteal muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles on your glutes</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHamstrings -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHamstrings">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLegMuscles"/>
+        <dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C53042&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">set of hamstring</rdfs:label>
+        <skos:definition xml:lang="en">group of muscles including the biceps femoris, semimembranosus and semitendinosus that extend down the back of the thigh</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHeavyFrontSquats -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHeavyFrontSquats">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat"/>
+        <dct:source>https://www.stack.com/a/front-squat/</dct:source>
+        <rdfs:label xml:lang="en">set of heavy front squats</rdfs:label>
+        <skos:definition xml:lang="en">squat weight with bar in front of you</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfInclineDumbbellPress -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfInclineDumbbellPress">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBenchPress"/>
+        <dct:source>https://www.verywellfit.com/how-to-do-incline-dumbbell-press-4588212</dct:source>
+        <rdfs:label xml:lang="en">set of incline dumbbell press</rdfs:label>
+        <skos:definition xml:lang="en">pressing a dumbbell up on a bench with more than 0 less than 90 degree angle</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPulldowns -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPulldowns">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://blog.nasm.org/biomechanics-of-the-lat-pulldown#:~:text=low%2Dback).-,Movement%20Pattern,squeeze%20your%20shoulder%20blades%20together).</dct:source>
+        <rdfs:label xml:lang="en">set of lat pulldowns</rdfs:label>
+        <skos:definition xml:lang="en">while seated, pull bar down to chest using lats</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPullovers -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPullovers">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.tidalflow.com/blog/lat-pullover-guide-build-a-stronger-wider-back-effectively#:~:text=Lower%20the%20weight%20in%20an,before%20beginning%20the%20next%20repetition.</dct:source>
+        <rdfs:label xml:lang="en">set of lat pullovers</rdfs:label>
+        <skos:definition xml:lang="en">pull the bar to your body using your lats</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLateralRaises -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLateralRaises">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.masterclass.com/articles/lateral-raise-guide</dct:source>
+        <rdfs:label xml:lang="en">set of lateral raises</rdfs:label>
+        <skos:definition xml:lang="en">raising weight sideways</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLegMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLegMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LowerBodyMuscle"/>
+        <dct:source>https://my.clevelandclinic.org/health/body/22220-leg-muscles</dct:source>
+        <rdfs:label xml:lang="en">set of leg muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles on your legs</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLowerBackMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLowerBackMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCoreMuscles"/>
+        <dct:source>https://www.merriam-webster.com/medical/low-back</dct:source>
+        <rdfs:label xml:lang="en">set of lower back muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles on your lower back</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfOverheadShoulderPress -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfOverheadShoulderPress">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing"/>
+        <dct:source>https://stronglifts.com/overhead-press/</dct:source>
+        <rdfs:label xml:lang="en">set of overhead shoulder press</rdfs:label>
+        <skos:definition xml:lang="en">pressing weight over your head</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfPullups -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfPullups">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/pull-up#:~:text=%CB%88pu%CC%87l%2D%CB%8C%C9%99p,facing%20outward%20compare%20chin%2Dup</dct:source>
+        <rdfs:label xml:lang="en">set of pullups</rdfs:label>
+        <skos:definition xml:lang="en">hang on bar and pull yourself up</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfPushups -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfPushups">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/push-up#:~:text=%3A%20a%20conditioning%20exercise%20performed%20in,on%20the%20hands%20and%20toes</dct:source>
+        <rdfs:label xml:lang="en">set of pushups</rdfs:label>
+        <skos:definition xml:lang="en">exercise where one goes up and down from the plank position</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfQuadriceps -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfQuadriceps">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLegMuscles"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/quadriceps</dct:source>
+        <rdfs:label xml:lang="en">set of quadriceps</rdfs:label>
+        <skos:definition xml:lang="en">group of muscles in the front side of your thigh</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfRomanianDeadlifts -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfRomanianDeadlifts">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeadlifts"/>
+        <dct:source>https://www.nsca.com/education/articles/kinetic-select/romanian-deadlift-rdl/?srsltid=AfmBOoraCvo3E_F550MnQV4YgE5r3CEjCL8byYXPsVxMUAwg30GAgVCB</dct:source>
+        <rdfs:label xml:lang="en">set of  romanian deadlifts</rdfs:label>
+        <skos:definition xml:lang="en">focus on lifting weight from standing to bending over</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfRussianTwists -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfRussianTwists">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BodyWeightExercise"/>
+        <dct:source>https://www.webmd.com/fitness-exercise/how-to-russian-twist</dct:source>
+        <rdfs:label xml:lang="en">set of russian twists</rdfs:label>
+        <skos:definition xml:lang="en">sitting down and keeping legs in the air, twist upper body</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedLegExtensions -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedLegExtensions">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.puregym.com/exercises/legs/quad-exercises/leg-extensions/#:~:text=Adjust%20the%20machine%20so%20that,back%20to%20the%20starting%20position.</dct:source>
+        <rdfs:label xml:lang="en">set of seated leg extensions</rdfs:label>
+        <skos:definition xml:lang="en">in a seat, extend your legs with weights at the end</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedRows -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedRows">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCableRows"/>
+        <dct:source>https://www.verywellfit.com/how-to-do-the-cable-row-3498605#:~:text=The%20seated%20cable%20row%20is%20a%20pulling%20exercise%20that%20generally,to%20stability%20in%20your%20shoulders.</dct:source>
+        <rdfs:label xml:lang="en">set of seated rows</rdfs:label>
+        <skos:definition xml:lang="en">pulling weight towards you while seated using your back, normally done with cable</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfShoulderMuscles -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfShoulderMuscles">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/shoulder</dct:source>
+        <rdfs:label xml:lang="en">set of shoulder muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles on your shoulders</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSuperman -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSuperman">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/IsometricExercise"/>
+        <dct:source>https://www.healthline.com/health/fitness/superman-exercise#:~:text=Lie%20on%20the%20floor%20in,Superman%20flying%20in%20the%20air.</dct:source>
+        <rdfs:label xml:lang="en">set of superman</rdfs:label>
+        <skos:definition xml:lang="en">lie on floor and flex muscles until only your pelvis is on the floor</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTricepPushdowns -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTricepPushdowns">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.puregym.com/exercises/arms-and-shoulders/tricep-extension/tricep-pushdowns/#:~:text=What%20Is%20A%20Tricep%20Pushdown&amp;text=The%20tricep%20pushdown%20uses%20a,be%20used%20for%20this%20exercise.</dct:source>
+        <rdfs:label xml:lang="en">set of tricep pushdowns</rdfs:label>
+        <skos:definition xml:lang="en">pushing weight down using your elbow as a pivot point</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTriceps -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTriceps">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfArmMuscles"/>
+        <dct:source>https://bioportal.bioontology.org/ontologies/NCIT?conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C33812&amp;p=classes</dct:source>
+        <rdfs:label xml:lang="en">set of triceps</rdfs:label>
+        <skos:definition xml:lang="en">a skeletal muscle of the limb comprised of three muscular bundles called the heads that originate seperately and join together</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfWallAngels -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfWallAngels">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/DynamicStretching"/>
+        <dct:source>https://transformchiropractic.com/posture/beginner-wall-angel-postural-exercise/</dct:source>
+        <rdfs:label xml:lang="en">wall angels</rdfs:label>
+        <skos:definition xml:lang="en">move arms up and down keeping body on wall</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderBoneInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderBoneInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
+        <dct:source>https://orthoinfo.aaos.org/en/diseases--conditions/common-shoulder-injuries/</dct:source>
+        <rdfs:label xml:lang="en">shoulder bone injury</rdfs:label>
+        <skos:definition xml:lang="en">fracture or break of a bone in the shoulder</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderLigamentInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderLigamentInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
+        <dct:source>https://nyulangone.org/conditions/shoulder-sprains-strains#:~:text=Ligaments%20are%20the%20cords%20of,or%20tendons%20overstretch%20or%20tear.</dct:source>
+        <rdfs:label xml:lang="en">shoulder ligament injury</rdfs:label>
+        <skos:definition xml:lang="en">damage to ligament or joint in shoulder</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderMuscleInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderMuscleInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        <dct:source>https://orthoinfo.aaos.org/en/diseases--conditions/common-shoulder-injuries/</dct:source>
+        <rdfs:label xml:lang="en">shoulder muscle injury</rdfs:label>
+        <skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your shoulder</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ResistanceExercise"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/squat</dct:source>
+        <rdfs:label xml:lang="en">squat</rdfs:label>
+        <skos:definition xml:lang="en">bringing body lower and back up with or without weight</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StairMachine -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StairMachine">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
+        <dct:source>https://www.dictionary.com/browse/stairmaster</dct:source>
+        <rdfs:label xml:lang="en">stair machine</rdfs:label>
+        <skos:definition xml:lang="en">walking a flight of never ending stairs</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StaticStretching -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StaticStretching">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FlexibilityExercise"/>
+        <dct:source>https://www.hss.edu/article_static_dynamic_stretching.asp</dct:source>
+        <rdfs:label xml:lang="en">static stretching</rdfs:label>
+        <skos:definition xml:lang="en">stretching that involves the person staying still</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StationaryCycling -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StationaryCycling">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Cycling"/>
+        <dct:source>https://en.wikipedia.org/wiki/Stationary_bicycle#:~:text=A%20stationary%20bicycle%20(also%20known,on%20a%20(stationary)%20bicycle.</dct:source>
+        <rdfs:label xml:lang="en">stationary cycling</rdfs:label>
+        <skos:definition xml:lang="en">riding on a stationary bike, normally machine</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Strain">
+        <dct:source>https://www.merriam-webster.com/dictionary/strain</dct:source>
+        <rdfs:label xml:lang="en">strain</rdfs:label>
+        <skos:definition xml:lang="en">how hard an exercise is</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthExercise">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Exercise"/>
+        <dct:source>https://en.wikipedia.org/wiki/Strength_training</dct:source>
+        <rdfs:label xml:lang="en">strength exercise</rdfs:label>
+        <skos:definition xml:lang="en">exercise that trains strength, normally creates heavy strain</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthGain -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StrengthGain">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">strength gain</rdfs:label>
+        <skos:definition xml:lang="en">lift heavier weights</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Swimming -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Swimming">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
+        <dct:source>https://www.merriam-webster.com/dictionary/swimming</dct:source>
+        <rdfs:label xml:lang="en">swimming</rdfs:label>
+        <skos:definition xml:lang="en">the act, art, or sport of one that moves in water</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/UpperBodyMuscle">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleGroup"/>
+        <dct:source>https://training.seer.cancer.gov/anatomy/muscular/groups/upper.html#:~:text=The%20muscles%20of%20the%20upper,forearm%2C%20wrist%2C%20and%20hand.</dct:source>
+        <rdfs:label xml:lang="en">upper body muscles</rdfs:label>
+        <skos:definition xml:lang="en">muscles specifically above the torso</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/User -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/User">
+        <dct:source>https://www.merriam-webster.com/dictionary/user</dct:source>
+        <rdfs:label xml:lang="en">user</rdfs:label>
+        <skos:definition xml:lang="en">a person using the application</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AerobicExercise"/>
+        <dct:source>https://dictionary.cambridge.org/us/dictionary/english/walking</dct:source>
+        <rdfs:label xml:lang="en">walking</rdfs:label>
+        <skos:definition xml:lang="en">the activity of going for a walk</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WeightLoss -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WeightLoss">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal"/>
+        <dct:source>FitMe</dct:source>
+        <rdfs:label xml:lang="en">weight loss</rdfs:label>
+        <skos:definition xml:lang="en">decrease body weight</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WristLigamentInjury -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WristLigamentInjury">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
+        <dct:source>https://orthoinfo.aaos.org/en/diseases--conditions/wrist-sprains/#:~:text=Wrist%20sprains%20are%20common%20injuries,fall%20onto%20an%20outstretched%20hand.</dct:source>
+        <rdfs:label xml:lang="en">wrist ligament injury</rdfs:label>
+        <skos:definition xml:lang="en">damage to ligament in wrist</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/AnkleLigamentInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ElbowLigamentInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/HipLigamentInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/KneeLigamentInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderLigamentInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/WristLigamentInjury"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmBoneInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackBoneInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestBoneInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegBoneInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderBoneInjury"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ArmMuscleInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BackMuscleInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ChestMuscleInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/CoreMuscleInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/GlutealMuscleInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LegMuscleInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/ShoulderMuscleInjury"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/BoneInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/MuscleInjury"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Cycling"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/JumpingRope"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Running"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/StairMachine"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Walking"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Pressing"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Row"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBicepCurls"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDeadlifts"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfFacePulls"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPulldowns"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLatPullovers"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfLateralRaises"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfSeatedLegExtensions"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfTricepPushdowns"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Squat"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBarbellBackSquats"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBulgarianSplitSquats"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfHeavyFrontSquats"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfBentOverBarbellRows"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfCableRows"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/SetOfDumbbellRows"/>
+        </owl:members>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
