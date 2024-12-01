@@ -14,6 +14,9 @@ Figures 3a and 3b go into further detail with Treatments, with Figure 3a showcas
 
 Figure 4 centers on the terms used to capture genetic information, namely Genome, Gene, and Disease-Associated Gene.
 
+Week 12 Version:
+[Week 12 Concept Model](images/ConceptModel/OE12_PTDO_ConceptModel.pdf)
+
 Week 11 Version:
 [Week 11 Concept Model](images/ConceptModel/OE11_PTDO_ConceptModel.pdf)
 
@@ -32,6 +35,10 @@ Week 6 Versions:
 ## Ontologies
 
 ### Personalized Depression Treatment Ontology
+
+Week 12 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek12.rdf)
+
+Week 12, with Individuals: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek12Individuals.rdf)
 
 Week 11 Ontology: [Link](https://github.com/tetherless-world/ontology-engineering/blob/personalized-depression-treatment/oe2024/personalized-depression-treatment/PersonalizedDepressionTreatmentWeek11.rdf)
 
