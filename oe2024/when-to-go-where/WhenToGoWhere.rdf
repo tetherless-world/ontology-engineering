@@ -586,7 +586,8 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAccessibility">
 		<rdfs:label>has accessibility</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
-		<owl:inverseOf rdf:resource="&oe-wtgw;is_accessibility_of"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isAccessibilityOf"/>
 		<skos:definition>the degree to which a park, trail, or facility is accessible to individuals with disabilities, including features like ramps, designated parking, and trail modifications</skos:definition>
 		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Accessibility,” [Online]. Available: https://www.britannica.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -594,6 +595,7 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAccomodation">
 		<rdfs:label>has accomodation</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
 		<owl:inverseOf rdf:resource="&oe-wtgw;isAccommodationOf"/>
 		<skos:definition>temporary lodgings, sometimes also including board</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster, “Accommodation,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
@@ -722,13 +724,13 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasPark">
 		<rdfs:label>has park</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Accomodation"/>
 		<rdfs:range rdf:resource="&oe-wtgw;Activity"/>
 		<rdfs:range rdf:resource="&oe-wtgw;Animal"/>
-		<rdfs:range rdf:resource="&oe-wtgw;Climate"/>
 		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
 		<rdfs:range rdf:resource="&oe-wtgw;ParkStatistic"/>
-		<rdfs:range rdf:resource="&oe-wtgw;Terrain"/>
-		<owl:inverseOf rdf:resource="&oe-wtgw;hasState"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isPark"/>
 		<skos:definition>a state has a national park</skos:definition>
 		<cmns-av:adaptedFrom>National Park Service, “National Park,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -753,11 +755,6 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasState">
 		<rdfs:label>has state</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
-		<rdfs:range rdf:resource="&oe-wtgw;Animal"/>
-		<rdfs:range rdf:resource="&oe-wtgw;AvgTemperature"/>
-		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
-		<rdfs:range rdf:resource="&oe-wtgw;Terrain"/>
 		<skos:definition>A park has a national territory of the United States</skos:definition>
 		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “State,” [Online]. Available: https://www.britannica.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -796,9 +793,14 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 		<cmns-av:adaptedFrom>National Park Service, “Trail Types,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAccessibilityOf">
+		<rdfs:label>is accessability of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isAccommodationOf">
 		<rdfs:label>is accommodation of</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;Accomodation"/>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
 		<skos:definition>Property describing if a lodging belongs to a national park</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster, “Accommodation,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -829,17 +831,14 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isCapacityOf">
 		<rdfs:label>is capacity of</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;ParkStatistic"/>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
 		<skos:definition>Property describing if a capacity is associated with a facility</skos:definition>
 		<cmns-av:adaptedFrom>National Park Service, “Visitor Capacity,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isDifficultyOf">
-		<rdfs:label>is difficulty of</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;Difficulty"/>
-		<rdfs:range rdf:resource="&oe-wtgw;Hike"/>
-		<skos:definition>Property describing if a trail has a difficulty rating</skos:definition>
-		<cmns-av:adaptedFrom>Merriam-Webster, “Difficulty,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isFacilityOf">
@@ -878,9 +877,17 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 		<skos:definition>indicates a role played by a functional entity or party responsible for circulating, distributing, or publishing something</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isPark">
+		<rdfs:label>is park of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Accomodation"/>
+		<rdfs:domain rdf:resource="&oe-wtgw;Activity"/>
+		<rdfs:domain rdf:resource="&oe-wtgw;Animal"/>
+		<rdfs:domain rdf:resource="&oe-wtgw;AvgTemperature"/>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isSeasonOf">
 		<rdfs:label>is season of</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;Season"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
 		<skos:definition>Property describing if a season is associated with a specific object</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -920,11 +927,6 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 		<rdfs:range rdf:resource="&oe-wtgw;Hike"/>
 		<skos:definition>Property describing if a kind of trail is associated with a hike</skos:definition>
 		<cmns-av:adaptedFrom>National Park Service, “Trail Types,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-wtgw;is_accessibility_of">
-		<rdfs:label>is accessibility of</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;Accomodation"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;issues">
