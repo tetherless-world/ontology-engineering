@@ -47,8 +47,8 @@ To achieve this we are creating a semantically enabled application that will lev
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
-		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/dac8dda75fb576d8551123076e10627d716549d9/oe2024/when-to-go-where/WhenToGoWhere.rdf</owl:priorVersion>
 		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/114aa8ad617d0eeea3570d8d0f7a65eb21b862a9/oe2024/when-to-go-where/WhenToGoWhere.rdf</owl:priorVersion>
+		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/dac8dda75fb576d8551123076e10627d716549d9/oe2024/when-to-go-where/WhenToGoWhere.rdf</owl:priorVersion>
 		<owl:versionIRI rdf:resource="&oe-wtgw;7.0"/>
 		<cmns-av:copyright>Copyright (c) 2024 Annabelle Choi, Ben Rodgers, Samyuth Sagi, Tyler Layton</cmns-av:copyright>
 	</owl:Ontology>
@@ -730,6 +730,83 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 		<cmns-av:adaptedFrom>National Park Service, “Trail Types,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAccommodationOf">
+		<rdfs:label>is accommodation of</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasAccomodation"/>
+		<skos:definition>Property describing if a lodging belongs to a national park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Accommodation,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isActivityOf">
+		<rdfs:label>is activity of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Activity"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasActivity"/>
+		<skos:definition>Property describing if an activity occurs in a park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Activity,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAnimalOf">
+		<rdfs:label>is animal of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Animal"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasAnimal"/>
+		<skos:definition>Property describing if an animal is associated with a national park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Animal,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAvgSeasonalTemperatureOf">
+		<rdfs:label>is average seasonal temperature of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasAvgSeasonalTemperature"/>
+		<skos:definition>Property describing if a temperature is associated with a park and a season</skos:definition>
+		<cmns-av:adaptedFrom>National Weather Service, “Average Temperature,” [Online]. Available: https://www.weather.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isCapacityOf">
+		<rdfs:label>is capacity of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasCapacity"/>
+		<skos:definition>Property describing if a capacity is associated with a facility</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Visitor Capacity,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isClimateOf">
+		<rdfs:label>is climate of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Climate"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasClimate"/>
+		<skos:definition>Property describing if a climate is associated with a national park</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Climate,” [Online]. Available: https://www.britannica.com/science/climate. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isDietaryPatternOf">
+		<rdfs:label>is dietary pattern of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;DietaryPattern"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Animal"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasDietaryPattern"/>
+		<skos:definition>Property describing if a dietary pattern is associated with an animal</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Dietary,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isFacilityOf">
+		<rdfs:label>is facility of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasFacility"/>
+		<skos:definition>Property describing if a facility belongs to a national park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Facility,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isHabitOf">
+		<rdfs:label>is habit of</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasHabit"/>
+		<skos:definition>Property describing if a habit is associated with an organism</skos:definition>
+		<cmns-av:adaptedFrom>Oxford English Dictionary, “Habit,” [Online]. Available: https://www.oed.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isHikeOf">
 		<rdfs:label>is hike of</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;Hike"/>
@@ -738,12 +815,67 @@ Encyclopedia of Life, “Species Profiles.” [Online]. Available: https://eol.o
 		<cmns-av:adaptedFrom>Merriam-Webster, &quot;Hike,&quot; [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isHumidityOf">
+		<rdfs:label>is humidity of</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasHumidity"/>
+		<skos:definition>Property describing if humidity is associated with a location</skos:definition>
+		<cmns-av:adaptedFrom>Cambridge Dictionary, “Humidity,” [Online]. Available: https://dictionary.cambridge.org. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isIssuedBy">
 		<rdfs:subPropertyOf rdf:resource="&cmns-org;isProvidedBy"/>
 		<rdfs:label>is issued by</rdfs:label>
 		<rdfs:range rdf:resource="&cmns-pts;AgentRole"/>
 		<owl:inverseOf rdf:resource="&oe-wtgw;issues"/>
 		<skos:definition>indicates a role played by a functional entity or party responsible for circulating, distributing, or publishing something</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isSeasonOf">
+		<rdfs:label>is season of</rdfs:label>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasSeason"/>
+		<skos:definition>Property describing if a season is associated with a specific object</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isSeasonOfTemperature">
+		<rdfs:label>is season of temperature</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Season"/>
+		<rdfs:range rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;temperatureHasSeason"/>
+		<skos:definition>Property describing if a season corresponds to a temperature</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isStatisticOf">
+		<rdfs:label>is statistic of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;ParkStatistic"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasParkStatistic"/>
+		<skos:definition>Property describing if a statistic belongs to a national park</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Statistics,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isTerrainOf">
+		<rdfs:label>is terrain of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Terrain"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasTerrain"/>
+		<skos:definition>Property describing if a terrain is associated with a national park</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isTrailHeadOf">
+		<rdfs:label>is trail head of</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasTrailHead"/>
+		<skos:definition>Property describing if a trailhead marks the start of a trail</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Trailhead,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isTrailTypeOf">
+		<rdfs:label>is trail type of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;TrailType"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Hike"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasTrailType"/>
+		<skos:definition>Property describing if a kind of trail is associated with a hike</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Trail Types,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;issues">
