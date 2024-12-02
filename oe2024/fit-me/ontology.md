@@ -2,7 +2,7 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](files/OE_12_FiteMe_ConceptMap.jpg)
+![Concept Map Subject Model](images/OE_12_FitMe_ConceptMap.jpg)
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSh8xvEmGALERzP275Vme2ezzxi96d6ut5U2Z4Y7rP9eGUoEhA-qouU_cqPxE9d5BhcdJaZTnmL6tbx/embed?start=false&loop=false&delayms=3000"  frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
