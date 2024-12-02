@@ -56,20 +56,79 @@ WHERE {
 GROUP BY ?planner ?exercise ?strainValue
 ```
 ### Results
-| Planner  | Exercise                | StrainValue  |
-|----------|--------------------------|--------------|
-| BackDay  | DumbbellRows            | Moderate     |
-| BackDay  | LatPulldowns            | Moderate     |
-| BackDay  | BentOverBarbellRows     | Strenuous    |
-| BackDay  | SeatedRows              | Moderate     |
-| ChestDay | InclineDumbbellPress    | Moderate     |
-| ChestDay | BenchPress              | Strenuous    |
-| ChestDay | LateralRaises           | Moderate     |
-| ChestDay | OverheadShoulderPress   | Moderate     |
-| LegDay   | RomanianDeadlifts       | Moderate     |
-| LegDay   | HeavyFrontSquat         | Strenuous    |
-| LegDay   | BarbellBackSquats       | Strenuous    |
-| LegDay   | BulgarianSplitSquats    | Moderate     |
+<table>
+  <thead>
+    <tr>
+      <th>Planner</th>
+      <th>Exercise</th>
+      <th>StrainValue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BackDay</td>
+      <td>DumbbellRows</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>LatPulldowns</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>BentOverBarbellRows</td>
+      <td>Strenuous</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>SeatedRows</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>InclineDumbbellPress</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>BenchPress</td>
+      <td>Strenuous</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>LateralRaises</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>OverheadShoulderPress</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>RomanianDeadlifts</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>HeavyFrontSquat</td>
+      <td>Strenuous</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>BarbellBackSquats</td>
+      <td>Strenuous</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>BulgarianSplitSquats</td>
+      <td>Moderate</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ### Competency Question 2
 ###   What are good workouts to build strength? (Users will enter their physical condition, etc.. - for more info see scope above)
@@ -93,20 +152,77 @@ WHERE {
 }
 ```
 ### Results
-| Planner  | Exercise                | StrainValue  |
-|----------|--------------------------|--------------|
-| BackDay  | DumbbellRows            | Moderate     |
-| BackDay  | LatPulldowns            | Moderate     |
-| BackDay  | SeatedRows              | Moderate     |
-| BackDay  | BentOverBarbellRows     | Strenuous    |
-| ChestDay | InclineDumbbellPress    | Moderate     |
-| ChestDay | LateralRaises           | Moderate     |
-| ChestDay | OverheadShoulderPress   | Moderate     |
-| ChestDay | BenchPress              | Strenuous    |
-| LegDay   | RomanianDeadlifts       | Moderate     |
-| LegDay   | BulgarianSplitSquats    | Moderate     |
-| LegDay   | HeavyFrontSquat         | Strenuous    |
-| LegDay   | BarbellBackSquats       | Strenuous    |
+<table>
+  <thead>
+    <tr>
+      <th>Planner</th>
+      <th>Exercise</th>
+      <th>StrainValue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BackDay</td>
+      <td>DumbbellRows</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>LatPulldowns</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>SeatedRows</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>BentOverBarbellRows</td>
+      <td>Strenuous</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>InclineDumbbellPress</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>BenchPress</td>
+      <td>Strenuous</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>LateralRaises</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>ChestDay</td>
+      <td>OverheadShoulderPress</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>RomanianDeadlifts</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>BulgarianSplitSquats</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>HeavyFrontSquat</td>
+      <td>Strenuous</td>
+    </tr>
+    <tr>
+      <td>LegDay</td>
+      <td>BarbellBackSquats</td>
+      <td>Strenuous</td>
+    </tr>
+  </tbody>
+</table>
 
 
 ### Competency Question 3
@@ -132,9 +248,35 @@ WHERE {
 ```
 
 ### Results
-| Planner  | Exercise            | StrainValue  |
-|----------|----------------------|--------------|
-| BackDay  | DumbbellRows        | Moderate     |
-| BackDay  | LatPulldowns        | Moderate     |
-| BackDay  | SeatedRows          | Moderate     |
-| BackDay  | BentOverBarbellRows | Strenuous    |
+<table>
+  <thead>
+    <tr>
+      <th>Planner</th>
+      <th>Exercise</th>
+      <th>StrainValue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BackDay</td>
+      <td>DumbbellRows</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>LatPulldowns</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>SeatedRows</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <td>BackDay</td>
+      <td>BentOverBarbellRows</td>
+      <td>Strenuous</td>
+    </tr>
+  </tbody>
+</table>
+
