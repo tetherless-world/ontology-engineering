@@ -3,21 +3,17 @@ layout: default
 title: About
 ---
 
-## Note to students
-
-<p class="message-highlight">Please edit the below to be project specific.</p>
 
 ## Maintenenance Policy
 
-<p class="message-highlight">Overview of policy goes here, an example is below</p>
-
-Our maintainance policy is primarily focused on ensuring that our data remains available for use as long as possible. We will never change the name of our ontology or its URL. This will ensure that references to our ontology will always be valid and that we will not break applications that may come to rely on our ontology in the future. Any future changes to the ontology will be appropriately documented both in the headers of the ontology itself and in accompanying documentation. Future versions of the ontology with “breaking changes” will be hosted at new URLs so that previous versions of the ontology continue to be available.
+Our maintainance policy is primarily focused on ensuring that our data remains available for use as long as possible. The ontology will not be updated for the forseeable future once version 1.0 work is done. Any new changes will be documented through the website's versions.
 
 ## Getting Involved
 
-<p class="message-highlight">Please mention plans for future work here and enlist the emails of team members</p>
+There is no future work planned as of now. If work is done in the future, then there is much room for expansion. The core of the ontology can be worked on to fix up the actual exercise plans. In addition, the food part of the ontology was cut out for the sake of time. This can be expanded quite a bit and the previous versions of the ontology contain food entities.
 
-There are several places where the project could expand. Different types of expansion include encoding measurement information, adding other common types of allergies and dietary restrictions, expanding the food classification, adding recipes and ingredients, and improving the inference of substitutions. If you are interested in contributing to the WhatToMake project or have any other ideas or suggestions, please contact us at the emails below:
-
-- Person 1 person1@rpi.edu
-- Person 2 person2@rpi.edu
+### Team Members
+- Abhirup Dasgupta dasgua3@rpi.edu
+- Dominick Iadevaia iadevd@rpi.edu
+- Anirban Acharya achara@rpi.edu
+- Johnny Sun sunj13@rpi.edu

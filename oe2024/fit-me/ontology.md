@@ -2,9 +2,9 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/OE_8_FitMe_Concept_Map.jpg)
+![Concept Map Subject Model](files/OE_12_FiteMe_ConceptMap.jpg)
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSvyawef3mKamM-c2H3PzQ4cn0R4WX59beK51Qxhr75LX1eyo829xfQXESxCT5-3iJynYI7DhN_YLPx/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSh8xvEmGALERzP275Vme2ezzxi96d6ut5U2Z4Y7rP9eGUoEhA-qouU_cqPxE9d5BhcdJaZTnmL6tbx/embed?start=false&loop=false&delayms=3000"  frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ## Ontologies
 
@@ -12,6 +12,7 @@
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf)
 
 ### Previous Ontology Versions
+- [Version 6 CURRENT](FitMe.rdf)
 - [Version 5](archived/oldOntologies/FitMeV4.rdf)
 - [Version 4](archived/oldOntologies/FitMeV3.rdf)
 - [Version 3](archived/oldOntologies/FitMeV2.rdf)
@@ -19,10 +20,10 @@
 - [Version 1](archived/oldOntologies/FitMeV0.rdf)
 
 **View the individuals ontology**
-[https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf]
+[https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf)
 
 **View the inferred ontology**
-[https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf]
+[https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf)
 
 
 ### Accompanying Suite of Ontologies/Data Sources
@@ -67,18 +68,9 @@
   </tr>
   <tr>
   <td>ind</td>
-  <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/    ">Individuals</a></td>
-  </tr>
-    <tr>
-    <td>ind2</td>
-    <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#">Individuals2</a></td>
-  </tr>
+  <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/">Individuals</a></td>
     <tr>
     <td>ex</td>
-    <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#">FitMe Parent Class</a></td>
-  </tr>
-    <tr>
-    <td>ex2</td>
-    <td> <a href="http://purl.obolibrary.org/obo/FOODON_0340079">FOODON</a></td>
+    <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/">FitMe Parent Class</a></td>
   </tr>
 </table>
