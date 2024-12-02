@@ -5,7 +5,7 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="/files/V6_Journalism_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="oe2024/political-journalism/files/V6_Journalism_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
