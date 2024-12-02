@@ -6,6 +6,8 @@
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSh8xvEmGALERzP275Vme2ezzxi96d6ut5U2Z4Y7rP9eGUoEhA-qouU_cqPxE9d5BhcdJaZTnmL6tbx/embed?start=false&loop=false&delayms=3000"  frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
+**Link to Concept map documentation:**
+  [https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub](https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub)
 ## Ontologies
 
 **Link to ontology:**
