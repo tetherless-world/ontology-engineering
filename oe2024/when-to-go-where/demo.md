@@ -3,94 +3,11 @@
 
 ## Queries
 
-<p class="message-highlight">List your SPARQL queries to your competency questions along with answers retrieved from your ontology/KG such as the below.</p>
-
-### Question: What are the hikes in Arches National Park?
-
-#### Query 1: SPARQL query to fetch hikes in Arches National Park
-
-```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
-PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
-SELECT ?hike
-WHERE { 
-    ?hike oe-wtgw:isHikeOf oe-wtgw-ind:ArchesNationalPark
-}
-```
-
-#### Result 1: Hike retrieved
-
-| Hike         |
-|--------------|
-| DoubleOArch  |
-
----
-
-### Question: What is the park's location using longitude and latitude?
-
-#### Query 2: SPARQL query to fetch parks and their latitude
-
-```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
-PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
-PREFIX Locations: <https://www.omg.org/spec/Commons/Locations/>
-
-SELECT ?park ?latitude
-WHERE  { 
-    ?park Locations:hasLocation ?location .
-    ?location Locations:hasLatitude ?latitude .
-    FILTER(datatype(?latitude) = xsd:decimal)
-}
-ORDER BY DESC(?latitude)
-```
-
-#### Result 2: Parks and latitudes retrieved
-
-| Park                    | Latitude |
-|-------------------------|----------|
-| Rocky Mountain National | 44.33    |
-| Arches National Park    | 37.2982  |
-
----
-
-### Question: What parks are in Maine?
-
-#### Query 3: SPARQL query to fetch parks in Maine
-
-```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
-PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
-
-SELECT ?park
-WHERE { 
-    ?park rdf:type oe-wtgw:NationalPark .
-    ?park oe-wtgw:hasState oe-wtgw-ind:Maine .
-}
-```
-
-#### Result 3: Park retrieved
-
-| Park                   |
-|------------------------|
-| Acadia National Park   |
-
----
+The following queries were run using Snap SPARQL with a Pellit Reasoner
 
 ### Question: Which national park has the coolest summer temperatures in the Midwest?
 
-#### Query 4: SPARQL query to fetch parks with summer temperatures in the Midwest
+#### Query 1: SPARQL query to fetch parks with summer temperatures in the Midwest
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -100,32 +17,47 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
 PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
 PREFIX Locations: <https://www.omg.org/spec/Commons/Locations/>
-
-SELECT ?park ?longitude ?summerTemp
+SELECT ?park ?summerTemp
 WHERE {
     ?park rdf:type oe-wtgw:NationalPark .
     ?park Locations:hasLocation ?location .
     ?location Locations:hasLongitude ?longitude .
+    ?location Locations:hasLatitude ?latitude .
     ?park oe-wtgw:hasAvgSeasonalTemperature ?tempInd .
     ?tempInd rdf:type oe-wtgw:AvgSeasonalTemperature .
     ?tempInd oe-wtgw:temperatureHasSeason oe-wtgw-ind:Summer .
     ?tempInd oe-wtgw:hasTemperature ?summerTemp .
     FILTER(?longitude >= -110 && ?longitude <= -82)
+    FILTER(?latitude >= 36 && ?latitude <= 49)
 }
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result 4: Park with the coolest summer temperature
+#### Result 1: Park with the coolest summer temperature
 
-| Park                   | Summer Temperature |
-|------------------------|---------------------|
-| Rocky Mountain National| 70°F               |
+| Park                                         | Summer Temperature |
+|----------------------------------------------|--------------------|
+| Isle Royale National Park                   | 65                 |
+| Rocky Mountain National Park                | 70                 |
+| Voyageurs National Park                     | 70                 |
+| Black Canyon Of The Gunnison National Park  | 70                 |
+| Indiana Dunes National Park                 | 75                 |
+| Wind Cave National Park                     | 75                 |
+| Theodore Roosevelt National Park            | 75                 |
+| Gateway Arch National Park                  | 80                 |
+| Great Sand Dunes National Park              | 80                 |
+| Mesa Verde National Park                    | 80                 |
+| Mammoth Cave National Park                  | 80                 |
+| Badlands National Park                      | 80                 |
+| Canyonlands National Park                   | 95                 |
+| Arches National Park                        | 95                 |
+
 
 ---
 
 ### Question: I am new to hiking. Which national park has cool summer temperatures and hikes less than 2 miles?
 
-#### Query 5: SPARQL query to fetch parks with short hikes and cool summer temperatures
+#### Query 2: SPARQL query to fetch parks with short and easy hikes and cool summer temperatures
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -134,7 +66,6 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
 PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
-
 SELECT ?park ?summerTemp ?hike ?distance
 WHERE {
     ?park rdf:type oe-wtgw:NationalPark .
@@ -149,17 +80,29 @@ WHERE {
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result 5: Park and hike retrieved
+#### Result 2: Park and hike retrieved
 
-| Park                   | Temp  | Hike              | Distance |
-|------------------------|-------|-------------------|----------|
-| Crater Lake National   | 65°F  | Watchman Peak Trail| 1.7 mi   |
+| Park                           | Summer Temperature | Trail                     | Distance (miles) |
+|--------------------------------|--------------------|---------------------------|------------------|
+| Cuyahoga Valley National Park  | 75                 | Brandywine Gorge Trail     | 1.5              |
+| Gateway Arch National Park     | 80                 | Gateway Arch Trail         | 1.8              |
+| Mammoth Cave National Park     | 80                 | Extended Historic Tour     | 2.0              |
+| Dry Tortugas National Park     | 85                 | Fort Jefferson Loop        | 0.5              |
+| Carlsbad Caverns National Park| 85                 | Big Room Trail             | 1.25             |
+| Biscayne National Park         | 90                 | Elliott Key Loop           | 1.1              |
+| Everglades National Park       | 90                 | Anhinga Trail              | 0.8              |
+| Petrified Forest National Park | 90                 | Blue Mesa Trail            | 1.0              |
+| Canyonlands National Park      | 95                 | Grand View Point           | 1.8              |
+| White Sands National Park      | 95                 | Dune Life Nature Trail     | 1.0              |
+
 
 ---
 
 ### Question: What are the longest hikes in California's national parks?
 
-#### Query 6: SPARQL query to fetch longest hikes in California
+This last query was run in the normal SPARQL window
+
+#### Query 3: SPARQL query to fetch longest hikes in California
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -168,7 +111,6 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
 PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
-
 SELECT ?park ?hike ?distance
 WHERE {
     ?park rdf:type oe-wtgw:NationalPark .
@@ -180,7 +122,7 @@ WHERE {
 ORDER BY DESC(?distance)
 ```
 
-#### Result 6: Longest hike retrieved
+#### Result 3: Longest hike retrieved
 
 | Hike              | Distance |
 |-------------------|----------|
