@@ -5,7 +5,12 @@ title: term list
 
 ## Terminology List
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQEcLgA4Ww0Krv949b-kvcNTJ6EKiQviKIFarIyvZtPomoRZIcND5ViGCJDiQupAQ/pubhtml?gid=170522325&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe 
+  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQEcLgA4Ww0Krv949b-kvcNTJ6EKiQviKIFarIyvZtPomoRZIcND5ViGCJDiQupAQ/pubhtml?gid=170522325&amp;single=true&amp;widget=true&amp;headers=false" 
+  width="100%" 
+  height="600" 
+  style="border: none;">
+</iframe>
 
 ## Previous Versions
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
