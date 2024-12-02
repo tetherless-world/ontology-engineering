@@ -8,216 +8,133 @@
 ### Prefixes
 
 ```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22/rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/>
-PREFIX ind2: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#>
-PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#>
-PREFIX ex2: <http://purl.obolibrary.org/obo/FOODON_0340079>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/>
 ```
 ### Competency Question 1
 
-### What is a good workout routine I can follow if I want to lose fat and gain muscle given that I have a knee injury? (Users will enter their age, weight, height, sex, physical condition, etc..)
+### What is a good workout routine I can follow if I want to lose fat and gain muscle given that I have a knee ligament injury? (Users will enter their physical condition, etc.. - for more info see scope above)
 
-#### Query 1: SPARQL Query to fetch workout cycle aimed for muscle gain with knee injury. Note that these have been separated for ease of viewing. These are put together using UNION.
-
-
-if((targets back && strainValue light)) Put in Pull section Section(Limit to 2)
 
 ```sparql
-select ?workout where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:hasStrainValue ind2:Light .
-  ?workout ex:targets ind2:BackMuscles .
-} LIMIT 2
-```
-if(targets bicep) put in Pull section(Limit to 2)
-```sparql
-select ?workout where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:targets ind2:Biceps .
-} LIMIT 2
+SELECT DISTINCT ?planner ?exercise ?strainValue
+WHERE { 
+  # Get all plan the user is focused on
+  ind:User2 ex:focus ?planner .
 
-```
-if(targets chest) Put in push section(limit to 2)
-```sparql
-select ?workout where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:targets ind2:ChestMuscles .
-} LIMIT 2
+  # Match exercises associated with the users plan
+  ?planner ex:containsExercise ?exercise .
 
-```
+  # Get the strain value for each exercise
+  ?exercise ex:hasStrainValue ?strainValue .
 
+  # Get the preferred strain from the current Goal
+  ind:StrengthGain ex:preferredStrain ?preferredStrain .
 
-if(targets tricep) Put in push section(Limit to 2)
-```sparql
-select ?workout where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:targets ind2:Triceps .
-} LIMIT 2
+  # Get the user's injury
+  ind:User1 ex:hasInjury ?injury .
 
-```
-If(targets quads) Put in legs(Limit to 2)
-```
-select ?workout where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:targets ind:Quadriceps .
-} LIMIT 2
-```
+  # Get the muscle group affected by the injury
+  ?injury ex:affects ?affectedMuscleGroup .
 
-If(targets hamstrings || targets glutes) Put in legs(Limit to 2)
-if(AerobicExercise) Put one in each group
-if(targets abdominal muscle) Put one in each group
-```
-select ?workout where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:targets ind:Abs .
-} LIMIT 2
+  # Get the muscle group targeted by the exercise
+  ?exercise ex:targets ?targetedMuscleGroup .
 
-```
-if(AerobicExercise && strainValue light) Put in Active Recovery(Limit to 2)
+  # Filter exercises whose strain matches the prefered
+  FILTER(?strainValue = ?preferredStrain)
 
-```
-select ?workout where{
-  ?workout rdf:type ex:AerobicExercise .
-  ?workout ex:hasStrainValue ind2:Light .
-} LIMIT 2
-```
-
-if(targets back && !strainValue light) in the do not section(Limit to 4 exercises)
-
-```
-select ?workout ?strain where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:targets ind2:BackMuscles .
-  ?workout ex:hasStrainValue ?strain .
-  FILTER (?strain != ind2:Light)
+  # Exclude exercises targeting affected muscle groups
+  FILTER NOT EXISTS { 
+    ?exercise ex:targets ?targetedMuscleGroup . 
+    ?injury ex:affects ?targetedMuscleGroup 
+  }
 }
+GROUP BY ?planner ?exercise ?strainValue
 ```
+### Results
+| Planner  | Exercise                | StrainValue  |
+|----------|--------------------------|--------------|
+| BackDay  | DumbbellRows            | Moderate     |
+| BackDay  | LatPulldowns            | Moderate     |
+| BackDay  | BentOverBarbellRows     | Strenuous    |
+| BackDay  | SeatedRows              | Moderate     |
+| ChestDay | InclineDumbbellPress    | Moderate     |
+| ChestDay | BenchPress              | Strenuous    |
+| ChestDay | LateralRaises           | Moderate     |
+| ChestDay | OverheadShoulderPress   | Moderate     |
+| LegDay   | RomanianDeadlifts       | Moderate     |
+| LegDay   | HeavyFrontSquat         | Strenuous    |
+| LegDay   | BarbellBackSquats       | Strenuous    |
+| LegDay   | BulgarianSplitSquats    | Moderate     |
 
 ### Competency Question 2
-###  I’m looking into strengthening my back. Can you provide me with a back workout? (User has already stated that they have scoliosis when creating their profile. System knows that the user has this condition.)
+###   What are good workouts to build strength? (Users will enter their physical condition, etc.. - for more info see scope above)
 
-#### Query 2: SPARQL Query to fetch workout plan aimed at strengthening back
+```sparql
+SELECT DISTINCT ?planner ?exercise ?strainValue
+WHERE { 
+  # Get all plan the user is focused on
+  ind:User2 ex:focus ?planner .
 
-PULL 1
-```sparql
-SELECT ?workout
-WHERE {
-  {
-    SELECT ?workout WHERE {
-      ?workout rdf:type ex:Exercise .
-      ?workout ex:hasStrainValue ind2:Light .
-      ?workout ex:targets ind2:BackMuscles .
-    } LIMIT 2
-  }
-  UNION
-  {
-    SELECT ?workout {
-  ?workout rdf:type ex:Exercise .
-  {
-    ?workout ex:targets ind2:Biceps .
-     
-  }MINUS{
-     ?workout ex:targets ind2:BackMuscles .
-  }
-}LIMIT 2
-  }
+  ?planner ex:containsExercise ?exercise .
+
+  # Get the strain value for each exercise
+  ?exercise ex:hasStrainValue ?strainValue .
+
+  # Get the preferred strain from the current Goal
+  ind:StrengthGain ex:preferredStrain ?preferredStrain .
+
+  # Filter exercises whose strain matches the prefered
+  FILTER(?strainValue = ?preferredStrain)
 }
 ```
-PULL 2
-```sparql
-SELECT ?workout
-WHERE {
-  {
-    SELECT ?workout WHERE {
-      ?workout rdf:type ex:Exercise .
-      ?workout ex:hasStrainValue ind2:Light .
-      ?workout ex:targets ind2:BackMuscles .
-    } LIMIT 4
-OFFSET 2
-  }
-  UNION
-  {
-    SELECT ?workout {
-  ?workout rdf:type ex:Exercise .
-  {
-    ?workout ex:targets ind2:Biceps .
-     
-  }MINUS{
-     ?workout ex:targets ind2:BackMuscles .
-  }
-}LIMIT 4
-OFFSET 2
-  }
-}
-```
-DO NOT
-```sparql
-select ?workout ?strain where{
-  ?workout rdf:type ex:Exercise .
-  ?workout ex:targets ind2:BackMuscles .
-  ?workout ex:hasStrainValue ?strain .
-  FILTER (?strain != ind2:Light)
-}
-```
+### Results
+| Planner  | Exercise                | StrainValue  |
+|----------|--------------------------|--------------|
+| BackDay  | DumbbellRows            | Moderate     |
+| BackDay  | LatPulldowns            | Moderate     |
+| BackDay  | SeatedRows              | Moderate     |
+| BackDay  | BentOverBarbellRows     | Strenuous    |
+| ChestDay | InclineDumbbellPress    | Moderate     |
+| ChestDay | LateralRaises           | Moderate     |
+| ChestDay | OverheadShoulderPress   | Moderate     |
+| ChestDay | BenchPress              | Strenuous    |
+| LegDay   | RomanianDeadlifts       | Moderate     |
+| LegDay   | BulgarianSplitSquats    | Moderate     |
+| LegDay   | HeavyFrontSquat         | Strenuous    |
+| LegDay   | BarbellBackSquats       | Strenuous    |
+
 
 ### Competency Question 3
-### I’m looking to develop strong legs. Can you provide me with a leg workout? (User has already stated that they have a mild leg strain when creating their profile. The system knows that the user has this condition.)
-
-#### Query 3: SPARQL query to fetch workout plan despite stated injury.
+### I’m looking into enforcing my back. Can you provide me with a back workout given I have a back injury? (User has already stated that they have scoliosis when creating their profile. System knows that the user has this condition.)
 
 ```sparql
-SELECT ?workout
-WHERE {
-  {
-    SELECT ?workout WHERE {
-      ?workout rdf:type ex:Exercise .
-      ?workout ex:hasStrainValue ?strain .
-      FILTER (?strain != ind2:Light) .
-      ?workout ex:targets ind2:Quadriceps .
-    } LIMIT 2
-  }
-  UNION
-  {
-    SELECT ?workout {
-  ?workout rdf:type ex:Exercise .
-  {
-    ?workout ex:targets ind2:GluteusMaximus .
-     
-  }MINUS{
-     ?workout ex:targets ind2:Quadriceps .
-  }
-}LIMIT 2
+SELECT DISTINCT ?planner ?exercise ?strainValue
+WHERE { 
+  # Get all plan the user is focused on
+  ind:User3 ex:focus ?planner .
 
-  }
-}
+  ?planner ex:containsExercise ?exercise .
 
-SELECT ?workout
-WHERE {
-  {
-    SELECT ?workout WHERE {
-      ?workout rdf:type ex:Exercise .
-      ?workout ex:hasStrainValue ?strain .
-      FILTER (?strain != ind2:Light) .
-      ?workout ex:targets ind2:Quadriceps .
-    } LIMIT 4
-      OFFSET 2
-  }
-  UNION
-  {
-    SELECT ?workout {
-  ?workout rdf:type ex:Exercise .
-  {
-    ?workout ex:targets ind2:GluteusMaximus .
-     
-  }MINUS{
-     ?workout ex:targets ind2:Quadriceps .
-  }
-}LIMIT 4
-OFFSET 2
-  }
+  # Get the strain value for each exercise
+  ?exercise ex:hasStrainValue ?strainValue .
+
+  # Get the preferred strain from the current Goal
+  ind:StrengthGain ex:preferredStrain ?preferredStrain .
+
+  # Filter exercises whose strain matches the prefered
+  FILTER(?strainValue = ?preferredStrain)
 }
 ```
+
+### Results
+| Planner  | Exercise            | StrainValue  |
+|----------|----------------------|--------------|
+| BackDay  | DumbbellRows        | Moderate     |
+| BackDay  | LatPulldowns        | Moderate     |
+| BackDay  | SeatedRows          | Moderate     |
+| BackDay  | BentOverBarbellRows | Strenuous    |
