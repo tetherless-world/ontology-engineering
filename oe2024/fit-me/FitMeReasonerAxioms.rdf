@@ -151,11 +151,11 @@
 
     <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
 
-    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ReflexiveProperty"/>
-    </rdf:Description>
+    </owl:ObjectProperty>
     
 
 
@@ -176,26 +176,6 @@
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:label xml:lang="en">affects</rdfs:label>
         <skos:definition xml:lang="en">what an injury does to a muscle</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/aids -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/aids">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:label xml:lang="en">aids</rdfs:label>
-        <skos:definition xml:lang="en">to promote the progress or accomplishment of</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/causes">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:label xml:lang="en">causes</rdfs:label>
-        <skos:definition xml:lang="en">x creates y to happen</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -235,6 +215,16 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasInjury -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasInjury">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/injures"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/User"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Injury"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasStrainValue">
@@ -252,6 +242,12 @@
         <rdfs:label xml:lang="en">has strain value</rdfs:label>
         <skos:definition xml:lang="en">how much strain an exercise has</skos:definition>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/injures -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/injures"/>
     
 
 
@@ -328,34 +324,6 @@
         <rdfs:label xml:lang="en">uses</rdfs:label>
         <skos:definition xml:lang="en">what muscle is targeted by the exercise</skos:definition>
     </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue -->
-
-    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue">
-        <rdfs:range>
-            <rdfs:Datatype>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#int"/>
-                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
-                </owl:unionOf>
-            </rdfs:Datatype>
-        </rdfs:range>
-        <rdfs:label xml:lang="en">has value</rdfs:label>
-        <skos:definition xml:lang="en">what value a certain attribute contains</skos:definition>
-    </owl:DatatypeProperty>
     
 
 
@@ -846,12 +814,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Goal">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/hasValue"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <terms:source>https://www.merriam-webster.com/dictionary/goal</terms:source>
         <rdfs:label xml:lang="en">goal</rdfs:label>
         <skos:definition xml:lang="en">what user is training for</skos:definition>
@@ -2646,19 +2608,6 @@
     
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#User1 -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#User1">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/User"/>
-        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#BackDay"/>
-        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#ChestDay"/>
-        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#DoNot"/>
-        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#LegDay"/>
-        <FOODON_03400793:has rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#KneeLigamentInjury"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#WallAngels -->
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#WallAngels">
@@ -2875,6 +2824,7 @@
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/LigamentInjury"/>
         <FitMe:affects rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Hamstrings"/>
         <FitMe:affects rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Quadriceps"/>
+        <FitMe:injures rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#User1"/>
     </owl:NamedIndividual>
     
 
@@ -3033,6 +2983,20 @@
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#BentOverBarbellRows"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#Deadlifts"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#HeavyFrontSquat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#User1 -->
+
+    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#User1">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/User"/>
+        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#BackDay"/>
+        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#ChestDay"/>
+        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#DoNot"/>
+        <FitMe:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#LegDay"/>
+        <FitMe:hasInjury rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#KneeLigamentInjury"/>
+        <FOODON_03400793:has rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividu#KneeLigamentInjury"/>
     </owl:NamedIndividual>
     
 
