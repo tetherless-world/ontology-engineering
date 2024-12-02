@@ -595,13 +595,6 @@
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor"/>
-				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalOffice"/>
-				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>political candidate</rdfs:label>
 		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalOffice"/>
 		<skos:definition>a person who is seeking election to a political office</skos:definition>
@@ -1120,10 +1113,15 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor">
-		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label>is running for</rdfs:label>
 		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
 		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalOffice"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isCandidateIn">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionFor">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
 		<skos:definition>relates a candidate with the political office they are running for</skos:definition>
 	</owl:ObjectProperty>
 	
