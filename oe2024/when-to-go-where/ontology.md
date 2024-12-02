@@ -2,12 +2,13 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/WhenToGoWhere-Page-1.drawio.png)
+![Concept Map Subject Model](images/OE12_WhenToGoWhere_ConceptualModel.png)
 
 An overview of the main classes.
 
 ### Previous versions
 
+- [Version 6 (OE 12)](images/OE12_WhenToGoWhere_ConceptualModel.png)
 - [Version 5 (OE 10)](images/WhenToGoWhere-Page-1.drawio.png)
 - [Version 4 (OE 8)](images/WhenToGoWhere.drawio.png)
 - [Version 3 (OE 6)](images/model_v3.PNG)
@@ -24,6 +25,7 @@ Currently we have two ontologies. Our main ontology is the when to go where onto
 
 #### Previous Versions
 
+* [OE 12](https://github.com/tetherless-world/ontology-engineering/blob/14692ea481cf5409860dddc9f9e4943b919db9bf/oe2024/when-to-go-where/WhenToGoWhere.rdf)
 * [OE 11](https://github.com/tetherless-world/ontology-engineering/blob/114aa8ad617d0eeea3570d8d0f7a65eb21b862a9/oe2024/when-to-go-where/WhenToGoWhere.rdf)
 * [OE 10](https://github.com/tetherless-world/ontology-engineering/blob/dac8dda75fb576d8551123076e10627d716549d9/oe2024/when-to-go-where/WhenToGoWhere.rdf)
 * [OE 9](https://github.com/tetherless-world/ontology-engineering/blob/0dab7dba2bad974dbc2be7e40d342d4812061be4/oe2024/when-to-go-where/WhenToGoWhere.rdf)
@@ -40,6 +42,7 @@ Currently we have two ontologies. Our main ontology is the when to go where onto
 
 #### Previous Versions
 
+* [OE 12](https://github.com/tetherless-world/ontology-engineering/blob/14692ea481cf5409860dddc9f9e4943b919db9bf/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
 * [OE 11](https://github.com/tetherless-world/ontology-engineering/blob/114aa8ad617d0eeea3570d8d0f7a65eb21b862a9/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
 * [OE 10](https://github.com/tetherless-world/ontology-engineering/blob/dac8dda75fb576d8551123076e10627d716549d9/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
 * [OE 9](https://github.com/tetherless-world/ontology-engineering/blob/0dab7dba2bad974dbc2be7e40d342d4812061be4/oe2024/when-to-go-where/WhenToGoWhere-individuals.rdf)
