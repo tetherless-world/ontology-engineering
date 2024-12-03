@@ -17,7 +17,7 @@ To achieve this we are creating a semantically enabled application that will lev
 - [Annabelle Choi](https://github.com/snoopy0328)
 
 ## Workflow Diagram
-<iframe scr = "images/OE12_WhenToGoWhere_ConceptualModel.png" style = "width:100%; height: 500px"></iframe>
+![](images/OE12_WhenToGoWhere_ConceptualModel.png)
 
 The conceptual model above is a visual representation of the ontology that we developed in this project. In the above we can see that there are a set of concepts such as Animal, Activity, Accommodation, Facility, Park Statistics, Terrain, and Climate. All of these concepts are attached to a central concept National Park which is the focus of our ontology. They also have sets of other concepts that are connected to them such as Accommodation which is attached to Campground, Hotel, Capacity, Availability, and Amenities.
 	
