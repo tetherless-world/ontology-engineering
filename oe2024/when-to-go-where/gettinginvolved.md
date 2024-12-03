@@ -13,3 +13,8 @@ One point that is important to pay attention to in the maintenance of this ontol
 ## Evolution Policy
 
 So far several data sources have been captured to generate individuals for different components of the when to go where ontology. There are still some components of the ontology for which sufficient data sources have not been found. Work needs to be done in the direction of completing the task of generating individuals for all classes in the ontology. Once all of these data sources have been found, work can be done into identifying state parks or international parks to be added to the ontology as well as relevant data sources.
+
+- Samyuth Sagi: sagis2@rpi.edu
+- Tyler Layton: laytot@rpi.edu
+- Ben Rodgers: rodgeb@rpi.edu
+- Annabelle Choi: choia7@rpi.edu
