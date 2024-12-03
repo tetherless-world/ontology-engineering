@@ -79,7 +79,6 @@ To achieve this we are creating a semantically enabled application that will lev
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-wtgw;AnimalType">
-		<rdfs:subClassOf rdf:resource="&oe-wtgw;Animal"/>
 		<rdfs:label>animal type</rdfs:label>
 		<skos:definition>the category of a specific living organism</skos:definition>
 		<cmns-av:adaptedFrom>National Park Service, “Species List (IRMA Portal).” [Online]. Available: https://irma.nps.gov/NPSpecies/Search/SpeciesList. [Accessed:  25-Sep-2024].</cmns-av:adaptedFrom>
@@ -591,7 +590,7 @@ To achieve this we are creating a semantically enabled application that will lev
 		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
 		<rdfs:range rdf:resource="&oe-wtgw;ParkStatistic"/>
 		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
-		<owl:inverseOf rdf:resource="&oe-wtgw;isPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasState"/>
 		<skos:definition>a state has a national park</skos:definition>
 		<cmns-av:adaptedFrom>National Park Service, “National Park,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -658,6 +657,7 @@ To achieve this we are creating a semantically enabled application that will lev
 		<rdfs:label>is accessability of</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
 		<skos:definition>the degree to which a park, trail, or facility is accessible to individuals with disabilities, including features like ramps, designated parking, and trail modifications</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Accessibility.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isAccommodationOf">
@@ -704,9 +704,10 @@ To achieve this we are creating a semantically enabled application that will lev
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isDifficultyOf">
+		<rdfs:label>is difficulty of</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;Difficulty"/>
-		<skos:definition>Property describing if a trail has a difficulty rating</skos:definition>
-		<skos:definition>is difficulty of</skos:definition>
+		<skos:definition>the level of intensity of a certain path, can be defined by easy, medium, hard, severe, extreme, etc</skos:definition>
+		<cmns-av:adaptedFrom>FATMAP, &quot;The Most Famous Hike in Every US National Park,&quot; FATMAP, [Online]. Available: https://fatmap.com/discover/guidebook/united-states-of-america/washington/alpine-climbing/hiking/the-most-famous-hike-in-every-us-national-park/109220. [Accessed: 23-Sep-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isFacilityOf">
@@ -731,14 +732,6 @@ To achieve this we are creating a semantically enabled application that will lev
 		<rdfs:range rdf:resource="&cmns-pts;AgentRole"/>
 		<owl:inverseOf rdf:resource="&oe-wtgw;issues"/>
 		<skos:definition>indicates a role played by a functional entity or party responsible for circulating, distributing, or publishing something</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-wtgw;isPark">
-		<rdfs:label>is park of</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;Accomodation"/>
-		<rdfs:domain rdf:resource="&oe-wtgw;Activity"/>
-		<rdfs:domain rdf:resource="&oe-wtgw;AvgTemperature"/>
-		<skos:definition>belonging to a national park</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isSeasonOf">
