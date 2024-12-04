@@ -5,9 +5,10 @@
 
 The following queries were run using Snap SPARQL with a Pellit Reasoner
 
-### Question: Which national park has the coolest summer temperatures in the Midwest?
+### Compentency Question 1
+#### Question: Which national park has the coolest summer temperatures in the Midwest?
 
-#### Query 1: SPARQL query to fetch parks with summer temperatures in the Midwest
+#### Query: SPARQL query to fetch parks with summer temperatures in the Midwest
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -33,7 +34,7 @@ WHERE {
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result 1: Park with the coolest summer temperature
+#### Result: Park with the coolest summer temperature
 
 | Park                                         | Summer Temperature |
 |----------------------------------------------|--------------------|
@@ -54,10 +55,13 @@ ORDER BY ASC(?summerTemp)
 
 
 ---
+#### Description:
 
-### Question: I am new to hiking. Which national park has cool summer temperatures and hikes less than 2 miles?
 
-#### Query 2: SPARQL query to fetch parks with short and easy hikes and cool summer temperatures
+### Compentency Question 2
+#### Question: I am new to hiking. Which national park has cool summer temperatures and hikes less than 2 miles?
+
+#### Query: SPARQL query to fetch parks with short and easy hikes and cool summer temperatures
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -80,7 +84,7 @@ WHERE {
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result 2: Park and hike retrieved
+#### Result: Park and hike retrieved
 
 | Park                           | Summer Temperature | Trail                     | Distance (miles) |
 |--------------------------------|--------------------|---------------------------|------------------|
@@ -97,12 +101,14 @@ ORDER BY ASC(?summerTemp)
 
 
 ---
+#### Description:
 
-### Question: What are the longest hikes in California's national parks?
+### Compentency Question 3
+#### Question: What are the longest hikes in California's national parks?
 
 This last query was run in the normal SPARQL window
 
-#### Query 3: SPARQL query to fetch longest hikes in California
+#### Query: SPARQL query to fetch longest hikes in California
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -122,8 +128,22 @@ WHERE {
 ORDER BY DESC(?distance)
 ```
 
-#### Result 3: Longest hike retrieved
+#### Result: Longest hike retrieved
 
 | Hike              | Distance |
 |-------------------|----------|
 | Lakes Trail       | 12.2 mi  |
+
+#### Description:
+
+### Compentency Question 4
+#### Question:
+#### Result:
+#### Query:
+#### Description:
+
+### Compentency Question 5
+#### Question:
+#### Result:
+#### Query:
+#### Description:

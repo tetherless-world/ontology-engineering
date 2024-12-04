@@ -16,6 +16,9 @@ To achieve this we are creating a semantically enabled application that will lev
 - [Ben Rodgers](https://github.com/benrodgers14)
 - [Annabelle Choi](https://github.com/snoopy0328)
 
+## Link to Our Class
+[Ontology Engineering Fall 2024](https://tw.rpi.edu/classes/ontology-engineering-fall-2024)
+
 ## Workflow Diagram
 ![Concept Map Subject Model](images/OE12_WhenToGoWhere_ConceptualModel.png)
 
@@ -31,19 +34,24 @@ The conceptual model also shows how we have connected the different concepts in 
     <th>Links</th>
   </tr>
   <tr>
-    <td>1. Ontology</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/ontology">When To Go Where</a></td>
+    <td>Ontology</td>
+    <td>Ontology: <a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/ontology">When To Go Where</a></td>
   </tr>
   <tr>
-    <td>2. Term List</td>
+    <td>Demo</td>
+    <td>LINK TO LIVE DEMO</td>
+    <td>LINK TO STATIC DEMO</td>
+  </tr>
+  <tr>
+    <td>Term List</td>
     <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/termlist">Curated Terms List</a> </td>
   </tr>
   <tr>
-    <td>2. Competency Questions</td>
+    <td>Competency Questions</td>
     <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/demo">SPARQL Queries</a> </td>
   </tr>
   <tr>
-    <td>3. Presentations:</td>
+    <td>Presentations:</td>
     <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/presentations">Project presentations during class</a> </td>
   </tr>
 </table>
