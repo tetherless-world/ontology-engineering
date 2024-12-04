@@ -31,28 +31,18 @@ The conceptual model also shows how we have connected the different concepts in 
 <table>
   <tr>
     <th>Resources</th>
-    <th>Links</th>
   </tr>
   <tr>
-    <td>Ontology</td>
-    <td>Ontology: <a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/ontology">When To Go Where</a></td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/ontology">When To Go Where Ontology</a></td>
   </tr>
   <tr>
-    <td>Demo</td>
-    <td>LINK TO LIVE DEMO</td>
-    <td>LINK TO STATIC DEMO</td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/termlist">Term Lists</a> </td>
   </tr>
   <tr>
-    <td>Term List</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/termlist">Curated Terms List</a> </td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/demo">Compentency Questions & Demo</a> </td>
   </tr>
   <tr>
-    <td>Competency Questions</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/demo">SPARQL Queries</a> </td>
-  </tr>
-  <tr>
-    <td>Presentations:</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/presentations">Project presentations during class</a> </td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/presentations">Presentations</a> </td>
   </tr>
 </table>
 
