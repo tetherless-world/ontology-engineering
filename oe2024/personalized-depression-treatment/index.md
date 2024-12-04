@@ -3,9 +3,10 @@ layout: default
 title: About
 ---
 
-# Personalized Depression Treatment Ontology
-
-![Personalized Depression Treatment Ontology](images/pdtologo.png)
+<div style="display: flex; align-items: center;">
+  <img src="path_to_your_image/logo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+  <h1 style="margin: 0;">Personalized Depression Treatment Ontology</h1>
+</div>
 
 ## Abstract
 
