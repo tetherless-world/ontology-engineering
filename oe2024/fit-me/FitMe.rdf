@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
+	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
-	<!ENTITY oe-fit "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/">
+	<!ENTITY oe-fit "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:dct="http://purl.org/dc/terms/"
-	xmlns:oe-fit="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
+	xmlns:oe-fit="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
-	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/">
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/">
 		<dct:abstract>FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.</dct:abstract>
 		<dct:creator>Abhirup Dasgupta</dct:creator>
 		<dct:creator>Anirban Acharya</dct:creator>
@@ -27,8 +33,10 @@
 		<dct:modified>12/1/2024</dct:modified>
 		<dct:publisher>FitMe</dct:publisher>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
 		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/FitMeV6.rdf</owl:priorVersion>
-		<owl:versionIRI>https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/</owl:versionIRI>
+		<owl:versionIRI>https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/</owl:versionIRI>
 		<skos:changeNote>Added DLs for back exercise semantics</skos:changeNote>
 		<skos:changeNote>Added DLs for bicep exercise semantics</skos:changeNote>
 		<skos:changeNote>Fixed issue with inconsistent labeling</skos:changeNote>
@@ -306,11 +314,35 @@
 		<skos:definition xml:lang="en">a stretching or tearing of a ligament</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-fit;LightBackExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;SetOfBackExercises"/>
+		<rdfs:label xml:lang="en">light back exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of light strain exercises that target the back muscles</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-fit;LightBicepExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;SetOfBicepExercises"/>
+		<rdfs:label xml:lang="en">light bicep exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of light strain exercises that target the bicep muscles</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-fit;LowerBodyMuscle">
 		<rdfs:subClassOf rdf:resource="&oe-fit;MuscleGroup"/>
 		<rdfs:label xml:lang="en">lower body muscles</rdfs:label>
 		<dct:source>https://training.seer.cancer.gov/anatomy/muscular/groups/lower.html</dct:source>
 		<skos:definition xml:lang="en">muscles located in the lower part of the body, including the quadriceps, hamstrings, calves, and gluteal muscles</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-fit;ModerateBackExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;SetOfBackExercises"/>
+		<rdfs:label xml:lang="en">moderate back exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of moderate strain exercises that target the back muscles</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-fit;ModerateBicepExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;SetOfBicepExercises"/>
+		<rdfs:label xml:lang="en">moderate bicep exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of moderate strain exercises that target the bicep muscles</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-fit;MuscleGain">
@@ -415,6 +447,12 @@
 		<skos:definition xml:lang="en">muscles on your arms</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-fit;SetOfBackExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;Exercise"/>
+		<rdfs:label xml:lang="en">set of back exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of exercises that target the back muscles</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-fit;SetOfBackMuscles">
 		<rdfs:subClassOf rdf:resource="&oe-fit;UpperBodyMuscle"/>
 		<rdfs:label xml:lang="en">set of back muscle</rdfs:label>
@@ -449,6 +487,12 @@
 		<rdfs:label xml:lang="en">set of bicep curls</rdfs:label>
 		<dct:source>https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/biceps-curl/vid-20084675#:~:text=Campbell%3A%20To%20do%20a%20biceps,front%20of%20your%20upper%20arm.</dct:source>
 		<skos:definition xml:lang="en">using elbow as pivot point, lift weight</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-fit;SetOfBicepExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;Exercise"/>
+		<rdfs:label xml:lang="en">set of bicep exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of exercises that target the bicep muscles</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-fit;SetOfBiceps">
@@ -750,6 +794,18 @@
 		<rdfs:label xml:lang="en">strength gain</rdfs:label>
 		<dct:source>FitMe</dct:source>
 		<skos:definition xml:lang="en">lift heavier weights</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-fit;StrenuousBackExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;SetOfBackExercises"/>
+		<rdfs:label xml:lang="en">strenuous back exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of strenuous strain exercises that target the back muscles</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-fit;StrenuousBicepExercises">
+		<rdfs:subClassOf rdf:resource="&oe-fit;SetOfBicepExercises"/>
+		<rdfs:label xml:lang="en">strenuous bicep exercises</rdfs:label>
+		<skos:definition xml:lang="en">a set of strenuous strain exercises that target the bicep muscles</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-fit;Swimming">
