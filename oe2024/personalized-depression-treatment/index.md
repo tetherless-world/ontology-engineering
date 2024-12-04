@@ -3,9 +3,9 @@ layout: default
 title: About
 ---
 
-<div style="display: flex; align-items: center;">
-  <img src="path_to_your_image/logo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+<div style="display: flex; align-items: center; justify-content: space-between;">
   <h1 style="margin: 0;">Personalized Depression Treatment Ontology</h1>
+  <img src="images/pdtologo.png" alt="Logo" style="height: 50px;">
 </div>
 
 ## Abstract
