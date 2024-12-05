@@ -722,10 +722,16 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KneeLigamentInjuryAgnosticExercise">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/substitutionOf"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KneeLigamentInjuryAffectedExercise"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/FlexibilityExercise"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/IsometricExercise"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/substitutionOf"/>
+                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KneeLigamentInjuryAffectedExercise"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Exercise"/>
     </owl:Class>
