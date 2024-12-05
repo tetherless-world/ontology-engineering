@@ -138,6 +138,16 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/avoidsInjury -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/avoidsInjury">
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/injuryAvoidedInPlan"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Injury"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/containsExercise -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/containsExercise">
@@ -227,6 +237,12 @@
         <rdfs:label xml:lang="en">injures</rdfs:label>
         <skos:definition xml:lang="en">negatively impact to part of body</skos:definition>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/injuryAvoidedInPlan -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/injuryAvoidedInPlan"/>
     
 
 
@@ -867,6 +883,10 @@
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KneeLigamentInjuryAgnosticStrengthExercise"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/avoidsInjury"/>
+                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KneeLigamentInjury"/>
+                    </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/exerciseContainedIn"/>
                         <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/RecoveryDay"/>
