@@ -36,7 +36,8 @@ WHERE {
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result: Park with the coolest summer temperature
+#### Result: 
+Park with the coolest summer temperature
 
 | Park                                         | Summer Temperature |
 |----------------------------------------------|--------------------|
@@ -60,9 +61,11 @@ ORDER BY ASC(?summerTemp)
 
 
 ### Compentency Question 2
-#### Question: I am new to hiking. Which national park has cool summer temperatures and hikes less than 2 miles?
+#### Question: 
+I am new to hiking. Which national park has cool summer temperatures and hikes less than 2 miles?
 
-#### Query: SPARQL query to fetch parks with short and easy hikes and cool summer temperatures
+#### Query: 
+SPARQL query to fetch parks with short and easy hikes and cool summer temperatures
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -85,7 +88,8 @@ WHERE {
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result: Park and hike retrieved
+#### Result: 
+Park and hike retrieved
 
 | Park                           | Summer Temperature | Trail                     | Distance (miles) |
 |--------------------------------|--------------------|---------------------------|------------------|
@@ -105,11 +109,12 @@ ORDER BY ASC(?summerTemp)
 ---
 
 ### Compentency Question 3
-#### Question: What are the longest hikes in California's national parks?
+#### Question: 
+What are the longest hikes in California's national parks?
 
-This last query was run in the normal SPARQL window
-
-#### Query: SPARQL query to fetch longest hikes in California
+#### Query: 
+SPARQL query to fetch longest hikes in California
+(This last query was run in the normal SPARQL window)
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -129,7 +134,8 @@ WHERE {
 ORDER BY DESC(?distance)
 ```
 
-#### Result: Longest hike retrieved
+#### Result: 
+Longest hike retrieved
 
 | Hike              | Distance |
 |-------------------|----------|
