@@ -16,6 +16,9 @@ To achieve this we are creating a semantically enabled application that will lev
 - [Ben Rodgers](https://github.com/benrodgers14)
 - [Annabelle Choi](https://github.com/snoopy0328)
 
+## Call to Action
+
+
 ## Link to Our Class
 [Ontology Engineering Fall 2024](https://tw.rpi.edu/classes/ontology-engineering-fall-2024)
 
