@@ -3,6 +3,7 @@ layout: default
 title: About
 ---
 
+![Project Photo](images/denalNationalPark.jpg)
 ## When To Go Where
 
 When to go where is a project that aims to promote outdoor exploration across the 63 National Parks in the United States. We would like to give people a tool that will allow them to find national parks that will fit any preferences that they may have. We want to give people as few excuses as possible for not pursing outdoor activities such as camping and hiking.
