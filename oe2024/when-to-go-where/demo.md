@@ -6,9 +6,11 @@
 The following queries were run using Snap SPARQL with a Pellit Reasoner
 
 ### Compentency Question 1
-#### Question: Which national park has the coolest summer temperatures in the Midwest?
+#### Question: 
+Which national park has the coolest summer temperatures in the Midwest?
 
-#### Query: SPARQL query to fetch parks with summer temperatures in the Midwest
+#### Query: 
+SPARQL query to fetch parks with summer temperatures in the Midwest
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -53,9 +55,8 @@ ORDER BY ASC(?summerTemp)
 | Canyonlands National Park                   | 95                 |
 | Arches National Park                        | 95                 |
 
-
----
 #### Description:
+---
 
 
 ### Compentency Question 2
@@ -100,8 +101,8 @@ ORDER BY ASC(?summerTemp)
 | White Sands National Park      | 95                 | Dune Life Nature Trail     | 1.0              |
 
 
----
 #### Description:
+---
 
 ### Compentency Question 3
 #### Question: What are the longest hikes in California's national parks?
@@ -136,14 +137,18 @@ ORDER BY DESC(?distance)
 
 #### Description:
 
+---
+
 ### Compentency Question 4
 #### Question:
 #### Result:
 #### Query:
 #### Description:
+---
 
 ### Compentency Question 5
 #### Question:
 #### Result:
 #### Query:
 #### Description:
+---
