@@ -8,7 +8,7 @@ title: license
 We release all resources on this website under the Apache 2 Open Software license
 
 <code>
-  Copyright 2020 Study Cohort Ontology Team
+  Copyright 2024 Personalized Depression Treatment Ontology Team
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

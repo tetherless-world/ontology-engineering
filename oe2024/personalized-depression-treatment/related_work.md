@@ -5,10 +5,10 @@ title: related_work
 
 ## Related Work and References
 
-<p class="message-highlight">
-  Please replace the below citations with that with citations to work that can be considered as related work for your project. You can also include reference links to resources you used for the project. To retrieve citations you can use the get citation button against publications on <a href="https://scholar.google.com">Google Scholar</a>. Please try listing out the full author list for publications, the Chicago format allows you this provision.
-</p>
+B. Gaynes and A. Rush, “Treatment Alternatives to Relieve Depression (STAR*D) study The STAR*D study: Treating depression in the real world,” CLEVELAND CLINIC JOURNAL OF MEDICINE, vol. 75, no. 1, 2008, Available: https://www.ccjm.org/content/ccjom/75/1/57.full.pdf
 
-- Seneviratne, Oshani, Sabbir M. Rashid, Shruthi Chari, James P. McCusker, Kristin P. Bennett, James A. Hendler, and Deborah L. McGuinness. "Knowledge integration for disease characterization: A breast cancer example." In International Semantic Web Conference, pp. 223-238. Springer, Cham, 2018.
-- Haussmann, Steven, Oshani Seneviratne, Yu Chen, Yarden Ne’eman, James Codella, Ching-Hua Chen, Deborah L. McGuinness, and Mohammed J. Zaki. "FoodKG: a semantics-driven knowledge graph for food recommendation." In International Semantic Web Conference, pp. 146-162. Springer, Cham, 2019.
-- Chari, Shruthi, Miao Qi, Nkechinyere N. Agu, Oshani Seneviratne, James P. McCusker, Kristin P. Bennett, Amar K. Das, and Deborah L. McGuinness. "Making study populations visible through knowledge graphs." In International Semantic Web Conference, pp. 53-68. Springer, Cham, 2019.
+“GENOME-BASED THERAPEUTIC DRUGS FOR DEPRESSION (GENDEP),” CORDIS, https://cordis.europa.eu/project/id/503428 (accessed Sep. 26, 2024).
+
+M., et al Li, “Integrative functional genomic analysis of Human Brain Development and Neuropsychiatric Risks | Science,” Science, https://www.science.org/doi/10.1126/science.aat7615 (accessed Sep. 26, 2024).
+
+Kupfer, D. J., Frank, E., & Phillips, M. L. (2012). "Major depressive disorder: New clinical, neurobiological, and treatment perspectives." The Lancet.
