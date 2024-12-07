@@ -91,6 +91,21 @@ To achieve this we are creating a semantically enabled application that will lev
 		<cmns-av:adaptedFrom>Merriam-Webster, “Auto-caravan.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-wtgw;AvgMonthlyVisitors">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasMonth"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Month"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasVisitors"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-wtgw;AvgSeasonalTemperature">
 		<rdfs:subClassOf rdf:resource="&oe-wtgw;AvgTemperature"/>
 		<rdfs:subClassOf>
@@ -102,6 +117,21 @@ To achieve this we are creating a semantically enabled application that will lev
 		<rdfs:label>average seasonal temperature</rdfs:label>
 		<skos:definition>the mean thermal reading of a specific place over a part of the year</skos:definition>
 		<cmns-av:adaptedFrom>Merriam-Webster, “Average Temperature.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 22-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;AvgSeasonalVisitors">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasSeason"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Season"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasVisitors"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-wtgw;AvgTemperature">
@@ -311,6 +341,9 @@ To achieve this we are creating a semantically enabled application that will lev
 		<rdfs:label>loop trail</rdfs:label>
 		<skos:definition>a trail that starts and ends at the same point forming a circular route</skos:definition>
 		<cmns-av:adaptedFrom>FATMAP, &quot;The Most Famous Hike in Every US National Park,&quot; FATMAP, [Online]. Available: https://fatmap.com/discover/guidebook/united-states-of-america/washington/alpine-climbing/hiking/the-most-famous-hike-in-every-us-national-park/109220. [Accessed: 23-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Month">
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-wtgw;Mountain">
@@ -582,6 +615,9 @@ To achieve this we are creating a semantically enabled application that will lev
 		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Hiking,” [Online]. Available: https://www.britannica.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasMonth">
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasPark">
 		<rdfs:label>has park</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
@@ -606,7 +642,6 @@ To achieve this we are creating a semantically enabled application that will lev
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;hasSeason">
 		<rdfs:label>has season</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
 		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
 		<owl:inverseOf rdf:resource="&oe-wtgw;isSeasonOf"/>
 		<skos:definition>each of the four divisions of the year (spring, summer, fall, and winter) marked by particular weather patterns and daylight hours, resulting from the earth&apos;s changing position with regard to the sun</skos:definition>
@@ -652,6 +687,20 @@ To achieve this we are creating a semantically enabled application that will lev
 		<skos:definition>the kind of trail it is, can either be out and back or a loop</skos:definition>
 		<cmns-av:adaptedFrom>National Park Service, “Trail Types,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-wtgw;hasVisitors">
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:onDatatype rdf:resource="&xsd;integer"/>
+				<owl:withRestrictions rdf:parseType="Collection">
+					<rdf:Description>
+						<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
+					</rdf:Description>
+				</owl:withRestrictions>
+			</rdfs:Datatype>
+		</rdfs:range>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isAccessibilityOf">
 		<rdfs:label>is accessability of</rdfs:label>
@@ -736,7 +785,6 @@ To achieve this we are creating a semantically enabled application that will lev
 	
 	<owl:ObjectProperty rdf:about="&oe-wtgw;isSeasonOf">
 		<rdfs:label>is season of</rdfs:label>
-		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
 		<skos:definition>Property describing if a season is associated with a specific object</skos:definition>
 	</owl:ObjectProperty>
 	
