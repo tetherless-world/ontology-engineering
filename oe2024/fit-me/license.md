@@ -5,14 +5,14 @@ title: license
 
 ## License
 
-We release all resources on this website under the Creative Commons license
+We release all resources on this website under the MIT Open Source license
 
 <code>
   Copyright 2024 FitMe Ontology Team
 
 
 
-    https://creativecommons.org/licenses/by/4.0/
+    http://opensource.org/licenses/MIT
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
