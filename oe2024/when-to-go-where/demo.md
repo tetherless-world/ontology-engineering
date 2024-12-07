@@ -59,6 +59,8 @@ Park with the coolest summer temperature
 #### Description:
 This competency question aims to identify the national park within the Midwest region that experiences the lowest average summer temperatures. By querying the ontology, we can retrieve and compare the average summer temperatures of various national parks located within specified longitude and latitude boundaries that define the Midwest. The result will help in understanding which park offers the coolest climate during the summer season, which can be useful for planning visits, ecological studies, and climate research.
 
+![Project Photo](images/isleNationalPark.jpg)
+Isle National Park
 
 ### Compentency Question 2
 #### Question: 
@@ -108,6 +110,8 @@ Park and hike retrieved
 #### Description:
 This competency question aims to identify national parks that offer cool summer temperatures and have hiking trails that are less than 2 miles in length. This information is particularly useful for new hikers who prefer shorter and easier hikes. By querying the ontology, we can retrieve and compare the average summer temperatures and trail lengths of various national parks to find suitable options for new hikers.
 
+![Project Photo](images/CuyahogaValleyNational Park.jpg)
+Cuyahoga Valley National Park
 
 ### Compentency Question 3
 #### Question: 

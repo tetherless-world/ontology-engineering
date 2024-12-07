@@ -3,6 +3,8 @@ layout: default
 title: term list
 ---
 
+![Project Photo](images/haleakalaNationalPark.jpg)
+Haleakala National Park
 ## Terminology List
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHe9NCvW71yBYSL27fQrV2lRnremi_uktOt9y1nkuHnaUD3_ijoywICgU0evC1Zw/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>

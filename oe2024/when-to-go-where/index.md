@@ -3,6 +3,7 @@ layout: default
 title: About
 ---
 
+
 ![Project Photo](images/denalNationalPark.jpg)
 Denali National Park
 ## When To Go Where
