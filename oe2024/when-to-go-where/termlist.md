@@ -9,7 +9,6 @@ title: term list
 
 ## Previous Versions
 
-<p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 - [Version 7 (OE 12)](files/OE_12_WhentoGoWhere_CuratedTermList.xlsx)
 - [Version 6 (OE 10)](files/OE_10_WhentoGoWhere_CuratedTermList.xlsx)
 - [Version 5 (OE 8)](files/OE_8_WhentoGoWhere_CuratedTermList_Clean.xlsx)
