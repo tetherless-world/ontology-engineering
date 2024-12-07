@@ -1,822 +1,501 @@
-<?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.w3.org/2002/07/owl"
-     xmlns:dct="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individual#dct:"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:dct1="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/dct:dct:"
-     xmlns:dct2="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/dct:"
-     xmlns:owl1="http://www.w3.org/2002/07/owl/"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:FitMe="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/"
-     xmlns:terms="http://purl.org/dc/terms/"
-     xmlns:FitMe1="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/"
-     xmlns:FOODON_03400793="http://purl.obolibrary.org/obo/FOODON_03400793#"
-     xmlns:FitMeIndividual="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/"
-     xmlns:AnnotationVocabulary="https://www.omg.org/spec/Commons/AnnotationVocabulary/">
-    <Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/">
-        <imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/"/>
-        <imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-        <terms:abstract>FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.</terms:abstract>
-        <terms:creator>Abhirup Dasgupta</terms:creator>
-        <terms:creator>Anirban Acharya</terms:creator>
-        <terms:creator>Dominick Iadevaia</terms:creator>
-        <terms:creator>Johnny Sun</terms:creator>
-        <terms:license rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://creativecommons.org/licenses/by/4.0/</terms:license>
-        <terms:modified>12/1/2024</terms:modified>
-        <terms:publisher>FitMe</terms:publisher>
-        <priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/FitMeV6.rdf</priorVersion>
-        <versionIRI>https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/</versionIRI>
-        <skos:changeNote>Added DLs for back exercise semantics</skos:changeNote>
-        <skos:changeNote>Added DLs for bicep exercise semantics</skos:changeNote>
-        <skos:changeNote>Fixed issue with inconsistent labeling</skos:changeNote>
-    </Ontology>
-    
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
+	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY oe-fit "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/">
+	<!ENTITY oe-fitind "https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:oe-fit="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/"
+	xmlns:oe-fitind="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/">
+		<dct:abstract>FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.</dct:abstract>
+		<dct:creator>Abhirup Dasgupta</dct:creator>
+		<dct:creator>Anirban Acharya</dct:creator>
+		<dct:creator>Dominick Iadevaia</dct:creator>
+		<dct:creator>Johnny Sun</dct:creator>
+		<dct:license rdf:datatype="&xsd;anyURI">https://creativecommons.org/licenses/by/4.0/</dct:license>
+		<dct:modified>12/1/2024</dct:modified>
+		<dct:publisher>FitMe</dct:publisher>
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/FitMeV6.rdf</owl:priorVersion>
+		<owl:versionIRI>https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/</owl:versionIRI>
+		<skos:changeNote>Added DLs for back exercise semantics</skos:changeNote>
+		<skos:changeNote>Added DLs for bicep exercise semantics</skos:changeNote>
+		<skos:changeNote>Fixed issue with inconsistent labeling</skos:changeNote>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&oe-fit;Strain">
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:oneOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-fitind;Light">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-fitind;Moderate">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-fitind;Strenuous">
+					</rdf:Description>
+				</owl:oneOf>
+			</owl:Class>
+		</owl:equivalentClass>
+	</owl:Class>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;AbCrunches">
+		<rdf:type rdf:resource="&oe-fit;SetOfAbCrunches"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Abs"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Abs">
+		<rdf:type rdf:resource="&oe-fit;SetOfAbdominalMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BackBoneInjury">
+		<rdf:type rdf:resource="&oe-fit;BackBoneInjury"/>
+		<oe-fit:affects rdf:resource="&oe-fitind;BackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BackDay">
+		<rdf:type rdf:resource="&oe-fit;BackDay"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;BentOverBarbellRows"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;BicepCurls"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;CableRows"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;DumbbellRows"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;FacePulls"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;LatPulldowns"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;LatPullovers"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Pullups"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;SeatedRows"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BackMuscles">
+		<rdf:type rdf:resource="&oe-fit;SetOfBackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BarbellBackSquats">
+		<rdf:type rdf:resource="&oe-fit;SetOfBarbellBackSquats"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Strenuous"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMaximus"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMedius"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Quadriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BenchPress">
+		<rdf:type rdf:resource="&oe-fit;SetOfBenchPress"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Strenuous"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;ChestMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Deltoids"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Triceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BentOverBarbellRows">
+		<rdf:type rdf:resource="&oe-fit;SetOfBentOverBarbellRows"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Strenuous"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BicepCurls">
+		<rdf:type rdf:resource="&oe-fit;SetOfBicepCurls"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Biceps">
+		<rdf:type rdf:resource="&oe-fit;SetOfBiceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BrokenBodyBuilder">
+		<rdf:type rdf:resource="&oe-fit;User"/>
+		<oe-fit:hasGoal rdf:resource="&oe-fitind;FatLoss"/>
+		<oe-fit:hasGoal rdf:resource="&oe-fitind;StrengthGain"/>
+		<oe-fit:hasInjury rdf:resource="&oe-fitind;KneeLigamentInjury"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;BulgarianSplitSquats">
+		<rdf:type rdf:resource="&oe-fit;SetOfBulgarianSplitSquats"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMaximus"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMedius"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Hamstrings"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Quadriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;CableRows">
+		<rdf:type rdf:resource="&oe-fit;SetOfCableRows"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;CardioDay">
+		<rdf:type rdf:resource="&oe-fit;CardioDay"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Cycling"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;JumpingRope"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;StairMachine"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;StationaryCycling"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Swimming"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;ChestDay">
+		<rdf:type rdf:resource="&oe-fit;ChestDay"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;BenchPress"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Dips"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;InclineDumbbellPress"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;LateralRaises"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;OverheadShoulderPress"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Pushups"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;TricepPushdowns"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;ChestMuscles">
+		<rdf:type rdf:resource="&oe-fit;SetOfChestMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Cycling">
+		<rdf:type rdf:resource="&oe-fit;Cycling"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Deadlifts">
+		<rdf:type rdf:resource="&oe-fit;SetOfDeadlifts"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Strenuous"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Abs"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Hamstrings"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Quadriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Deltoids">
+		<rdf:type rdf:resource="&oe-fit;SetOfDeltoids"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Dips">
+		<rdf:type rdf:resource="&oe-fit;SetOfDips"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;ChestMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Deltoids"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Triceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;DoNot">
+		<rdfs:comment>might not implement</rdfs:comment>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;DumbbellRows">
+		<rdf:type rdf:resource="&oe-fit;SetOfDumbbellRows"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Enforce">
+		<rdf:type rdf:resource="&owl;NegativePropertyAssertion"/>
+		<owl:assertionProperty rdf:resource="&oe-fit;preferredStrain"/>
+		<owl:sourceIndividual rdf:resource="&oe-fitind;Enforce"/>
+		<owl:targetIndividual rdf:resource="&oe-fitind;Strenuous"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;FacePulls">
+		<rdf:type rdf:resource="&oe-fit;SetOfFacePulls"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;FatLoss">
+		<rdf:type rdf:resource="&oe-fit;FatLoss"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;FunctionalTraining">
+		<rdf:type rdf:resource="&oe-fit;FunctionalTraining"/>
+		<oe-fit:preferredStrain rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:preferredStrain rdf:resource="&oe-fitind;Moderate"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;GainExplosiveness">
+		<rdf:type rdf:resource="&oe-fit;GainExplosiveness"/>
+		<oe-fit:preferredStrain rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:preferredStrain rdf:resource="&oe-fitind;Moderate"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;GainFlexibility">
+		<rdf:type rdf:resource="&oe-fit;GainFlexibility"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;GluteBridge">
+		<rdf:type rdf:resource="&oe-fit;SetOfGluteBridge"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Abs"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMaximus"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMedius"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;GluteusMaximus">
+		<rdf:type rdf:resource="&oe-fit;GluteusMaximus"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;GluteusMedius">
+		<rdf:type rdf:resource="&oe-fit;GluteusMedius"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Goal">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Hamstrings">
+		<rdf:type rdf:resource="&oe-fit;SetOfHamstrings"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;HeavyFrontSquat">
+		<rdf:type rdf:resource="&oe-fit;SetOfHeavyFrontSquats"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Strenuous"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMaximus"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Quadriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;InclineDumbbellPress">
+		<rdf:type rdf:resource="&oe-fit;SetOfInclineDumbbellPress"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;ChestMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Deltoids"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Triceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;IncreaseCardiovascularEndurance">
+		<rdf:type rdf:resource="&oe-fit;IncreaseCardiovascularEndurance"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;JumpingRope">
+		<rdf:type rdf:resource="&oe-fit;JumpingRope"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;KneeLigamentInjury">
+		<rdf:type rdf:resource="&oe-fit;KneeLigamentInjury"/>
+		<oe-fit:affects rdf:resource="&oe-fitind;Hamstrings"/>
+		<oe-fit:affects rdf:resource="&oe-fitind;Quadriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;LatPulldowns">
+		<rdf:type rdf:resource="&oe-fit;SetOfLatPulldowns"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;LatPullovers">
+		<rdf:type rdf:resource="&oe-fit;SetOfLatPullovers"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;LateralRaises">
+		<rdf:type rdf:resource="&oe-fit;SetOfLateralRaises"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Deltoids"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;LegDay">
+		<rdf:type rdf:resource="&oe-fit;LegDay"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;AbCrunches"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;BarbellBackSquats"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;BulgarianSplitSquats"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;GluteBridge"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;HeavyFrontSquat"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;RomanianDeadlifts"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;RussianTwists"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;SeatedLegExtensions"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Light">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;LowerBackMuscles">
+		<rdf:type rdf:resource="&oe-fit;SetOfLowerBackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Moderate">
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;MuscleGain">
+		<rdf:type rdf:resource="&oe-fit;MuscleGain"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;OverheadShoulderPress">
+		<rdf:type rdf:resource="&oe-fit;SetOfOverheadShoulderPress"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Deltoids"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Triceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Plank">
+		<rdf:type rdf:resource="&oe-fit;Plank"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Abs"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Deltoids"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMaximus"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Pullups">
+		<rdf:type rdf:resource="&oe-fit;SetOfPullups"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Pushups">
+		<rdf:type rdf:resource="&oe-fit;SetOfPushups"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;ChestMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Deltoids"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Triceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Quadriceps">
+		<rdf:type rdf:resource="&oe-fit;SetOfQuadriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Recovery">
+		<rdf:type rdf:resource="&oe-fit;Recovery"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;RecoveryDay">
+		<rdf:type rdf:resource="&oe-fit;RecoveryDay"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Plank"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Superman"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;Walking"/>
+		<oe-fit:containsExercise rdf:resource="&oe-fitind;WallAngels"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;RomanianDeadlifts">
+		<rdf:type rdf:resource="&oe-fit;SetOfRomanianDeadlifts"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMaximus"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;GluteusMedius"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Hamstrings"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Running">
+		<rdf:type rdf:resource="&oe-fit;Running"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;RussianTwists">
+		<rdf:type rdf:resource="&oe-fit;SetOfRussianTwists"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Abs"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;SeatedLegExtensions">
+		<rdf:type rdf:resource="&oe-fit;SetOfSeatedLegExtensions"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Quadriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;SeatedRows">
+		<rdf:type rdf:resource="&oe-fit;SetOfSeatedRows"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;BackMuscles"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Biceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;StairMachine">
+		<rdf:type rdf:resource="&oe-fit;StairMachine"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;StationaryCycling">
+		<rdf:type rdf:resource="&oe-fit;StationaryCycling"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;StrengthGain">
+		<rdf:type rdf:resource="&oe-fit;StrengthGain"/>
+		<oe-fit:preferredStrain rdf:resource="&oe-fitind;Moderate"/>
+		<oe-fit:preferredStrain rdf:resource="&oe-fitind;Strenuous"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Strenuous">
+		<rdf:type rdf:resource="&oe-fit;Strain"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Superman">
+		<rdf:type rdf:resource="&oe-fit;SetOfSuperman"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;LowerBackMuscles"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Swimming">
+		<rdf:type rdf:resource="&oe-fit;Swimming"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;TricepPushdowns">
+		<rdf:type rdf:resource="&oe-fit;SetOfTricepPushdowns"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+		<oe-fit:targets rdf:resource="&oe-fitind;Triceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Triceps">
+		<rdf:type rdf:resource="&oe-fit;SetOfTriceps"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;User1">
+		<oe-fit:focus rdf:resource="&oe-fitind;BackDay"/>
+		<oe-fit:focus rdf:resource="&oe-fitind;ChestDay"/>
+		<oe-fit:focus rdf:resource="&oe-fitind;DoNot"/>
+		<oe-fit:focus rdf:resource="&oe-fitind;LegDay"/>
+		<oe-fit:hasInjury rdf:resource="&oe-fitind;KneeLigamentInjury"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;User2">
+		<oe-fit:focus rdf:resource="&oe-fitind;BackDay"/>
+		<oe-fit:focus rdf:resource="&oe-fitind;ChestDay"/>
+		<oe-fit:focus rdf:resource="&oe-fitind;LegDay"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;User3">
+		<oe-fit:focus rdf:resource="&oe-fitind;BackDay"/>
+		<oe-fit:focus rdf:resource="&oe-fitind;DoNot"/>
+		<oe-fit:hasInjury rdf:resource="&oe-fitind;BackBoneInjury"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;Walking">
+		<rdf:type rdf:resource="&oe-fit;Walking"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;WallAngels">
+		<rdf:type rdf:resource="&oe-fit;SetOfWallAngels"/>
+		<oe-fit:hasStrainValue rdf:resource="&oe-fitind;Light"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-fitind;WeightLoss">
+	</owl:NamedIndividual>
 
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strain -->
-
-    <Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strain"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/AbCrunches -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/AbCrunches">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfAbCrunches"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Abs"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Abs -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Abs">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfAbdominalMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackBoneInjury -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackBoneInjury">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/BackBoneInjury"/>
-        <FitMe1:affects rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackDay -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackDay">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/BackDay"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BentOverBarbellRows"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BicepCurls"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CableRows"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DumbbellRows"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FacePulls"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPulldowns"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPullovers"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Pullups"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/SeatedRows"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfBackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BarbellBackSquats -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BarbellBackSquats">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfBarbellBackSquats"/>
-        <FitMe1:exerciseAffectedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMedius"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BenchPress -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BenchPress">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfBenchPress"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BentOverBarbellRows -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BentOverBarbellRows">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfBentOverBarbellRows"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BicepCurls -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BicepCurls">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfBicepCurls"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfBiceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BrokenBodyBuilder -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BrokenBodyBuilder">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/User"/>
-        <FitMe1:hasGoal rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FatLoss"/>
-        <FitMe1:hasGoal rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StrengthGain"/>
-        <FitMe1:hasInjury rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BulgarianSplitSquats -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BulgarianSplitSquats">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfBulgarianSplitSquats"/>
-        <FitMe1:exerciseAffectedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMedius"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Hamstrings"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CableRows -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CableRows">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfCableRows"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CardioDay -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CardioDay">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/CardioDay"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Cycling"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/JumpingRope"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StairMachine"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StationaryCycling"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Swimming"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestDay -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestDay">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/ChestDay"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BenchPress"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Dips"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/InclineDumbbellPress"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LateralRaises"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/OverheadShoulderPress"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Pushups"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/TricepPushdowns"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestMuscles -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestMuscles">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfChestMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Cycling -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Cycling">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Cycling"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deadlifts -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deadlifts">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfDeadlifts"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Abs"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Hamstrings"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfDeltoids"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Dips -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Dips">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfDips"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DoNot -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DoNot">
-        <rdfs:comment>might not implement</rdfs:comment>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DumbbellRows -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DumbbellRows">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfDumbbellRows"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Enforce -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Enforce"/>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
-        <sourceIndividual rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Enforce"/>
-        <assertionProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/preferredStrain"/>
-        <targetIndividual rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FacePulls -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FacePulls">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfFacePulls"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FatLoss -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FatLoss">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/FatLoss"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FunctionalTraining -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FunctionalTraining">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/FunctionalTraining"/>
-        <FitMe1:preferredStrain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:preferredStrain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GainExplosiveness -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GainExplosiveness">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/GainExplosiveness"/>
-        <FitMe1:preferredStrain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:preferredStrain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GainFlexibility -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GainFlexibility">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/GainFlexibility"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteBridge -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteBridge">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfGluteBridge"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Abs"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMedius"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/GluteusMaximus"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMedius -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMedius">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/GluteusMedius"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Goal -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Goal"/>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Hamstrings -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Hamstrings">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfHamstrings"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/HeavyFrontSquat -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/HeavyFrontSquat">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfHeavyFrontSquats"/>
-        <FitMe1:exerciseAffectedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/InclineDumbbellPress -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/InclineDumbbellPress">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfInclineDumbbellPress"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/IncreaseCardiovascularEndurance -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/IncreaseCardiovascularEndurance">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/IncreaseCardiovascularEndurance"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/JumpingRope -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/JumpingRope">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/JumpingRope"/>
-        <FitMe1:exerciseAffectedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KneeLigamentInjury"/>
-        <FitMe1:affects rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Hamstrings"/>
-        <FitMe1:affects rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPulldowns -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPulldowns">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfLatPulldowns"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPullovers -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPullovers">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfLatPullovers"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LateralRaises -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LateralRaises">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfLateralRaises"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LegDay -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LegDay">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/LegDay"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/AbCrunches"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BarbellBackSquats"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BulgarianSplitSquats"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteBridge"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/HeavyFrontSquat"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RomanianDeadlifts"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RussianTwists"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/SeatedLegExtensions"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfLowerBackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Moderate"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/MuscleGain -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/MuscleGain">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/MuscleGain"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/OverheadShoulderPress -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/OverheadShoulderPress">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfOverheadShoulderPress"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Plank -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Plank">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Plank"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Abs"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Pullups -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Pullups">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfPullups"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Pushups -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Pushups">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfPushups"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Deltoids"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfQuadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Recovery -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Recovery">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Recovery"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RecoveryDay -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RecoveryDay">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/RecoveryDay"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Plank"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Superman"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Walking"/>
-        <FitMe1:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/WallAngels"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RomanianDeadlifts -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RomanianDeadlifts">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfRomanianDeadlifts"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMedius"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Hamstrings"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Running -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Running">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Running"/>
-        <FitMe1:exerciseAffectedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RussianTwists -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/RussianTwists">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfRussianTwists"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Abs"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/SeatedLegExtensions -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/SeatedLegExtensions">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfSeatedLegExtensions"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/SeatedRows -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/SeatedRows">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfSeatedRows"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackMuscles"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Biceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StairMachine -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StairMachine">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StairMachine"/>
-        <FitMe1:exerciseAffectedBy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StationaryCycling -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StationaryCycling">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StationaryCycling"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StrengthGain -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StrengthGain">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StrengthGain"/>
-        <FitMe1:preferredStrain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-        <FitMe1:preferredStrain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strenuous"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Superman -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Superman">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfSuperman"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LowerBackMuscles"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Swimming -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Swimming">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Swimming"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:substitutionOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Running"/>
-        <FitMe1:substitutionOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/StairMachine"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/TricepPushdowns -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/TricepPushdowns">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfTricepPushdowns"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Triceps">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfTriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/User1 -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/User1">
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackDay"/>
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestDay"/>
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DoNot"/>
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LegDay"/>
-        <FitMe1:hasInjury rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/KneeLigamentInjury"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/User2 -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/User2">
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackDay"/>
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestDay"/>
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LegDay"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/User3 -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/User3">
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackDay"/>
-        <FitMe1:focus rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DoNot"/>
-        <FitMe1:hasInjury rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackBoneInjury"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Walking -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Walking">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Walking"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/WallAngels -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/WallAngels">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfWallAngels"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/WallSit -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/WallSit">
-        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/IsometricExercise"/>
-        <FitMe1:hasStrainValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-        <FitMe1:substitutionOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BarbellBackSquats"/>
-        <FitMe1:substitutionOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BulgarianSplitSquats"/>
-        <FitMe1:substitutionOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/HeavyFrontSquat"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMaximus"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/GluteusMedius"/>
-        <FitMe1:targets rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Quadriceps"/>
-    </NamedIndividual>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/WeightLoss -->
-
-    <NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/WeightLoss"/>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
