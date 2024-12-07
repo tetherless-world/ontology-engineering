@@ -2,20 +2,29 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/ConceptModel_Journalism.png)
+### Overview
+[![](images/JournalismCMDv3.jpg)](images/JournalismCMDv3.jpg)
+A complete representation of classes present in the Political Journalism Ontology. All property associations in black represent rdf:subClassOf associations. All associations in red represent associations implemented in the Political Journalism Ontology.
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRRkIQlOvQEpMIOWADi_GV-PWNQp7BY4gDSy9FrtyPJS9cR_LIwPnUnMlzG5-eb7z2i-OGLxUSC1JCU/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+Figure 1 shows the relations between the high level classes.
+
+Figure 2 demonstrates how the elections are sematically represented in the ontology.
+
+Figure 3 goes into further detail about the representation of Political Offices.
+
+Figure 4 covers the higher level relations between the various subclasses of cmns-rlcmp:Role
+
+Figure 5 covers the structure of Topics.
 
 ## Ontologies
 
-### Study Cohort Ontology (SCO)
+### Political Journalism Ontology
 
 **Link:**
-[https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl)
-
-**View the ontology documentation at:**
-[https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
+[https://raw.githubusercontent.com/tetherless-world/ontology-engineering/refs/heads/journalism/oe2024/political-journalism/PoliticalJournalism.rdf](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/refs/heads/journalism/oe2024/political-journalism/PoliticalJournalism.rdf)
 
 #### Primary Classes and Definitions
 
