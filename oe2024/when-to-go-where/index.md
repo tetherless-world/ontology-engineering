@@ -3,6 +3,9 @@ layout: default
 title: About
 ---
 
+
+![Project Photo](images/denalNationalPark.jpg)
+Denali National Park
 ## When To Go Where
 
 When to go where is a project that aims to promote outdoor exploration across the 63 National Parks in the United States. We would like to give people a tool that will allow them to find national parks that will fit any preferences that they may have. We want to give people as few excuses as possible for not pursing outdoor activities such as camping and hiking.
@@ -16,6 +19,12 @@ To achieve this we are creating a semantically enabled application that will lev
 - [Ben Rodgers](https://github.com/benrodgers14)
 - [Annabelle Choi](https://github.com/snoopy0328)
 
+## Call to Action
+
+
+## Link to Our Class
+[Ontology Engineering Fall 2024](https://tw.rpi.edu/classes/ontology-engineering-fall-2024)
+
 ## Workflow Diagram
 ![Concept Map Subject Model](images/OE12_WhenToGoWhere_ConceptualModel.png)
 
@@ -28,23 +37,18 @@ The conceptual model also shows how we have connected the different concepts in 
 <table>
   <tr>
     <th>Resources</th>
-    <th>Links</th>
   </tr>
   <tr>
-    <td>1. Ontology</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/ontology">When To Go Where</a></td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/ontology">When To Go Where Ontology</a></td>
   </tr>
   <tr>
-    <td>2. Term List</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/termlist">Curated Terms List</a> </td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/termlist">Term Lists</a> </td>
   </tr>
   <tr>
-    <td>2. Competency Questions</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/demo">SPARQL Queries</a> </td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/demo">Compentency Questions & Demo</a> </td>
   </tr>
   <tr>
-    <td>3. Presentations:</td>
-    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/presentations">Project presentations during class</a> </td>
+    <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/presentations">Presentations</a> </td>
   </tr>
 </table>
 

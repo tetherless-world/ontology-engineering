@@ -5,9 +5,12 @@
 
 The following queries were run using Snap SPARQL with a Pellit Reasoner
 
-### Question: Which national park has the coolest summer temperatures in the Midwest?
+### Compentency Question 1
+#### Question: 
+Which national park has the coolest summer temperatures in the Midwest?
 
-#### Query 1: SPARQL query to fetch parks with summer temperatures in the Midwest
+#### Query: 
+SPARQL query to fetch parks with summer temperatures in the Midwest
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -33,7 +36,8 @@ WHERE {
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result 1: Park with the coolest summer temperature
+#### Result: 
+Park with the coolest summer temperature
 
 | Park                                         | Summer Temperature |
 |----------------------------------------------|--------------------|
@@ -52,12 +56,18 @@ ORDER BY ASC(?summerTemp)
 | Canyonlands National Park                   | 95                 |
 | Arches National Park                        | 95                 |
 
+#### Description:
+This competency question aims to identify the national park within the Midwest region that experiences the lowest average summer temperatures. By querying the ontology, we can retrieve and compare the average summer temperatures of various national parks located within specified longitude and latitude boundaries that define the Midwest. The result will help in understanding which park offers the coolest climate during the summer season, which can be useful for planning visits, ecological studies, and climate research.
 
----
+![Project Photo](images/isleNationalPark.jpg)
+Isle National Park
 
-### Question: I am new to hiking. Which national park has cool summer temperatures and hikes less than 2 miles?
+### Compentency Question 2
+#### Question: 
+I am new to hiking. Which national park has cool summer temperatures and hikes less than 2 miles?
 
-#### Query 2: SPARQL query to fetch parks with short and easy hikes and cool summer temperatures
+#### Query: 
+SPARQL query to fetch parks with short and easy hikes and cool summer temperatures
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -80,7 +90,8 @@ WHERE {
 ORDER BY ASC(?summerTemp)
 ```
 
-#### Result 2: Park and hike retrieved
+#### Result: 
+Park and hike retrieved
 
 | Park                           | Summer Temperature | Trail                     | Distance (miles) |
 |--------------------------------|--------------------|---------------------------|------------------|
@@ -96,13 +107,19 @@ ORDER BY ASC(?summerTemp)
 | White Sands National Park      | 95                 | Dune Life Nature Trail     | 1.0              |
 
 
----
+#### Description:
+This competency question aims to identify national parks that offer cool summer temperatures and have hiking trails that are less than 2 miles in length. This information is particularly useful for new hikers who prefer shorter and easier hikes. By querying the ontology, we can retrieve and compare the average summer temperatures and trail lengths of various national parks to find suitable options for new hikers.
 
-### Question: What are the longest hikes in California's national parks?
+![Project Photo](images/CuyahogaValleyNational Park.jpg)
+Cuyahoga Valley National Park
 
-This last query was run in the normal SPARQL window
+### Compentency Question 3
+#### Question: 
+What are the longest hikes in California's national parks?
 
-#### Query 3: SPARQL query to fetch longest hikes in California
+#### Query: 
+SPARQL query to fetch longest hikes in California
+(This last query was run in the normal SPARQL window)
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -122,8 +139,34 @@ WHERE {
 ORDER BY DESC(?distance)
 ```
 
-#### Result 3: Longest hike retrieved
+#### Result: 
+Longest hike retrieved
 
 | Hike              | Distance |
 |-------------------|----------|
 | Lakes Trail       | 12.2 mi  |
+
+#### Description:
+This competency question aims to identify the longest hiking trails available in national parks located in California. By querying the ontology, we can retrieve and compare the distances of various hiking trails within California's national parks. This information is useful for experienced hikers looking for challenging and extended hikes.
+
+
+### Compentency Question 4
+
+#### Question:
+
+#### Result:
+
+#### Query:
+
+#### Description:
+
+
+### Compentency Question 5
+
+#### Question:
+
+#### Result:
+
+#### Query:
+
+#### Description:
