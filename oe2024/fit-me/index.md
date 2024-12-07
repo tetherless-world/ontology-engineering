@@ -3,12 +3,6 @@ layout: default
 title: About
 ---
 
-## Note to students
-
-This website is organized as follows.
-The side navigation serves a static menu to navigate across pages on this website.
-We provide you with a template of what we want to see from your project pages, the contents can be edited on a per project basis.
-
 ## Abstract
 
 <p class="message-highlight">Overview </p>
