@@ -5,12 +5,16 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="oe2024/political-journalism/files/V6_Journalism_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="oe2024/political-journalism/files/OE13_Journalism_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
-<p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
+<p class="message-highlight">Previous versions of your use case documents available here.</p>
 
-- [Version 3](files/OEUseCaseTemplatePDF.pdf)
-- [Version 2](files/OEUseCaseTemplatePDF.pdf)
-- [Version 1](files/OEUseCaseTemplatePDF.pdf)
+- [Version 7](files/V7_Journalism_UseCase.pdf)
+- [Version 6](files/V6_Journalism_UseCase.pdf)
+- [Version 5](files/V5_Journalism_UseCase.pdf)
+- [Version 4](files/OE9_Journalism_UseCase.pdf)
+- [Version 3](files/OE8_Journalism_UseCase.pdf)
+- [Version 2](files/OE5_Journalism_UseCase.pdf)
+- [Version 1](files/OE4_Journalism_UseCase.pdf)
