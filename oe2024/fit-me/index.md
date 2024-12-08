@@ -16,13 +16,13 @@ The FitMe Ontology was intended to be able to not only recommend workout plans t
 and calorie balancing equations. The below diagrams show the overall vision of the ontology. However, our focus was on the exercise portion for the duration of this semester.
 
 Below is a diagram of our overall system architecutre
-<iframe src = "images/SystemArchitecture.png" style="width:100%; height: 500px"></iframe>
+<iframe src = "images/SystemArchitecture.png" style="width:100%; height: 100%"></iframe>
 
 Below is our Overview Diagram modeling the overall flow of our system.
-<iframe src = "images/OverviewDiagram.png" style="width:100%; height: 500px"></iframe>
+<iframe src = "images/OverviewDiagram.png" style="width:100%; height: 100%"></iframe>
 
 Below is our Activity Diagram detailing a case where there is only a workout plan returned to the user.
-<iframe src="images/ActivityDiagram.png" style="width:100%; height: 500px"></iframe>
+<iframe src="images/ActivityDiagram.png" style="width:100%; height: 100%"></iframe>
 
 
 ## List of Resources
@@ -42,11 +42,11 @@ Below is our Activity Diagram detailing a case where there is only a workout pla
   </tr>
   <tr>
     <td>3. SPARQL Queries</td>
-    <td>(a) <a href="files/OE_10_FitMe_Queries.txt">Queries</a> </td>
+    <td>(a) <a href="https://fit-me--rpi-ontology-engineering.netlify.app/oe2024/fit-me/demo">Queries</a> </td>
   </tr>
   <tr>
     <td>3. Presentations:</td>
-    <td>(a) <a href="https://docs.google.com/presentation/d/1nHYzogMAkcqTyn-nqbX5JLb3dWY_kAnER-vgqp66eJM/edit?usp=sharing">Project presentations during class</a> </td>
+    <td>(a) <a href="https://fit-me--rpi-ontology-engineering.netlify.app/oe2024/fit-me/presentations">Project presentations during class</a> </td>
   </tr>
 </table>
 
