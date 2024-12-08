@@ -3,7 +3,6 @@
 ## Conceptual Model
 
 Below is a Meta Model of our overall conceptual model.
-# Concept Map Subject Model
 
 <a href="images/MetaMap.jpg" target="_blank">
   <img src="images/MetaMap.jpg" style="width:100%; max-width:800px;" alt="Meta Map">
