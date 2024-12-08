@@ -8,7 +8,7 @@ title: About
 FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.
 Many people want to start their gym journey for their own specific goal, but most people don’t know how to start. While there are coaching services, many beginners don’t want to spend money on something they might not want to pursue and end up quitting the gym after not seeing progress for a month doing exercises that are not efficient for their goal. This use case covers a part of this problem and will recommend efficient workout and recipes  for all skill levels as well as what to avoid.
 
-<iframe src = "files/LiftingWeights.jpg" style="width:100%; height: 500px"></iframe>
+<iframe src = "images/LiftingWeights.jpg" style="width:100%; height: 500px"></iframe>
 
 ## Project Overview Diagrams
 
@@ -16,13 +16,13 @@ The FitMe Ontology was intended to be able to not only recommend workout plans t
 and calorie balancing equations. The below diagrams show the overall vision of the ontology. However, our focus was on the exercise portion for the duration of this semester.
 
 Below is a diagram of our overall system architecutre
-<iframe src = "files/SystemArchitecture.jpg" style="width:100%; height: 500px"></iframe>
+<iframe src = "images/SystemArchitecture.jpg" style="width:100%; height: 500px"></iframe>
 
 Below is our Overview Diagram modeling the overall flow of our system.
-<iframe src = "files/OverviewDiagram.jpg" style="width:100%; height: 500px"></iframe>
+<iframe src = "images/OverviewDiagram.jpg" style="width:100%; height: 500px"></iframe>
 
 Below is our Activity Diagram detailing a case where there is only a workout plan returned to the user.
-<iframe src="files/WorkflowDiagram.pdf" style="width:100%; height: 500px"></iframe>
+<iframe src="images/WorkflowDiagram.pdf" style="width:100%; height: 500px"></iframe>
 
 
 ## List of Resources
@@ -54,4 +54,4 @@ Below is our Activity Diagram detailing a case where there is only a workout pla
 
 Development of this ontology was done under the advisement of Dr. Deborah McGuinnes and Ms. Elisa Kendall along with our mentors Jade Franklin and Danielle Villa as part of the Fall 2024 CSCI 4340 Ontologies Course. We would like to thank them for their time, effort, and patience guiding us through the development process.
 
-<iframe src = "files/FemaleWeight.jpg" style="width:100%; height: 500px"></iframe>
+<iframe src = "images/FemaleWeight.jpg" style="width:100%; height: 500px"></iframe>
