@@ -45,11 +45,12 @@ In an alternate flow scenario, the user will request a goal from the system, and
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf">Our Ontology</a></td>
+    <td>(a) <a href="https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf">Base Ontology</a> <br> 
+    (b) <a href="https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf">Individuals Ontology</a> </td>
   </tr>
   <tr>
     <td>2. Term List</td>
-    <td>(a) <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQnRcUcEiPxMRb-TWbUvZ5-kvUvhy1K_tXJCeEPoQPReQcGiMVHw00M2y_HdoDEUKoeie1136lf0tPW/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false">Mapped Vocabularies</a> </td>
+    <td>(a) <a href="https://docs.google.com/spreadsheets/d/1o11AShrcDvBsDmHfh1mhLPsy9IG6iI0eV45EtQ8qfs8/edit?usp=sharing">Mapped Vocabularies</a> </td>
   </tr>
   <tr>
     <td>3. SPARQL Queries</td>
