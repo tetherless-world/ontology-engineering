@@ -2,11 +2,12 @@
 
 ## Conceptual Model
 
-Below is a Meta Model of our overall conceptual model.
+Below is an overview model of our ontology. The links following contain expansions of the classes described in the overview model.
 
 <a href="images/MetaMap.jpg" target="_blank">
   <img src="images/MetaMap.jpg" style="width:100%; max-width:800px;" alt="Meta Map">
 </a>
+ 
 
 [The "Goal" Concept](images/GoalMap.png)
 
