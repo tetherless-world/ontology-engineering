@@ -16,13 +16,13 @@ The FitMe Ontology was intended to be able to not only recommend workout plans t
 and calorie balancing equations. The below diagrams show the overall vision of the ontology. However, our focus was on the exercise portion for the duration of this semester.
 
 Below is a diagram of our overall system architecutre
-<img style="float: center;" src="images/SystemArchDiagram.png"/>
+<img style="float: center;" src="images/SystemArchitecture.png"/>
 
-Below is our Overview Diagram modeling the overall flow of our system.
-<img style="float: center;" src="images/OverviewDiagram.png"/>
+Below is a diagram modeling the normal flow of our system.
+<img style="float: center;" src="images/NormalFlow.png"/>
 
-Below is our Activity Diagram detailing a case where there is only a workout plan returned to the user.
-<img style="float: center;" src="images/ActivityDiagram.png"/>
+Below is a diagram modeling an alternate flow of our system.
+<img style="float: center;" src="images/AlternateFlow.png"/>
 
 
 ## List of Resources
