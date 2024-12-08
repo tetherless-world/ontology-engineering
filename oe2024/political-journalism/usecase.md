@@ -9,7 +9,7 @@ title: use case
 
 ## Previous Versions
 
-<p class="message-highlight">Previous versions of your use case documents available here.</p>
+<p>Previous versions of the use case documents available here.</p>
 
 - [Version 7](files/V7_Journalism_UseCase.pdf)
 - [Version 6](files/V6_Journalism_UseCase.pdf)
