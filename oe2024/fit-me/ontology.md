@@ -46,12 +46,7 @@ Below is a Meta Model of our overall conceptual model.
 
 ### Accompanying Suite of Ontologies/Data Sources
 
-- [Calories Burned During Exercise and Activities](https://www.kaggle.com/datasets/aadhavvignesh/calories-burned-during-exercise-and-activities )
-- [Nutritional Facts for most common foods](https://www.kaggle.com/datasets/niharika41298/nutrition-details-for-most-common-foods )
--[Nutrient Recommendation Database](https://ods.od.nih.gov/HealthInformation/nutrientrecommendations.aspx)
 - [Ontology of Physical Exercises](https://bioportal.bioontology.org/ontologies/OPE?p=summary )
-- [FoodOn](https://github.com/FoodOntology/foodon/blob/master/README.Md)
-- [Recipe](https://www.nutrition.gov/recipes/search)
 
 ### Ontology Prefixes
 
@@ -66,29 +61,31 @@ Below is a Meta Model of our overall conceptual model.
   </tr>
   <tr>
     <td>rdfs</td>
-    <td><a href="http://www.w3.org/2000/01/rdf-schema"> RDF Schema</a> </td>
+    <td><a href="http://www.w3.org/2000/01/rdf-schema">RDF Schema</a></td>
   </tr>
   <tr>
     <td>owl</td>
-    <td><a href="http://www.w3.org/2002/07/owl#">Web Ontology Language </a> </td>
+    <td><a href="http://www.w3.org/2002/07/owl#">Web Ontology Language</a></td>
   </tr>
   <tr>
-    <td> xsd</td>
-    <td> <a href="http://www.w3.org/2001/XMLSchema#">XML Schema Definition</a></td>
+    <td>xsd</td>
+    <td><a href="http://www.w3.org/2001/XMLSchema#">XML Schema Definition</a></td>
   </tr>
   <tr>
     <td>dct</td>
-    <td> <a href="http://purl.org/dc/terms/">Dublin Core Term</a> </td>
+    <td><a href="http://purl.org/dc/terms/">Dublin Core Term</a></td>
   </tr>
   <tr>
     <td>skos</td>
-    <td> <a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
+    <td><a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
   </tr>
   <tr>
-  <td>ind</td>
-  <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/">Individuals</a></td>
-    <tr>
+    <td>ind</td>
+    <td><a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/">Individuals</a></td>
+  </tr>
+  <tr>
     <td>ex</td>
-    <td> <a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/">FitMe Parent Class</a></td>
+    <td><a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/">FitMe Parent Class</a></td>
   </tr>
 </table>
+
