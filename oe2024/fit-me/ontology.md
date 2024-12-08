@@ -2,7 +2,7 @@
 
 ## Conceptual Model
 
-Below is an overview model of our ontology. The links following contain expansions of the classes described in the overview model.
+Below is an overview model of our ontology. The links following contain expansions of the classes described in the overview model. (Click to enlarge overview model)
 
 <a href="images/MetaMap.jpg" target="_blank">
   <img src="images/MetaMap.jpg" style="width:100%; max-width:800px;" alt="Meta Map">
