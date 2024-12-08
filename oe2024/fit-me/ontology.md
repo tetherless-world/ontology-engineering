@@ -8,7 +8,6 @@ Below is a Meta Model of our overall conceptual model.
   <img src="images/MetaMap.jpg" style="width:100%; max-width:800px;" alt="Meta Map">
 </a>
 
-
 [The "Goal" Concept](images/GoalMap.png)
 
 
