@@ -22,7 +22,7 @@ Below is our Overview Diagram modeling the overall flow of our system.
 <iframe src = "images/OverviewDiagram.png" style="width:100%; height: 500px"></iframe>
 
 Below is our Activity Diagram detailing a case where there is only a workout plan returned to the user.
-<iframe src="images/ActivityDiagram.pdf" style="width:100%; height: 500px"></iframe>
+<iframe src="images/ActivityDiagram.png" style="width:100%; height: 500px"></iframe>
 
 
 ## List of Resources
