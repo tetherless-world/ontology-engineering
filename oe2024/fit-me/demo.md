@@ -3,6 +3,7 @@
 
 ## Queries
 
+###### Please note that all queries were ran with BlazeGraph.
 
 ### Competency Question 1
 
@@ -139,3 +140,81 @@ WHERE {
 |BackDay              | LatPulldowns           |  Moderate
 |BackDay              | SeatedRows             |  Moderate
 |BackDay              | BentOverBarbellRows    |  Strenuous
+
+
+### Competency Question 4
+### I’m looking to start gaining muscle. Provide me with a workout cycle. (Users will enter their physical condition, etc.. - for more info see scope above)
+
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividual/>
+
+select ?exercise where {
+    ?exercise a ex:StrengthExercise. 
+}
+```
+
+### Results
+
+| Exercise |
+|---|
+| AbCrunches |
+| Barbell Back Squats |
+| Bench Press |
+| Bent-Over Barbell Rows |
+| Bicep Curls |
+| Bulgarian Split Squats |
+| Cable Rows |
+| Deadlifts |
+| Dips |
+| Dumbbell Rows |
+| Face Pulls |
+| Glute Bridge |
+| Heavy Front Squat |
+| Incline Dumbbell Press |
+| Lateral Raises |
+| Lat Pulldowns |
+| Lat Pullovers |
+| Overhead Shoulder Press |
+| Plank |
+| Pullups |
+| Pushups |
+| Romanian Deadlifts |
+| Russian Twists |
+| Seated Leg Extensions |
+| Seated Rows |
+| Superman |
+| Tricep Pushdowns |
+| Wall Sit |
+
+
+### Competency Question 5
+### I’m looking to develop strong legs. Can you provide me with a leg workout? (Users will enter their physical condition, etc.. - for more info see scope above)
+
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividual/>
+
+select ?exercise where {
+    ?exercise a ex:LegStrengtheningExercise. 
+}
+```
+
+### Results
+
+| Exercise |
+|---|
+| Barbell Back Squats |
+| Bulgarian Split Squats |
+| Deadlifts |
+| Heavy Front Squat |
+| Romanian Deadlift |
+| Seated Leg Extensions |
