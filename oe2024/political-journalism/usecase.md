@@ -5,7 +5,7 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="files/OE13_Journalism_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/document/d/1vHC4HrI_eE_jUDeWUbQWWnuwBNDinjKf/edit?usp=sharing&ouid=100595184586638065545&rtpof=true&sd=true" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
