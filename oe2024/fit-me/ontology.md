@@ -27,7 +27,7 @@ Below is a Meta Model of our overall conceptual model.
 [The "Planner" Concept](images/Planner_Exercise_Map.svg)
 
 **Link to Concept map documentation:**
-  [https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub](https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub)
+  [https://docs.google.com/document/d/1oQwbm67mhxKlNugFvzNw8CHcuGmKjBJlpqHFa6O6pgg/edit?usp=sharing](https://docs.google.com/document/d/1oQwbm67mhxKlNugFvzNw8CHcuGmKjBJlpqHFa6O6pgg/edit?usp=sharing)
 
 ### Previous Ontology Versions
 - [Version 6 CURRENT](FitMe.rdf)
