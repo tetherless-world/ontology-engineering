@@ -12,7 +12,7 @@ To model the system in our usecase, we had to break the problem into a number of
 
 
 
-[The "Goal" Concept:](images/GoalMap.png)
+[The "Goal" Concept:](images/GoalMap.svg)
 The Goal concept was added because different exercises are suited to specific objectives, like strength, endurance, or flexibility. This helps us tailor recommendations to align with each user’s fitness goals, making them more relevant and effective.
 
 [The "MuscleGroup" Concept](images/MuscleGroupMap.svg)
