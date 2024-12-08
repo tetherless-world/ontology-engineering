@@ -9,21 +9,27 @@ To model the system in our usecase, we had to break the problem into a number of
 </a>
  
 The Goal concept was added because different exercises are suited to specific objectives, like strength, endurance, or flexibility. This helps us tailor recommendations to align with each user’s fitness goals, making them more relevant and effective.
+
 [The "Goal" Concept](images/GoalMap.png)
 
 The MuscleGroup concept was added because it allowes the modeling of injuries and exercises that target specific areas, making recommendations more precise and safer for users.
+
 [The "MuscleGroup" Concept](images/MuscleGroupMap.svg)
 
 The Exercise concept simply contains the exercises that will be recommended to each user.
+
 [The "Exercise" Concept](images/ExerciseMap.svg)
 
 The Injury concept allows for the system to account for user injuries, ensuring that exercise recommendations are safe and avoid aggravating existing conditions.
+
 [The "Injury" Concept](images/InjuryMap.svg)
 
 The Strain concept was added to model how difficult a given exercise is. Although subjective, this allows the system to differentiate between light, moderate, and strenuous exercise.
+
 [The "Strain" Concept](images/StrainMap.svg)
 
 The Planner concept allows the system to categorize different exercise cycles and output the top results.
+
 [The "Planner" Concept](images/Planner_Exercise_Map.svg)
 
 **Link to Concept map documentation:**
