@@ -3,25 +3,29 @@
 ## Conceptual Model
 
 Below is a Meta Model of our overall conceptual model.
-![Concept Map Subject Model](images/MetaMap.svg)
+# Concept Map Subject Model
 
-The "Goal" Concept
-![Goal](images/GoalMap.svg)
+<img src="images/MetaMap.svg" style="width:100%; max-width:100%; height:auto;">
 
-The "MuscleGroup" Concept
-![MuscleGroup](images/MuscleGroupMap.svg)
 
-The "Exercise" Concept
-![Exercise](images/ExerciseMap.png)
 
-The "InjuryMap" Concept
-![InjuryMap](images/InjuryMap.png)
+[The "Goal" Concept](images/GoalMap.svg)
 
-The "Strain" Concept
-![Strain](images/StrainMap.svg)
 
-The "Planner" Concept
-![Planner](images/Planner_Exercise_Map.svg)
+[The "MuscleGroup" Concept](images/MuscleGroupMap.svg)
+
+
+[The "Exercise" Concept](images/ExerciseMap.svg)
+
+
+[The "InjuryMap" Concept](images/InjuryMap.svg)
+
+
+[The "Strain" Concept](images/StrainMap.svg)
+
+
+[The "Planner" Concept](images/Planner_Exercise_Map.svg)
+
 **Link to Concept map documentation:**
   [https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub](https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub)
 
