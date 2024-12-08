@@ -14,17 +14,23 @@ FitMe is a personalized health and wellness assistant designed to empower users 
 The FitMe Ontology was intended to be able to not only recommend workout plans to users, but also nutrional plans. This was going to be achieved through various food datasets
 and calorie balancing equations. The below diagrams show the overall vision of the ontology. However, our focus was on the exercise portion for the duration of this semester.
 
-Below is a diagram of our overall system architecutre
+###### System Architecture:
+
+In our proposed system, Users interact with the System UI to request personalized exercise recommendations. The UI communicates with a REST API, which forwards the request to the Recommendation Engine. The engine leverages an ontology for structured reasoning and retrieves data via a SPARQL query system connected to a knowledge graph and metadata database. Based on this data, the engine generates tailored recommendations, which are sent back to the user through the API and UI.
 <a href="images/SystemArchitecture.png" target="_blank">
   <img src="images/SystemArchitecture.png" style="width:100%; max-width:800px;">
 </a>
 
-Below is a diagram modeling the normal flow of our system.
+###### Normal Flow:
+
+In a normal flow scenario, the user will request a goal from the system, and when prompted to enter any injuries, the user will not provide any. The system will validate the user's goal, generate exercises that align with that goal, and determine that, given their injuries (none), it is safe to provide all the recommendations it generated for the user's specified goal. It will then provide those recommendations. See below for our normal flow diagram.
 <a href="images/NormalFlow.png" target="_blank">
   <img src="images/NormalFlow.png" style="width:100%; max-width:800px;">
 </a>
 
-Below is a diagram modeling an alternate flow of our system.
+###### Alternate Flow:
+
+In an alternate flow scenario, the user will request a goal from the system, and when prompted to enter any injuries, the user will not provideat least one. The system will validate the user's goal, generate exercises that align with that goal, and determine that, given their injuries, it is not safe to provide all the recommendations it generated for the user's specified goal. The system will then warn the user and ask if the user would like to change their fitness goal. If the user chooses to proceed the system will provide the subset of generated recommendations that do not affect the injured area. See below for our alterate flow diagram.
 <a href="images/AlternateFlow.png" target="_blank">
   <img src="images/AlternateFlow.png" style="width:100%; max-width:800px;">
 </a>
@@ -57,6 +63,6 @@ Below is a diagram modeling an alternate flow of our system.
 
 ## Acknowledgements
 
-Development of this ontology was done under the advisement of Dr. Deborah McGuinnes and Ms. Elisa Kendall along with our mentors Jade Franklin and Danielle Villa as part of the Fall 2024 CSCI 4340 Ontologies Course. We would like to thank them for their time, effort, and patience guiding us through the development process.
+Development of this ontology was done under the advisement of Dr. Deborah McGuinnes and Ms. Elisa Kendall along with our mentors Jade Franklin, Danielle Villa, and Kelsey Rook as part of the Fall 2024 CSCI 4340 Ontologies Course. We would like to thank them for their time, effort, and patience guiding us through the development process.
 
 <iframe src = "images/FemaleWeight.png" style="width:100%; height: 500px"></iframe>
