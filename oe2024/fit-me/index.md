@@ -35,6 +35,15 @@ In an alternate flow scenario, the user will request a goal from the system, and
   <img src="images/AlternateFlow.png" style="width:100%; max-width:800px;">
 </a>
 
+## Point of Contact
+
+Abhirup Dasgupta: <dasgua3@rpi.edu>
+
+Anirban Acharya: <achara@rpi.edu>
+
+Dominick Iadevaia: <iadevd@rpi.edu>
+
+Johnny Sun: <sunj13@rpi.edu>
 
 ## List of Resources
 
