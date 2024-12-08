@@ -5,7 +5,9 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="https://docs.google.com/document/d/1vHC4HrI_eE_jUDeWUbQWWnuwBNDinjKf/edit?usp=sharing&ouid=100595184586638065545&rtpof=true&sd=true" style="width: 100%;height: 700px;border: none;"></iframe>
+<!-- <iframe src="https://docs.google.com/document/d/1vHC4HrI_eE_jUDeWUbQWWnuwBNDinjKf/edit?usp=sharing&ouid=100595184586638065545&rtpof=true&sd=true" style="width: 100%;height: 700px;border: none;"></iframe> -->
+
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vQJBvLwxG6cUtkGdRU0u6vGU0KD9ByYIqSw0oVGWjmqvXVjW0XU2bN35msuVIF7Sg/pub?embedded=true" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
