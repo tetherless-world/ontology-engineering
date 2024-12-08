@@ -41,7 +41,7 @@ Below is a Meta Model of our overall conceptual model.
 **View the individuals ontology**
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf)
 
-**View the inferred ontology**
+**View the reasoner axioms**
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf)
 
 
