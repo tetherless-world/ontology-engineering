@@ -5,4 +5,4 @@ title: publications
 
 ## Publications
 
-<iframe src="files/Fit_Me_Paper.pdf" width="600" height="400"></iframe>
+<iframe src="files/Fit_Me_Paper.pdf" width="100%" height="100%" style="border: none;></iframe>
