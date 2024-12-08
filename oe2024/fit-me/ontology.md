@@ -12,10 +12,10 @@ The "MuscleGroup" Concept
 ![MuscleGroup](images/MuscleGroupMap.svg)
 
 The "Exercise" Concept
-![Exercise](images/ExerciseMap.svg)
+![Exercise](images/ExerciseMap.png)
 
 The "InjuryMap" Concept
-![InjuryMap](images/InjuryMap.svg)
+![InjuryMap](images/InjuryMap.png)
 
 The "Strain" Concept
 ![Strain](images/StrainMap.svg)
