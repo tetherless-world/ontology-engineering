@@ -197,7 +197,7 @@
 				<owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#Protein"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">proteinMaterial</rdfs:label>
+		<rdfs:label xml:lang="en">protein material</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -304,16 +304,7 @@
 		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label xml:lang="en">has caloric value</rdfs:label>
 		<rdfs:comment xml:lang="en">this is not needed as hasValue exists. But keeping it in just in case.</rdfs:comment>
-		<rdfs:domain>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount">
-					</rdf:Description>
-					<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Ingredient">
-					</rdf:Description>
-				</owl:unionOf>
-			</owl:Class>
-		</rdfs:domain>
+		<rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/FOODON_03400793#CalorieCount"/>
 		<rdfs:range rdf:resource="&xsd;int"/>
 		<skos:definition xml:lang="en">how many calories an edible food that contains</skos:definition>
 	</owl:DatatypeProperty>
@@ -322,9 +313,11 @@
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&rdfs;isDefinedBy">
+		<rdfs:label>skos:definition</rdfs:label>
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&rdfs;label">
+		<rdfs:label>rdfs:label</rdfs:label>
 	</owl:AnnotationProperty>
 	
 	<rdf:Description rdf:about="&owl;Thing">
@@ -361,11 +354,11 @@
 		<skos:definition xml:lang="en">brown nut from the almond plant</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AnkleLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LigamentInjury"/>
-		<rdfs:label xml:lang="en">ankle ligament injury</rdfs:label>
-		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#WristLigamentInjury"/>
-		<skos:definition xml:lang="en">damage to ligament in ankle</skos:definition>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AnkleSprain">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Sprain"/>
+		<rdfs:label xml:lang="en">ankle sprain</rdfs:label>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#WristSprain"/>
+		<skos:definition xml:lang="en">overstretching of ligament in ankle</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ArmBoneInjury">
@@ -528,12 +521,6 @@
 		<skos:definition xml:lang="en">hard-shelled reproductive body produced by a common domestic chicken</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ElbowLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LigamentInjury"/>
-		<rdfs:label xml:lang="en">elbow ligament injury</rdfs:label>
-		<skos:definition xml:lang="en">damage to ligament or joint in elbow</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Exercise">
 		<rdfs:subClassOf>
 			<owl:Class>
@@ -687,12 +674,6 @@
 		<skos:definition xml:lang="en">how tall a person is</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#HipLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LigamentInjury"/>
-		<rdfs:label xml:lang="en">hip ligament injury</rdfs:label>
-		<skos:definition xml:lang="en">damage to ligament or joint in hip</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Honey">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Seasoning"/>
 		<rdfs:label xml:lang="en">honey</rdfs:label>
@@ -728,12 +709,6 @@
 		<skos:definition xml:lang="en">fuzzy brown fruit with green flesh</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#KneeLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LigamentInjury"/>
-		<rdfs:label xml:lang="en">knee ligament injury</rdfs:label>
-		<skos:definition xml:lang="en">damage to ligament or joint in knee</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LegBoneInjury">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#BoneInjury"/>
 		<rdfs:label xml:lang="en">leg bone injury</rdfs:label>
@@ -744,12 +719,6 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#MuscleInjury"/>
 		<rdfs:label xml:lang="en">leg muscle injury</rdfs:label>
 		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your leg</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
-		<rdfs:label xml:lang="en">ligament injury</rdfs:label>
-		<skos:definition xml:lang="en">a stretching or tearing of a ligament</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LowerBodyMuscle">
@@ -916,7 +885,7 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#SetOfAbdominalMuscles">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#SetOfCoreMuscles"/>
-		<rdfs:label xml:lang="en">setOfAbdominalMuscles</rdfs:label>
+		<rdfs:label xml:lang="en">set of abdominal muscles</rdfs:label>
 		<skos:definition xml:lang="en">any of the muscles of the abdomen that comprise the abdominal wall</skos:definition>
 	</owl:Class>
 	
@@ -1174,16 +1143,16 @@
 		<skos:definition xml:lang="en">fracture or break of a bone in the shoulder</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ShoulderLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LigamentInjury"/>
-		<rdfs:label xml:lang="en">shoulder ligament injury</rdfs:label>
-		<skos:definition xml:lang="en">damage to ligament or joint in shoulder</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ShoulderMuscleInjury">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#MuscleInjury"/>
 		<rdfs:label xml:lang="en">shoulder muscle injury</rdfs:label>
 		<skos:definition xml:lang="en">a tear, pull, or discomfort on your muscle specifically on your shoulder</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Sprain">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Injury"/>
+		<rdfs:label xml:lang="en">sprain</rdfs:label>
+		<skos:definition xml:lang="en">a stretching or tearing of a ligament</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Squat">
@@ -1313,10 +1282,10 @@
 		<skos:definition>decrease body weight</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#WristLigamentInjury">
-		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#LigamentInjury"/>
-		<rdfs:label xml:lang="en">wrist ligament injury</rdfs:label>
-		<skos:definition xml:lang="en">damage to ligament in wrist</skos:definition>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#WristSprain">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Sprain"/>
+		<rdfs:label xml:lang="en">wrist sprain</rdfs:label>
+		<skos:definition xml:lang="en">overstretching of ligament in wrist</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#Yogurt">
@@ -1536,7 +1505,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FatMaterial">
-		<rdfs:label xml:lang="en">fatMaterial</rdfs:label>
+		<rdfs:label xml:lang="en">carbohydrateMaterial</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
@@ -1807,22 +1776,6 @@
 			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Trans">
 			</rdf:Description>
 			<rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03400793#Unsaturated">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#AnkleLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ElbowLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#HipLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#KneeLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#ShoulderLigamentInjury">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#WristLigamentInjury">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
