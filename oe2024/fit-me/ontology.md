@@ -3,13 +3,13 @@
 ## Conceptual Model
 
 Below is a Meta Model of our overall conceptual model.
-# Concept Map Subject Model
 
-<img src="images/MetaMap.svg" style="width:100%; max-width:100%; height:auto;">
+<a href="images/MetaMap.jpg" target="_blank">
+  <img src="images/MetaMap.jpg" style="width:100%; max-width:800px;" alt="Meta Map">
+</a>
 
 
-
-[The "Goal" Concept](images/GoalMap.svg)
+[The "Goal" Concept](images/GoalMap.png)
 
 
 [The "MuscleGroup" Concept](images/MuscleGroupMap.svg)
@@ -29,11 +29,6 @@ Below is a Meta Model of our overall conceptual model.
 **Link to Concept map documentation:**
   [https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub](https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub)
 
-## Ontologies
-
-**Link to ontology:**
-[https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf)
-
 ### Previous Ontology Versions
 - [Version 6 CURRENT](FitMe.rdf)
 - [Version 5](archived/oldOntologies/FitMeV4.rdf)
@@ -45,7 +40,7 @@ Below is a Meta Model of our overall conceptual model.
 **View the individuals ontology**
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf)
 
-**View the inferred ontology**
+**View the reasoner axioms**
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf)
 
 
