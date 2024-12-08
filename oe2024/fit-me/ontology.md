@@ -30,12 +30,14 @@ Below is an overview model of our ontology. The links following contain expansio
   [https://docs.google.com/document/d/1oQwbm67mhxKlNugFvzNw8CHcuGmKjBJlpqHFa6O6pgg/edit?usp=sharing](https://docs.google.com/document/d/1oQwbm67mhxKlNugFvzNw8CHcuGmKjBJlpqHFa6O6pgg/edit?usp=sharing)
 
 ### Previous Ontology Versions
-- [Version 6 CURRENT](FitMe.rdf)
-- [Version 5](archived/oldOntologies/FitMeV4.rdf)
-- [Version 4](archived/oldOntologies/FitMeV3.rdf)
-- [Version 3](archived/oldOntologies/FitMeV2.rdf)
-- [Version 2](archived/oldOntologies/FitMeV1.rdf)
-- [Version 1](archived/oldOntologies/FitMeV0.rdf)
+- [Version 8 (OE 13) CURRENT](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf)
+- [Version 7 (OE 12)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_12_FitMe.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_12_FitMe_Individuals.rdf)
+- [Version 6 (OE 11)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_11_FitMe.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_11_FitMe_Individuals.rdf)
+- [Version 5 (OE 10)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_10_FitMe.rdf)
+- [Version 4 (OE 9)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_9_FitMe.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_9_FitMe_Individuals.rdf)
+- [Version 3 (OE 8)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_8_FitMe.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_8_FitMe_Individuals.rdf)
+- [Version 2 (OE 7)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_7_FitMe.rdf)
+- [Version 1 (OE 6)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_6_FitMe.rdf)
 
 **View the individuals ontology**
 [https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf)
