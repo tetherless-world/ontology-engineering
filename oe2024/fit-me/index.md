@@ -16,13 +16,13 @@ The FitMe Ontology was intended to be able to not only recommend workout plans t
 and calorie balancing equations. The below diagrams show the overall vision of the ontology. However, our focus was on the exercise portion for the duration of this semester.
 
 Below is a diagram of our overall system architecutre
-<iframe src = "images/SystemArchitecture.png" style="width:100%; height: 100%"></iframe>
+<iframe src = "images/SystemArchitecture.png" style="width:100%; height: 500px"></iframe>
 
 Below is our Overview Diagram modeling the overall flow of our system.
-<iframe src = "images/OverviewDiagram.png" style="width:100%; height: 100%"></iframe>
+<iframe src = "images/OverviewDiagram.png" style="width:100%; height: 500px"></iframe>
 
 Below is our Activity Diagram detailing a case where there is only a workout plan returned to the user.
-<iframe src="images/ActivityDiagram.png" style="width:100%; height: 100%"></iframe>
+<iframe src="images/ActivityDiagram.png" style="width:100%; height: 500px"></iframe>
 
 
 ## List of Resources
