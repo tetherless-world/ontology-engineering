@@ -3,232 +3,116 @@
 
 ## Queries
 
-<p class="message-highlight">List your SPARQL queries to your competency questions along with answers retrieved from your ontology/KG such as the below.</p>
 
-### Prefixes
-
-```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22/rdf-syntax-ns#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/>
-PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/>
-```
 ### Competency Question 1
 
 ### What is a good workout routine I can follow if I want to lose fat and gain muscle given that I have a knee ligament injury? (Users will enter their physical condition, etc.. - for more info see scope above)
 
-
-```sparql
-SELECT DISTINCT ?planner ?exercise ?strainValue
-WHERE { 
-  # Get all plan the user is focused on
-  ind:User2 ex:focus ?planner .
-
-  # Match exercises associated with the users plan
-  ?planner ex:containsExercise ?exercise .
-
-  # Get the strain value for each exercise
-  ?exercise ex:hasStrainValue ?strainValue .
-
-  # Get the preferred strain from the current Goal
-  ind:StrengthGain ex:preferredStrain ?preferredStrain .
-
-  # Get the user's injury
-  ind:User1 ex:hasInjury ?injury .
-
-  # Get the muscle group affected by the injury
-  ?injury ex:affects ?affectedMuscleGroup .
-
-  # Get the muscle group targeted by the exercise
-  ?exercise ex:targets ?targetedMuscleGroup .
-
-  # Filter exercises whose strain matches the prefered
-  FILTER(?strainValue = ?preferredStrain)
-
-  # Exclude exercises targeting affected muscle groups
-  FILTER NOT EXISTS { 
-    ?exercise ex:targets ?targetedMuscleGroup . 
-    ?injury ex:affects ?targetedMuscleGroup 
-  }
-}
-GROUP BY ?planner ?exercise ?strainValue
 ```
+PREFIX rdf: <http://www.w3.org/1999/02/22/rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividual/>
+
+# Routine for fat loss, muscle gain for a user having Knee ligament injury
+select DISTINCT ?exercisePlan ?exercise where {
+  BIND (ex:KneeLigamentInjuryAgnosticStrengthGainPlan AS ?plan).
+  ?exercisePlan rdfs:subClassOf ?plan.
+  ?exercise a ?exercisePlan.
+}
+```
+
 ### Results
-<table>
-  <thead>
-    <tr>
-      <th>Planner</th>
-      <th>Exercise</th>
-      <th>StrainValue</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>BackDay</td>
-      <td>DumbbellRows</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>LatPulldowns</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>BentOverBarbellRows</td>
-      <td>Strenuous</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>SeatedRows</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>InclineDumbbellPress</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>BenchPress</td>
-      <td>Strenuous</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>LateralRaises</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>OverheadShoulderPress</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>RomanianDeadlifts</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>HeavyFrontSquat</td>
-      <td>Strenuous</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>BarbellBackSquats</td>
-      <td>Strenuous</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>BulgarianSplitSquats</td>
-      <td>Moderate</td>
-    </tr>
-  </tbody>
-</table>
+
+| exercisePlan       | exercise          |
+|--------------------|-------------------|
+| KLIASGBackDay      | Pullups           |
+| KLIASGCardioDay    | Swimming          |
+| KLIASGChestDay     | BenchPress        |
+| KLIASGChestDay     | Dips              |
+| KLIASGChestDay     | InclineDumbbellPress |
+| KLIASGChestDay     | Pushups           |
+| KLIASGLegDay       | AbCrunches        |
+| KLIASGLegDay       | GluteBridge       |
+| KLIASGLegDay       | RussianTwists     |
+| KLIASGRecoveryDay  | AbCrunches        |
+| KLIASGRecoveryDay  | BenchPress        |
+| KLIASGRecoveryDay  | Dips              |
+| KLIASGRecoveryDay  | GluteBridge       |
+| KLIASGRecoveryDay  | InclineDumbbellPress |
+| KLIASGRecoveryDay  | Plank             |
+| KLIASGRecoveryDay  | Pullups           |
+| KLIASGRecoveryDay  | Pushups           |
+| KLIASGRecoveryDay  | Superman          |
+| KLIASGRecoveryDay  | Swimming          |
+| KLIASGRecoveryDay  | WallAngles        |
+
 
 
 
 ### Competency Question 2
 ###   What are good workouts to build strength? (Users will enter their physical condition, etc.. - for more info see scope above)
 
-```sparql
-SELECT DISTINCT ?planner ?exercise ?strainValue
-WHERE { 
-  # Get all plan the user is focused on
-  ind:User2 ex:focus ?planner .
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22/rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/>
 
-  ?planner ex:containsExercise ?exercise .
 
-  # Get the strain value for each exercise
-  ?exercise ex:hasStrainValue ?strainValue .
-
-  # Get the preferred strain from the current Goal
-  ind:StrengthGain ex:preferredStrain ?preferredStrain .
-
-  # Filter exercises whose strain matches the prefered
-  FILTER(?strainValue = ?preferredStrain)
+# workouts and plan to build strength 
+select ?plan ?exercise where { 
+	?plan a ex:StrengthGainPlan .
+  	?exercise ex:exerciseContainedIn ?plan .
 }
 ```
+
 ### Results
-<table>
-  <thead>
-    <tr>
-      <th>Planner</th>
-      <th>Exercise</th>
-      <th>StrainValue</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>BackDay</td>
-      <td>DumbbellRows</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>LatPulldowns</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>SeatedRows</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>BentOverBarbellRows</td>
-      <td>Strenuous</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>InclineDumbbellPress</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>BenchPress</td>
-      <td>Strenuous</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>LateralRaises</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>ChestDay</td>
-      <td>OverheadShoulderPress</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>RomanianDeadlifts</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>BulgarianSplitSquats</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>HeavyFrontSquat</td>
-      <td>Strenuous</td>
-    </tr>
-    <tr>
-      <td>LegDay</td>
-      <td>BarbellBackSquats</td>
-      <td>Strenuous</td>
-    </tr>
-  </tbody>
-</table>
+
+| plan      | exercise                |
+|-----------|-------------------------|
+| BackDay   | BentOverBarbellRows     |
+| BackDay   | BicepCurls              |
+| BackDay   | CableRows               |
+| BackDay   | DumbbellRows            |
+| BackDay   | FacePulls               |
+| BackDay   | LatPulldowns            |
+| BackDay   | LatPullovers            |
+| BackDay   | Pullups                 |
+| BackDay   | SeatedRows              |
+| ChestDay  | BenchPress              |
+| ChestDay  | Dips                   |
+| ChestDay  | InclineDumbbellPress   |
+| ChestDay  | LateralRaises          |
+| ChestDay  | OverheadShoulderPress  |
+| ChestDay  | Pushups                |
+| ChestDay  | TricepPushdowns        |
+| LegDay    | AbCrunches             |
+| LegDay    | BarbellBackSquats      |
+| LegDay    | BulgarianSplitSquats   |
+| LegDay    | GluteBridge            |
+| LegDay    | HeavyFrontSquat        |
+| LegDay    | RomanianDeadlifts      |
+| LegDay    | RussianTwists          |
+| LegDay    | SeatedLegExtensions    |
 
 
 ### Competency Question 3
 ### I’m looking into enforcing my back. Can you provide me with a back workout given I have a back injury? (User has already stated that they have scoliosis when creating their profile. System knows that the user has this condition.)
 
-```sparql
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/>
+
+
 SELECT DISTINCT ?planner ?exercise ?strainValue
 WHERE { 
   # Get all plan the user is focused on
@@ -248,35 +132,10 @@ WHERE {
 ```
 
 ### Results
-<table>
-  <thead>
-    <tr>
-      <th>Planner</th>
-      <th>Exercise</th>
-      <th>StrainValue</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>BackDay</td>
-      <td>DumbbellRows</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>LatPulldowns</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>SeatedRows</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>BackDay</td>
-      <td>BentOverBarbellRows</td>
-      <td>Strenuous</td>
-    </tr>
-  </tbody>
-</table>
 
+| planner            | exercise                | strainValue
+|--------------------|-------------------------|---------------
+|BackDay              | DumbellRows            |  Moderate
+|BackDay              | LatPulldowns           |  Moderate
+|BackDay              | SeatedRows             |  Moderate
+|BackDay              | BentOverBarbellRows    |  Strenuous
