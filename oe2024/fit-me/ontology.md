@@ -32,9 +32,6 @@ The Planner concept allows the system to categorize different exercise cycles an
 
 [The "Planner" Concept](images/Planner_Exercise_Map.svg)
 
-**Link to Concept map documentation:**
-  [https://docs.google.com/document/d/1oQwbm67mhxKlNugFvzNw8CHcuGmKjBJlpqHFa6O6pgg/edit?usp=sharing](https://docs.google.com/document/d/1oQwbm67mhxKlNugFvzNw8CHcuGmKjBJlpqHFa6O6pgg/edit?usp=sharing)
-
 ### Previous Ontology Versions
 - [Version 8 (OE 13) CURRENT](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeIndividuals.rdf)
 - [Version 7 (OE 12)](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_12_FitMe.rdf) [Individuals](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/archived/oldOntologies/OE_12_FitMe_Individuals.rdf)
