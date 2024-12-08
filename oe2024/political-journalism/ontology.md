@@ -28,49 +28,117 @@ Figure 5 covers the structure of Topics.
 
 #### Primary Classes and Definitions
 
-1. Research Study
-    - Definition: A scientific investigation that involves testing a hypothesis
+1. Document
+    - Definition: the unitary expression of some realization of an intellectual or artisitc work
     - Immediate Superclass: None
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: Hasco
-1. Clinical Trial
-    - Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
-    - Immediate Superclass: Research Study
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: National Cancer Institute Thesarus (NCIT)
-1. Cohort
-    - Definition: A cohort is the group of subjects enrolled in a study
-    - Immediate Superclass: None
-    - Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: The Statistical Methods Ontology (STATO)
-1. Study Arm
-    - Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
-    or no intervention, according to the trial's protocol
-    - Immediate Superclass: Cohort
-    - Example: Metformin Conventional Therapy Arm
+    - Example:
+    - Reused From: cmns-doc
+1. Article
+    - Definition: a piece of writing on a particular subject in a newspaper or magazine
+    - Immediate Superclass: Document
+    - Example:
     - Reused From: None
-1. Study Subject
-    - Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
-    professional or institution with the purpose to receive medical care when necessary
+1. Subject
+    - Definition: a person, thing, or event that is discussed, written about, or referenced
     - Immediate Superclass: None
-    - Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: SemanticScience Integrated Ontology (SIO)
-1. Study Intervention
-    - Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
-    procedures, vaccines, and other products that are either investigational or already available
-    - Immediate Superclass: None
-    - Example: Metformin
-    - Reused From: ProvCaRe
-1. Subject Characteristic
-    - Definition: Property that summarizes important attributes of the participants enrolled in a study
-    - Immediate Superclass: None
-    - Example: Age
+    - Example:
     - Reused From: None
-1. Statistical Measure
-    - Definition: a standard unit used to express the size, amount, or degree of something
+1. Role
+    - Definition: named specific behavior of something participating in a particular context
     - Immediate Superclass: None
-    - Example: Mean
-    - Reused From: ProvCaRe
+    - Example:
+    - Reused From: cmns-rlcmp
+1. RoleSubject
+    - Definition: a subject which is a role
+    - Immediate Superclass: Subject, Role
+    - Example:
+    - Reused From: None
+1. PoliticalRole
+    - Definition: a role within a political system
+    - Immediate Superclass: RoleSubject
+    - Example:
+    - Reused From: None
+1. PoliticalOffice
+    - Definition: a position of authority and responsibility in a government
+    - Immediate Superclass: PoliticalRole
+    - Example:
+    - Reused From: None
+1. PoliticalCandidate
+    - Definition: a person who is seeking election to a political office
+    - Immediate Superclass: PoliticalRole
+    - Example:
+    - Reused From: None
+1. FunctionalRole
+    - Definition: role representing an underlying functionality of something, such as a person, organization, process, or service, is expected to perform or deliver
+    - Immediate Superclass: Role
+    - Example:
+    - Reused From: cmns-rlcmp
+1. Contributor
+    - Definition: a person who contributes to the creation of a news article
+    - Immediate Superclass: FunctionalRole
+    - Example:
+    - Reused From: None
+1. Author
+    - Definition: a contributor who is responsibile for the writing on an article
+    - Immediate Superclass: Contributor
+    - Example:
+    - Reused From: None
+1. Event
+    - Definition: something that happens
+    - Immediate Superclass: None
+    - Example:
+    - Reused From: None
+1. EventSubject
+    - Definition: a subject which is an event
+    - Immediate Superclass: Subject, Event
+    - Example:
+    - Reused From: None
+1. PoliticalEvent
+    - Definition: an event which directly affects governance
+    - Immediate Superclass: EventSubject
+    - Example:
+    - Reused From: None
+1. Election
+    - Definition: a political event where votes are cast to choose someone to occupy a political role
+    - Immediate Superclass: PoliticalEvent
+    - Example:
+    - Reused From: None
+1. Party
+    - Definition: person or organization
+    - Immediate Superclass: Agent
+    - Example:
+    - Reused From: cmns-pts
+1. Person
+    - Definition: a human being
+    - Immediate Superclass: Party
+    - Example:
+    - Reused From: None
+1. LegalEntity
+    - Definition: a legal person that is a partnership, corporation, or other organization having the capacity to negotiate contracts, assume finanacial obligations, and pay off debts, organized under the laws of some jurisdiction
+    - Immediate Superclass: Formal Organization, LegalPerson
+    - Example:
+    - Reused From: cmns-org
+1. PoliticalParty
+    - Definition: a group of persons organized to acquire and exercise political power
+    - Immediate Superclass: LegalEntity
+    - Example:
+    - Reused From: None
+1. Publisher
+    - Definition: an organization that publishes books, magazines, newspapers, or other text-based content
+    - Immediate Superclass: LegalEntity
+    - Example:
+    - Reused From: None
+1. Bias
+    - Definition: an undue influence from political preference
+    - Immediate Superclass: None
+    - Example:
+    - Reused From: None
+1. Topic
+    - Definition: a concept or issue that is discussed, written about or referenced
+    - Immediate Superclass: None
+    - Example:
+    - Reused From: None
+
 
 ### Accompanying Suite of Ontologies
 
@@ -188,3 +256,4 @@ We group the ontologies we reuse by the purpose and the use-cases they are inten
     <td> <a href="http://purl.org/net/OCRe/OCRe.owl/#"> Ontology of Clinical Research</a> </td>
   </tr>
 </table>
+
