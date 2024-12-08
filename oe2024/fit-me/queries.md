@@ -8,7 +8,7 @@ PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
 PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividual/>
 
 # Routine for fat loss, muscle gain for a user having Knee ligament injury
-select ?exercisePlan ?exercise where {
+select DISTINCT ?exercisePlan ?exercise where {
   BIND (ex:KneeLigamentInjuryAgnosticStrengthGainPlan AS ?plan).
   ?exercisePlan rdfs:subClassOf ?plan.
   ?exercise a ?exercisePlan.

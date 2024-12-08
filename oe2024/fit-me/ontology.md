@@ -2,12 +2,29 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/OE_12_FitMe_ConceptMap.jpg)
+Below is a Meta Model of our overall conceptual model.
+![Concept Map Subject Model](images/MetaMap.svg)
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSh8xvEmGALERzP275Vme2ezzxi96d6ut5U2Z4Y7rP9eGUoEhA-qouU_cqPxE9d5BhcdJaZTnmL6tbx/embed?start=false&loop=false&delayms=3000"  frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+The "Goal" Concept
+![Goal](images/GoalMap.svg)
 
+The "MuscleGroup" Concept
+![MuscleGroup](images/MuscleGroupMap.svg)
+
+The "Exercise" Concept
+![Exercise](images/ExerciseMap.svg)
+
+The "InjuryMap" Concept
+![InjuryMap](images/InjuryMap.svg)
+
+The "Strain" Concept
+![Strain](images/StrainMap.svg)
+
+The "Planner" Concept
+![Planner](images/Planner_Exercise_Map.svg)
 **Link to Concept map documentation:**
   [https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub](https://docs.google.com/document/d/e/2PACX-1vSf2rasjYgI6VmdamPWe3OBvHjB_fhyHP8qWv97hUIc80GCF9lapaIV9pG74W9y_TU3xcjT3iDbWuX2/pub)
+
 ## Ontologies
 
 **Link to ontology:**
