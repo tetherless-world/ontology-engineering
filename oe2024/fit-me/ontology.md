@@ -5,18 +5,8 @@
 Below is a Meta Model of our overall conceptual model.
 ![Concept Map Subject Model](images/MetaMap.svg)
 
-# The "Goal" Concept
-
-<div id="zoom-container">
-    <img src="images/GoalMap.svg" id="zoomable-image" alt="Goal Map">
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@9.4.0/dist/panzoom.min.js"></script>
-<script>
-    const element = document.getElementById('zoom-container');
-    const panzoomInstance = Panzoom(element, { maxScale: 5, minScale: 1 });
-    element.addEventListener('wheel', panzoomInstance.zoomWithWheel);
-</script>
+The "Goal" Concept
+![Goal](images/GoalMap.svg)
 
 The "MuscleGroup" Concept
 ![MuscleGroup](images/MuscleGroupMap.svg)
