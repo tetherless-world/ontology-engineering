@@ -5,5 +5,4 @@ title: publications
 
 ## Publications
 
-<p class="message-highlight">You would add a PDF version of your final write-up to the files directory and render it such as the below</p>
-
+<iframe src="files/Fit_Me_Paper.pdf" width="600" height="400"></iframe>
