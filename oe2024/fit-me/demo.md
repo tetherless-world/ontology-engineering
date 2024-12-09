@@ -3,7 +3,7 @@
 
 ## Queries
 
-###### Please note that all queries were run with BlazeGraph.
+###### Please note that all queries were run with Blazegraph.
 
 ### Competency Question 1
 
