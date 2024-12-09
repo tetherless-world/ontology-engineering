@@ -3,7 +3,11 @@
 
 ## Queries
 
-###### Please note that all queries were run with Blazegraph.
+### How to Run 
+
+- Please note that all queries were executed using Blazegraph
+- To run the queries yourself please use our inferred reasoner axiom ontology at the following link: [FitMeReasonerAxioms](https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMeReasonerAxioms.rdf).
+
 
 ### Competency Question 1
 
@@ -15,9 +19,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
-PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividual/>
 
-# Routine for fat loss, muscle gain for a user having Knee ligament injury
 select DISTINCT ?exercisePlan ?exercise where {
   BIND (ex:KneeLigamentInjuryAgnosticStrengthGainPlan AS ?plan).
   ?exercisePlan rdfs:subClassOf ?plan.
@@ -62,10 +64,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
-PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/>
 
-
-# workouts and plan to build strength 
 select ?plan ?exercise where { 
 	?plan a ex:StrengthGainPlan .
   	?exercise ex:exerciseContainedIn ?plan .
@@ -106,40 +105,25 @@ select ?plan ?exercise where {
 ### I’m looking into enforcing my back. Can you provide me with a back workout given I have a back injury? (User has already stated that they have scoliosis when creating their profile. System knows that the user has this condition.)
 
 ```
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22/rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/>
-PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMeIndividual/>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
 
-
-SELECT DISTINCT ?planner ?exercise ?strainValue
-WHERE { 
-  # Get all plan the user is focused on
-  ind:User3 ex:focus ?planner .
-
-  ?planner ex:containsExercise ?exercise .
-
-  # Get the strain value for each exercise
-  ?exercise ex:hasStrainValue ?strainValue .
-
-  # Get the preferred strain from the current Goal
-  ind:StrengthGain ex:preferredStrain ?preferredStrain .
-
-  # Filter exercises whose strain matches the prefered
-  FILTER(?strainValue = ?preferredStrain)
+select ?exercise where { 
+  ?exercise a ex:EnforceBackPlan.
 }
 ```
 
 ### Results
 
-| planner            | exercise                | strainValue
-|--------------------|-------------------------|---------------
-|BackDay              | DumbellRows            |  Moderate
-|BackDay              | LatPulldowns           |  Moderate
-|BackDay              | SeatedRows             |  Moderate
-|BackDay              | BentOverBarbellRows    |  Strenuous
+| Exercise |
+|---|
+|CableRows|
+|FacePulls|
+|LatPullovers|
+|Pullups|
 
 
 ### Competency Question 4
@@ -151,7 +135,6 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
-PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividual/>
 
 select ?exercise where {
     ?exercise a ex:StrengthExercise. 
@@ -201,7 +184,6 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/>
-PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividual/>
 
 select ?exercise where {
     ?exercise a ex:LegStrengtheningExercise. 
