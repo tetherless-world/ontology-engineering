@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeReasonerAxioms/"
-     xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeReasonerAxioms/"
+<rdf:RDF xmlns="http://www.semanticweb.org/domin/ontologies/2024/11/untitled-ontology-104#"
+     xml:base="http://www.semanticweb.org/domin/ontologies/2024/11/untitled-ontology-104"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -10,9 +10,9 @@
      xmlns:FitMe="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/"
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:AnnotationVocabulary="https://www.omg.org/spec/Commons/AnnotationVocabulary/">
-    <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeReasonerAxioms/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/domin/ontologies/2024/11/untitled-ontology-104">
         <terms:abstract>FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.</terms:abstract>
-        <terms:abstract>FitMe! is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey.</terms:abstract>
+        <terms:abstract>FitMe is a personalized health assistant that empowers users to achieve their unique fitness and wellness goals by providing tailored guidance in exercise and nutrition. With custom workout plans that take biometrics and injuries into account, meal suggestions that align with dietary needs and preferences, FitMe makes it easy to stay motivated and informed. Whether aiming to lose weight, build strength, or enhance endurance, FitMe is designed to support healthy lifestyle choices that lead to lasting change, transforming fitness from a goal into a simple and sustainable journey. This Ontology imports the base ontology and adds a number of named individuals to represent concepts within our ontology. Any updates that are made to the base ontology should be reflected here.</terms:abstract>
         <terms:abstract>The Annotation Vocabulary provides commonly used annotation properties for documentation to facilitate understanding.</terms:abstract>
         <terms:creator>Abhirup Dasgupta</terms:creator>
         <terms:creator>Anirban Acharya</terms:creator>
@@ -20,8 +20,8 @@
         <terms:creator>Johnny Sun</terms:creator>
         <terms:license rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://opensource.org/licenses/MIT</terms:license>
         <terms:license rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://opensource.org/licenses/MIT</terms:license>
-        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-07T18:34:00</terms:modified>
-        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-08T18:32:00</terms:modified>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-07T20:09:00</terms:modified>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-08T20:09:00</terms:modified>
         <terms:publisher>FitMe</terms:publisher>
         <terms:references rdf:resource="http://purl.org/dc/terms/"/>
         <terms:references rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
@@ -918,6 +918,32 @@
         <terms:source>FitMe</terms:source>
         <rdfs:label xml:lang="en">enforce</rdfs:label>
         <skos:definition xml:lang="en">to strengthen muscles around an injury</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/EnforceBackPlan -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/EnforceBackPlan">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/targets"/>
+                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/BackMuscleGroup"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/hasStrainValue"/>
+                        <owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Exercise"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
+        <terms:source>fitme</terms:source>
+        <rdfs:label>enforce back plan</rdfs:label>
+        <skos:definition>plan to help enforce the back</skos:definition>
     </owl:Class>
     
 
@@ -2319,15 +2345,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strain -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strain">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
         <terms:source>https://www.merriam-webster.com/dictionary/strain</terms:source>
         <rdfs:label xml:lang="en">strain</rdfs:label>
         <skos:definition xml:lang="en">how hard an exercise is</skos:definition>
@@ -2562,6 +2579,7 @@
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BackDay">
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/BackDay"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StrengthGainPlan"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BentOverBarbellRows"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BicepCurls"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CableRows"/>
@@ -2728,7 +2746,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CableRows -->
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/CableRows">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/EnforceBackPlan"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Exercise"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/ResistanceExercise"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Row"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfCableRows"/>
@@ -2763,6 +2783,7 @@
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/ChestDay">
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/ChestDay"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StrengthGainPlan"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BenchPress"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Dips"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/InclineDumbbellPress"/>
@@ -2906,7 +2927,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FacePulls -->
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/FacePulls">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/EnforceBackPlan"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Exercise"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/ResistanceExercise"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfFacePulls"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StrengthExercise"/>
@@ -3147,7 +3170,9 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPullovers -->
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LatPullovers">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/EnforceBackPlan"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Exercise"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/ResistanceExercise"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/SetOfLatPullovers"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StrengthExercise"/>
@@ -3179,6 +3204,7 @@
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/LegDay">
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/LegDay"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Planner"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/StrengthGainPlan"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/AbCrunches"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BarbellBackSquats"/>
         <FitMe:containsExercise rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BulgarianSplitSquats"/>
@@ -3195,6 +3221,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light -->
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Light">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Light"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strain"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/AbCrunches"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BicepCurls"/>
@@ -3247,6 +3274,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate -->
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Moderate">
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Moderate"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strain"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BulgarianSplitSquats"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/DumbbellRows"/>
@@ -3314,6 +3342,7 @@
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Pullups">
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/BodyWeightExercise"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/EnforceBackPlan"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Exercise"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KLIASGBackDay"/>
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/KLIASGRecoveryDay"/>
@@ -3525,6 +3554,7 @@
 
     <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/Strenuous">
         <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strain"/>
+        <rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/Strenuous"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BarbellBackSquats"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BenchPress"/>
         <FitMe:isStrainValueOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMeIndividuals/BentOverBarbellRows"/>
