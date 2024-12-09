@@ -73,6 +73,6 @@ Johnny Sun: <sunj13@rpi.edu>
 
 ## Acknowledgements
 
-Development of this ontology was done under the advisement of Dr. Deborah McGuinnes and Ms. Elisa Kendall along with our mentors Jade Franklin, Danielle Villa, and Kelsey Rook as part of the Fall 2024 CSCI 4340 Ontologies Course. We would like to thank them for their time, effort, and patience guiding us through the development process.
+The development of this ontology was conducted under the advisement of Dr. Deborah McGuinness and Ms. Elisa Kendall, along with guidance from our mentors Jade Franklin, Danielle Villa, and Kelsey Rook, as part of the Fall 2024 CSCI 4340 Ontologies Course. We sincerely thank them for their time, effort, and patience in guiding us through the development process.
 
 <iframe src = "images/FemaleWeight.png" style="width:100%; height: 500px"></iframe>
