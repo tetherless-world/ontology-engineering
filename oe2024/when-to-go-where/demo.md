@@ -153,23 +153,93 @@ Longest hike retrieved
 This competency question aims to identify the longest hiking trails available in national parks located in California. By querying the ontology, we can retrieve and compare the distances of various hiking trails within California's national parks. This information is useful for experienced hikers looking for challenging and extended hikes.
 
 
-<!-- ### Compentency Question 4
+### Compentency Question 4
 
 #### Question:
+I am near Acadia and I want to see an American bison, is the American bison native to Acadia National Park?
 
 #### Result:
 
+| Animal Label            |
+|------------------------|
+| Black Fox              |
+| Coyote                 |
+| Eastern Timber Wolf    |
+| Moose                  |
+| Northern White-tailed Deer |
+
 #### Query:
 
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
+PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
+
+SELECT ?animalLabel
+WHERE {
+  {
+    ?animal rdf:type oe-wtgw:Animal .
+    ?animal rdfs:label "american bison" .
+    ?animal oe-wtgw:isAnimalOf oe-wtgw-ind:AcadiaNationalPark .
+  }
+  UNION
+  {
+    ?animal rdf:type oe-wtgw:Animal .
+    ?animal rdfs:label "american bison" .
+    ?animal oe-wtgw:isAnimalType ?animalType .
+    ?animal2 oe-wtgw:isAnimalOf oe-wtgw-ind:AcadiaNationalPark .
+    ?animalType oe-wtgw:AnimalTypeOf ?animal2 .
+    ?animal2 rdfs:label ?animalLabel .
+  }
+}
+```
+
 #### Description:
+
+This competency question checks whether the American bison is native to Acadia National Park by querying the ontology for wildlife associations. The ontology defines relationships between parks and the animals that inhabit them. The query reveals animals found in Acadia, such as the Black Fox, Coyote, and Moose, as a backup as they are other animals in the park. This information can help visitors set realistic wildlife expectations and guide park management in wildlife conservation planning.
 
 
 ### Compentency Question 5
 
 #### Question:
+If I want to go to the northernmost park in the United States that is the least visited in Winter, where should I go?
 
 #### Result:
 
+| Park                          | Latitude  | Visitors |
+|------------------------------|------------|----------|
+| Gates of the Arctic National Park | 67.4089    |    0     |
+| Kobuk Valley National Park       | 67.3351    |   953    |
+| Denali National Park             | 63.1148    | 114949   |
+| Wrangell-St. Elias National Park | 61.7104    |   116    |
+| Lake Clark National Park         | 60.4026    |    0     |
+
 #### Query:
 
-#### Description: -->
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX oe-wtgw: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/>
+PREFIX oe-wtgw-ind: <https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere-individuals/>
+PREFIX Locations: <https://www.omg.org/spec/Commons/Locations/>
+SELECT ?park ?latitude ?visitors
+WHERE {
+    ?park rdf:type oe-wtgw:NationalPark .
+    ?park Locations:hasLocation ?location .
+    ?location Locations:hasLatitude ?latitude .
+    ?park oe-wtgw:hasAvgSeasonalVisitors ?visInd .
+    ?visInd rdf:type oe-wtgw:AvgSeasonalVisitors .
+    ?visInd oe-wtgw:hasSeason oe-wtgw-ind:Fall .
+    ?visInd oe-wtgw:hasVisitors ?visitors
+}
+ORDER BY DESC(?latitude) ASC(?visitors)
+```
+
+#### Description:
+
+This query identifies the least visited national parks during the winter season based on their latitude, focusing on parks located farthest to the north. Understanding park visitation statistics relative to geographic location is useful for managing visitor flow, conducting conservation efforts, and promoting lesser-known parks. The query results reveal that parks such as Gates of the Arctic and Lake Clark National Parks, located in Alaska, have the fewest fall visitors, highlighting their remote and less-accessible nature.
