@@ -15,11 +15,9 @@ A critical component of functioning democracies is a voting populace with the in
 This perverse media incentive structure naturally results in outlets finding a position on this bias/accuracy continuum that caters to a specific cross section of viewers to maximise engagement and build a viewer base. As a result outlets choose editors, journalists, stories, and language that best appeals to this base and is largely responsible for today’s polarised media climate.
 
 
-## Competency Diagram
+## Conceptual Diagram
 
 <iframe src="files/JournalismCMDv2.2.pdf" style="width:100%; height: 500px"></iframe>
-
-<p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
 
 ## List of Resources
 
@@ -48,5 +46,12 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
 </table>
 
+## Contributors
+
+Avery Iorio, iorioa@rpi.edu
+Kirk Olkowski, olkowk@rpi.edu
+Nathaniel Adair, adairn@rpi.edu
+
 ## Acknowledgements
 
+We appreciate the assistance of the course instructors, Dr. Deborah McGuinness and Ms. Elisa Kendall, as well as the assistance of the course mentors, Jade Franklin, Kelsey Rook, Danielle Villa, and Vládia Pinheiro.
