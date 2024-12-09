@@ -153,7 +153,7 @@ Longest hike retrieved
 This competency question aims to identify the longest hiking trails available in national parks located in California. By querying the ontology, we can retrieve and compare the distances of various hiking trails within California's national parks. This information is useful for experienced hikers looking for challenging and extended hikes.
 
 
-### Compentency Question 4
+<!-- ### Compentency Question 4
 
 #### Question:
 
@@ -172,4 +172,4 @@ This competency question aims to identify the longest hiking trails available in
 
 #### Query:
 
-#### Description:
+#### Description: -->
