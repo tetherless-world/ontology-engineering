@@ -2,7 +2,8 @@
 layout: default
 title: About
 ---
-
+![Project Photo](images/HotSpringsNationalPark.jpg)
+Hot Springs National Park
 
 ## Maintenenance Policy
 

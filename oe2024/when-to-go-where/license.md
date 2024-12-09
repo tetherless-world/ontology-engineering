@@ -2,7 +2,8 @@
 layout: default
 title: license
 ---
-
+![Project Photo](images/WhiteSandsNationalPark.jpg)
+White Sands National Park
 ## License
 
 Copyright © 2024 When To Go Where Team

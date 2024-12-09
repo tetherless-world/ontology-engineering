@@ -1,5 +1,8 @@
 [Concept Map](#conceptual-model) | [Ontology File](#ontologies) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
 
+
+![Project Photo](images/DeathValleyNationalPark.jpg)
+Death Valley National Park
 ## Conceptual Model
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSPJW6YcZyq3zmbwSrmuxOOcgVpG_Vty_h4K9ZSUCOK1bIj8IPtQYbY6HkyvJHo60CN9Gyw_X1G1Woi/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>

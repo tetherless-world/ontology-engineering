@@ -2,6 +2,8 @@
 layout: default
 title: presentations
 ---
+![Project Photo](images/GlacierBayNationalPark.jpg)
+Glacier Bay National Park
 
 ## Presentations
 

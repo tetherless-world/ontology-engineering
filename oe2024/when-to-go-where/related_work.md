@@ -2,7 +2,8 @@
 layout: default
 title: related_work
 ---
-
+![Project Photo](images/ArchesNationalPark.jpg)
+Arches National Park
 ## References
 
 - National Weather Service, “Glossary of Weather Terms,” Weather.gov. [Online]. Available: https://www.weather.gov/cae/weatherterms.html. [Accessed: 25-Sep-2024].
