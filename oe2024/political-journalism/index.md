@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-# Poltical Journalism Ontology
+# Political Journalism Ontology
 
 ## Abstract
 
