@@ -1,5 +1,8 @@
 ---
 ---
+![Project Photo](images/ShenandoahNationalPark.jpg)
+Shenandoah National Park
+
 
 ## Queries
 
