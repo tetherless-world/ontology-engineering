@@ -9,6 +9,6 @@ B. Gaynes and A. Rush, “Treatment Alternatives to Relieve Depression (STAR*D) 
 
 “GENOME-BASED THERAPEUTIC DRUGS FOR DEPRESSION (GENDEP),” CORDIS, https://cordis.europa.eu/project/id/503428 (accessed Sep. 26, 2024).
 
-M., et al Li, “Integrative functional genomic analysis of Human Brain Development and Neuropsychiatric Risks | Science,” Science, https://www.science.org/doi/10.1126/science.aat7615 (accessed Sep. 26, 2024).
+M., et al Li, “Integrative functional genomic analysis of Human Brain Development and Neuropsychiatric Risks, Science,” Science, https://www.science.org/doi/10.1126/science.aat7615 (accessed Sep. 26, 2024).
 
 Kupfer, D. J., Frank, E., & Phillips, M. L. (2012). "Major depressive disorder: New clinical, neurobiological, and treatment perspectives." The Lancet.
