@@ -2,8 +2,8 @@
 layout: default
 title: presentations
 ---
-![Project Photo](images/GlacierBayNationalPark.jpg)
-Glacier Bay National Park
+![Project Photo](images/CongareeNationalPark.jpg)
+Congaree National Park
 
 ## Presentations
 
