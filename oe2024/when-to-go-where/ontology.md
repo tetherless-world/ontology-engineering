@@ -2,7 +2,7 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/OE12_WhenToGoWhere_ConceptualModel.png)
+![Concept Map Subject Model](images/OE13_WhenToGoWhere_ConceptualModel.png)
 
 An overview of the main classes.
 
