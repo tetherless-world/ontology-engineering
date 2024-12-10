@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-<iframe src = "images/RunningMan.png" style="width:100%; height: 500px"></iframe>
+![Project Photo](iimages/RunningMan.png)
 
 
 ## Maintenenance Policy
