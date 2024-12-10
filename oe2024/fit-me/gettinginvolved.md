@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-![Project Photo](iimages/RunningMan.png)
+![Project Photo](images/RunningMan.png)
 
 
 ## Maintenenance Policy
