@@ -3,14 +3,16 @@ layout: default
 title: About
 ---
 
+<iframe src = "images/RunningMan.jpg" style="width:100%; height: 500px"></iframe>
+
 
 ## Maintenenance Policy
 
-Our maintainance policy is primarily focused on ensuring that our data remains available for use as long as possible. The ontology will not be updated for the forseeable future once version 1.0 work is done. Any new changes will be documented through the website's versions.
+Our maintenance policy is primarily focused on ensuring that our data remains available for use for as long as possible. The ontology will not be updated in the foreseeable future once version 1.0 work is completed. Any new changes will be documented through the website's versioning system. The link to the ontology will remain the same through any modifications made. Future versions of the ontology with "breaking changes" will be hosted at new URLs, ensuring that previous versions of the ontology remain available and consistent.
 
 ## Getting Involved
 
-There is no future work planned as of now. If work is done in the future, then there is much room for expansion. The core of the ontology can be worked on to fix up the actual exercise plans. In addition, the food part of the ontology was cut out for the sake of time. This can be expanded quite a bit and the previous versions of the ontology contain food entities.
+Any future work is more than welcome. If anyone is interested in continuing or expanding the project, please feel free to reach out to any of us at the emails below. There is much potential for further development. Many aspects that were cut from our original use case would make excellent additions to the current ontology. Some of these extensions could include generating recommended meals based on user preferences and dietary restrictions, as well as allowing the system to track and respond to user progress. Another beneficial addition that didn't make it into our work during the 2024 semester is the expansion to include more individuals. Currently, the ontology primarily supports the individuals used in our competency questions. By adding more exercises or muscle groups, the system could provide more varied, accurate, and beneficial recommendations.
 
 ### Team Members
 - Abhirup Dasgupta dasgua3@rpi.edu
