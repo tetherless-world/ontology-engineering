@@ -93,7 +93,7 @@ The Planner concept allows the system to categorize different exercise cycles an
   </tr>
   <tr>
     <td style="padding: 8px; border: 1px solid black;">oe-fit</td>
-    <td style="padding: 8px; border: 1px solid black;"><a href="https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/FitMe/">FitMe Ontology</a></td>
+    <td style="padding: 8px; border: 1px solid black;"><a href="https://github.com/tetherless-world/ontology-engineering/blob/fit-me/oe2024/fit-me/FitMe.rdf">FitMe Ontology</a></td>
   </tr>
 </table>
 
