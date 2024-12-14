@@ -16,6 +16,7 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
@@ -165,6 +166,24 @@
 		<skos:definition>a media bias that does not clearly favour left-wing or right-wing politics</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CentristPublishedArticle">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+		<rdfs:label>centrist published article</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasPublisher"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CentristPublisher"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>an article published by a centrist publisher</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CentristPublisher">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Publisher"/>
 		<rdfs:label>centrist publisher</rdfs:label>
@@ -307,20 +326,26 @@
 		<rdfs:label>election loser</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate">
+					</rdf:Description>
 					<owl:Class>
-						<owl:complementOf>
+						<owl:unionOf rdf:parseType="Collection">
+							<owl:Class>
+								<owl:complementOf>
+									<owl:Restriction>
+										<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionWinnerIn"/>
+										<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#SimpleElection"/>
+									</owl:Restriction>
+								</owl:complementOf>
+							</owl:Class>
 							<owl:Restriction>
-								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionWinnerIn"/>
-								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#SimpleElection"/>
+								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionLoserIn"/>
+								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
 							</owl:Restriction>
-						</owl:complementOf>
+						</owl:unionOf>
 					</owl:Class>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionLoserIn"/>
-						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
-					</owl:Restriction>
-				</owl:unionOf>
+				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>a candidate who won their election</skos:definition>
@@ -357,10 +382,16 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
 		<rdfs:label>election winner</rdfs:label>
 		<owl:equivalentClass>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionWinnerIn"/>
-				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
-			</owl:Restriction>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionWinnerIn"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>a candidate who lost their election</skos:definition>
 	</owl:Class>
@@ -494,6 +525,24 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#MediaBias"/>
 		<rdfs:label>left-wing media bias</rdfs:label>
 		<skos:definition>a media bias that favors left-wing politics</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LeftWingPublishedArticle">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+		<rdfs:label>left-wing published article</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasPublisher"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LeftWingPublisher"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>an article published by a left-wing publisher</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LeftWingPublisher">
@@ -712,6 +761,24 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#MediaBias"/>
 		<rdfs:label>right-wing media bias</rdfs:label>
 		<skos:definition>a media bias that favors right-wing politics</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RightWingPublishedArticle">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article"/>
+		<rdfs:label>right-wing published article</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Article">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasPublisher"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RightWingPublisher"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>an article published by a right-wing publisher</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RightWingPublisher">
