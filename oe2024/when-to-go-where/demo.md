@@ -112,7 +112,7 @@ Park and hike retrieved
 #### Description:
 This competency question aims to identify national parks that offer cool summer temperatures and have hiking trails that are less than 2 miles in length. This information is particularly useful for new hikers who prefer shorter and easier hikes. By querying the ontology, we can retrieve and compare the average summer temperatures and trail lengths of various national parks to find suitable options for new hikers.
 
-![Project Photo](images/CuyahogaNationalPark.jpg)
+![Project Photo](images/CuyahogaValleyNationalPark.jpg)
 Cuyahoga National Park
 
 ### Compentency Question 3
@@ -247,5 +247,5 @@ ORDER BY DESC(?latitude) ASC(?visitors)
 
 This query identifies the least visited national parks during the winter season based on their latitude, focusing on parks located farthest to the north. Understanding park visitation statistics relative to geographic location is useful for managing visitor flow, conducting conservation efforts, and promoting lesser-known parks. The query results reveal that parks such as Gates of the Arctic and Lake Clark National Parks, located in Alaska, have the fewest fall visitors, highlighting their remote and less-accessible nature.
 
-![Project Photo](images/GatesoftheArticNationalPark.jpg)
+![Project Photo](images/GatesoftheArcticNationalPark.jpg)
 Gates of the Artic National Park
