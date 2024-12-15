@@ -7,7 +7,9 @@ Death Valley National Park
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSPJW6YcZyq3zmbwSrmuxOOcgVpG_Vty_h4K9ZSUCOK1bIj8IPtQYbY6HkyvJHo60CN9Gyw_X1G1Woi/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-An overview of the main classes.
+The conceptual model above is a visual representation of the ontology that we developed in this project. In the above we can see that there are a set of concepts such as Animal, Activity, Accommodation, Facility, Park Statistics, Terrain, and Climate. All of these concepts are attached to a central concept National Park which is the focus of our ontology. They also have sets of other concepts that are connected to them such as Accommodation which is attached to Campground, Hotel, Capacity, Availability, and Amenities. 
+
+The conceptual model also shows how we have connected the different concepts in our ontology. Using the relations we have defined we are able to query our ontology to answer specific questions. For example, to find the longest trail in California, the system would look at parks in California, check which trails they have, and find the one with the greatest length. The conceptual model helps the system understand and process these connections efficiently. 
 
 ### Previous versions
 
