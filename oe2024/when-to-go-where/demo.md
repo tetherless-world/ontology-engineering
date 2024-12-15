@@ -109,12 +109,11 @@ Park and hike retrieved
 | Canyonlands National Park      | 95                 | Grand View Point           | 1.8              |
 | White Sands National Park      | 95                 | Dune Life Nature Trail     | 1.0              |
 
-
 #### Description:
 This competency question aims to identify national parks that offer cool summer temperatures and have hiking trails that are less than 2 miles in length. This information is particularly useful for new hikers who prefer shorter and easier hikes. By querying the ontology, we can retrieve and compare the average summer temperatures and trail lengths of various national parks to find suitable options for new hikers.
 
-![Project Photo](images/CuyahogaValleyNational Park.jpg)
-Cuyahoga Valley National Park
+![Project Photo](images/CuyahogaNationalPark.jpg)
+Cuyahoga National Park
 
 ### Compentency Question 3
 #### Question: 
@@ -152,6 +151,8 @@ Longest hike retrieved
 #### Description:
 This competency question aims to identify the longest hiking trails available in national parks located in California. By querying the ontology, we can retrieve and compare the distances of various hiking trails within California's national parks. This information is useful for experienced hikers looking for challenging and extended hikes.
 
+![Project Photo](images/lakestrail.jpg)
+Lakes Trail
 
 ### Compentency Question 4
 
@@ -201,6 +202,8 @@ WHERE {
 
 This competency question checks whether the American bison is native to Acadia National Park by querying the ontology for wildlife associations. The ontology defines relationships between parks and the animals that inhabit them. The query reveals animals found in Acadia, such as the Black Fox, Coyote, and Moose, as a backup as they are other animals in the park. This information can help visitors set realistic wildlife expectations and guide park management in wildlife conservation planning.
 
+![Project Photo](images/blackfox.jpg)
+Black Fox in Acadia National Park
 
 ### Compentency Question 5
 
@@ -243,3 +246,6 @@ ORDER BY DESC(?latitude) ASC(?visitors)
 #### Description:
 
 This query identifies the least visited national parks during the winter season based on their latitude, focusing on parks located farthest to the north. Understanding park visitation statistics relative to geographic location is useful for managing visitor flow, conducting conservation efforts, and promoting lesser-known parks. The query results reveal that parks such as Gates of the Arctic and Lake Clark National Parks, located in Alaska, have the fewest fall visitors, highlighting their remote and less-accessible nature.
+
+![Project Photo](images/GatesoftheArticNationalPark.jpg)
+Gates of the Artic National Park
