@@ -12,15 +12,9 @@ When to go where is a project that aims to promote outdoor exploration across th
 
 To achieve this we are creating a semantically enabled application that will leverage an OWL ontology to answer user questions. Our interface will give users options to input preferences and using semantics we will identify the best parks that match a users particular criteria.
 
-## Developers
+## Call to Action
 
-- [Samyuth Sagi](https://github.com/Samyuth)
-- [Tyler Layton](https://github.com/TylerLayton123)
-- [Ben Rodgers](https://github.com/benrodgers14)
-- [Annabelle Choi](https://github.com/snoopy0328)
-
-## Link to Our Class
-[Ontology Engineering Fall 2024](https://tw.rpi.edu/classes/ontology-engineering-fall-2024)
+Ready to explore the perfect national park for your next adventure? Use our semantically enabled tool to find parks that match your hiking, camping, and climate preferences. Start your journey today and make the most of the great outdoors!
 
 ## Workflow Diagram
 ![Concept Map Subject Model](images/OE13_WhenToGoWhere_ConceptualModel.png)
@@ -48,6 +42,17 @@ The conceptual model also shows how we have connected the different concepts in 
     <td><a href="https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/presentations">Presentations</a> </td>
   </tr>
 </table>
+
+## Developers
+
+- [Samyuth Sagi](https://github.com/Samyuth)
+- [Tyler Layton](https://github.com/TylerLayton123)
+- [Ben Rodgers](https://github.com/benrodgers14)
+- [Annabelle Choi](https://github.com/snoopy0328)
+
+## Link to Our Class
+[Ontology Engineering Fall 2024](https://tw.rpi.edu/classes/ontology-engineering-fall-2024)
+
 
 ## Acknowledgements
 
