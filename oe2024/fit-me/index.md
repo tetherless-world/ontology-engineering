@@ -30,7 +30,7 @@ In a normal flow scenario, the user will request a goal from the system, and whe
 
 ###### Alternate Flow:
 
-In an alternate flow scenario, the user will request a goal from the system, and when prompted to enter any injuries, the user will provide at least one. The system will validate the user's goal, generate exercises that align with that goal, and determine that, given their injuries, it is not safe to provide all the recommendations it generated for the user's specified goal. The system will then warn the user and ask if the user would like to change their fitness goal. If the user chooses to proceed the system will provide the subset of generated recommendations that do not affect the injured area. See below for our alterate flow diagram.
+In an alternate flow scenario, the user will request a goal from the system, and when prompted to enter any injuries, the user will provide none. The system will validate the user's goal, generate exercises that align with that goal, and determine that, given their injuries, it is not safe to provide all the recommendations it generated for the user's specified goal. The system will then warn the user and ask if the user would like to change their fitness goal. If the user chooses to proceed the system will provide the subset of generated recommendations that do not affect the injured area. See below for our alterate flow diagram.
 <a href="images/AlternateFlow.png" target="_blank">
   <img src="images/AlternateFlow.png" style="width:100%; max-width:800px;">
 </a>
