@@ -7,14 +7,12 @@ Hot Springs National Park
 
 ## Maintenenance Policy
 
-Our maintainance policy is primarily focused on ensuring that our data remains available for use as long as possible. We will never change the name of our ontology or its URL. This will ensure that references to our ontology will always be valid and that we will not break applications that may come to rely on our ontology in the future. Any future changes to the ontology will be appropriately documented both in the headers of the ontology itself and in accompanying documentation. Future versions of the ontology with “breaking changes” will be hosted at new URLs so that previous versions of the ontology continue to be available.
+The When To Go Where Ontology was created by the When To Go Where team in the Ontology Engineering Course at Rensselaer Polytechnic Institute during the 2024 fall semester. As of Fall 2024, the team has concluded active development and maintenance of the ontology. To ensure that the ontology remains accurate and up-to-date, we encourage community contributions. Whether you're suggesting enhancements, reporting issues, or submitting pull requests, your input is invaluable. All contributions undergo a thorough review process to maintain quality and compatibility before being integrated into the main ontology. For any maintenance-related inquiries or support, please open an issue in our [GitHub repository](https://github.com/tetherless-world/ontology-engineering/tree/when-to-go-where). While the original team is no longer actively maintaining the ontology, ongoing community involvement is essential for its continued improvement and relevance.
 
-One point that is important to pay attention to in the maintenance of this ontology is the maintenance of the individuals ontology. Currently the entire individuals ontology is generated from the [notebook](experiments/DataScrapingWhenToGoWhere.ipynb) in the experiments directory. If updates need to be made and individuals are to be regenerated the data sources used to regenerate individuals should be reassessed. In addition data should be as up to date as possible so any updates made to data should be cause to re-generate the individuals ontology.
+## Getting Involved
+We welcome contributions to the When To Go Where Ontology!
 
-## Evolution Policy
-
-So far several data sources have been captured to generate individuals for different components of the when to go where ontology. There are still some components of the ontology for which sufficient data sources have not been found. Work needs to be done in the direction of completing the task of generating individuals for all classes in the ontology. Once all of these data sources have been found, work can be done into identifying state parks or international parks to be added to the ontology as well as relevant data sources.
-
+For any questions or support, feel free to contact our team members:
 - Samyuth Sagi: sagis2@rpi.edu
 - Tyler Layton: laytot@rpi.edu
 - Ben Rodgers: rodgeb@rpi.edu
