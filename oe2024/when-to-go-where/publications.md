@@ -6,5 +6,4 @@ title: publications
 Acadia National Park
 ## Publications
 
-<!-- <iframe src="files/samplepublication.pdf" style="width: 100%;height: 700px;border: none;"></iframe> -->
-<iframe src="https://www.overleaf.com/read/jhfmxmnfkzdn#342c01" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/When_To_Go_Where_Report.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
