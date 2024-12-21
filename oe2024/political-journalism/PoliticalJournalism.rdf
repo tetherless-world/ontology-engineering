@@ -16,7 +16,6 @@
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
@@ -486,6 +485,12 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#GeneralElection">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isGeneralElection"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>general election</rdfs:label>
 		<skos:definition>an election which is directly responsible for choosing who occupies a political office</skos:definition>
 	</owl:Class>
@@ -725,6 +730,12 @@
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PrimaryElection">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPrimaryElection"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label>primary election</rdfs:label>
 		<skos:definition>an election to determine what candidate within a political party will run in the general election</skos:definition>
 	</owl:Class>
@@ -1135,6 +1146,40 @@
 		<skos:definition>relates an article with the organization which published it</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasRelatedGeneralElection">
+		<rdfs:label>has related general election</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PrimaryElection"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#GeneralElection"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPrimaryElection">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionFor">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElection">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isGeneralElection">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition>relates a primary election with a general election for the same political office</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasRelatedPrimaryElection">
+		<rdfs:label>has related primary election</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#GeneralElection"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PrimaryElection"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isGeneralElection">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionFor">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElection">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPrimaryElection">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition>relates a general election with a primary election for the same political office</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasRoleSubject">
 		<rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasSubject"/>
 		<rdfs:label>has role subject</rdfs:label>
@@ -1213,6 +1258,26 @@
 		<skos:definition>relates a political candidate to an election they won</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isGeneralElection">
+		<rdfs:label>is general election</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#GeneralElection"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#GeneralElection"/>
+		<skos:definition>relates a general election with itself</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isGeneralElectionFor">
+		<rdfs:label>is general election for</rdfs:label>
+		<rdfs:label>relates a general election to the political office which is up for election</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#GeneralElection"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalOffice"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isGeneralElection">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionFor">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isMediaBiasOf">
 		<rdfs:label>is media bias of</rdfs:label>
 		<skos:definition>relates a media bias with a publisher who tends to show that bias</skos:definition>
@@ -1221,6 +1286,26 @@
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPoliticalPartyOf">
 		<rdfs:label>is political party of</rdfs:label>
 		<skos:definition>relates a political party to a candidate associated with that party</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPrimaryElection">
+		<rdfs:label>is primary election</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PrimaryElection"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PrimaryElection"/>
+		<skos:definition>relates a primary election with itself</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPrimaryElectionFor">
+		<rdfs:label>is primary election for</rdfs:label>
+		<rdfs:label>relates a primary election to the political office which is up for election</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PrimaryElection"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalOffice"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPrimaryElection">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isElectionFor">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isPublisherOf">
