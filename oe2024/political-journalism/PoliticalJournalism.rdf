@@ -208,7 +208,27 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CompetitiveMargin">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ElectionMargin"/>
+		<rdfs:label>competitive margin</rdfs:label>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CompetitiveMarginElection">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
+		<rdfs:label>competitive margin election</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElectionMargin"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#CompetitiveMargin"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>an election with a competitive margin of victory</skos:definition>
+	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Contributor">
 		<rdfs:subClassOf rdf:resource="&cmns-rlcmp;FunctionalRole"/>
@@ -224,6 +244,7 @@
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DemocratParty">
 		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalParty"/>
+		<rdfs:label>democrat party</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#DemocratPoliticalCandidate">
@@ -441,17 +462,30 @@
 					</rdf:Description>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElectionCandidate"/>
-						<owl:allValuesFrom>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor"/>
-								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice"/>
-							</owl:Restriction>
-						</owl:allValuesFrom>
+						<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalPoliticalCandidate"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>an election for a federal political office</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalPoliticalCandidate">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
+		<rdfs:label>federal political candidate</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a political candidate running for a federal US political office</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalRepresentative">
@@ -542,7 +576,27 @@
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LandslideMargin">
 		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ElectionMargin"/>
+		<rdfs:label>landslide margin</rdfs:label>
+		<skos:definition>an election margin of more than 15 points</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LandslideMarginElection">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
+		<rdfs:label>landslide margin election</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElectionMargin"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LandslideMargin"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>an election with a landslide margin of victory</skos:definition>
+	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LeftWingMediaBias">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#MediaBias"/>
@@ -609,17 +663,30 @@
 					</rdf:Description>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElectionCandidate"/>
-						<owl:allValuesFrom>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor"/>
-								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LocalUSPoliticalOffice"/>
-							</owl:Restriction>
-						</owl:allValuesFrom>
+						<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LocalPoliticalCandidate"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>an election for a local political office</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LocalPoliticalCandidate">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
+		<rdfs:label>local political candidate</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LocalUSPoliticalOffice"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a political candidate running for a local US political office</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#LocalUSPoliticalOffice">
@@ -641,7 +708,28 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#NarrowMargin">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ElectionMargin"/>
+		<rdfs:label>narrow margin</rdfs:label>
+		<skos:definition>an election margin of less than 2 points</skos:definition>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#NarrowMarginElection">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
+		<rdfs:label>narrow margin election</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElectionMargin"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#NarrowMargin"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>an election with a narrow margin of victory</skos:definition>
+	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#NaturalDisaster">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#EventSubject"/>
@@ -766,6 +854,7 @@
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RepublicanParty">
 		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalParty"/>
+		<rdfs:label>republican party</rdfs:label>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#RepublicanPoliticalCandidate">
@@ -961,17 +1050,30 @@
 					</rdf:Description>
 					<owl:Restriction>
 						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElectionCandidate"/>
-						<owl:allValuesFrom>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor"/>
-								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#StateUSPoliticalOffice"/>
-							</owl:Restriction>
-						</owl:allValuesFrom>
+						<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#StatePoliticalCandidate"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>an election for a statal political office</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#StatePoliticalCandidate">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate"/>
+		<rdfs:label>state political candidate</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#PoliticalCandidate">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#isRunningFor"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#StateUSPoliticalOffice"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>a political candidate running for a state US political office</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#StateSenator">
@@ -999,7 +1101,27 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#SubstantialMargin">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#ElectionMargin"/>
+		<rdfs:label>substantial margin</rdfs:label>
 	</owl:NamedIndividual>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#SubstantialMarginElection">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election"/>
+		<rdfs:label>substantial margin election</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#Election">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#hasElectionMargin"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#SubstantialMargin"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>an election with a substantial margin of victory</skos:definition>
+	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#SupremeCourtJustice">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2024/political-journalism/PoliticalJournalism#FederalUSPoliticalOffice"/>
