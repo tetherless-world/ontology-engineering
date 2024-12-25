@@ -48,9 +48,9 @@ List resources you think a reader would benefit from to use your project. We lis
 
 ## Contributors
 
-Avery Iorio, iorioa@rpi.edu
-Kirk Olkowski, olkowk@rpi.edu
-Nathaniel Adair, adairn@rpi.edu
+- Avery Iorio, iorioa@rpi.edu
+- Kirk Olkowski, olkowk@rpi.edu
+- Nathaniel Adair, adairn@rpi.edu
 
 ## Acknowledgements
 
