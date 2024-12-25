@@ -5,6 +5,9 @@ title: About
 
 # Political Journalism Ontology
 
+![County Election](images/County_Election.jpg)
+<sub><sub><i>The County Election</i> by George Caleb Bingham</sub></sub>
+
 ## Abstract
 
 We plan to develop an ontology-enabled system that allows a comparison between various news outlets and journalists that accounts for a difference in terminology and content focus that results from media outlets appealing to different audiences.
