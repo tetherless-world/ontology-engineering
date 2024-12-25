@@ -5,7 +5,7 @@ title: About
 
 # Political Journalism Ontology
 
-![County Election](images/County_Election.jpg)
+![County Election](images/County_Election_1080.jpg)
 <sub><sub><i>The County Election</i> by George Caleb Bingham</sub></sub>
 
 ## Abstract
