@@ -5,10 +5,30 @@ title: related_work
 
 ## Related Work and References
 
-<p class="message-highlight">
-  Please replace the below citations with that with citations to work that can be considered as related work for your project. You can also include reference links to resources you used for the project. To retrieve citations you can use the get citation button against publications on <a href="https://scholar.google.com">Google Scholar</a>. Please try listing out the full author list for publications, the Chicago format allows you this provision.
-</p>
+### Related Works:
 
-- Seneviratne, Oshani, Sabbir M. Rashid, Shruthi Chari, James P. McCusker, Kristin P. Bennett, James A. Hendler, and Deborah L. McGuinness. "Knowledge integration for disease characterization: A breast cancer example." In International Semantic Web Conference, pp. 223-238. Springer, Cham, 2018.
-- Haussmann, Steven, Oshani Seneviratne, Yu Chen, Yarden Ne’eman, James Codella, Ching-Hua Chen, Deborah L. McGuinness, and Mohammed J. Zaki. "FoodKG: a semantics-driven knowledge graph for food recommendation." In International Semantic Web Conference, pp. 146-162. Springer, Cham, 2019.
-- Chari, Shruthi, Miao Qi, Nkechinyere N. Agu, Oshani Seneviratne, James P. McCusker, Kristin P. Bennett, Amar K. Das, and Deborah L. McGuinness. "Making study populations visible through knowledge graphs." In International Semantic Web Conference, pp. 53-68. Springer, Cham, 2019.
+Ontology of Election (Nigerian Election Ontology)
+
+POWER (Portuguese Election Ontology)
+
+SNaP Ontologies
+
+BBC Ontologies
+
+W3C Ontology for Media Resources
+
+News Hunter
+
+
+### References:
+
+Bødker, H. 2018. Journalism History and Digital Archives. Digital Journalism, 6(9), 1113–1120. doi.org/10.1080/21670811.2018.1516114
+
+Krisnadhi, A., Maier, F., Hitzler, P.: OWL and rules. 2011. Reasoning Web. LNCS, vol. 6848: 382–415. doi.org/10.1007/978-3-642-23032-5_7
+
+Moreira, S., Batista, D., Carvalho, P., Couto, F.M., Silva, M.J. 2011. POWER - Politics Ontology for Web Entity Retrieval. In: Salinesi, C., Pastor, O. (eds) Advanced Information Systems Engineering Workshops. CAiSE 2011. Lecture Notes in Business Information Processing, vol 83. Springer, Berlin, Heidelberg. doi.org/10.1007/978-3-642-22056-2_51
+
+Musil, T. 2019. Examining Structure of Word Embeddings with PCA. In: Ekštein, K. (eds) Text, Speech, and Dialogue. TSD 2019. Lecture Notes in Computer Science(), vol 11697. Springer, Cham. doi.org/10.1007/978-3-030-27947-9_18
+
+Rudolph, S.: Foundations of description logics. 2011. Reasoning Web. LNCS, vol. 6848: 76–136. doi.org/10.1007/978-3-642-23032-5_2
+
