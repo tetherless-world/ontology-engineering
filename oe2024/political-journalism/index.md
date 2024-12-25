@@ -24,8 +24,6 @@ This perverse media incentive structure naturally results in outlets finding a p
 
 ## List of Resources
 
-List resources you think a reader would benefit from to use your project. We list some examples you could make available below.
-
 <table>
   <tr>
     <th>Resources</th>
