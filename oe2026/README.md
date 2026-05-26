@@ -1,4 +1,4 @@
-# Ontology Engineering 2026
+# Ontology Engineering Fall 2026
 
 <br />
 
