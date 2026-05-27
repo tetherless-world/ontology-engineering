@@ -6,9 +6,7 @@
 
 <strong>Guest Lecturer:</strong> Ms. Elisa Kendall - ekendall at thematix dot com
 
-<strong>Course Helpers:  </strong>
-
-<br />
+<strong>Course Managers:  </strong>
 
 <strong>Course Listing:</strong> Ontologies, CSCI 6340, CSCI 4340
 
