@@ -1,12 +1,10 @@
-# Ontology Engineering Fall 2026
+# Ontology Engineering (Course)
 
 <br />
 
 <strong>Instructor:</strong> Professor Deborah McGuinness - dlm at cs dot rpi dot edu
 
 <strong>Guest Lecturer:</strong> Ms. Elisa Kendall - ekendall at thematix dot com
-
-<strong>Course Managers: </strong>
 
 <strong>Course Listing:</strong> Ontologies, CSCI 6340, CSCI 4340
 
