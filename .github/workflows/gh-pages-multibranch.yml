@@ -1,0 +1,66 @@
+name: branch-multipage
+on: 
+  push:
+    branches:
+      - master
+      - agentic-orchestration
+      - physical-properties
+      - tracking-cjf
+      - ventilation-compliance
+jobs:
+  branch-compilation:
+    runs-on: ubuntu-latest
+    #permissions:
+    #  contents: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Make target publish directory
+        run: |
+          mkdir public/
+
+      - name: Place build in publish directory
+        run: |
+          rsync -raiv ./_data public/
+          rsync -raiv ./_includes public/
+          rsync -raiv ./_layouts public/
+          rsync -raiv ./assets public/
+          rsync -raiv ./docs public/
+          rsync -raiv ./images public/
+          rsync -raiv ./oe* public/
+          rsync -raiv ./*.* public/
+          rsync -raiv ./.markdownlint.yml public/
+          rsync -raiv ./.ruby-version public/
+          rsync -raiv ./Gemfile public/
+          
+      - name: multipages
+        uses: coderefinery/gh-pages-multibranch@main
+        if: ${{ github.event_name == 'push' }}
+        with:
+          directory: public
+          default_branch: master
+          publish_branch: gh-pages
+      
+  # Remember to not limit your deploy step to the default branch!
+  #deploy:
+  #  name: Deploy
+  #  runs-on: ubuntu-latest
+  #  needs: branch-compilation
+  #  permissions:
+  #    contents: write
+    
+  #  steps:
+    
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.event_name == 'push' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public/
+          force_orphan: true
+          enable_jekyll: true
+          

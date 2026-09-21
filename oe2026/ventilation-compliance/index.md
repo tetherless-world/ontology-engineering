@@ -3,6 +3,8 @@ layout: default
 title: About
 ---
 
+## Hospital Ventilation Compliance and Containment Assurance
+
 ## Note to students
 
 This website is organized as follows.
