@@ -1,0 +1,13 @@
+name: branch-multipage
+on: [push, pull_request]  # No need to limit to certain branches
+jobs:
+  your-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: multipages
+        uses: coderefinery/gh-pages-multibranch@main
+        if: ${{ github.event_name == 'push' }}
+        with:
+          directory: public
+          default_branch: master
+          
