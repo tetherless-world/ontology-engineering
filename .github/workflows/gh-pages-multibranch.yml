@@ -19,12 +19,19 @@ jobs:
           lfs: true
 
       - name: Make target publish directory
-        run: 
+        run: |
           mkdir public/
 
       - name: Place build in publish directory
         run: |
-          rsync -raiv --exclude './public/' ./ public/
+          rsync -raiv ./_data public/
+          rsync -raiv ./_includes public/
+          rsync -raiv ./_layouts public/
+          rsync -raiv ./assets public/
+          rsync -raiv ./docs public/
+          rsync -raiv ./images public/
+          rsync -raiv ./oe* public/
+          rsync -raiv ./*.* public/
           
       - name: multipages
         uses: coderefinery/gh-pages-multibranch@main
