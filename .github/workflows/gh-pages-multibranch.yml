@@ -15,12 +15,16 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+
+      - name: Make target publish directory
+        run:
+          mkdir public/
           
       - name: multipages
         uses: coderefinery/gh-pages-multibranch@main
         if: ${{ github.event_name == 'push' }}
         with:
-          directory: public
+          directory: public/
           default_branch: gh-pages-base
       # Remember to not limit your deploy step to the default branch!
       - name: Deploy
