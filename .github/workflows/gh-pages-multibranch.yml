@@ -27,6 +27,18 @@ jobs:
           directory: public
           default_branch: master
           publish_branch: gh-pages
+
+      - uses: actions/upload-artifact@v6
+        if: ${{ github.event_name == 'push' }}
+        with:
+          name: gh-pages-build
+          path: public/
+
+      - uses: actions/download-artifact@v6
+        if: ${{ github.event_name == 'push' }}
+        with:
+          name: gh-pages-build
+          path: public/
       
       # Remember to not limit your deploy step to the default branch!
       - name: Deploy
