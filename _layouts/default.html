@@ -135,6 +135,9 @@
                   {% assign project_path = project.path %}
                 {% else %}
                   {% assign project_path = year_path | append: '/' | append: project.path %}
+                  {% if year.path contains "2026" %}
+                      {% assign project_path = "/ontology-engineering/branch/" | append: project.path | append: year.path | append: '/' | append: project.path %}
+                  {% endif %}
                 {% endif %}
                 {% if debug_mode %}
                   <p>project.path: {{project.path | inspect }}</p>
