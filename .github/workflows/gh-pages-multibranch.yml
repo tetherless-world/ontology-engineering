@@ -11,6 +11,11 @@ jobs:
   branch-compilation:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+          
       - name: multipages
         uses: coderefinery/gh-pages-multibranch@main
         if: ${{ github.event_name == 'push' }}
