@@ -3,6 +3,8 @@ layout: default
 title: About
 ---
 
+## Tracking Collective Judgement Formation in Multiparty Dialogue
+
 ## Note to students
 
 This website is organized as follows.

@@ -1,0 +1,39 @@
+name: branch-multipage
+on: 
+  push:
+    branches:
+      - master
+      - agentic-orchestration
+      - physical-properties
+      - tracking-cjf
+      - ventilation-compliance
+jobs:
+  branch-compilation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Make target publish directory
+        run:
+          mkdir public/
+          
+      - name: multipages
+        uses: coderefinery/gh-pages-multibranch@main
+        if: ${{ github.event_name == 'push' }}
+        with:
+          directory: public/
+          default_branch: master
+      
+      # Remember to not limit your deploy step to the default branch!
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.event_name == 'push' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public/
+          force_orphan: true
+          
