@@ -17,4 +17,13 @@ jobs:
         with:
           directory: public
           default_branch: master
+      # Remember to not limit your deploy step to the default branch!
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public/
+          force_orphan: true
           
