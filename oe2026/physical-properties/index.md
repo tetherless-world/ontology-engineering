@@ -3,6 +3,8 @@ layout: default
 title: About
 ---
 
+## Reasoning About Action Feasibility from Physical Properties
+
 ## Note to students
 
 This website is organized as follows.
