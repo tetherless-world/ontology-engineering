@@ -7,6 +7,10 @@ title: use case
 
 <iframe src="files/OEUseCaseTemplatePDF.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
+### Download
+
+- [Use Case Document (.docx)](files/OE_4_TeamCJF_UseCase_Clean.docx)
+
 ## Previous Versions
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
