@@ -5,7 +5,7 @@ title: term list
 
 ## Terminology List
 
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/tetherless-world/ontology-engineering/tracking-cjf/oe2026/tracking-cjf/files/OE_4_TeamCJF_CuratedTermList.xlsx&embedded=true" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQBr_ltRowm31kr8QhwyclEt8t0mNhpOWUc1tj_F5jPNm0IPajmEWwm2aD2kDumHw/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Downloads
 

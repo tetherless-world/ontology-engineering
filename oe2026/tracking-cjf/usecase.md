@@ -5,7 +5,7 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/tetherless-world/ontology-engineering/tracking-cjf/oe2026/tracking-cjf/files/OE_4_TeamCJF_UseCase_Clean.docx&embedded=true" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vSBLpVkVz2x1SZxTKyoRI42qYinBjG8wUz-wUKA-eS-_7KrfDcfD8hCthZacthL1A/pub?embedded=true" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ### Download
 
