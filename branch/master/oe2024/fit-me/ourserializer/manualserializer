@@ -1,0 +1,106 @@
+#!/bin/bash
+#
+# pre-commit hook script that activates the Sesame serializer to serialize any OWL files in a standard format just before
+# they are committed to the (local) Github repository.
+#
+# Called by "git commit" with no arguments. This hook can stop the commit when it encounters an error.
+#
+# To enable this hook, rename this file to "pre-commit" and save it in the directory <your git clone root>/.git/hooks
+#
+
+### CONFIG ###
+# If you want to set your Java directory, uncomment the following line and change <path_to_java> to your Java directory
+#export JAVA_HOME="/C/Program Files/Java/jre1.8.0_351"
+export RDF_TOOLKIT_JAVA_HOME="/mnt/c/Program Files/Java/jdk-21/"
+
+
+log_prefix="rdf-toolkit: sesame-serializer: "
+
+function log() {
+  echo "${log_prefix}$@"
+}
+
+function log_error() {
+  log "ERROR: $@"
+}
+
+log "Starting Sesame serializer"
+
+java_exe=""
+
+function findJava() {
+  java_home=""
+
+  if [ "${RDF_TOOLKIT_JAVA_HOME}" != "" ] ; then
+    java_home="${RDF_TOOLKIT_JAVA_HOME}"
+  elif [ "${JAVA_HOME}" != "" ] ; then
+    java_home="${JAVA_HOME}"
+  fi
+
+  if [ "${java_home}" == "" ] ; then
+    log_error "Please set RDF_TOOLKIT_JAVA_HOME or JAVA_HOME to point to a Java 7 or later installation."
+    return 1
+  fi
+
+  java_home=${java_home/C:\\/\/c\/}
+  java_home=${java_home//\\/\/}
+  log "java_home =" ${java_home}
+
+  if [ -x "${java_home}/bin/java.exe" ] ; then
+    java_exe="${java_home}/bin/java.exe"
+  else
+    log_error "Could not find java in your RDF_TOOLKIT_JAVA_HOME or JAVA_HOME: ${java_home}"
+    return 1
+  fi
+
+  log "Java found: $java_exe"
+  return 0
+}
+
+function findSerializerJar() {
+  RDF_TOOLKIT_JAR="rdf-toolkit.jar"
+}
+
+function serialize() {
+  local file="$1"
+  if [ -f "$file" ] ; then
+    local extension="${file##*.}"
+
+    if [ "$extension" != "rdf" ] ; then
+      log "Skipping unsupported file $file"
+      return 0
+    fi
+
+    log "Launching the sesame-serializer with --source ${file}"
+
+    "${java_exe}" -Xmx1g -cp "${RDF_TOOLKIT_JAR}" org.edmcouncil.rdf_toolkit.RdfFormatter \
+      --source "${file}" \
+      --target "${file}X" \
+      --target-format rdf-xml \
+      --use-dtd-subset \
+      --inline-blank-nodes \
+      --infer-base-iri
+
+    if [ $? -eq 0 ] ; then
+      log "Serialization successful: ${file}"
+      mv "${file}X" "${file}"
+    else
+      log_error "Serialization failed for ${file}"
+      return 1
+    fi
+  else
+    log_error "File not found:s ${file}"
+    return 1
+  fi
+}
+
+function main() {
+  findJava || return 1
+  findSerializerJar || return 2
+
+  for file in "$@"; do
+    serialize "$file" || return 3
+  done
+}
+
+main "$@"

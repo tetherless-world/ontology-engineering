@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY cmns-rlcmp "https://www.omg.org/spec/Commons/RolesAndCompositions/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY oe-wtgw "https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:oe-wtgw="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2024/when-to-go-where/WhenToGoWhere/">
+		<dct:abstract>When to go where is a project that aims to promote outdoor exploration across the 63 National Parks in the United States. We would like to give people a tool that will allow them to find national parks that will fit any preferences that they may have. We want to give people as few excuses as possible for not pursing outdoor activities such as camping and hiking.
+
+To achieve this we are creating a semantically enabled application that will leverage an OWL ontology to answer user questions. Our interface will give users options to input preferences and using semantics we will identify the best parks that match a users particular criteria.</dct:abstract>
+		<dct:creator>Annabelle Choi</dct:creator>
+		<dct:creator>Ben Rodgers</dct:creator>
+		<dct:creator>Samyuth Sagi</dct:creator>
+		<dct:creator>Tyler Layton</dct:creator>
+		<dct:license rdf:datatype="&xsd;anyURI">https://when-to-go-where--rpi-ontology-engineering.netlify.app/oe2024/when-to-go-where/license</dct:license>
+		<dct:modified>2024-11-30</dct:modified>
+		<dct:publisher>WhenToGoWhere</dct:publisher>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/114aa8ad617d0eeea3570d8d0f7a65eb21b862a9/oe2024/when-to-go-where/WhenToGoWhere.rdf</owl:priorVersion>
+		<owl:priorVersion>https://github.com/tetherless-world/ontology-engineering/blob/dac8dda75fb576d8551123076e10627d716549d9/oe2024/when-to-go-where/WhenToGoWhere.rdf</owl:priorVersion>
+		<owl:versionIRI rdf:resource="&oe-wtgw;7.0"/>
+		<cmns-av:copyright>Copyright (c) 2024 Annabelle Choi, Ben Rodgers, Samyuth Sagi, Tyler Layton</cmns-av:copyright>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&oe-wtgw;Accomodation">
+		<rdfs:label>accomodation</rdfs:label>
+		<skos:definition>temporary lodgings, sometimes also including board</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Glossary of National Park Service Terms.” [Online]. Available: https://npshistory.com/publications/nps-glossary.pdf. [Accessed:  25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Activity">
+		<rdfs:label>activity</rdfs:label>
+		<skos:definition>a use of the park by visitors</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Glossary of National Park Service Terms.” [Online]. Available: https://npshistory.com/publications/nps-glossary.pdf. [Accessed:  25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Amphitheatre">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:label>amphitheatre</rdfs:label>
+		<skos:definition>a circular or oval open-air venue with seating around a central performance area, often used for events in parks or natural settings</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Amphibian.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Animal">
+		<rdfs:label>animal</rdfs:label>
+		<skos:definition>living organism that feeds on organic matter, typically having specialized sense organs and nervous systems and able to move voluntarily</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Species List (IRMA Portal).” [Online]. Available: https://irma.nps.gov/NPSpecies/Search/SpeciesList. [Accessed:  25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;AnimalType">
+		<rdfs:label>animal type</rdfs:label>
+		<skos:definition>the category of a specific living organism</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Species List (IRMA Portal).” [Online]. Available: https://irma.nps.gov/NPSpecies/Search/SpeciesList. [Accessed:  25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;AnimalTypeOf">
+		<rdfs:label>animal type of</rdfs:label>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isAnimalType"/>
+		<skos:definition>the category of a specific living organism</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="&oe-wtgw;AutoCaravan">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Activity"/>
+		<rdfs:label>auto caravan</rdfs:label>
+		<skos:definition>a motor vehicle equipped for living in, typically used for recreational purposes, often referred to as a camper van or motorhome.</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Auto-caravan.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;AvgMonthlyVisitors">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasMonth"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Month"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasVisitors"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>average monthly visitors</rdfs:label>
+		<skos:definition>the amount of people who go to a national park in a single month of the year</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Park statistics.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;AvgSeasonalTemperature">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;AvgTemperature"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;temperatureHasSeason"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Season"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>average seasonal temperature</rdfs:label>
+		<skos:definition>the mean thermal reading of a specific place over a part of the year</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Average Temperature.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 22-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;AvgSeasonalVisitors">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasSeason"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Season"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasVisitors"/>
+				<owl:someValuesFrom rdf:resource="&xsd;integer"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>average seasonal visitors</rdfs:label>
+		<skos:definition>the amount of people who go to a national park in a single season of the year</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Park statistics.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;AvgTemperature">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasTemperature"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>average temperature</rdfs:label>
+		<skos:definition>the mean thermal reading of a specific place</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Average Temperature.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 22-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;CampGround">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Accomodation"/>
+		<rdfs:label>camp ground</rdfs:label>
+		<skos:definition>a designated area in parks or recreational areas where visitors can set up tents or park recreational vehicles for overnight stays</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Glossary of Terms.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Carnivore">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;DietaryPattern"/>
+		<rdfs:label>carnivore</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe-wtgw;Herbivore"/>
+		<owl:disjointWith rdf:resource="&oe-wtgw;Omnivore"/>
+		<skos:definition>an animal that primarily eats other animals, or meat</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Carnivore.” [Online]. Available: https://www.britannica.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Climate">
+		<rdfs:label>climate</rdfs:label>
+		<skos:definition>the average weather conditions in a particular region over a long period, including temperature, humidity, wind patterns, and precipitation</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “climate.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Cold">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Climate"/>
+		<rdfs:label>cold</rdfs:label>
+		<skos:definition>having or being a temperature that is uncomfortably low for humans</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, &quot;Cold,&quot; Merriam-Webster.com Dictionary, [Online]. Available: https://www.merriam-webster.com/dictionary/cold. [Accessed: 25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;ComfortStation">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:label>comfort station</rdfs:label>
+		<skos:definition>a facility with restrooms, sinks, and sometimes showers, provided for public use, especially in camping or recreational areas</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Glossary of Terms.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;DietaryPattern">
+		<rdfs:label>dietary pattern</rdfs:label>
+		<skos:definition>the habitual eating behaviors and food choices of an individual or group, often categorized by food type, frequency, and portion size</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Dietary Pattern.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Difficulty">
+		<rdfs:label>difficulty</rdfs:label>
+		<skos:definition>A rating assigned by the National Park Service that lets visitors know how intensive a particular trail is</skos:definition>
+		<cmns-av:adaptedFrom>Oxford English Dictionary. [Online]. Available: https://www.oed.com/?tl=true. Accessed: Sep. 23, 2024.</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Dryland">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Terrain"/>
+		<rdfs:label>dryland</rdfs:label>
+		<skos:definition>land characterized by low rainfall, often used for agricultural purposes or recreation in deserts and other arid regions</skos:definition>
+		<cmns-av:adaptedFrom>U.S. Geological Survey, “US Topo: Maps for America.” [Online]. Available: https://www.usgs.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Facility">
+		<rdfs:label>facility</rdfs:label>
+		<skos:definition>improvements and other material things provided for the use, accommodation, and convenience of park visitors</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Glossary of Terms.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Habit">
+		<rdfs:label>dietary habit</rdfs:label>
+		<skos:definition>the natural environment in which a species or group of species lives and thrives, providing essential resources like food, shelter, and space</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Dietary Habit.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 22-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Herbivore">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;DietaryPattern"/>
+		<rdfs:label>herbivore</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe-wtgw;Omnivore"/>
+		<skos:definition>an animal that only eats plant</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Herbivore.” [Online]. Available: https://www.britannica.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Hike">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Activity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasDifficulty"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Difficulty"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasDistance"/>
+				<owl:someValuesFrom rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;isHikeOf"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;NationalPark"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>hike</rdfs:label>
+		<skos:definition>a long walk, typically through countryside or wilderness areas, undertaken for leisure or exercise</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Hike.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Hotel">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Accomodation"/>
+		<rdfs:label>hotel</rdfs:label>
+		<skos:definition>buildings providing lodging, meals, and other services for travelers and tourists, often found near parks or recreational areas</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “hotel.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;IceLand">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Terrain"/>
+		<rdfs:label>ice land</rdfs:label>
+		<skos:definition>a region characterized by permanent or seasonal ice and snow cover, such as glaciers or polar areas, offering unique ecosystems and recreational opportunities</skos:definition>
+		<cmns-av:adaptedFrom>U.S. Geological Survey, “US Topo: Maps for America.” [Online]. Available: https://www.usgs.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;InformationStation">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:label>information station</rdfs:label>
+		<skos:definition>a booth or building where visitors can receive assistance, guides, and information regarding their surroundings in parks, campsites, or other public areas</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Glossary of Terms.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;License">
+		<rdfs:subClassOf rdf:resource="&cmns-doc;LegalDocument"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;holdsDuring"/>
+				<owl:onClass rdf:resource="&cmns-dt;DatePeriod"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;isIssuedBy"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Licensor"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;hasPartyRole"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Licensee"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>license</rdfs:label>
+		<skos:definition>grant of permission needed to do something</skos:definition>
+		<cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>Note that in some cases, a license may also be considered an agreement or contract, depending on the specifics of the license and jurisdiction.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Licensee">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rlcmp;isPlayedBy"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-pts;isAPartyTo"/>
+						<owl:someValuesFrom rdf:resource="&oe-wtgw;License"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>licensee</rdfs:label>
+		<skos:definition>a party to whom a license has been granted</skos:definition>
+		<cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Licensor">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;issues"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;License"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rlcmp;isPlayedBy"/>
+				<owl:someValuesFrom>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&cmns-pts;isAPartyTo"/>
+						<owl:someValuesFrom rdf:resource="&oe-wtgw;License"/>
+					</owl:Restriction>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>licensor</rdfs:label>
+		<skos:definition>a party who grants a license</skos:definition>
+		<cmns-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;LoopTrail">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;TrailType"/>
+		<rdfs:label>loop trail</rdfs:label>
+		<skos:definition>a trail that starts and ends at the same point forming a circular route</skos:definition>
+		<cmns-av:adaptedFrom>FATMAP, &quot;The Most Famous Hike in Every US National Park,&quot; FATMAP, [Online]. Available: https://fatmap.com/discover/guidebook/united-states-of-america/washington/alpine-climbing/hiking/the-most-famous-hike-in-every-us-national-park/109220. [Accessed: 23-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Month">
+		<rdfs:label>month</rdfs:label>
+		<skos:definition>a unit of time used in calendars, which is typically around 28 to 31 days long dividing the year into 12 parts</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Mountain">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Terrain"/>
+		<rdfs:label>mountain</rdfs:label>
+		<skos:definition>a large natural elevation of the earth’s surface rising abruptly from the surrounding level, often forming prominent features in parks and wilderness areas</skos:definition>
+		<cmns-av:adaptedFrom>U.S. Geological Survey, “US Topo: Maps for America.” [Online]. Available: https://www.usgs.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;NationalPark">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasTerrain"/>
+				<owl:allValuesFrom>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&oe-wtgw;Dryland">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe-wtgw;IceLand">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe-wtgw;Mountain">
+							</rdf:Description>
+							<rdf:Description rdf:about="&oe-wtgw;WetLand">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:allValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasAccomodation"/>
+				<owl:onClass rdf:resource="&oe-wtgw;Accomodation"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasAvgSeasonalTemperature"/>
+				<owl:onClass rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasState"/>
+				<owl:onClass rdf:resource="&oe-wtgw;State"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasActivity"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Activity"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasFacility"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;Facility"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasParkStatistic"/>
+				<owl:someValuesFrom rdf:resource="&oe-wtgw;ParkStatistic"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Locations/hasLocation"/>
+				<owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/Locations/Location"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>national park</rdfs:label>
+		<skos:definition>a large area of land or water that is protected by a government for the preservation of its natural environment, history, or culture</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “National park.” [Online]. Available: https://www.britannica.com/science/national-park. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;NatureWalk">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Activity"/>
+		<rdfs:label>nature walk</rdfs:label>
+		<skos:definition>a walk on a nature trail, especially with an experienced guide</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Nature walk.” [Online]. Available: https://www.britannica.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Omnivore">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;DietaryPattern"/>
+		<rdfs:label>omnivore</rdfs:label>
+		<skos:definition>an animal that eats both plants and other animals</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Omnivore.” [Online]. Available: https://www.britannica.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;OutandBackTrail">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;TrailType"/>
+		<rdfs:label>outand back trail</rdfs:label>
+		<skos:definition>a trail that starts in one spot and ends in another, hikers will have to retrace their footsteps or find another trail back to where they started</skos:definition>
+		<cmns-av:adaptedFrom>FATMAP, &quot;The Most Famous Hike in Every US National Park,&quot; FATMAP, [Online]. Available: https://fatmap.com/discover/guidebook/united-states-of-america/washington/alpine-climbing/hiking/the-most-famous-hike-in-every-us-national-park/109220. [Accessed: 23-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;ParkStatistic">
+		<rdfs:label>park statistic</rdfs:label>
+		<skos:definition>statistics about a park, including visitation numbers, trail usage, wildlife sightings, and other relevant data to monitor park activity and health</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Park statistics.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Parking">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:label>parking</rdfs:label>
+		<skos:definition>a space or lot where vehicles can be parked, typically found at entrances to parks, trails, or campsites</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Glossary of Terms.” [Online]. Available: https://www.nps.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Rainy">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Climate"/>
+		<rdfs:label>rainy</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe-wtgw;Sunny"/>
+		<skos:definition>marked by more rain than usual</skos:definition>
+		<cmns-av:adaptedFrom>NWS, &quot;Full Weather Glossary,&quot; National Weather Service, [Online]. Available: https://www.weather.gov/otx/Full_Weather_Glossary#R. [Accessed: 25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Season">
+		<rdfs:label>season</rdfs:label>
+		<skos:definition>each of the four divisions of the year (spring, summer, fall, and winter) marked by particular weather patterns and daylight hours, resulting from the earth&apos;s changing position with regard to the sun</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Season.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 22-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;State">
+		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/Locations/Location"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-wtgw;hasPark"/>
+				<owl:onClass rdf:resource="&oe-wtgw;NationalPark"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>state</rdfs:label>
+		<skos:definition>the 50 territories that make up the United States of America</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Sunny">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Climate"/>
+		<rdfs:label>sunny</rdfs:label>
+		<skos:definition>exposed to, brightened by, or warmed by the sun</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, &quot;Sunny,&quot; Merriam-Webster.com Dictionary, [Online]. Available: https://www.merriam-webster.com/dictionary/sunny. [Accessed: 25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Terrain">
+		<rdfs:label>terrain</rdfs:label>
+		<skos:definition>the physical features of a piece of land, including its elevation, slope, and orientation, often used to describe hiking or camping environments</skos:definition>
+		<cmns-av:adaptedFrom>U.S. Geological Survey, “US Topo: Maps for America.” [Online]. Available: https://www.usgs.gov. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;TrailType">
+		<rdfs:label>trail type</rdfs:label>
+		<skos:definition>a category of trail based on observable patterns in the trail</skos:definition>
+		<cmns-av:adaptedFrom>FATMAP, &quot;The Most Famous Hike in Every US National Park,&quot; FATMAP, [Online]. Available: https://fatmap.com/discover/guidebook/united-states-of-america/washington/alpine-climbing/hiking/the-most-famous-hike-in-every-us-national-park/109220. [Accessed: 23-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;WetLand">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Terrain"/>
+		<rdfs:label>wet land</rdfs:label>
+		<skos:definition>an area of land that is saturated with water either permanently or seasonally, such as marshes, swamps, and bogs, providing unique ecosystems</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “wetland.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-wtgw;Windy">
+		<rdfs:subClassOf rdf:resource="&oe-wtgw;Climate"/>
+		<rdfs:label>windy</rdfs:label>
+		<skos:definition>marked by strong wind or by more wind than usual</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, &quot;Windy,&quot; Merriam-Webster.com Dictionary, [Online]. Available: https://www.merriam-webster.com/dictionary/windy. [Accessed: 25-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAccessibility">
+		<rdfs:label>has accessibility</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isAccessibilityOf"/>
+		<skos:definition>the degree to which a park, trail, or facility is accessible to individuals with disabilities, including features like ramps, designated parking, and trail modifications</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Accessibility,” [Online]. Available: https://www.britannica.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAccomodation">
+		<rdfs:label>has accomodation</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isAccommodationOf"/>
+		<skos:definition>temporary lodgings, sometimes also including board</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Accommodation,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasActivity">
+		<rdfs:label>has activity</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Activity"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isActivityOf"/>
+		<skos:definition>a use of the park by visitors</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Activity,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAnimal">
+		<rdfs:label>has animal</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isAnimalOf"/>
+		<skos:definition>a living organism that feeds on organic matter, typically having specialized sense organs and nervous systems and able to move voluntarily</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Animal,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAvgSeasonalTemperature">
+		<rdfs:label>has average seasonal temperature</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isAvgSeasonalTemperatureOf"/>
+		<skos:definition>the mean thermal reading of a specific place over a part of the year</skos:definition>
+		<cmns-av:adaptedFrom>National Weather Service, “Average Temperature,” [Online]. Available: https://www.weather.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasAvgSeasonalVisitors">
+		<rdfs:label>has average seasonal visitors</rdfs:label>
+		<skos:definition>the mean number of visitors in a particular season</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasCapacity">
+		<rdfs:label>hasCapacity</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;ParkStatistic"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isCapacityOf"/>
+		<skos:definition>The maximum number of people, vehicles, or visitors that a park, campground, or facility can accommodate at one time.</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Visitor Capacity,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasDifficulty">
+		<rdfs:label>has difficulty</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Hike"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Difficulty"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isDifficultyOf"/>
+		<skos:definition>Property describing if a trail has a difficulty rating</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Difficulty,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-wtgw;hasDistance">
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+		<rdfs:label>has distance</rdfs:label>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:onDatatype rdf:resource="&xsd;decimal"/>
+				<owl:withRestrictions rdf:parseType="Collection">
+					<rdf:Description>
+						<xsd:minInclusive rdf:datatype="&xsd;decimal">0</xsd:minInclusive>
+					</rdf:Description>
+				</owl:withRestrictions>
+			</rdfs:Datatype>
+		</rdfs:range>
+		<skos:definition>the amount of space between two points</skos:definition>
+		<cmns-av:adaptedFrom>Oxford English Dictionary. [Online]. Available: https://www.oed.com/?tl=true. Accessed: Sep. 23, 2024.</cmns-av:adaptedFrom>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasFacility">
+		<rdfs:label>has facility</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isFacilityOf"/>
+		<skos:definition>improvements and other material things provided for the use, accommodation, and convenience of park visitors</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Facility,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasHike">
+		<rdfs:subPropertyOf rdf:resource="&oe-wtgw;hasActivity"/>
+		<rdfs:label>has hike</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Hike"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isHikeOf"/>
+		<skos:definition>a long walk, typically through countryside or wilderness areas, undertaken for leisure or exercise</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Hiking,” [Online]. Available: https://www.britannica.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasMonth">
+		<rdfs:label>has month</rdfs:label>
+		<skos:definition>a unit of time used in calendars, which is typically around 28 to 31 days long dividing the year into 12 parts</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasPark">
+		<rdfs:label>has park</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Accomodation"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Activity"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:range rdf:resource="&oe-wtgw;ParkStatistic"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;hasState"/>
+		<skos:definition>a state has a national park</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “National Park,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasParkStatistic">
+		<rdfs:label>has park statistic</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;ParkStatistic"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isStatisticOf"/>
+		<skos:definition>statistics about a park, including visitation numbers, trail usage, wildlife sightings, and other relevant data to monitor park activity and health</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Statistics,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasSeason">
+		<rdfs:label>has season</rdfs:label>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isSeasonOf"/>
+		<skos:definition>each of the four divisions of the year (spring, summer, fall, and winter) marked by particular weather patterns and daylight hours, resulting from the earth&apos;s changing position with regard to the sun</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Season,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasState">
+		<rdfs:label>has state</rdfs:label>
+		<skos:definition>A park has a national territory of the United States</skos:definition>
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “State,” [Online]. Available: https://www.britannica.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-wtgw;hasTemperature">
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+		<rdfs:label>has temperature</rdfs:label>
+		<skos:definition>the thermal reading of a specific place</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Temperature.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasTerrain">
+		<rdfs:subPropertyOf rdf:resource="&oe-wtgw;temperatureHasSeason"/>
+		<rdfs:label>terrain</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;NationalPark"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Terrain"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isTerrainOf"/>
+		<skos:definition>the physical features of a piece of land, including its elevation, slope, and orientation, often used to describe hiking or camping environments</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasTrailHead">
+		<rdfs:label>has trail head</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Hike"/>
+		<rdfs:range rdf:resource="&oe-wtgw;TrailType"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isTrailHeadOf"/>
+		<skos:definition>the start of a trail</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Trailhead,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;hasTrailType">
+		<rdfs:label>has trail type</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Hike"/>
+		<rdfs:range rdf:resource="&oe-wtgw;TrailType"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;isTrailTypeOf"/>
+		<skos:definition>the kind of trail it is, can either be out and back or a loop</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Trail Types,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-wtgw;hasVisitors">
+		<rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+		<rdfs:label>has visitors</rdfs:label>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:onDatatype rdf:resource="&xsd;integer"/>
+				<owl:withRestrictions rdf:parseType="Collection">
+					<rdf:Description>
+						<xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
+					</rdf:Description>
+				</owl:withRestrictions>
+			</rdfs:Datatype>
+		</rdfs:range>
+		<skos:definition>the amount of people at a certain place</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAccessibilityOf">
+		<rdfs:label>is accessability of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+		<skos:definition>the degree to which a park, trail, or facility is accessible to individuals with disabilities, including features like ramps, designated parking, and trail modifications</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Accessibility.” [Online]. Available: https://www.merriam-webster.com. [Accessed: 15-Oct-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAccommodationOf">
+		<rdfs:label>is accommodation of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+		<skos:definition>Property describing if a lodging belongs to a national park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Accommodation,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isActivityOf">
+		<rdfs:label>is activity of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Activity"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>Property describing if an activity occurs in a park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Activity,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAnimalOf">
+		<rdfs:label>is animal of</rdfs:label>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>Property describing if an animal is associated with a national park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Animal,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAnimalType">
+		<rdfs:label>is animal type</rdfs:label>
+		<skos:definition>the category of a specific living organism</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAvgSeasonalTemperatureOf">
+		<rdfs:label>is average seasonal temperature of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>property describing if a temperature is associated with a park and a season</skos:definition>
+		<cmns-av:adaptedFrom>National Weather Service, “Average Temperature,” [Online]. Available: https://www.weather.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isAvgSeasonalVisitorsOf">
+		<rdfs:label>is average seasonal visitors of</rdfs:label>
+		<skos:definition>property describing if a visitor statistic is associated with a park and a season</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isCapacityOf">
+		<rdfs:label>is capacity of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>Property describing if a capacity is associated with a facility</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Visitor Capacity,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isDifficultyOf">
+		<rdfs:label>is difficulty of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Difficulty"/>
+		<skos:definition>the level of intensity of a certain path, can be defined by easy, medium, hard, severe, extreme, etc</skos:definition>
+		<cmns-av:adaptedFrom>FATMAP, &quot;The Most Famous Hike in Every US National Park,&quot; FATMAP, [Online]. Available: https://fatmap.com/discover/guidebook/united-states-of-america/washington/alpine-climbing/hiking/the-most-famous-hike-in-every-us-national-park/109220. [Accessed: 23-Sep-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isFacilityOf">
+		<rdfs:label>is facility of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Facility"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>Property describing if a facility belongs to a national park</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Facility,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isHikeOf">
+		<rdfs:label>is hike of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Hike"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>a long walk, typically through countryside or wilderness areas, undertaken for leisure or exercise</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, &quot;Hike,&quot; [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isIssuedBy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-org;isProvidedBy"/>
+		<rdfs:label>is issued by</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-pts;AgentRole"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;issues"/>
+		<skos:definition>indicates a role played by a functional entity or party responsible for circulating, distributing, or publishing something</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isSeasonOf">
+		<rdfs:label>is season of</rdfs:label>
+		<skos:definition>Property describing if a season is associated with a specific object</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isSeasonOfTemperature">
+		<rdfs:label>is season of temperature</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Season"/>
+		<rdfs:range rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+		<owl:inverseOf rdf:resource="&oe-wtgw;temperatureHasSeason"/>
+		<skos:definition>Property describing if a season corresponds to a temperature</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isStatisticOf">
+		<rdfs:label>is statistic of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;ParkStatistic"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>Property describing if a statistic belongs to a national park</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Statistics,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isTerrainOf">
+		<rdfs:label>is terrain of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;Terrain"/>
+		<rdfs:range rdf:resource="&oe-wtgw;NationalPark"/>
+		<skos:definition>Property describing if a terrain is associated with a national park</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isTrailHeadOf">
+		<rdfs:label>is trail head of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;TrailType"/>
+		<skos:definition>Property describing if a trailhead marks the start of a trail</skos:definition>
+		<cmns-av:adaptedFrom>Merriam-Webster, “Trailhead,” [Online]. Available: https://www.merriam-webster.com. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;isTrailTypeOf">
+		<rdfs:label>is trail type of</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;TrailType"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Hike"/>
+		<skos:definition>Property describing if a kind of trail is associated with a hike</skos:definition>
+		<cmns-av:adaptedFrom>National Park Service, “Trail Types,” [Online]. Available: https://www.nps.gov. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;issues">
+		<rdfs:subPropertyOf rdf:resource="&cmns-org;provides"/>
+		<rdfs:label>issues</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-pts;AgentRole"/>
+		<skos:definition>officially makes something available</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-wtgw;temperatureHasSeason">
+		<rdfs:subPropertyOf rdf:resource="&oe-wtgw;hasSeason"/>
+		<rdfs:label>temperature has season</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-wtgw;AvgSeasonalTemperature"/>
+		<rdfs:range rdf:resource="&oe-wtgw;Season"/>
+		<skos:definition>the thermal reading of each of the four divisions of the year (spring, summer, fall, and winter) marked by particular weather patterns and daylight hours, resulting from the earth&apos;s changing position with regard to the sun</skos:definition>
+	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/PhysicalLocation">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Locations/hasLatitude"/>
+				<owl:someValuesFrom rdf:resource="&xsd;long"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Locations/hasLongitude"/>
+				<owl:someValuesFrom rdf:resource="&xsd;long"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/hasLatitude">
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Latitude,” [Online]. Available: https://www.britannica.com/science/latitude. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/hasLongitude">
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Longitude,” [Online]. Available: https://www.britannica.com/science/longitude. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/hasMaximumLatitude">
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Latitude,” [Online]. Available: https://www.britannica.com/science/latitude. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/hasMaximumLongitude">
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Longitude,” [Online]. Available: https://www.britannica.com/science/longitude. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/hasMinimumLatitude">
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Latitude,” [Online]. Available: https://www.britannica.com/science/latitude. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/hasMinimumLongitude">
+		<cmns-av:adaptedFrom>Encyclopaedia Britannica, “Longitude,” [Online]. Available: https://www.britannica.com/science/longitude. [Accessed: 30-Nov-2024].</cmns-av:adaptedFrom>
+	</rdf:Description>
+	
+	<owl:ObjectProperty rdf:about="&cmns-org;isProvidedBy">
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-org;provides">
+	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="&cmns-pts;Situation">
+		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantity"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasExpression">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+	</rdf:Description>
+
+</rdf:RDF>

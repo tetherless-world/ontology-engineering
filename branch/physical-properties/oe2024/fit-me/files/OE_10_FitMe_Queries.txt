@@ -1,0 +1,267 @@
+===========================
+           CC1
+===========================
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/>
+PREFIX ind2: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#>
+PREFIX ex2: <http://purl.obolibrary.org/obo/FOODON_0340079>
+
+
+select ?item ?itemType ?calories
+
+where 
+{
+  {
+    # grain meal items
+    ?grain rdfs:label "grain"@en.
+    ?grainType rdfs:subClassOf ?grain.             
+
+  	?item rdf:type ?grainType.
+    ?item ex2:hasCalorieValue ?calories.
+    BIND("Grain" AS ?itemType)
+  } UNION 
+  {
+    # protein meal items
+  	?item ex:hasProteinPercent ?proteinPercent ;
+        ex:hasCarbohydratePercent ?carbPercent;
+        ex:hasFatPercent ?fatPercent.
+        OPTIONAL {?item ex2:hasCalorieValue ?calories}.
+	  FILTER(?carbPercent+?fatPercent < ?proteinPercent || ?proteinPercent>33.33)
+    BIND("Protein" AS ?itemType)
+  }
+}
+
+Query that(We can union all):
+if((targets back && strainValue light)) Put in Pull section Section(Limit to 2)
+
+```
+select ?workout where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:hasStrainValue ind2:Light .
+  ?workout ex:targets ind2:BackMuscles .
+} LIMIT 2
+
+
+```
+
+
+if(targets bicep) put in Pull section(Limit to 2)
+```
+select ?workout where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:targets ind2:Biceps .
+} LIMIT 2
+
+```
+if(targets chest) Put in push section(limit to 2)
+```
+select ?workout where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:targets ind2:ChestMuscles .
+} LIMIT 2
+
+```
+
+
+if(targets tricep) Put in push section(Limit to 2)
+```
+select ?workout where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:targets ind2:Triceps .
+} LIMIT 2
+
+```
+If(targets quads) Put in legs(Limit to 2)
+```
+select ?workout where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:targets ind:Quadriceps .
+} LIMIT 2
+```
+
+If(targets hamstrings || targets glutes) Put in legs(Limit to 2)
+if(AerobicExercise) Put one in each group
+if(targets abdominal muscle) Put one in each group
+```
+select ?workout where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:targets ind:Abs .
+} LIMIT 2
+
+```
+if(AerobicExercise && strainValue light) Put in Active Recovery(Limit to 2)
+
+```
+select ?workout where{
+  ?workout rdf:type ex:AerobicExercise .
+  ?workout ex:hasStrainValue ind2:Light .
+} LIMIT 2
+```
+
+if(targets back && !strainValue light) in the do not section(Limit to 4 exercises)
+
+```
+select ?workout ?strain where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:targets ind2:BackMuscles .
+  ?workout ex:hasStrainValue ?strain .
+  FILTER (?strain != ind2:Light)
+}
+
+
+
+
+===========================
+           CC2
+===========================
+
+PREFIX:
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/>
+PREFIX ind2: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#>
+PREFIX ex2: <http://purl.obolibrary.org/obo/FOODON_0340079>
+
+
+
+PULL 1:
+SELECT ?workout
+WHERE {
+  {
+    SELECT ?workout WHERE {
+      ?workout rdf:type ex:Exercise .
+      ?workout ex:hasStrainValue ind2:Light .
+      ?workout ex:targets ind2:BackMuscles .
+    } LIMIT 2
+  }
+  UNION
+  {
+    SELECT ?workout {
+  ?workout rdf:type ex:Exercise .
+  {
+    ?workout ex:targets ind2:Biceps .
+     
+  }MINUS{
+     ?workout ex:targets ind2:BackMuscles .
+  }
+}LIMIT 2
+
+  }
+}
+
+
+PULL II:
+SELECT ?workout
+WHERE {
+  {
+    SELECT ?workout WHERE {
+      ?workout rdf:type ex:Exercise .
+      ?workout ex:hasStrainValue ind2:Light .
+      ?workout ex:targets ind2:BackMuscles .
+    } LIMIT 4
+OFFSET 2
+  }
+  UNION
+  {
+    SELECT ?workout {
+  ?workout rdf:type ex:Exercise .
+  {
+    ?workout ex:targets ind2:Biceps .
+     
+  }MINUS{
+     ?workout ex:targets ind2:BackMuscles .
+  }
+}LIMIT 4
+OFFSET 2
+
+  }
+}
+
+DO NOT:
+PREFIX fitme: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#> 
+
+select ?workout ?strain where{
+  ?workout rdf:type ex:Exercise .
+  ?workout ex:targets ind2:BackMuscles .
+  ?workout ex:hasStrainValue ?strain .
+  FILTER (?strain != ind2:Light)
+}
+
+
+
+
+===========================
+           CC3
+===========================
+
+PREFIX:
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals/>
+PREFIX ind2: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe/Individuals#>
+PREFIX ex: <https://tw.rpi.edu/ontology-engineering/oe2024/FitMe#>
+PREFIX ex2: <http://purl.obolibrary.org/obo/FOODON_0340079>
+
+SELECT ?workout
+WHERE {
+  {
+    SELECT ?workout WHERE {
+      ?workout rdf:type ex:Exercise .
+      ?workout ex:hasStrainValue ?strain .
+      FILTER (?strain != ind2:Light) .
+      ?workout ex:targets ind2:Quadriceps .
+    } LIMIT 2
+  }
+  UNION
+  {
+    SELECT ?workout {
+  ?workout rdf:type ex:Exercise .
+  {
+    ?workout ex:targets ind2:GluteusMaximus .
+     
+  }MINUS{
+     ?workout ex:targets ind2:Quadriceps .
+  }
+}LIMIT 2
+
+  }
+}
+
+
+SELECT ?workout
+WHERE {
+  {
+    SELECT ?workout WHERE {
+      ?workout rdf:type ex:Exercise .
+      ?workout ex:hasStrainValue ?strain .
+      FILTER (?strain != ind2:Light) .
+      ?workout ex:targets ind2:Quadriceps .
+    } LIMIT 4
+      OFFSET 2
+  }
+  UNION
+  {
+    SELECT ?workout {
+  ?workout rdf:type ex:Exercise .
+  {
+    ?workout ex:targets ind2:GluteusMaximus .
+     
+  }MINUS{
+     ?workout ex:targets ind2:Quadriceps .
+  }
+}LIMIT 4
+OFFSET 2
+
+  }
+}
+
