@@ -11,7 +11,7 @@ title: use case
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 
-- [Version 3](files/OE_4_TeamAgenticCapabilities_UseCase.docx)
-- [Version 3](files/OE_3_TeamAgenticCapabilities_UseCase.docx)
-- [Version 2](files/OE_2_TeamAgenticCapabilities_UseCase.docx)
-- [Version 1](files/OE_1_TeamAgenticCapabilities_UseCase.docx)
+- [Version 4](files/usecase/OE_4_TeamAgenticCapabilities_UseCase.docx)
+- [Version 3](files/usecase/OE_3_TeamAgenticCapabilities_UseCase.docx)
+- [Version 2](files/usecase/OE_2_TeamAgenticCapabilities_UseCase.docx)
+- [Version 1](files/usecase/OE_1_TeamAgenticCapabilities_UseCase.docx)
