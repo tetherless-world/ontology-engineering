@@ -3,27 +3,71 @@ layout: default
 title: About
 ---
 
-## Hospital Ventilation Compliance and Containment Assurance
-
-## Note to students
-
-This website is organized as follows.
-The side navigation serves a static menu to navigate across pages on this website.
-We provide you with a template of what we want to see from your project pages, the contents can be edited on a per project basis.
+# CareAir: Explainable Reasoning for Healthcare Ventilation Compliance
 
 ## Abstract
 
-<p class="message-highlight">Overview of project goes here, an example is below</p>
+Smart building technologies enable stakeholders to monitor building conditions through continuous streams of sensor data. In healthcare facilities, these capabilities can help assess whether building systems meet guidelines intended to protect patients and staff. This is particularly important during equipment failures, system shutdowns, and public health emergencies, when facilities administrators and clinical teams must coordinate their responses.
 
-Treatment recommendations within Clinical Practice Guidelines (CPGs) are largely based on findings from clinical trials, referred here as research studies, that are often based on highly selective clinical populations, referred here as study cohorts. In applying CPG recommendations in clinical practice, physicians will need to understand how well their patient population matches the characteristics of those in the study cohort, and thus are confronted with the challenges of locating the study cohort information and making the analytic comparison. To address these challenges, we develop an ontology-enabled prototype workflow, which exposes the population descriptions in research studies in a declarative manner, with the ultimate goal of allowing physicians to better understand the applicability and generalizability of treatment recommendations. We build a Study Cohort Ontology (SCO) to encode the vocabulary of descriptions of study populations, that are often reported in the first table in the published work, thus often referred to as Table 1. We leverage the well-used Semanticscience Integrated Ontology (SIO) for defining property associations between classes. Further, we model the key components of Table 1s, i.e., collections of study subjects, subject characteristics and statistical measures in RDF knowledge graphs. Utilizing a tool we developed, medical professional can perform population analysis and cohort similarity assessment to determine the applicability of a study population to the clinical population. Our semantic approach to make study populations visible by standardized representations of Table 1s, allows users to quickly derive clinically relevant inferences about study populations.</p>
+This project investigates how ventilation systems in smart healthcare facilities support compliance with guidelines for airborne infection control, including those issued by the Centers for Disease Control and Prevention (CDC). It aims to systematically identify conditions that do not satisfy applicable requirements and surface the evidence behind those findings, helping hospital teams recognize and respond to potential compliance gaps.
 
-## Workflow Diagram
+I’ve framed this as **assessing compliance and identifying supporting evidence**, rather than guaranteeing compliance. That keeps the description precise while making the project’s purpose clear.
 
-<iframe src="files/CohortAnalyticsWorkflowDiagramISWCPaper.pdf" style="width:100%; height: 500px"></iframe>
+## Project Overview Diagram 
 
-<p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
+<a href="images/illustrative_figure.gif" target="_blank">
+  <img src="images/illustrative_figure.gif" style="width:100%; max-width:800px;">
+</a>
 
-Our knowledge representation approach backed by our study cohort ontology and the knowledge graphs instantiating Table 1 data, are built to support analytical applications to determine applicability of a study population to a patient. Our [data sources](./papers-used.html) include cited research studies from the pharmacologic and cardiovascular complications chapters of the ADA Standards of Medical Care guidelines, and patient records selected from the NHANES 2015-2016 questionnaire. Our population analysis scenarios are designed to determine if studies match, if there are limitations and to evaluate their quality. Additionally, we visualize similarity of a group of study subjects (arm) to a patient.
+Our system integrates a building model, time-varying sensor readings, and compliance policies to assess ventilation conditions across a healthcare facility. The building model provides the spatial and operational context, including zone properties and ventilation connections. Sensor readings capture changing conditions, while applicable policies are represented as symbolic constraints. As new readings arrive, the system updates its representation of the building’s state and symbolically infers whether each zone satisfies its applicable requirements. When a requirement is violated, it identifies the relevant measurements and unmet constraints, providing evidence that helps explain the finding.
+
+### System Architecture 
+
+<a href="images/architecture.svg" target="_blank">
+  <img src="images/architecture.svg" style="width:100%; max-width:800px;">
+</a>
+
+The architecture combines a static knowledge graph with a temporal collection of nanopublications. Within the static knowledge graph, the building model and compliance policies occupy isolated named graphs. The building graph describes hospital zones, room properties, HVAC equipment, and ventilation connections. The policy graph represents the requirements applicable to those zones.
+
+Incoming sensor readings are published as nanopublications, preserving their observation time, source, and relationship to the building model. A symbolic reasoner combines these observations with building context and applicable policy constraints to infer zone-level compliance. Each assessment is published as a separate nanopublication that links its result to the supporting readings and the policies used in the assessment.
+
+When an administrator or hospital staff member searches for a zone or HVAC system, the query service combines information from both static graphs and the nanopublication store. This allows users to inspect compliance over time, identify zones served by a particular HVAC system, and examine the evidence behind an inferred status.
+
+One distinction to preserve: a zone’s compliance status and an HVAC system’s operational status are separate assertions. If the system also infers HVAC faults or operational states, those should be recorded in their own status nanopublications, with supporting evidence.
+
+### Operational Flow
+
+_These proposed UML activity diagrams describe the query and reasoning workflows. Rounded rectangles denote actions, diamonds denote decisions or merges, bracketed labels denote guards, filled circles denote entry, and bullseyes denote activity termination._
+
+#### Retrieve compliance status of hospital facility
+
+<a href="images/compliance-status-flow.svg" target="_blank">
+  <img src="images/compliance-status-flow.svg" style="width:100%; max-width:800px;">
+</a>
+
+A staff member selects an area and a time. The query service resolves the area through the building named graph, retrieves requirements from the policy named graph, and searches the nanopublication store for a reusable assessment. If one is unavailable, it invokes the reasoning activity. The response combines the assessment with its readings, applicable constraints, and provenance.
+
+A reusable assessment must match the requested time, building and policy versions, and relevant observations. “Latest” must follow an explicit freshness policy; historical results retain their assessment time. Unknown areas return a lookup error. Areas without modeled applicable requirements return “Not assessed.” Reasoning failures are returned explicitly instead of a compliance verdict.
+
+#### Infer Status and evidence 
+
+<a href="images/compliance-reasoning-flow.svg" target="_blank">
+  <img src="images/compliance-reasoning-flow.svg" style="width:100%; max-width:800px;">
+</a>
+
+The reasoner combines building context, applicable symbolic constraints, and time-relevant observations. Sufficient usable observations allow constraint evaluation. A completed evaluation yields satisfied or violated requirements. The resulting assessment links its evidence, input versions, and inference provenance and is published as a nanopublication.
+
+Missing or unusable required observations return “Indeterminate.” Solver failures or unresolved evaluations return an explicit inability to determine status. Publication failure preserves the computed result in the response but marks it as not persisted; it does not imply compliance failure or successful publication.
+
+The current proposal requires sufficient evidence for all applicable checks before issuing an overall verdict. Partial per-policy assessments can be added if supported by the implementation. “Satisfied” refers only to evaluated applicable requirements. Merely finding a satisfying assignment for incomplete observations would not establish observed compliance.
+
+Each nanopublication carries an assertion, provenance, and publication information. Compliance assertions link to the sensor nanopublications and versioned policy/building inputs used. A zone compliance verdict does not by itself establish an HVAC fault or causal effect.
+
+## Point of Contact 
+* Ahosan Habib : <habiba5@rpi.edu>
+* Nipun Deelaka : <pathin@rpi.edu>
+* Andy Cheng : <cheng11@rpi.edu>
+* Carina Liu : <liuc17@rpi.edu>
 
 ## List of Resources
 
@@ -54,5 +98,4 @@ List resources you think a reader would benefit from to use your project. We lis
 
 ## Acknowledgements
 
-<p class="message-highlight">Please acknowledge people who have helped you in this work. An example is below</p><br/>
-This work is undertaken as a part of the [Health Empowerement by Analytics, Learning and Semantics (HEALS)](https://science.rpi.edu/biology/news/ibm-and-rensselaer-team-research-chronic-diseases-cognitive-computing) project , and is partially supported by IBM Research AI through the AI Horizons Network. We thank our colleagues from IBM Research, Dan Gruen, Morgan Foreman and Ching-Hua Chen, and from RPI, John Erickson, Alexander New, Neha Keshan and Rebecca Cowan, who provided insight and expertise that greatly assisted the research.
+The development of this ontology was conducted under the advisement of Dr. Deborah McGuinness and Ms. Elisa Kendall, along with guidance from our mentors Jade Franklin, Danielle Villa, and Kelsey Rook, as part of the Fall 2026 CSCI 4340 / 6340 Ontologies Course. We sincerely thank them for their time, effort, and patience in guiding us through the development process.
