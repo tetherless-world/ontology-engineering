@@ -15,4 +15,4 @@ title: use case
 
 <p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
 
-- [Version 1](files/OE_4_TeamCJF_UseCase_Clean.docx)
+- [Version 1 (OE Week 4)](files/OE_4_TeamCJF_UseCase_Clean.docx)
