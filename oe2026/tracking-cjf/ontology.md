@@ -2,10 +2,41 @@
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/ConceptMap_SubjectModel.png)
+### Provenance Diagram
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
+![Provenance diagram showing the connection between CJF milestones, evidence text spans, utterances, turns, and speakers](images/milestones_relationships-ProvenanceConceptualDiagram.png)
+
+The diagram is responsible for depicting how the underlying text is connected to our model where each CFJMilestone is connected to an evidence TextSpan. The property chain represented in the diagram supports the inference of the associatedWithSpeaker relationship, which is used to answer CQ5 and CQ6. The supporting TextSpan and turn number can also be retrieved to answer CQ5, CQ6, and CQ7.
+
+### CJF Milestones with States
+
+![CJF milestone taxonomy showing milestones with states](images/milestones_relationships-MilestoneWithStateTaxonomy-Conceptual-Diagram.png)
+
+The diagram shows how the milestone classes are grouped under the general CJFMilestone class. DeliberativeMilestone and InformationRequest are grouped under MilestoneWithState because they represent milestones that have states that change during a conversation. Outcome and ExpressedPosition are directly under CJFMilestone since they do not have states. This distinction relates to CQ1, which asks which milestones occurred and what state information is known for the milestones where a state applies.
+
+### A Deliberative CFJ Milestone
+
+![Deliberative milestone taxonomy showing Claim, Issue, and Option](images/milestones_relationships-DeliberativeMilestoneTaxonomyConceptualDiagram.png)
+
+This diagram expands the DeliberativeMilestone class from the previous diagram into three subclasses: Claim, Issue, and Option. Each is a type of DeliberativeMilestone and therefore also belongs to MilestoneWithState. This grouping supports CQ1 by identifying milestone types the ontology represents state information for.
+
+### CJF Milestones State Taxonomy
+
+![State taxonomy for individual CJF milestones](images/milestones_relationships-StatesofIndividualMilestonesTaxonomy-Conceptual-Diagram.png)
+
+This diagram shows the states linked to each milestone type through hasState. These states relate to CQ1 about milestone state information and CQs 2 and 4 about whether Issues are Addressed or Resolved.
+
+### Expressed Position Subdiagram
+
+![Expressed position taxonomy showing Agreement and Disagreement](images/milestones_relationships-ExpressedPositionTaxonomyConceptualDiagram.png)
+
+The diagram models Agreement and Disagreement as subclasses of ExpressedPosition, which is itself a subclass of CFJMilestone. The appropriate subclass is inferred from the supporting textual evidence: isPositiveSupportedBy indicates Agreement, whereas isNegativeSupportedBy indicates Disagreement. Together with conversation turn information, these relationships support CQs 5, 6 and 7.
+
+### Relationships between CJF Milestones
+
+![Relationships between CJF milestone types](images/milestones_relationships-DeliberativeMilestoneConceptualDiagram.png)
+
+This diagram shows how the milestone types can be connected in the conversation. These relationships help retrieve related contributions and provide evidence for determining milestone states. Together with the state information and links to speakers and turns, they support all the competency questions.
 
 ## Ontologies
 
