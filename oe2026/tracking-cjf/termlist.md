@@ -16,7 +16,4 @@ title: term list
 
 <p class="message-highlight">Maintain links to previous versions of your term lists here.</p>
 
-- [Version 4](files/OE_4_TeamCJF_CuratedTermList.xlsx)
-- [Version 3](files/termlist.xlsx)
-- [Version 2](files/termlist.xlsx)
-- [Version 1](files/termlist.xlsx)
+- [Version 1 (OE Week 4)](files/OE_4_TeamCJF_CuratedTermList.xlsx)
