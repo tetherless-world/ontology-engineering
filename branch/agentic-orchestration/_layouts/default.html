@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+{%- comment -%}
+  Debug messages will be renedered if this is true
+  Use this to debug issues on the GitHub Pages site.
+{%- endcomment -%}
+{% assign debug_mode = false %}
+
+{%comment%} Determine if the current page is for a particular year or project {%endcomment%}
+
+{% assign url = page.url | relative_url | remove:'index.html' %}
+{% if debug_mode %}
+  <p>url: {{url | inspect }}</p>
+{% endif %}
+{% assign years = site.data.years | sort %}
+{% assign active_year = false %}
+{% assign active_project = false %}
+
+{% for year_hash in years %}
+  {% assign year = year_hash[1] %}
+  {% assign year_path = year.path | relative_url %}
+  {% if debug_mode %}
+    <p>year_path: {{year_path | inspect }}</p>
+  {% endif %}
+  {%- comment -%}
+    active_year will be assigned to either the most recent year or the currently selected year
+    (if the url contains the year's url the loop will break)
+  {%- endcomment -%}
+  {% assign active_year = year%}
+  {% if url contains year_path %}
+    {% for project in year.projects %}
+      {% assign project_path = year_path | append: '/' | append: project.path %}
+      {% if year.path contains "2026" %}
+        {% assign project_path = "/ontology-engineering/branch/" | append: project.path | append: '/' | append: year.path | append: '/' | append: project.path %}
+      {% endif %}
+      {% if debug_mode %}
+        <p>project_path: {{project_path | inspect }}</p>
+      {% endif %}
+      {% if url contains project_path %}
+        {% assign active_project = project %}
+        {% assign active_project_path = project_path %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% if debug_mode %}
+  <p>active_year: {{active_year | inspect }}</p>
+  <p>active_project: {{active_project | inspect }}</p>
+{% endif %}
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  {% seo %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon"
+      type="image/png"
+      href="{{'/images/tw-logo-v2.png' | relative_url}}">
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <title>Making Study Populations Visible through Knowledge Graphs</title>
+  <div class="w3-container top" style="background-image: linear-gradient(180deg, green, #03bafc);">
+    <br>
+    <br>
+    <span style="display: contents;">
+      <h1 class="header" style="text-align:center;">
+        <img src="{{site.baseurl}}/images/tw-logo-v2.png"
+          style="float: left; clear: left; display:inline-block; background: white;" alt="star">
+        <img src="{{site.baseurl}}/images/rpi_logo.png" alt="star"
+          style="float: right; clear: right; display:inline-block; background: white;" alt="star">
+      </h1>
+    </span>
+    {%- comment -%} Display the project title for an active project {%- endcomment -%}
+    {% if active_project%}
+      <h1 class="header title">{{ active_project.name }}</h1>
+    {% else %}
+      <h1 class="header title">
+        {{ site.title | default: site.github.repository_name }}
+      </h1>
+      <p class="header title">
+        {{ site.description | default: site.github.project_tagline }}
+      </p>
+    {% endif %}
+    <br>
+    <br>
+  </div>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="steelblue">
+      {%- comment -%} Project Page Menu {%- endcomment -%}
+      {% if active_project %}
+        <a href="{{active_year.path | relative_url}}">&lt; Back to course page</a>
+        <h1 class="header">{{active_project.name}}</h1>
+        <ul class="nav-menu">
+          {% for item in active_year.project_nav %}
+            {% if item.section %}
+        </ul>
+        <p class="section">{{ item.section }}</p>
+        <ul class="nav-menu">
+            {% else %}
+              {% assign page_path = active_project_path | append: '/' | append: item.path %}
+              <li class="nav-link">
+                <a href="{{page_path}}">{{item.name}}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {%- comment -%} Course Page Menu {%- endcomment -%}
+      {% else %}
+        <h1 class="header">Navigation</h1>
+        <ul class="nav-menu">
+          <li class="nav-link">
+            <a href="{{'/' | relative_url}}">About the Course</a>
+          </li>
+        </ul>
+        <p class="section">Projects</p>
+        <ul class="nav-menu">
+          {% assign years = site.data.years | sort %}
+          {% for year_hash in years %}
+            {% assign year = year_hash[1] %}
+            {% assign year_path = year.path | relative_url %}
+            <li class="nav-link">
+              <a href="{{year_path}}">{{year.name}}</a>
+            </li>
+            {% if active_year.path == year.path %}
+              <div class="sub-menu">
+              {% for project in year.projects %}
+                {% if project.path contains "://" %}
+                  {% assign project_path = project.path %}
+                {% else %}
+                  {% assign project_path = year_path | append: '/' | append: project.path %}
+                  {% if year.path contains "2026" %}
+                      {% assign project_path = "/ontology-engineering/branch/" | append: project.path | append: '/' | append: year.path | append: '/' | append: project.path %}
+                  {% endif %}
+                {% endif %}
+                {% if debug_mode %}
+                  <p>project.path: {{project.path | inspect }}</p>
+                  <p>project_path: {{project_path | inspect }}</p>
+                {% endif %}
+                <li class="nav-link">
+                  <a href="{{project_path}}">{{project.name}}</a>
+                </li>
+              {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <p class="section">Guidelines</p>
+        <ul class="nav-menu">
+          <li class="nav-link">
+            <a href="{{'/docs/site_development' | relative_url}}">Site Development</a>
+          </li>
+          <li class="nav-link">
+            <a href="{{'/docs/ontology_development' | relative_url}}">Ontology Development</a>
+          </li>
+        </ul>
+      {% endif %}
+
+      {% if site.github.is_user_page %}
+        <ul>
+          <li><a class="buttons github" href="{{ site.github.owner_url }}">GitHub Profile</a></li>
+        </ul>
+      {% endif %}
+    </header>
+
+    <section>
+      {% if page.toc %}
+        <div class="toc">
+          <strong>Contents</strong>
+          {% include toc.html html=content %}
+        </div>
+      {% endif %}
+      {{ content }}
+    </section>
+
+    <footer>
+      <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+    </footer>
+  </div>
+  <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  {% if site.google_analytics %}
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', '{{ site.google_analytics }}', 'auto');
+    ga('send', 'pageview');
+  </script>
+  {% endif %}
+</body>
+
+</html>

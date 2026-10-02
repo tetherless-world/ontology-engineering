@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-asmt "https://www.omg.org/spec/Commons/Assessments/">
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cds "https://www.omg.org/spec/Commons/CodesAndCodeSets/">
+	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
+	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
+	<!ENTITY cmns-dsg "https://www.omg.org/spec/Commons/Designators/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY cmns-oc "https://www.omg.org/spec/Commons/Occurrences/">
+	<!ENTITY cmns-prd "https://www.omg.org/spec/Commons/ProductsAndServices/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY cmns-ra "https://www.omg.org/spec/Commons/RegistrationAuthorities/">
+	<!ENTITY cmns-rt "https://www.omg.org/spec/Commons/Ratings/">
+	<!ENTITY cmns-txt "https://www.omg.org/spec/Commons/TextDatatype/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://www.omg.org/spec/Commons/Ratings/"
+	xmlns:cmns-asmt="https://www.omg.org/spec/Commons/Assessments/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cds="https://www.omg.org/spec/Commons/CodesAndCodeSets/"
+	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+	xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:cmns-oc="https://www.omg.org/spec/Commons/Occurrences/"
+	xmlns:cmns-prd="https://www.omg.org/spec/Commons/ProductsAndServices/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:cmns-ra="https://www.omg.org/spec/Commons/RegistrationAuthorities/"
+	xmlns:cmns-rt="https://www.omg.org/spec/Commons/Ratings/"
+	xmlns:cmns-txt="https://www.omg.org/spec/Commons/TextDatatype/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://www.omg.org/spec/Commons/Ratings/">
+		<rdfs:label>Ratings Ontology</rdfs:label>
+		<dct:abstract>This ontology defines abstract concepts for representation of ratings and rating schemes, particularly for ratings describing aspects of business performance, credit worthiness, and investment quality at a high level.</dct:abstract>
+		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Assessments/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/CodesAndCodeSets/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Occurrences/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ProductsAndServices/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RegistrationAuthorities/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/TextDatatype/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20221001/Ratings/"/>
+		<cmns-av:copyright>Copyright (c) 2019-2022 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2019-2022 Object Management Group, Inc.</cmns-av:copyright>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&cmns-rt;QualitativeRatingScore">
+		<rdfs:subClassOf rdf:resource="&cmns-cds;CodeElement"/>
+		<rdfs:subClassOf rdf:resource="&cmns-rt;RatingScore"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-txt;hasTextValue"/>
+				<owl:onDataRange rdf:resource="&xsd;string"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>qualitative rating score</rdfs:label>
+		<skos:definition>rating score that is represented as a qualitative code with respect to some rating scale</skos:definition>
+		<cmns-av:explanatoryNote>Ratings for the creditworthiness of securities are often qualitative, rather than quantitative, such as a triple-A (i.e., AAA). Many ratings for products and businesses on the Internet are also qualitative, such as 5-star ratings for something.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;QuantitativeRatingScore">
+		<rdfs:subClassOf rdf:resource="&cmns-rt;RatingScore"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rt;hasMeasureWithinScale"/>
+				<owl:onDataRange rdf:resource="&xsd;decimal"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>quantitative rating score</rdfs:label>
+		<skos:definition>rating score that is a simple numeric value on some scale, such as a credit rating for an individual</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;Rating">
+		<rdfs:subClassOf rdf:resource="&cmns-asmt;Opinion"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rt;rates"/>
+				<owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rt;hasEffectiveDate"/>
+				<owl:onClass rdf:resource="&cmns-dt;Date"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-doc;hasDateOfIssuance"/>
+				<owl:onClass rdf:resource="&cmns-dt;Date"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;isIssuedBy"/>
+				<owl:onClass rdf:resource="&cmns-rt;RatingIssuer"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;isProducedBy"/>
+				<owl:onClass rdf:resource="&cmns-rt;RatingParty"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rt;hasRatingScore"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;RatingScore"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating</rdfs:label>
+		<skos:definition>standing of something at a particular time, indicated by at least one scores with respect to some scale, based on an assessment by some party</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingAgency">
+		<rdfs:subClassOf rdf:resource="&cmns-rt;RatingIssuer"/>
+		<rdfs:subClassOf rdf:resource="&cmns-rt;RatingScalePublisher"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-pts;isPlayedBy"/>
+				<owl:someValuesFrom rdf:resource="&cmns-pts;Party"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating agency</rdfs:label>
+		<skos:definition>rating issuer that is also a rating scale publisher, frequently but not always an independent rating service</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingAssessmentActivity">
+		<rdfs:subClassOf rdf:resource="&cmns-asmt;AssessmentActivity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;isProvidedBy"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;RatingParty"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating assessment activity</rdfs:label>
+		<skos:definition>assessment activity resulting in a grade or score and potentially a report describing the score and the process used to determine that score</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingAssessmentEvent">
+		<rdfs:subClassOf rdf:resource="&cmns-asmt;AssessmentEvent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;produces"/>
+				<owl:onClass rdf:resource="&cmns-rt;RatingReport"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-oc;exemplifies"/>
+				<owl:onClass rdf:resource="&cmns-rt;RatingAssessmentActivity"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;isProvidedBy"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;RatingParty"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating assessment event</rdfs:label>
+		<skos:definition>individual assessment resulting in a grade or score and potentially a report describing the score</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingIssuer">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;issues"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;Rating"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating issuer</rdfs:label>
+		<skos:definition>party that is responsible for issuing ratings</skos:definition>
+		<cmns-av:explanatoryNote>A rating issuer is frequently, but not always the rating scale publisher. A rating issuer may delegate responsibility for producing a rating to a rating party.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingParty">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-prd;produces"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;Rating"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating party</rdfs:label>
+		<skos:definition>person, organization or group that analyzes some aspect of something and develops a rating</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingReport">
+		<rdfs:subClassOf rdf:resource="&cmns-asmt;AssessmentReport"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-dsg;describes"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;Rating"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating report</rdfs:label>
+		<skos:definition>report describing a set of ratings</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingScale">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;ClassificationScheme"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rt;hasBestMeasure"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rt;hasWorstMeasure"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-ra;isManagedBy"/>
+				<owl:onClass rdf:resource="&cmns-rt;RatingScalePublisher"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-dsg;defines"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;RatingScore"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating scale</rdfs:label>
+		<skos:definition>system for assigning a value to something according to some scale with respect to quality, a standard, or ranking</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingScalePublisher">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-ra;manages"/>
+				<owl:someValuesFrom rdf:resource="&cmns-rt;RatingScale"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating scale publisher</rdfs:label>
+		<skos:definition>party responsible for managing one or more rating schemes and potentially publishing ratings based on those schemes</skos:definition>
+		<cmns-av:explanatoryNote>Rating scale publishers are frequently also rating agencies.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-rt;RatingScore">
+		<rdfs:subClassOf rdf:resource="&cmns-cls;Classifier"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rt;hasMeasureWithinScale"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+				<owl:onDataRange rdf:resource="&xsd;decimal"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-dsg;isDefinedIn"/>
+				<owl:onClass rdf:resource="&cmns-rt;RatingScale"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>rating score</rdfs:label>
+		<skos:definition>grade, classification, or ranking of for something in accordance with some rating scale</skos:definition>
+		<cmns-av:explanatoryNote>The meaning and methodology for determining a rating score for the rating of something is determined by a rating issuer. A given rating may apply at some point in time, as a part of a lifecycle or process, or generally. Typically ratings reflect an assessment of a state of affairs at some point in time.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:DatatypeProperty rdf:about="&cmns-rt;hasBestMeasure">
+		<rdfs:label>has best measure</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rt;RatingScale"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>indicates the &apos;best&apos; (most desirable) possible value for a rating score&apos;s hasMeasureWithinScale property</skos:definition>
+		<cmns-av:explanatoryNote>Note that hasBestMeasure and hasWorstMeasure may be used together to determine the direction and range of a scale&apos;s measure values.</cmns-av:explanatoryNote>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rt;hasEffectiveDate">
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasDate"/>
+		<rdfs:label>has effective date</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;Date"/>
+		<skos:definition>indicates the date a contract, relationship, or policy comes into force</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&cmns-rt;hasMeasureWithinScale">
+		<rdfs:label>has measure within scale</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rt;RatingScore"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>indicates a relative, numeric measure or ordering on a rating scale</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rt;hasRating">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isClassifiedBy"/>
+		<rdfs:label>has rating</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-rt;Rating"/>
+		<owl:inverseOf rdf:resource="&cmns-rt;rates"/>
+		<skos:definition>indicates the rating assigned to a thing based on a grade or score according to a particular rating scale</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rt;hasRatingScore">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;isClassifiedBy"/>
+		<rdfs:label>has rating score</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rt;Rating"/>
+		<rdfs:range rdf:resource="&cmns-rt;RatingScore"/>
+		<skos:definition>indicates the grade or score associated with a rating with respect to a particular rating scale</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&cmns-rt;hasWorstMeasure">
+		<rdfs:label>has worst measure</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rt;RatingScale"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>indicates the &apos;worst&apos; (least desirable) possible value for a rating score&apos;s hasMeasureWithinScale property</skos:definition>
+		<cmns-av:explanatoryNote>Note that hasBestMeasure and hasWorstMeasure may be used together to determine the direction and range of a scale&apos;s measure values.</cmns-av:explanatoryNote>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rt;producesRatingsFor">
+		<rdfs:subPropertyOf rdf:resource="&cmns-prd;produces"/>
+		<rdfs:label>produces ratings for</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rt;RatingParty"/>
+		<rdfs:range rdf:resource="&cmns-rt;RatingIssuer"/>
+		<owl:inverseOf rdf:resource="&cmns-rt;usesRatingParty"/>
+		<skos:definition>issuer for which ratings are produced or posted through</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rt;rates">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cls;classifies"/>
+		<rdfs:label>rates</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rt;Rating"/>
+		<skos:definition>indicates the instrument, party or something else to which a rating applies</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-rt;usesRatingParty">
+		<rdfs:subPropertyOf rdf:resource="&cmns-prd;isProducedBy"/>
+		<rdfs:label>uses rating performer</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-rt;RatingIssuer"/>
+		<rdfs:range rdf:resource="&cmns-rt;RatingParty"/>
+		<skos:definition>rating performer an issuer uses to assess ratings</skos:definition>
+	</owl:ObjectProperty>
+
+</rdf:RDF>
