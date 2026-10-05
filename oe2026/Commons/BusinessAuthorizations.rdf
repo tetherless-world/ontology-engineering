@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-bauth "https://www.omg.org/spec/Commons/BusinessAuthorizations/">
+	<!ENTITY cmns-cxtdsg "https://www.omg.org/spec/Commons/ContextualDesignators/">
+	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY cmns-rlcmp "https://www.omg.org/spec/Commons/RolesAndCompositions/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://www.omg.org/spec/Commons/BusinessAuthorizations/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-bauth="https://www.omg.org/spec/Commons/BusinessAuthorizations/"
+	xmlns:cmns-cxtdsg="https://www.omg.org/spec/Commons/ContextualDesignators/"
+	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://www.omg.org/spec/Commons/BusinessAuthorizations/">
+		<rdfs:label>Commons Authorizations Ontology</rdfs:label>
+		<dct:abstract>This ontology defines the concept of authorization from a business perspective, rather than security or access control viewpoint, as a situation or state of affairs, including related parties. It was derived from the FIBO Executives ontology and simplified/adapted for broader use.</dct:abstract>
+		<dct:contributor>Elisa Kendall, Thematix Partners LLC</dct:contributor>
+		<dct:issued rdf:datatype="&xsd;dateTime">2025-07-18T18:00:00</dct:issued>
+		<dct:license>Copyright (c) 2021-2025 EDM Council, Inc.
+		Copyright (c) 2021-2025 Object Management Group, Inc.
+		Copyright (c) 2021-2025 Thematix Partners LLC
+		Copyright (c) 2022-2025 Adaptive Analytics, Inc.
+		Copyright (c) 2022-2025 Federated Knowledge LLC
+		Copyright (c) 2024-2025 Ontogenesis Solutions, LLC
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.</dct:license>
+		<dct:title>Commons Business Authorizations Ontology</dct:title>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20250801/BusinessAuthorizations/"/>
+		<cmns-av:copyright>Copyright (c) 2021-2025 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2021-2025 Object Management Group, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2021-2025 Thematix Partners LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Adaptive Analytics, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Federated Knowledge LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2024-2025 Ontogenesis Solutions, LLC</cmns-av:copyright>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&cmns-bauth;Authorization">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Situation"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-bauth;hasAuthorizedParty"/>
+				<owl:someValuesFrom rdf:resource="&cmns-bauth;AuthorizedParty"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-bauth;hasAuthorizingParty"/>
+				<owl:someValuesFrom rdf:resource="&cmns-bauth;AuthorizingParty"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en-GB">authorisation</rdfs:label>
+		<rdfs:label xml:lang="en-US">authorization</rdfs:label>
+		<skos:definition>situation in which a party authorizes someone to act on their behalf or to have specific capabilities under certain conditions for some period of time</skos:definition>
+		<skos:prefLabel>authorization</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-bauth;AuthorizedParty">
+		<rdfs:subClassOf rdf:resource="&cmns-rlcmp;FunctionalRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-bauth;isAuthorizedThrough"/>
+				<owl:someValuesFrom rdf:resource="&cmns-bauth;Authorization"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rlcmp;isPlayedBy"/>
+				<owl:someValuesFrom rdf:resource="&cmns-org;LegalPerson"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en-GB">authorised party</rdfs:label>
+		<rdfs:label xml:lang="en-US">authorized party</rdfs:label>
+		<skos:definition>party that has been given the ability to act on behalf of another party or to have specified capabilities under some set of guidelines for some period of time</skos:definition>
+		<skos:prefLabel>authorized party</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-bauth;AuthorizingParty">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;Actor"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-bauth;authorizesThrough"/>
+				<owl:someValuesFrom rdf:resource="&cmns-bauth;Authorization"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-rlcmp;isPlayedBy"/>
+				<owl:someValuesFrom rdf:resource="&cmns-org;LegalPerson"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en-GB">authorising party</rdfs:label>
+		<rdfs:label xml:lang="en-US">authorizing party</rdfs:label>
+		<skos:definition>party that delegates some role, authority, or control to another party</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-bauth;LegallyDelegatedAuthority">
+		<rdfs:subClassOf rdf:resource="&cmns-bauth;AuthorizedParty"/>
+		<rdfs:label>legally delegated authority</rdfs:label>
+		<skos:definition>authorized party empowered with some level of legal control and corresponding responsibility</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-bauth;ResponsibleParty">
+		<rdfs:subClassOf rdf:resource="&cmns-bauth;AuthorizedParty"/>
+		<rdfs:label>responsible party</rdfs:label>
+		<skos:definition>legal person acting in a role that has some formal responsibility</skos:definition>
+		<skos:example>party with a fiduciary responsibility such as a signatory, an examiner, registrar, obligor, payee, etc.</skos:example>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;authorizes">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;actsOn"/>
+		<rdfs:label>authorizes</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;AuthorizingParty"/>
+		<rdfs:range rdf:resource="&cmns-bauth;AuthorizedParty"/>
+		<owl:inverseOf rdf:resource="&cmns-bauth;isAuthorizedBy"/>
+		<skos:definition>endorses, enables, empowers, or gives permission to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;authorizesDirectly">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;directlyAffects"/>
+		<rdfs:label>authorizes directly</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;AuthorizingParty"/>
+		<rdfs:range rdf:resource="&cmns-org;LegalPerson"/>
+		<owl:inverseOf rdf:resource="&cmns-bauth;isDirectlyAuthorizedBy"/>
+		<skos:definition>endorses, enables, empowers, or gives permission directly to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;authorizesThrough">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;actsIn"/>
+		<rdfs:label>authorizes through</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;AuthorizingParty"/>
+		<rdfs:range rdf:resource="&cmns-bauth;Authorization"/>
+		<owl:inverseOf rdf:resource="&cmns-bauth;hasAuthorizingParty"/>
+		<skos:definition>indicates the situation that facilitates designation of an authorized party by the authorizing party for some purpose</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;delegatesControlTo">
+		<rdfs:subPropertyOf rdf:resource="&cmns-bauth;authorizes"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-org;designates"/>
+		<rdfs:label>delegates control to</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-bauth;LegallyDelegatedAuthority"/>
+		<skos:definition>indicates a party to which the authorizing party has delegated some authority or control</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;hasAuthorization">
+		<rdfs:subPropertyOf rdf:resource="&cmns-cxtdsg;isApplicableIn"/>
+		<rdfs:label>has authorization</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-bauth;Authorization"/>
+		<skos:definition>relates something to a specific authorization that is applicable to it in some context</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;hasAuthorizedParty">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasUndergoer"/>
+		<rdfs:label>has authorized party</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;Authorization"/>
+		<rdfs:range rdf:resource="&cmns-bauth;AuthorizedParty"/>
+		<skos:definition>indicates the party (role) that is endorsed, enabled, empowered, or otherwise permitted to do something in the situation</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;hasAuthorizee">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;isExperiencedBy"/>
+		<rdfs:label>has authorizee</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;Authorization"/>
+		<rdfs:range rdf:resource="&cmns-org;LegalPerson"/>
+		<skos:definition>indicates the legal person that is endorsed, enabled, empowered, or otherwise permitted to do something in the situation</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;hasAuthorizingParty">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasActor"/>
+		<rdfs:label>has authorizing party</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;Authorization"/>
+		<rdfs:range rdf:resource="&cmns-bauth;AuthorizingParty"/>
+		<skos:definition>indicates the party (role) that endorses, enables, empowers, or gives permission in the situation</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;hasAuthorizor">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasActiveParty"/>
+		<rdfs:label>has authorizor</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;Authorization"/>
+		<rdfs:range rdf:resource="&cmns-org;LegalPerson"/>
+		<skos:definition>indicates the legal person that endorses, enables, empowers, or gives permission in the situation</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;hasDelegatedControlOf">
+		<rdfs:label>has delegated control of</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;LegallyDelegatedAuthority"/>
+		<skos:definition>indicates something or some party that is controlled via delegation</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;hasResponsibleParty">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasPartyRole"/>
+		<rdfs:label>has responsible party</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-bauth;ResponsibleParty"/>
+		<skos:definition>identifies a party that has some assignment, commitment or obligation with respect to some situation or organization</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;isAuthorizedBy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;isAffectedBy"/>
+		<rdfs:label>is authorized by</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;AuthorizedParty"/>
+		<rdfs:range rdf:resource="&cmns-bauth;AuthorizingParty"/>
+		<skos:definition>is endorsed, enabled, empowered, or otherwise permitted by</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;isAuthorizedThrough">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;undergoes"/>
+		<rdfs:label>is authorized through</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-bauth;AuthorizedParty"/>
+		<rdfs:range rdf:resource="&cmns-bauth;Authorization"/>
+		<owl:inverseOf rdf:resource="&cmns-bauth;hasAuthorizedParty"/>
+		<skos:definition>indicates the situation that facilitates endorsement of the authorized party for some purpose</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;isAuthorizeeIn">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;experiences"/>
+		<rdfs:label>is authorizee in</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-org;LegalPerson"/>
+		<rdfs:range rdf:resource="&cmns-bauth;Authorization"/>
+		<owl:inverseOf rdf:resource="&cmns-bauth;hasAuthorizee"/>
+		<skos:definition>indicates the situation that facilitates designation of the legal person as an authorized party for some purpose</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;isAuthorizorIn">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;playsActiveRoleIn"/>
+		<rdfs:label>is authorizor in</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-org;LegalPerson"/>
+		<rdfs:range rdf:resource="&cmns-bauth;Authorization"/>
+		<owl:inverseOf rdf:resource="&cmns-bauth;hasAuthorizor"/>
+		<skos:definition>indicates the situation that facilitates designation of an authorized party by the legal person for some purpose</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-bauth;isDirectlyAuthorizedBy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;isDirectlyAffectedBy"/>
+		<rdfs:label>is directly authorized by</rdfs:label>
+		<rdfs:domain rdf:resource="&cmns-org;LegalPerson"/>
+		<rdfs:range rdf:resource="&cmns-bauth;AuthorizingParty"/>
+		<skos:definition>is directly endorsed, enabled, empowered, or otherwise permitted by</skos:definition>
+	</owl:ObjectProperty>
+
+</rdf:RDF>
