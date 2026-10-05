@@ -80,11 +80,11 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl">Your Ontology</a></td>
+    <td>(a) <a href="ventilation-compliance.rdf">Your Ontology</a></td>
   </tr>
   <tr>
     <td>2. Term List</td>
-    <td>(a) <a href="./knowledge-graph.html">Mapped Vocabularies</a> </td>
+    <td>(a) <a href="files/week5/Curated Term List OE 5.xlsm">Mapped Vocabularies</a> </td>
   </tr>
   <tr>
     <td>2. Competency Questions</td>
@@ -92,9 +92,16 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>3. Presentations:</td>
-    <td>(a) <a href="./ontology-resource.html#ontologyreused">Project presentations during class</a> </td>
+    <td>(a) <a href="files/week5/OE 5 Team HVCC Presentation.pptx">Project presentations during class</a> </td>
   </tr>
-</table>
+  <tr>
+    <td>4. Conceptual Diagram:</td>
+    <td>(a) <a href="files/week5/OE 5 Team HVCC Conceptual Model.pptx">Project presentations during class</a> </td>
+  </tr>
+  <tr>
+    <td>5. Use Case:</td>
+    <td>(a) <a href="files/week5/OE 5 Team HVCC Use Case.docx">Project presentations during class</a> </td>
+  </tr>/table>
 
 ## Acknowledgements
 
