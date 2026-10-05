@@ -34,20 +34,33 @@
 		<dct:abstract>This ontology defines the high-level concepts of parties and the roles they play in various situations.</dct:abstract>
 		<dct:contributor>Dean Allemang, Working Ontologist</dct:contributor>
 		<dct:contributor>Elisa Kendall, Thematix Partners LLC</dct:contributor>
-		<dct:license rdf:datatype="&xsd;anyURI">https://opensource.org/licenses/MIT</dct:license>
+		<dct:license>Copyright (c) 2020-2025 EDM Council, Inc.
+		Copyright (c) 2020-2025 Thematix Partners LLC
+		Copyright (c) 2020-2025 Working Ontologist LLC
+		Copyright (c) 2022-2025 Object Management Group, Inc.
+		Copyright (c) 2022-2025 Pistoia Alliance, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.</dct:license>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
-		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20230801/PartiesAndSituations/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20250801/PartiesAndSituations/"/>
+		<skos:changeNote>The https://www.omg.org/spec/Commons/20230801/PartiesAndSituations.rdf version of the ontology was modified to add missing inverses needed to integrate the authorization pattern (COMMONS13-38).</skos:changeNote>
 		<skos:note>This ontology was originally designed for use in the Financial Industry Business Ontology (FIBO) for representing complex relationships between parties, such as employment, ownership and control. It has since been extended based on usage in other projects, such as the Pistoia Alliance Identification of Medicinal Products (IDMP) ontology project.</skos:note>
-		<cmns-av:copyright>Copyright (c) 2020-2023 EDM Council, Inc.</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2020-2023 Thematix Partners LLC</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2020-2023 Working Ontologist LLC</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2022-2023 Pistoia Alliance, Inc.</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2023 Object Management Group, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2020-2025 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2020-2025 Thematix Partners LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2020-2025 Working Ontologist LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Object Management Group, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Pistoia Alliance, Inc.</cmns-av:copyright>
 		<cmns-av:usageNote>Note that inference with respect to property chains, which this ontology makes extensive use of, requires a knowledge graph solution that understands these chains, or requires running a reasoner outside of the graph database and asserting the inferences in order to make use of them.</cmns-av:usageNote>
 	</owl:Ontology>
 	
@@ -177,6 +190,7 @@
 	
 	<owl:ObjectProperty rdf:about="&cmns-pts;actsOn">
 		<rdfs:label>acts on</rdfs:label>
+		<owl:inverseOf rdf:resource="&cmns-pts;isAffectedBy"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
 			<rdf:Description rdf:about="&cmns-pts;actsIn">
 			</rdf:Description>

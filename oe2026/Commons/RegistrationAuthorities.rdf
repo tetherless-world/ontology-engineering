@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-bauth "https://www.omg.org/spec/Commons/BusinessAuthorizations/">
 	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
 	<!ENTITY cmns-cxtid "https://www.omg.org/spec/Commons/ContextualIdentifiers/">
 	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
@@ -19,6 +20,7 @@
 ]>
 <rdf:RDF xml:base="https://www.omg.org/spec/Commons/RegistrationAuthorities/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-bauth="https://www.omg.org/spec/Commons/BusinessAuthorizations/"
 	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:cmns-cxtid="https://www.omg.org/spec/Commons/ContextualIdentifiers/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
@@ -38,8 +40,8 @@
 	<owl:Ontology rdf:about="https://www.omg.org/spec/Commons/RegistrationAuthorities/">
 		<rdfs:label>Commons Registration Authorities Ontology</rdfs:label>
 		<dct:abstract>This ontology defines concepts for representation of registration authorities, registrars, registration-specific identifiers and related identification schemes. It was derived from the FIBO Registration Authorities Ontology and ISO 11179-3, and adapted for broader use.</dct:abstract>
-		<dct:license>Copyright (c) 2015-2024 EDM Council, Inc.
-		Copyright (c) 2015-2024 Object Management Group, Inc.
+		<dct:license>Copyright (c) 2015-2025 EDM Council, Inc.
+		Copyright (c) 2015-2025 Object Management Group, Inc.
 		
 		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -49,6 +51,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		
 		See https://opensource.org/licenses/MIT.</dct:license>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/BusinessAuthorizations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ContextualIdentifiers/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
@@ -57,9 +60,10 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
-		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20240801/RegistrationAuthorities/"/>
-		<cmns-av:copyright>Copyright (c) 2015-2024 EDM Council, Inc.</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2015-2024 Object Management Group, Inc.</cmns-av:copyright>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20250801/RegistrationAuthorities/"/>
+		<skos:changeNote>The https://www.omg.org/spec/Commons/20240801/RegistrationAuthorities.rdf version of the ontology was modified to clarify the distinction between a registrar and registration authority (COMMONS13-33) and to integrate the authorization pattern (COMMONS13-38).</skos:changeNote>
+		<cmns-av:copyright>Copyright (c) 2015-2025 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2015-2025 Object Management Group, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&cmns-ra;RegisteredIdentifier">
@@ -81,16 +85,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-ra;isRegisteredBy"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&cmns-ra;RegistrationAuthority">
-							</rdf:Description>
-							<rdf:Description rdf:about="&cmns-ra;Registrar">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
+				<owl:someValuesFrom rdf:resource="&cmns-ra;Registrar"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -108,14 +103,15 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<rdfs:subClassOf rdf:resource="&cmns-pts;Actor"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-org;isDesignatedBy"/>
-				<owl:someValuesFrom rdf:resource="&cmns-ra;RegistrationAuthority"/>
+				<owl:onProperty rdf:resource="&cmns-org;provides"/>
+				<owl:onClass rdf:resource="&cmns-ra;RegistrationService"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-org;provides"/>
-				<owl:someValuesFrom rdf:resource="&cmns-ra;RegistrationService"/>
+				<owl:onProperty rdf:resource="&cmns-org;isDesignatedBy"/>
+				<owl:someValuesFrom rdf:resource="&cmns-ra;RegistrationAuthority"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -131,25 +127,12 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 	</owl:Class>
 	
 	<owl:Class rdf:about="&cmns-ra;RegistrationAuthority">
+		<rdfs:subClassOf rdf:resource="&cmns-bauth;AuthorizingParty"/>
 		<rdfs:subClassOf rdf:resource="&cmns-org;ServiceProvider"/>
-		<rdfs:subClassOf rdf:resource="&cmns-pts;Actor"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-ra;isRegistrationAuthorityFor"/>
 				<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-ra;registers"/>
-				<owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&cmns-org;provides"/>
-				<owl:onClass rdf:resource="&cmns-ra;RegistrationService"/>
-				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -177,16 +160,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-org;isProvidedBy"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&cmns-ra;RegistrationAuthority">
-							</rdf:Description>
-							<rdf:Description rdf:about="&cmns-ra;Registrar">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
+				<owl:someValuesFrom rdf:resource="&cmns-ra;Registrar"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>registration service</rdfs:label>
@@ -206,16 +180,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&cmns-org;isManagedBy"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&cmns-ra;RegistrationAuthority">
-							</rdf:Description>
-							<rdf:Description rdf:about="&cmns-ra;Registrar">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
+				<owl:someValuesFrom rdf:resource="&cmns-ra;RegistrationAuthority"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>registry</rdfs:label>
@@ -264,16 +229,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 	<owl:ObjectProperty rdf:about="&cmns-ra;isRegisteredBy">
 		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasPartyRole"/>
 		<rdfs:label>is registered by</rdfs:label>
-		<rdfs:range>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&cmns-ra;RegistrationAuthority">
-					</rdf:Description>
-					<rdf:Description rdf:about="&cmns-ra;Registrar">
-					</rdf:Description>
-				</owl:unionOf>
-			</owl:Class>
-		</rdfs:range>
+		<rdfs:range rdf:resource="&cmns-ra;Registrar"/>
 		<skos:definition>indicates the registration authority or registrar that registers something</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -295,16 +251,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<rdfs:subPropertyOf rdf:resource="&cmns-doc;records"/>
 		<rdfs:subPropertyOf rdf:resource="&cmns-rlcmp;isRoleIn"/>
 		<rdfs:label>registers</rdfs:label>
-		<rdfs:domain>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&cmns-ra;RegistrationAuthority">
-					</rdf:Description>
-					<rdf:Description rdf:about="&cmns-ra;Registrar">
-					</rdf:Description>
-				</owl:unionOf>
-			</owl:Class>
-		</rdfs:domain>
+		<rdfs:domain rdf:resource="&cmns-ra;Registrar"/>
 		<owl:inverseOf rdf:resource="&cmns-ra;isRegisteredBy"/>
 		<skos:definition>records something in a registry or archive</skos:definition>
 	</owl:ObjectProperty>
