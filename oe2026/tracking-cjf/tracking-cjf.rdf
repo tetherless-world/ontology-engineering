@@ -1,18 +1,26 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"
      xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:cito="http://purl.org/spar/cito/"
      xmlns:core="http://purl.org/vocab/frbr/core#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:void="http://rdfs.org/ns/void#"
      xmlns:oe-cjf="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"
+     xmlns:schema="http://schema.org/"
      xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+     xmlns:resource="http://semanticscience.org/resource/"
      xmlns:fibo-fnd-gao-obj="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"
      xmlns:fibo-fnd-arr-asmt="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/"
      xmlns:AnnotationVocabulary="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
@@ -20,10 +28,8 @@
     <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/">
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/prov"/>
-        <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/"/>
-        <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>
+        <owl:imports rdf:resource="https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-release.owl"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
         <dct:abstract></dct:abstract>
     </owl:Ontology>
     
@@ -40,6 +46,15 @@
     
 
 
+    <!-- http://semanticscience.org/resource/SIO_000206 -->
+
+    <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000206">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
+    </rdf:Description>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/addresses -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/addresses">
@@ -47,7 +62,90 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Option"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Outcome"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
+        <skos:prefLabel>addresses</skos:prefLabel>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_associated_with_speaker -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_associated_with_speaker">
+        <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_001403"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Speaker"/>
+        <skos:prefLabel>is associated with speaker</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_negative_supported_by -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_negative_supported_by">
+        <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000206"/>
+        <owl:propertyDisjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_positive_supported_by"/>
+        <skos:prefLabel>is negative supported by</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_part_of_utterance -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_part_of_utterance">
+        <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000093"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Utterance"/>
+        <skos:prefLabel>is part of utterance</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_positive_supported_by -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/is_positive_supported_by">
+        <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000206"/>
+        <skos:prefLabel>is positive supported by</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/ns/prov#value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#value"/>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/conversation_identifier -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/conversation_identifier">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#value"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Utterance"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <skos:prefLabel>conversation identifier</skos:prefLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/conversation_text -->
+
+    <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/conversation_text">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#value"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Utterance"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <skos:prefLabel>conversation text</skos:prefLabel>
+    </owl:DatatypeProperty>
     
 
 
@@ -59,6 +157,18 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Person -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Person"/>
     
 
 
@@ -252,11 +362,29 @@ decision</skos:altLabel>
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Speaker -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Speaker">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Person"/>
+        <skos:prefLabel>Speaker</skos:prefLabel>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State">
         <skos:definition>status assigned to a collective judgment formation milestone at a specified point in a conversation based on evidence of how its information need, issue, option, or claim has been addressed or evaluated</skos:definition>
         <skos:prefLabel>state</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <skos:prefLabel>Text Span</skos:prefLabel>
     </owl:Class>
     
 
@@ -277,6 +405,15 @@ decision</skos:altLabel>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State"/>
         <skos:definition>state of a proposed Option without an established group selection or group rejection</skos:definition>
         <skos:prefLabel>under consideration</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Utterance -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Utterance">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <skos:prefLabel>Utterance</skos:prefLabel>
     </owl:Class>
 </rdf:RDF>
 
