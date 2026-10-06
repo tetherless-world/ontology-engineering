@@ -28,13 +28,16 @@
     (if the url contains the year's url the loop will break)
   {%- endcomment -%}
   {% assign active_year = year%}
-  {% if url contains year_path %}
+  {% if url contains year.path %}
     {% for project in year.projects %}
       {% assign project_path = year_path | append: '/' | append: project.path %}
+      {% if year.path contains "2026" %}
+        {% assign project_path = "/ontology-engineering/branch/" | append: project.path | append: '/' | append: year.path | append: '/' | append: project.path %}
+      {% endif %}
       {% if debug_mode %}
         <p>project_path: {{project_path | inspect }}</p>
       {% endif %}
-      {% if url contains project_path %}
+      {% if url contains project.path %}
         {% assign active_project = project %}
         {% assign active_project_path = project_path %}
         {% break %}
@@ -135,6 +138,9 @@
                   {% assign project_path = project.path %}
                 {% else %}
                   {% assign project_path = year_path | append: '/' | append: project.path %}
+                  {% if year.path contains "2026" %}
+                      {% assign project_path = "/ontology-engineering/branch/" | append: project.path | append: '/' | append: year.path | append: '/' | append: project.path %}
+                  {% endif %}
                 {% endif %}
                 {% if debug_mode %}
                   <p>project.path: {{project.path | inspect }}</p>
