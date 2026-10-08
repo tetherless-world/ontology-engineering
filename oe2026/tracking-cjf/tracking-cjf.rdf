@@ -2,11 +2,14 @@
 <rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"
      xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
      xmlns:dct="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:wot="http://xmlns.com/wot/0.1/"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:bibo="http://purl.org/ontology/bibo/"
      xmlns:cito="http://purl.org/spar/cito/"
      xmlns:core="http://purl.org/vocab/frbr/core#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
@@ -18,23 +21,25 @@
      xmlns:oe-cjf="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"
      xmlns:schema="http://schema.org/"
      xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+     xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:schema1="https://schema.org/"
      xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
+     xmlns:mappings="https://w3id.org/deliberation/mappings#"
      xmlns:resource="http://semanticscience.org/resource/"
      xmlns:fibo-fnd-gao-obj="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"
      xmlns:fibo-fnd-arr-asmt="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/"
+     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
      xmlns:AnnotationVocabulary="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
-     xmlns:IdentifiersAndIndices="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/"
-     xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/">
+     xmlns:IdentifiersAndIndices="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/">
     <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/">
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"/>
+        <owl:imports rdf:resource="http://purl.org/spar/amo"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/prov"/>
+        <owl:imports rdf:resource="https://github.com/nicholascar/do-ont/blob/master/do.ttl"/>
         <owl:imports rdf:resource="https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-release.owl"/>
-        <!--<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>-->
-        <!--<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/"/>-->
-		<!--<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>-->
-		<!-- <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>-->
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/> 
+        <owl:imports rdf:resource="https://stocastico96.github.io/Deliberation-Knowledge-Graph/ontologies/deliberation.owl"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
         <dct:abstract></dct:abstract>
     </owl:Ontology>
     
@@ -48,6 +53,14 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.org/spar/cito/supports -->
+
+    <rdf:Description rdf:about="http://purl.org/spar/cito/supports">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+    </rdf:Description>
     
 
 
@@ -69,6 +82,53 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
         <skos:definition>directed CJF semantic relationship linking an Option, Claim, or Outcome to an Issue, indicating that the Option, Claim, or Outcome substantively engages with the concern represented by the Issue without necessarily resolving it.</skos:definition>
         <skos:prefLabel>addresses</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/answers -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/answers">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/respondsTo"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest"/>
+        <skos:prefLabel>answers</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/challenges -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/challenges">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Claim"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+        <skos:prefLabel>challenges</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasPositionTowards -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasPositionTowards">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+        <skos:prefLabel>has position towards</skos:prefLabel>
     </owl:ObjectProperty>
     
 
@@ -156,6 +216,24 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
         <skos:definition>directed CJF semantic relationship linking an Outcome to an Issue, indicating a stage of deliberation in which a recommended Option is collectively confirmed, thereby closing the Issue.</skos:definition>
         <skos:prefLabel>resolves</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/respondsTo -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/respondsTo">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest"/>
+        <skos:prefLabel>responds to</skos:prefLabel>
     </owl:ObjectProperty>
     
 
@@ -290,6 +368,7 @@ assertion</skos:altLabel>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/deliberation/ontology#Contribution"/>
         <skos:definition>persistent semantic object representing a consequential contribution to the evolving collective judgment, such as an information request, issue, option, claim, expressed position, or outcome</skos:definition>
         <skos:prefLabel>collective judgment formation milestone</skos:prefLabel>
     </owl:Class>
