@@ -34,9 +34,9 @@
      xmlns:IdentifiersAndIndices="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/">
     <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/">
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"/>
-        <owl:imports rdf:resource="http://purl.org/spar/amo"/>
+        <!-- <owl:imports rdf:resource="http://purl.org/spar/amo"/> -->
         <owl:imports rdf:resource="http://www.w3.org/ns/prov"/>
-        <owl:imports rdf:resource="https://github.com/nicholascar/do-ont/blob/master/do.ttl"/>
+        <!-- <owl:imports rdf:resource="https://github.com/nicholascar/do-ont/blob/master/do.ttl"/> -->
         <owl:imports rdf:resource="https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-release.owl"/>
         <owl:imports rdf:resource="https://stocastico96.github.io/Deliberation-Knowledge-Graph/ontologies/deliberation.owl"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
@@ -53,15 +53,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://purl.org/spar/cito/supports -->
-
-    <rdf:Description rdf:about="http://purl.org/spar/cito/supports">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
-        <skos:definition>directed CJF semantic relationship linking a Claim to another Claim, an Issue, or an Option, where the relationship denotes evidence or reasoning that strengthens the epistemic standing of the target Claim, Issue, or Option.</skos:definition>
-    </rdf:Description>
     
 
 
@@ -132,7 +123,7 @@
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
-        <skos:definition>directed CJF semantic relationship linking an Expressed Position to an Issue, Option, or Claim, indicating the CJF milestone to which the speaker's position refers.</skos:definition>
+        <skos:definition>directed CJF semantic relationship linking an Expressed Position to an Issue, Option, or Claim, indicating the CJF milestone to which the speaker&apos;s position refers.</skos:definition>
         <skos:prefLabel>has position towards</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -258,6 +249,18 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/supports -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/supports">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Claim"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+        <skos:definition>directed CJF semantic relationship linking a Claim to another Claim, an Issue, or an Option, where the relationship denotes evidence or reasoning that strengthens the epistemic standing of the target Claim, Issue, or Option.</skos:definition>
+        <skos:prefLabel>supports</skos:prefLabel>
+    </owl:ObjectProperty>
+
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -366,8 +369,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Claim">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
-        <skos:altLabel>Statement</skos:altLabel>
         <skos:altLabel>Assertion</skos:altLabel>
+        <skos:altLabel>Statement</skos:altLabel>
         <skos:definition>CJF Milestone that introduces an assertion, interpretation, assessment, explanation, or piece of evidence for the group to consider, accept, or challenge</skos:definition>
         <skos:prefLabel>claim</skos:prefLabel>
     </owl:Class>
@@ -418,8 +421,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/MilestoneWithState"/>
-        <skos:altLabel>Question</skos:altLabel>
         <skos:altLabel>Info-Request</skos:altLabel>
+        <skos:altLabel>Question</skos:altLabel>
         <skos:definition>CJF Milestone that creates an information need calling for another contribution to provide information, a claim, evidence, reasoning, an option, a position or reaction, or clarification</skos:definition>
         <skos:prefLabel>information request</skos:prefLabel>
     </owl:Class>
@@ -461,11 +464,11 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Option">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
-        <skos:altLabel>Suggestion</skos:altLabel>
-        <skos:altLabel>Proposal</skos:altLabel>
         <skos:altLabel>Course of action</skos:altLabel>
+        <skos:altLabel>Proposal</skos:altLabel>
         <skos:altLabel>Resolution proposal</skos:altLabel>
         <skos:altLabel>Solution</skos:altLabel>
+        <skos:altLabel>Suggestion</skos:altLabel>
         <skos:definition>CJF Milestone that introduces a possible solution or course of action for the group to consider, compare, select, or reject</skos:definition>
         <skos:prefLabel>option</skos:prefLabel>
     </owl:Class>
