@@ -52,7 +52,27 @@
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"/>
 	</owl:Ontology>
 	
+	<owl:Class rdf:about="&oe-agtorch;ContentGeneration">
+		<rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;DataProcessing">
+		<rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;DecisionCriterion">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ExecutableResource">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;HardConstraint">
+		<rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Constraint"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;InformationAccess">
+		<rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;InformationArtifact">
@@ -61,7 +81,12 @@
 	<owl:Class rdf:about="&oe-agtorch;InformationRequirement">
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;Instructions">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;Invocation">
+		<rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Activity"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;OrchestrationPlan">
@@ -75,20 +100,39 @@
 	<owl:Class rdf:about="&oe-agtorch;PlanEvaluation">
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;Precondition">
+		<rdfs:subClassOf rdf:resource="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#Condition"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ReferenceMaterial">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;Request">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Script">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;ExecutableResource"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Skill">
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;SkillResource">
+		<rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Resource"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;SystemInteraction">
+		<rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Template">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	</owl:Class>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;consumes">
 		<rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
 		<rdfs:range rdf:resource="&oe-agtorch;InformationArtifact"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;correspondsToStep">
-		<rdfs:domain rdf:resource="&oe-agtorch;Invocation"/>
-		<rdfs:range rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;expresses">
@@ -98,6 +142,15 @@
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasCapability">
 		<rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;hasPrecondition">
+		<rdfs:range rdf:resource="&oe-agtorch;Precondition"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;hasResource">
+		<rdfs:domain rdf:resource="&oe-agtorch;Skill"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Skill"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasStep">
@@ -213,6 +266,34 @@
 			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/Composition">
 			</rdf:Description>
 			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/Role">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="http://w3id.org/beam/core#Instance">
+			</rdf:Description>
+			<rdf:Description rdf:about="http://w3id.org/beam/core#Model">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;ExecutableResource">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;Instructions">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;ReferenceMaterial">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;Template">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;ContentGeneration">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;DataProcessing">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;InformationAccess">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;SystemInteraction">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
