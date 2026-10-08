@@ -60,6 +60,7 @@
 
     <rdf:Description rdf:about="http://purl.org/spar/cito/supports">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+        <skos:definition>directed CJF semantic relationship linking a Claim to another Claim, an Issue, or an Option, where the relationship denotes evidence or reasoning that strengthens the epistemic standing of the target Claim, Issue, or Option.</skos:definition>
     </rdf:Description>
     
 
@@ -69,6 +70,7 @@
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000206">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
+        <skos:definition>directed grounding relationship linking a CJF Milestone to the Text Span that provides transcript evidence for the milestone annotation</skos:definition>
     </rdf:Description>
     
 
@@ -99,6 +101,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest"/>
+        <skos:definition>directed CJF semantic relationship linking an Expressed Position, Option, Issue, or Claim to an Information Request that it answers, thereby establishing that the information need is fully satisfied.</skos:definition>
         <skos:prefLabel>answers</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -117,6 +120,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+        <skos:definition>directed CJF semantic relationship linking a Claim or Issue to another Claim, an Issue, or an Option, where the relationship denotes evidence or reasoning that weakens or rebuts the epistemic standing of the target Claim, Issue, or Option.</skos:definition>
         <skos:prefLabel>challenges</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -128,6 +132,7 @@
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+        <skos:definition>directed CJF semantic relationship linking an Expressed Position to an Issue, Option, or Claim, indicating the CJF milestone to which the speaker's position refers.</skos:definition>
         <skos:prefLabel>has position towards</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -139,6 +144,7 @@
         <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_001403"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Speaker"/>
+        <skos:definition>inferred relationship that links a CJF milestone to the speaker whose conversational contribution expresses it.</skos:definition>
         <skos:prefLabel>has speaker</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -172,6 +178,7 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isNegativeSupportedBy">
         <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000206"/>
         <owl:propertyDisjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isPositiveSupportedBy"/>
+        <skos:definition>specialization of isSupportedBy linking a CJF Milestone to a Text Span whose linguistic content provides negative-polarity evidence for the ExpressedPosition milestone interpretation</skos:definition>
         <skos:prefLabel>is negative supported by</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -192,6 +199,7 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isPositiveSupportedBy">
         <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000206"/>
+        <skos:definition>specialization of isSupportedBy linking a CJF Milestone to a Text Span whose linguistic content provides positive-polarity evidence for the ExpressedPosition milestone interpretation</skos:definition>
         <skos:prefLabel>is positive supported by</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -233,6 +241,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest"/>
+        <skos:definition>directed CJF semantic relation linking a Claim, Option, Issue, or Expressed Position to an Information Request to which it provides a relevant response, without establishing whether the information need is satisfied</skos:definition>
         <skos:prefLabel>responds to</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -337,7 +346,7 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Agreement">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
-        <skos:definition>an Expressed Position indicating that a participant directly shares or accepts a position</skos:definition>
+        <skos:definition>value of an Expressed Position indicating that a participant directly shares or accepts a position</skos:definition>
         <skos:prefLabel>agreement</skos:prefLabel>
     </owl:Class>
     
@@ -357,9 +366,9 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Claim">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
-        <skos:altLabel>statement
-assertion</skos:altLabel>
-        <skos:definition>collective judgment formation milestone that introduces an assertion, interpretation, assessment, explanation, or piece of evidence for the group to consider, accept, or challenge</skos:definition>
+        <skos:altLabel>Statement</skos:altLabel>
+        <skos:altLabel>Assertion</skos:altLabel>
+        <skos:definition>CJF Milestone that introduces an assertion, interpretation, assessment, explanation, or piece of evidence for the group to consider, accept, or challenge</skos:definition>
         <skos:prefLabel>claim</skos:prefLabel>
     </owl:Class>
     
@@ -389,7 +398,7 @@ assertion</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Disagreement">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
-        <skos:definition>an Expressed Position indicating that a participant directly does not share a position</skos:definition>
+        <skos:definition>value of an Expressed Position indicating that a participant directly does not share a position</skos:definition>
         <skos:prefLabel>disagreement</skos:prefLabel>
     </owl:Class>
     
@@ -399,7 +408,7 @@ assertion</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
-        <skos:definition>collective judgment formation milestone that directly communicates a participant’s agreement, disagreement, acceptance, rejection, preference, uncertainty, or indifference toward an identifiable Claim, Option, or Issue</skos:definition>
+        <skos:definition>CJF Milestone that directly communicates a participant’s agreement, disagreement, acceptance, rejection, preference, uncertainty, or indifference toward an identifiable Claim, Option, or Issue</skos:definition>
         <skos:prefLabel>expressed position</skos:prefLabel>
     </owl:Class>
     
@@ -409,9 +418,9 @@ assertion</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/MilestoneWithState"/>
-        <skos:altLabel>question
-info-request</skos:altLabel>
-        <skos:definition>collective judgment formation milestone that creates an information need calling for another contribution to provide information, a claim, evidence, reasoning, an option, a position or reaction, or clarification</skos:definition>
+        <skos:altLabel>Question</skos:altLabel>
+        <skos:altLabel>Info-Request</skos:altLabel>
+        <skos:definition>CJF Milestone that creates an information need calling for another contribution to provide information, a claim, evidence, reasoning, an option, a position or reaction, or clarification</skos:definition>
         <skos:prefLabel>information request</skos:prefLabel>
     </owl:Class>
     
@@ -421,8 +430,8 @@ info-request</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
-        <skos:altLabel>challenge</skos:altLabel>
-        <skos:definition>collective judgment formation milestone that introduces a problem, concern, challenge, objection, correction, limitation, or lack of understanding for the group to address</skos:definition>
+        <skos:altLabel>Challenge</skos:altLabel>
+        <skos:definition>CJF Milestone that introduces a problem, concern, challenge, objection, correction, limitation, or lack of understanding for the group to address</skos:definition>
         <skos:prefLabel>issue</skos:prefLabel>
     </owl:Class>
     
@@ -432,7 +441,7 @@ info-request</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/MilestoneWithState">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
-        <skos:definition>collective judgment formation milestone for which the ontology records a time-dependent State supported by evidence from the conversation</skos:definition>
+        <skos:definition>CJF Milestone for which the ontology records a time-dependent State supported by evidence from the conversation</skos:definition>
         <skos:prefLabel>milestone with state</skos:prefLabel>
     </owl:Class>
     
@@ -452,11 +461,12 @@ info-request</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Option">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
-        <skos:altLabel>suggestion 
-proposal 
-course of action 
-resolution proposal</skos:altLabel>
-        <skos:definition>collective judgment formation milestone that introduces a possible solution or course of action for the group to consider, compare, select, or reject</skos:definition>
+        <skos:altLabel>Suggestion</skos:altLabel>
+        <skos:altLabel>Proposal</skos:altLabel>
+        <skos:altLabel>Course of action</skos:altLabel>
+        <skos:altLabel>Resolution proposal</skos:altLabel>
+        <skos:altLabel>Solution</skos:altLabel>
+        <skos:definition>CJF Milestone that introduces a possible solution or course of action for the group to consider, compare, select, or reject</skos:definition>
         <skos:prefLabel>option</skos:prefLabel>
     </owl:Class>
     
@@ -466,9 +476,9 @@ resolution proposal</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Outcome">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
-        <skos:altLabel>resolution
-decision</skos:altLabel>
-        <skos:definition>collective judgment formation milestone that records an established group-level selection, rejection, resolution, deferral, or commitment reached through deliberation</skos:definition>
+        <skos:altLabel>Decision</skos:altLabel>
+        <skos:altLabel>Resolution</skos:altLabel>
+        <skos:definition>CJF Milestone that records an established group-level selection, rejection, resolution, deferral, or commitment reached through deliberation</skos:definition>
         <skos:prefLabel>outcome</skos:prefLabel>
     </owl:Class>
     
@@ -508,6 +518,7 @@ decision</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Speaker">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Person"/>
+        <skos:definition>prov:Agent that participates in a multiparty conversation and is identified as the source of one or more Utterances</skos:definition>
         <skos:prefLabel>Speaker</skos:prefLabel>
     </owl:Class>
     
@@ -516,7 +527,7 @@ decision</skos:altLabel>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State">
-        <skos:definition>status assigned to a collective judgment formation milestone at a specified point in a conversation based on evidence of how its information need, issue, option, or claim has been addressed or evaluated</skos:definition>
+        <skos:definition>status assigned to a CJF Milestone at a specified point in a conversation based on evidence of how its information need, issue, option, or claim has been addressed or evaluated</skos:definition>
         <skos:prefLabel>state</skos:prefLabel>
     </owl:Class>
     
@@ -526,6 +537,7 @@ decision</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <skos:definition>contiguous segment of transcript text delimited by start and end positions and used as the specific target of an annotation</skos:definition>
         <skos:prefLabel>Text Span</skos:prefLabel>
     </owl:Class>
     
@@ -545,7 +557,7 @@ decision</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/UnderConsideration">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State"/>
-        <skos:definition>state of a proposed Option without an established group selection or group rejection</skos:definition>
+        <skos:definition>state of a proposed Option without an established group selection, group rejection, or explicit deferral</skos:definition>
         <skos:prefLabel>under consideration</skos:prefLabel>
     </owl:Class>
     
@@ -555,6 +567,7 @@ decision</skos:altLabel>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Utterance">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <skos:definition>speaker-attributed segment of a conversation bounded for annotation as one communicative contribution and capable of expressing one or more dialogue functions</skos:definition>
         <skos:prefLabel>Utterance</skos:prefLabel>
     </owl:Class>
 </rdf:RDF>
@@ -562,4 +575,3 @@ decision</skos:altLabel>
 
 
 <!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
