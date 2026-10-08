@@ -154,8 +154,14 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isAbout">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
         <skos:definition>directed CJF semantic relationship linking an Information Request to a Claim, Option, Issue, or Expressed Position, indicating the milestone that the request concerns.</skos:definition>
         <skos:prefLabel>is about</skos:prefLabel>
     </owl:ObjectProperty>
@@ -410,6 +416,8 @@
         <skos:definition>persistent semantic object representing a consequential contribution to the evolving collective judgment, such as an information request, issue, option, claim, expressed position, or outcome</skos:definition>
         <skos:prefLabel>collective judgment formation milestone</skos:prefLabel>
     </owl:Class>
+    
+
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Contested -->
 
@@ -463,7 +471,7 @@
                 <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <skos:definition>CJF Milestone that directly communicates a participant’s agreement, disagreement, acceptance, rejection, preference, uncertainty, or indifference toward an identifiable Claim, Option, or Issue</skos:definition>
+        <skos:definition>CJF Milestone that directly communicates a participant’s agreement or disagreement toward an identifiable Claim, Option, or Issue</skos:definition>
         <skos:prefLabel>expressed position</skos:prefLabel>
     </owl:Class>
     
@@ -473,8 +481,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/MilestoneWithState"/>
-        <skos:altLabel>Info-Request</skos:altLabel>
-        <skos:altLabel>Question</skos:altLabel>
+        <skos:altLabel>info-request</skos:altLabel>
+        <skos:altLabel>question</skos:altLabel>
         <skos:definition>CJF Milestone that creates an information need calling for another contribution to provide information, a claim, evidence, reasoning, an option, a position or reaction, or clarification</skos:definition>
         <skos:prefLabel>information request</skos:prefLabel>
     </owl:Class>
@@ -523,6 +531,7 @@
         <skos:definition>conversation among three or more identifiable participants, comprising ordered contributions that may respond to or build on contributions by different speakers</skos:definition>
         <skos:prefLabel>multiparty conversation</skos:prefLabel>
     </owl:Class>
+    
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Open -->
@@ -554,8 +563,8 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Outcome">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
-        <skos:altLabel>Decision</skos:altLabel>
-        <skos:altLabel>Resolution</skos:altLabel>
+        <skos:altLabel>decision</skos:altLabel>
+        <skos:altLabel>resolution</skos:altLabel>
         <skos:definition>CJF Milestone that records an established group-level selection, rejection, resolution, deferral, or commitment reached through deliberation</skos:definition>
         <skos:prefLabel>outcome</skos:prefLabel>
     </owl:Class>
