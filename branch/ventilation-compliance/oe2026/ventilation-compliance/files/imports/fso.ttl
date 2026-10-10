@@ -1,0 +1,161 @@
+@prefix : <https://w3id.org/fso#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix bot: <https://w3id.org/bot#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dce: <http://purl.org/dc/elements/1.1/> .
+@prefix fso: <https://w3id.org/fso#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/fso#> .
+
+<https://w3id.org/fso#> rdf:type owl:Ontology ;
+                         owl:versionIRI <https://w3id.org/fso/0.1.0> ;
+                         dcterms:creator "Ali Kücükavci" ,
+                                         "Mads Holten Rasmussen" ,
+                                         "Ville Kukkonen" ;
+                         dcterms:description "The Flow Systems Ontology (FSO) is an ontology for describing interconnected systems with material or energy flow connections, and their components."@en ;
+                         dcterms:issued "2020-01-01T12:00:00"^^xsd:dateTime ;
+                         dcterms:license <https://creativecommons.org/licenses/by/1.0/> ;
+                         dcterms:modified "2020-08-06T12:00:00"^^xsd:dateTime ;
+                         dcterms:title "The Flow Systems Ontology (FSO)"@en ;
+                         vann:preferredNamespacePrefix "fso" ;
+                         vann:preferredNamespaceUri <https://w3id.org/fso#> ;
+                         owl:priorVersion <https://w3id.org/fso/0.0.1> ;
+                         owl:versionInfo "0.1.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/fso#connectedWith
+fso:connectedWith rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:SymmetricProperty ;
+                  owl:propertyChainAxiom ( fso:hasComponent
+                                           fso:connectedWith
+                                           fso:isComponentOf
+                                         ) ;
+                  rdfs:comment "A generic \"connection\" relation between things."@en ;
+                  rdfs:label "connected with"@en .
+
+
+###  https://w3id.org/fso#hasComponent
+fso:hasComponent rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 owl:inverseOf fso:isComponentOf ;
+                 rdf:type owl:AsymmetricProperty ;
+                 rdfs:domain fso:System ;
+                 rdfs:range fso:Component ;
+                 owl:propertyChainAxiom ( fso:hasSubSystem
+                                          fso:hasComponent
+                                        ) ;
+                 rdfs:comment "Relates a system to a component it contains"@en ,
+                              "Relates a system to a component it contains. If system A has a subsystem B, which has a component C, then system A is said to have component C as well."@en ;
+                 rdfs:label "har komponent"@da ,
+                            "has component"@en .
+
+
+###  https://w3id.org/fso#hasSubSystem
+fso:hasSubSystem rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 owl:inverseOf fso:isSubSystemOf ;
+                 rdf:type owl:AsymmetricProperty ;
+                 rdfs:domain fso:System ;
+                 rdfs:range fso:System ;
+                 rdfs:comment "Relation between a system and its subsystem"@en ;
+                 rdfs:label "har delsystem"@da ,
+                            "has subsystem"@en .
+
+
+###  https://w3id.org/fso#isComponentOf
+fso:isComponentOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:AsymmetricProperty ;
+                  rdfs:domain fso:Component ;
+                  rdfs:range fso:System ;
+                  owl:propertyChainAxiom ( fso:isComponentOf
+                                           fso:isSubSystemOf
+                                         ) .
+
+
+###  https://w3id.org/fso#isSubSystemOf
+fso:isSubSystemOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain fso:System ;
+                  rdfs:range fso:System .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/fso#Component
+fso:Component rdf:type owl:Class ;
+              rdfs:comment "A component contained by a fso:System"@en ;
+              rdfs:label "Component"@en ,
+                         "Komponent"@da .
+
+
+###  https://w3id.org/fso#System
+fso:System rdf:type owl:Class ;
+           rdfs:comment "A system is a placeholder for properties that are valid for the components of the system and hence serves as an aggregation function. Common system properties include fluid properties such as the fluid type, temperature and thermal properties."@en ;
+           rdfs:label "System"@da ,
+                      "System"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/fso#
+<https://w3id.org/fso#> rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
