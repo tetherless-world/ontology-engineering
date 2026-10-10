@@ -40,8 +40,7 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/">
-		<rdfs:comment xml:lang="en">Agentic orchestration ontology including Figure 4 tool interfaces and Figure 7 execution and provenance. Diagram layouts and review images are in files/conceptual_models/.</rdfs:comment>
-		<dct:abstract xml:lang="en">Team AC-001 agentic orchestration ontology, including the existing core, skills, plans and artifacts model plus Figure 4 tool interfaces and Figure 7 execution and provenance.</dct:abstract>
+		<dct:abstract></dct:abstract>
 		<owl:imports rdf:resource="http://purl.org/net/p-plan#"/>
 		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
 		<owl:imports rdf:resource="http://www.w3id.org/agentic-ai/onto"/>
@@ -82,9 +81,6 @@
 		<skos:definition xml:lang="en">Relationship linking a process to a condition that must hold for it to execute successfully.</skos:definition>
 	</owl:ObjectProperty>
 	
-	<rdfs:Datatype rdf:about="&xsd;date">
-	</rdfs:Datatype>
-	
 	<owl:AnnotationProperty rdf:about="&skos;altLabel">
 	</owl:AnnotationProperty>
 	
@@ -93,52 +89,6 @@
 	
 	<owl:AnnotationProperty rdf:about="&skos;scopeNote">
 	</owl:AnnotationProperty>
-	
-	<owl:Class rdf:about="&prov;Agent">
-		<owl:disjointWith rdf:resource="&pplan;Plan"/>
-		<owl:disjointWith rdf:resource="&pplan;Step"/>
-		<owl:disjointWith rdf:resource="&pplan;Variable"/>
-		<owl:disjointWith rdf:resource="http://w3id.org/beam/core#Context"/>
-		<owl:disjointWith rdf:resource="http://w3id.org/beam/core#System"/>
-		<owl:disjointWith rdf:resource="&agento;Capability"/>
-		<owl:disjointWith rdf:resource="&agento;Config"/>
-		<owl:disjointWith rdf:resource="&agento;Instance"/>
-		<owl:disjointWith rdf:resource="&agento;Prompt"/>
-		<owl:disjointWith rdf:resource="&agento;Task"/>
-		<owl:disjointWith rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/Occurrence"/>
-		<owl:disjointWith rdf:resource="&fibo-fnd-gao-obj;Aim"/>
-		<owl:disjointWith rdf:resource="&fibo-fnd-gao-obj;Approach"/>
-		<owl:disjointWith rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/Referent"/>
-		<owl:disjointWith rdf:resource="&oe-agtorch;DecisionCriterion"/>
-		<owl:disjointWith rdf:resource="&oe-agtorch;InformationArtifact"/>
-		<owl:disjointWith rdf:resource="&oe-agtorch;InformationRequirement"/>
-		<owl:disjointWith rdf:resource="&oe-agtorch;Invocation"/>
-		<owl:disjointWith rdf:resource="&oe-agtorch;PlanEvaluation"/>
-		<owl:disjointWith rdf:resource="&oe-agtorch;Request"/>
-		<owl:disjointWith rdf:resource="&oe-agtorch;Skill"/>
-		<owl:disjointWith rdf:resource="&cmns-cls;Aspect"/>
-		<owl:disjointWith rdf:resource="&cmns-col;Arrangement"/>
-		<owl:disjointWith rdf:resource="&cmns-col;Collection"/>
-		<owl:disjointWith rdf:resource="&cmns-col;Constituent"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/Context"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/TemporalEntity"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/Designators/Designation"/>
-		<owl:disjointWith rdf:resource="&cmns-doc;Document"/>
-		<owl:disjointWith rdf:resource="&cmns-doc;Reference"/>
-		<owl:disjointWith rdf:resource="&cmns-doc;Specification"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/Locations/Location"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/Locations/Region"/>
-		<owl:disjointWith rdf:resource="&cmns-org;Service"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Agent"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Situation"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Expression"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantity"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/Composition"/>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/Role"/>
-		<skos:scopeNote>Integration repair: keep the team disjointness assertions except Agent-versus-AgentO-Tool. AgentO LLMAgent is explicitly a subclass of both; declaring those two superclasses disjoint makes LLMAgent and Figure 7 invocations unsatisfiable.</skos:scopeNote>
-	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&prov;used">
 		<rdfs:label xml:lang="en">used</rdfs:label>
@@ -1056,6 +1006,8 @@
 			<rdf:Description rdf:about="http://w3id.org/beam/core#Context">
 			</rdf:Description>
 			<rdf:Description rdf:about="http://w3id.org/beam/core#System">
+			</rdf:Description>
+			<rdf:Description rdf:about="&prov;Agent">
 			</rdf:Description>
 			<rdf:Description rdf:about="&agento;Capability">
 			</rdf:Description>
