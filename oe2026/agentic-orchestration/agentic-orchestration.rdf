@@ -7,10 +7,12 @@
 	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
 	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY expr "http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#">
 	<!ENTITY fibo-fnd-gao-obj "https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/">
 	<!ENTITY oe-agtorch "https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY pplan "http://purl.org/net/p-plan#">
+	<!ENTITY process "http://www.daml.org/services/owl-s/1.2/Process.owl#">
 	<!ENTITY prov "http://www.w3.org/ns/prov#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
@@ -25,10 +27,12 @@
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
 	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:expr="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#"
 	xmlns:fibo-fnd-gao-obj="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"
 	xmlns:oe-agtorch="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:pplan="http://purl.org/net/p-plan#"
+	xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
 	xmlns:prov="http://www.w3.org/ns/prov#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -36,11 +40,13 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/">
-		<dct:abstract></dct:abstract>
-		<owl:imports rdf:resource="http://purl.org/net/p-plan#"/>
+		<rdfs:comment xml:lang="en">Figures 4 and 7 integrated with team branch commit 7d4eca8. The existing ontology and version IRIs and team definitions are preserved. See imports/README.md for import compatibility and shared-property reconciliation.</rdfs:comment>
+		<dct:abstract xml:lang="en">Team AC-001 agentic orchestration ontology, including the existing core, skills, plans and artifacts model plus Figure 4 tool interfaces and Figure 7 execution and provenance.</dct:abstract>
 		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
 		<owl:imports rdf:resource="http://www.w3id.org/agentic-ai/onto"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/imports/PPlanCompatible/"/>
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/imports/PROVOCompatible/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
@@ -49,13 +55,138 @@
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"/>
 	</owl:Ontology>
 	
+	<owl:AnnotationProperty rdf:about="&dct;source">
+	</owl:AnnotationProperty>
+	
 	<owl:Class rdf:about="&pplan;Plan">
 	</owl:Class>
 	
 	<owl:Class rdf:about="&pplan;Step">
 	</owl:Class>
 	
+	<owl:ObjectProperty rdf:about="&pplan;correspondsToStep">
+		<rdfs:label xml:lang="en">corresponds to step</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Links an execution activity to its planned workflow step.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&process;hasParameter">
+		<rdfs:label xml:lang="en">has parameter</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Relationship linking a process interface to a formal parameter through which values are supplied or returned.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&process;hasPrecondition">
+		<rdfs:label xml:lang="en">has precondition</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Relationship linking a process to a condition that must hold for it to execute successfully.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<rdfs:Datatype rdf:about="&xsd;date">
+	</rdfs:Datatype>
+	
+	<owl:AnnotationProperty rdf:about="&skos;altLabel">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;definition">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;scopeNote">
+	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="&prov;Agent">
+		<owl:disjointWith rdf:resource="&pplan;Plan"/>
+		<owl:disjointWith rdf:resource="&pplan;Step"/>
+		<owl:disjointWith rdf:resource="&pplan;Variable"/>
+		<owl:disjointWith rdf:resource="http://w3id.org/beam/core#Context"/>
+		<owl:disjointWith rdf:resource="http://w3id.org/beam/core#System"/>
+		<owl:disjointWith rdf:resource="&agento;Capability"/>
+		<owl:disjointWith rdf:resource="&agento;Config"/>
+		<owl:disjointWith rdf:resource="&agento;Instance"/>
+		<owl:disjointWith rdf:resource="&agento;Prompt"/>
+		<owl:disjointWith rdf:resource="&agento;Task"/>
+		<owl:disjointWith rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/Occurrence"/>
+		<owl:disjointWith rdf:resource="&fibo-fnd-gao-obj;Aim"/>
+		<owl:disjointWith rdf:resource="&fibo-fnd-gao-obj;Approach"/>
+		<owl:disjointWith rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/Referent"/>
+		<owl:disjointWith rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<owl:disjointWith rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<owl:disjointWith rdf:resource="&oe-agtorch;InformationRequirement"/>
+		<owl:disjointWith rdf:resource="&oe-agtorch;Invocation"/>
+		<owl:disjointWith rdf:resource="&oe-agtorch;PlanEvaluation"/>
+		<owl:disjointWith rdf:resource="&oe-agtorch;Request"/>
+		<owl:disjointWith rdf:resource="&oe-agtorch;Skill"/>
+		<owl:disjointWith rdf:resource="&cmns-cls;Aspect"/>
+		<owl:disjointWith rdf:resource="&cmns-col;Arrangement"/>
+		<owl:disjointWith rdf:resource="&cmns-col;Collection"/>
+		<owl:disjointWith rdf:resource="&cmns-col;Constituent"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/Context"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/TemporalEntity"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/Designators/Designation"/>
+		<owl:disjointWith rdf:resource="&cmns-doc;Document"/>
+		<owl:disjointWith rdf:resource="&cmns-doc;Reference"/>
+		<owl:disjointWith rdf:resource="&cmns-doc;Specification"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/Locations/Location"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/Locations/Region"/>
+		<owl:disjointWith rdf:resource="&cmns-org;Service"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Agent"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/Situation"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Expression"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantity"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/Composition"/>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/Role"/>
+		<skos:scopeNote>Integration repair: keep the team disjointness assertions except Agent-versus-AgentO-Tool. AgentO LLMAgent is explicitly a subclass of both; declaring those two superclasses disjoint makes LLMAgent and Figure 7 invocations unsatisfiable.</skos:scopeNote>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&prov;used">
+		<rdfs:label xml:lang="en">used</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Links an invocation to an information artifact it used.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;wasAssociatedWith">
+		<rdfs:label xml:lang="en">was associated with</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Links an invocation to an agent responsible for its execution.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;wasDerivedFrom">
+		<rdfs:label xml:lang="en">was derived from</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Links an answer or other entity to an entity from which it was derived.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;wasGeneratedBy">
+		<rdfs:label xml:lang="en">was generated by</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Links a generated information artifact to the activity that produced it.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="&agento;LLMAgent">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;usesTool"/>
+				<owl:allValuesFrom rdf:resource="&oe-agtorch;Tool"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">large language model agent</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Software agent that uses a large language model to guide its task-directed actions.</skos:definition>
+		<skos:scopeNote xml:lang="en">Reuses the AgentO class IRI; this is not a new local agent class.</skos:scopeNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&agento;WorkflowPattern">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&agento;WorkflowStep">
+		<rdfs:subClassOf rdf:resource="&pplan;Step"/>
+		<rdfs:label xml:lang="en">workflow step</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<dct:source rdf:resource="http://www.w3id.org/agentic-ai/onto"/>
+		<skos:definition xml:lang="en">Planned phase or position within an orchestration workflow that is associated with a task.</skos:definition>
+		<skos:scopeNote xml:lang="en">Reuses the AgentO IRI and its named superclass p-plan:Step, verified in imports/AgentO.owl. Other upstream AgentO axioms are not imported by this declaration.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&agento;performedBy">
@@ -63,7 +194,14 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;Answer">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&prov;wasDerivedFrom"/>
+				<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationArtifact"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">answer</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">information artifact that communicates a response to a user’s query and represents the result of completing a task</skos:definition>
 	</owl:Class>
 	
@@ -85,6 +223,13 @@
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
 		<rdfs:label xml:lang="en">candidate supplement</rdfs:label>
 		<skos:definition xml:lang="en">information artifact describing a supplement being considered for a recommendation</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Capability">
+		<rdfs:label xml:lang="en">capability</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<owl:equivalentClass rdf:resource="&agento;Capability"/>
+		<skos:definition xml:lang="en">Ability of an agent to perform a type of action or task.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;ConflictingEvidenceAssessment">
@@ -160,6 +305,21 @@
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;ExecutionTrace">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<rdfs:label xml:lang="en">execution trace</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Chronological record of a workflow&apos;s actual execution, capturing the steps performed and their outcomes.</skos:definition>
+		<skos:scopeNote xml:lang="en">An information artifact recording execution, not a workflow plan. The records property identifies the recorded invocations; explicit timestamps and ordering are outside Figures 4 and 7.</skos:scopeNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ExternalTool">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;Tool"/>
+		<rdfs:label xml:lang="en">external tool</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Tool that is exposed by a server or service outside the agent harness and is invoked through a communication protocol or a command-line interface.</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;HardConstraint">
 		<rdfs:subClassOf rdf:resource="&agento;Constraint"/>
 	</owl:Class>
@@ -169,8 +329,11 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;InformationArtifact">
+		<rdfs:subClassOf rdf:resource="&prov;Entity"/>
 		<rdfs:label xml:lang="en">information artifact</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">information content entity represented as an identifiable item that can be consumed, produced, or retained during an agent workflow</skos:definition>
+		<skos:scopeNote xml:lang="en">Includes supplied input and generated output. Figure 7 generation is expressed on Invocation using inverse prov:wasGeneratedBy, so an input artifact is not required to have been generated by an invocation in this workflow.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;InformationRequirement">
@@ -199,6 +362,13 @@
 		<cmns-av:adaptedFrom xml:lang="en">Defined class: InformationArtifact and (inverse consumes some Task)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;InputConstraint">
+		<rdfs:label xml:lang="en">input constraint</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Condition on the value of an input that an invocation must satisfy to be accepted by the tool or skill.</skos:definition>
+		<skos:scopeNote xml:lang="en">Figure 4 depicts this as a separate class. No additional superclass is imposed: Figure 2 and the curated term list differ on its placement, so that cross-figure reconciliation remains for the team.</skos:scopeNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;Instructions">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
 	</owl:Class>
@@ -223,6 +393,54 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;Invocation">
 		<rdfs:subClassOf rdf:resource="&pplan;Activity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&pplan;correspondsToStep"/>
+				<owl:someValuesFrom rdf:resource="&agento;WorkflowStep"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&prov;used"/>
+				<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationArtifact"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&prov;wasAssociatedWith"/>
+				<owl:someValuesFrom rdf:resource="&agento;LLMAgent"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty>
+					<owl:ObjectProperty>
+						<owl:inverseOf rdf:resource="&prov;wasGeneratedBy"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationArtifact"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">invocation</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Execution activity in which a particular tool or skill is called or applied.</skos:definition>
+		<skos:scopeNote xml:lang="en">An actual occurrence, distinct from the tool or skill specification and from the planned workflow step. The required correspondsToStep value, combined with the functional P-Plan property, gives exactly one planned step. Existential restrictions do not require an explicitly asserted named value under OWL open-world semantics.</skos:scopeNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolServer">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;Server"/>
+		<rdfs:label xml:lang="en">model context protocol server</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:altLabel xml:lang="en">MCPServer</skos:altLabel>
+		<skos:definition xml:lang="en">server that implements the Model Context Protocol to expose supported tools, resources, or prompts to MCP clients</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolTool">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;ExternalTool"/>
+		<rdfs:label xml:lang="en">model context protocol tool</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:altLabel xml:lang="en">MCPTool</skos:altLabel>
+		<skos:definition xml:lang="en">tool exposed by an MCP server for discovery and invocation by an MCP client through the Model Context Protocol</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;OptionalInput">
@@ -289,16 +507,35 @@
 		<cmns-av:adaptedFrom xml:lang="en">Defined class: InformationArtifact and (inverse produces some Task)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;OutputType">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;ParameterType"/>
+		<rdfs:label xml:lang="en">output type</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Parameter type that specifies the class or datatype of the values an invocation returns through an output parameter.</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;Parameter">
+		<rdfs:subClassOf rdf:resource="&process;Parameter"/>
 		<rdfs:label xml:lang="en">parameter</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">named element of the interface of a tool or skill through which a value is passed into or returned from an invocation</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ParameterType">
+		<rdfs:label xml:lang="en">parameter type</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Class or datatype to which the values of a parameter must belong.</skos:definition>
+		<skos:scopeNote xml:lang="en">Instances describe permitted value types. They are type descriptions, not the values passed at runtime. hasType is not equivalent to the OWL-S datatype property parameterType.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;PlanEvaluation">
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Precondition">
-		<rdfs:subClassOf rdf:resource="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#Condition"/>
+		<rdfs:subClassOf rdf:resource="&expr;Condition"/>
+		<rdfs:label xml:lang="en">precondition</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">execution constraint that must hold for a tool or skill to be validly invoked</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;ProductList">
@@ -362,9 +599,30 @@
 		<skos:definition xml:lang="en">information artifact specifying search terms or criteria submitted to an information-retrieval tool</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;Server">
+		<rdfs:label xml:lang="en">server</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Software component that exposes computational resources and operations to clients through a communication protocol.</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;Skill">
 		<rdfs:label xml:lang="en">skill</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">specification of a focused agent behavior that can be applied to perform a class of tasks</skos:definition>
+		<skos:scopeNote xml:lang="en">A reusable behavior specification, not an invocation. Included as a shared reference from Figure 3; Skill is not modeled as a subclass of Capability, following the conceptual model Figure 3 decision.</skos:scopeNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;SkillInvocation">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;invokes"/>
+				<owl:someValuesFrom rdf:resource="&oe-agtorch;Skill"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">skill invocation</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Execution event in which a specific skill is selected and applied to perform a task.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;SkillResource">
@@ -383,6 +641,51 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;Template">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Tool">
+		<rdfs:subClassOf rdf:resource="&process;Process"/>
+		<rdfs:subClassOf rdf:resource="&agento;Tool"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;hasCapability"/>
+				<owl:allValuesFrom rdf:resource="&oe-agtorch;Capability"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&process;hasParameter"/>
+				<owl:allValuesFrom rdf:resource="&oe-agtorch;Parameter"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&process;hasPrecondition"/>
+				<owl:allValuesFrom rdf:resource="&oe-agtorch;Precondition"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">tool</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Callable computational resource that performs a defined operation when invoked.</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ToolInvocation">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;invokes"/>
+				<owl:someValuesFrom rdf:resource="&oe-agtorch;Tool"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;isPartOf"/>
+				<owl:someValuesFrom rdf:resource="&oe-agtorch;SkillInvocation"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">tool invocation</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<skos:definition xml:lang="en">Execution event in which a specific tool is requested to perform its operation using supplied input.</skos:definition>
 	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;addresses">
@@ -406,6 +709,14 @@
 		<skos:definition xml:lang="en">study design that describes the clinical presentation of one or a few individual patients</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">MeSH D002363 Case Reports (publication type)</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;constrains">
+		<rdfs:label xml:lang="en">constrains</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;InputConstraint"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Parameter"/>
+		<skos:definition xml:lang="en">Relationship linking an input constraint to the parameter whose permitted input values it restricts.</skos:definition>
+	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;consumes">
 		<rdfs:label xml:lang="en">consumes</rdfs:label>
@@ -436,6 +747,14 @@
 		<cmns-av:adaptedFrom xml:lang="en">SEPIO label “disputing” (no definition in the 2023-06-13 release); wording mirrors the definition of supporting</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;exposes">
+		<rdfs:label xml:lang="en">exposes</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;Server"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Tool"/>
+		<skos:definition xml:lang="en">Relationship linking a server to a tool it makes available for discovery or invocation.</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;expresses">
 		<rdfs:domain rdf:resource="&oe-agtorch;Request"/>
 		<rdfs:range rdf:resource="&oe-agtorch;InformationRequirement"/>
@@ -449,7 +768,11 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasCapability">
+		<rdfs:label xml:lang="en">has capability</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<rdfs:range rdf:resource="&agento;Capability"/>
+		<skos:definition xml:lang="en">Relationship linking a skill or tool to an ability it provides.</skos:definition>
+		<skos:scopeNote xml:lang="en">Shared by tools and skills in Figures 3 and 4. No Tool-only global domain is asserted, because that would classify every skill using this property as a Tool. Figure 4 constrains the property locally on Tool.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasCertaintyLevel">
@@ -529,6 +852,14 @@
 		<cmns-av:adaptedFrom xml:lang="en">AgentO v0.2 hasWorkflowStep (“Specifies a step that is part of a workflow pattern.”) composed with hasAssociatedTask (“Links a workflow step to the task it corresponds to.”)</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;hasType">
+		<rdfs:label xml:lang="en">has type</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;Parameter"/>
+		<rdfs:range rdf:resource="&oe-agtorch;ParameterType"/>
+		<skos:definition xml:lang="en">Relationship linking a parameter to the class or datatype that specifies its permitted values.</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch;high">
 		<rdf:type rdf:resource="&oe-agtorch;EvidenceCertaintyLevel"/>
 		<rdfs:label xml:lang="en">high</rdfs:label>
@@ -543,6 +874,31 @@
 		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “An evidence direction indicating that an evidence line lacks sufficient credibility, relevance, or completeness to argue for or against the validity of a target assertion.”</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;invokes">
+		<rdfs:label xml:lang="en">invokes</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:range>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-agtorch;Tool">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;Skill">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:range>
+		<skos:definition xml:lang="en">Links an invocation to the tool or skill specification executed by that occurrence.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isPartOf">
+		<rdfs:label xml:lang="en">is part of</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;ToolInvocation"/>
+		<rdfs:range rdf:resource="&oe-agtorch;SkillInvocation"/>
+		<skos:definition xml:lang="en">Links a tool invocation to the skill invocation that made that tool call.</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;isReportedIn">
 		<rdfs:label xml:lang="en">is reported in</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;EvidenceFinding"/>
@@ -553,9 +909,11 @@
 	
 	<owl:DatatypeProperty rdf:about="&oe-agtorch;isRequired">
 		<rdfs:label xml:lang="en">is required</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<rdfs:domain rdf:resource="&oe-agtorch;Parameter"/>
 		<rdfs:range rdf:resource="&xsd;boolean"/>
 		<skos:definition xml:lang="en">boolean attribute of a parameter indicating whether an input must be supplied for invocation</skos:definition>
+		<skos:scopeNote xml:lang="en">true marks a required parameter and false an optional one. An absent assertion means unknown. This metadata does not perform runtime validation under OWL&apos;s open-world semantics.</skos:scopeNote>
 	</owl:DatatypeProperty>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch;low">
@@ -601,6 +959,14 @@
 		<cmns-av:adaptedFrom xml:lang="en">MeSH D016449 Randomized Controlled Trial: “A work that reports on a clinical trial that involves at least one test treatment and one control treatment, concurrent enrollment and follow-up of the test- and control-treated groups, and in which the treatments to be administered are selected by a random process.”</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;records">
+		<rdfs:label xml:lang="en">records</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;ExecutionTrace"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Invocation"/>
+		<skos:definition xml:lang="en">Links an execution trace to an invocation included in its record.</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;satisfiesConstraint">
 		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
 		<rdfs:range rdf:resource="&agento;Constraint"/>
@@ -631,7 +997,11 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;usesTool">
+		<rdfs:label xml:lang="en">uses tool</rdfs:label>
+		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<rdfs:range rdf:resource="&agento;Tool"/>
+		<skos:definition xml:lang="en">Links an agent or skill to a tool it uses.</skos:definition>
+		<skos:scopeNote xml:lang="en">Shared by Figures 3 and 4. No global domain is imposed, so skill use does not classify the skill as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch;veryLow">
@@ -686,8 +1056,6 @@
 			<rdf:Description rdf:about="http://w3id.org/beam/core#Context">
 			</rdf:Description>
 			<rdf:Description rdf:about="http://w3id.org/beam/core#System">
-			</rdf:Description>
-			<rdf:Description rdf:about="&prov;Agent">
 			</rdf:Description>
 			<rdf:Description rdf:about="&agento;Capability">
 			</rdf:Description>
