@@ -75,18 +75,6 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/fso#connectedWith
-fso:connectedWith rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf owl:topObjectProperty ;
-                  rdf:type owl:SymmetricProperty ;
-                  owl:propertyChainAxiom ( fso:hasComponent
-                                           fso:connectedWith
-                                           fso:isComponentOf
-                                         ) ;
-                  rdfs:comment "A generic \"connection\" relation between things."@en ;
-                  rdfs:label "connected with"@en .
-
-
 ###  https://w3id.org/fso#hasComponent
 fso:hasComponent rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
@@ -94,25 +82,10 @@ fso:hasComponent rdf:type owl:ObjectProperty ;
                  rdf:type owl:AsymmetricProperty ;
                  rdfs:domain fso:System ;
                  rdfs:range fso:Component ;
-                 owl:propertyChainAxiom ( fso:hasSubSystem
-                                          fso:hasComponent
-                                        ) ;
                  rdfs:comment "Relates a system to a component it contains"@en ,
                               "Relates a system to a component it contains. If system A has a subsystem B, which has a component C, then system A is said to have component C as well."@en ;
                  rdfs:label "har komponent"@da ,
                             "has component"@en .
-
-
-###  https://w3id.org/fso#hasSubSystem
-fso:hasSubSystem rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf owl:topObjectProperty ;
-                 owl:inverseOf fso:isSubSystemOf ;
-                 rdf:type owl:AsymmetricProperty ;
-                 rdfs:domain fso:System ;
-                 rdfs:range fso:System ;
-                 rdfs:comment "Relation between a system and its subsystem"@en ;
-                 rdfs:label "har delsystem"@da ,
-                            "has subsystem"@en .
 
 
 ###  https://w3id.org/fso#isComponentOf
@@ -120,15 +93,6 @@ fso:isComponentOf rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   rdf:type owl:AsymmetricProperty ;
                   rdfs:domain fso:Component ;
-                  rdfs:range fso:System ;
-                  owl:propertyChainAxiom ( fso:isComponentOf
-                                           fso:isSubSystemOf
-                                         ) .
-
-
-###  https://w3id.org/fso#isSubSystemOf
-fso:isSubSystemOf rdf:type owl:ObjectProperty ;
-                  rdfs:domain fso:System ;
                   rdfs:range fso:System .
 
 
