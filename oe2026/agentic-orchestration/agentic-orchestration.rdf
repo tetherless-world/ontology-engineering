@@ -142,7 +142,6 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&agento;WorkflowStep">
-		<rdfs:subClassOf rdf:resource="&pplan;Step"/>
 		<rdfs:label xml:lang="en">workflow step</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<dct:source rdf:resource="http://www.w3id.org/agentic-ai/onto"/>
@@ -496,8 +495,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Parameter">
-		<rdfs:subClassOf rdf:resource="&process;Parameter"/>
-		<rdfs:label xml:lang="en">parameter</rdfs:label>
+		<rdfs:label xml:lang="en">Parameter</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">named element of the interface of a tool or skill through which a value is passed into or returned from an invocation</skos:definition>
 	</owl:Class>
@@ -609,7 +607,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Skill">
-		<rdfs:label xml:lang="en">skill</rdfs:label>
+		<rdfs:label xml:lang="en">Skill</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">specification of a focused agent behavior that can be applied to perform a class of tasks</skos:definition>
 		<skos:scopeNote xml:lang="en">A reusable behavior specification, not an invocation. Included as a shared reference from Figure 3; Skill is not modeled as a subclass of Capability, following the conceptual model Figure 3 decision.</skos:scopeNote>
@@ -630,6 +628,8 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;SkillResource">
 		<rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Resource"/>
+		<rdfs:label>Skill Resource</rdfs:label>
+		<skos:definition>a resource used to aid in skill execution</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;SoftConstraint">
@@ -877,12 +877,14 @@
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasResource">
 		<rdfs:domain rdf:resource="&oe-agtorch;Skill"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Skill"/>
+		<rdfs:range rdf:resource="&oe-agtorch;SkillResource"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasStep">
+		<rdfs:label>has step</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
 		<rdfs:range rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<skos:definition>Relationship connecting an orchestration plan with one of its constituent steps.</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasStudyDesign">
@@ -897,12 +899,6 @@
 		<rdfs:label xml:lang="en">has task</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
 		<rdfs:range rdf:resource="&agento;Task"/>
-		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description rdf:about="&agento;hasWorkflowStep">
-			</rdf:Description>
-			<rdf:Description rdf:about="&agento;hasAssociatedTask">
-			</rdf:Description>
-		</owl:propertyChainAxiom>
 		<skos:definition xml:lang="en">relation from an orchestration plan to a task that is associated with one of the plan’s workflow steps</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">AgentO v0.2 hasWorkflowStep (“Specifies a step that is part of a workflow pattern.”) composed with hasAssociatedTask (“Links a workflow step to the task it corresponds to.”)</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
@@ -1153,98 +1149,6 @@
 			</rdf:Description>
 		</owl:distinctMembers>
 	</owl:AllDifferent>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&pplan;Plan">
-			</rdf:Description>
-			<rdf:Description rdf:about="&pplan;Step">
-			</rdf:Description>
-			<rdf:Description rdf:about="&pplan;Variable">
-			</rdf:Description>
-			<rdf:Description rdf:about="http://w3id.org/beam/core#Context">
-			</rdf:Description>
-			<rdf:Description rdf:about="http://w3id.org/beam/core#System">
-			</rdf:Description>
-			<rdf:Description rdf:about="&prov;Agent">
-			</rdf:Description>
-			<rdf:Description rdf:about="&agento;Capability">
-			</rdf:Description>
-			<rdf:Description rdf:about="&agento;Config">
-			</rdf:Description>
-			<rdf:Description rdf:about="&agento;Instance">
-			</rdf:Description>
-			<rdf:Description rdf:about="&agento;Prompt">
-			</rdf:Description>
-			<rdf:Description rdf:about="&agento;Task">
-			</rdf:Description>
-			<rdf:Description rdf:about="&agento;Tool">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/Occurrence">
-			</rdf:Description>
-			<rdf:Description rdf:about="&fibo-fnd-gao-obj;Aim">
-			</rdf:Description>
-			<rdf:Description rdf:about="&fibo-fnd-gao-obj;Approach">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/Referent">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;DecisionCriterion">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;InformationArtifact">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;InformationRequirement">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;Invocation">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;PlanEvaluation">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;Request">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;Skill">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-cls;Aspect">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-col;Arrangement">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-col;Collection">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-col;Constituent">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/ContextualDesignators/Context">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/DatesAndTimes/TemporalEntity">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Designators/Designation">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-doc;Document">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-doc;Reference">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-doc;Specification">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/Location">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/Locations/Region">
-			</rdf:Description>
-			<rdf:Description rdf:about="&cmns-org;Service">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/Agent">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/Situation">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Expression">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantity">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/Composition">
-			</rdf:Description>
-			<rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/Role">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="http://w3id.org/beam/core#Instance">
