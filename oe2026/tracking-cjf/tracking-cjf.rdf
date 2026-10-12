@@ -30,7 +30,6 @@
     <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/">
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/prov"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
         <dct:abstract></dct:abstract>
     </owl:Ontology>
     
@@ -44,6 +43,30 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/identifier -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+    
+
+
+    <!-- http://semanticscience.org/resource/equivalentTo -->
+
+    <owl:AnnotationProperty rdf:about="http://semanticscience.org/resource/equivalentTo"/>
+    
+
+
+    <!-- http://semanticscience.org/resource/subset -->
+
+    <owl:AnnotationProperty rdf:about="http://semanticscience.org/resource/subset"/>
     
 
 
@@ -70,11 +93,23 @@
     
 
 
+    <!-- http://semanticscience.org/resource/SIO_000001 -->
+
+    <owl:ObjectProperty rdf:about="http://semanticscience.org/resource/SIO_000001"/>
+    
+
+
     <!-- http://semanticscience.org/resource/SIO_000053 -->
 
-    <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000053">
+    <owl:ObjectProperty rdf:about="http://semanticscience.org/resource/SIO_000053">
         <owl:inverseOf rdf:resource="http://semanticscience.org/resource/SIO_000093"/>
-    </rdf:Description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticscience.org/resource/SIO_000068 -->
+
+    <owl:ObjectProperty rdf:about="http://semanticscience.org/resource/SIO_000068"/>
     
 
 
@@ -107,6 +142,18 @@
         <rdfs:label xml:lang="en">is supported by</rdfs:label>
         <skos:definition>directed grounding relationship linking a CJF Milestone to the Text Span that provides transcript evidence for the milestone annotation</skos:definition>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticscience.org/resource/SIO_000208 -->
+
+    <owl:ObjectProperty rdf:about="http://semanticscience.org/resource/SIO_000208"/>
+    
+
+
+    <!-- http://semanticscience.org/resource/SIO_000772 -->
+
+    <owl:ObjectProperty rdf:about="http://semanticscience.org/resource/SIO_000772"/>
     
 
 
@@ -361,6 +408,29 @@
         <rdfs:comment>Relates a contribution to another contribution it responds to.</rdfs:comment>
         <rdfs:label>response to</rdfs:label>
         <mappings:metagovMapping>Direct conceptual equivalent for threading of contributions.</mappings:metagovMapping>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/DatesAndTimes/hasDateTime -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/DatesAndTimes/hasDateTime">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/hasTime"/>
+        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/DateTime"/>
+        <rdfs:label>has date time</rdfs:label>
+        <skos:definition>identifies a specific date and time of day, possibly excluding the time zone</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/DatesAndTimes/hasTime -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/DatesAndTimes/hasTime">
+        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/TemporalEntity"/>
+        <rdfs:label>has time</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://w3c.github.io/sdw/time/#time:hasTime"/>
+        <skos:definition>specifies a general time that can be associated with any element</skos:definition>
+        <skos:note>This property corresponds to the property of the same name in the W3C Time Ontology, and can be used to support mapping.</skos:note>
     </owl:ObjectProperty>
     
 
@@ -843,6 +913,24 @@
         <rdfs:label>Contribution</rdfs:label>
         <mappings:metagovMapping>DIP Statement (org.deliberation.statement) closely matches del:Contribution. DIP StatementRole values map onto DEL specializations: Evidence to del:Evidence, Refutation to del:attacks relations, Proposal and Decision to del:Position and del:Consensus contexts.</mappings:metagovMapping>
         <mappings:siocMapping>More general than sioc:Post as contributions may include non-textual input</mappings:siocMapping>
+    </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/DatesAndTimes/DateTime -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/DatesAndTimes/DateTime">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/TimeInstant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/hasDateTimeValue"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>date time</rdfs:label>
+        <skos:definition>time point including a date and a time, optionally including a time zone offset</skos:definition>
+        <skos:note>&apos;has date time value&apos; is omitted if the &apos;date time&apos; is not (yet) known. The time zone is implicitly UTC.</skos:note>
     </owl:Class>
 </rdf:RDF>
 
