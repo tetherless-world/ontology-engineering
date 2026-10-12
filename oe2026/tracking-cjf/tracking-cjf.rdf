@@ -29,7 +29,6 @@
      xmlns:fibo-fnd-arr-asmt="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/">
     <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/">
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"/>
-        <owl:imports rdf:resource="http://www.w3.org/ns/prov"/>
         <dct:abstract></dct:abstract>
     </owl:Ontology>
     
@@ -58,6 +57,18 @@
     
 
 
+    <!-- http://purl.org/dc/terms/abstract -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/abstract"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
     <!-- http://semanticscience.org/resource/equivalentTo -->
 
     <owl:AnnotationProperty rdf:about="http://semanticscience.org/resource/equivalentTo"/>
@@ -67,6 +78,36 @@
     <!-- http://semanticscience.org/resource/subset -->
 
     <owl:AnnotationProperty rdf:about="http://semanticscience.org/resource/subset"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#maxQualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#maxQualifiedCardinality"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
     
 
 
@@ -166,6 +207,64 @@
         <rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
         <rdfs:label xml:lang="en">is associated with</rdfs:label>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#contributed -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#contributed">
+        <owl:inverseOf rdf:resource="http://www.w3.org/ns/prov#wasAttributedTo"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#hadMember -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#hadMember">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInfluencedBy"/>
+        <owl:inverseOf rdf:resource="http://www.w3.org/ns/prov#wasMemberOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Collection"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label>hadMember</rdfs:label>
+        <prov:category>expanded</prov:category>
+        <prov:component>expanded</prov:component>
+        <prov:inverse>wasMemberOf</prov:inverse>
+        <prov:sharesDefinitionWith rdf:resource="http://www.w3.org/ns/prov#Collection"/>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.w3.org/ns/prov#hadMember"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+        <owl:annotatedTarget rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:comment xml:lang="en">A collection is an entity that provides a structure to some constituents, which are themselves entities. These constituents are said to be member of the collections.</rdfs:comment>
+        <prov:dm>http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-collection</prov:dm>
+    </owl:Axiom>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasAttributedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasAttributedTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInfluencedBy"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:comment xml:lang="en">Attribution is the ascribing of an entity to an agent.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label>wasAttributedTo</rdfs:label>
+        <prov:category>starting-point</prov:category>
+        <prov:component>agents-responsibility</prov:component>
+        <prov:definition xml:lang="en">Attribution is the ascribing of an entity to an agent.</prov:definition>
+        <prov:inverse>contributed</prov:inverse>
+        <prov:qualifiedForm rdf:resource="http://www.w3.org/ns/prov#Attribution"/>
+        <prov:qualifiedForm rdf:resource="http://www.w3.org/ns/prov#qualifiedAttribution"/>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://www.w3.org/ns/prov#wasAttributedTo"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
+        <owl:annotatedTarget rdf:resource="http://www.w3.org/ns/prov#wasInfluencedBy"/>
+        <rdfs:comment>Attribution is a particular case of trace (see http://www.w3.org/TR/prov-dm/#concept-trace), in the sense that it links an entity to the agent that ascribed it.</rdfs:comment>
+        <prov:definition>IF wasAttributedTo(e2,ag1,aAttr) holds, THEN wasInfluencedBy(e2,ag1) also holds. </prov:definition>
+    </owl:Axiom>
     
 
 
@@ -446,6 +545,22 @@
     
 
 
+    <!-- http://www.w3.org/ns/prov#value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#value">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label>value</rdfs:label>
+        <prov:category>expanded</prov:category>
+        <prov:component>entities-activities</prov:component>
+        <prov:definition xml:lang="en">Provides a value that is a direct representation of an entity.</prov:definition>
+        <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-attribute-value</prov:dm>
+        <prov:editorialNote>The editor&apos;s definition comes from http://www.w3.org/TR/rdf-primer/#rdfvalue</prov:editorialNote>
+        <prov:editorialNote xml:lang="en">This property serves the same purpose as rdf:value, but has been reintroduced to avoid some of the definitional ambiguity in the RDF specification (specifically, &apos;may be used in describing structured values&apos;).</prov:editorialNote>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/conversationIdentifier -->
 
     <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/conversationIdentifier">
@@ -512,11 +627,91 @@
     
 
 
+    <!-- http://org.semanticweb.owlapi/error#Error1 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error1"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Activity -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Activity">
+        <owl:disjointWith rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Agent -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent">
+        <owl:disjointWith rdf:resource="http://www.w3.org/ns/prov#InstantaneousEvent"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label>Agent</rdfs:label>
+        <prov:category>starting-point</prov:category>
+        <prov:component>agents-responsibility</prov:component>
+        <prov:definition xml:lang="en">An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent&apos;s activity. </prov:definition>
+        <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent</prov:dm>
+        <prov:n rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Agent</prov:n>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Collection -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Collection">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label>Collection</rdfs:label>
+        <prov:category>expanded</prov:category>
+        <prov:component>collections</prov:component>
+        <prov:definition xml:lang="en">A collection is an entity that provides a structure to some constituents, which are themselves entities. These constituents are said to be member of the collections.</prov:definition>
+        <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-collection</prov:dm>
+    </owl:Class>
+    
+
+
     <!-- http://www.w3.org/ns/prov#EmptyCollection -->
 
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#EmptyCollection">
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#EmptyCollection">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Collection"/>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/MultipartyConversation"/>
-    </rdf:Description>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label xml:lang="en">EmptyCollection</rdfs:label>
+        <prov:category>expanded</prov:category>
+        <prov:component>collections</prov:component>
+        <prov:definition xml:lang="en">An empty collection is a collection without members.</prov:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity">
+        <owl:disjointWith rdf:resource="http://www.w3.org/ns/prov#InstantaneousEvent"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label>Entity</rdfs:label>
+        <prov:category>starting-point</prov:category>
+        <prov:component>entities-activities</prov:component>
+        <prov:constraints rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig</prov:constraints>
+        <prov:definition xml:lang="en">An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary. </prov:definition>
+        <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-entity</prov:dm>
+        <prov:n rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Entity</prov:n>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Person -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Person">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+        <rdfs:label>Person</rdfs:label>
+        <prov:category>expanded</prov:category>
+        <prov:component>agents-responsibility</prov:component>
+        <prov:definition xml:lang="en">Person agents are people.</prov:definition>
+        <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent</prov:dm>
+        <prov:n rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types</prov:n>
+    </owl:Class>
     
 
 
@@ -920,18 +1115,27 @@
     <!-- https://www.omg.org/spec/Commons/DatesAndTimes/DateTime -->
 
     <owl:Class rdf:about="https://www.omg.org/spec/Commons/DatesAndTimes/DateTime">
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error1"/>
         <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/TimeInstant"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/hasDateTimeValue"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>date time</rdfs:label>
         <skos:definition>time point including a date and a time, optionally including a time zone offset</skos:definition>
         <skos:note>&apos;has date time value&apos; is omitted if the &apos;date time&apos; is not (yet) known. The time zone is implicitly UTC.</skos:note>
     </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/DatesAndTimes/TemporalEntity -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/DatesAndTimes/TemporalEntity"/>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/DatesAndTimes/TimeInstant -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/DatesAndTimes/TimeInstant"/>
+    <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
 </rdf:RDF>
 
 
