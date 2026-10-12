@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY AnnotationVocabulary "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
 	<!ENTITY agento "http://www.w3id.org/agentic-ai/onto#">
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY cmns-cls "https://www.omg.org/spec/Commons/Classifiers/">
 	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
 	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
 	<!ENTITY cmns-org "https://www.omg.org/spec/Commons/Organizations/">
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY expr "http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#">
 	<!ENTITY fibo-fnd-gao-obj "https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/">
@@ -17,15 +19,19 @@
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY vann "http://purl.org/vocab/vann/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"
+	xmlns:AnnotationVocabulary="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
 	xmlns:agento="http://www.w3id.org/agentic-ai/onto#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
 	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-org="https://www.omg.org/spec/Commons/Organizations/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:expr="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#"
 	xmlns:fibo-fnd-gao-obj="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"
@@ -37,6 +43,7 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:vann="http://purl.org/vocab/vann/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/">
@@ -114,6 +121,10 @@
 		<skos:definition xml:lang="en">Links a generated information artifact to the activity that produced it.</skos:definition>
 	</owl:ObjectProperty>
 	
+	<rdf:Description rdf:about="&agento;Capability">
+		<owl:equivalentClass rdf:resource="&oe-agtorch;Capability"/>
+	</rdf:Description>
+	
 	<owl:Class rdf:about="&agento;LLMAgent">
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -169,6 +180,12 @@
 		<cmns-av:adaptedFrom xml:lang="en">IAO information content entity (genus, via information artifact); use case CQ 4 (differentia)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;CandidateOrchestrationPlan">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;OrchestrationPlan"/>
+		<rdfs:label>Candidate Orchestration Plan</rdfs:label>
+		<skos:definition>An orchestration plan proposed as a possible solution to a user request, subject to evaluation and selection.</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;CandidateSupplement">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
 		<rdfs:label xml:lang="en">candidate supplement</rdfs:label>
@@ -178,7 +195,6 @@
 	<owl:Class rdf:about="&oe-agtorch;Capability">
 		<rdfs:label xml:lang="en">capability</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<owl:equivalentClass rdf:resource="&agento;Capability"/>
 		<skos:definition xml:lang="en">Ability of an agent to perform a type of action or task.</skos:definition>
 	</owl:Class>
 	
@@ -195,7 +211,7 @@
 						<owl:someValuesFrom>
 							<owl:Restriction>
 								<owl:onProperty rdf:resource="&oe-agtorch;hasEvidenceDirection"/>
-								<owl:hasValue rdf:resource="&oe-agtorch;supporting"/>
+								<owl:hasValue rdf:resource="&oe-agtorch;disputing"/>
 							</owl:Restriction>
 						</owl:someValuesFrom>
 					</owl:Restriction>
@@ -204,7 +220,7 @@
 						<owl:someValuesFrom>
 							<owl:Restriction>
 								<owl:onProperty rdf:resource="&oe-agtorch;hasEvidenceDirection"/>
-								<owl:hasValue rdf:resource="&oe-agtorch;disputing"/>
+								<owl:hasValue rdf:resource="&oe-agtorch;supporting"/>
 							</owl:Restriction>
 						</owl:someValuesFrom>
 					</owl:Restriction>
@@ -224,6 +240,8 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;DecisionCriterion">
+		<rdfs:label>Decision Criterion</rdfs:label>
+		<skos:definition>A criterion used to compare and select candidate orchestration plans based on measurable attributes and preferences.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;EvidenceAssessment">
@@ -237,6 +255,12 @@
 		<rdfs:label xml:lang="en">evidence certainty level</rdfs:label>
 		<skos:definition xml:lang="en">category expressing how confident an assessment is that the summarized evidence reflects the true effect of the supplement</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">GRADE guidelines 3: quality of evidence reflects confidence that the estimates of the effect are correct; four levels high, moderate, low, very low</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;EvidenceCoverage">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:label>Evidence Coverage</rdfs:label>
+		<skos:definition>Plan metric expressing how fully an orchestration plan covers the evidence needed to address a request.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;EvidenceDirection">
@@ -272,6 +296,8 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;HardConstraint">
 		<rdfs:subClassOf rdf:resource="&agento;Constraint"/>
+		<rdfs:label>Hard Constraint</rdfs:label>
+		<skos:definition>User constraint that an acceptable orchestration plan must satisfy.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;InformationAccess">
@@ -364,9 +390,9 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty>
-					<owl:ObjectProperty>
+					<rdf:Description>
 						<owl:inverseOf rdf:resource="&prov;wasGeneratedBy"/>
-					</owl:ObjectProperty>
+					</rdf:Description>
 				</owl:onProperty>
 				<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationArtifact"/>
 			</owl:Restriction>
@@ -375,6 +401,12 @@
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">Execution activity in which a particular tool or skill is called or applied.</skos:definition>
 		<skos:scopeNote xml:lang="en">An actual occurrence, distinct from the tool or skill specification and from the planned workflow step. The required correspondsToStep value, combined with the functional P-Plan property, gives exactly one planned step. Existential restrictions do not require an explicitly asserted named value under OWL open-world semantics.</skos:scopeNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Latency">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:label>Latency</rdfs:label>
+		<skos:definition>Elapsed time from an agent’s receipt of a task or request to completion of its response or execution.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolServer">
@@ -424,7 +456,6 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;OrchestrationPlan">
 		<rdfs:subClassOf rdf:resource="&pplan;Plan"/>
-		<rdfs:subClassOf rdf:resource="&agento;WorkflowPattern"/>
 		<rdfs:label xml:lang="en">orchestration plan</rdfs:label>
 		<skos:definition xml:lang="en">workflow pattern that prescribes which capabilities to invoke, and in what order, to satisfy the information requirements of one request</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">AgentO v0.2 WorkflowPattern (genus); use case CQ 1 (differentia)</cmns-av:adaptedFrom>
@@ -479,6 +510,15 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;PlanEvaluation">
+		<rdfs:label>Plan Evaluation</rdfs:label>
+		<skos:definition>Evaluation record that associates an orchestration plan with the criteria used and the plan metrics obtained.</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;PlanMetric">
+		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure"/>
+		<rdfs:label>Plan Metric</rdfs:label>
+		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MaterialMeasure"/>
+		<skos:definition>Measure used in an evaluation to characterize an orchestration plan on a specified dimension.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Precondition">
@@ -496,6 +536,13 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;ReferenceMaterial">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;RejectedOrchestrationPlan">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+		<rdfs:label>Rejected Orchestration Plan</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe-agtorch;SelectedOrchestrationPlan"/>
+		<skos:definition>A candidate orchestration plan that has not been selected for execution.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Request">
@@ -549,6 +596,12 @@
 		<skos:definition xml:lang="en">information artifact specifying search terms or criteria submitted to an information-retrieval tool</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;SelectedOrchestrationPlan">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+		<rdfs:label>Selected Orchestration Plan</rdfs:label>
+		<skos:definition>A candidate orchestration plan that has not been selected for execution.</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;Server">
 		<rdfs:label xml:lang="en">server</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
@@ -579,6 +632,12 @@
 		<rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Resource"/>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;SoftConstraint">
+		<rdfs:subClassOf rdf:resource="&agento;Constraint"/>
+		<rdfs:label>Soft Constraint</rdfs:label>
+		<skos:definition>A constraint that represents a preference or desirable condition that may be relaxed when evaluating an orchestration plan.</skos:definition>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;StudyDesign">
 		<rdfs:label xml:lang="en">study design</rdfs:label>
 		<skos:definition xml:lang="en">category of research method used by the study that an article reports, as indexed by MeSH publication types</skos:definition>
@@ -591,6 +650,12 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;Template">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;TokenCost">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:label>Token Cost</rdfs:label>
+		<skos:definition>Monetary cost incurred for processing input tokens and generating output tokens during agent execution, calculated using the applicable model or provider rates.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Tool">
@@ -617,6 +682,18 @@
 		<rdfs:label xml:lang="en">tool</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">Callable computational resource that performs a defined operation when invoked.</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ToolCallCount">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:label>Tool Call Count</rdfs:label>
+		<skos:definition>Plan metric recording the number of tool invocations attributed to an orchestration plan.</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ToolCost">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:label>Tool Cost</rdfs:label>
+		<skos:definition>Cost attributable to invoking and using a tool in an agent workflow, including applicable per-use charges and associated model-processing costs.</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;ToolInvocation">
@@ -690,6 +767,27 @@
 		<cmns-av:adaptedFrom xml:lang="en">Use case CQ 2 step 3: “A workflow step is dependent on another if it consumes an InformationArtifact produced by that step”; AgentO v0.2 requiresResource and producedResource; OWL 2 property chain</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe-agtorch;direction">
+		<rdfs:label>direction</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:oneOf>
+					<rdf:List>
+						<rdf:first>maximize</rdf:first>
+						<rdf:rest>
+							<rdf:List>
+								<rdf:first>minimize</rdf:first>
+								<rdf:rest rdf:resource="&rdf;nil"/>
+							</rdf:List>
+						</rdf:rest>
+					</rdf:List>
+				</owl:oneOf>
+			</rdfs:Datatype>
+		</rdfs:range>
+		<skos:definition>Indicates whether a decision criterion should be minimized or maximized.</skos:definition>
+	</owl:DatatypeProperty>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch;disputing">
 		<rdf:type rdf:resource="&oe-agtorch;EvidenceDirection"/>
 		<rdfs:label xml:lang="en">disputing</rdfs:label>
@@ -738,9 +836,9 @@
 		<rdfs:domain>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;EvidenceFinding">
-					</rdf:Description>
 					<rdf:Description rdf:about="&oe-agtorch;EvidenceAssessment">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;EvidenceFinding">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
@@ -756,6 +854,13 @@
 		<rdfs:range rdf:resource="&oe-agtorch;EvidenceFinding"/>
 		<skos:definition xml:lang="en">relation from an evidence assessment to an evidence finding it summarizes</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “A relation between a proposition and information that supports its validity, based on the evaluation of some agent.”</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;hasMeasurement">
+		<rdfs:label>has measurement</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
+		<rdfs:range rdf:resource="&oe-agtorch;PlanMetric"/>
+		<skos:definition>Relates a plan evaluation to a metric used in the evaluation.</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasPrecondition">
@@ -831,14 +936,21 @@
 		<rdfs:range>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;Tool">
-					</rdf:Description>
 					<rdf:Description rdf:about="&oe-agtorch;Skill">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;Tool">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
 		</rdfs:range>
 		<skos:definition xml:lang="en">Links an invocation to the tool or skill specification executed by that occurrence.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isMeasuredBy">
+		<rdfs:label>is measured by</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;SoftConstraint"/>
+		<rdfs:range rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<skos:definition>Relates a soft constraint to a decision criterion used to measure it.</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;isPartOf">
@@ -909,6 +1021,13 @@
 		<cmns-av:adaptedFrom xml:lang="en">MeSH D016449 Randomized Controlled Trial: “A work that reports on a clinical trial that involves at least one test treatment and one control treatment, concurrent enrollment and follow-up of the test- and control-treated groups, and in which the treatments to be administered are selected by a random process.”</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
+	<owl:DatatypeProperty rdf:about="&oe-agtorch;rank">
+		<rdfs:label>rank</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
+		<rdfs:range rdf:resource="&xsd;integer"/>
+		<skos:definition>The ranking position assigned to a plan evaluation.</skos:definition>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;records">
 		<rdfs:label xml:lang="en">records</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
@@ -918,14 +1037,23 @@
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;satisfiesConstraint">
+		<rdfs:label>satisfies constraint</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
 		<rdfs:range rdf:resource="&agento;Constraint"/>
+		<skos:definition>Relates an orchestration plan to a constraint that it satisfies.</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;satisfiesRequirement">
 		<rdfs:domain rdf:resource="&agento;Capability"/>
 		<rdfs:range rdf:resource="&oe-agtorch;InformationRequirement"/>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-agtorch;score">
+		<rdfs:label>score</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>The numerical evaluation score assigned to a plan evaluation.</skos:definition>
+	</owl:DatatypeProperty>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch;supporting">
 		<rdf:type rdf:resource="&oe-agtorch;EvidenceDirection"/>
@@ -941,9 +1069,18 @@
 		<cmns-av:adaptedFrom xml:lang="en">MeSH D000078182 Systematic Review: “A review of primary literature in health and health policy that attempts to identify, appraise, and synthesize all the empirical evidence that meets specified eligibility criteria to answer a given research question.”</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
+	<owl:DatatypeProperty rdf:about="&oe-agtorch;unit">
+		<rdfs:label>unit</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>The unit of measurement associated with a plan metric.</skos:definition>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;usesCriterion">
+		<rdfs:label>use criterion</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
 		<rdfs:range rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<skos:definition>Relationship linking a plan evaluation to a decision criterion applied in that evaluation.</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;usesTool">
@@ -954,6 +1091,13 @@
 		<skos:scopeNote xml:lang="en">Shared by Figures 3 and 4. No global domain is imposed, so skill use does not classify the skill as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe-agtorch;value">
+		<rdfs:label>value</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>The numerical value of a plan metric.</skos:definition>
+	</owl:DatatypeProperty>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch;veryLow">
 		<rdf:type rdf:resource="&oe-agtorch;EvidenceCertaintyLevel"/>
 		<rdfs:label xml:lang="en">very low</rdfs:label>
@@ -961,37 +1105,51 @@
 		<cmns-av:adaptedFrom xml:lang="en">GRADE guidelines 3 (Balshem et al., 2011), definitions of the four levels</cmns-av:adaptedFrom>
 	</owl:NamedIndividual>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;violatesConstraint">
+		<rdfs:label>violates constraint</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+		<rdfs:range rdf:resource="&agento;Constraint"/>
+		<skos:definition>Relates a candidate orchestration plan to a constraint that it violates.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-agtorch;weight">
+		<rdfs:label>weight</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition>The relative importance assigned to a decision criterion.</skos:definition>
+	</owl:DatatypeProperty>
+	
 	<owl:AllDifferent>
 		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;high">
+			<rdf:Description rdf:about="&oe-agtorch;caseReport">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;moderate">
+			<rdf:Description rdf:about="&oe-agtorch;observationalStudy">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;low">
+			<rdf:Description rdf:about="&oe-agtorch;randomizedControlledTrial">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;veryLow">
+			<rdf:Description rdf:about="&oe-agtorch;systematicReview">
 			</rdf:Description>
 		</owl:distinctMembers>
 	</owl:AllDifferent>
 	<owl:AllDifferent>
 		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;supporting">
-			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch;disputing">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch;inconclusive">
 			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;supporting">
+			</rdf:Description>
 		</owl:distinctMembers>
 	</owl:AllDifferent>
 	<owl:AllDifferent>
 		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;systematicReview">
+			<rdf:Description rdf:about="&oe-agtorch;high">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;randomizedControlledTrial">
+			<rdf:Description rdf:about="&oe-agtorch;low">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;observationalStudy">
+			<rdf:Description rdf:about="&oe-agtorch;moderate">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;caseReport">
+			<rdf:Description rdf:about="&oe-agtorch;veryLow">
 			</rdf:Description>
 		</owl:distinctMembers>
 	</owl:AllDifferent>
@@ -1112,6 +1270,20 @@
 			<rdf:Description rdf:about="&oe-agtorch;InformationAccess">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch;SystemInteraction">
+			</rdf:Description>
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;EvidenceCoverage">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;Latency">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;TokenCost">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;ToolCallCount">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;ToolCost">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
