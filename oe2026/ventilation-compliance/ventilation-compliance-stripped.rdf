@@ -3,7 +3,6 @@
      xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:ns="http://creativecommons.org/ns#"
-     xmlns:dct="http://purl.org/dc/terms/"
      xmlns:o2o="https://karlhammar.com/owl2oas/o2o.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -18,6 +17,7 @@
      xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:core1="http://purl.org/vocab/frbr/core#"
      xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+     xmlns:dcterms="http://purl.org/dc/terms/"
      xmlns:oe-hvcc="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/"
      xmlns:cmns-cls="https://www.omg.org/spec/Commons/Classifiers/"
      xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
@@ -37,7 +37,7 @@
         <owl:imports rdf:resource="https://w3id.org/fso/0.1.0"/>
         <owl:imports rdf:resource="https://w3id.org/rec/core/3.3/"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/Commons/20240801/QuantitiesAndUnits/"/>
-        <dct:abstract></dct:abstract>
+        <dcterms:abstract></dcterms:abstract>
     </owl:Ontology>
     
 
@@ -88,6 +88,20 @@
     
 
 
+    <!-- http://purl.org/dc/terms/hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/hasPart">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/isPartOf"/>
+    
+
+
     <!-- http://www.w3.org/ns/prov#wasAssociatedWith -->
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasAssociatedWith"/>
@@ -100,13 +114,35 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesTo -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesTo">
+        <rdfs:label>appliesTo</rdfs:label>
+        <skos:definition>relation that holds between an entity and another entity when the former is relevant or valid for the latter under specified conditions</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesToPolicyAssessment -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesToPolicyAssessment">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesTo"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AssessmentContext"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
         <rdfs:label>appliesToPolicyAssessment</rdfs:label>
         <skos:definition>relation that holds between an assessment context and a policy assessment when the context specifies the conditions under which the policy assessment is performed or interpreted</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesToRoom -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesToRoom">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesTo"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceFramework"/>
+        <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
+        <rdfs:label>appliesToRoom</rdfs:label>
+        <skos:definition>relation that holds between an entity and a room when the entity is relevant, valid, or applicable to that room under specified conditions</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -237,11 +273,23 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasRoom -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasRoom">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
+        <rdfs:domain rdf:resource="https://w3id.org/rec/core/Building"/>
+        <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
+        <rdfs:label>hasRoom</rdfs:label>
+        <skos:definition>relation that holds between a building and a room when the room forms part of the building’s spatial structure</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/fso#hasComponent"/>
-        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Collections/hasPart"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:label>hasServiceComponent</rdfs:label>
@@ -266,7 +314,7 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isEvaluatedAt">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
-        <rdfs:label>isEvaluatesAt</rdfs:label>
+        <rdfs:label>isEvaluatedAt</rdfs:label>
         <prov:definition>relation that holds between a measurement and a policy assessment when the measurement is used as evidence in the assessment to determine compliance with one or more policy requirements</prov:definition>
     </owl:ObjectProperty>
     
@@ -327,6 +375,8 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/neighbor">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/rec/core/Room"/>
+        <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>neighbor</rdfs:label>
         <skos:definition>relation that holds between two entities when they are adjacent or sufficiently close according to the relevant spatial or structural context</skos:definition>
     </owl:ObjectProperty>
@@ -348,6 +398,10 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recordedInNeighbor">
         <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recordedIn"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recordedIn"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/neighbor"/>
+        </owl:propertyChainAxiom>
         <rdfs:label>recordedInNeighbor</rdfs:label>
         <prov:definition>relation that holds between an observation record and a room when the room is adjacent to the room that constitutes the primary spatial context of the observation</prov:definition>
     </owl:ObjectProperty>
@@ -358,6 +412,12 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/serversRoom">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/rec/core/serves"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
+        <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
+        </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     
 
@@ -425,17 +485,7 @@
     <!-- https://w3id.org/rec/core/serves -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/rec/core/serves">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-        <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
         <prov:definition>relation that holds between a building service system and a room when the system provides a building service whose effect or coverage applies to that room</prov:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/Collections/hasPart -->
-
-    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Collections/hasPart">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
     </owl:ObjectProperty>
     
 
@@ -565,7 +615,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/hasPart"/>
+                <owl:onProperty rdf:resource="http://purl.org/dc/terms/isPartOf"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -624,30 +674,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/maxValue"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/minValue"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/isMaximumInclusive"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/isMinimumInclusive"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>CompliancePolicy</rdfs:label>
         <skos:definition>policy that specifies requirements used to determine whether an entity or situation is compliant</skos:definition>
     </owl:Class>
@@ -658,6 +684,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
@@ -676,6 +708,29 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
         <rdfs:label>HVACSystem</rdfs:label>
         <skos:definition>building services system that provides heating, ventilation, and air conditioning to control conditions in one or more indoor spaces.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/MaxBoundedCompliancePolicy -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/MaxBoundedCompliancePolicy">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/maxValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/minValue"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>MaxBoundedCompliancePolicy</rdfs:label>
+        <skos:definition>Compliance policy that specifies a maximum value as the highest acceptable measurement and specifies no minimum value.</skos:definition>
     </owl:Class>
     
 
@@ -705,6 +760,29 @@
         </rdfs:subClassOf>
         <rdfs:label>Measurement</rdfs:label>
         <skos:definition>representation of a measured or calculated value for a physical, environmental, building, or operational quantity</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/MinBoundedCompliancePolicy -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/MinBoundedCompliancePolicy">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/minValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/maxValue"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>MinBoundedCompliancePolicy</rdfs:label>
+        <skos:definition>Compliance policy that specifies a minimum value as the lowest acceptable measurement and specifies no maximum value.</skos:definition>
     </owl:Class>
     
 
@@ -740,6 +818,28 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Assessment"/>
         <rdfs:label>PolicyAssessment</rdfs:label>
         <skos:definition>assessment that determines whether specified conditions satisfy the requirements expressed by a policy</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/RangeBoundedCompliancePolicy -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/RangeBoundedCompliancePolicy">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/maxValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://schema.org/minValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>RangeBoundedCompliancePolicy</rdfs:label>
+        <skos:definition>Compliance policy that specifies both a minimum value and a maximum value, between which an acceptable measurement lies.</skos:definition>
     </owl:Class>
     
 
