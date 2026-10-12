@@ -28,12 +28,13 @@
 		<dct:contributor>Dean Allemang, Working Ontologist</dct:contributor>
 		<dct:contributor>Elisa Kendall, Thematix Partners LLC</dct:contributor>
 		<dct:contributor>Pete Rivett, Federated Knowledge, LLC</dct:contributor>
-		<dct:license>Copyright (c) 2014-2024 Thematix Partners LLC
-		Copyright (c) 2021-2024 agnos.ai U.K. Ltd
-		Copyright (c) 2021-2024 Federated Knowledge, LLC
-		Copyright (c) 2021-2024 Mayo Clinic
-		Copyright (c) 2022-2024 Object Management Group, Inc.
-		Copyright (c) 2021-2024 Working Ontologist LLC
+		<dct:issued rdf:datatype="&xsd;dateTime">2022-05-19T18:00:00</dct:issued>
+		<dct:license>Copyright (c) 2014-2025 Thematix Partners LLC
+		Copyright (c) 2021-2025 agnos.ai U.K. Ltd
+		Copyright (c) 2021-2025 Federated Knowledge, LLC
+		Copyright (c) 2021-2025 Mayo Clinic
+		Copyright (c) 2022-2025 Object Management Group, Inc.
+		Copyright (c) 2021-2025 Working Ontologist LLC
 		
 		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -42,18 +43,21 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		
 		See https://opensource.org/licenses/MIT.</dct:license>
+		<dct:modified rdf:datatype="&xsd;dateTime">2025-08-10T18:00:00</dct:modified>
+		<dct:title>Commons Designators Ontology</dct:title>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/TextDatatype/"/>
-		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20240801/Designators/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20250801/Designators/"/>
 		<skos:changeNote>The https://www.omg.org/spec/Commons/20220501/Designators.rdf version of this ontology was modified to eliminate a double space in the abstract and a note on Designation (COMMONS-6) and to clarify the definition of designation, denotes, and name, and better align them with ISO 704 / ISO 1087 (COMMONS-26).</skos:changeNote>
 		<skos:changeNote>The https://www.omg.org/spec/Commons/20221101/Designators.rdf version of this ontology was modified to add a textual name datatype property needed to represent language and country specific text names per ISO 639 and ISO 3166 for LCC (COMMONS-12-8).</skos:changeNote>
+		<skos:changeNote>The https://www.omg.org/spec/Commons/20240801/Designators.rdf version of this ontology was modified to add a tag datatype property needed for encoding controlled vocabularies (COMMONS-1.3-27) and add usage notes to the description properties to assist users in understanding when to use which property (COMMONS13-32).</skos:changeNote>
 		<skos:note>The designators ontology conforms with the OWL 2 DL semantics, and is outside of OWL 2 RL due to the inclusion of one minimum cardinality constraint (which is tyically ignored, but is important - see note on the Designator class) and two value restrictions. These constraints can be removed if required to support OWL RL rule-based applications that cannot be extended to support them.</skos:note>
-		<cmns-av:copyright>Copyright (c) 2014-2024 Thematix Partners LLC</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2021-2024 Federated Knowledge, LLC</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2021-2024 Mayo Clinic</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2021-2024 Working Ontologist LLC</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2021-2024 agnos.ai U.K. Ltd</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2022-2024 Object Management Group, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2014-2025 Thematix Partners LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2021-2025 Federated Knowledge, LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2021-2025 Mayo Clinic</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2021-2025 Working Ontologist LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2021-2025 agnos.ai U.K. Ltd</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Object Management Group, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&cmns-dsg;Designation">
@@ -119,6 +123,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<rdfs:label>describes</rdfs:label>
 		<owl:inverseOf rdf:resource="&cmns-dsg;isDescribedBy"/>
 		<skos:definition>conveys the nature of</skos:definition>
+		<cmns-av:usageNote>Note that the describes property defined herein as an object property has an implicit range of owl:Class. This is purposeful, so that users can specify any concept, such as a document, contract, specification, situation, or other domain-specific concept, as the thing being described by the domain of this property, which might also be a document, reference, or something else.</cmns-av:usageNote>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&cmns-dsg;hasDescription">
@@ -126,6 +131,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<rdfs:label>has description</rdfs:label>
 		<skos:definition>provides a textual statement, picture in words, or account that describes something</skos:definition>
 		<skos:note>Note that the hasDescription property defined herein has an implicit range of rdfs:Literal. This is purposeful, so that users can specify any element that has a name with or without a language tag without concern for conflicting datatypes (i.e., xsd:string vs. rdf:langString, which are logically disjoint).</skos:note>
+		<cmns-av:usageNote>This property is a data property, rather than an annotation such as dct:description, enabling it to be used for mapping controlled vocabularies and other literals that are explicit, required attributes of other models.</cmns-av:usageNote>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&cmns-dsg;hasName">
@@ -135,6 +141,14 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<owl:inverseOf rdf:resource="&cmns-dsg;isNameOf"/>
 		<skos:definition>is known by</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&cmns-dsg;hasTag">
+		<rdfs:subPropertyOf rdf:resource="&cmns-txt;hasTextValue"/>
+		<rdfs:label>has tag</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>associates unique combination of alphanumeric characters corresponding to a designator for something</skos:definition>
+		<skos:note>Text-valued tags can be useful for controlled vocabulary encoding or transformation, such as those used to produce IETF compliant language tags in XML.</skos:note>
+	</owl:DatatypeProperty>
 	
 	<owl:DatatypeProperty rdf:about="&cmns-dsg;hasTextualName">
 		<rdfs:subPropertyOf rdf:resource="&cmns-txt;hasTextValue"/>
@@ -153,6 +167,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 	<owl:ObjectProperty rdf:about="&cmns-dsg;isDescribedBy">
 		<rdfs:label>is described by</rdfs:label>
 		<skos:definition>has general nature or description of</skos:definition>
+		<cmns-av:usageNote>Note that the &apos;is described by&apos; property defined herein as an object property has an implicit range of owl:Class. This is purposeful, so that users can specify any concept, such as a document, reference, or other domain-specific concept, as the descriptive thing describing the domain of this property.</cmns-av:usageNote>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&cmns-dsg;isNameOf">

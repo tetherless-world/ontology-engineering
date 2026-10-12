@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
 	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
@@ -11,6 +12,7 @@
 ]>
 <rdf:RDF xml:base="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -26,15 +28,29 @@
 		<dct:contributor>Elisa Kendall, Thematix Partners LLC</dct:contributor>
 		<dct:contributor>Evan Wallace, U.S. National Institute of Standards and Technology (NIST)</dct:contributor>
 		<dct:contributor>Pete Rivett, Federated Knowledge LLC</dct:contributor>
-		<dct:license rdf:datatype="&xsd;anyURI">https://opensource.org/licenses/MIT</dct:license>
+		<dct:license>Copyright (c) 2014-2025 EDM Council, Inc.
+		Copyright (c) 2022-2025 Federated Knowledge LLC
+		Copyright (c) 2022-2025 Mayo Clinic
+		Copyright (c) 2022-2025 Thematix Partners LLC
+		Copyright (c) 2023-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.</dct:license>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20230801/Documents/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20250801/Documents/"/>
+		<skos:changeNote>https://www.omg.org/spec/Commons/20230801/Documents.rdf version of this ontology was revised to add the concept of a document part (COMMONS-13-11).</skos:changeNote>
 		<skos:note>This ontology was derived from the Financial Industry Business Ontology (FIBO), and generalized for use in other domain areas.</skos:note>
-		<cmns-av:copyright>Copyright (c) 2014-2023 EDM Council, Inc.</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2022-2023 Federated Knowledge LLC</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2022-2023 Mayo Clinic</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2022-2023 Thematix Partners LLC</cmns-av:copyright>
-		<cmns-av:copyright>Copyright (c) 2023 Object Management Group, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2014-2025 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Federated Knowledge LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Mayo Clinic</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2022-2025 Thematix Partners LLC</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2023-2025 Object Management Group, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&cmns-doc;Certificate">
@@ -63,6 +79,19 @@
 		<cmns-av:adaptedFrom>ISO 5127 - Information and documentation - Foundation and vocabulary, Second edition, 2017-05, clause 3.1.1.38</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote>A document, especially a legal document, may serve to establish one or several facts, and can be relied upon as a proof thereof.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote>This definition of document corresponds to a subclass of expression in FRBR. The notion of being a unitary expression is the differentiator between an FRBR expression and document in this sense.</cmns-av:usageNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-doc;DocumentPart">
+		<rdfs:subClassOf rdf:resource="&cmns-doc;Document"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-col;isMemberOf"/>
+				<owl:someValuesFrom rdf:resource="&cmns-doc;Document"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>document part</rdfs:label>
+		<skos:definition>structurally distinct subdivision of a document</skos:definition>
+		<skos:note>Parts of documents are typically identified separately based on the function they serve in conveying, organizing, or supporting the content.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&cmns-doc;LegalDocument">

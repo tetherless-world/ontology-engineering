@@ -32,14 +32,25 @@
 		<dct:abstract>The contextual identifiers ontology defines commonly used concepts for describing more complex identifiers, including those that apply for some period of time as well as those that are structured and include other codes or identifiers.</dct:abstract>
 		<dct:contributor>Elisa Kendall, Thematix Partners LLC</dct:contributor>
 		<dct:contributor>Evan Wallace, U.S. National Institute of Standards and Technology (NIST)</dct:contributor>
-		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
+		<dct:license rdf:datatype="&xsd;anyURI">Copyright (c) 2022-2026 Thematix Partners LLC
+Copyright (c) 2022-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2022-2025 Object Management Group
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.</dct:license>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/CodesAndCodeSets/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Identifiers/"/>
-		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20221101/ContextualIdentifiers/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20260801/ContextualIdentifiers/"/>
 		<skos:changeNote>https://www.omg.org/spec/Commons/20220501/ContextualIdentifiers.rdf version of this ontology was modified to add a ContextualIdentificationScheme and require a ContextualIdentifier to have context (COMMONS-26).</skos:changeNote>
+		<skos:changeNote>https://www.omg.org/spec/Commons/20221101/ContextualIdentifiers.rdf version of this ontology was modified to add the concept of an object identifier (COMMONS-26).</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2022 Object Management Group, Inc.</cmns-av:copyright>
 		<cmns-av:copyright>Copyright (c) 2022 Thematix Partners LLC</cmns-av:copyright>
 	</owl:Ontology>
@@ -68,6 +79,16 @@
 		<rdfs:label>contextual identifier</rdfs:label>
 		<skos:definition>sequence of characters uniquely identifying that with which it is associated, within a specified context</skos:definition>
 		<skos:note>The context within which an identifier is unique may be limited to a given data source, registry or jurisdiction, or may be designed to be globally unique such as a legal entity identifier issued by a registrar authorized by the Global LEI Foundation. Such identifiers may have other features associated with them, such as the date they were originally issued, and information related to registration, validation, recency, and so forth.</skos:note>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-cxtid;ObjectIdentifier">
+		<rdfs:subClassOf rdf:resource="&cmns-id;Identifier"/>
+		<rdfs:label>object identifier</rdfs:label>
+		<skos:definition>globally unique identifier of a data object as defined in ISO/IEC 8824-2</skos:definition>
+		<skos:example>2.16.840.1.113883.5.57, 2.16.840.1.113883.5.1074, which are OIDs defined in ISO 21090 for various enumerations</skos:example>
+		<cmns-av:abbreviation>OID</cmns-av:abbreviation>
+		<cmns-av:adaptedFrom>ISO 21090:2011 Health informatics - Harmonized data types for information interchange, clause 4</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>An object identifier (OID) is a unique alphanumeric/numeric identifier registered under the ISO/IEC 8824-2 registration standard to reference a specific object or object class.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&cmns-cxtid;StructuredIdentifier">
