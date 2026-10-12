@@ -372,8 +372,10 @@
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
         <rdfs:label>addresses</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking an Option, Claim, or Outcome to an Issue, indicating that the Option, Claim, or Outcome substantively engages with the concern represented by the Issue without necessarily resolving it.</skos:definition>
+        <skos:definition>substantively engages with the concern represented by</skos:definition>
         <skos:prefLabel>addresses</skos:prefLabel>
+        <skos:scopeNote>Directed: Claim, Option, or Outcome → Issue. Handles the Issue without necessarily settling it.</skos:scopeNote>
+        <cmns-av:usageNote>Use resolves when an explicit Outcome settles the Issue</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -392,7 +394,7 @@
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest"/>
         <rdfs:label>answers</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking an Expressed Position, Option, Issue, or Claim to an Information Request that it answers, thereby establishing that the information need is fully satisfied.</skos:definition>
+        <skos:definition>provides a response that fully satisfies the information need expressed by</skos:definition>
         <skos:prefLabel>answers</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -412,7 +414,7 @@
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
         <rdfs:label>challenges</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking a Claim or Issue to another Claim, an Issue, or an Option, where the relationship denotes evidence or reasoning that weakens or rebuts the epistemic standing of the target Claim, Issue, or Option.</skos:definition>
+        <skos:definition>provides evidence or reasoning that weakens or rebuts the epistemic standing of</skos:definition>
         <skos:prefLabel>challenges</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -425,7 +427,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
         <rdfs:label>has position towards</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking an Expressed Position to an Issue, Option, or Claim, indicating the CJF milestone to which the speaker&apos;s position refers.</skos:definition>
+        <skos:definition>expresses the speaker’s attitude toward</skos:definition>
         <skos:prefLabel>has position towards</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -443,8 +445,22 @@
             <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasAttributedTo"/>
         </owl:propertyChainAxiom>
         <rdfs:label>has speaker</rdfs:label>
-        <skos:definition>inferred relationship that links a CJF milestone to the speaker whose conversational contribution expresses it.</skos:definition>
+        <skos:definition>is expressed in a conversational contribution made by</skos:definition>
         <skos:prefLabel>has speaker</skos:prefLabel>
+        <cmns-av:explanatoryNote>The relationship is inferred from the conversational contribution that expresses the milestone.</cmns-av:explanatoryNote>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasState -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasState">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/MilestoneWithState"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State"/>
+        <skos:definition>has its evidence-based standing at a specified point in the conversation characterized by</skos:definition>
+        <skos:prefLabel>has state</skos:prefLabel>
+        <skos:scopeNote>Applies only to state-bearing milestones. A later observation may associate the same milestone with a different State as new evidence appears.</skos:scopeNote>
+        <cmns-av:usageNote>require positive evidence for transitions</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -462,8 +478,9 @@
             </owl:Class>
         </rdfs:range>
         <rdfs:label>is about</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking an Information Request to a Claim, Option, Issue, or Expressed Position, indicating the milestone that the request concerns.</skos:definition>
+        <skos:definition>concerns the content of</skos:definition>
         <skos:prefLabel>is about</skos:prefLabel>
+        <cmns-av:explanatoryNote>The target identifies the milestone that the InformationRequest concerns: a Claim, Option, Issue, or ExpressedPosition.</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
     
 
@@ -474,8 +491,9 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Option"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Option"/>
         <rdfs:label>is alternative to</rdfs:label>
-        <skos:definition>symmetric CJF semantic relationship linking an Option to another Option, indicating that the two are competing courses of action.</skos:definition>
+        <skos:definition>is a competing course of action to</skos:definition>
         <skos:prefLabel>is alternative to</skos:prefLabel>
+        <cmns-av:explanatoryNote>The relationship is symmetric: if one Option is an alternative to another, the reverse also holds.</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
     
 
@@ -488,7 +506,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
         <owl:propertyDisjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isPositiveSupportedBy"/>
         <rdfs:label>is negative supported by</rdfs:label>
-        <skos:definition>specialization of isSupportedBy linking a CJF Milestone to a Text Span whose linguistic content provides negative-polarity evidence for the ExpressedPosition milestone interpretation</skos:definition>
+        <skos:definition>has its interpretation as a negative-polarity position supported by the linguistic content of</skos:definition>
         <skos:prefLabel>is negative supported by</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -501,6 +519,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Utterance"/>
         <rdfs:label>is part of utterance</rdfs:label>
+        <skos:definition>forms a textual part of</skos:definition>
         <skos:prefLabel>is part of utterance</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -513,7 +532,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ExpressedPosition"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
         <rdfs:label>is positive supported by</rdfs:label>
-        <skos:definition>specialization of isSupportedBy linking a CJF Milestone to a Text Span whose linguistic content provides positive-polarity evidence for the ExpressedPosition milestone interpretation</skos:definition>
+        <skos:definition>has its interpretation as a positive-polarity position supported by the linguistic content of</skos:definition>
         <skos:prefLabel>is positive supported by</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -525,8 +544,9 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
         <rdfs:label>refines</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking a later Claim, Option, or Issue to an earlier milestone of the same type, indicating an extension, correction, or reformulation of its content.</skos:definition>
+        <skos:definition>extends, corrects, or reformulates the content of</skos:definition>
         <skos:prefLabel>refines</skos:prefLabel>
+        <cmns-av:explanatoryNote>The source is a later Claim, Option, or Issue, and the target is an earlier milestone of the same type.</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
     
 
@@ -538,8 +558,11 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Outcome"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
         <rdfs:label>resolves</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking an Outcome to an Issue, indicating a stage of deliberation in which a recommended Option is collectively confirmed, thereby closing the Issue.</skos:definition>
+        <skos:definition>closes through collective confirmation of a recommended Option</skos:definition>
         <skos:prefLabel>resolves</skos:prefLabel>
+        <skos:scopeNote>Directed: Outcome → Issue. Requires an explicit issue-settling conversational event. A more specific form of addresses.</skos:scopeNote>
+        <cmns-av:explanatoryNote></cmns-av:explanatoryNote>
+        <cmns-av:usageNote>An individual’s agreement or an unaccepted proposal does not by itself resolve a group Issue</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -558,8 +581,9 @@
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/InformationRequest"/>
         <rdfs:label>responds to</rdfs:label>
-        <skos:definition>directed CJF semantic relation linking a Claim, Option, Issue, or Expressed Position to an Information Request to which it provides a relevant response, without establishing whether the information need is satisfied</skos:definition>
+        <skos:definition>provides a relevant response to</skos:definition>
         <skos:prefLabel>responds to</skos:prefLabel>
+        <cmns-av:explanatoryNote>The relationship does not establish whether the information need is satisfied.</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
     
 
@@ -570,7 +594,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Outcome"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Option"/>
         <rdfs:label>selects</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking an Outcome to an Option, indicating a stage of deliberation in which the Option is recommended and confirmed for joint acceptance.</skos:definition>
+        <skos:definition>records the recommendation and confirmation for joint acceptance of</skos:definition>
         <skos:prefLabel>selects</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -583,7 +607,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Claim"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/DeliberativeMilestone"/>
         <rdfs:label>supports</rdfs:label>
-        <skos:definition>directed CJF semantic relationship linking a Claim to another Claim, an Issue, or an Option, where the relationship denotes evidence or reasoning that strengthens the epistemic standing of the target Claim, Issue, or Option.</skos:definition>
+        <skos:definition>provides evidence or reasoning that strengthens the epistemic standing of</skos:definition>
         <skos:prefLabel>supports</skos:prefLabel>
     </owl:ObjectProperty>
     
@@ -680,7 +704,6 @@
         <skos:prefLabel>conversation text</skos:prefLabel>
     </owl:DatatypeProperty>
     
-
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/speakerName -->
 
