@@ -34,9 +34,7 @@
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
         <owl:imports rdf:resource="https://saref.etsi.org/saref4bldg/v2.1.1/"/>
-        <owl:imports rdf:resource="https://w3id.org/fso/0.1.0"/>
         <owl:imports rdf:resource="https://w3id.org/rec/core/3.3/"/>
-        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/20240801/QuantitiesAndUnits/"/>
         <dcterms:abstract></dcterms:abstract>
     </owl:Ontology>
     
@@ -62,6 +60,12 @@
     <!-- http://www.linkedmodel.org/schema/vaem#comment -->
 
     <owl:AnnotationProperty rdf:about="http://www.linkedmodel.org/schema/vaem#comment"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
     
 
 
@@ -472,7 +476,28 @@
 
     <!-- https://w3id.org/fso#hasComponent -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/fso#hasComponent"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/fso#hasComponent">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/fso#isComponentOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/fso#System"/>
+        <rdfs:range rdf:resource="https://w3id.org/fso#Component"/>
+        <rdfs:comment xml:lang="en">Relates a system to a component it contains</rdfs:comment>
+        <rdfs:comment xml:lang="en">Relates a system to a component it contains. If system A has a subsystem B, which has a component C, then system A is said to have component C as well.</rdfs:comment>
+        <rdfs:label xml:lang="da">har komponent</rdfs:label>
+        <rdfs:label xml:lang="en">has component</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/fso#isComponentOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/fso#isComponentOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/fso#Component"/>
+        <rdfs:range rdf:resource="https://w3id.org/fso#System"/>
+    </owl:ObjectProperty>
     
 
 
@@ -525,21 +550,9 @@
     
 
 
-    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue -->
+    <!-- http://www.w3.org/ns/prov#value -->
 
-    <owl:DatatypeProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/isMaximumInclusive -->
-
-    <owl:DatatypeProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/isMaximumInclusive"/>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/isMinimumInclusive -->
-
-    <owl:DatatypeProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/isMinimumInclusive"/>
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#value"/>
     
 
 
@@ -607,7 +620,9 @@
 
     <!-- https://saref.etsi.org/saref4bldg/Sensor -->
 
-    <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Sensor"/>
+    <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Sensor">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+    </owl:Class>
     
 
 
@@ -1018,13 +1033,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#value"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>measurement</rdfs:label>
@@ -2029,13 +2037,21 @@ outdoor air change per hour</prov:definition>
 
     <!-- https://w3id.org/fso#Component -->
 
-    <owl:Class rdf:about="https://w3id.org/fso#Component"/>
+    <owl:Class rdf:about="https://w3id.org/fso#Component">
+        <rdfs:comment xml:lang="en">A component contained by a fso:System</rdfs:comment>
+        <rdfs:label xml:lang="en">Component</rdfs:label>
+        <rdfs:label xml:lang="da">Komponent</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- https://w3id.org/fso#System -->
 
-    <owl:Class rdf:about="https://w3id.org/fso#System"/>
+    <owl:Class rdf:about="https://w3id.org/fso#System">
+        <rdfs:comment xml:lang="en">A system is a placeholder for properties that are valid for the components of the system and hence serves as an aggregation function. Common system properties include fluid properties such as the fluid type, temperature and thermal properties.</rdfs:comment>
+        <rdfs:label xml:lang="da">System</rdfs:label>
+        <rdfs:label xml:lang="en">System</rdfs:label>
+    </owl:Class>
     
 
 
@@ -2052,14 +2068,6 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://w3id.org/rec/core/Room">
         <skos:definition>indoor space enclosed or bounded to support a defined occupancy, care, treatment, or service function</skos:definition>
     </owl:Class>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/LogicalDevice"/>
-    </rdf:Description>
 </rdf:RDF>
 
 
