@@ -9,13 +9,14 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:core="https://w3id.org/rec/core/"
      xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
      xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:schema="https://schema.org/"
-     xmlns:dcterms="http://purl.org/dc/terms/"
      xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
      xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
      xmlns:saref4bldg="https://saref.etsi.org/saref4bldg/"
@@ -24,10 +25,10 @@
      xmlns:AnnotationVocabulary="https://www.omg.org/spec/Commons/AnnotationVocabulary/">
     <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/">
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/"/>
-        <owl:imports rdf:resource="http://www.semanticweb.org/nipunpathitage/ontologies/2026/9/untitled-ontology-216"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
         <owl:imports rdf:resource="https://saref.etsi.org/saref4bldg/v2.1.1/"/>
         <owl:imports rdf:resource="https://w3id.org/rec/core/3.3/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
     </owl:Ontology>
     
 
@@ -40,18 +41,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://purl.org/dc/terms/abstract -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/abstract"/>
-    
-
-
-    <!-- http://www.linkedmodel.org/schema/vaem#comment -->
-
-    <owl:AnnotationProperty rdf:about="http://www.linkedmodel.org/schema/vaem#comment"/>
     
 
 
@@ -156,7 +145,7 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatedCompliance">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceFramework"/>
-        <vaem:comment>Definition derived from the NIST OSCAL assessment model, in which an assessment determines compliance relative to defined controls or control baselines, and formulated according to ISO 704:2022.</vaem:comment>
+        <rdfs:comment>Definition derived from the NIST OSCAL assessment model, in which an assessment determines compliance relative to defined controls or control baselines, and formulated according to ISO 704:2022.</rdfs:comment>
         <rdfs:label>evaluated compliance</rdfs:label>
         <skos:definition>relation that holds between a compliance assessment and a compliance framework when the requirements specified by the framework provide the basis for determining compliance in the assessment</skos:definition>
     </owl:ObjectProperty>
@@ -223,7 +212,7 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasContext">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AssessmentContext"/>
-        <vaem:comment>Definition derived from the NIST OSCAL representation of assessment scope, subjects, terms and conditions, methodology, activities, and related contextual information, and formulated according to ISO 704:2022.</vaem:comment>
+        <rdfs:comment>Definition derived from the NIST OSCAL representation of assessment scope, subjects, terms and conditions, methodology, activities, and related contextual information, and formulated according to ISO 704:2022.</rdfs:comment>
         <rdfs:label>has context</rdfs:label>
         <skos:definition>relation that holds between a compliance assessment and an assessment context when the context specifies the circumstances, scope, or conditions under which the assessment is performed or interpreted</skos:definition>
     </owl:ObjectProperty>
@@ -236,7 +225,7 @@
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isPolicyOf"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceFramework"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
-        <vaem:comment>derived from the policy-grouping semantics of ODRL involvedPolicy and from NIST OSCAL&apos;s profile/control-composition model, formulated according to ISO 704:2022.</vaem:comment>
+        <rdfs:comment>derived from the policy-grouping semantics of ODRL involvedPolicy and from NIST OSCAL&apos;s profile/control-composition model, formulated according to ISO 704:2022.</rdfs:comment>
         <rdfs:label>has policy</rdfs:label>
         <skos:definition>relation that holds between a compliance framework and a compliance policy when the policy is included in or specified by the framework as part of its compliance requirements</skos:definition>
     </owl:ObjectProperty>
@@ -248,7 +237,7 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
-        <vaem:comment>Definition derived from the NIST OSCAL decomposition of an assessment into reviewed controls, control objectives, assessment activities, observations, and findings, specialized to the policy-assessment structure of this ontology and formulated according to ISO 704:2022.</vaem:comment>
+        <rdfs:comment>Definition derived from the NIST OSCAL decomposition of an assessment into reviewed controls, control objectives, assessment activities, observations, and findings, specialized to the policy-assessment structure of this ontology and formulated according to ISO 704:2022.</rdfs:comment>
         <rdfs:label>has policy assessment</rdfs:label>
         <skos:definition>relation that holds between a compliance assessment and a policy assessment when the policy assessment constitutes part of the compliance assessment by evaluating requirements associated with a compliance policy</skos:definition>
     </owl:ObjectProperty>
@@ -498,7 +487,6 @@
     <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Collections/hasPart">
         <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <dcterms:source>Stanford Encyclopedia of Philosophy at http://plato.stanford.edu/entries/mereology/</dcterms:source>
         <rdfs:label>has part</rdfs:label>
         <skos:definition>indicates any portion of something, regardless of whether the portion itself is attached to the remainder or detached; cognitively salient or arbitrarily demarcated; self-connected or disconnected; homogeneous or gerrymandered; material or immaterial; extended or unextended; spatial or temporal</skos:definition>
         <skos:note>Note that &apos;has part&apos; is not a subproperty of &apos;comprises&apos; in order to enable transitivity for whole-part relationships without limiting the use of cardinality constraints on comprises and membership.</skos:note>
@@ -510,7 +498,6 @@
 
     <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Collections/isPartOf">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <dcterms:source>Stanford Encyclopedia of Philosophy at http://plato.stanford.edu/entries/mereology/</dcterms:source>
         <rdfs:label>is part of</rdfs:label>
         <skos:definition>relates something to another thing that it is some component or portion of, regardless of how that whole-part relationship is manifested</skos:definition>
         <skos:note>Note that &apos;is part of&apos; is not a subproperty of &apos;isIncludedIn&apos; in order to enable transitivity for whole-part relationships without limiting the use of cardinality constraints on inclusion and membership.</skos:note>
@@ -707,7 +694,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Assessment -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Assessment">
-        <vaem:comment>concept derived from the NIST OSCAL assessment model, which represents planned and performed evaluations of controls and their resulting observations/findings, and formulated according to ISO 704:2022.</vaem:comment>
+        <rdfs:comment>concept derived from the NIST OSCAL assessment model, which represents planned and performed evaluations of controls and their resulting observations/findings, and formulated according to ISO 704:2022.</rdfs:comment>
         <rdfs:label>assessment</rdfs:label>
         <skos:definition>process in which evidence is evaluated against specified criteria to determine an outcome</skos:definition>
     </owl:Class>
