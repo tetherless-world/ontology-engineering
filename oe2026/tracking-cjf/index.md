@@ -19,7 +19,7 @@ Treatment recommendations within Clinical Practice Guidelines (CPGs) are largely
 
 ## Workflow Diagram
 
-<iframe src="files/CohortAnalyticsWorkflowDiagramISWCPaper.pdf" style="width:100%; height: 500px"></iframe>
+<iframe src="files/diagrams/CohortAnalyticsWorkflowDiagramISWCPaper.pdf" style="width:100%; height: 500px"></iframe>
 
 <p class="message-highlight">Add a representative diagram of your project such as the below workflow diagram illustrating the flow between the components.</p>
 
