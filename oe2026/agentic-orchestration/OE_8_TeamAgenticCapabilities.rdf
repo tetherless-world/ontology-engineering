@@ -37,19 +37,24 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/">
+		<rdfs:label xml:lang="en">Agentic Tool and Skill Orchestration Ontology</rdfs:label>
 		<dct:abstract xml:lang="en">The Agentic Capabilities Orchestration ontology describes how an agent harness chooses and orders the skills and Model Context Protocol tools that answer a user request. It links requests, information requirements and user constraints to capabilities, skills, tools and servers; represents candidate orchestration plans with their workflow steps, tasks, and the information artifacts each task consumes and produces; records how a plan is evaluated and selected; and traces invocations for provenance. The supplement recommendation scenarios of use case AC-001 scope it. It reuses AgentO, P-Plan, OWL-S Process, PROV-O and the OMG Commons Ontology Library.</dct:abstract>
+		<dct:creator>Barbara Kotlan</dct:creator>
+		<dct:creator>Elioenai Lincon Guedes Alves</dct:creator>
+		<dct:creator>Gia Oriana Santos</dct:creator>
+		<dct:creator>Jialin Fang</dct:creator>
+		<dct:creator>Jiaying Wang</dct:creator>
 		<owl:imports rdf:resource="http://purl.org/net/p-plan#"/>
 		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
 		<owl:imports rdf:resource="http://www.w3id.org/agentic-ai/onto"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Classifiers/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
-		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Organizations/"/>
 		<owl:imports rdf:resource="https://www.w3.org/ns/prov-o.owl"/>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"/>
 	</owl:Ontology>
+	
+	<owl:AnnotationProperty rdf:about="&dct;creator">
+	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&dct;source">
 	</owl:AnnotationProperty>
@@ -71,15 +76,6 @@
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">relationship linking a process interface to a formal parameter through which values are supplied or returned</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&process;hasPrecondition">
-		<rdfs:label xml:lang="en">has precondition</rdfs:label>
-		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<skos:definition xml:lang="en">relationship linking a process to a condition that must hold for it to execute successfully</skos:definition>
-	</owl:ObjectProperty>
-	
-	<rdfs:Datatype rdf:about="&xsd;date">
-	</rdfs:Datatype>
 	
 	<owl:AnnotationProperty rdf:about="&skos;altLabel">
 	</owl:AnnotationProperty>
@@ -175,7 +171,18 @@
 	<owl:Class rdf:about="&oe-agtorch;CandidateOrchestrationPlan">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;OrchestrationPlan"/>
 		<rdfs:label xml:lang="en">candidate orchestration plan</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-agtorch;RejectedOrchestrationPlan">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;SelectedOrchestrationPlan">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">orchestration plan proposed as a possible solution to a user request, subject to evaluation and selection</skos:definition>
+		<skos:scopeNote xml:lang="en">After evaluation every candidate orchestration plan is either selected or rejected.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;CandidateSupplement">
@@ -190,37 +197,44 @@
 		<skos:definition xml:lang="en">ability of an agent to perform a type of action or task</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ConflictingEvidenceAssessment">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;EvidenceAssessment"/>
-		<rdfs:label xml:lang="en">conflicting evidence assessment</rdfs:label>
+	<owl:Class rdf:about="&oe-agtorch;ConstraintSatisfyingCapability">
+		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
+		<rdfs:label xml:lang="en">constraint-satisfying capability</rdfs:label>
+		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;EvidenceAssessment">
+					<rdf:Description rdf:about="&agento;Capability">
 					</rdf:Description>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe-agtorch;hasFinding"/>
-						<owl:someValuesFrom>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe-agtorch;hasEvidenceDirection"/>
-								<owl:hasValue rdf:resource="&oe-agtorch;disputing"/>
-							</owl:Restriction>
-						</owl:someValuesFrom>
-					</owl:Restriction>
-					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe-agtorch;hasFinding"/>
-						<owl:someValuesFrom>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe-agtorch;hasEvidenceDirection"/>
-								<owl:hasValue rdf:resource="&oe-agtorch;supporting"/>
-							</owl:Restriction>
-						</owl:someValuesFrom>
+						<owl:onProperty rdf:resource="&oe-agtorch;satisfiesConstraint"/>
+						<owl:someValuesFrom rdf:resource="&oe-agtorch;HardConstraint"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
 		</owl:equivalentClass>
-		<skos:definition xml:lang="en">evidence assessment that has at least one supporting finding and at least one disputing finding</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">Defined class: EvidenceAssessment and (hasFinding some (hasEvidenceDirection value supporting)) and (hasFinding some (hasEvidenceDirection value disputing))</cmns-av:adaptedFrom>
+		<skos:definition xml:lang="en">capability that satisfies at least one hard constraint</skos:definition>
+		<skos:scopeNote xml:lang="en">Defined class. Competency questions 3 and 5 use it to find capabilities that a plan needs because of a hard constraint, such as safety screening.</skos:scopeNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ConstraintSatisfyingSkill">
+		<rdfs:subClassOf rdf:resource="&oe-agtorch;Skill"/>
+		<rdfs:label xml:lang="en">constraint-satisfying skill</rdfs:label>
+		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-agtorch;Skill">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe-agtorch;hasCapability"/>
+						<owl:someValuesFrom rdf:resource="&oe-agtorch;ConstraintSatisfyingCapability"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">skill that has at least one constraint-satisfying capability</skos:definition>
+		<skos:scopeNote xml:lang="en">Defined class. Competency question 3 uses it to find the skills whose capabilities satisfy a hard constraint of the request; a plan for that request needs at least one such skill for each hard constraint.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;ContentGeneration">
@@ -249,28 +263,10 @@
 		<cmns-av:adaptedFrom xml:lang="en">SEPIO evidence line and evidence strength; use case</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;EvidenceCertaintyLevel">
-		<rdfs:label xml:lang="en">evidence certainty level</rdfs:label>
-		<skos:definition xml:lang="en">category expressing how confident an assessment is that the summarized evidence reflects the true effect of the supplement</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">GRADE guidelines 3: quality of evidence reflects confidence that the estimates of the effect are correct; four levels high, moderate, low, very low</cmns-av:adaptedFrom>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe-agtorch;EvidenceCoverage">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
 		<rdfs:label xml:lang="en">evidence coverage</rdfs:label>
 		<skos:definition xml:lang="en">plan metric expressing how fully an orchestration plan covers the evidence needed to address a request</skos:definition>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe-agtorch;EvidenceDirection">
-		<rdfs:label xml:lang="en">evidence direction</rdfs:label>
-		<skos:definition xml:lang="en">category stating whether a finding or an assessment supports, disputes, or is inconclusive about the effect of a supplement</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “A data item that indicates an agent’s assessment of whether an evidence line supports or disputes a target proposition (or represents inconclusive evidence that is not sufficient for either).”</cmns-av:adaptedFrom>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&oe-agtorch;EvidenceFinding">
-		<rdfs:label xml:lang="en">evidence finding</rdfs:label>
-		<skos:definition xml:lang="en">record of the result that one research article reports about one candidate supplement</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: evidence line, “an independent and meaningful argument for or against a particular proposition, that is based on the interpretation of one or more pieces of information as evidence”</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;ExecutableResource">
@@ -305,6 +301,7 @@
 	<owl:Class rdf:about="&oe-agtorch;HardConstraint">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;UserConstraint"/>
 		<rdfs:label xml:lang="en">hard constraint</rdfs:label>
+		<owl:disjointWith rdf:resource="&oe-agtorch;SoftConstraint"/>
 		<skos:definition xml:lang="en">user constraint that an acceptable orchestration plan must satisfy</skos:definition>
 	</owl:Class>
 	
@@ -356,7 +353,7 @@
 		<rdfs:label xml:lang="en">input constraint</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">condition on the value of an input that an invocation must satisfy to be accepted by the tool or skill</skos:definition>
-		<skos:scopeNote xml:lang="en">Figure 4 depicts this as a separate class. No additional superclass is imposed: Figure 2 and the curated term list differ on its placement, so that cross-figure reconciliation remains for the team.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Specializes precondition for conditions on the values that a tool or skill accepts for one of its parameters (Figure 4, constrains).</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Instruction">
@@ -420,6 +417,24 @@
 		<skos:scopeNote xml:lang="en">An actual occurrence, distinct from the tool or skill specification and from the planned workflow step. The required correspondsToStep value, combined with the functional P-Plan property, gives exactly one planned step. Existential restrictions do not require an explicitly asserted named value under OWL open-world semantics.</skos:scopeNote>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;JustifiedCapability">
+		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
+		<rdfs:label xml:lang="en">justified capability</rdfs:label>
+		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-agtorch;ConstraintSatisfyingCapability">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;RequirementSatisfyingCapability">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">capability that satisfies an information requirement or a hard constraint</skos:definition>
+		<skos:scopeNote xml:lang="en">Defined as the union of requirement-satisfying capability and constraint-satisfying capability. A capability required by a plan that is not a justified capability has no reason in the request to be there (competency question 5).</skos:scopeNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;Latency">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
 		<rdfs:label xml:lang="en">latency</rdfs:label>
@@ -428,6 +443,13 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolServer">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;Server"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;exposes"/>
+				<owl:onClass rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">model context protocol server</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:altLabel xml:lang="en">MCPServer</skos:altLabel>
@@ -480,6 +502,13 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;OrchestrationWorkflowStep">
 		<rdfs:subClassOf rdf:resource="&agento;WorkflowStep"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&agento;hasAssociatedTask"/>
+				<owl:onClass rdf:resource="&agento;Task"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">orchestration workflow step</rdfs:label>
 		<dct:source xml:lang="en">A. Ekelhart, K. Kurniawan, F. J. Ekaputra, and E. Kiesling, AgentO: An Ontology for Modeling Agentic AI Systems, ESWC 2026 (WorkflowStep, hasAssociatedTask). http://www.w3id.org/agentic-ai/onto</dct:source>
 		<skos:definition xml:lang="en">workflow step of an orchestration plan that is associated with the task carried out at that point in the plan</skos:definition>
@@ -529,8 +558,16 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;PlanEvaluation">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;evaluates"/>
+				<owl:onClass rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">plan evaluation</rdfs:label>
 		<skos:definition xml:lang="en">evaluation record that associates an orchestration plan with the criteria used and the plan metrics obtained</skos:definition>
+		<skos:scopeNote xml:lang="en">Each plan evaluation evaluates exactly one candidate orchestration plan.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;PlanMetric">
@@ -573,8 +610,27 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Request">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty>
+					<rdf:Description>
+						<owl:inverseOf rdf:resource="&oe-agtorch;addresses"/>
+					</rdf:Description>
+				</owl:onProperty>
+				<owl:onClass rdf:resource="&oe-agtorch;SelectedOrchestrationPlan"/>
+				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;expresses"/>
+				<owl:onClass rdf:resource="&oe-agtorch;InformationRequirement"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">request</rdfs:label>
 		<skos:definition xml:lang="en">user input that expresses a task, action, or information need for an agent to address</skos:definition>
+		<skos:scopeNote xml:lang="en">A request expresses at least one information requirement and is addressed by at most one selected orchestration plan.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;RequiredInput">
@@ -606,6 +662,26 @@
 		<skos:definition xml:lang="en">input that must be supplied for a tool or skill invocation to be accepted</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&oe-agtorch;RequirementSatisfyingCapability">
+		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
+		<rdfs:label xml:lang="en">requirement-satisfying capability</rdfs:label>
+		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&agento;Capability">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="&oe-agtorch;satisfiesRequirement"/>
+						<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationRequirement"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">capability that satisfies at least one information requirement</skos:definition>
+		<skos:scopeNote xml:lang="en">Defined class. Competency question 5 uses it to explain that a capability is in a plan because it satisfies an information requirement of the request.</skos:scopeNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&oe-agtorch;SafetyAssessment">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;Assessment"/>
 		<rdfs:label xml:lang="en">safety assessment</rdfs:label>
@@ -629,7 +705,29 @@
 	<owl:Class rdf:about="&oe-agtorch;SelectedOrchestrationPlan">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">selected orchestration plan</rdfs:label>
-		<skos:definition xml:lang="en">candidate orchestration plan that has been selected for execution</skos:definition>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-agtorch;CandidateOrchestrationPlan">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty>
+							<rdf:Description>
+								<owl:inverseOf rdf:resource="&oe-agtorch;evaluates"/>
+							</rdf:Description>
+						</owl:onProperty>
+						<owl:someValuesFrom>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&oe-agtorch;hasRank"/>
+								<owl:hasValue rdf:datatype="&xsd;integer">1</owl:hasValue>
+							</owl:Restriction>
+						</owl:someValuesFrom>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">candidate orchestration plan that is selected for execution because its plan evaluation ranks it first</skos:definition>
+		<skos:scopeNote xml:lang="en">The scoring step computes the rank; the reasoner then classifies the plan whose evaluation has rank 1 as selected (competency question 1).</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&oe-agtorch;Server">
@@ -670,12 +768,6 @@
 		<skos:definition xml:lang="en">user constraint that represents a preference or desirable condition that may be relaxed when evaluating an orchestration plan</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;StudyDesign">
-		<rdfs:label xml:lang="en">study design</rdfs:label>
-		<skos:definition xml:lang="en">category of research method used by the study that an article reports, as indexed by MeSH publication types</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">MeSH publication types; PubMed field tag PT</cmns-av:adaptedFrom>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&oe-agtorch;SystemInteraction">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">system interaction</rdfs:label>
@@ -709,12 +801,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&process;hasParameter"/>
 				<owl:allValuesFrom rdf:resource="&oe-agtorch;Parameter"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&process;hasPrecondition"/>
-				<owl:allValuesFrom rdf:resource="&oe-agtorch;Precondition"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">tool</rdfs:label>
@@ -756,7 +842,18 @@
 	<owl:Class rdf:about="&oe-agtorch;UserConstraint">
 		<rdfs:subClassOf rdf:resource="&agento;Constraint"/>
 		<rdfs:label xml:lang="en">user constraint</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-agtorch;HardConstraint">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;SoftConstraint">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">constraint derived from a user&apos;s request, profile, or execution preferences that governs the selection or execution of an orchestration plan</skos:definition>
+		<skos:scopeNote xml:lang="en">Every user constraint is either a hard constraint or a soft constraint, and no constraint is both.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;addresses">
@@ -765,21 +862,6 @@
 		<rdfs:range rdf:resource="&oe-agtorch;Request"/>
 		<skos:definition xml:lang="en">relation from an orchestration plan to the request it is intended to handle</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;assessesSupplement">
-		<rdfs:label xml:lang="en">assesses supplement</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;Assessment"/>
-		<rdfs:range rdf:resource="&oe-agtorch;CandidateSupplement"/>
-		<skos:definition xml:lang="en">relation from an assessment to the candidate supplement it judges</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">Use case CQ 4</cmns-av:adaptedFrom>
-	</owl:ObjectProperty>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;caseReport">
-		<rdf:type rdf:resource="&oe-agtorch;StudyDesign"/>
-		<rdfs:label xml:lang="en">case report</rdfs:label>
-		<skos:definition xml:lang="en">study design that describes the clinical presentation of one or a few individual patients</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">MeSH D002363 Case Reports (publication type)</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;conflictsWith">
 		<rdfs:label xml:lang="en">conflicts with</rdfs:label>
@@ -817,13 +899,6 @@
 		<skos:definition xml:lang="en">relation from a task to another task that produces an information artifact the first task consumes</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">Use case CQ 2 step 3: “A workflow step is dependent on another if it consumes an InformationArtifact produced by that step”; AgentO v0.2 requiresResource and producedResource; OWL 2 property chain</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;disputing">
-		<rdf:type rdf:resource="&oe-agtorch;EvidenceDirection"/>
-		<rdfs:label xml:lang="en">disputing</rdfs:label>
-		<skos:definition xml:lang="en">evidence direction indicating that the evidence argues against the claimed effect of the supplement</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO label “disputing” (no definition in the 2023-06-13 release); wording mirrors the definition of supporting</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;evaluates">
 		<rdfs:label xml:lang="en">evaluates</rdfs:label>
@@ -872,15 +947,8 @@
 		<skos:scopeNote xml:lang="en">Shared by tools and skills in Figures 3 and 4. No Tool-only global domain is asserted, because that would classify every skill using this property as a Tool. Figure 4 constrains the property locally on Tool.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasCertaintyLevel">
-		<rdfs:label xml:lang="en">has certainty level</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;EvidenceAssessment"/>
-		<rdfs:range rdf:resource="&oe-agtorch;EvidenceCertaintyLevel"/>
-		<skos:definition xml:lang="en">relation from an evidence assessment to the certainty level of the evidence it summarizes</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “A relation describing the degree of support provided by an evidence line for a target assertion or proposition.”; GRADE levels</cmns-av:adaptedFrom>
-	</owl:ObjectProperty>
-	
 	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasDirection">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label xml:lang="en">has direction</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;DecisionCriterion"/>
 		<rdfs:range>
@@ -900,31 +968,6 @@
 		</rdfs:range>
 		<skos:definition xml:lang="en">indicates whether a decision criterion should be minimized or maximized</skos:definition>
 	</owl:DatatypeProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasEvidenceDirection">
-		<rdfs:label xml:lang="en">has evidence direction</rdfs:label>
-		<rdfs:domain>
-			<owl:Class>
-				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;EvidenceAssessment">
-					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;EvidenceFinding">
-					</rdf:Description>
-				</owl:unionOf>
-			</owl:Class>
-		</rdfs:domain>
-		<rdfs:range rdf:resource="&oe-agtorch;EvidenceDirection"/>
-		<skos:definition xml:lang="en">relation from an evidence finding or an evidence assessment to its evidence direction</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “A relation indicating whether an evidence line supports or disputes a target proposition (or represents inconclusive evidence that is not sufficient for either).”</cmns-av:adaptedFrom>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasFinding">
-		<rdfs:label xml:lang="en">has finding</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;EvidenceAssessment"/>
-		<rdfs:range rdf:resource="&oe-agtorch;EvidenceFinding"/>
-		<skos:definition xml:lang="en">relation from an evidence assessment to an evidence finding it summarizes</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “A relation between a proposition and information that supports its validity, based on the evaluation of some agent.”</cmns-av:adaptedFrom>
-	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasMeasurement">
 		<rdfs:label xml:lang="en">has measurement</rdfs:label>
@@ -949,15 +992,8 @@
 		<skos:definition xml:lang="en">relative importance of two or more soft constraints, which determines the selection of an orchestration plan</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasPublicationDate">
-		<rdfs:label xml:lang="en">has publication date</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;ArticleAbstract"/>
-		<rdfs:range rdf:resource="&xsd;date"/>
-		<skos:definition xml:lang="en">attribute of an article abstract giving the date its article was published</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">PubMed User Guide, field tag DP</cmns-av:adaptedFrom>
-	</owl:DatatypeProperty>
-	
 	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasRank">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label xml:lang="en">has rank</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
@@ -984,14 +1020,6 @@
 		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
 		<rdfs:range rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<skos:definition xml:lang="en">relationship connecting an orchestration plan with one of its constituent steps</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasStudyDesign">
-		<rdfs:label xml:lang="en">has study design</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;EvidenceFinding"/>
-		<rdfs:range rdf:resource="&oe-agtorch;StudyDesign"/>
-		<skos:definition xml:lang="en">relation from an evidence finding to the design of the study that produced it</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">MeSH publication types</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasTask">
@@ -1037,20 +1065,6 @@
 		<skos:definition xml:lang="en">relative importance assigned to a decision criterion</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;high">
-		<rdf:type rdf:resource="&oe-agtorch;EvidenceCertaintyLevel"/>
-		<rdfs:label xml:lang="en">high</rdfs:label>
-		<skos:definition xml:lang="en">evidence certainty level at which the true effect very likely lies close to the estimated effect</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">GRADE guidelines 3 (Balshem et al., 2011), definitions of the four levels</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;inconclusive">
-		<rdf:type rdf:resource="&oe-agtorch;EvidenceDirection"/>
-		<rdfs:label xml:lang="en">inconclusive</rdfs:label>
-		<skos:definition xml:lang="en">evidence direction indicating that the evidence is not sufficient to argue for or against the claimed effect of the supplement</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “An evidence direction indicating that an evidence line lacks sufficient credibility, relevance, or completeness to argue for or against the validity of a target assertion.”</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
-	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;invokes">
 		<rdfs:label xml:lang="en">invokes</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
@@ -1083,14 +1097,6 @@
 		<skos:definition xml:lang="en">links a tool invocation to the skill invocation that made that tool call</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;isReportedIn">
-		<rdfs:label xml:lang="en">is reported in</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;EvidenceFinding"/>
-		<rdfs:range rdf:resource="&oe-agtorch;ArticleAbstract"/>
-		<skos:definition xml:lang="en">relation from an evidence finding to the article abstract that reports it</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “A relation that holds between an evidence line and a citable document from which information supporting the evidence line was obtained.”</cmns-av:adaptedFrom>
-	</owl:ObjectProperty>
-	
 	<owl:DatatypeProperty rdf:about="&oe-agtorch;isRequired">
 		<rdfs:label xml:lang="en">is required</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
@@ -1099,27 +1105,6 @@
 		<skos:definition xml:lang="en">boolean attribute of a parameter indicating whether an input must be supplied for invocation</skos:definition>
 		<skos:scopeNote xml:lang="en">true marks a required parameter and false an optional one. An absent assertion means unknown. This metadata does not perform runtime validation under OWL&apos;s open-world semantics.</skos:scopeNote>
 	</owl:DatatypeProperty>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;low">
-		<rdf:type rdf:resource="&oe-agtorch;EvidenceCertaintyLevel"/>
-		<rdfs:label xml:lang="en">low</rdfs:label>
-		<skos:definition xml:lang="en">evidence certainty level at which the true effect may be substantially different from the estimated effect</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">GRADE guidelines 3 (Balshem et al., 2011), definitions of the four levels</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;moderate">
-		<rdf:type rdf:resource="&oe-agtorch;EvidenceCertaintyLevel"/>
-		<rdfs:label xml:lang="en">moderate</rdfs:label>
-		<skos:definition xml:lang="en">evidence certainty level at which the true effect is likely close to the estimated effect but may be substantially different</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">GRADE guidelines 3 (Balshem et al., 2011), definitions of the four levels</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;observationalStudy">
-		<rdf:type rdf:resource="&oe-agtorch;StudyDesign"/>
-		<rdfs:label xml:lang="en">observational study</rdfs:label>
-		<skos:definition xml:lang="en">study design in which the investigator does not assign participants to the interventions they receive</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">MeSH D064888 Observational Study: “… a clinical study in which participants may receive diagnostic, therapeutic, or other types of interventions, but the investigator does not assign participants to specific interventions.”</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;performedBySkill">
 		<rdfs:label xml:lang="en">performed by skill</rdfs:label>
@@ -1135,13 +1120,6 @@
 		<rdfs:range rdf:resource="&oe-agtorch;InformationArtifact"/>
 		<skos:definition xml:lang="en">relation from a task to an information artifact it yields as output</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;randomizedControlledTrial">
-		<rdf:type rdf:resource="&oe-agtorch;StudyDesign"/>
-		<rdfs:label xml:lang="en">randomized controlled trial</rdfs:label>
-		<skos:definition xml:lang="en">study design in which a random process assigns participants to a test treatment or a control treatment that are followed up concurrently</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">MeSH D016449 Randomized Controlled Trial: “A work that reports on a clinical trial that involves at least one test treatment and one control treatment, concurrent enrollment and follow-up of the test- and control-treated groups, and in which the treatments to be administered are selected by a random process.”</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;records">
 		<rdfs:label xml:lang="en">records</rdfs:label>
@@ -1175,20 +1153,6 @@
 		<skos:definition xml:lang="en">relation from a capability to an information requirement that the capability meets</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;supporting">
-		<rdf:type rdf:resource="&oe-agtorch;EvidenceDirection"/>
-		<rdfs:label xml:lang="en">supporting</rdfs:label>
-		<skos:definition xml:lang="en">evidence direction indicating that the evidence argues for the claimed effect of the supplement</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">SEPIO: “An evidence direction indicating that an evidence line provides an argument that supports the validity of a target assertion.”</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;systematicReview">
-		<rdf:type rdf:resource="&oe-agtorch;StudyDesign"/>
-		<rdfs:label xml:lang="en">systematic review</rdfs:label>
-		<skos:definition xml:lang="en">study design that identifies, appraises, and synthesizes all empirical evidence meeting stated eligibility criteria to answer one research question</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">MeSH D000078182 Systematic Review: “A review of primary literature in health and health policy that attempts to identify, appraise, and synthesize all the empirical evidence that meets specified eligibility criteria to answer a given research question.”</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
-	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;usesCriterion">
 		<rdfs:label xml:lang="en">uses criterion</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
@@ -1204,13 +1168,6 @@
 		<skos:scopeNote xml:lang="en">Shared by Figures 3 and 4. No global domain is imposed, so skill use does not classify the skill as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
-	<owl:NamedIndividual rdf:about="&oe-agtorch;veryLow">
-		<rdf:type rdf:resource="&oe-agtorch;EvidenceCertaintyLevel"/>
-		<rdfs:label xml:lang="en">very low</rdfs:label>
-		<skos:definition xml:lang="en">evidence certainty level at which the true effect is likely substantially different from the estimated effect</skos:definition>
-		<cmns-av:adaptedFrom xml:lang="en">GRADE guidelines 3 (Balshem et al., 2011), definitions of the four levels</cmns-av:adaptedFrom>
-	</owl:NamedIndividual>
-	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;violatesConstraint">
 		<rdfs:label xml:lang="en">violates constraint</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
@@ -1219,40 +1176,6 @@
 		<skos:scopeNote xml:lang="en">A soft constraint is never violated in this sense: it is measured by a decision criterion and only lowers the plan&apos;s score and rank.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
-	<owl:AllDifferent>
-		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;caseReport">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;observationalStudy">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;randomizedControlledTrial">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;systematicReview">
-			</rdf:Description>
-		</owl:distinctMembers>
-	</owl:AllDifferent>
-	<owl:AllDifferent>
-		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;disputing">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;inconclusive">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;supporting">
-			</rdf:Description>
-		</owl:distinctMembers>
-	</owl:AllDifferent>
-	<owl:AllDifferent>
-		<owl:distinctMembers rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;high">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;low">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;moderate">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;veryLow">
-			</rdf:Description>
-		</owl:distinctMembers>
-	</owl:AllDifferent>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
 			<rdf:Description rdf:about="http://w3id.org/beam/core#Instance">
