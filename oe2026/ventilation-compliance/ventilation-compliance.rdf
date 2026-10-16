@@ -16,12 +16,15 @@
      xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:schema="https://schema.org/"
      xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
      xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
      xmlns:saref4bldg="https://saref.etsi.org/saref4bldg/"
      xmlns:cmns-cxtdsg="https://www.omg.org/spec/Commons/ContextualDesignators/"
-     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#">
+     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
+     xmlns:AnnotationVocabulary="https://www.omg.org/spec/Commons/AnnotationVocabulary/">
     <owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/">
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/"/>
+        <owl:imports rdf:resource="http://www.semanticweb.org/nipunpathitage/ontologies/2026/9/untitled-ontology-216"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
         <owl:imports rdf:resource="https://saref.etsi.org/saref4bldg/v2.1.1/"/>
         <owl:imports rdf:resource="https://w3id.org/rec/core/3.3/"/>
@@ -81,27 +84,6 @@
     
 
 
-    <!-- http://purl.org/dc/terms/hasPart -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/hasPart">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdfs:comment>This property is intended to be used with non-literal values. This property is an inverse property of Is Part Of.</rdfs:comment>
-        <rdfs:label>Has Part</rdfs:label>
-        <skos:definition>A related resource that is included either physically or logically in the described resource.</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/dc/terms/isPartOf -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/isPartOf">
-        <rdfs:comment>This property is intended to be used with non-literal values. This property is an inverse property of Has Part.</rdfs:comment>
-        <rdfs:label>Is Part Of</rdfs:label>
-        <skos:definition>A related resource in which the described resource is physically or logically included.</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.w3.org/ns/prov#wasAssociatedWith -->
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasAssociatedWith"/>
@@ -153,7 +135,7 @@
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/rec/core/componentOf"/>
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent"/>
         <rdfs:label>component of service system</rdfs:label>
-        <prov:definition>relation that holds between a building service component and a building service system when the component constitutes part of the system</prov:definition>
+        <skos:definition>relation that holds between a building service component and a building service system when the component constitutes part of the system</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -176,7 +158,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceFramework"/>
         <vaem:comment>Definition derived from the NIST OSCAL assessment model, in which an assessment determines compliance relative to defined controls or control baselines, and formulated according to ISO 704:2022.</vaem:comment>
         <rdfs:label>evaluated compliance</rdfs:label>
-        <prov:definition>relation that holds between a compliance assessment and a compliance framework when the requirements specified by the framework provide the basis for determining compliance in the assessment</prov:definition>
+        <skos:definition>relation that holds between a compliance assessment and a compliance framework when the requirements specified by the framework provide the basis for determining compliance in the assessment</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -197,7 +179,7 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatesMeasurement">
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isEvaluatedAt"/>
         <rdfs:label>evaluates measurement</rdfs:label>
-        <prov:definition>relation that holds between a policy assessment and a measurement when the measurement is used as evidence in the assessment to determine compliance with one or more policy requirements</prov:definition>
+        <skos:definition>relation that holds between a policy assessment and a measurement when the measurement is used as evidence in the assessment to determine compliance with one or more policy requirements</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -209,7 +191,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:label>evaluates on</rdfs:label>
-        <prov:definition>relation that holds between a compliance policy and a measurement when the measurement provides evidence used to determine whether the requirements expressed by the policy are satisfied</prov:definition>
+        <skos:definition>relation that holds between a compliance policy and a measurement when the measurement provides evidence used to determine whether the requirements expressed by the policy are satisfied</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -231,7 +213,7 @@
         <rdfs:domain rdf:resource="https://w3id.org/rec/core/Building"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingSystem"/>
         <rdfs:label>has building system</rdfs:label>
-        <prov:definition>relation that holds between a building and a building system when the system is associated with the building as part of its operational or functional infrastructure</prov:definition>
+        <skos:definition>relation that holds between a building and a building system when the system is associated with the building as part of its operational or functional infrastructure</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -256,7 +238,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
         <vaem:comment>derived from the policy-grouping semantics of ODRL involvedPolicy and from NIST OSCAL&apos;s profile/control-composition model, formulated according to ISO 704:2022.</vaem:comment>
         <rdfs:label>has policy</rdfs:label>
-        <prov:definition>relation that holds between a compliance framework and a compliance policy when the policy is included in or specified by the framework as part of its compliance requirements</prov:definition>
+        <skos:definition>relation that holds between a compliance framework and a compliance policy when the policy is included in or specified by the framework as part of its compliance requirements</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -276,7 +258,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasRoom -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasRoom">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Collections/hasPart"/>
         <rdfs:domain rdf:resource="https://w3id.org/rec/core/Building"/>
         <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>has room</rdfs:label>
@@ -288,12 +270,12 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent">
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/fso#hasComponent"/>
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Collections/hasPart"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:label>has service component</rdfs:label>
-        <prov:definition>relation that holds between a building service system and a building service component when the component constitutes part of the system</prov:definition>
+        <skos:definition>relation that holds between a building service system and a building service component when the component constitutes part of the system</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -304,7 +286,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingSystem"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
         <rdfs:label>has service system</rdfs:label>
-        <prov:definition>relation that holds between a building and a building service system when the system provides one or more building services for that building</prov:definition>
+        <skos:definition>relation that holds between a building and a building service system when the system provides one or more building services for that building</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -315,7 +297,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
         <rdfs:label>is evaluated at</rdfs:label>
-        <prov:definition>relation that holds between a measurement and a policy assessment when the measurement is used as evidence in the assessment to determine compliance with one or more policy requirements</prov:definition>
+        <skos:definition>relation that holds between a measurement and a policy assessment when the measurement is used as evidence in the assessment to determine compliance with one or more policy requirements</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -324,7 +306,7 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isEvaluatedBy">
         <rdfs:label>is evaluated by</rdfs:label>
-        <prov:definition>elation that holds between a measurement and a compliance policy when the measurement provides evidence used to determine whether the requirements expressed by the policy are satisfied</prov:definition>
+        <skos:definition>elation that holds between a measurement and a compliance policy when the measurement provides evidence used to determine whether the requirements expressed by the policy are satisfied</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -333,7 +315,7 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isPolicyOf">
         <rdfs:label>is policy of</rdfs:label>
-        <prov:definition>relation that holds between a compliance policy and a compliance framework when the policy is included in or specified by the framework as part of its compliance requirements</prov:definition>
+        <skos:definition>relation that holds between a compliance policy and a compliance framework when the policy is included in or specified by the framework as part of its compliance requirements</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -355,7 +337,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>measured in</rdfs:label>
-        <prov:definition>relation that holds between a measurement and a room when the measured property pertains to an entity or condition in that room</prov:definition>
+        <skos:definition>relation that holds between a measurement and a room when the measured property pertains to an entity or condition in that room</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -389,7 +371,7 @@
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:range rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>recorded in</rdfs:label>
-        <prov:definition>relation that holds between an observation record and a room when the observation represented by the record pertains to that room as its spatial context</prov:definition>
+        <skos:definition>relation that holds between an observation record and a room when the observation represented by the record pertains to that room as its spatial context</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -397,13 +379,13 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recordedInNeighbor -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recordedInNeighbor">
-        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recordedIn"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recordedIn"/>
             <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/neighbor"/>
         </owl:propertyChainAxiom>
         <rdfs:label>recorded in neighbor</rdfs:label>
-        <prov:definition>relation that holds between an observation record and a room when the room is adjacent to the room that constitutes the primary spatial context of the observation</prov:definition>
+        <skos:definition>relation that holds between an observation record and a room when the room is adjacent to the room that constitutes the primary spatial context of the observation</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -506,7 +488,32 @@
     <!-- https://w3id.org/rec/core/serves -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/rec/core/serves">
-        <prov:definition>relation that holds between a building service system and a room when the system provides a building service whose effect or coverage applies to that room</prov:definition>
+        <skos:definition>relation that holds between a building service system and a room when the system provides a building service whose effect or coverage applies to that room</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Collections/hasPart -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Collections/hasPart">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <dcterms:source>Stanford Encyclopedia of Philosophy at http://plato.stanford.edu/entries/mereology/</dcterms:source>
+        <rdfs:label>has part</rdfs:label>
+        <skos:definition>indicates any portion of something, regardless of whether the portion itself is attached to the remainder or detached; cognitively salient or arbitrarily demarcated; self-connected or disconnected; homogeneous or gerrymandered; material or immaterial; extended or unextended; spatial or temporal</skos:definition>
+        <skos:note>Note that &apos;has part&apos; is not a subproperty of &apos;comprises&apos; in order to enable transitivity for whole-part relationships without limiting the use of cardinality constraints on comprises and membership.</skos:note>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Collections/isPartOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Collections/isPartOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <dcterms:source>Stanford Encyclopedia of Philosophy at http://plato.stanford.edu/entries/mereology/</dcterms:source>
+        <rdfs:label>is part of</rdfs:label>
+        <skos:definition>relates something to another thing that it is some component or portion of, regardless of how that whole-part relationship is manifested</skos:definition>
+        <skos:note>Note that &apos;is part of&apos; is not a subproperty of &apos;isIncludedIn&apos; in order to enable transitivity for whole-part relationships without limiting the use of cardinality constraints on inclusion and membership.</skos:note>
     </owl:ObjectProperty>
     
 
@@ -557,24 +564,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://schema.org/maxValue -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/maxValue">
-        <rdfs:label>maxValue</rdfs:label>
-        <skos:definition>The upper value of some characteristic or property.</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://schema.org/minValue -->
-
-    <owl:DatatypeProperty rdf:about="http://schema.org/minValue">
-        <rdfs:label>minValue</rdfs:label>
-        <skos:definition>The lower value of some characteristic or property.</skos:definition>
-    </owl:DatatypeProperty>
     
 
 
@@ -659,7 +648,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUOutdoorAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate"/>
         <rdfs:label>AHU outdoor air flow rate</rdfs:label>
-        <prov:definition>Volumetric airflow rate of outdoor air entering an air-handling unit.</prov:definition>
+        <skos:definition>Volumetric airflow rate of outdoor air entering an air-handling unit.</skos:definition>
     </owl:Class>
     
 
@@ -669,7 +658,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUSupplyAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
         <rdfs:label>AHU supply air flow rate</rdfs:label>
-        <prov:definition>Volumetric total supply-airflow rate discharged by an air-handling unit.</prov:definition>
+        <skos:definition>Volumetric total supply-airflow rate discharged by an air-handling unit.</skos:definition>
     </owl:Class>
     
 
@@ -679,7 +668,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:label>air flow rate</rdfs:label>
-        <prov:definition>flow rate equal to the volume of air moving past a given plane per unit time.</prov:definition>
+        <skos:definition>flow rate equal to the volume of air moving past a given plane per unit time.</skos:definition>
     </owl:Class>
     
 
@@ -756,7 +745,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.org/dc/terms/isPartOf"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -889,7 +878,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ETO-sterilizer_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>ETO-sterilizer room</rdfs:label>
-        <prov:definition>service room containing equipment that uses ethylene oxide for low-temperature microbial-elimination processing of compatible items.</prov:definition>
+        <skos:definition>service room containing equipment that uses ethylene oxide for low-temperature microbial-elimination processing of compatible items.</skos:definition>
     </owl:Class>
     
 
@@ -899,7 +888,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
         <rdfs:label>exaust air flow rate</rdfs:label>
-        <prov:definition>Volumetric airflow rate removed from a room through the exhaust path.</prov:definition>
+        <skos:definition>Volumetric airflow rate removed from a room through the exhaust path.</skos:definition>
     </owl:Class>
     
 
@@ -999,7 +988,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:label>Humidity</rdfs:label>
-        <prov:definition>physical quantity representing the amount of water vapor in air; relative humidity is a commonly used measure.</prov:definition>
+        <skos:definition>physical quantity representing the amount of water vapor in air; relative humidity is a commonly used measure.</skos:definition>
     </owl:Class>
     
 
@@ -1019,7 +1008,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ICU">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>ICU</rdfs:label>
-        <prov:definition>patient-care area providing continuous monitoring and advanced organ-support capabilities for patients with life-threatening conditions.</prov:definition>
+        <skos:definition>patient-care area providing continuous monitoring and advanced organ-support capabilities for patients with life-threatening conditions.</skos:definition>
     </owl:Class>
     
 
@@ -1030,15 +1019,9 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/maxValue"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/minValue"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasUpperBound"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>max bounded compliance policy</rdfs:label>
@@ -1075,15 +1058,9 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/minValue"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/maxValue"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasLowerBound"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>min bounded compliance policy</rdfs:label>
@@ -1107,7 +1084,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
         <rdfs:label>out door air flow rate</rdfs:label>
-        <prov:definition>volumetric airflow rate of outdoor air entering or being supplied by a ventilation system.</prov:definition>
+        <skos:definition>volumetric airflow rate of outdoor air entering or being supplied by a ventilation system.</skos:definition>
     </owl:Class>
     
 
@@ -1123,7 +1100,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>outdoor air fraction</rdfs:label>
-        <prov:definition>Dimensionless ratio of AHU outdoor airflow rate to total AHU supply airflow rate.</prov:definition>
+        <skos:definition>Dimensionless ratio of AHU outdoor airflow rate to total AHU supply airflow rate.</skos:definition>
     </owl:Class>
     
 
@@ -1168,7 +1145,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:label>Pressure</rdfs:label>
-        <prov:definition>Force per unit area exerted by air at a specified location.</prov:definition>
+        <skos:definition>Force per unit area exerted by air at a specified location.</skos:definition>
     </owl:Class>
     
 
@@ -1189,14 +1166,16 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/maxValue"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasLowerBound"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://schema.org/minValue"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasUpperBound"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>range bounded compliance policy</rdfs:label>
@@ -1230,7 +1209,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
         <rdfs:label>return air flow rate</rdfs:label>
-        <prov:definition>volumetric airflow rate returning from a room or zone toward an air-handling or return-air path.</prov:definition>
+        <skos:definition>volumetric airflow rate returning from a room or zone toward an air-handling or return-air path.</skos:definition>
     </owl:Class>
     
 
@@ -1295,7 +1274,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
         <rdfs:label>supply air flow rate</rdfs:label>
-        <prov:definition>volumetric airflow rate of supply air delivered through a supply-air path.</prov:definition>
+        <skos:definition>volumetric airflow rate of supply air delivered through a supply-air path.</skos:definition>
     </owl:Class>
     
 
@@ -1325,7 +1304,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Tempreture">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:label>Temperature</rdfs:label>
-        <prov:definition>physical quantity representing thermal state and used for room or system temperature measurements.</prov:definition>
+        <skos:definition>physical quantity representing thermal state and used for room or system temperature measurements.</skos:definition>
     </owl:Class>
     
 
@@ -1416,7 +1395,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/airborne_infection_isolation_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>airborne infection isolation room</rdfs:label>
-        <prov:definition>patient room designed to reduce airborne transmission from an occupant to surrounding indoor areas through controlled airflow and relationships.</prov:definition>
+        <skos:definition>patient room designed to reduce airborne transmission from an occupant to surrounding indoor areas through controlled airflow and relationships.</skos:definition>
     </owl:Class>
     
 
@@ -1426,7 +1405,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/autopsy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>autopsy room</rdfs:label>
-        <prov:definition>specialized room equipped for post-mortem examination of a human body.</prov:definition>
+        <skos:definition>specialized room equipped for post-mortem examination of a human body.</skos:definition>
     </owl:Class>
     
 
@@ -1436,7 +1415,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/bathroom">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>bathroom</rdfs:label>
-        <prov:definition>room containing a toilet and washbasin designated for patient or staff personal hygiene.</prov:definition>
+        <skos:definition>room containing a toilet and washbasin designated for patient or staff personal hygiene.</skos:definition>
     </owl:Class>
     
 
@@ -1446,7 +1425,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/bedpan_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>bedpan room</rdfs:label>
-        <prov:definition>utility room designated for the emptying, cleaning, and sanitizing of patient bedpans and human waste receptacles.</prov:definition>
+        <skos:definition>utility room designated for the emptying, cleaning, and sanitizing of patient bedpans and human waste receptacles.</skos:definition>
     </owl:Class>
     
 
@@ -1456,7 +1435,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/biochemistry_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>biochemistry lab</rdfs:label>
-        <prov:definition>laboratory space used to measure chemical constituents or biochemical properties of clinical specimens.</prov:definition>
+        <skos:definition>laboratory space used to measure chemical constituents or biochemical properties of clinical specimens.</skos:definition>
     </owl:Class>
     
 
@@ -1466,7 +1445,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/bronchoscopy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>bronchoscopy room</rdfs:label>
-        <prov:definition>clinical room equipped for examination or intervention involving the tracheobronchial tree using a bronchoscope.</prov:definition>
+        <skos:definition>clinical room equipped for examination or intervention involving the tracheobronchial tree using a bronchoscope.</skos:definition>
     </owl:Class>
     
 
@@ -1476,7 +1455,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area">
         <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>central medical and surgical supply area</rdfs:label>
-        <prov:definition>service area used to prepare, store, and distribute medical and surgical supplies throughout a healthcare facility.</prov:definition>
+        <skos:definition>service area used to prepare, store, and distribute medical and surgical supplies throughout a healthcare facility.</skos:definition>
     </owl:Class>
     
 
@@ -1486,7 +1465,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/clean_linen_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>clean linen storage</rdfs:label>
-        <prov:definition>room dedicated to the secure storage of freshly laundered linens</prov:definition>
+        <skos:definition>room dedicated to the secure storage of freshly laundered linens</skos:definition>
     </owl:Class>
     
 
@@ -1496,7 +1475,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/clean_workroom">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>clean workroom</rdfs:label>
-        <prov:definition>room utilized for the assembly, inspection, and packaging of clean medical supplies and instruments.</prov:definition>
+        <skos:definition>room utilized for the assembly, inspection, and packaging of clean medical supplies and instruments.</skos:definition>
     </owl:Class>
     
 
@@ -1506,7 +1485,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area">
         <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>critical care area</rdfs:label>
-        <prov:definition>healthcare facility area intended for patients who require continuous physiological monitoring and immediate access to life-supporting interventions.</prov:definition>
+        <skos:definition>healthcare facility area intended for patients who require continuous physiological monitoring and immediate access to life-supporting interventions.</skos:definition>
     </owl:Class>
     
 
@@ -1516,7 +1495,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/cytology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>cytology lab</rdfs:label>
-        <prov:definition>laboratory space used to prepare and examine cells for diagnostic evaluation.</prov:definition>
+        <skos:definition>laboratory space used to prepare and examine cells for diagnostic evaluation.</skos:definition>
     </owl:Class>
     
 
@@ -1526,7 +1505,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/dark_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/radiology_area"/>
         <rdfs:label>dark room</rdfs:label>
-        <prov:definition>radiology support room in which light-sensitive imaging materials are handled under controlled illumination.</prov:definition>
+        <skos:definition>radiology support room in which light-sensitive imaging materials are handled under controlled illumination.</skos:definition>
     </owl:Class>
     
 
@@ -1536,7 +1515,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/decontamination_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>decontamination room</rdfs:label>
-        <prov:definition>room designated for the cleaning and preliminary disinfection of contaminated medical instruments and equipment</prov:definition>
+        <skos:definition>room designated for the cleaning and preliminary disinfection of contaminated medical instruments and equipment</skos:definition>
     </owl:Class>
     
 
@@ -1546,7 +1525,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/delievery_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>delievery room</rdfs:label>
-        <prov:definition>clinical room equipped for childbirth and immediate maternal and newborn care.</prov:definition>
+        <skos:definition>clinical room equipped for childbirth and immediate maternal and newborn care.</skos:definition>
     </owl:Class>
     
 
@@ -1556,7 +1535,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area">
         <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>diagnostic and treatment area</rdfs:label>
-        <prov:definition>healthcare facility area in which patients undergo examination, diagnostic procedures, or therapeutic procedures.</prov:definition>
+        <skos:definition>healthcare facility area in which patients undergo examination, diagnostic procedures, or therapeutic procedures.</skos:definition>
     </owl:Class>
     
 
@@ -1566,7 +1545,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/dietary_day_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>dietary day storage</rdfs:label>
-        <prov:definition>space adjacent to a food preparation center used for the short-term storage of daily food supplies and ingredients.</prov:definition>
+        <skos:definition>space adjacent to a food preparation center used for the short-term storage of daily food supplies and ingredients.</skos:definition>
     </owl:Class>
     
 
@@ -1576,7 +1555,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/endoscopy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>endoscopy room</rdfs:label>
-        <prov:definition>clinical room equipped for examination or intervention within an internal organ or body cavity using an endoscope.</prov:definition>
+        <skos:definition>clinical room equipped for examination or intervention within an internal organ or body cavity using an endoscope.</skos:definition>
     </owl:Class>
     
 
@@ -1586,7 +1565,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/examination_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>examination room</rdfs:label>
-        <prov:definition>clinical room equipped for physical assessment of patients.</prov:definition>
+        <skos:definition>clinical room equipped for physical assessment of patients.</skos:definition>
     </owl:Class>
     
 
@@ -1596,7 +1575,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/food_preparation_center">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>food preparation center</rdfs:label>
-        <prov:definition>facility zone dedicated to the processing, cooking, and assembly of dietary items for patients and staff.</prov:definition>
+        <skos:definition>facility zone dedicated to the processing, cooking, and assembly of dietary items for patients and staff.</skos:definition>
     </owl:Class>
     
 
@@ -1606,7 +1585,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/general_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>general lab</rdfs:label>
-        <prov:definition>laboratory space used for clinical analyses that are not assigned to a more specialized laboratory discipline.</prov:definition>
+        <skos:definition>laboratory space used for clinical analyses that are not assigned to a more specialized laboratory discipline.</skos:definition>
     </owl:Class>
     
 
@@ -1616,7 +1595,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/general_laundry">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>general laundry</rdfs:label>
-        <prov:definition>facility area dedicated to the washing, drying, and processing of hospital linens and garments.</prov:definition>
+        <skos:definition>facility area dedicated to the washing, drying, and processing of hospital linens and garments.</skos:definition>
     </owl:Class>
     
 
@@ -1626,7 +1605,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/glass_washing_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>glass washing lab</rdfs:label>
-        <prov:definition>laboratory support space equipped for cleaning and processing reusable laboratory glassware.</prov:definition>
+        <skos:definition>laboratory support space equipped for cleaning and processing reusable laboratory glassware.</skos:definition>
     </owl:Class>
     
 
@@ -1636,7 +1615,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/histology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>histology lab</rdfs:label>
-        <prov:definition>laboratory space used to prepare and examine tissue specimens microscopically.</prov:definition>
+        <skos:definition>laboratory space used to prepare and examine tissue specimens microscopically.</skos:definition>
     </owl:Class>
     
 
@@ -1646,7 +1625,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hydrotherapy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>hydrotherapy room</rdfs:label>
-        <prov:definition>treatment space equipped for therapeutic procedures that use water as the treatment medium.</prov:definition>
+        <skos:definition>treatment space equipped for therapeutic procedures that use water as the treatment medium.</skos:definition>
     </owl:Class>
     
 
@@ -1668,7 +1647,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>incoming transfer airflow rate</rdfs:label>
-        <prov:definition>airflow rate representing the volume of air per unit time that enters a room from an adjacent area through an intentional transfer opening or an unintended leakage path.</prov:definition>
+        <skos:definition>airflow rate representing the volume of air per unit time that enters a room from an adjacent area through an intentional transfer opening or an unintended leakage path.</skos:definition>
     </owl:Class>
     
 
@@ -1678,7 +1657,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isolation_alcove">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>isolation alcove</rdfs:label>
-        <prov:definition>partially enclosed patient-care space intended to separate an occupant or activity from adjacent care areas.</prov:definition>
+        <skos:definition>partially enclosed patient-care space intended to separate an occupant or activity from adjacent care areas.</skos:definition>
     </owl:Class>
     
 
@@ -1688,7 +1667,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/labor_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>labor room</rdfs:label>
-        <prov:definition>clinical room equipped for monitoring and care of a patient during labor before childbirth.</prov:definition>
+        <skos:definition>clinical room equipped for monitoring and care of a patient during labor before childbirth.</skos:definition>
     </owl:Class>
     
 
@@ -1698,7 +1677,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area">
         <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>laboratory area</rdfs:label>
-        <prov:definition>diagnostic area containing workspaces and equipment for examination or analysis of clinical specimens.</prov:definition>
+        <skos:definition>diagnostic area containing workspaces and equipment for examination or analysis of clinical specimens.</skos:definition>
     </owl:Class>
     
 
@@ -1708,7 +1687,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/medication_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>medication room</rdfs:label>
-        <prov:definition>healthcare facility room used for secure storage, preparation, and handling of medications before administration.</prov:definition>
+        <skos:definition>healthcare facility room used for secure storage, preparation, and handling of medications before administration.</skos:definition>
     </owl:Class>
     
 
@@ -1718,7 +1697,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/microbiology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>microbiology lab</rdfs:label>
-        <prov:definition>healthcare facility area used for preparation, storage, control, and dispensing of medications.</prov:definition>
+        <skos:definition>healthcare facility area used for preparation, storage, control, and dispensing of medications.</skos:definition>
     </owl:Class>
     
 
@@ -1728,7 +1707,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/newborn_nursery_suite">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>newborn nursery suite</rdfs:label>
-        <prov:definition>nursing area arranged for observation and routine care of newborn infants.</prov:definition>
+        <skos:definition>nursing area arranged for observation and routine care of newborn infants.</skos:definition>
     </owl:Class>
     
 
@@ -1738,7 +1717,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nonrefrigerated_body-holding_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>nonrefrigerated body-holding room</rdfs:label>
-        <prov:definition>service-area room used for temporary holding of human remains without refrigerated storage.</prov:definition>
+        <skos:definition>service-area room used for temporary holding of human remains without refrigerated storage.</skos:definition>
     </owl:Class>
     
 
@@ -1748,7 +1727,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nuclear_medicine_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>nuclear medicine lab</rdfs:label>
-        <prov:definition>specialized room equipped for post-mortem examination of a human body.</prov:definition>
+        <skos:definition>specialized room equipped for post-mortem examination of a human body.</skos:definition>
     </owl:Class>
     
 
@@ -1758,7 +1737,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area">
         <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>nursing area</rdfs:label>
-        <prov:definition>healthcare facility area organized for ongoing bedside care, observation, and support of patients by nursing personnel.</prov:definition>
+        <skos:definition>healthcare facility area organized for ongoing bedside care, observation, and support of patients by nursing personnel.</skos:definition>
     </owl:Class>
     
 
@@ -1768,7 +1747,7 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/operating_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>operating room</rdfs:label>
-        <prov:definition>clinical room equipped and controlled for invasive surgical procedures performed under aseptic conditions.</prov:definition>
+        <skos:definition>clinical room equipped and controlled for invasive surgical procedures performed under aseptic conditions.</skos:definition>
     </owl:Class>
     
 
@@ -1784,7 +1763,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>outdoor air change per hour</rdfs:label>
-        <prov:definition>Room air-change rate calculated from outdoor-airflow rate to the room divided by room volume.</prov:definition>
+        <skos:definition>Room air-change rate calculated from outdoor-airflow rate to the room divided by room volume.</skos:definition>
     </owl:Class>
     
 
@@ -1812,8 +1791,8 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>outdoor air flow rate to room</rdfs:label>
-        <prov:definition>Volumetric outdoor-airflow rate allocated to a room from its total supply airflow.
-outdoor air change per hour</prov:definition>
+        <skos:definition>Volumetric outdoor-airflow rate allocated to a room from its total supply airflow.
+outdoor air change per hour</skos:definition>
     </owl:Class>
     
 
@@ -1823,7 +1802,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/pathology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>pathology lab</rdfs:label>
-        <prov:definition>laboratory support space equipped to render reusable items free of viable microorganisms by a validated sterilization process.</prov:definition>
+        <skos:definition>laboratory support space equipped to render reusable items free of viable microorganisms by a validated sterilization process.</skos:definition>
     </owl:Class>
     
 
@@ -1833,7 +1812,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/patient_corridor">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>patient corridor</rdfs:label>
-        <prov:definition>circulation space connecting patient rooms and other patient-care spaces.</prov:definition>
+        <skos:definition>circulation space connecting patient rooms and other patient-care spaces.</skos:definition>
     </owl:Class>
     
 
@@ -1843,7 +1822,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/patient_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>patient room</rdfs:label>
-        <prov:definition>nursing-area room intended for accommodation, observation, and routine care of one or more patients by nursing personnel.</prov:definition>
+        <skos:definition>nursing-area room intended for accommodation, observation, and routine care of one or more patients by nursing personnel.</skos:definition>
     </owl:Class>
     
 
@@ -1853,7 +1832,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/pharmacy">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>pharmacy</rdfs:label>
-        <prov:definition>healthcare facility area used for preparation, storage, control, and dispensing of medications.</prov:definition>
+        <skos:definition>healthcare facility area used for preparation, storage, control, and dispensing of medications.</skos:definition>
     </owl:Class>
     
 
@@ -1863,7 +1842,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/physical_therapy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>physical therapy room</rdfs:label>
-        <prov:definition>treatment space equipped for therapeutic exercise, mobility training, or other physical rehabilitation activities.</prov:definition>
+        <skos:definition>treatment space equipped for therapeutic exercise, mobility training, or other physical rehabilitation activities.</skos:definition>
     </owl:Class>
     
 
@@ -1873,7 +1852,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/protective_environment_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>protective environment room</rdfs:label>
-        <prov:definition>patient room designed to reduce exposure of a highly susceptible occupant to airborne contaminants from surrounding indoor areas.</prov:definition>
+        <skos:definition>patient room designed to reduce exposure of a highly susceptible occupant to airborne contaminants from surrounding indoor areas.</skos:definition>
     </owl:Class>
     
 
@@ -1883,7 +1862,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/radiology_area">
         <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>radiology area</rdfs:label>
-        <prov:definition>diagnostic area containing equipment and spaces used to create medical images with ionizing radiation.</prov:definition>
+        <skos:definition>diagnostic area containing equipment and spaces used to create medical images with ionizing radiation.</skos:definition>
     </owl:Class>
     
 
@@ -1893,7 +1872,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recovery_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>recovery room</rdfs:label>
-        <prov:definition>clinical room in which patients are monitored after anesthesia or a procedure until they meet criteria for transfer or discharge.</prov:definition>
+        <skos:definition>clinical room in which patients are monitored after anesthesia or a procedure until they meet criteria for transfer or discharge.</skos:definition>
     </owl:Class>
     
 
@@ -1903,7 +1882,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/room_volume">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingMeasurement"/>
         <rdfs:label>room volume</rdfs:label>
-        <prov:definition>space volume bounded by the room’s enclosing surfaces.</prov:definition>
+        <skos:definition>space volume bounded by the room’s enclosing surfaces.</skos:definition>
     </owl:Class>
     
 
@@ -1913,7 +1892,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/serology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>serology lab</rdfs:label>
-        <prov:definition>laboratory space used to examine serum for antibodies, antigens, or related immunologic markers.</prov:definition>
+        <skos:definition>laboratory space used to examine serum for antibodies, antigens, or related immunologic markers.</skos:definition>
     </owl:Class>
     
 
@@ -1932,7 +1911,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/soiled_linen_and_trash_chute_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>soiled linen and trash chute room</rdfs:label>
-        <prov:definition>enclosed space housing vertical chutes for the gravity-assisted transport of waste and soiled linens.</prov:definition>
+        <skos:definition>enclosed space housing vertical chutes for the gravity-assisted transport of waste and soiled linens.</skos:definition>
     </owl:Class>
     
 
@@ -1942,7 +1921,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/soiled_linen_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>soiled linen storage</rdfs:label>
-        <prov:definition>room designated for the temporary containment of used or contaminated linens prior to laundering.</prov:definition>
+        <skos:definition>room designated for the temporary containment of used or contaminated linens prior to laundering.</skos:definition>
     </owl:Class>
     
 
@@ -1952,7 +1931,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/soiled_workroom">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>soiled workroom</rdfs:label>
-        <prov:definition>service room used to receive, hold, clean, or process contaminated supplies or equipment before decontamination or disposal.</prov:definition>
+        <skos:definition>service room used to receive, hold, clean, or process contaminated supplies or equipment before decontamination or disposal.</skos:definition>
     </owl:Class>
     
 
@@ -1962,7 +1941,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterile_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>sterile storage</rdfs:label>
-        <prov:definition>room designated for the secure storage of sterilized medical supplies and instruments prior to clinical use.</prov:definition>
+        <skos:definition>room designated for the secure storage of sterilized medical supplies and instruments prior to clinical use.</skos:definition>
     </owl:Class>
     
 
@@ -1972,7 +1951,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterilizer_equipment_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>sterilizer equipment room</rdfs:label>
-        <prov:definition>service room containing equipment used to eliminate viable microorganisms from reusable medical items.</prov:definition>
+        <skos:definition>service room containing equipment used to eliminate viable microorganisms from reusable medical items.</skos:definition>
     </owl:Class>
     
 
@@ -1982,7 +1961,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterilizing_and_supply_area">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
         <rdfs:label>sterilizing and supply area</rdfs:label>
-        <prov:definition>service area used for decontamination, preparation, microbial-elimination processing, storage, or distribution of reusable medical supplies and equipment.</prov:definition>
+        <skos:definition>service area used for decontamination, preparation, microbial-elimination processing, storage, or distribution of reusable medical supplies and equipment.</skos:definition>
     </owl:Class>
     
 
@@ -1992,7 +1971,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterilizing_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
         <rdfs:label>sterilizing lab</rdfs:label>
-        <prov:definition>laboratory support space equipped to render reusable items free of viable microorganisms by a validated sterilization process.</prov:definition>
+        <skos:definition>laboratory support space equipped to render reusable items free of viable microorganisms by a validated sterilization process.</skos:definition>
     </owl:Class>
     
 
@@ -2002,7 +1981,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/toilet_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>toilet room</rdfs:label>
-        <prov:definition>enclosed healthcare facility space containing a toilet and intended for sanitary use.</prov:definition>
+        <skos:definition>enclosed healthcare facility space containing a toilet and intended for sanitary use.</skos:definition>
     </owl:Class>
     
 
@@ -2018,7 +1997,7 @@ outdoor air change per hour</prov:definition>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>total air change per hour</rdfs:label>
-        <prov:definition>Room air-change rate calculated from total supply airflow rate divided by room volume.</prov:definition>
+        <skos:definition>Room air-change rate calculated from total supply airflow rate divided by room volume.</skos:definition>
     </owl:Class>
     
 
@@ -2028,7 +2007,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/trauma_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>trauma room</rdfs:label>
-        <prov:definition>clinical room equipped for rapid assessment, resuscitation, and stabilization of patients with acute injuries.</prov:definition>
+        <skos:definition>clinical room equipped for rapid assessment, resuscitation, and stabilization of patients with acute injuries.</skos:definition>
     </owl:Class>
     
 
@@ -2038,7 +2017,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/treatment_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>traetment room</rdfs:label>
-        <prov:definition>clinical room equipped for non-operative therapeutic procedures performed on patients.</prov:definition>
+        <skos:definition>clinical room equipped for non-operative therapeutic procedures performed on patients.</skos:definition>
     </owl:Class>
     
 
@@ -2048,7 +2027,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/x-ray_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/radiology_area"/>
         <rdfs:label>x-ray room</rdfs:label>
-        <prov:definition>radiology-area room containing equipment used to produce diagnostic images with X-radiation.</prov:definition>
+        <skos:definition>radiology-area room containing equipment used to produce diagnostic images with X-radiation.</skos:definition>
     </owl:Class>
     
 
@@ -2058,7 +2037,7 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/janitor&apos;s_closet">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
         <rdfs:label>janitor&apos;s closet</rdfs:label>
-        <prov:definition>small utility room utilized for the storage of cleaning supplies, chemical agents, and janitorial equipment.</prov:definition>
+        <skos:definition>small utility room utilized for the storage of cleaning supplies, chemical agents, and janitorial equipment.</skos:definition>
     </owl:Class>
     
 
@@ -2096,6 +2075,19 @@ outdoor air change per hour</prov:definition>
     <owl:Class rdf:about="https://w3id.org/rec/core/Room">
         <skos:definition>indoor space enclosed or bounded to support a defined occupancy, care, treatment, or service function</skos:definition>
     </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue -->
+
+    <rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasMeasurementUnit"/>
+                <owl:someValuesFrom rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
 </rdf:RDF>
 
 
