@@ -5,4 +5,11 @@ title: presentations
 
 ## Presentations
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ3uREQwmlv-Sb2IURmkj5QiGlx1uVXvB3z89q5zQbEaRYmHOcCFxIYv3OckyGDst9fEnWhRWbylF-v/embed?start=false&loop=false&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="files/presentations/OE_5_TeamAgenticCapabilities_UseCasePresentation.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+
+## Previous Versions
+
+
+- [Version 3](files/presentations/OE_5_TeamAgenticCapabilities_UseCasePresentation.pdf)
+- [Version 2](files/presentations/OE_3_TeamAgenticCapabilities_UseCasePresentation.pdf)
+- [Version 1](files/presentations/OE_2_TeamAgenticCapabilities_UseCasePresentation.pdf)
