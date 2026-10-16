@@ -5,12 +5,16 @@ title: use case
 
 ## Use Case Document
 
-<iframe src="files/usecase/OE_5_TeamAgenticCapabilities_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+**Current version: 6 (Assignment 6, October 15, 2026).** Section VII now opens with the three competency questions that
+scope the ontology. The [redlined version](files/usecase/OE_6_TeamAgenticCapabilities_RedlinedUseCase.pdf) shows the
+changes since version 5 as tracked changes.
+
+<iframe src="files/usecase/OE_6_TeamAgenticCapabilities_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
-<p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
-
+- [Version 6](files/usecase/OE_6_TeamAgenticCapabilities_UseCase.pdf) (current;
+  [redlined](files/usecase/OE_6_TeamAgenticCapabilities_RedlinedUseCase.pdf))
 - [Version 5](files/usecase/OE_5_TeamAgenticCapabilities_UseCase.pdf)
 - [Version 4](files/usecase/OE_4_TeamAgenticCapabilities_UseCase.pdf)
 - [Version 3](files/usecase/OE_3_TeamAgenticCapabilities_UseCase.pdf)

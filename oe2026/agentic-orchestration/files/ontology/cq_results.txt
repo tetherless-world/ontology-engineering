@@ -1,0 +1,40 @@
+Ontologies loaded: 33; consistent: true; unsatisfiable classes: 0
+
+CQ 1. What orchestration plan should the agent follow to answer Ken's request, given his preference for few tool calls and low token use?
+  soft constraint kenFewToolCalls (priority 1) isMeasuredBy kenToolCallCriterion (minimize, weight 1.0)
+  soft constraint kenLowTokenUse (priority 1) isMeasuredBy kenTokenCostCriterion (minimize, weight 1.0)
+  kenPlan1 [SelectedOrchestrationPlan] hard constraints violated: none; TokenCost=0.02 US dollars; ToolCallCount=4 external tool calls; score 2.00, rank 1
+  Answer: follow kenPlan1: getCandidatesForKen -> getProductsByPrice -> verifyEvidenceForKen -> selectProductForKen -> produceRecommendationForKen  (the reasoner's hasTask for this plan: 5 tasks)
+  kenPlan2 [RejectedOrchestrationPlan] hard constraints violated: none; TokenCost=0.05 US dollars; ToolCallCount=9 external tool calls; score 0.00, rank 2
+
+CQ 2. Which workflow steps of Jessica's orchestration plan can be executed in parallel?
+  Tasks of the plan (inferred through hasTask = hasStep o hasAssociatedTask): getCandidateSupplements, getSupplementProducts, produceRecommendation, screenInteractions, selectSupplementProduct, verifyEvidence
+  getCandidateSupplements dependsOn (inferred): 
+  getSupplementProducts dependsOn (inferred): getCandidateSupplements
+  produceRecommendation dependsOn (inferred): selectSupplementProduct
+  screenInteractions dependsOn (inferred): getCandidateSupplements
+  selectSupplementProduct dependsOn (inferred): getSupplementProducts, screenInteractions, verifyEvidence
+  verifyEvidence dependsOn (inferred): getCandidateSupplements
+  Answer: getSupplementProducts, screenInteractions, verifyEvidence can run in parallel (no task in the group depends on another)
+
+CQ 3. What skills are required to satisfy Jessica's request?
+  Answer: evidenceVerificationSkill  <- hasCapability evidenceVerificationCapability [DataProcessing]  satisfiesRequirement needScientificEvidence
+  Answer: personalizedSupplementRecommendationSkill  <- hasCapability supplementRecommendationCapability [InformationAccess]  satisfiesRequirement needSupplementRecommendation
+  Answer: productSelectionSkill  <- hasCapability productSearchCapability [InformationAccess]  satisfiesRequirement needSupplementProducts
+  Answer: supplementSafetyScreeningSkill  <- hasCapability interactionScreeningCapability [InformationAccess]  satisfiesConstraint safetyScreeningConstraint (hard constraint)
+
+CQ 5. Why was each agent capability chosen to execute in Dante's orchestration plan?
+  Answer: screenCitrate requires interactionScreeningCapability [InformationAccess] -> satisfiesConstraint danteSafetyScreening (hard); performedBySkill supplementSafetyScreeningSkill
+  Answer: screenGlycinate requires interactionScreeningCapability [InformationAccess] -> satisfiesConstraint danteSafetyScreening (hard); performedBySkill supplementSafetyScreeningSkill
+  Answer: synthesizeEvidence requires evidenceSynthesisCapability [ContentGeneration] -> satisfiesRequirement needComparison; performedBySkill evidenceSynthesisSkill
+  Answer: verifyEvidenceCitrate requires evidenceVerificationCapability [DataProcessing] -> satisfiesRequirement needEvidenceSummary; performedBySkill evidenceVerificationSkill
+  Answer: verifyEvidenceGlycinate requires evidenceVerificationCapability [DataProcessing] -> satisfiesRequirement needEvidenceSummary; performedBySkill evidenceVerificationSkill
+
+CQ 6. Why was orchestration plan B selected over orchestration plan A?
+  planA: violates hard constraints: none
+  planB: violates hard constraints: none
+  planA [RejectedOrchestrationPlan] score 1.00, rank 2; EvidenceCoverage=1.00 share of candidate supplements with supporting studies; ToolCallCount=8 external tool calls; 
+  planB [SelectedOrchestrationPlan] score 1.70, rank 1; EvidenceCoverage=0.70 share of candidate supplements with supporting studies; ToolCallCount=3 external tool calls; 
+  soft constraint fewToolCallsConstraint (priority 1) isMeasuredBy toolUsageCriterion (minimize, weight 1.0); conflictsWith strongEvidenceConstraint
+  soft constraint strongEvidenceConstraint (priority 1) isMeasuredBy evidenceCoverageCriterion (maximize, weight 1.0)
+  Hard-constraint check (Jessica): jessicaPlanWithoutScreening violatesConstraint safetyScreeningConstraint -> inferred types: RejectedOrchestrationPlan

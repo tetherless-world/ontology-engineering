@@ -1,0 +1,44 @@
+@startuml fig1_overview
+!include style.iuml
+skinparam nodesep 40
+skinparam ranksep 50
+
+class PlanEvaluation
+class DecisionCriterion
+class "Plan" as Plan <<P-Plan>>
+class OrchestrationPlan
+class "CandidateOrchestrationPlan" as Candidate
+class "Constraint" as Constraint <<AgentO>>
+class Request
+class InformationRequirement
+class "Capability" as Capability <<AgentO>>
+class Skill
+class Tool
+class "Task" as Task <<AgentO>>
+class "WorkflowStep" as WorkflowStep <<AgentO>>
+class "OrchestrationWorkflowStep" as Step
+class "Activity" as Activity <<P-Plan>>
+class Invocation
+class InformationArtifact
+
+Request --> InformationRequirement : expresses
+OrchestrationPlan --> Request : addresses
+OrchestrationPlan --> Constraint : satisfiesConstraint
+Capability --> InformationRequirement : satisfiesRequirement
+Skill --> Capability : hasCapability
+Tool --> Capability : hasCapability
+Skill --> Tool : usesTool
+OrchestrationPlan --> Step : hasStep
+WorkflowStep --> Task : agento:hasAssociatedTask
+Task --> Capability : agento:requiresCapability
+Task --> InformationArtifact : consumes
+Task --> InformationArtifact : produces
+Plan <|-- OrchestrationPlan
+WorkflowStep <|-- Step
+OrchestrationPlan <|-- Candidate
+Activity <|-- Invocation
+PlanEvaluation --> Candidate : evaluates
+PlanEvaluation --> DecisionCriterion : usesCriterion
+Invocation --> Step : pplan:correspondsToStep
+Invocation --> InformationArtifact : prov:used
+@enduml

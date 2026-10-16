@@ -1,0 +1,36 @@
+@startuml fig4_tools_servers
+!include style.iuml
+skinparam nodesep 35
+skinparam ranksep 50
+
+class "Tool" as AgentoTool <<AgentO>> #EDEDED
+class "Process" as Process <<OWL-S>> #EDEDED
+class Tool
+class ExternalTool
+class "ModelContextProtocolTool" as MCPTool
+class Server
+class "ModelContextProtocolServer" as MCPServer
+class Parameter {
+  isRequired : boolean
+}
+class ParameterType
+class OutputType
+class "LLMAgent" as LLMAgent <<AgentO>> #EDEDED
+class "Capability" as Capability <<AgentO>> #EDEDED
+class Precondition #EDEDED
+class InputConstraint #EDEDED
+
+AgentoTool <|-- Tool
+Process <|-- Tool
+Tool <|-- ExternalTool
+ExternalTool <|-- MCPTool
+Server <|-- MCPServer
+Server --> Tool : exposes
+Tool --> Capability : hasCapability
+Tool --> Parameter : process:hasParameter
+Tool --> Precondition : process:hasPrecondition
+Parameter --> ParameterType : hasType
+ParameterType <|-- OutputType
+InputConstraint --> Parameter : constrains
+LLMAgent --> Tool : usesTool
+@enduml

@@ -1,181 +1,105 @@
-[Concept Map](#conceptual-model) | [Ontology File](#ontologies) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+[Concept Map](#conceptual-model) | [Ontology File](#ontology) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
 
 ## Conceptual Model
 
-![Concept Map Subject Model](files/conceptual_models/OE_5_TeamAgenticCapabilities_ConceptualModel.pdf)
+**Current version: 2.0 (Assignment 6, October 15, 2026).** The model is aligned with the ontology below: every class,
+is-a line, arrow and attribute in the diagrams is a term of the ontology with the same name. The
+[redlined version](files/conceptual_models/OE_6_TeamAgenticCapabilities_RedlinedConceptualModel.pdf) draws the changes
+since Version 1.1 in blue.
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
+![Figure 1. Overview of the core classes](files/conceptual_models/v2.0/fig1_overview.png)
 
-## Ontologies
+<iframe src="files/conceptual_models/OE_6_TeamAgenticCapabilities_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
-### Study Cohort Ontology (SCO)
+Figures as images (PNG; SVG and PlantUML sources in [files/conceptual_models/v2.0](files/conceptual_models/v2.0/src/)):
+[1](files/conceptual_models/v2.0/fig1_overview.png) ·
+[2](files/conceptual_models/v2.0/fig2_requests_constraints.png) ·
+[3a](files/conceptual_models/v2.0/fig3a_skills_resources.png) ·
+[3b](files/conceptual_models/v2.0/fig3b_capabilities.png) ·
+[4](files/conceptual_models/v2.0/fig4_tools_servers.png) ·
+[5a](files/conceptual_models/v2.0/fig5a_plan_structure.png) ·
+[5b](files/conceptual_models/v2.0/fig5b_task_dependencies.png) ·
+[6](files/conceptual_models/v2.0/fig6_plan_selection.png) ·
+[7a](files/conceptual_models/v2.0/fig7a_invocations.png) ·
+[7b](files/conceptual_models/v2.0/fig7b_artifact_provenance.png) ·
+[8a](files/conceptual_models/v2.0/fig8a_artifact_kinds.png) ·
+[8b](files/conceptual_models/v2.0/fig8b_artifact_roles.png) ·
+[8c](files/conceptual_models/v2.0/fig8c_evidence_assessment.png)
 
-**Link:**
-[https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl)
+### Previous Versions
 
-**View the ontology documentation at:**
-[https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
+- [Version 1.1 (Assignment 5)](files/conceptual_models/OE_5_TeamAgenticCapabilities_ConceptualModel.pdf)
+- Protégé OntoGraf views of the Figure 4 and Figure 7 classes:
+  [Figure 4](files/conceptual_models/Figure4-Tools-Servers.png),
+  [Figure 7](files/conceptual_models/Figure7-Execution-Provenance.png),
+  [combined](files/conceptual_models/Figures4-and-7-Combined.png)
 
-#### Primary Classes and Definitions
+## Ontology
 
-1. Research Study
-    - Definition: A scientific investigation that involves testing a hypothesis
-    - Immediate Superclass: None
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: Hasco
-1. Clinical Trial
-    - Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
-    - Immediate Superclass: Research Study
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: National Cancer Institute Thesarus (NCIT)
-1. Cohort
-    - Definition: A cohort is the group of subjects enrolled in a study
-    - Immediate Superclass: None
-    - Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: The Statistical Methods Ontology (STATO)
-1. Study Arm
-    - Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
-    or no intervention, according to the trial's protocol
-    - Immediate Superclass: Cohort
-    - Example: Metformin Conventional Therapy Arm
-    - Reused From: None
-1. Study Subject
-    - Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
-    professional or institution with the purpose to receive medical care when necessary
-    - Immediate Superclass: None
-    - Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: SemanticScience Integrated Ontology (SIO)
-1. Study Intervention
-    - Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
-    procedures, vaccines, and other products that are either investigational or already available
-    - Immediate Superclass: None
-    - Example: Metformin
-    - Reused From: ProvCaRe
-1. Subject Characteristic
-    - Definition: Property that summarizes important attributes of the participants enrolled in a study
-    - Immediate Superclass: None
-    - Example: Age
-    - Reused From: None
-1. Statistical Measure
-    - Definition: a standard unit used to express the size, amount, or degree of something
-    - Immediate Superclass: None
-    - Example: Mean
-    - Reused From: ProvCaRe
+- **File:** [agentic-orchestration.rdf](agentic-orchestration.rdf) (OWL 2 in RDF/XML, written with the course serializer);
+  submitted to the course drive as OE_6_TeamAgenticCapabilities.rdf
+- **Namespace:** `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/`
+- **Size:** 65 classes, 33 object properties, 9 datatype properties and 11 individuals of the team's own; consistent, with
+  no unsatisfiable classes (Pellet and HermiT)
+- **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII, highlighted in orange)
+- **Example data:** [cq_examples.ttl](files/ontology/cq_examples.ttl) holds individuals for the three questions (and for CQ 2 and CQ 6), and
+  [cq_results.txt](files/ontology/cq_results.txt) holds the reasoner's answers
+- **Opening it in Protégé:** open the file from this folder. `catalog-v001.xml` points the AgentO import to the copy in
+  `imports/`, because the AgentO IRI currently redirects to a web page instead of the ontology file.
 
-### Accompanying Suite of Ontologies
+### Main Classes and Definitions
 
-- [Diseases](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/diseases.owl)
-- [Lab results](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/labresults.owl)
-- [Medications](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/medications.owl)
-- [Therapies](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/therapies.owl)
-- [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
-- [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
+| Class | Superclass | Definition |
+|---|---|---|
+| Request | — | user input that expresses a task, action, or information need for an agent to address |
+| InformationRequirement | — | formalized description of information that a user needs to obtain |
+| UserConstraint | agento:Constraint | constraint derived from a user's request, profile, or execution preferences that governs the selection or execution of an orchestration plan |
+| Capability | equivalent to agento:Capability | ability of an agent to perform a type of action or task |
+| Skill | — | specification of a focused agent behavior that can be applied to perform a class of tasks |
+| Tool | agento:Tool, process:Process | callable computational resource that performs a defined operation when invoked |
+| Server | — | software component that exposes computational resources and operations to clients through a communication protocol |
+| OrchestrationPlan | pplan:Plan | plan that prescribes which capabilities to invoke, and in what order, to satisfy the information requirements of one request |
+| OrchestrationWorkflowStep | agento:WorkflowStep | workflow step of an orchestration plan that is associated with the task carried out at that point in the plan |
+| InformationArtifact | prov:Entity | information content entity represented as an identifiable item that can be consumed, produced, or retained during an agent workflow |
+| PlanEvaluation | — | evaluation record that associates an orchestration plan with the criteria used and the plan metrics obtained |
+| DecisionCriterion | — | criterion used to compare and select candidate orchestration plans based on measurable attributes and preferences |
+| PlanMetric | cmns-qtu:Measure | measure used in an evaluation to characterize an orchestration plan on a specified dimension |
+| Invocation | pplan:Activity | execution activity in which a particular tool or skill is called or applied |
+| EvidenceAssessment | Assessment | assessment that summarizes and weighs the research findings about one candidate supplement |
+
+The full list of classes, properties and individuals, with sources, is the [terminology list](termlist.html).
 
 ## Ontologies Reused
 
-We group the ontologies we reuse by the purpose and the use-cases they are intended to serve, as vocabularies for.
+- [AgentO v0.2](https://w3id.org/agentic-ai/onto) (`agento:`): agents, tasks, tools, capabilities, workflow steps
+- [P-Plan](http://purl.org/net/p-plan) (`pplan:`): plans, steps and the activities that carry them out
+- [OWL-S 1.2 Process](https://www.w3.org/submissions/OWL-S/) (`process:`): tool parameters and preconditions
+- [BEAM](http://w3id.org/beam/core) (`beam:`): the resource class above SkillResource
+- [PROV-O](https://www.w3.org/TR/prov-o/) (`prov:`): provenance of invocations and information artifacts
+- [OMG Commons Ontology Library](https://www.omg.org/spec/Commons/): annotation vocabulary, classifiers, collections,
+  documents, organizations, quantities and units
+- [FIBO FND Goals and Objectives](https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), imported
+  by the course seed ontology
 
-### Study Design Ontologies
+## Ontology Prefixes
 
-- [Provenance for Healthcare + Clinical Research (ProvCaRe)](https://provcare.case.edu/)
-- [Human-Aware Science Ontology](http://hadatac.org/ont/hasco/)
-
-### Medical Ontologies
-
-- [National Cancer Institute Thesarus (NCIT)](https://provcare.case.edu/)
-- [Children's Health Exposure Analysis Resource Ontology (CHEAR)](https://bioportal.bioontology.org/ontologies/NCIT)
-- [Human-Disease Ontology (DOID)](https://www.ebi.ac.uk/ols/ontologies/doid")
-
-### Mid-Level Ontologies
-
-- [SemanticScience Integrated Ontology
-  (SIO)](https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-subset-labels.owl)
-
-### Statistical Ontologies
-
-- [Units Ontology
-  (UO)](https://www.google.com/search?q=UO+ontology&rlz=1C5CHFA_enIN727IN729&oq=UO+ontology&aqs=chrome..69i57j69i60.3199j0j4&sourceid=chrome&ie=UTF-8)
-- [Statistical Methods Ontology (STATO)](https://www.ebi.ac.uk/ols/ontologies/stato)
-
-### Ontology Prefixes
-
-<table style="width:100%">
-  <tr>
-    <th>Prefix</th>
-    <th>Links</th>
-  </tr>
-  <tr>
-    <td>rdf</td>
-    <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns">Resource Description Framework</a></td>
-  </tr>
-  <tr>
-    <td>rdfs</td>
-    <td><a href="http://www.w3.org/2000/01/rdf-schema"> RDF Schema</a> </td>
-  </tr>
-  <tr>
-    <td>owl</td>
-    <td><a href="http://www.w3.org/2002/07/owl#">Web Ontology Language </a> </td>
-  </tr>
-  <tr>
-    <td> xsd</td>
-    <td> <a href="http://www.w3.org/2001/XMLSchema#">XML Schema Definition</a></td>
-  </tr>
-  <tr>
-    <td>dct</td>
-    <td> <a href="http://purl.org/dc/terms/">Dublin Core Term</a> </td>
-  </tr>
-  <tr>
-    <td>skos</td>
-    <td> <a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
-  </tr>
-  <tr>
-    <td>sco</td>
-    <td> <a href="https://idea.tw.rpi.edu/projects/heals/studycohort/"> Study Cohort Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>chear</td>
-    <td> <a href="http://hadatac.org/ont/chear#">Children’s Health Exposure Analysis Resource</a></td>
-  </tr>
-  <tr>
-    <td>hasco</td>
-    <td> <a href="http://hadatac.org/ont/hasco#"> Human-Aware Science Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>fibo-fnd-utl-av</td>
-    <td> <a href="http://www.omg.org/spec/EDMC-FIBO/FND/Utilities/AnnotationVocabulary/">Financial Industry Business
-        Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>sio</td>
-    <td> <a href="http://semanticscience.org/resource/">SemanticScience Integrated Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>obo</td>
-    <td> <a href="http://purl.obolibrary.org/obo/">OBO Foundry</a> </td>
-  </tr>
-  <tr>
-    <td>stato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/STATO_">The Statistical Methods Ontolgy</a> </td>
-  </tr>
-  <tr>
-    <td>uo</td>
-    <td><a href="http://purl.obolibrary.org/obo/UO_"> Units of Measurement Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>pato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/PATO_"> Human Phenotypic Quality Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>ncit</td>
-    <td> <a href="http://purl.obolibrary.org/obo/NCI_">National Cancer Institute Thesarus</a> </td>
-  </tr>
-  <tr>
-    <td>provcare</td>
-    <td> <a href="http://www.case.edu/ProvCaRe/provcare#">Provenance for Clinical + Healthcare Research</a> </td>
-  </tr>
-  <tr>
-    <td>ocre</td>
-    <td> <a href="http://purl.org/net/OCRe/OCRe.owl/#"> Ontology of Clinical Research</a> </td>
-  </tr>
-</table>
+| Prefix | Namespace |
+|---|---|
+| oe-agtorch | `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/` |
+| agento | `http://www.w3id.org/agentic-ai/onto#` |
+| pplan | `http://purl.org/net/p-plan#` |
+| process | `http://www.daml.org/services/owl-s/1.2/Process.owl#` |
+| prov | `http://www.w3.org/ns/prov#` |
+| cmns-av | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` |
+| cmns-cls | `https://www.omg.org/spec/Commons/Classifiers/` |
+| cmns-col | `https://www.omg.org/spec/Commons/Collections/` |
+| cmns-doc | `https://www.omg.org/spec/Commons/Documents/` |
+| cmns-org | `https://www.omg.org/spec/Commons/Organizations/` |
+| cmns-qtu | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` |
+| beam | `http://w3id.org/beam/core#` |
+| fibo-fnd-gao-obj | `https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/` |
+| dct | `http://purl.org/dc/terms/` |
+| skos | `http://www.w3.org/2004/02/skos/core#` |
+| owl | `http://www.w3.org/2002/07/owl#` |
+| rdfs | `http://www.w3.org/2000/01/rdf-schema#` |
+| xsd | `http://www.w3.org/2001/XMLSchema#` |

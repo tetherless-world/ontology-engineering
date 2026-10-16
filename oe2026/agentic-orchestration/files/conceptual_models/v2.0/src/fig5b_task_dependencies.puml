@@ -1,0 +1,55 @@
+@startuml fig5b_task_dependencies
+!include style.iuml
+skinparam nodesep 25
+skinparam ranksep 45
+skinparam packageStyle rectangle
+skinparam packageFontSize 13
+skinparam noteBackgroundColor #FFFFFF
+skinparam noteBorderColor #333333
+
+package "Pattern" as P {
+  class "Task" as Task <<AgentO>>
+  class InformationArtifact #EDEDED
+  note "consumes o inverse(produces)\nSubPropertyOf dependsOn" as N1
+}
+Task --> InformationArtifact : consumes
+Task --> InformationArtifact : produces
+Task ..> Task : /dependsOn
+N1 .. Task
+
+package "Jessica's plan as stated (CQ 2)" as A {
+  object "getCandidateSupplements : Task" as t1
+  object "candidates : CandidateSupplement" as a1
+  object "screenInteractions : Task" as t2
+  object "verifyEvidence : Task" as t3
+  object "getSupplementProducts : Task" as t4
+  object "safetyAssessment : SafetyAssessment" as a2
+  object "evidenceAssessment : EvidenceAssessment" as a3
+  object "productList : ProductList" as a4
+  object "selectSupplementProduct : Task" as t5
+}
+t1 --> a1 : produces
+t2 -up-> a1 : consumes
+t3 -up-> a1 : consumes
+t4 -up-> a1 : consumes
+t2 --> a2 : produces
+t3 --> a3 : produces
+t4 --> a4 : produces
+t5 -up-> a2 : consumes
+t5 -up-> a3 : consumes
+t5 -up-> a4 : consumes
+
+package "What the reasoner infers: dependsOn" as I {
+  object "getCandidateSupplements" as i1
+  object "screenInteractions" as i2
+  object "verifyEvidence" as i3
+  object "getSupplementProducts" as i4
+  object "selectSupplementProduct" as i5
+}
+i2 -[#D55E00,dashed,thickness=2]up-> i1
+i3 -[#D55E00,dashed,thickness=2]up-> i1
+i4 -[#D55E00,dashed,thickness=2]up-> i1
+i5 -[#D55E00,dashed,thickness=2]up-> i2
+i5 -[#D55E00,dashed,thickness=2]up-> i3
+i5 -[#D55E00,dashed,thickness=2]up-> i4
+@enduml
