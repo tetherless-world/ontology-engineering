@@ -26,6 +26,6 @@ HYGIENE_FAIL_ON_WARNINGS=false
 # Relative path to ontology sources
 ONTPUB_SUBDIR=oe2026
 # If set, ontology files with paths that partially match this var will be excluded from checking
-ONTPUB_EXCLUDED=".*oe2026\/[^\/]+\/archived\/.*"
+ONTPUB_EXCLUDED="\/[^\/]+\/archived\/.*"
 
 set +a
