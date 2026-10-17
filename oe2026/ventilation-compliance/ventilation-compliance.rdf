@@ -581,6 +581,12 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/core/Actuator">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Controls"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <skos:definition>device, operated electrically, pneumatically or hydraulically, that changes the position of a movable device such as a valve or damper</skos:definition>
     </owl:Class>
     
@@ -590,6 +596,12 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Boiler">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <skos:definition>heating source that transfers heat from fuel combustion or electricity to water or steam.</skos:definition>
     </owl:Class>
     
@@ -599,6 +611,12 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Chiller">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <skos:definition>cooling source that removes heat from water or another liquid to produce chilled fluid for cooling.</skos:definition>
     </owl:Class>
     
@@ -608,6 +626,12 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Controller">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Controls"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <skos:definition>device that regulates a system or component in normal operation, either manually or automatically</skos:definition>
     </owl:Class>
     
@@ -617,6 +641,12 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Fan">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <skos:definition>air-moving device that produces a  difference to move air through an AHU, duct, or space.</skos:definition>
     </owl:Class>
     
@@ -626,6 +656,19 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Sensor">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Controls"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -664,6 +707,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRateSensor">
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>airflow rate sensor</rdfs:label>
         <skos:definition>volumetric airflow rate of outdoor air entering an air-handling unit.</skos:definition>
     </owl:Class>
@@ -674,6 +723,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>air handling unit</rdfs:label>
         <skos:altLabel>AHU</skos:altLabel>
         <skos:definition>air-handling assembly that uses fans and air-treatment components to circulate, filter, mix, heat, cool, humidify, dehumidify, or otherwise condition air.</skos:definition>
@@ -811,6 +866,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CoolingCoil">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>cooling coil</rdfs:label>
         <skos:definition>air-to-fluid or air-to-refrigerant heat exchanger that removes sensible heat and, when its surface is below the air dew point, moisture from an airstream.</skos:definition>
     </owl:Class>
@@ -843,6 +904,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Diffuser">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>diffuser</rdfs:label>
         <skos:definition>supply-air terminal device that discharges air into a space in a specified pattern and promotes mixing of supply air with room air.</skos:definition>
     </owl:Class>
@@ -853,6 +920,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DirectExpansionUnit">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>direct-expansion unit</rdfs:label>
         <skos:altLabel>DX unit</skos:altLabel>
         <skos:definition>refrigeration-based HVAC unit that transfers heat between air and refrigerant in a direct-expansion coil, without chilled water being the cooling medium at that coil.</skos:definition>
@@ -894,6 +967,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>exhaust ductwork</rdfs:label>
         <skos:definition>ductwork that conveys exhaust air from spaces toward an outdoor discharge</skos:definition>
     </owl:Class>
@@ -904,6 +983,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustFan">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>exhaust fan</rdfs:label>
         <skos:definition>fan that draws air out of a space or system and moves it toward discharge</skos:definition>
     </owl:Class>
@@ -914,6 +999,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustInlet">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>exhaust inlet</rdfs:label>
         <skos:definition>opening through which air is drawn from a space into exhaust ductwork</skos:definition>
     </owl:Class>
@@ -924,6 +1015,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Filter">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>filter</rdfs:label>
         <skos:definition>air-cleaning component that removes particles or other specified contaminants from an airstream.</skos:definition>
     </owl:Class>
@@ -934,6 +1031,30 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HVACSystem">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Controls"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasServiceComponent"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>hvac system</rdfs:label>
         <skos:definition>building services system that provides heating, ventilation, and air conditioning to control conditions in one or more indoor spaces.</skos:definition>
     </owl:Class>
@@ -944,6 +1065,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatPump">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>heat pump</rdfs:label>
         <skos:definition>refrigeration-based HVAC unit that transfers heat between two locations and can provide heating, cooling, or both by reversing or directing its refrigeration cycle.</skos:definition>
     </owl:Class>
@@ -954,7 +1081,7 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:label>heating/cooling source</rdfs:label>
+        <rdfs:label>heating and cooling source</rdfs:label>
         <skos:definition>HVAC energy-conversion equipment that produces heating or cooling capacity for delivery to air, water, refrigerant, or another heat-transfer medium.</skos:definition>
     </owl:Class>
     
@@ -964,6 +1091,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingCoil">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>heating coil</rdfs:label>
         <skos:definition>air-to-fluid or air-to-refrigerant heat exchanger that transfers heat to an airstream.</skos:definition>
     </owl:Class>
@@ -984,6 +1117,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HumiditySensor">
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>humidity sensor</rdfs:label>
         <skos:definition>volumetric total supply-airflow rate discharged by an air-handling unit.</skos:definition>
     </owl:Class>
@@ -1060,6 +1199,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirDamper">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>outdoor-air damper</rdfs:label>
         <skos:definition>damper that controls the flow of outdoor air into an air-handling system</skos:definition>
     </owl:Class>
@@ -1088,6 +1233,22 @@
         </rdfs:subClassOf>
         <rdfs:label>outdoor air fraction</rdfs:label>
         <skos:definition>Dimensionless ratio of AHU outdoor airflow rate to total AHU supply airflow rate.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorDischarge -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorDischarge">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>outdoor discharge</rdfs:label>
+        <skos:definition>terminal opening through which exhaust air leaves the building envelope</skos:definition>
     </owl:Class>
     
 
@@ -1141,6 +1302,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PressureSensor">
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>pressure sensor</rdfs:label>
         <skos:definition>sensor that detects the static or differential pressure of a medium</skos:definition>
     </owl:Class>
@@ -1175,6 +1342,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReliefDamper">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>relief damper</rdfs:label>
         <skos:definition>damper that controls the discharge of relief air from an air-handling system</skos:definition>
     </owl:Class>
@@ -1185,6 +1358,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirDamper">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>return-air damper</rdfs:label>
         <skos:definition>damper that controls the flow of return air within an air-handling system</skos:definition>
     </owl:Class>
@@ -1205,6 +1384,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>return ductwork</rdfs:label>
         <skos:definition>air-distribution duct system that conveys return air from served spaces toward the AHU.</skos:definition>
     </owl:Class>
@@ -1270,8 +1455,24 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>supply ductwork</rdfs:label>
         <skos:definition>air-distribution duct system that conveys conditioned supply air from an AHU or terminal unit to a served space.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
+        <rdfs:label>Temperature</rdfs:label>
+        <skos:definition>physical quantity representing thermal state and used for room or system temperature measurements.</skos:definition>
     </owl:Class>
     
 
@@ -1280,18 +1481,14 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/TemperatureSensor">
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>temperature sensor</rdfs:label>
         <skos:definition>volumetric airflow rate of supply air delivered through a supply-air path.</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Tempreture -->
-
-    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Tempreture">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-        <rdfs:label>Temperature</rdfs:label>
-        <skos:definition>physical quantity representing thermal state and used for room or system temperature measurements.</skos:definition>
     </owl:Class>
     
 
@@ -1370,6 +1567,12 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/VariableAirVolumeBox">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label>variable air volume box</rdfs:label>
         <skos:altLabel>VAV box</skos:altLabel>
         <skos:definition>variable-air-volume terminal unit that modulates supply airflow to a zone in response to a control requirement, commonly zone temperature.</skos:definition>
