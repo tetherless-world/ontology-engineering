@@ -1,0 +1,41 @@
+@startuml fig8c_evidence_assessment
+!include style.iuml
+skinparam nodesep 45
+skinparam ranksep 55
+
+class Assessment #EDEDED
+class EvidenceAssessment 
+class "ConflictingEvidenceAssessment" as Conflicting <<defined>>
+class CandidateSupplement #EDEDED;line:333333;text:000000
+class EvidenceFinding
+class ArticleAbstract {
+  hasPublicationDate : date
+}
+enum EvidenceDirection <<enumeration>> {
+  supporting
+  disputing
+  inconclusive
+}
+enum StudyDesign <<enumeration>> {
+  systematicReview
+  randomizedControlledTrial
+  observationalStudy
+  caseReport
+}
+enum EvidenceCertaintyLevel <<enumeration>> {
+  high
+  moderate
+  low
+  veryLow
+}
+
+Assessment <|-- EvidenceAssessment
+EvidenceAssessment <|-- Conflicting
+Assessment -right-> CandidateSupplement : assessesSupplement
+EvidenceAssessment --> EvidenceFinding : hasFinding
+EvidenceAssessment --> EvidenceCertaintyLevel : hasCertaintyLevel
+EvidenceAssessment --> EvidenceDirection : hasEvidenceDirection
+EvidenceFinding --> EvidenceDirection : hasEvidenceDirection
+EvidenceFinding --> StudyDesign : hasStudyDesign
+EvidenceFinding --> ArticleAbstract : isReportedIn
+@enduml

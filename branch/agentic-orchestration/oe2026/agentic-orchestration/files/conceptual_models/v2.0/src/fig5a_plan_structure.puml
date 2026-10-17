@@ -1,0 +1,33 @@
+@startuml fig5a_plan_structure
+!include style.iuml
+skinparam nodesep 45
+
+class "Plan" as Plan <<P-Plan>>
+class OrchestrationPlan
+class "Step" as Step <<P-Plan>>
+class "WorkflowStep" as WorkflowStep <<AgentO>>
+class "OrchestrationWorkflowStep" as OWS
+class "StartStep" as StartStep <<AgentO>>
+class "EndStep" as EndStep <<AgentO>>
+class "Task" as Task <<AgentO>>
+class Request #EDEDED
+class "Capability" as Capability <<AgentO>> #EDEDED
+class Skill #EDEDED
+class "Tool" as Tool <<AgentO>> #EDEDED
+
+Plan <|-- OrchestrationPlan
+Step <|-- WorkflowStep
+WorkflowStep <|-- StartStep
+WorkflowStep <|-- EndStep
+WorkflowStep <|-- OWS
+
+OWS -[hidden]-> Task
+OrchestrationPlan --> Request : addresses
+OrchestrationPlan --> OWS : hasStep
+WorkflowStep --> WorkflowStep : agento:nextStep
+WorkflowStep --> Task : agento:hasAssociatedTask
+OrchestrationPlan ..> Task : /hasTask
+Task --> Capability : agento:requiresCapability
+Task --> Skill : performedBySkill
+Task --> Tool : agento:performedBy
+@enduml

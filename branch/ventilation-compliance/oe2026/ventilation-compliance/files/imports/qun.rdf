@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
+     xml:base="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:AnnotationVocabulary="https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+    <owl:Ontology rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#example -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#example"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/AnnotationVocabulary/explanatoryNote -->
+
+    <owl:AnnotationProperty rdf:about="https://www.omg.org/spec/Commons/AnnotationVocabulary/explanatoryNote"/>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym -->
+
+    <owl:AnnotationProperty rdf:about="https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasLowerBound -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasLowerBound">
+        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
+        <rdfs:label>has lower bound</rdfs:label>
+        <skos:definition>specifies the quantity value that is the lower value of a pair of values representing a range</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasMeasurementUnit -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasMeasurementUnit">
+        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit"/>
+        <rdfs:label>has measurement unit</rdfs:label>
+        <skos:definition>indicates the unit against which a quantity can be expressed in a quantity value</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasUpperBound -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasUpperBound">
+        <rdfs:range rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
+        <rdfs:label>has upper bound</rdfs:label>
+        <skos:definition>specifies the quantity value that is the higher value of a pair of values representing a range</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue -->
+
+    <owl:DatatypeProperty rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/ArbitraryUnit -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ArbitraryUnit">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit"/>
+        <owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/PhysicalUnit"/>
+        <terms:source>ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement, clause 3.1.1</terms:source>
+        <rdfs:label>arbitrary unit</rdfs:label>
+        <skos:definition>arbitrarily defined unit of measurement, where a relation of the unit to a physical unit of the SI does not exist or is unknown</skos:definition>
+        <skos:note>Arbitrary units represent references to materials or procedures that are defined outside of the SI system. A quantity value is arbitrarily assigned to the reference preparation or the result of a measurement procedure, usually specific for a particular substance. This generally precludes comparability of quantity values across different systems and components for this type of units.</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/BaseUnit -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/BaseUnit">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/PhysicalUnit"/>
+        <terms:source>ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement, clause 3.1.3</terms:source>
+        <terms:source>ISO/IEC Guide 99:2007 &apos;International vocabulary of metrology — Basic and general concepts and associated terms (VIM)&apos;, clause 1.10</terms:source>
+        <terms:source rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.omg.org/spec/SysML/</terms:source>
+        <rdfs:label>base unit</rdfs:label>
+        <skos:definition>measurement unit that is defined by a system of units to be the reference measurement unit for a base quantity</skos:definition>
+        <skos:example>In the SI, the meter is the base unit of length. In the CGS systems, the centimeter is the base unit of length.</skos:example>
+        <skos:note>In each coherent system of units, there is only one base unit for each base quantity. A base unit may also serve for a derived quantity of the same quantity dimension.</skos:note>
+        <AnnotationVocabulary:synonym>simple unit</AnnotationVocabulary:synonym>
+    </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/DerivedUnit -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/DerivedUnit">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/PhysicalUnit"/>
+        <terms:source>ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement, clause 3.1.8</terms:source>
+        <terms:source>ISO/IEC Guide 99:2007 &apos;International vocabulary of metrology — Basic and general concepts and associated terms (VIM)&apos;, clause 1.11</terms:source>
+        <terms:source rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.omg.org/spec/SysML/</terms:source>
+        <rdfs:label>derived unit</rdfs:label>
+        <skos:definition>measurement unit for a derived quantity, i.e., one that is defined with respect to one or more base units, such as as a product of powers of one or more other measurement units</skos:definition>
+        <skos:example>The meter per second, symbol m/s, and the centimeter per second, symbol cm/s, are derived units of speed in the SI. The kilometer per hour, symbol km/h, is a measurement unit of speed outside the SI but accepted for use with the SI. The knot, equal to one nautical mile per hour, is a measurement unit of speed outside the SI.</skos:example>
+    </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit">
+        <terms:source>ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement, clause 3.1.33</terms:source>
+        <terms:source>ISO/IEC Guide 99:2007 &apos;International vocabulary of metrology — Basic and general concepts and associated terms (VIM)&apos;, clause 1.9</terms:source>
+        <terms:source rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.omg.org/spec/SysML/</terms:source>
+        <rdfs:label>measurement unit</rdfs:label>
+        <skos:definition>real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number</skos:definition>
+        <skos:example>week, day, hour, minute, second, kilogram, joule, meter</skos:example>
+        <skos:note>A Unit is a quantity in terms of which the magnitudes of other quantities that have the same quantity kind can be stated. A unit often relies on precise and reproducible ways to measure the unit. For example, a unit of length such as meter may be specified as a multiple of a particular wavelength of light. A unit may also specify less stable or precise ways to express some value, such as a cost expressed in some currency, or a severity rating measured by a numerical scale.</skos:note>
+        <skos:note>Depending on the nature of the reference scale, the unit of measurement expression may stand either for a physical unit of measurement that is related to a system of quantities (e.g. SI units) or for an arbitrarily defined unit of measurement, which may refer to a certain reference material, a standard measurement procedure, a material measure or even to a combination of those.</skos:note>
+        <skos:note>For a given quantity, the short term &apos;unit&apos; is often combined with the quantity name, such as &apos;mass unit&apos; or &apos;unit of mass&apos;.</skos:note>
+        <skos:note>Measurement units are designated by conventionally assigned names and symbols.</skos:note>
+        <skos:note>Measurement units of quantities of dimension one are numbers. In some cases, these measurement units are given special names, e.g. radian, steradian, and decibel, or are expressed by quotients such as millimole per mole equal to 10 to the power minus 3 and microgram per kilogram equal to 10 to the power minus 9.</skos:note>
+        <skos:note>Measurement units of quantities of the same quantity dimension may be designated by the same name and symbol even when the quantities are not of the same kind. For example, joule per kelvin and J/K are respectively the name and symbol of both a measurement unit of heat capacity and a measurement unit of entropy, which are generally not considered to be quantities of the same kind. However, in some cases special measurement unit names are restricted to be used with quantities of specific kind only. For example, the measurement unit &apos;second to the power minus one&apos; (1/s) is called hertz (Hz) when used for frequencies and becquerel (Bq) when used for activities of radionuclides. As another example, the joule (J) is used as a unit of energy, but never as a unit of moment of force, i.e. the newton meter (N m).</skos:note>
+        <AnnotationVocabulary:synonym>unit of measurement</AnnotationVocabulary:synonym>
+    </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/PhysicalUnit -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/PhysicalUnit">
+        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit"/>
+        <terms:source>ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement, clause 3.1.21</terms:source>
+        <rdfs:label>physical unit</rdfs:label>
+        <skos:definition>unit of measurement that is defined using a physical quantity</skos:definition>
+        <skos:note>Its definition relates measured quantities to the base quantities through a set of well-defined equations.</skos:note>
+        <skos:note>Physical units and their related scales are defined independently of the measurement procedure and the measured components. They relate to an internationally standardized system of units and equations governing the mathematical relations between those units.</skos:note>
+        <AnnotationVocabulary:synonym>physical unit of measurement</AnnotationVocabulary:synonym>
+    </owl:Class>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue -->
+
+    <owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasNumericValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <terms:source>ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement, clauses 3.1.19, 3.1.25</terms:source>
+        <terms:source>ISO/IEC Guide 99:2007 &apos;International vocabulary of metrology — Basic and general concepts and associated terms (VIM)&apos;, clause 1.19</terms:source>
+        <terms:source rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.omg.org/spec/SysML/</terms:source>
+        <rdfs:label>scalar quantity value</rdfs:label>
+        <skos:definition>number and reference together expressing the magnitude of a quantity</skos:definition>
+        <skos:note>According to the type of reference, a quantity value is either
+- a product of a number and a measurement unit; the measurement unit one is generally not indicated for quantities of dimension one, or
+- a number and a reference to a measurement procedure, or
+- a number and a reference material.</skos:note>
+        <AnnotationVocabulary:explanatoryNote>While the value of the property &apos;has order&apos; is implicitly 0, stating that this is the case explicitly would make this class inconsistent (there can only be one value for the property, and it inherits &apos;1&apos; from vector quantity value).</AnnotationVocabulary:explanatoryNote>
+        <AnnotationVocabulary:synonym>measurement</AnnotationVocabulary:synonym>
+        <AnnotationVocabulary:synonym>value of a quantity</AnnotationVocabulary:synonym>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
