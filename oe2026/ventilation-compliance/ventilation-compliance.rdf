@@ -11,14 +11,17 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:core="https://w3id.org/rec/core/"
      xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:qudt="http://qudt.org/schema/qudt/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
      xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:core1="http://www.linkedmodel.org/owl/schema/core#"
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:schema="https://schema.org/"
      xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
      xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
+     xmlns:metadata="https://w3id.org/rec/metadata/"
      xmlns:saref4bldg="https://saref.etsi.org/saref4bldg/"
      xmlns:cmns-cxtdsg="https://www.omg.org/spec/Commons/ContextualDesignators/"
      xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
@@ -824,6 +827,16 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CDC_compliance_framework -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CDC_compliance_framework">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceFramework"/>
+        <rdfs:label>CDC compliance framework</rdfs:label>
+        <prov:definition>organized set of compliance requirements, policies, and assessment rules used to evaluate a target.</prov:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment">
@@ -1580,12 +1593,44 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/air_movement_relationship_to_adjacent_area -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/air_movement_relationship_to_adjacent_area">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatesOn"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/incoming_transfer_airflow_rate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>air movement relationship to adjacent area</rdfs:label>
+        <prov:definition>airflow-direction requirement that specifies whether air is to move into a room from, out of a room toward, or without a prescribed direction relative to adjacent areas.</prov:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/airborne_infection_isolation_room -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/airborne_infection_isolation_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
         <rdfs:label>airborne infection isolation room</rdfs:label>
         <skos:definition>patient room designed to reduce airborne transmission from an occupant to surrounding indoor areas through controlled airflow and relationships.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/all_air_exhausted_directly_to_outdoors -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/all_air_exhausted_directly_to_outdoors">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatesOn"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/total_air_change_per_hour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>all air exhausted directly to outdoors</rdfs:label>
+        <prov:definition>exhaust-air disposition requirement specifying that air removed from a room must be discharged outdoors and must not be recirculated to other areas.</prov:definition>
     </owl:Class>
     
 
@@ -1716,6 +1761,22 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>delievery room</rdfs:label>
         <skos:definition>clinical room equipped for childbirth and immediate maternal and newborn care.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/design_temperature -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/design_temperature">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatesOn"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>design temperature</rdfs:label>
+        <prov:definition>indoor temperature requirement specifying the temperature or allowable range that the HVAC system is capable of maintaining during normal operation.</prov:definition>
     </owl:Class>
     
 
@@ -1892,6 +1953,22 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/minimum_air_changes_of_outdoorAir_perhour -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/minimum_air_changes_of_outdoorAir_perhour">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatesOn"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/outdoor_air_change_per_hour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>minimum air changes of outdoorAir perhour</rdfs:label>
+        <prov:definition>outdoor-air ventilation requirement specifying the minimum outdoor-air airflow rate divided by room volume, expressed in h⁻¹.</prov:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/newborn_nursery_suite -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/newborn_nursery_suite">
@@ -2057,12 +2134,38 @@ outdoor air change per hour</skos:definition>
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recirculated_by_means_of_room_units -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recirculated_by_means_of_room_units">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:label>recirculated by means of room units</rdfs:label>
+        <prov:definition>room-unit use permission specifying whether local HVAC units may recirculate air within a room primarily for heating or cooling.</prov:definition>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recovery_room -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recovery_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
         <rdfs:label>recovery room</rdfs:label>
         <skos:definition>clinical room in which patients are monitored after anesthesia or a procedure until they meet criteria for transfer or discharge.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/relative_humidity -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/relative_humidity">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatesOn"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>relative humidity</rdfs:label>
+        <prov:definition>moisture-condition parameter equal to the partial, density, or mole fraction of water vapor in air divided by the corresponding saturation value at the same temperature and barometric conditions, usually expressed as a percentage.</prov:definition>
     </owl:Class>
     
 
