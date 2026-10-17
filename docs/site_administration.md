@@ -59,6 +59,8 @@ project_nav:
 
 ## Netlify
 
+TODO: remove, we're now using multibranch building since Netlify is no longer free
+
 The cloud hosting service Netlify is used alongside GitHub Pages hosting because Pages does not allow you to host multiple sites from different repo branches.
 We are currently using the free tier of Netlify service on my (Sam Stouffer) personal Netlify team.
 I will outline the steps I took to set up Netlify service for the ontology-engineering repo.
