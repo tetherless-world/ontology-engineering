@@ -17,8 +17,8 @@
 	<!ENTITY vann "http://purl.org/vocab/vann/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"
-	xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration//"
 	xmlns:AnnotationVocabulary="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
 	xmlns:agento="http://www.w3id.org/agentic-ai/onto#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
@@ -36,7 +36,7 @@
 	xmlns:vann="http://purl.org/vocab/vann/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
-	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/">
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/">
 		<rdfs:label xml:lang="en">Agentic Tool and Skill Orchestration Ontology</rdfs:label>
 		<dct:abstract xml:lang="en">The Agentic Capabilities Orchestration ontology describes how an agent harness chooses and orders the skills and Model Context Protocol tools that answer a user request. It links requests, information requirements and user constraints to capabilities, skills, tools and servers; represents candidate orchestration plans with their workflow steps, tasks, and the information artifacts each task consumes and produces; records how a plan is evaluated and selected; and traces invocations for provenance. The supplement recommendation scenarios of use case AC-001 scope it. It reuses AgentO, P-Plan, OWL-S Process, PROV-O and the OMG Commons Ontology Library.</dct:abstract>
 		<dct:creator>Barbara Kotlan</dct:creator>
@@ -50,7 +50,7 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.w3.org/ns/prov-o.owl"/>
-		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/"/>
+		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/"/>
 	</owl:Ontology>
 	
 	<owl:AnnotationProperty rdf:about="&dct;creator">
@@ -111,14 +111,14 @@
 	</owl:ObjectProperty>
 	
 	<rdf:Description rdf:about="&agento;Capability">
-		<owl:equivalentClass rdf:resource="&oe-agtorch;Capability"/>
+		<owl:equivalentClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Capability"/>
 	</rdf:Description>
 	
 	<owl:Class rdf:about="&agento;LLMAgent">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;usesTool"/>
-				<owl:allValuesFrom rdf:resource="&oe-agtorch;Tool"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/usesTool"/>
+				<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Tool"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">large language model agent</rdfs:label>
@@ -141,12 +141,12 @@
 	<owl:ObjectProperty rdf:about="&agento;performedBy">
 	</owl:ObjectProperty>
 	
-	<owl:Class rdf:about="&oe-agtorch;Answer">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Answer">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&prov;wasDerivedFrom"/>
-				<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationArtifact"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">answer</rdfs:label>
@@ -154,29 +154,29 @@
 		<skos:definition xml:lang="en">information artifact that communicates a response to a user’s query and represents the result of completing a task</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ArticleAbstract">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ArticleAbstract">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">article abstract</rdfs:label>
 		<skos:definition xml:lang="en">information artifact that summarizes one research article and is returned by a literature search tool</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">PubMed User Guide, field tag AB (Abstract)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Assessment">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Assessment">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">assessment</rdfs:label>
 		<skos:definition xml:lang="en">information artifact that records a judgment about one candidate supplement</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">IAO information content entity (genus, via information artifact); use case CQ 4 (differentia)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;CandidateOrchestrationPlan">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;OrchestrationPlan"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationPlan"/>
 		<rdfs:label xml:lang="en">candidate orchestration plan</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;RejectedOrchestrationPlan">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/RejectedOrchestrationPlan">
 					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;SelectedOrchestrationPlan">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SelectedOrchestrationPlan">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
@@ -185,19 +185,19 @@
 		<skos:scopeNote xml:lang="en">After evaluation every candidate orchestration plan is either selected or rejected.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;CandidateSupplement">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateSupplement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">candidate supplement</rdfs:label>
 		<skos:definition xml:lang="en">information artifact describing a supplement being considered for a recommendation</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Capability">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Capability">
 		<rdfs:label xml:lang="en">capability</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">ability of an agent to perform a type of action or task</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ConstraintSatisfyingCapability">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ConstraintSatisfyingCapability">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">constraint-satisfying capability</rdfs:label>
 		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
@@ -207,8 +207,8 @@
 					<rdf:Description rdf:about="&agento;Capability">
 					</rdf:Description>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe-agtorch;satisfiesConstraint"/>
-						<owl:someValuesFrom rdf:resource="&oe-agtorch;HardConstraint"/>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/satisfiesConstraint"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/HardConstraint"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
@@ -217,18 +217,18 @@
 		<skos:scopeNote xml:lang="en">Defined class. Competency questions 3 and 5 use it to find capabilities that a plan needs because of a hard constraint, such as safety screening.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ConstraintSatisfyingSkill">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Skill"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ConstraintSatisfyingSkill">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill"/>
 		<rdfs:label xml:lang="en">constraint-satisfying skill</rdfs:label>
 		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;Skill">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill">
 					</rdf:Description>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe-agtorch;hasCapability"/>
-						<owl:someValuesFrom rdf:resource="&oe-agtorch;ConstraintSatisfyingCapability"/>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasCapability"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ConstraintSatisfyingCapability"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
@@ -237,82 +237,82 @@
 		<skos:scopeNote xml:lang="en">Defined class. Competency question 3 uses it to find the skills whose capabilities satisfy a hard constraint of the request; a plan for that request needs at least one such skill for each hard constraint.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ContentGeneration">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ContentGeneration">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">content generation</rdfs:label>
 		<dct:source xml:lang="en">I. O. Mulang, J. Thaller, T. Trivedi, L. Heling, and F. Sasaki, “Representing Agentic Tools in Knowledge Graphs for Structure-Aware Tool Discovery Under Tool Overload,” NORA 2026 workshop, IJCAI-ECAI 2026. https://openreview.net/forum?id=7MVoH9Y3mi</dct:source>
 		<skos:definition xml:lang="en">capability that produces an information artifact by creating or composing content from intermediate information artifacts</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;DataProcessing">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/DataProcessing">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">data processing</rdfs:label>
 		<dct:source xml:lang="en">I. O. Mulang, J. Thaller, T. Trivedi, L. Heling, and F. Sasaki, “Representing Agentic Tools in Knowledge Graphs for Structure-Aware Tool Discovery Under Tool Overload,” NORA 2026 workshop, IJCAI-ECAI 2026. https://openreview.net/forum?id=7MVoH9Y3mi</dct:source>
 		<skos:definition xml:lang="en">capability that operates on data to produce an information artifact</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;DecisionCriterion">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/DecisionCriterion">
 		<rdfs:label xml:lang="en">decision criterion</rdfs:label>
 		<skos:definition xml:lang="en">criterion used to compare and select candidate orchestration plans based on measurable attributes and preferences</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;EvidenceAssessment">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Assessment"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/EvidenceAssessment">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Assessment"/>
 		<rdfs:label xml:lang="en">evidence assessment</rdfs:label>
 		<skos:definition xml:lang="en">assessment that summarizes and weighs the research findings about one candidate supplement</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">SEPIO evidence line and evidence strength; use case</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;EvidenceCoverage">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/EvidenceCoverage">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<rdfs:label xml:lang="en">evidence coverage</rdfs:label>
 		<skos:definition xml:lang="en">plan metric expressing how fully an orchestration plan covers the evidence needed to address a request</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ExecutableResource">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExecutableResource">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillResource"/>
 		<rdfs:label xml:lang="en">executable resource</rdfs:label>
 		<dct:source xml:lang="en">X. Li et al., “SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks,” arXiv:2602.12670, 2026, section 2 (Skill Definition) and Table 1. https://arxiv.org/abs/2602.12670</dct:source>
 		<skos:definition xml:lang="en">skill resource that an agent can run to perform computational operations, rather than only read as guidance or information</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ExecutionConstraint">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExecutionConstraint">
 		<rdfs:subClassOf rdf:resource="&agento;Constraint"/>
 		<rdfs:label xml:lang="en">execution constraint</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe-agtorch;UserConstraint"/>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/UserConstraint"/>
 		<skos:definition xml:lang="en">constraint on the ordering, resource use, timing, or other operational conditions of tool or skill execution</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ExecutionTrace">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExecutionTrace">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">execution trace</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">chronological record of a workflow&apos;s actual execution, capturing the steps performed and their outcomes</skos:definition>
 		<skos:scopeNote xml:lang="en">An information artifact recording execution, not a workflow plan. The records property identifies the recorded invocations; explicit timestamps and ordering are outside Figures 4 and 7.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ExternalTool">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Tool"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExternalTool">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Tool"/>
 		<rdfs:label xml:lang="en">external tool</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">tool that is exposed by a server or service outside the agent harness and is invoked through a communication protocol or a command-line interface</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;HardConstraint">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;UserConstraint"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/HardConstraint">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/UserConstraint"/>
 		<rdfs:label xml:lang="en">hard constraint</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe-agtorch;SoftConstraint"/>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SoftConstraint"/>
 		<skos:definition xml:lang="en">user constraint that an acceptable orchestration plan must satisfy</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;InformationAccess">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationAccess">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">information access</rdfs:label>
 		<dct:source xml:lang="en">I. O. Mulang, J. Thaller, T. Trivedi, L. Heling, and F. Sasaki, “Representing Agentic Tools in Knowledge Graphs for Structure-Aware Tool Discovery Under Tool Overload,” NORA 2026 workshop, IJCAI-ECAI 2026. https://openreview.net/forum?id=7MVoH9Y3mi</dct:source>
 		<skos:definition xml:lang="en">capability that obtains information artifacts from an information source</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;InformationArtifact">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact">
 		<rdfs:subClassOf rdf:resource="&prov;Entity"/>
 		<rdfs:label xml:lang="en">information artifact</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
@@ -320,23 +320,23 @@
 		<skos:scopeNote xml:lang="en">Includes supplied input and generated output. Figure 7 generation is expressed on Invocation using inverse prov:wasGeneratedBy, so an input artifact is not required to have been generated by an invocation in this workflow.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;InformationRequirement">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationRequirement">
 		<rdfs:label xml:lang="en">information requirement</rdfs:label>
 		<skos:definition xml:lang="en">formalized description of information that a user needs to obtain</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Input">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Input">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">input</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;InformationArtifact">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact">
 					</rdf:Description>
 					<owl:Restriction>
 						<owl:onProperty>
 							<rdf:Description>
-								<owl:inverseOf rdf:resource="&oe-agtorch;consumes"/>
+								<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/consumes"/>
 							</rdf:Description>
 						</owl:onProperty>
 						<owl:someValuesFrom rdf:resource="&agento;Task"/>
@@ -348,31 +348,31 @@
 		<cmns-av:adaptedFrom xml:lang="en">Defined class: InformationArtifact and (inverse consumes some Task)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;InputConstraint">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Precondition"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InputConstraint">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Precondition"/>
 		<rdfs:label xml:lang="en">input constraint</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">condition on the value of an input that an invocation must satisfy to be accepted by the tool or skill</skos:definition>
 		<skos:scopeNote xml:lang="en">Specializes precondition for conditions on the values that a tool or skill accepts for one of its parameters (Figure 4, constrains).</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Instruction">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Instruction">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillResource"/>
 		<rdfs:label xml:lang="en">instruction</rdfs:label>
 		<dct:source xml:lang="en">X. Li et al., “SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks,” arXiv:2602.12670, 2026, section 2 (Skill Definition) and Table 1. https://arxiv.org/abs/2602.12670</dct:source>
 		<skos:definition xml:lang="en">skill resource that specifies the procedures, rules, or guidance an agent follows when applying a skill to perform a task</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;IntermediateArtifact">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Input"/>
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Output"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/IntermediateArtifact">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Input"/>
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Output"/>
 		<rdfs:label xml:lang="en">intermediate artifact</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;Input">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Input">
 					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;Output">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Output">
 					</rdf:Description>
 				</owl:intersectionOf>
 			</owl:Class>
@@ -381,7 +381,7 @@
 		<cmns-av:adaptedFrom xml:lang="en">Defined class: Input and Output</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Invocation">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Invocation">
 		<rdfs:subClassOf rdf:resource="&pplan;Activity"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -392,7 +392,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&prov;used"/>
-				<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationArtifact"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -408,7 +408,7 @@
 						<owl:inverseOf rdf:resource="&prov;wasGeneratedBy"/>
 					</rdf:Description>
 				</owl:onProperty>
-				<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationArtifact"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">invocation</rdfs:label>
@@ -417,16 +417,16 @@
 		<skos:scopeNote xml:lang="en">An actual occurrence, distinct from the tool or skill specification and from the planned workflow step. The required correspondsToStep value, combined with the functional P-Plan property, gives exactly one planned step. Existential restrictions do not require an explicitly asserted named value under OWL open-world semantics.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;JustifiedCapability">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/JustifiedCapability">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">justified capability</rdfs:label>
 		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;ConstraintSatisfyingCapability">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ConstraintSatisfyingCapability">
 					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;RequirementSatisfyingCapability">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/RequirementSatisfyingCapability">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
@@ -435,18 +435,18 @@
 		<skos:scopeNote xml:lang="en">Defined as the union of requirement-satisfying capability and constraint-satisfying capability. A capability required by a plan that is not a justified capability has no reason in the request to be there (competency question 5).</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Latency">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Latency">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<rdfs:label xml:lang="en">latency</rdfs:label>
 		<skos:definition xml:lang="en">plan metric expressing elapsed time from an agent’s receipt of a task or request to completion of its response or execution</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolServer">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Server"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ModelContextProtocolServer">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Server"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;exposes"/>
-				<owl:onClass rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/exposes"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ModelContextProtocolTool"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -456,31 +456,31 @@
 		<skos:definition xml:lang="en">server that implements the Model Context Protocol to expose supported tools, resources, or prompts to MCP clients</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolTool">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;ExternalTool"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ModelContextProtocolTool">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExternalTool"/>
 		<rdfs:label xml:lang="en">model context protocol tool</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:altLabel xml:lang="en">MCPTool</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by an MCP server for discovery and invocation by an MCP client through the Model Context Protocol</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;OptionalInput">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Input"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OptionalInput">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Input"/>
 		<rdfs:label xml:lang="en">optional input</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;Input">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Input">
 					</rdf:Description>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe-agtorch;fills"/>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/fills"/>
 						<owl:someValuesFrom>
 							<owl:Class>
 								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe-agtorch;Parameter">
+									<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter">
 									</rdf:Description>
 									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe-agtorch;isRequired"/>
+										<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/isRequired"/>
 										<owl:hasValue rdf:datatype="&xsd;boolean">false</owl:hasValue>
 									</owl:Restriction>
 								</owl:intersectionOf>
@@ -493,14 +493,14 @@
 		<skos:definition xml:lang="en">input that may be omitted from a tool or skill invocation without preventing the operation from being performed</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;OrchestrationPlan">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationPlan">
 		<rdfs:subClassOf rdf:resource="&pplan;Plan"/>
 		<rdfs:label xml:lang="en">orchestration plan</rdfs:label>
 		<skos:definition xml:lang="en">plan that prescribes which capabilities to invoke, and in what order, to satisfy the information requirements of one request</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">P-Plan Plan (genus); use case CQ 1 (differentia)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;OrchestrationWorkflowStep">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationWorkflowStep">
 		<rdfs:subClassOf rdf:resource="&agento;WorkflowStep"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -514,18 +514,18 @@
 		<skos:definition xml:lang="en">workflow step of an orchestration plan that is associated with the task carried out at that point in the plan</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Output">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Output">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">output</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;InformationArtifact">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact">
 					</rdf:Description>
 					<owl:Restriction>
 						<owl:onProperty>
 							<rdf:Description>
-								<owl:inverseOf rdf:resource="&oe-agtorch;produces"/>
+								<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/produces"/>
 							</rdf:Description>
 						</owl:onProperty>
 						<owl:someValuesFrom rdf:resource="&agento;Task"/>
@@ -537,31 +537,31 @@
 		<cmns-av:adaptedFrom xml:lang="en">Defined class: InformationArtifact and (inverse produces some Task)</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;OutputType">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;ParameterType"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OutputType">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ParameterType"/>
 		<rdfs:label xml:lang="en">output type</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">parameter type that specifies the class or datatype of the values an invocation returns through an output parameter</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Parameter">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter">
 		<rdfs:label xml:lang="en">parameter</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">named element of the interface of a tool or skill through which a value is passed into or returned from an invocation</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ParameterType">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ParameterType">
 		<rdfs:label xml:lang="en">parameter type</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">class or datatype to which the values of a parameter must belong</skos:definition>
 		<skos:scopeNote xml:lang="en">Instances describe permitted value types. They are type descriptions, not the values passed at runtime. hasType is not equivalent to the OWL-S datatype property parameterType.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;PlanEvaluation">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanEvaluation">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;evaluates"/>
-				<owl:onClass rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/evaluates"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -570,61 +570,61 @@
 		<skos:scopeNote xml:lang="en">Each plan evaluation evaluates exactly one candidate orchestration plan.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;PlanMetric">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric">
 		<rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure"/>
 		<rdfs:label xml:lang="en">plan metric</rdfs:label>
 		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MaterialMeasure"/>
 		<skos:definition xml:lang="en">measure used in an evaluation to characterize an orchestration plan on a specified dimension</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Precondition">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;ExecutionConstraint"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Precondition">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExecutionConstraint"/>
 		<rdfs:label xml:lang="en">precondition</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">execution constraint that must hold for a tool or skill to be validly invoked</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;PreferenceSetting">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PreferenceSetting">
 		<rdfs:label xml:lang="en">preference setting</rdfs:label>
 		<skos:definition xml:lang="en">configuration item expressing a user preference that can be used to derive a user constraint</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ProductList">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ProductList">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">product list</rdfs:label>
 		<skos:definition xml:lang="en">information artifact containing product records retrieved for one or more candidate supplements</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ReferenceMaterial">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ReferenceMaterial">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillResource"/>
 		<rdfs:label xml:lang="en">reference material</rdfs:label>
 		<dct:source xml:lang="en">X. Li et al., “SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks,” arXiv:2602.12670, 2026, section 2 (Skill Definition) and Table 1. https://arxiv.org/abs/2602.12670</dct:source>
 		<skos:definition xml:lang="en">skill resource that provides knowledge or contextual information an agent uses when applying a skill to perform a task</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;RejectedOrchestrationPlan">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/RejectedOrchestrationPlan">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">rejected orchestration plan</rdfs:label>
-		<owl:disjointWith rdf:resource="&oe-agtorch;SelectedOrchestrationPlan"/>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SelectedOrchestrationPlan"/>
 		<skos:definition xml:lang="en">candidate orchestration plan that has not been selected for execution</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Request">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Request">
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty>
 					<rdf:Description>
-						<owl:inverseOf rdf:resource="&oe-agtorch;addresses"/>
+						<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/addresses"/>
 					</rdf:Description>
 				</owl:onProperty>
-				<owl:onClass rdf:resource="&oe-agtorch;SelectedOrchestrationPlan"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SelectedOrchestrationPlan"/>
 				<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;expresses"/>
-				<owl:onClass rdf:resource="&oe-agtorch;InformationRequirement"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/expresses"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationRequirement"/>
 				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -633,23 +633,23 @@
 		<skos:scopeNote xml:lang="en">A request expresses at least one information requirement and is addressed by at most one selected orchestration plan.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;RequiredInput">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Input"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/RequiredInput">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Input"/>
 		<rdfs:label xml:lang="en">required input</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;Input">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Input">
 					</rdf:Description>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe-agtorch;fills"/>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/fills"/>
 						<owl:someValuesFrom>
 							<owl:Class>
 								<owl:intersectionOf rdf:parseType="Collection">
-									<rdf:Description rdf:about="&oe-agtorch;Parameter">
+									<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter">
 									</rdf:Description>
 									<owl:Restriction>
-										<owl:onProperty rdf:resource="&oe-agtorch;isRequired"/>
+										<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/isRequired"/>
 										<owl:hasValue rdf:datatype="&xsd;boolean">true</owl:hasValue>
 									</owl:Restriction>
 								</owl:intersectionOf>
@@ -662,7 +662,7 @@
 		<skos:definition xml:lang="en">input that must be supplied for a tool or skill invocation to be accepted</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;RequirementSatisfyingCapability">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/RequirementSatisfyingCapability">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">requirement-satisfying capability</rdfs:label>
 		<dct:source xml:lang="en">OE_6_TeamAgenticCapabilities_UseCase.docx, Section VII, competency questions 1, 3 and 5</dct:source>
@@ -672,8 +672,8 @@
 					<rdf:Description rdf:about="&agento;Capability">
 					</rdf:Description>
 					<owl:Restriction>
-						<owl:onProperty rdf:resource="&oe-agtorch;satisfiesRequirement"/>
-						<owl:someValuesFrom rdf:resource="&oe-agtorch;InformationRequirement"/>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/satisfiesRequirement"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationRequirement"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
 			</owl:Class>
@@ -682,43 +682,43 @@
 		<skos:scopeNote xml:lang="en">Defined class. Competency question 5 uses it to explain that a capability is in a plan because it satisfies an information requirement of the request.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;SafetyAssessment">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Assessment"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SafetyAssessment">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Assessment"/>
 		<rdfs:label xml:lang="en">safety assessment</rdfs:label>
 		<skos:definition xml:lang="en">assessment recording the result of checking a candidate supplement against relevant safety constraints</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">Version 1.1 term list row; genus changed from information artifact to assessment</cmns-av:adaptedFrom>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Script">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;ExecutableResource"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Script">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExecutableResource"/>
 		<rdfs:label xml:lang="en">script</rdfs:label>
 		<dct:source xml:lang="en">X. Li et al., “SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks,” arXiv:2602.12670, 2026, section 2 (Skill Definition) and Table 1. https://arxiv.org/abs/2602.12670</dct:source>
 		<skos:definition xml:lang="en">executable resource that specifies the computational operations an agent can invoke when applying a skill to perform a task</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;SearchQuery">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;InformationArtifact"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SearchQuery">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<rdfs:label xml:lang="en">search query</rdfs:label>
 		<skos:definition xml:lang="en">information artifact specifying search terms or criteria submitted to an information-retrieval tool</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;SelectedOrchestrationPlan">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SelectedOrchestrationPlan">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">selected orchestration plan</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:intersectionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;CandidateOrchestrationPlan">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan">
 					</rdf:Description>
 					<owl:Restriction>
 						<owl:onProperty>
 							<rdf:Description>
-								<owl:inverseOf rdf:resource="&oe-agtorch;evaluates"/>
+								<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/evaluates"/>
 							</rdf:Description>
 						</owl:onProperty>
 						<owl:someValuesFrom>
 							<owl:Restriction>
-								<owl:onProperty rdf:resource="&oe-agtorch;hasRank"/>
+								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasRank"/>
 								<owl:hasValue rdf:datatype="&xsd;integer">1</owl:hasValue>
 							</owl:Restriction>
 						</owl:someValuesFrom>
@@ -730,25 +730,25 @@
 		<skos:scopeNote xml:lang="en">The scoring step computes the rank; the reasoner then classifies the plan whose evaluation has rank 1 as selected (competency question 1).</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Server">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Server">
 		<rdfs:label xml:lang="en">server</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">software component that exposes computational resources and operations to clients through a communication protocol</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Skill">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill">
 		<rdfs:label xml:lang="en">skill</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<skos:definition xml:lang="en">specification of a focused agent behavior that can be applied to perform a class of tasks</skos:definition>
 		<skos:scopeNote xml:lang="en">A reusable behavior specification, not an invocation. Included as a shared reference from Figure 3; Skill is not modeled as a subclass of Capability, following the conceptual model Figure 3 decision.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;SkillInvocation">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Invocation"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillInvocation">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Invocation"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;invokes"/>
-				<owl:someValuesFrom rdf:resource="&oe-agtorch;Skill"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/invokes"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">skill invocation</rdfs:label>
@@ -756,51 +756,51 @@
 		<skos:definition xml:lang="en">invocation event in which a specific skill is selected and applied to perform a task</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;SkillResource">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillResource">
 		<rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Resource"/>
 		<rdfs:label xml:lang="en">skill resource</rdfs:label>
 		<skos:definition xml:lang="en">resource used to aid in skill execution</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;SoftConstraint">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;UserConstraint"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SoftConstraint">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/UserConstraint"/>
 		<rdfs:label xml:lang="en">soft constraint</rdfs:label>
 		<skos:definition xml:lang="en">user constraint that represents a preference or desirable condition that may be relaxed when evaluating an orchestration plan</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;SystemInteraction">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SystemInteraction">
 		<rdfs:subClassOf rdf:resource="&agento;Capability"/>
 		<rdfs:label xml:lang="en">system interaction</rdfs:label>
 		<dct:source xml:lang="en">I. O. Mulang, J. Thaller, T. Trivedi, L. Heling, and F. Sasaki, “Representing Agentic Tools in Knowledge Graphs for Structure-Aware Tool Discovery Under Tool Overload,” NORA 2026 workshop, IJCAI-ECAI 2026. https://openreview.net/forum?id=7MVoH9Y3mi</dct:source>
 		<skos:definition xml:lang="en">capability that performs an operation on or through an external computational system</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Template">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;SkillResource"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Template">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillResource"/>
 		<rdfs:label xml:lang="en">template</rdfs:label>
 		<dct:source xml:lang="en">X. Li et al., “SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks,” arXiv:2602.12670, 2026, section 2 (Skill Definition) and Table 1. https://arxiv.org/abs/2602.12670</dct:source>
 		<skos:definition xml:lang="en">skill resource that provides the expected structure and organization of an information artifact produced when an agent applies a skill</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;TokenCost">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/TokenCost">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<rdfs:label xml:lang="en">token cost</rdfs:label>
 		<skos:definition xml:lang="en">plan metric expressing monetary cost incurred for processing input tokens and generating output tokens during agent execution, calculated using the applicable model or provider rates</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;Tool">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Tool">
 		<rdfs:subClassOf rdf:resource="&process;Process"/>
 		<rdfs:subClassOf rdf:resource="&agento;Tool"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;hasCapability"/>
-				<owl:allValuesFrom rdf:resource="&oe-agtorch;Capability"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasCapability"/>
+				<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Capability"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&process;hasParameter"/>
-				<owl:allValuesFrom rdf:resource="&oe-agtorch;Parameter"/>
+				<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">tool</rdfs:label>
@@ -808,30 +808,30 @@
 		<skos:definition xml:lang="en">callable computational resource that performs a defined operation when invoked</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ToolCallCount">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ToolCallCount">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<rdfs:label xml:lang="en">tool call count</rdfs:label>
 		<skos:definition xml:lang="en">plan metric recording the number of tool invocations attributed to an orchestration plan</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ToolCost">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;PlanMetric"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ToolCost">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<rdfs:label xml:lang="en">tool cost</rdfs:label>
 		<skos:definition xml:lang="en">plan metric expressing cost attributable to invoking and using a tool in an agent workflow, including applicable per-use charges and associated model-processing costs</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;ToolInvocation">
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;Invocation"/>
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ToolInvocation">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Invocation"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;invokes"/>
-				<owl:someValuesFrom rdf:resource="&oe-agtorch;Tool"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/invokes"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Tool"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;isPartOf"/>
-				<owl:someValuesFrom rdf:resource="&oe-agtorch;SkillInvocation"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/isPartOf"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillInvocation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">tool invocation</rdfs:label>
@@ -839,15 +839,15 @@
 		<skos:definition xml:lang="en">invocation event in which a specific tool is requested to perform its operation using supplied input</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&oe-agtorch;UserConstraint">
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/UserConstraint">
 		<rdfs:subClassOf rdf:resource="&agento;Constraint"/>
 		<rdfs:label xml:lang="en">user constraint</rdfs:label>
 		<owl:equivalentClass>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;HardConstraint">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/HardConstraint">
 					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;SoftConstraint">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SoftConstraint">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
@@ -856,75 +856,75 @@
 		<skos:scopeNote xml:lang="en">Every user constraint is either a hard constraint or a soft constraint, and no constraint is both.</skos:scopeNote>
 	</owl:Class>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;addresses">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/addresses">
 		<rdfs:label xml:lang="en">addresses</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Request"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationPlan"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Request"/>
 		<skos:definition xml:lang="en">relation from an orchestration plan to the request it is intended to handle</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;conflictsWith">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/conflictsWith">
 		<rdfs:label xml:lang="en">conflicts with</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;SoftConstraint"/>
-		<rdfs:range rdf:resource="&oe-agtorch;SoftConstraint"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SoftConstraint"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SoftConstraint"/>
 		<skos:definition xml:lang="en">relationship between soft constraints whose preferences cannot both be fully satisfied in the same planning context</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;constrains">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/constrains">
 		<rdfs:label xml:lang="en">constrains</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;InputConstraint"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Parameter"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InputConstraint"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter"/>
 		<skos:definition xml:lang="en">relationship linking an input constraint to the parameter whose permitted input values it restricts</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;consumes">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/consumes">
 		<rdfs:label xml:lang="en">consumes</rdfs:label>
 		<rdfs:domain rdf:resource="&agento;Task"/>
-		<rdfs:range rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<skos:definition xml:lang="en">relation from a task to an information artifact it requires or uses as input</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;dependsOn">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/dependsOn">
 		<rdfs:label xml:lang="en">depends on</rdfs:label>
 		<rdfs:domain rdf:resource="&agento;Task"/>
 		<rdfs:range rdf:resource="&agento;Task"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;consumes">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/consumes">
 			</rdf:Description>
 			<rdf:Description>
-				<owl:inverseOf rdf:resource="&oe-agtorch;produces"/>
+				<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/produces"/>
 			</rdf:Description>
 		</owl:propertyChainAxiom>
 		<skos:definition xml:lang="en">relation from a task to another task that produces an information artifact the first task consumes</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">Use case CQ 2 step 3: “A workflow step is dependent on another if it consumes an InformationArtifact produced by that step”; AgentO v0.2 requiresResource and producedResource; OWL 2 property chain</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;evaluates">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/evaluates">
 		<rdfs:label xml:lang="en">evaluates</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figures 1 and 6 (evaluates); multiple-criteria decision analysis, https://www.sciencedirect.com/topics/computer-science/multiple-criteria-decision-analysis</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
-		<rdfs:range rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanEvaluation"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan"/>
 		<skos:definition xml:lang="en">relation from a plan evaluation to the candidate orchestration plan whose metrics and criteria scores it records</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;exposes">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/exposes">
 		<rdfs:label xml:lang="en">exposes</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;Server"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Tool"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Server"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Tool"/>
 		<skos:definition xml:lang="en">relationship linking a server to a tool it makes available for discovery or invocation</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;expresses">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/expresses">
 		<rdfs:label xml:lang="en">expresses</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;Request"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Request"/>
 		<rdfs:range>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
 					<rdf:Description rdf:about="&agento;Goal">
 					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;InformationRequirement">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationRequirement">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
@@ -932,14 +932,14 @@
 		<skos:definition xml:lang="en">relationship linking a request to the goal or information requirement communicated in it</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;fills">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/fills">
 		<rdfs:label xml:lang="en">fills</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;InformationArtifact"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Parameter"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter"/>
 		<skos:definition xml:lang="en">relation from an information artifact to the parameter for which it supplies a value</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasCapability">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasCapability">
 		<rdfs:label xml:lang="en">has capability</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<rdfs:range rdf:resource="&agento;Capability"/>
@@ -947,10 +947,10 @@
 		<skos:scopeNote xml:lang="en">Shared by tools and skills in Figures 3 and 4. No Tool-only global domain is asserted, because that would classify every skill using this property as a Tool. Figure 4 constrains the property locally on Tool.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasDirection">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasDirection">
 		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label xml:lang="en">has direction</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/DecisionCriterion"/>
 		<rdfs:range>
 			<rdfs:Datatype>
 				<owl:oneOf>
@@ -969,65 +969,65 @@
 		<skos:definition xml:lang="en">indicates whether a decision criterion should be minimized or maximized</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasMeasurement">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasMeasurement">
 		<rdfs:label xml:lang="en">has measurement</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
-		<rdfs:range rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanEvaluation"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<skos:definition xml:lang="en">relates a plan evaluation to a metric used in the evaluation</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasPrecondition">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasPrecondition">
 		<rdfs:label xml:lang="en">has precondition</rdfs:label>
 		<dct:source xml:lang="en">D. Martin et al., OWL-S: Semantic Markup for Web Services, W3C Member Submission, 2004, section 5.1 (hasPrecondition). https://www.w3.org/submissions/OWL-S/</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;Skill"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Precondition"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Precondition"/>
 		<skos:definition xml:lang="en">relation from a skill to a precondition that must hold before the skill can be validly applied</skos:definition>
 		<skos:scopeNote xml:lang="en">Tools use OWL-S process:hasPrecondition, whose domain is process:Process. This property serves skills, which are not processes, as in conceptual model Figure 3.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasPriority">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasPriority">
 		<rdfs:label xml:lang="en">has priority</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;SoftConstraint"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SoftConstraint"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
 		<skos:definition xml:lang="en">relative importance of two or more soft constraints, which determines the selection of an orchestration plan</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasRank">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasRank">
 		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
 		<rdfs:label xml:lang="en">has rank</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanEvaluation"/>
 		<rdfs:range rdf:resource="&xsd;integer"/>
 		<skos:definition xml:lang="en">ranking position assigned to a plan evaluation</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasResource">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasResource">
 		<rdfs:label xml:lang="en">has resource</rdfs:label>
 		<dct:source xml:lang="en">X. Li et al., “SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks,” arXiv:2602.12670, 2026, section 2 (Skill Definition) and Table 1. https://arxiv.org/abs/2602.12670</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;Skill"/>
-		<rdfs:range rdf:resource="&oe-agtorch;SkillResource"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillResource"/>
 		<skos:definition xml:lang="en">relation from a skill to a skill resource included in its reusable specification or package</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasScore">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasScore">
 		<rdfs:label xml:lang="en">has score</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanEvaluation"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 		<skos:definition xml:lang="en">numerical evaluation score assigned to a plan evaluation</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasStep">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasStep">
 		<rdfs:label xml:lang="en">has step</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
-		<rdfs:range rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationPlan"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationWorkflowStep"/>
 		<skos:definition xml:lang="en">relationship connecting an orchestration plan with one of its constituent steps</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasTask">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasTask">
 		<rdfs:label xml:lang="en">has task</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationPlan"/>
 		<rdfs:range rdf:resource="&agento;Task"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;hasStep">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasStep">
 			</rdf:Description>
 			<rdf:Description rdf:about="&agento;hasAssociatedTask">
 			</rdf:Description>
@@ -1036,45 +1036,45 @@
 		<cmns-av:adaptedFrom xml:lang="en">has step composed with AgentO v0.2 hasAssociatedTask (“Links a workflow step to the task it corresponds to.”); OWL 2 property chain</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;hasType">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasType">
 		<rdfs:label xml:lang="en">has type</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;Parameter"/>
-		<rdfs:range rdf:resource="&oe-agtorch;ParameterType"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ParameterType"/>
 		<skos:definition xml:lang="en">relationship linking a parameter to the class or datatype that specifies its permitted values</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasUnit">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasUnit">
 		<rdfs:label xml:lang="en">has unit</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<rdfs:range rdf:resource="&xsd;string"/>
 		<skos:definition xml:lang="en">unit of measurement associated with a plan metric</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasValue">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasValue">
 		<rdfs:label xml:lang="en">has value</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;PlanMetric"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanMetric"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 		<skos:definition xml:lang="en">numerical value of a plan metric</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasWeight">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/hasWeight">
 		<rdfs:label xml:lang="en">has weight</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/DecisionCriterion"/>
 		<rdfs:range rdf:resource="&xsd;decimal"/>
 		<skos:definition xml:lang="en">relative importance assigned to a decision criterion</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;invokes">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/invokes">
 		<rdfs:label xml:lang="en">invokes</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Invocation"/>
 		<rdfs:range>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&oe-agtorch;Skill">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill">
 					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;Tool">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Tool">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
@@ -1082,61 +1082,61 @@
 		<skos:definition xml:lang="en">links an invocation to the tool or skill specification executed by that occurrence</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;isMeasuredBy">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/isMeasuredBy">
 		<rdfs:label xml:lang="en">is measured by</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;SoftConstraint"/>
-		<rdfs:range rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SoftConstraint"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/DecisionCriterion"/>
 		<skos:definition xml:lang="en">relates a soft constraint to a decision criterion used to measure it</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;isPartOf">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/isPartOf">
 		<rdfs:label xml:lang="en">is part of</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;ToolInvocation"/>
-		<rdfs:range rdf:resource="&oe-agtorch;SkillInvocation"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ToolInvocation"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SkillInvocation"/>
 		<skos:definition xml:lang="en">links a tool invocation to the skill invocation that made that tool call</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&oe-agtorch;isRequired">
+	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/isRequired">
 		<rdfs:label xml:lang="en">is required</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;Parameter"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Parameter"/>
 		<rdfs:range rdf:resource="&xsd;boolean"/>
 		<skos:definition xml:lang="en">boolean attribute of a parameter indicating whether an input must be supplied for invocation</skos:definition>
 		<skos:scopeNote xml:lang="en">true marks a required parameter and false an optional one. An absent assertion means unknown. This metadata does not perform runtime validation under OWL&apos;s open-world semantics.</skos:scopeNote>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;performedBySkill">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/performedBySkill">
 		<rdfs:label xml:lang="en">performed by skill</rdfs:label>
 		<rdfs:domain rdf:resource="&agento;Task"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Skill"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Skill"/>
 		<skos:definition xml:lang="en">relation from a task to the skill that carries it out</skos:definition>
 		<cmns-av:adaptedFrom xml:lang="en">AgentO v0.2 performedBy (“Indicates the tool/agent that performs the task in a step.”); named after performedByAgent</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;produces">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/produces">
 		<rdfs:label xml:lang="en">produces</rdfs:label>
 		<rdfs:domain rdf:resource="&agento;Task"/>
-		<rdfs:range rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationArtifact"/>
 		<skos:definition xml:lang="en">relation from a task to an information artifact it yields as output</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;records">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/records">
 		<rdfs:label xml:lang="en">records</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
-		<rdfs:domain rdf:resource="&oe-agtorch;ExecutionTrace"/>
-		<rdfs:range rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExecutionTrace"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Invocation"/>
 		<skos:definition xml:lang="en">links an execution trace to an invocation included in its record</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;satisfiesConstraint">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/satisfiesConstraint">
 		<rdfs:label xml:lang="en">satisfies constraint</rdfs:label>
 		<rdfs:domain>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
 					<rdf:Description rdf:about="&agento;Capability">
 					</rdf:Description>
-					<rdf:Description rdf:about="&oe-agtorch;OrchestrationPlan">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/OrchestrationPlan">
 					</rdf:Description>
 				</owl:unionOf>
 			</owl:Class>
@@ -1145,22 +1145,22 @@
 		<skos:definition xml:lang="en">relation from an orchestration plan or a capability to a constraint that it satisfies</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;satisfiesRequirement">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/satisfiesRequirement">
 		<rdfs:label xml:lang="en">satisfies requirement</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_UseCase.pdf, Section VII, competency questions 3 and 5.</dct:source>
 		<rdfs:domain rdf:resource="&agento;Capability"/>
-		<rdfs:range rdf:resource="&oe-agtorch;InformationRequirement"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationRequirement"/>
 		<skos:definition xml:lang="en">relation from a capability to an information requirement that the capability meets</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;usesCriterion">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/usesCriterion">
 		<rdfs:label xml:lang="en">uses criterion</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;PlanEvaluation"/>
-		<rdfs:range rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/PlanEvaluation"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/DecisionCriterion"/>
 		<skos:definition xml:lang="en">relationship linking a plan evaluation to a decision criterion applied in that evaluation</skos:definition>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;usesTool">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/usesTool">
 		<rdfs:label xml:lang="en">uses tool</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
 		<rdfs:range rdf:resource="&agento;Tool"/>
@@ -1168,10 +1168,10 @@
 		<skos:scopeNote xml:lang="en">Shared by Figures 3 and 4. No global domain is imposed, so skill use does not classify the skill as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&oe-agtorch;violatesConstraint">
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/violatesConstraint">
 		<rdfs:label xml:lang="en">violates constraint</rdfs:label>
-		<rdfs:domain rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
-		<rdfs:range rdf:resource="&oe-agtorch;HardConstraint"/>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/HardConstraint"/>
 		<skos:definition xml:lang="en">relation from a candidate orchestration plan to a hard constraint that the plan fails to satisfy, which disqualifies the plan</skos:definition>
 		<skos:scopeNote xml:lang="en">A soft constraint is never violated in this sense: it is measured by a decision criterion and only lowers the plan&apos;s score and rank.</skos:scopeNote>
 	</owl:ObjectProperty>
@@ -1182,50 +1182,50 @@
 			</rdf:Description>
 			<rdf:Description rdf:about="http://w3id.org/beam/core#Model">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;ExecutableResource">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ExecutableResource">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;Instruction">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Instruction">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;ReferenceMaterial">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ReferenceMaterial">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;Template">
-			</rdf:Description>
-		</owl:members>
-	</owl:AllDisjointClasses>
-	<owl:AllDisjointClasses>
-		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;ContentGeneration">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;DataProcessing">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;InformationAccess">
-			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;SystemInteraction">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Template">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;EvidenceCoverage">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ContentGeneration">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;Latency">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/DataProcessing">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;TokenCost">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/InformationAccess">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;ToolCallCount">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/SystemInteraction">
 			</rdf:Description>
-			<rdf:Description rdf:about="&oe-agtorch;ToolCost">
+		</owl:members>
+	</owl:AllDisjointClasses>
+	<owl:AllDisjointClasses>
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/EvidenceCoverage">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/Latency">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/TokenCost">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ToolCallCount">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/ToolCost">
 			</rdf:Description>
 		</owl:members>
 	</owl:AllDisjointClasses>
 	<owl:Class>
-		<rdfs:subClassOf rdf:resource="&oe-agtorch;RejectedOrchestrationPlan"/>
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/RejectedOrchestrationPlan"/>
 		<owl:intersectionOf rdf:parseType="Collection">
-			<rdf:Description rdf:about="&oe-agtorch;CandidateOrchestrationPlan">
+			<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/CandidateOrchestrationPlan">
 			</rdf:Description>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&oe-agtorch;violatesConstraint"/>
-				<owl:someValuesFrom rdf:resource="&oe-agtorch;HardConstraint"/>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/violatesConstraint"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/HardConstraint"/>
 			</owl:Restriction>
 		</owl:intersectionOf>
 	</owl:Class>
