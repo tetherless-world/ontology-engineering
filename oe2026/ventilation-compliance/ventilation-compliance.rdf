@@ -88,6 +88,17 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
+        <rdfs:label xml:lang="en">affects</rdfs:label>
+        <skos:definition xml:lang="en">relation that holds between a building service component and a measurement when the component is capable of influencing the value of that measurement under normal operating conditions.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesTo -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/appliesTo">
@@ -591,6 +602,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <skos:definition>device, operated electrically, pneumatically or hydraulically, that changes the position of a movable device such as a valve or damper</skos:definition>
+        <skos:note xml:lang="en">A subset of the nine permitted measurements, determined by its operated equipment. For example, an outdoor-air-damper actuator can influence OutdoorAirFlowRate and AHUOutdoorAirFlowRate.</skos:note>
     </owl:Class>
     
 
@@ -599,6 +611,18 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Boiler">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -614,6 +638,18 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Chiller">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -636,6 +672,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <skos:definition>device that regulates a system or component in normal operation, either manually or automatically</skos:definition>
+        <skos:note xml:lang="en">A subset of the nine permitted measurements, determined by its controlled equipment. Materialize only the measurements influenced through its actual control connections.</skos:note>
     </owl:Class>
     
 
@@ -644,6 +681,42 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Fan">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUOutdoorAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUSupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -881,6 +954,18 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
             </owl:Restriction>
@@ -919,6 +1004,24 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop"/>
             </owl:Restriction>
@@ -933,6 +1036,18 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DirectExpansionUnit">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -982,6 +1097,18 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem"/>
             </owl:Restriction>
@@ -996,6 +1123,18 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustFan">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1014,6 +1153,18 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem"/>
             </owl:Restriction>
@@ -1028,6 +1179,24 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Filter">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUSupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1080,6 +1249,18 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource"/>
             </owl:Restriction>
@@ -1104,6 +1285,18 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingCoil">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1214,6 +1407,30 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUOutdoorAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
             </owl:Restriction>
@@ -1254,6 +1471,18 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorDischarge">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1357,6 +1586,18 @@
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit"/>
             </owl:Restriction>
@@ -1371,6 +1612,42 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirDamper">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUOutdoorAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1397,6 +1674,18 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1468,6 +1757,30 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUSupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1580,6 +1893,24 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/VariableAirVolumeBox">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/affects"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
