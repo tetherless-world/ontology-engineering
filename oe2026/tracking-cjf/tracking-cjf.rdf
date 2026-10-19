@@ -200,7 +200,14 @@
     <owl:ObjectProperty rdf:about="http://semanticscience.org/resource/SIO_000206">
         <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000772"/>
         <owl:inverseOf rdf:resource="http://semanticscience.org/resource/SIO_000208"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
         <dc:identifier>SIO_000206</dc:identifier>
         <dct:description xml:lang="en">is supported by is a relation between a proposition and something that supports the truth of the assertion.</dct:description>
@@ -408,6 +415,15 @@
         <rdfs:label>challenges</rdfs:label>
         <skos:definition>provides evidence or reasoning that weakens or rebuts the epistemic standing of</skos:definition>
         <skos:prefLabel>challenges</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasEvidence -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasEvidence">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationMilestone"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/TextSpan"/>
     </owl:ObjectProperty>
     
 
@@ -764,6 +780,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Address -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Address">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Addressed -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Addressed">
@@ -786,6 +810,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Answer -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Answer">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ResponseTo"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Answered -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Answered">
@@ -793,6 +825,14 @@
         <rdfs:label>answered</rdfs:label>
         <skos:definition>state of an Information Request whose full information need is satisfied by one or more contributions</skos:definition>
         <skos:prefLabel>answered</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Challenge -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Challenge">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship"/>
     </owl:Class>
     
 
@@ -860,6 +900,14 @@
         <rdfs:label>collective judgment formation milestone</rdfs:label>
         <skos:definition>persistent semantic object representing a consequential contribution to the evolving collective judgment, such as an information request, issue, option, claim, expressed position, or outcome</skos:definition>
         <skos:prefLabel>collective judgment formation milestone</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/deliberation/ontology#Contribution"/>
     </owl:Class>
     
 
@@ -1136,6 +1184,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/PositionToward -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/PositionToward">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Rejected -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Rejected">
@@ -1147,6 +1203,14 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Resolution -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Resolution">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Address"/>
+    </owl:Class>
+    
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Resolved -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Resolved">
@@ -1154,6 +1218,14 @@
         <rdfs:label>resolved</rdfs:label>
         <skos:definition>state of an Issue evidenced by a group Outcome that explicitly settles the concern it represents</skos:definition>
         <skos:prefLabel>resolved</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ResponseTo -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ResponseTo">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship"/>
     </owl:Class>
     
 
@@ -1230,6 +1302,14 @@
         <skos:definition>record that associates a state-bearing collective judgment formation milestone with one State at a specified Utterance and with the Text Span evidence supporting that state assignment</skos:definition>
         <skos:prefLabel>state assignment</skos:prefLabel>
         <cmns-av:usageNote>Preserve earlier assignment records when a milestone changes state. Assignment records include both initial states and subsequent changes.</cmns-av:usageNote>
+    </owl:Class>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Support -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Support">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationRelationship"/>
     </owl:Class>
     
 
