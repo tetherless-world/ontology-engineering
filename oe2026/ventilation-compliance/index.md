@@ -84,7 +84,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>2. Term List</td>
-    <td>(a) <a href="files/week5/Curated Term List OE 5.xlsm">Mapped Vocabularies</a> </td>
+    <td>(a) <a href="https://drive.google.com/file/d/1gwOJ5ys2GbuSqksmhdsI7tTmq4VHw1iw/view?usp=sharing" target="_blank" rel="noopener noreferrer">Mapped Vocabularies</a> </td>
   </tr>
   <tr>
     <td>2. Competency Questions</td>
@@ -92,15 +92,15 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>3. Presentations:</td>
-    <td>(a) <a href="files/week5/OE 5 Team HVCC Presentation.pptx">Project presentations during class</a> </td>
+    <td>(a) <a href="https://docs.google.com/presentation/d/1wSRBm1VDHqOXQwgLubhackzqNtZPWQUAJs-v2jYV-0A/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project presentations during class</a> </td>
   </tr>
   <tr>
     <td>4. Conceptual Diagram:</td>
-    <td>(a) <a href="files/week5/OE 5 Team HVCC Conceptual Model.pptx">Project presentations during class</a> </td>
+    <td>(a) <a href="https://docs.google.com/presentation/d/1oacoUe-KSjV9C4Cw9PoMRNOkiEssAn9xXeb80DQvkdA/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project presentations during class</a> </td>
   </tr>
   <tr>
     <td>5. Use Case:</td>
-    <td>(a) <a href="files/week5/OE 5 Team HVCC Use Case.docx">Project presentations during class</a> </td>
+    <td>(a) <a href="https://docs.google.com/document/d/1aCE5KPatFbRZ1qgsTR4XILGpqkdOzrEYLxcTxji3kBo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project presentations during class</a> </td>
   </tr>/table>
 
 ## Acknowledgements
