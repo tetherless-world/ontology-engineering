@@ -336,6 +336,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/addresses -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/addresses">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -346,6 +347,10 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/makesAddresses"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isAimedAtAddresses"/>
+        </owl:propertyChainAxiom>
         <rdfs:label>addresses</rdfs:label>
         <skos:definition>substantively engages with the concern represented by</skos:definition>
         <skos:prefLabel>addresses</skos:prefLabel>
@@ -539,6 +544,18 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isAimedAt">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is aimed at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isAimedAtAddresses -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isAimedAtAddresses">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/isAimedAt"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Address"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Issue"/>
+        <rdfs:label>is aimed at addresses</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -600,6 +617,26 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/makes">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>makes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/makesAddresses -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/makesAddresses">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/makes"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Claim"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Option"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Outcome"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Address"/>
+        <rdfs:label>makes addresses</rdfs:label>
     </owl:ObjectProperty>
     
 
