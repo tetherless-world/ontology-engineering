@@ -180,3 +180,80 @@ options are available. Missing references, incompatible domains/ranges, duplicat
 rows, or conflicting existing individuals stop the import before writing RDF.
 Repeating an unchanged import leaves the RDF bytes unchanged. The workbook,
 schema, unrequested relationship types, and existing individual data are preserved.
+
+## Import Open state assignments
+
+`open_states_to_individuals.py` reads only the `States` worksheet and imports rows
+whose `state` is exactly `Open`:
+
+```sh
+python3 open_states_to_individuals.py '/Users/devindesilva/Downloads/Annotation workbook CJF (1).xlsx'
+```
+
+Each Open row creates its own state individual typed as the existing `Open`
+class and a separate `StateAssignment`. For example,
+`MAR11_B-M0002_OpenAtTurn364` links through `assignedState` to
+`MAR11_B-M0002_OpenStateAtTurn364`. Its milestone links to the assignment with
+`hasStateAssignment`; the assignment also records
+`assignedAtUtterance` pointing to the existing utterance for `effective_turn_id`,
+and `hasStateEvidence` links for every listed evidence turn. Turn IDs are resolved
+through original source identifiers, so source 363 links to current turn 364.
+
+Evidence spans contain the entire existing utterance text and link back through
+`isPartOfUtterance`. Matching full-text spans from the relationship import are
+reused. Reasons are copied verbatim to assignment `rdfs:comment` annotations,
+alongside source row/turn provenance. Worksheet text is treated as data.
+
+The importer compares effective turns within the States tab to distinguish
+historical Open assignments from the latest state. It adds the milestone's
+current `hasState` assertion pointing to that assignment's own state individual
+only when its latest recorded state is Open. Later Answered or Addressed entries do not turn into Open current states;
+their non-Open assignments are outside this import. Initial assignments have no
+`hasPreviousAssignment` link.
+
+For this workbook, the import creates 15 separate Open state individuals and 15
+Open assignments: 10 historical and 5 current. The current Open milestones are
+M0016, M0038, M0047, M0049, and M0079. Effective turns, evidence, and reasons remain
+on each assignment, so every state has its own assignment context for later
+classification rules.
+It reuses 16 full-utterance spans and creates 2 more for source turns 375 and 409.
+
+The same `--individuals`, `--ontology`, `--output`, `--backup`, and `--report`
+options are available. Repeat runs preserve the RDF bytes. The schema, workbook,
+existing individuals, and other worksheet contents are preserved. The converter
+checks mapping and reference integrity; OWL consistency is a separate reasoner
+check.
+
+## Import Under Consideration and Unassessed initial states
+
+`initial_states_to_individuals.py` reads only `States` and imports rows whose
+state is exactly `Under Consideration` or `Unassessed`:
+
+```sh
+python3 initial_states_to_individuals.py '/Users/devindesilva/Downloads/Annotation workbook CJF (1).xlsx'
+```
+
+Each row creates a distinct state individual typed `UnderConsideration` for an
+Option, or `Unassessed` for a Claim, and its own `StateAssignment`. For example,
+`MAR11_B-M0003_UnderConsiderationAtTurn364` has `assignedState` pointing to
+`MAR11_B-M0003_UnderConsiderationStateAtTurn364`. The milestone connects through
+`hasStateAssignment`. Assignments have `assignedAtUtterance`, full-utterance
+`hasStateEvidence` spans, verbatim reasons, and source row/turn annotations, using
+the same source-turn lookup and evidence reuse as Open.
+
+These are initial assignments: the converter requires their effective turn to be
+the earliest state entry for the milestone and creates no `hasPreviousAssignment`
+assertion. Each row has its own state individual. Only the latest recorded state
+receives a milestone `hasState` assertion; initial states with later transitions
+remain historical. The converter creates no later-state assignments.
+
+For this workbook, there are 11 Under Consideration assignments (10 current,
+1 historical) and 29 Unassessed assignments (25 current, 4 historical). M0072
+later becomes Selected; M0012, M0028, M0065, and M0066 have later claim states.
+M0020 has no Unassessed row, so none is invented for it. Existing Open data is
+preserved; its original script uses this shared implementation in Open-only mode.
+
+The same `--individuals`, `--ontology`, `--output`, `--backup`, and `--report`
+options are available. The default backup suffix is `.initial-states.bak`.
+An unchanged rerun leaves the RDF bytes unchanged. The workbook, main ontology,
+and other worksheet contents are preserved.
