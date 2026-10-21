@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Append dialogue individuals to the existing Protégé RDF/XML file.
 
-Uses only the Python standard library. The existing three example individuals,
-ontology header, namespaces, imports, comments, and unrelated statements are
-preserved. See README.md in this directory for the mapping and usage.
+Uses only the Python standard library. Utterance IRIs use their integer turn
+numbers. The ontology header, namespaces, imports, comments, and unrelated
+statements are preserved. See README.md for the mapping and usage.
 """
 
 from __future__ import annotations
@@ -96,7 +96,6 @@ def make_individuals(
     speaker_owners: dict[str, str] = {}
     timestamps: dict[str, Individual] = {}
     utterances: list[Individual] = []
-    used_utterance_iris: set[str] = set()
     source_numbers: set[str] = set()
     time_counts: Counter[str] = Counter()
     mappings: list[dict] = []
@@ -122,12 +121,7 @@ def make_individuals(
         stamp = timestamp.strftime("%H%M%S")
         datetime_iri = CJF + datetime_prefix + stamp
         timestamps.setdefault(datetime_iri, individual(datetime_iri, DT + "DateTime"))
-        utterance_iri = CJF + conversation_prefix + stamp
-        if utterance_iri in used_utterance_iris:
-            utterance_iri += "Turn" + source_number.replace(".", "_")
-        if utterance_iri in used_utterance_iris:
-            raise ValueError(f"Utterance IRI collision at source turn {source_number}")
-        used_utterance_iris.add(utterance_iri)
+        utterance_iri = CJF + conversation_prefix + f"Turn{sequence}"
         time_counts[stamp] += 1
 
         statements = [

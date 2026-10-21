@@ -26,7 +26,7 @@ EXAMPLE = f'''
     <owl:NamedIndividual rdf:about="{CJF}DTMar11194841">
         <rdf:type rdf:resource="{DT}DateTime"/>
     </owl:NamedIndividual>
-    <owl:NamedIndividual rdf:about="{CJF}Mar11GroupB194841">
+    <owl:NamedIndividual rdf:about="{CJF}Mar11GroupBTurn1">
         <rdf:type rdf:resource="{CJF}Utterance"/>
         <prov:wasAttributedTo rdf:resource="{CJF}Mar11GroupBModerator"/>
         <DatesAndTimes:hasDateTime rdf:resource="{CJF}DTMar11194841"/>
@@ -55,10 +55,10 @@ class ConversionTests(unittest.TestCase):
         self.assertEqual(actual, template)
         self.assertEqual(added, 0)
 
-    def test_same_second_retains_two_utterances_with_shared_datetime(self):
+    def test_turn_uris_are_distinct_when_timestamps_match(self):
         generated, report = make_individuals(dialogue(turn("35") + turn("36")), "Mar11GroupB")
         utterances = [item for item in generated if any(s.value == CJF + 'Utterance' for s in item.statements)]
-        self.assertEqual([item.iri for item in utterances], [CJF + 'Mar11GroupB200536', CJF + 'Mar11GroupB200536Turn36'])
+        self.assertEqual([item.iri for item in utterances], [CJF + 'Mar11GroupBTurn1', CJF + 'Mar11GroupBTurn2'])
         self.assertEqual(report['date_times'], 1)
         self.assertEqual(report['utterances'], 2)
         for item in utterances:
@@ -72,6 +72,8 @@ class ConversionTests(unittest.TestCase):
         self.assertEqual([value.text for value in values], ['1', '2', '3'])
         self.assertTrue(all(value.get('{' + RDF + '}datatype') == XSD + 'integer' for value in values))
         self.assertEqual([value.text for value in root.findall('.//{' + DC + '}identifier')], ['117.0', '117.1', '118'])
+        utterances = [node for node in root.findall('{' + OWL + '}NamedIndividual') if node.find('{' + CJF + '}hasTurnNumber') is not None]
+        self.assertEqual([node.get('{' + RDF + '}about') for node in utterances], [CJF + 'Mar11GroupBTurn1', CJF + 'Mar11GroupBTurn2', CJF + 'Mar11GroupBTurn3'])
 
     def test_second_run_is_byte_identical_and_preserves_header(self):
         generated, _ = make_individuals(dialogue(turn("1") + turn("2")), "Mar11GroupB")

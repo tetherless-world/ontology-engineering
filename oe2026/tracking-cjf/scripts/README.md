@@ -1,9 +1,10 @@
 # Import annotated dialogue XML into the individuals ontology
 
 `xml_to_individuals.py` uses Python 3.10+ and the standard library only. It appends
-to `../tracking-cjf-individuals.rdf`, following the three existing manual examples
-and retaining the ontology IRI, imports, prefixes, original individuals, comments,
-and unrelated RDF statements. The main `tracking-cjf.rdf` is never modified.
+to `../tracking-cjf-individuals.rdf`, following the existing individual structure
+and using turn numbers in utterance IRIs. It retains the ontology IRI, imports,
+prefixes, existing individuals, comments, and unrelated RDF statements. The main
+`tracking-cjf.rdf` is never modified.
 
 Save any pending edits in Protégé before running the converter. Afterward, reload
 or reopen `tracking-cjf-individuals.rdf` to see the generated individuals; saving
@@ -28,6 +29,7 @@ selects another backup location; an existing backup is never overwritten.
 | Source | RDF representation |
 | --- | --- |
 | Each `<turn>` | One `owl:NamedIndividual` of type `tracking-cjf:Utterance` |
+| Utterance IRI | Conversation prefix + `Turn` + integer `hasTurnNumber`, e.g. `tracking-cjf:Mar11GroupBTurn1` |
 | `speaker="moderator"` | `prov:wasAttributedTo` → `tracking-cjf:Mar11GroupBModerator`, typed `tracking-cjf:Speaker` |
 | `end_time="19:48:41 PM"` | `DatesAndTimes:hasDateTime` → `tracking-cjf:DTMar11194841`, typed `DatesAndTimes:DateTime` |
 | Turn text | `tracking-cjf:hasConversationText`, preserving parsed text and whitespace |
@@ -41,9 +43,10 @@ timezone is introduced. The source date and full original timestamp are retained
 in the optional JSON report.
 
 The XML uses redundant 24-hour timestamps such as `19:48:41 PM`; these are read as
-19:48:41. For turns sharing a timestamp, the first utterance retains the example's
-name (e.g. `Mar11GroupB200536`); later ones get a suffix such as
-`Mar11GroupB200536Turn36`. They share the same DateTime individual.
+19:48:41 and used for the DateTime individuals. Utterance IRIs use the integer turn
+sequence instead: `Mar11GroupBTurn1` through `Mar11GroupBTurn480` for this source.
+Turns sharing a timestamp still have distinct utterance IRIs and share the same
+DateTime individual. The URI suffix always matches `hasTurnNumber`.
 
 The provided file contains 480 XML turn elements but original turn numbers up to
 479, because source turn 117 is split into `117.0` and `117.1`. Generated
