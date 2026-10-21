@@ -468,7 +468,14 @@
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasSpeaker">
         <rdfs:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_001403"/>
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationConversationMove"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationConversationMove"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/CollectiveJudgmentFormationConversationMoveRelationship"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/Speaker"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000206"/>
@@ -481,21 +488,6 @@
         <cmns-av:explanatoryNote>The relationship is inferred from the conversational contribution that expresses the conversation move.</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
     
-
-
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasState -->
-
-    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasState">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/ConversationMoveWithState"/>
-        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/State"/>
-        <rdfs:label>has state</rdfs:label>
-        <skos:definition>has its evidence-based standing at a specified point in the conversation characterized by</skos:definition>
-        <skos:prefLabel>has state</skos:prefLabel>
-        <skos:scopeNote>Records the conversation move’s current state. Earlier states and their supporting evidence are retained through StateAssignment records linked by hasStateAssignment.</skos:scopeNote>
-        <cmns-av:usageNote>require positive evidence for transitions</cmns-av:usageNote>
-    </owl:ObjectProperty>
-    
-
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/hasStateAssignment -->
 
