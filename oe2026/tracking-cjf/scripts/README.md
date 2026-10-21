@@ -129,3 +129,54 @@ The same `--individuals`, `--ontology`, `--output`, `--backup`, and `--report` p
 options are available. Repeat runs do not duplicate existing individuals. The
 importer does not modify the workbook or schema, import states from other tabs,
 or infer inter-milestone relationships from annotation questions.
+
+## Import reified relationships
+
+`relationships_to_individuals.py` reads only the `Relationships` worksheet. Run it
+after importing the milestones:
+
+```sh
+python3 relationships_to_individuals.py '/Users/devindesilva/Downloads/Annotation workbook CJF (1).xlsx'
+```
+
+Only the following relationship names are imported. Each row creates an explicit
+`CollectiveJudgmentFormationConversationMoveRelationship` individual with the
+specific class below, a source milestone's makes assertion, and an aims-at
+assertion from the relationship individual to its target milestone.
+
+| Workbook relationship | Explicit class | Source property | Target property | Inferred direct property |
+| --- | --- | --- | --- | --- |
+| positionToward | Position | makesPositionTowards | isAimedAtPositionTowards | hasPositionTowards |
+| answers | Answer | makesAnswers | isAimedAtAnswers | answers |
+| challenges | Challenge | makesChallenges | isAimedAtChallenges | challenges |
+| addresses | Address | makesAddresses | isAimedAtAddresses | addresses |
+| supports | Support | makesSupports | isAimedAtSupports | supports |
+| selects / resolves | Resolve | makesResolves | isAimedAtResolves | resolves |
+| response / respondsTo | Response | makesRespondsTo | isAimedAtRespondsTo | respondsTo |
+
+Relationship IRIs use both endpoints and their specific class, for example
+`MAR11_B-M0005_Position_MAR11_B-M0003`, so sorting the workbook does not rename
+individuals. Workbook reasons are copied verbatim into `rdfs:comment`; the schema
+has no separate reason property. Row provenance and annotation questions are
+also preserved as comments. Annotation questions never supply extra assertions.
+
+Every `evidence_turn_ids` entry links to the existing utterance through an
+explicit `hasUtterance` assertion. Evidence IDs use the original source turn
+numbers, resolved with the same lookup as the milestones importer. One reusable
+`TextSpan` per utterance, such as `Mar11GroupBTurn366FullTextSpan`, contains that
+utterance's entire `hasConversationText` value and links back with
+`isPartOfUtterance`. Each relationship's SIO `is supported by` links to those
+full-text spans. Ranges and semicolon-separated evidence lists include every
+listed turn, including contextual turns from the target milestone.
+
+The existing property chains infer the direct milestone-to-milestone properties;
+the importer does not assert those direct edges. `selects` retains the workbook's
+Option target. The corrected `resolves` schema maps Outcome to Option, and its
+reified class/properties inherit from the general relationship/makes/aims-at
+terms rather than from addresses, which targets Issues.
+
+The same `--individuals`, `--ontology`, `--output`, `--backup`, and `--report`
+options are available. Missing references, incompatible domains/ranges, duplicate
+rows, or conflicting existing individuals stop the import before writing RDF.
+Repeating an unchanged import leaves the RDF bytes unchanged. The workbook,
+schema, unrequested relationship types, and existing individual data are preserved.

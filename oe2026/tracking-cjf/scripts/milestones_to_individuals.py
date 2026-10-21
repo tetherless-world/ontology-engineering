@@ -39,16 +39,17 @@ TYPE_MAP = {
 }
 
 
-def read_milestones(workbook: Path) -> tuple[list[dict], dict]:
-    """Read workbook routing metadata, the Milestones XML, and its shared strings."""
+def read_worksheet(workbook: Path, sheet_name: str,
+                   required: set[str]) -> tuple[list[dict], dict]:
+    """Read only the selected worksheet and the shared strings it references."""
     with zipfile.ZipFile(workbook) as archive:
         book = ET.fromstring(archive.read("xl/workbook.xml"))
         relations = ET.fromstring(archive.read("xl/_rels/workbook.xml.rels"))
         targets = {item.attrib["Id"]: item.attrib["Target"] for item in relations}
         matches = [sheet for sheet in book.find(SHEET_NS + "sheets")
-                   if sheet.attrib["name"].casefold() == "milestones"]
+                   if sheet.attrib["name"].casefold() == sheet_name.casefold()]
         if len(matches) != 1:
-            raise ValueError("Expected exactly one worksheet named Milestones")
+            raise ValueError(f"Expected exactly one worksheet named {sheet_name}")
         sheet = matches[0]
         target = targets[sheet.attrib[REL_NS + "id"]]
         member = posixpath.normpath(target.lstrip("/") if target.startswith("/")
@@ -56,7 +57,7 @@ def read_milestones(workbook: Path) -> tuple[list[dict], dict]:
         root = ET.fromstring(archive.read(member))
         cells = root.findall(".//" + SHEET_NS + "sheetData/" + SHEET_NS + "row/" + SHEET_NS + "c")
         if any(cell.find(SHEET_NS + "f") is not None for cell in cells):
-            raise ValueError("Milestones contains formulas; this importer requires recorded cell values")
+            raise ValueError(f"{sheet_name} contains formulas; this importer requires recorded cell values")
         needed = {int(cell.find(SHEET_NS + "v").text) for cell in cells
                   if cell.get("t") == "s" and cell.find(SHEET_NS + "v") is not None}
         strings = {}
@@ -87,15 +88,21 @@ def read_milestones(workbook: Path) -> tuple[list[dict], dict]:
                 continue
             if headers is None:
                 headers = {column: text.strip() for column, text in values.items()}
-                required = {"milestone_id", "milestone_type", "summary", "source_turn_id", "text_span", "utterance", "speaker"}
                 if not required.issubset(set(headers.values())):
-                    raise ValueError("The Milestones header does not have the required columns")
+                    raise ValueError(f"The {sheet_name} header does not have the required columns")
                 continue
             record = {headers[column]: text for column, text in values.items() if column in headers}
             record["excel_row"] = int(row.attrib["r"])
             rows.append(record)
         return rows, {"sheet": sheet.attrib["name"], "worksheet_member": member,
                       "worksheet_members_read": [member]}
+
+
+def read_milestones(workbook: Path) -> tuple[list[dict], dict]:
+    return read_worksheet(workbook, "Milestones", {
+        "milestone_id", "milestone_type", "summary", "source_turn_id",
+        "text_span", "utterance", "speaker",
+    })
 
 
 def parse_turn_ids(value: str) -> list[str]:
