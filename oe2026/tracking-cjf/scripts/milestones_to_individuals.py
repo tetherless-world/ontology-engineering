@@ -40,7 +40,8 @@ TYPE_MAP = {
 
 
 def read_worksheet(workbook: Path, sheet_name: str,
-                   required: set[str]) -> tuple[list[dict], dict]:
+                   required: set[str], *,
+                   column_aliases: dict[str, str] | None = None) -> tuple[list[dict], dict]:
     """Read only the selected worksheet and the shared strings it references."""
     with zipfile.ZipFile(workbook) as archive:
         book = ET.fromstring(archive.read("xl/workbook.xml"))
@@ -87,7 +88,15 @@ def read_worksheet(workbook: Path, sheet_name: str,
             if not any(values.values()):
                 continue
             if headers is None:
-                headers = {column: text.strip() for column, text in values.items()}
+                aliases = column_aliases or {}
+                if not set(aliases).issubset({text.strip() for text in values.values()}):
+                    raise ValueError(f"The {sheet_name} header is missing a configured column alias")
+                headers = {column: aliases.get(text.strip(), text.strip())
+                           for column, text in values.items()}
+                if column_aliases:
+                    names = [name for name in headers.values() if name]
+                    if len(names) != len(set(names)):
+                        raise ValueError(f"The {sheet_name} header has duplicate columns after applying aliases")
                 if not required.issubset(set(headers.values())):
                     raise ValueError(f"The {sheet_name} header does not have the required columns")
                 continue
@@ -98,11 +107,18 @@ def read_worksheet(workbook: Path, sheet_name: str,
                       "worksheet_members_read": [member]}
 
 
-def read_milestones(workbook: Path) -> tuple[list[dict], dict]:
-    return read_worksheet(workbook, "Milestones", {
+def read_milestones(workbook: Path, *, id_column: str = "milestone_id",
+                    type_column: str = "milestone_type") -> tuple[list[dict], dict]:
+    """Map configurable workbook column names to the importer's internal names."""
+    id_column, type_column = id_column.strip(), type_column.strip()
+    if not id_column or not type_column or id_column == type_column:
+        raise ValueError("ID and type columns must have distinct, nonempty names")
+    rows, routing = read_worksheet(workbook, "Milestones", {
         "milestone_id", "milestone_type", "summary", "source_turn_id",
         "text_span", "utterance", "speaker",
-    })
+    }, column_aliases={id_column: "milestone_id", type_column: "milestone_type"})
+    routing["column_aliases"] = {"milestone_id": id_column, "milestone_type": type_column}
+    return rows, routing
 
 
 def parse_turn_ids(value: str) -> list[str]:
@@ -135,7 +151,7 @@ def split_quotes(value: str, sources: list[str]) -> dict[str, str]:
     raise ValueError(f"Cannot split the evidence among source turns {sources}: {value!r}")
 
 
-def utterance_index(rdf_data: bytes) -> dict[str, dict]:
+def utterance_index(rdf_data: bytes, conversation_prefix: str | None = None) -> dict[str, dict]:
     """Resolve original source IDs through dc:identifier, not the URI suffix."""
     root = ET.fromstring(rdf_data)
     nodes = defaultdict(list)
@@ -145,6 +161,10 @@ def utterance_index(rdf_data: bytes) -> dict[str, dict]:
             nodes[iri].append(node)
     index = {}
     for iri, definitions in nodes.items():
+        if conversation_prefix is not None and not re.fullmatch(
+            re.escape(CJF + conversation_prefix + "Turn") + r"\d+", iri
+        ):
+            continue
         values = defaultdict(set)
         for node in definitions:
             for child in node:
@@ -169,8 +189,11 @@ def utterance_index(rdf_data: bytes) -> dict[str, dict]:
 
 
 def make_milestones(rows: list[dict], rdf_data: bytes, schema_data: bytes,
-                    workbook_name: str) -> tuple[list[Individual], dict]:
-    index = utterance_index(rdf_data)
+                    workbook_name: str, *,
+                    conversation_prefix: str = "Mar11GroupB") -> tuple[list[Individual], dict]:
+    if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", conversation_prefix):
+        raise ValueError(f"Use an alphanumeric conversation prefix, found {conversation_prefix!r}")
+    index = utterance_index(rdf_data, conversation_prefix)
     schema = ET.fromstring(schema_data)
     classes = {node.get("{" + RDF + "}about") for node in schema.findall("{" + OWL + "}Class")}
     generated = []
@@ -195,6 +218,12 @@ def make_milestones(rows: list[dict], rdf_data: bytes, schema_data: bytes,
         sources = parse_turn_ids(row["source_turn_id"])
         quotes = split_quotes(row["text_span"], sources)
         full_texts = split_quotes(row["utterance"], sources)
+        # Use the same normalization as the XML importer: preserve case after
+        # the first character, and remove spaces/punctuation from the IRI token.
+        speaker_token = "".join(re.findall(r"[A-Za-z0-9]+", row["speaker"].strip()))
+        if not speaker_token:
+            raise ValueError(f"{milestone_id}: speaker has no usable name")
+        expected_speaker = CJF + conversation_prefix + speaker_token[0].upper() + speaker_token[1:]
         iri = CJF + milestone_id
         statements = [
             Statement(DC + "identifier", milestone_id),
@@ -225,8 +254,9 @@ def make_milestones(rows: list[dict], rdf_data: bytes, schema_data: bytes,
             if source not in index:
                 raise ValueError(f"{milestone_id}: source turn {source} has no existing utterance")
             utterance = index[source]
-            expected_speaker = CJF + "Mar11GroupB" + row["speaker"].strip().capitalize()
-            if utterance["speaker_iri"] != expected_speaker:
+            # The row names the first contributor. Later evidence may come from
+            # other speakers; retain each span's own utterance and attribution.
+            if source == sources[0] and utterance["speaker_iri"] != expected_speaker:
                 raise ValueError(f"{milestone_id}: source turn {source} has a different speaker")
             for field, text in (("utterance", full_texts[source]), ("text_span", quotes[source])):
                 if norm(text) not in norm(utterance["text"]):
@@ -240,13 +270,15 @@ def make_milestones(rows: list[dict], rdf_data: bytes, schema_data: bytes,
                 Statement(CJF + "hasConversationText", quotes[source]),
                 Statement(CJF + "isPartOfUtterance", utterance["iri"], True)))
             evidence_records.append({"source_turn_id": source, "utterance_iri": utterance["iri"],
+                                     "speaker_iri": utterance["speaker_iri"],
                                      "hasTurnNumber": utterance["turn_number"], "text_span_iri": span_iri,
                                      "text": quotes[source], "support_property": support_property})
         generated.append(individual(iri, CJF + TYPE_MAP[kind], *statements))
         milestones.append({"milestone_id": milestone_id, "iri": iri, "class_iri": CJF + TYPE_MAP[kind],
                            "source_row": row, "evidence": evidence_records})
         counts[kind] += 1
-    return generated, {"milestone_count": len(milestones),
+    return generated, {"conversation_prefix": conversation_prefix,
+                       "milestone_count": len(milestones),
                        "text_span_count": len(generated) - len(milestones),
                        "milestone_types": dict(counts),
                        "expected_inferred_position_subtypes": dict(expected_subtype_counts),
@@ -254,15 +286,18 @@ def make_milestones(rows: list[dict], rdf_data: bytes, schema_data: bytes,
                        "text_alignment_warnings": warnings, "milestones": milestones}
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("workbook", type=Path)
     parser.add_argument("--individuals", type=Path, default=DEFAULT_INDIVIDUALS)
     parser.add_argument("--ontology", type=Path, default=DEFAULT_INDIVIDUALS.with_name("tracking-cjf.rdf"))
+    parser.add_argument("--id-column", default="milestone_id", help="Workbook column containing milestone identifiers")
+    parser.add_argument("--type-column", default="milestone_type", help="Workbook column containing milestone types")
+    parser.add_argument("--conversation-prefix", default="Mar11GroupB", help="Existing utterance/speaker IRI prefix (default: Mar11GroupB)")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--backup", type=Path)
     parser.add_argument("--report", type=Path)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     try:
         target = (args.output or args.individuals).resolve()
         paths = [args.workbook.resolve(), args.individuals.resolve(), args.ontology.resolve()]
@@ -271,8 +306,11 @@ def main() -> int:
         if target in {paths[0], paths[2]} or backup in {*paths, target} or (report_path and report_path in {*paths, target, backup}):
             raise ValueError("Workbook, schema, RDF, backup, and report paths must not overwrite one another")
         original = args.individuals.read_bytes()
-        rows, routing = read_milestones(args.workbook)
-        generated, report = make_milestones(rows, original, args.ontology.read_bytes(), args.workbook.name)
+        rows, routing = read_milestones(args.workbook, id_column=args.id_column, type_column=args.type_column)
+        generated, report = make_milestones(
+            rows, original, args.ontology.read_bytes(), args.workbook.name,
+            conversation_prefix=args.conversation_prefix,
+        )
         updated, added = append_individuals(original, generated)
         changed = not target.exists() or target.read_bytes() != updated
         if args.individuals.read_bytes() != original:
