@@ -3,13 +3,11 @@
 ## Conceptual Model
 
 **Current version: 2.0 (Assignment 6, October 15, 2026).** The model is aligned with the ontology below: every class,
-is-a line, arrow and attribute in the diagrams is a term of the ontology with the same name. The
-[redlined version](files/conceptual_models/OE_6_TeamAgenticCapabilities_RedlinedConceptualModel.pdf) draws the changes
-since Version 1.1 in blue.
+is-a line, arrow and attribute in the diagrams is a term of the ontology with the same name.
 
 ![Figure 1. Overview of the core classes](files/conceptual_models/v2.0/fig1_overview.png)
 
-<iframe src="files/conceptual_models/OE_6_TeamAgenticCapabilities_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/conceptual_models/OE_8_TeamAgenticCapabilities_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 Figures as images (PNG; SVG and PlantUML sources in [files/conceptual_models/v2.0](files/conceptual_models/v2.0/src/)):
 [1](files/conceptual_models/v2.0/fig1_overview.png) ·
@@ -36,9 +34,9 @@ Figures as images (PNG; SVG and PlantUML sources in [files/conceptual_models/v2.
 
 ## Ontology
 
-- **File:** [agentic-orchestration.rdf](agentic-orchestration.rdf) (OWL 2 in RDF/XML, written with the course serializer);
+- **File:** [OE_8_TeamAgenticCapabilities.rdf](OE_8_TeamAgenticCapabilities.rdf) (OWL 2 in RDF/XML, written with the course serializer);
   submitted to the course drive as OE_6_TeamAgenticCapabilities.rdf
-- **Namespace:** `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/`
+- **Namespace:** `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/`
 - **Size:** 65 classes, 33 object properties, 9 datatype properties and 11 individuals of the team's own; consistent, with
   no unsatisfiable classes (Pellet and HermiT)
 - **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII, highlighted in orange)
@@ -85,7 +83,7 @@ The full list of classes, properties and individuals, with sources, is the [term
 
 | Prefix | Namespace |
 |---|---|
-| oe-agtorch | `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/` |
+| oe-agtorch | `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/` |
 | agento | `http://www.w3id.org/agentic-ai/onto#` |
 | pplan | `http://purl.org/net/p-plan#` |
 | process | `http://www.daml.org/services/owl-s/1.2/Process.owl#` |
