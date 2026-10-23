@@ -431,3 +431,54 @@ The two Selected assignments and 54 initial assignments receive no new trigger
 links. Existing merged IDs, partial evidence, and complementary RDF descriptions
 are retained. The shared assertion-appending helper supports both
 `owl:NamedIndividual` and `rdf:Description` blocks.
+
+### Derive the current assignment with SHACL
+
+`current_state_assignments.py` executes
+`../shacl/current-state-assignment-rules.ttl` with pySHACL Advanced Features,
+validates the histories, and writes `hasCurrentStateAssignment` links to the
+individuals RDF. It defaults to `../cq-sample-conversation.rdf`.
+
+From this scripts directory, using your Python environment:
+
+```sh
+python -m pip install -r requirements-shacl.txt
+python current_state_assignments.py --dry-run --report /tmp/current-states-preview.json
+python current_state_assignments.py --report /tmp/current-states.json
+```
+
+The rule chooses the assignment with no recorded successor **for the same
+move**. It follows `hasPreviousAssignment`, so an initial assignment and a
+successor at the same turn are ordered correctly. Validation requires exactly
+one current assignment per move and checks ownership, predecessor cardinality,
+cycles, and nondecreasing effective turn numbers. Branching or disconnected
+histories are rejected instead of choosing an arbitrary assignment.
+
+SHACL CONSTRUCT rules add facts; they do not remove stale current pointers.
+The runner clears this derived predicate in its working graph before running
+the rule, then refreshes those pointers in the RDF/XML. All other assertions,
+including historical assignments, state types, evidence, and ontology metadata,
+are preserved. The SHACL output is checked against an independent traversal of
+each complete assignment chain. Unchanged reruns preserve the file bytes.
+Running the shapes directly against stale pointers reports a validation error;
+use the runner to refresh them.
+
+`--individuals`, `--shapes`, `--output`, `--backup`, and `--report` configure the
+paths. A changed output gets a backup whose default filename includes the input
+hash. A dry run makes no RDF or backup changes. Local files are parsed without
+following OWL imports or running OWL inference. No current state subclass is
+asserted by this operation: follow the current assignment's `assignedState` to
+obtain its state individual.
+
+For CQ Sample, all 80 assignments form 54 histories. The rule creates 54 current
+assignment links and handles the nine initial/transition pairs sharing a turn.
+
+```sparql
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+SELECT ?move ?assignment ?state ?turn WHERE {
+  ?move cjf:hasCurrentStateAssignment ?assignment .
+  ?assignment cjf:assignedState ?state ;
+              cjf:assignedAtUtterance/cjf:hasTurnNumber ?turn .
+}
+ORDER BY ?move
+```
