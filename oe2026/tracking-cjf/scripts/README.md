@@ -1,13 +1,13 @@
 # Import annotated dialogue XML into the individuals ontology
 
 `xml_to_individuals.py` uses Python 3.10+ and the standard library only. It appends
-to `../tracking-cjf-individuals.rdf`, following the existing individual structure
+to `../mar11_groupb-individuals.rdf`, following the existing individual structure
 and using turn numbers in utterance IRIs. It retains the ontology IRI, imports,
 prefixes, existing individuals, comments, and unrelated RDF statements. The main
 `tracking-cjf.rdf` is never modified.
 
 Save any pending edits in Protégé before running the converter. Afterward, reload
-or reopen `tracking-cjf-individuals.rdf` to see the generated individuals; saving
+or reopen `mar11_groupb-individuals.rdf` to see the generated individuals; saving
 an older in-memory copy from Protégé could overwrite the generated data.
 
 From this directory:
@@ -87,7 +87,7 @@ python3 markdown_to_xml.py '/Users/devindesilva/Downloads/Oct21_A Discussion.md'
   --conversation-id 'CQ-sample conversation'
 python3 xml_to_individuals.py ../files/conversations/CQ-sample-conversation.xml \
   --conversation-prefix CQSample \
-  --backup /tmp/cq-sample-import/tracking-cjf-individuals.before-import.rdf \
+  --backup /tmp/cq-sample-import/mar11_groupb-individuals.before-import.rdf \
   --report /tmp/cq-sample-import/report.json
 ```
 
@@ -128,7 +128,7 @@ python3 xml_to_individuals.py ../files/conversations/CQ-sample-conversation.xml 
   --individuals ../cq-sample-conversation.rdf --conversation-prefix CQSample
 ```
 
-An unchanged rerun adds no duplicates. `tracking-cjf-individuals.rdf` retains its
+An unchanged rerun adds no duplicates. `mar11_groupb-individuals.rdf` retains its
 contents from before the sample import.
 
 ## Verification

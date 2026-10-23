@@ -33,7 +33,7 @@ PROV = "http://www.w3.org/ns/prov#"
 DC = "http://purl.org/dc/elements/1.1/"
 CJF = "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/"
 DT = "https://www.omg.org/spec/Commons/DatesAndTimes/"
-DEFAULT_INDIVIDUALS = Path(__file__).resolve().parents[1] / "tracking-cjf-individuals.rdf"
+DEFAULT_INDIVIDUALS = Path(__file__).resolve().parents[1] / "mar11_groupb-individuals.rdf"
 MONTHS = ("", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 MAPPED_ATTRIBUTES = {"speaker", "end_time", "turn_no"}
 
