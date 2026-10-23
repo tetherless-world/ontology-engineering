@@ -20,7 +20,8 @@
         <owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/prov#"/>
         <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
-        <dct:abstract></dct:abstract>
+        <rdfs:label>Tracking collective judgment formation</rdfs:label>
+        <dct:abstract>Represents conversation moves, their evidenced relationships, and recorded state assignments in collective judgment formation.</dct:abstract>
         <dct:creator>Devin De Silva</dct:creator>
         <dct:creator>Matthew Lausev</dct:creator>
         <dct:creator>Srihari Sridharan</dct:creator>
@@ -1194,10 +1195,68 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Answered -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Answered">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/State"/>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/assignedState"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasPreviousAssignment"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/assignedState"/>
+                                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Open"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty>
+                                            <rdf:Description>
+                                                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasStateAssignment"/>
+                                            </rdf:Description>
+                                        </owl:onProperty>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/InformationRequest"/>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty>
+                                                            <rdf:Description>
+                                                                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/answers"/>
+                                                            </rdf:Description>
+                                                        </owl:onProperty>
+                                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CollectiveJudgmentFormationConversationMove"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/State"/>
         <rdfs:label>answered</rdfs:label>
         <skos:definition>state of an Information Request whose full information need is satisfied by one or more contributions</skos:definition>
         <skos:prefLabel>answered</skos:prefLabel>
+        <skos:scopeNote>The transition axiom classifies a recorded successor state from an Open predecessor and an incoming answers relationship. It does not create named assignments, compare turns, verify predecessor ownership, or establish the current state. Those annotation checks are performed separately.</skos:scopeNote>
     </owl:Class>
     
 
@@ -2016,15 +2075,6 @@
         <cmns-av:synonym>instant in time</cmns-av:synonym>
         <cmns-av:synonym>time point</cmns-av:synonym>
     </owl:Class>
-    <rdf:Description>
-        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    </rdf:Description>
 </rdf:RDF>
 
 
