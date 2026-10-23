@@ -339,3 +339,95 @@ The same `--individuals`, `--ontology`, `--output`, `--backup`, and `--report`
 options are available. The default backup suffix is `.initial-states.bak`.
 An unchanged rerun leaves the RDF bytes unchanged. The workbook, main ontology,
 and other worksheet contents are preserved.
+
+## Import subsequent assignments as base State individuals
+
+`state_transitions_to_individuals.py` reads only the `States` worksheet and
+requires the initial assignments to exist already. It groups the rows by
+conversation move and sorts them by the effective utterance's `hasTurnNumber`.
+If an initial assignment and a transition share a turn, the initial comes first.
+Multiple transitions at the same turn are rejected until their order is explicit.
+
+From this directory, preview the sample import with:
+
+```sh
+python3 state_transitions_to_individuals.py '/Users/devindesilva/Downloads/Annotation Workbook Synthetic Example.xlsx' \
+  --individuals ../cq-sample-conversation.rdf --conversation-prefix CQSample \
+  --dry-run --report /tmp/cq-sample-transitions-preview.json
+```
+
+Remove `--dry-run` to write the RDF. `--id-column` selects the workbook's move-ID
+column and defaults to `milestone_id`. `--conversation-prefix` defaults to
+`Mar11GroupB`. The existing `--ontology`, `--output`, `--backup`, and `--report`
+path options are also supported; the default backup suffix is
+`.state-transitions.bak`.
+
+Each new transition creates a `StateAssignment` and a distinct individual asserted
+only as `State`. Their neutral IRIs use, for example,
+`OCT21_A-M0023_StateAssignmentAtTurn10` and `OCT21_A-M0023_StateAtTurn10`.
+The source state label is retained in an `rdfs:comment` as an annotated reference
+value. No specific state subclass is asserted and no inference rules are added.
+
+The move links to each assignment with `hasStateAssignment`. Assignments record
+`assignedState`, `assignedAtUtterance`, and `hasStateEvidence`. Every new
+assignment's evidence spans contain the complete source utterances. Existing
+full-utterance spans are reused by IRI or matching text/utterance; a missing span
+is created once. Existing assignments retain their original evidence.
+
+The importer advances a previous-assignment pointer after each initial or
+transition record. `hasPreviousAssignment` therefore identifies the immediate
+preceding assignment for the same move, including consecutive changes and
+initial/transition pairs at the same turn. Initial assignments keep no predecessor.
+Existing transitions are matched by their move and effective utterance, preserving
+merged identifiers. Conflicting predecessors, shared state individuals, duplicate
+assignments, and existing history absent from the worksheet stop the import.
+
+For the sample, the worksheet has 54 initial assignments and 26 transitions.
+One transition already exists, so the first run adds 25 assignment/state pairs and
+reuses all evidence spans. The report includes the latest assignment for each
+move. `hasState` and `hasCurrentStateAssignment` assertions are left unchanged.
+Unchanged reruns preserve the RDF bytes.
+
+### Link state assignments to triggering relationships
+
+`triggering_relationships_to_individuals.py` enriches existing state histories
+using only the States and Relationships worksheets. Import the conversation,
+milestones, relationships, and state assignments first. For example:
+
+```sh
+python3 triggering_relationships_to_individuals.py \
+  "/path/to/Annotation Workbook Synthetic Example.xlsx" \
+  --individuals ../cq-sample-conversation.rdf --conversation-prefix CQSample \
+  --dry-run --report /tmp/cq-sample-triggers-preview.json
+```
+
+Remove `--dry-run` to write the RDF. `--id-column` selects the States sheet's
+move-ID column; `--ontology`, `--output`, `--backup`, and `--report` have the same
+roles as in the transition importer. A rerun is byte identical.
+
+`hasTriggeringRelationship` has domain `StateAssignment` and range
+`CollectiveJudgmentFormationConversationMoveRelationship`. The StateAssignment
+class restricts its values to that range without requiring a trigger on every
+assignment: initial states and evidence-based transitions may have none.
+
+The importer links Addressed, Answered, Resolved, Supported, Contested, and
+SupportedContested transitions to existing relationship individuals. It checks
+the predecessor's annotated reference state, move and source types, relationship
+target, and the complete evidence set. Every trigger's evidence must be included
+in the assignment's evidence, with its latest evidence turn equal to the
+assignment's effective turn. Matching an earlier contextual span alone cannot
+make a later challenge trigger an earlier assignment. Joint triggers are all
+linked. SupportedContested uses a Challenge after Supported, or a Support after
+Contested, preserving the two separate transition branches.
+
+Selected assignments remain unchanged because `selects` remains a direct
+property. This importer creates no relationship individuals, classes, evidence
+spans, or state subtype assertions. It reports these direct selections separately
+and leaves the existing state-class expressions unchanged; those expressions
+must use the trigger property before it affects state classification.
+
+In CQ Sample, 24 assignments receive 32 links to existing relationship objects.
+The two Selected assignments and 54 initial assignments receive no new trigger
+links. Existing merged IDs, partial evidence, and complementary RDF descriptions
+are retained. The shared assertion-appending helper supports both
+`owl:NamedIndividual` and `rdf:Description` blocks.
