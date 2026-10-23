@@ -70,10 +70,71 @@ The defaults reproduce this dataset's naming convention, including the yearless
 `DTMar11` prefix. For additional datasets/years, use `--conversation-prefix` and
 `--datetime-prefix` to choose distinct prefixes and avoid naming collisions.
 
+## Import the CQ sample Markdown discussion
+
+`markdown_to_xml.py` converts numbered speaker turns, including the bold and
+escaped bold formatting in `Oct21_A Discussion.md`, into the same `Dialogue` /
+`turn` XML structure used by the existing importer. It rejects unrecognized
+nonempty lines, duplicate numbers, and gaps so that turns cannot be silently
+dropped. Dialogue text, punctuation, and speaker names are retained after removing
+the Markdown wrappers and turn/speaker labels.
+
+From this directory, import the sample with:
+
+```sh
+python3 markdown_to_xml.py '/Users/devindesilva/Downloads/Oct21_A Discussion.md' \
+  --output ../files/conversations/CQ-sample-conversation.xml \
+  --conversation-id 'CQ-sample conversation'
+python3 xml_to_individuals.py ../files/conversations/CQ-sample-conversation.xml \
+  --conversation-prefix CQSample \
+  --backup /tmp/cq-sample-import/tracking-cjf-individuals.before-import.rdf \
+  --report /tmp/cq-sample-import/report.json
+```
+
+The generated XML records the exact conversation ID in `Dialogue/@id`. No date
+or timestamps are supplied in the Markdown, so `date` is omitted and `end_time`
+is empty. Unknown dialogue annotations and modality fields are also left empty.
+The importer accepts absent timing values and creates no DateTime individuals
+for them. A supplied malformed date or nonempty malformed time is still rejected.
+
+When a `Dialogue` has an `id` (or `--conversation-id` is supplied), the XML importer
+also creates a `MultipartyConversation` with that exact `hasConversationIdentifier`,
+links each utterance to it using `prov:wasGeneratedBy`, records `hasSpeakerName`
+on speakers, and associates the conversation with its speakers using
+`prov:wasAssociatedWith`. The sample creates 28 utterances, 4 speakers, and
+`tracking-cjf:CQSampleConversation`; its identifier is `CQ-sample conversation`.
+Utterances use `CQSampleTurn1` through `CQSampleTurn28`, and speakers use
+`CQSampleSpeakerA` through `CQSampleSpeakerD`. Existing XML without conversation
+metadata retains its original mapping. No CJF milestones, relationships, or states
+are inferred from the sample text by these commands.
+
+The converted XML can be reimported directly without the original Markdown.
+Unchanged reruns leave the RDF bytes unchanged, and existing unrelated individuals
+and the schema are preserved. The report includes every source turn's mapping;
+unknown dates/times are represented by JSON `null` values.
+
+## CQ sample conversation
+
+The sample is stored separately in `../cq-sample-conversation.rdf`, which imports
+the schema and contains 28 utterances, 4 speakers, and one `MultipartyConversation`
+with the exact identifier `CQ-sample conversation`. The source XML is saved at
+`../files/conversations/CQ-sample-conversation.xml`. Missing source dates and
+timestamps remain unspecified.
+
+Reimport the XML into the sample file explicitly:
+
+```sh
+python3 xml_to_individuals.py ../files/conversations/CQ-sample-conversation.xml \
+  --individuals ../cq-sample-conversation.rdf --conversation-prefix CQSample
+```
+
+An unchanged rerun adds no duplicates. `tracking-cjf-individuals.rdf` retains its
+contents from before the sample import.
+
 ## Verification
 
 ```sh
-python3 -m unittest discover -s . -p 'test_xml_to_individuals.py' -v
+python3 -m unittest discover -s . -p 'test_*.py' -v
 ```
 
 The checks cover the existing example, same-second turns, split source numbers,
@@ -90,6 +151,23 @@ values referenced by that sheet; it never opens other worksheet contents.
 ```sh
 python3 milestones_to_individuals.py '/Users/devindesilva/Downloads/Annotation workbook CJF (1).xlsx'
 ```
+
+The workbook column names and existing conversation IRI prefix are configurable:
+
+```sh
+python3 milestones_to_individuals.py '/Users/devindesilva/Downloads/Annotation Workbook Synthetic Example.xlsx' \
+  --individuals ../cq-sample-conversation.rdf \
+  --id-column conversation_move_id --type-column conversation_move_type \
+  --conversation-prefix CQSample
+```
+
+`--id-column` defaults to `milestone_id`, `--type-column` to `milestone_type`,
+and `--conversation-prefix` to `Mar11GroupB` for the original dataset. Supply
+different values for future workbooks/conversations. The prefix selects existing
+utterances such as `CQSampleTurn1` and speakers such as `CQSampleSpeakerA`;
+milestone IDs are taken verbatim from the chosen ID column. The workbook itself
+is preserved. Configured aliases and the selected prefix appear in the report.
+Missing configured columns and duplicate headers after alias mapping are rejected.
 
 Each row with a `milestone_id` creates one individual with that exact identifier
 in the tracking-cjf namespace, for example `tracking-cjf:MAR11_B-M0001`. Summaries,
@@ -111,6 +189,10 @@ Each quoted source turn creates a TextSpan linked to its existing utterance with
 or its positive/negative subproperties for explicit agreement/disagreement.
 The existing property chain can then infer `hasSpeaker`. Multi-turn ranges and
 semicolon-separated source IDs are resolved to separate evidence spans.
+The row's `speaker` is checked against the first source turn. Later evidence may
+come from different speakers; each span retains its own utterance link, and the
+report records the actual speaker for each source turn. The sample RDF declares
+the `rdfs` and SIO `resource` namespaces used for annotations and evidence links.
 
 The inferred position definitions are `Agreement EquivalentTo ExpressedPosition
 and (isPositiveSupportedBy some TextSpan)` and `Disagreement EquivalentTo

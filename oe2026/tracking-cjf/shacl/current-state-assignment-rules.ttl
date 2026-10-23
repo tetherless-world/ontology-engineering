@@ -1,0 +1,25 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/> .
+
+cjf:CurrentStateAssignmentRuleShape
+    a sh:NodeShape ;
+    rdfs:label "derive current state assignment" ;
+    # Target moves through the property itself; inferred class types are not required.
+    sh:targetSubjectsOf cjf:hasStateAssignment ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        rdfs:label "link each move to an assignment with no recorded successor" ;
+        sh:construct """
+            PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+            CONSTRUCT {
+                $this cjf:hasCurrentStateAssignment ?assignment .
+            }
+            WHERE {
+                $this cjf:hasStateAssignment ?assignment .
+                FILTER NOT EXISTS {
+                    ?nextAssignment cjf:hasPreviousAssignment ?assignment .
+                }
+            }
+        """
+    ] .
