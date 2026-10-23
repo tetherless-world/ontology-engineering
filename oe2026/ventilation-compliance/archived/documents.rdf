@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://www.omg.org/spec/Commons/Documents/"
+     xml:base="https://www.omg.org/spec/Commons/Documents/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+     xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+     xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/">
+    <owl:Ontology rdf:about="https://www.omg.org/spec/Commons/Documents/">
+        <owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20250801/Documents/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+        <dct:abstract>This ontology defines high-level concepts for representation of documents, including legal documents and records, such as a transaction record, purchase history, or payment history. It is deliberately lightweight in order to accommodate mappings to other document and bibliographic ontologies.</dct:abstract>
+        <dct:contributor>Davide Sottara, Mayo Clinic</dct:contributor>
+        <dct:contributor>Elisa Kendall, Thematix Partners LLC</dct:contributor>
+        <dct:contributor>Evan Wallace, U.S. National Institute of Standards and Technology (NIST)</dct:contributor>
+        <dct:contributor>Pete Rivett, Federated Knowledge LLC</dct:contributor>
+        <dct:license>Copyright (c) 2014-2025 EDM Council, Inc.
+		Copyright (c) 2022-2025 Federated Knowledge LLC
+		Copyright (c) 2022-2025 Mayo Clinic
+		Copyright (c) 2022-2025 Thematix Partners LLC
+		Copyright (c) 2023-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.</dct:license>
+        <rdfs:label>Commons Documents Ontology</rdfs:label>
+        <skos:changeNote>https://www.omg.org/spec/Commons/20230801/Documents.rdf version of this ontology was revised to add the concept of a document part (COMMONS-13-11).</skos:changeNote>
+        <skos:note>This ontology was derived from the Financial Industry Business Ontology (FIBO), and generalized for use in other domain areas.</skos:note>
+        <cmns-av:copyright>Copyright (c) 2014-2025 EDM Council, Inc.</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2022-2025 Federated Knowledge LLC</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2022-2025 Mayo Clinic</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2022-2025 Thematix Partners LLC</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2023-2025 Object Management Group, Inc.</cmns-av:copyright>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Documents/hasDataSource -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Documents/hasDataSource">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Documents/refersTo"/>
+        <rdfs:label>has data source</rdfs:label>
+        <skos:definition>relates something, such as an agreement, contract, document, record, report, or process, to a source of data used to analyze, develop, explain, produce, or otherwise create it</skos:definition>
+        <cmns-av:usageNote>Although in many cases an annotation property, such as dct:source, is sufficient for this purpose, there are occasions when a more complete description of a source is required, such as to meet data lineage requirements, for which this property may be used.</cmns-av:usageNote>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Documents/isAbout -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Documents/isAbout">
+        <rdfs:label>is about</rdfs:label>
+        <skos:definition>indicates the subject or topic of something, such as a document</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Documents/isReferredToBy -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Documents/isReferredToBy">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/Documents/refersTo"/>
+        <rdfs:label>is referred to by</rdfs:label>
+        <skos:definition>indicates something that is referenced as a source for information or explanation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Documents/isSpecifiedIn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Documents/isSpecifiedIn">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/Documents/refersTo"/>
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/Documents/specifies"/>
+        <rdfs:label>is specified in</rdfs:label>
+        <skos:definition>indicates the explicit source for some requirement, fact, or set of facts</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Documents/records -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Documents/records">
+        <rdfs:label>records</rdfs:label>
+        <skos:definition>documents for later reference</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Documents/refersTo -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Documents/refersTo">
+        <rdfs:label>refers to</rdfs:label>
+        <skos:definition>makes reference to as a source for information or explanation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/Documents/specifies -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/Documents/specifies">
+        <rdfs:label>specifies</rdfs:label>
+        <skos:definition>mentions, names or states something clearly and definitively</skos:definition>
+        <cmns-av:explanatoryNote>Specifies may be used to refer to a requirement, fact, or set of facts.</cmns-av:explanatoryNote>
+    </owl:ObjectProperty>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

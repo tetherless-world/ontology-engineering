@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+     xml:base="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+     xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+     xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+     xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
+     xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+     xmlns:cmns-rlcmp="https://www.omg.org/spec/Commons/RolesAndCompositions/"
+     xmlns:cmns-cxtdsg="https://www.omg.org/spec/Commons/ContextualDesignators/">
+    <owl:Ontology rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/">
+        <owl:versionIRI rdf:resource="https://www.omg.org/spec/Commons/20250801/PartiesAndSituations/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Collections/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
+        <owl:imports rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/"/>
+        <dct:abstract>This ontology defines the high-level concepts of parties and the roles they play in various situations.</dct:abstract>
+        <dct:contributor>Dean Allemang, Working Ontologist</dct:contributor>
+        <dct:contributor>Elisa Kendall, Thematix Partners LLC</dct:contributor>
+        <dct:license>Copyright (c) 2020-2025 EDM Council, Inc.
+		Copyright (c) 2020-2025 Thematix Partners LLC
+		Copyright (c) 2020-2025 Working Ontologist LLC
+		Copyright (c) 2022-2025 Object Management Group, Inc.
+		Copyright (c) 2022-2025 Pistoia Alliance, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &apos;Software&apos;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.</dct:license>
+        <rdfs:label>Commons Parties and Situations Ontology</rdfs:label>
+        <skos:changeNote>The https://www.omg.org/spec/Commons/20230801/PartiesAndSituations.rdf version of the ontology was modified to add missing inverses needed to integrate the authorization pattern (COMMONS13-38).</skos:changeNote>
+        <skos:note>This ontology was originally designed for use in the Financial Industry Business Ontology (FIBO) for representing complex relationships between parties, such as employment, ownership and control. It has since been extended based on usage in other projects, such as the Pistoia Alliance Identification of Medicinal Products (IDMP) ontology project.</skos:note>
+        <cmns-av:copyright>Copyright (c) 2020-2025 EDM Council, Inc.</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2020-2025 Thematix Partners LLC</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2020-2025 Working Ontologist LLC</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2022-2025 Object Management Group, Inc.</cmns-av:copyright>
+        <cmns-av:copyright>Copyright (c) 2022-2025 Pistoia Alliance, Inc.</cmns-av:copyright>
+        <cmns-av:usageNote>Note that inference with respect to property chains, which this ontology makes extensive use of, requires a knowledge graph solution that understands these chains, or requires running a reasoner outside of the graph database and asserting the inferences in order to make use of them.</cmns-av:usageNote>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isSubjectRoleIn"/>
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor"/>
+        <rdfs:label>acts in</rdfs:label>
+        <skos:definition>indicates a situation in which the actor plays a primary role</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>acts on</rdfs:label>
+        <skos:definition>relates an actor in a given situation to the undergoer that they affect under the circumstances</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/directlyAffects -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/directlyAffects">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/experiencesWith"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>directly affects</rdfs:label>
+        <skos:definition>relates an actor in a given situation to the thing (or party) that they impact under the circumstances</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/experiences -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/experiences">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isExperiencedBy"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>experiences</rdfs:label>
+        <skos:definition>relates something to a situation that affects them in some way</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/experiencesDirectly -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/experiencesDirectly">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatDirectlyAffects"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>experiences directly</rdfs:label>
+        <skos:definition>relates something directly to a party that drives a situation involving it</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/experiencesWith -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/experiencesWith">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>experiences with</rdfs:label>
+        <skos:definition>relates something to an actor that drives a situation involving it</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasActiveParty -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActiveParty">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActivePartyIn"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>has active party</rdfs:label>
+        <skos:definition>relates a situation to the person or organization acting in a primary (agentive) role</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasActiveRole -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActiveRole">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleIn"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasSubjectRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>has active role</rdfs:label>
+        <skos:definition>relates a situation to something that is acting in a primary (agentive) role</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/hasPartyRole"/>
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/hasSubjectRole"/>
+        <rdfs:label>has actor</rdfs:label>
+        <skos:definition>identifies the primary party acting in a specific role with respect to a given situation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasObjectRole -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasObjectRole">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/hasRole"/>
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isObjectRoleIn"/>
+        <rdfs:label>has object role</rdfs:label>
+        <skos:definition>identifies a person or thing that is affected by, or is a secondary argument in a specific role with respect to a given relation or situation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasParty -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasParty">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAPartyTo"/>
+        <rdfs:label>has party</rdfs:label>
+        <skos:definition>identifies a party associated with an agreement, contract, policy, regulation, situation, or other arrangement</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasPartyRole -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasPartyRole">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/hasRole"/>
+        <rdfs:label>has party role</rdfs:label>
+        <skos:definition>identifies a specific role played by some person or organization as related to a situation, agreement, contract, policy, regulation, activity or other relationship</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasRelatedPartyRole -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasRelatedPartyRole">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/hasRole"/>
+        <rdfs:label>has related party role</rdfs:label>
+        <skos:definition>relates a party acting in a specific role directly to another party acting in the same or another role</skos:definition>
+        <cmns-av:usageNote>This property is intended as an abstract property, whose subproperties may or may not be symmetric, but could be inverses of one another.</cmns-av:usageNote>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasSubjectRole -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasSubjectRole">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/hasRole"/>
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isSubjectRoleIn"/>
+        <rdfs:label>has subject role</rdfs:label>
+        <skos:definition>identifies the person or thing that is being discussed, described, dealt with, or is the main topic in a specific role with respect to a given situation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/hasObjectRole"/>
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes"/>
+        <rdfs:label>has undergoer</rdfs:label>
+        <skos:definition>identifies an experiencer / passive or other object role in a given situation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/holdsDuring -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/holdsDuring">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/hasApplicablePeriod"/>
+        <rdfs:label>holds during</rdfs:label>
+        <skos:definition>indicates a date period during which something is true</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/isAPartyTo -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isAPartyTo">
+        <rdfs:label>is a party to</rdfs:label>
+        <skos:definition>identifies an agreement, contract, policy, regulation, situation, or other arrangement that a party is associated with</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>is affected by</rdfs:label>
+        <skos:definition>relates an undergoer in a given situation to the actor that has an impact on them under the circumstances</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/isDirectlyAffectedBy -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isDirectlyAffectedBy">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatAffects"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>is directly affected by</rdfs:label>
+        <skos:definition>relates an undergoer in a given situation to the person or organization that has an impact on them under the circumstances</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/isExperiencedBy -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isExperiencedBy">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>is experienced by</rdfs:label>
+        <skos:definition>relates a situation to something that is directly involved in or affected by it</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/isObjectRoleIn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isObjectRoleIn">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/isRoleIn"/>
+        <rdfs:label>is object role in</rdfs:label>
+        <skos:definition>indicates a situation in which the role is secondary, such as an experiencer or passive participant</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/isRealizedIn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isRealizedIn">
+        <owl:inverseOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/realizes"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasObjectRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>is realized in</rdfs:label>
+        <skos:definition>relates a situation or constituency to something that is affected by, or is a secondary argument to in a specific role with respect to a given relation or situation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/isSubjectRoleIn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isSubjectRoleIn">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/RolesAndCompositions/isRoleIn"/>
+        <rdfs:label>is subject role in</rdfs:label>
+        <skos:definition>indicates a situation in which the role is the primary topic</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/playsActivePartyIn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActivePartyIn">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>plays active party in</rdfs:label>
+        <skos:definition>relates a person or organization to a situation that they are directly involved in</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleIn -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleIn">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isSubjectRoleIn"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>plays active role in</rdfs:label>
+        <skos:definition>relates something to a situation that it is directly involved in</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatAffects -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatAffects">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>plays active role that affects</rdfs:label>
+        <skos:definition>relates a person or organization to an undergoer they have an impact on under the circumstances</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatDirectlyAffects -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatDirectlyAffects">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>plays active role that directly affects</rdfs:label>
+        <skos:definition>relates a person or organization to something they have a direct impact on under the circumstances</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/realizes -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/realizes">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole"/>
+            <rdf:Description rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/isObjectRoleIn"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>realizes</rdfs:label>
+        <skos:definition>relates something to a situation or constituency in which the role they play is secondary, such as an experiencer or passive participant</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes -->
+
+    <owl:ObjectProperty rdf:about="https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes">
+        <rdfs:subPropertyOf rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isObjectRoleIn"/>
+        <rdfs:label>undergoes</rdfs:label>
+        <skos:definition>indicates a situation that the undergoer experiences</skos:definition>
+    </owl:ObjectProperty>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

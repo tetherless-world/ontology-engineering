@@ -1,0 +1,47 @@
+# SWRL rules for CQ 2.2 (Protégé SWRLTab syntax). Tested with Pellet 2.3.1; HermiT does not support swrlb built-ins.
+# Prefixes:
+#      https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/
+#      https://www.omg.org/spec/Commons/QuantitiesAndUnits/
+#   prov: http://www.w3.org/ns/prov#
+#   swrlb: http://www.w3.org/2003/11/swrlb#
+# If the policy classes in your Protégé show a different prefix, only change the prefix, not the structure.
+
+# R1 Min-bounded: value >= lower bound -> Satisfied
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ MinBoundedCompliancePolicy(?p) ^ hasLowerBound(?p, ?lb) ^ prov:value(?lb, ?lv) ^ hasMeasurementUnit(?lb, ?u) ^ isEvaluatedAt(?m, ?a) ^ hasQuantityValue(?m, ?q) ^ prov:value(?q, ?v) ^ hasMeasurementUnit(?q, ?u) ^ swrlb:greaterThanOrEqual(?v, ?lv) -> SatisfiedPolicyAssessment(?a)
+
+# R2 Min-bounded: value < lower bound -> Unsatisfied
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ MinBoundedCompliancePolicy(?p) ^ hasLowerBound(?p, ?lb) ^ prov:value(?lb, ?lv) ^ hasMeasurementUnit(?lb, ?u) ^ isEvaluatedAt(?m, ?a) ^ hasQuantityValue(?m, ?q) ^ prov:value(?q, ?v) ^ hasMeasurementUnit(?q, ?u) ^ swrlb:lessThan(?v, ?lv) -> UnsatisfiedPolicyAssessment(?a)
+
+# R3 Max-bounded: value <= upper bound -> Satisfied
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ MaxBoundedCompliancePolicy(?p) ^ hasUpperBound(?p, ?ub) ^ prov:value(?ub, ?uv) ^ hasMeasurementUnit(?ub, ?u) ^ isEvaluatedAt(?m, ?a) ^ hasQuantityValue(?m, ?q) ^ prov:value(?q, ?v) ^ hasMeasurementUnit(?q, ?u) ^ swrlb:lessThanOrEqual(?v, ?uv) -> SatisfiedPolicyAssessment(?a)
+
+# R4 Max-bounded: value > upper bound -> Unsatisfied
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ MaxBoundedCompliancePolicy(?p) ^ hasUpperBound(?p, ?ub) ^ prov:value(?ub, ?uv) ^ hasMeasurementUnit(?ub, ?u) ^ isEvaluatedAt(?m, ?a) ^ hasQuantityValue(?m, ?q) ^ prov:value(?q, ?v) ^ hasMeasurementUnit(?q, ?u) ^ swrlb:greaterThan(?v, ?uv) -> UnsatisfiedPolicyAssessment(?a)
+
+# R5 Range-bounded: lower <= value <= upper -> Satisfied
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ RangeBoundedCompliancePolicy(?p) ^ hasLowerBound(?p, ?lb) ^ prov:value(?lb, ?lv) ^ hasUpperBound(?p, ?ub) ^ prov:value(?ub, ?uv) ^ hasMeasurementUnit(?lb, ?u) ^ isEvaluatedAt(?m, ?a) ^ hasQuantityValue(?m, ?q) ^ prov:value(?q, ?v) ^ hasMeasurementUnit(?q, ?u) ^ swrlb:greaterThanOrEqual(?v, ?lv) ^ swrlb:lessThanOrEqual(?v, ?uv) -> SatisfiedPolicyAssessment(?a)
+
+# R6 Range-bounded: value < lower bound -> Unsatisfied
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ RangeBoundedCompliancePolicy(?p) ^ hasLowerBound(?p, ?lb) ^ prov:value(?lb, ?lv) ^ hasMeasurementUnit(?lb, ?u) ^ isEvaluatedAt(?m, ?a) ^ hasQuantityValue(?m, ?q) ^ prov:value(?q, ?v) ^ hasMeasurementUnit(?q, ?u) ^ swrlb:lessThan(?v, ?lv) -> UnsatisfiedPolicyAssessment(?a)
+
+# R7 Range-bounded: value > upper bound -> Unsatisfied
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ RangeBoundedCompliancePolicy(?p) ^ hasUpperBound(?p, ?ub) ^ prov:value(?ub, ?uv) ^ hasMeasurementUnit(?ub, ?u) ^ isEvaluatedAt(?m, ?a) ^ hasQuantityValue(?m, ?q) ^ prov:value(?q, ?v) ^ hasMeasurementUnit(?q, ?u) ^ swrlb:greaterThan(?v, ?uv) -> UnsatisfiedPolicyAssessment(?a)
+
+HELPER AXIOM (add in Protégé once, before the rules)
+  Object property:  isTransitivelyDerivedFrom
+    Characteristics: Transitive
+    Super-property of: prov:wasDerivedFrom   (i.e. put prov:wasDerivedFrom under it: wasDerivedFrom SubPropertyOf isTransitivelyDerivedFrom)
+  DL:  wasDerivedFrom ⊑ isTransitivelyDerivedFrom ,  Trans(isTransitivelyDerivedFrom)
+ 
+RULE A1 - component, direct (a component acts on the measurement the policy assessment evaluates)
+PolicyAssessment(?a) ^ isEvaluatedAt(?m, ?a) ^ Commons-PartiesAndSituations:actsOn(?c, ?m) ^ BuildingServiceComponent(?c) -> wasAssociatedWithComponent(?a, ?c)
+ 
+RULE A2 - component, indirect (a component acts on any measurement the evaluated measurement was derived from, at any depth)
+PolicyAssessment(?a) ^ isEvaluatedAt(?m, ?a) ^ isTransitivelyDerivedFrom(?m, ?s) ^ Commons-PartiesAndSituations:actsOn(?c, ?s) ^ BuildingServiceComponent(?c) -> wasAssociatedWithComponent(?a, ?c)
+ 
+RULE B - ystem (any building service system that has the associated component as a part, directly or nested; hasPart is transitive)
+Assessment(?a) ^ wasAssociatedWithComponent(?a, ?c) ^ Commons-Collections:hasPart(?s, ?c) ^ BuildingServiceSystem(?s) -> wasAssociatedWithSystem(?a, ?s)
+
+NEW RULE S11 - lift components from policy assessments to the compliance assessment
+ComplianceAssessment(?ca) ^ hasPolicyAssessment(?ca, ?pa) ^ wasAssociatedWithComponent(?pa, ?c) -> wasAssociatedWithComponent(?ca, ?c)
+ 
