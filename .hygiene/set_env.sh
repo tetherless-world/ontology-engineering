@@ -15,17 +15,17 @@ ONTPUB_FAMILY=${ONTPUB_FAMILY:-"${REPO_DIR##*/}"}
 # Path to the repository's parent directory (defaults to the parent of $REPO_DIR)
 HYGIENE_WORKSPACE=${HYGIENE_WORKSPACE:-"$(cd "${REPO_DIR}" && cd .. && pwd)"}
 
-HYGIENE_NAMESPACE_REGEX="^https:\/\/tw\.rpi\.edu\/ontology-engineering\/"
+HYGIENE_NAMESPACE_REGEX=${HYGIENE_NAMESPACE_REGEX:-"^https:\/\/tw\.rpi\.edu\/ontology-engineering\/"}
 
 # Relative path to the test directory
-HYGIENE_TEST_SUBDIR=".hygiene/curated_tests_some_errors"
+HYGIENE_TEST_SUBDIR=${HYGIENE_TEST_SUBDIR:-".hygiene/curated_tests_some_errors"}
 
 # If true, fail tests that produce warnings
-HYGIENE_FAIL_ON_WARNINGS=false
+HYGIENE_FAIL_ON_WARNINGS=${HYGIENE_FAIL_ON_WARNINGS:-false}
 
 # Relative path to ontology sources
-ONTPUB_SUBDIR=oe2026
+ONTPUB_SUBDIR=${ONTPUB_SUBDIR:-oe2026}
 # If set, ontology files with paths that partially match this var will be excluded from checking
-ONTPUB_EXCLUDED="\/[^\/]+\/archived\/.*"
+ONTPUB_EXCLUDED=${ONTPUB_EXCLUDED-"\/[^\/]+\/archived\/.*"}
 
 set +a
