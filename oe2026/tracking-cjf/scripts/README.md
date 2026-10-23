@@ -482,3 +482,27 @@ SELECT ?move ?assignment ?state ?turn WHERE {
 }
 ORDER BY ?move
 ```
+
+### Clear current pointers for later recomputation
+
+`remove_current_state_assignments.py` removes only
+`hasCurrentStateAssignment` assertions from an RDF/XML file. It keeps the moves,
+historical assignments, states, evidence, and all other assertions. It does not
+execute SHACL or assign replacement pointers. When a file changes, the CLI first
+saves a backup whose filename includes its original content hash.
+
+From this scripts directory, when removal is wanted:
+
+```sh
+python remove_current_state_assignments.py ../cq-sample-conversation.rdf
+```
+
+To clear selected moves, add `--move-iri` with the full move IRI; repeat that
+option for multiple moves. Without that option, all current pointers are cleared.
+No third-party dependencies are needed.
+
+For processing streamed turns in memory, call
+`clear_current_assignments(rdf_bytes, move_iris=None)` to obtain the updated XML
+bytes and the number of removed links. Recompute current pointers against the
+history available at that streamed turn. Passing the complete conversation to
+the SHACL runner selects the final recorded assignments.
