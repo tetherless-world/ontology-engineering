@@ -552,8 +552,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures">
-        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4bldg/DistributionControlDevice"/>
-        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
         <rdfs:domain rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
         <rdfs:domain rdf:resource="https://w3id.org/fso#Component"/>
@@ -1009,21 +1007,6 @@
 
     <owl:Class rdf:about="https://saref.etsi.org/core/Actuator">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1034,19 +1017,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <skos:definition>device, operated electrically, pneumatically or hydraulically, that changes the position of a movable device such as a valve or damper</skos:definition>
@@ -1055,61 +1025,10 @@
     
 
 
-    <!-- https://saref.etsi.org/saref4bldg/Actuator -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Actuator">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/AirToAirHeatRecovery -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/AirToAirHeatRecovery">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Alarm -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Alarm">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/AudioVisualAppliance -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/AudioVisualAppliance">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
     <!-- https://saref.etsi.org/saref4bldg/Boiler -->
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Boiler">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1132,19 +1051,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <skos:definition>heating source that transfers heat from fuel combustion or electricity to water or steam.</skos:definition>
@@ -1152,36 +1058,10 @@
     
 
 
-    <!-- https://saref.etsi.org/saref4bldg/Burner -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Burner">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
     <!-- https://saref.etsi.org/saref4bldg/Chiller -->
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Chiller">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1206,80 +1086,15 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <skos:definition>cooling source that removes heat from water or another liquid to produce chilled fluid for cooling.</skos:definition>
     </owl:Class>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Coil -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Coil">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/CommunicationAppliance -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/CommunicationAppliance">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Compressor -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Compressor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Condenser -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Condenser">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
     
 
 
     <!-- https://saref.etsi.org/saref4bldg/Controller -->
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Controller">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1292,162 +1107,16 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <skos:definition>device that regulates a system or component in normal operation, either manually or automatically</skos:definition>
         <skos:note xml:lang="en">A subset of the nine permitted measurements, determined by its controlled equipment. Materialize only the measurements influenced through its actual control connections.</skos:note>
     </owl:Class>
     
 
 
-    <!-- https://saref.etsi.org/saref4bldg/CooledBeam -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/CooledBeam">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/CoolingTower -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/CoolingTower">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Damper -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Damper">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/DuctSilencer -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/DuctSilencer">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/ElectricAppliance -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/ElectricAppliance">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/ElectricFlowStorageDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/ElectricFlowStorageDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/ElectricGenerator -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/ElectricGenerator">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/ElectricMotor -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/ElectricMotor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/ElectricTimeControl -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/ElectricTimeControl">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/EnergyConversionDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/EnergyConversionDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Engine -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Engine">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/EvaporativeCooler -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/EvaporativeCooler">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Evaporator -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Evaporator">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
     <!-- https://saref.etsi.org/saref4bldg/Fan -->
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Fan">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1487,20 +1156,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
-                            <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <skos:definition>air-moving device that produces a  difference to move air through an AHU, duct, or space.</skos:definition>
@@ -1508,190 +1164,10 @@
     
 
 
-    <!-- https://saref.etsi.org/saref4bldg/Filter -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Filter">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FireSuppressionTerminal -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FireSuppressionTerminal">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FlowController -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FlowController">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FlowInstrument -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FlowInstrument">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FlowMeter -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FlowMeter">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FlowMovingDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FlowMovingDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FlowStorageDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FlowStorageDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FlowTerminal -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FlowTerminal">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/FlowTreatmentDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/FlowTreatmentDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/HeatExchanger -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/HeatExchanger">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Humidifier -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Humidifier">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Interceptor -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Interceptor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Lamp -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Lamp">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/MedicalDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/MedicalDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Outlet -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Outlet">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/ProtectiveDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/ProtectiveDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/ProtectiveDeviceTrippingUnit -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/ProtectiveDeviceTrippingUnit">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Pump -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Pump">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/SanitaryTerminal -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/SanitaryTerminal">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
     <!-- https://saref.etsi.org/saref4bldg/Sensor -->
 
     <owl:Class rdf:about="https://saref.etsi.org/saref4bldg/Sensor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1706,19 +1182,6 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
@@ -1728,83 +1191,10 @@
     
 
 
-    <!-- https://saref.etsi.org/saref4bldg/SolarDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/SolarDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/SpaceHeater -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/SpaceHeater">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/SwitchingDevice -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/SwitchingDevice">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Tank -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Tank">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Transformer -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Transformer">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/TubeBundle -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/TubeBundle">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/UnitaryControlElement -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/UnitaryControlElement">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://saref.etsi.org/saref4bldg/Valve -->
-
-    <rdf:Description rdf:about="https://saref.etsi.org/saref4bldg/Valve">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionFlowDevice"/>
-    </rdf:Description>
-    
-
-
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUOutdoorAirFlowRate -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUOutdoorAirFlowRate">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRate"/>
         <rdfs:label>AHU outdoor air flow rate</rdfs:label>
         <skos:definition>Volumetric airflow rate of outdoor air entering an air-handling unit.</skos:definition>
     </owl:Class>
@@ -1814,8 +1204,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUSupplyAirFlowRate -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AHUSupplyAirFlowRate">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
         <rdfs:label>AHU supply air flow rate</rdfs:label>
         <skos:definition>Volumetric total supply-airflow rate discharged by an air-handling unit.</skos:definition>
@@ -1826,28 +1214,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>air flow rate</rdfs:label>
         <skos:definition>flow rate equal to the volume of air moving past a given plane per unit time.</skos:definition>
     </owl:Class>
@@ -1857,17 +1224,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRateSensor -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRateSensor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionControlDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
@@ -1886,26 +1243,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>airflow rate sensor</rdfs:label>
         <skos:definition>sensor that detects or measures the volumetric flow rate of air through a duct, opening, or air-handling component</skos:definition>
     </owl:Class>
@@ -1916,21 +1253,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirHandlingUnit">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -1941,19 +1263,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>air handling unit</rdfs:label>
@@ -1967,38 +1276,10 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirLoop">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>air loop</rdfs:label>
@@ -2061,20 +1342,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingMeasurement -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingMeasurement">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>building measurement</rdfs:label>
         <skos:definition>measurement associated with a building, building system, component, room, or building environmental condition</skos:definition>
     </owl:Class>
@@ -2230,38 +1498,10 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Controls">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>HVAC control system</rdfs:label>
@@ -2274,21 +1514,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CoolingCoil">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2313,19 +1538,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>cooling coil</rdfs:label>
         <skos:definition>air-to-fluid or air-to-refrigerant heat exchanger that removes sensible heat and, when its surface is below the air dew point, moisture from an airstream.</skos:definition>
     </owl:Class>
@@ -2335,7 +1547,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -2347,18 +1558,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
                 <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>derived measurement</rdfs:label>
@@ -2387,21 +1586,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Diffuser">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2432,19 +1616,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>diffuser</rdfs:label>
         <skos:definition>supply-air terminal device that discharges air into a space in a specified pattern and promotes mixing of supply air with room air.</skos:definition>
     </owl:Class>
@@ -2455,21 +1626,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DirectExpansionUnit">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2494,19 +1650,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>direct-expansion unit</rdfs:label>
         <skos:altLabel>DX unit</skos:altLabel>
         <skos:definition>refrigeration-based HVAC unit that transfers heat between air and refrigerant in a direct-expansion coil, without chilled water being the cooling medium at that coil.</skos:definition>
@@ -2518,7 +1661,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ETO-sterilizer_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>ETO-sterilizer room</rdfs:label>
         <skos:definition>service room containing equipment that uses ethylene oxide for low-temperature microbial-elimination processing of compatible items.</skos:definition>
     </owl:Class>
@@ -2529,15 +1671,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>exaust air flow rate</rdfs:label>
         <skos:definition>Volumetric airflow rate removed from a room through the exhaust path.</skos:definition>
     </owl:Class>
@@ -2548,38 +1681,10 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustAndReliefSystem">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>exhaust and relief system</rdfs:label>
@@ -2592,21 +1697,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2629,19 +1719,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>exhaust ductwork</rdfs:label>
@@ -2654,21 +1731,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustFan">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2691,19 +1753,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>exhaust fan</rdfs:label>
@@ -2716,21 +1765,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ExhaustInlet">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2755,19 +1789,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>exhaust inlet</rdfs:label>
         <skos:definition>opening through which air is drawn from a space into exhaust ductwork</skos:definition>
     </owl:Class>
@@ -2778,21 +1799,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Filter">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2821,19 +1827,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>filter</rdfs:label>
@@ -2889,21 +1882,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatPump">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -2928,19 +1906,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>heat pump</rdfs:label>
         <skos:definition>refrigeration-based HVAC unit that transfers heat between two locations and can provide heating, cooling, or both by reversing or directing its refrigeration cycle.</skos:definition>
     </owl:Class>
@@ -2951,38 +1916,10 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingAndCoolingSource">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>heating and cooling source</rdfs:label>
@@ -2995,21 +1932,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HeatingCoil">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -3034,19 +1956,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>heating coil</rdfs:label>
         <skos:definition>air-to-fluid or air-to-refrigerant heat exchanger that transfers heat to an airstream.</skos:definition>
     </owl:Class>
@@ -3056,8 +1965,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Humidity">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:label>Humidity</rdfs:label>
         <skos:definition>physical quantity representing the amount of water vapor in air; relative humidity is a commonly used measure.</skos:definition>
@@ -3068,17 +1975,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HumiditySensor -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/HumiditySensor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionControlDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
@@ -3097,26 +1994,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>humidity sensor</rdfs:label>
         <skos:definition>sensor that detects or measures the amount of water vapor in air and produces a relative humidity value</skos:definition>
     </owl:Class>
@@ -3127,7 +2004,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ICU">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>ICU</rdfs:label>
         <skos:definition>patient-care area providing continuous monitoring and advanced organ-support capabilities for patients with life-threatening conditions.</skos:definition>
     </owl:Class>
@@ -3137,9 +2013,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/IncomingTransferAirflowRate -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/IncomingTransferAirflowRate">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
@@ -3162,18 +2036,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
                 <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>incoming transfer airflow rate</rdfs:label>
@@ -3203,12 +2065,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#generatedAtTime"/>
@@ -3257,9 +2113,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirChangePerHour -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirChangePerHour">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
@@ -3278,18 +2132,6 @@
                 <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>outdoor air change per hour</rdfs:label>
         <skos:definition>Room air-change rate calculated from outdoor-airflow rate to the room divided by room volume.</skos:definition>
     </owl:Class>
@@ -3300,21 +2142,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirDamper">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -3351,19 +2178,6 @@
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>outdoor-air damper</rdfs:label>
         <skos:definition>damper that controls the flow of outdoor air into an air-handling system</skos:definition>
     </owl:Class>
@@ -3374,15 +2188,6 @@
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>out door air flow rate</rdfs:label>
         <skos:definition>volumetric airflow rate of outdoor air entering or being supplied by a ventilation system.</skos:definition>
     </owl:Class>
@@ -3392,9 +2197,7 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRateToRoom -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFlowRateToRoom">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
@@ -3425,18 +2228,6 @@
                 <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>outdoor air flow rate to room</rdfs:label>
         <skos:definition>Volumetric outdoor-airflow rate allocated to a room from its total supply airflow.
 outdoor air change per hour</skos:definition>
@@ -3447,9 +2238,7 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFraction -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorAirFraction">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
@@ -3468,18 +2257,6 @@ outdoor air change per hour</skos:definition>
                 <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>outdoor air fraction</rdfs:label>
         <skos:definition>Dimensionless ratio of AHU outdoor airflow rate to total AHU supply airflow rate.</skos:definition>
     </owl:Class>
@@ -3490,21 +2267,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/OutdoorDischarge">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -3527,19 +2289,6 @@ outdoor air change per hour</skos:definition>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>outdoor discharge</rdfs:label>
@@ -3567,21 +2316,6 @@ outdoor air change per hour</skos:definition>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SatisfiedPolicyAssessment"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
         <rdfs:label>partially satisfied compliance assessment</rdfs:label>
         <skos:definition>compliance assessment containing at least one satisfied policy assessment and at least one unsatisfied policy assessment, with no unknown policy assessment</skos:definition>
     </owl:Class>
@@ -3601,8 +2335,6 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Pressure">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
         <rdfs:label>Pressure</rdfs:label>
         <skos:definition>Force per unit area exerted by air at a specified location.</skos:definition>
@@ -3613,17 +2345,8 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PressureSensor -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PressureSensor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionControlDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
@@ -3640,26 +2363,6 @@ outdoor air change per hour</skos:definition>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>pressure sensor</rdfs:label>
@@ -3722,21 +2425,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReliefDamper">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -3761,19 +2449,6 @@ outdoor air change per hour</skos:definition>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>relief damper</rdfs:label>
         <skos:definition>damper that controls the discharge of relief air from an air-handling system</skos:definition>
     </owl:Class>
@@ -3784,21 +2459,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirDamper">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -3847,19 +2507,6 @@ outdoor air change per hour</skos:definition>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>return-air damper</rdfs:label>
         <skos:definition>damper that controls the flow of return air within an air-handling system</skos:definition>
     </owl:Class>
@@ -3870,15 +2517,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>return air flow rate</rdfs:label>
         <skos:definition>volumetric airflow rate returning from a room or zone toward an air-handling or return-air path.</skos:definition>
     </owl:Class>
@@ -3889,21 +2527,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ReturnDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -3926,19 +2549,6 @@ outdoor air change per hour</skos:definition>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>return ductwork</rdfs:label>
@@ -3966,21 +2576,6 @@ outdoor air change per hour</skos:definition>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SatisfiedPolicyAssessment"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
         <rdfs:label>satisfied compliance assessment</rdfs:label>
         <skos:definition>compliance assessment covering one or more applicable policies whose policy assessments are all satisfied</skos:definition>
     </owl:Class>
@@ -3990,7 +2585,6 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SatisfiedPolicyAssessment -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SatisfiedPolicyAssessment">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Assessment"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
         <rdfs:label>satisfied policy assessment</rdfs:label>
         <skos:definition>policy assessment whose available and usable evidence meets all applicable requirements of the evaluated policy</skos:definition>
@@ -4001,12 +2595,11 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -4014,12 +2607,6 @@ outdoor air change per hour</skos:definition>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>sensor measurement</rdfs:label>
@@ -4032,15 +2619,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/AirFlowRate"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>supply air flow rate</rdfs:label>
         <skos:definition>volumetric airflow rate of supply air delivered through a supply-air path.</skos:definition>
     </owl:Class>
@@ -4051,21 +2629,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyDuctwork">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -4102,19 +2665,6 @@ outdoor air change per hour</skos:definition>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>supply ductwork</rdfs:label>
         <skos:definition>air-distribution duct system that conveys conditioned supply air from an AHU or terminal unit to a served space.</skos:definition>
     </owl:Class>
@@ -4124,28 +2674,7 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/hasQuantityValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/ScalarQuantityValue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>Temperature</rdfs:label>
         <skos:definition>physical quantity representing thermal state and used for room or system temperature measurements.</skos:definition>
     </owl:Class>
@@ -4155,17 +2684,7 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/TemperatureSensor -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/TemperatureSensor">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionControlDevice"/>
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/DistributionDevice"/>
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4bldg/Sensor"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
@@ -4186,19 +2705,6 @@ outdoor air change per hour</skos:definition>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/measures"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
@@ -4213,9 +2719,7 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/TotalAirChangePerHour -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/TotalAirChangePerHour">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/DerivedMeasurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
@@ -4232,18 +2736,6 @@ outdoor air change per hour</skos:definition>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
                 <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>total air change per hour</rdfs:label>
@@ -4271,21 +2763,6 @@ outdoor air change per hour</skos:definition>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/UnknownPolicyAssessment"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
         <rdfs:label>unknown compliance assessment</rdfs:label>
         <skos:definition>compliance assessment containing at least one unknown policy assessment</skos:definition>
     </owl:Class>
@@ -4295,7 +2772,6 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/UnknownPolicyAssessment -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/UnknownPolicyAssessment">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Assessment"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
         <rdfs:label>unknown policy assessment</rdfs:label>
         <skos:definition>policy assessment for which the available information is insufficient to determine whether the evaluated policy’s applicable requirements are met</skos:definition>
@@ -4334,21 +2810,6 @@ outdoor air change per hour</skos:definition>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
-                        <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
         <rdfs:label>unsatisfied compliance assessment</rdfs:label>
         <skos:definition>compliance assessment covering one or more applicable policies whose policy assessments are all unsatisfied</skos:definition>
     </owl:Class>
@@ -4358,7 +2819,6 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/UnsatisfiedPolicyAssessment -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/UnsatisfiedPolicyAssessment">
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Assessment"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/PolicyAssessment"/>
         <rdfs:label>unsatisfied policy assessment</rdfs:label>
         <skos:definition>policy assessment whose available and usable evidence fails to meet at least one applicable requirement of the evaluated policy</skos:definition>
@@ -4370,21 +2830,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/VariableAirVolumeBox">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/fso#Component"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/connectsTo"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/rec/core/Room"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
@@ -4415,19 +2860,6 @@ outdoor air change per hour</skos:definition>
                 <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Temperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/Collections/isPartOf"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-                            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceSystem"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>variable air volume box</rdfs:label>
         <skos:altLabel>VAV box</skos:altLabel>
         <skos:definition>variable-air-volume terminal unit that modulates supply airflow to a zone in response to a control requirement, commonly zone temperature.</skos:definition>
@@ -4439,7 +2871,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/airborne_infection_isolation_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>airborne infection isolation room</rdfs:label>
         <skos:definition>patient room designed to reduce airborne transmission from an occupant to surrounding indoor areas through controlled airflow and relationships.</skos:definition>
     </owl:Class>
@@ -4450,7 +2881,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/autopsy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>autopsy room</rdfs:label>
         <skos:definition>specialized room equipped for post-mortem examination of a human body.</skos:definition>
     </owl:Class>
@@ -4461,7 +2891,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/bathroom">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>bathroom</rdfs:label>
         <skos:definition>room containing a toilet and washbasin designated for patient or staff personal hygiene.</skos:definition>
     </owl:Class>
@@ -4472,7 +2901,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/bedpan_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>bedpan room</rdfs:label>
         <skos:definition>utility room designated for the emptying, cleaning, and sanitizing of patient bedpans and human waste receptacles.</skos:definition>
     </owl:Class>
@@ -4483,7 +2911,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/biochemistry_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>biochemistry lab</rdfs:label>
         <skos:definition>laboratory space used to measure chemical constituents or biochemical properties of clinical specimens.</skos:definition>
     </owl:Class>
@@ -4494,7 +2921,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/bronchoscopy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>bronchoscopy room</rdfs:label>
         <skos:definition>clinical room equipped for examination or intervention involving the tracheobronchial tree using a bronchoscope.</skos:definition>
     </owl:Class>
@@ -4515,7 +2941,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/clean_linen_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>clean linen storage</rdfs:label>
         <skos:definition>room dedicated to the secure storage of freshly laundered linens</skos:definition>
     </owl:Class>
@@ -4526,7 +2951,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/clean_workroom">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>clean workroom</rdfs:label>
         <skos:definition>room utilized for the assembly, inspection, and packaging of clean medical supplies and instruments.</skos:definition>
     </owl:Class>
@@ -4547,7 +2971,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/cytology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>cytology lab</rdfs:label>
         <skos:definition>laboratory space used to prepare and examine cells for diagnostic evaluation.</skos:definition>
     </owl:Class>
@@ -4558,7 +2981,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/dark_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/radiology_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>dark room</rdfs:label>
         <skos:definition>radiology support room in which light-sensitive imaging materials are handled under controlled illumination.</skos:definition>
     </owl:Class>
@@ -4569,7 +2991,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/decontamination_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>decontamination room</rdfs:label>
         <skos:definition>room designated for the cleaning and preliminary disinfection of contaminated medical instruments and equipment</skos:definition>
     </owl:Class>
@@ -4580,7 +3001,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/delievery_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>delievery room</rdfs:label>
         <skos:definition>clinical room equipped for childbirth and immediate maternal and newborn care.</skos:definition>
     </owl:Class>
@@ -4601,7 +3021,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/dietary_day_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>dietary day storage</rdfs:label>
         <skos:definition>space adjacent to a food preparation center used for the short-term storage of daily food supplies and ingredients.</skos:definition>
     </owl:Class>
@@ -4612,7 +3031,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/endoscopy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>endoscopy room</rdfs:label>
         <skos:definition>clinical room equipped for examination or intervention within an internal organ or body cavity using an endoscope.</skos:definition>
     </owl:Class>
@@ -4623,7 +3041,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/examination_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>examination room</rdfs:label>
         <skos:definition>clinical room equipped for physical assessment of patients.</skos:definition>
     </owl:Class>
@@ -4634,7 +3051,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/food_preparation_center">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>food preparation center</rdfs:label>
         <skos:definition>facility zone dedicated to the processing, cooking, and assembly of dietary items for patients and staff.</skos:definition>
     </owl:Class>
@@ -4645,7 +3061,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/general_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>general lab</rdfs:label>
         <skos:definition>laboratory space used for clinical analyses that are not assigned to a more specialized laboratory discipline.</skos:definition>
     </owl:Class>
@@ -4656,7 +3071,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/general_laundry">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>general laundry</rdfs:label>
         <skos:definition>facility area dedicated to the washing, drying, and processing of hospital linens and garments.</skos:definition>
     </owl:Class>
@@ -4667,7 +3081,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/glass_washing_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>glass washing lab</rdfs:label>
         <skos:definition>laboratory support space equipped for cleaning and processing reusable laboratory glassware.</skos:definition>
     </owl:Class>
@@ -4678,7 +3091,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/histology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>histology lab</rdfs:label>
         <skos:definition>laboratory space used to prepare and examine tissue specimens microscopically.</skos:definition>
     </owl:Class>
@@ -4689,7 +3101,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hydrotherapy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>hydrotherapy room</rdfs:label>
         <skos:definition>treatment space equipped for therapeutic procedures that use water as the treatment medium.</skos:definition>
     </owl:Class>
@@ -4700,7 +3111,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isolation_alcove">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>isolation alcove</rdfs:label>
         <skos:definition>partially enclosed patient-care space intended to separate an occupant or activity from adjacent care areas.</skos:definition>
     </owl:Class>
@@ -4711,7 +3121,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/labor_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>labor room</rdfs:label>
         <skos:definition>clinical room equipped for monitoring and care of a patient during labor before childbirth.</skos:definition>
     </owl:Class>
@@ -4732,7 +3141,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/medication_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>medication room</rdfs:label>
         <skos:definition>healthcare facility room used for secure storage, preparation, and handling of medications before administration.</skos:definition>
     </owl:Class>
@@ -4743,7 +3151,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/microbiology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>microbiology lab</rdfs:label>
         <skos:definition>healthcare facility area used for preparation, storage, control, and dispensing of medications.</skos:definition>
     </owl:Class>
@@ -4754,7 +3161,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/newborn_nursery_suite">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>newborn nursery suite</rdfs:label>
         <skos:definition>nursing area arranged for observation and routine care of newborn infants.</skos:definition>
     </owl:Class>
@@ -4765,7 +3171,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nonrefrigerated_body-holding_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>nonrefrigerated body-holding room</rdfs:label>
         <skos:definition>service-area room used for temporary holding of human remains without refrigerated storage.</skos:definition>
     </owl:Class>
@@ -4776,7 +3181,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nuclear_medicine_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>nuclear medicine lab</rdfs:label>
         <skos:definition>specialized room equipped for post-mortem examination of a human body.</skos:definition>
     </owl:Class>
@@ -4797,7 +3201,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/operating_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>operating room</rdfs:label>
         <skos:definition>clinical room equipped and controlled for invasive surgical procedures performed under aseptic conditions.</skos:definition>
     </owl:Class>
@@ -4808,7 +3211,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/pathology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>pathology lab</rdfs:label>
         <skos:definition>laboratory support space equipped to render reusable items free of viable microorganisms by a validated sterilization process.</skos:definition>
     </owl:Class>
@@ -4819,7 +3221,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/patient_corridor">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>patient corridor</rdfs:label>
         <skos:definition>circulation space connecting patient rooms and other patient-care spaces.</skos:definition>
     </owl:Class>
@@ -4830,7 +3231,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/patient_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>patient room</rdfs:label>
         <skos:definition>nursing-area room intended for accommodation, observation, and routine care of one or more patients by nursing personnel.</skos:definition>
     </owl:Class>
@@ -4841,7 +3241,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/pharmacy">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>pharmacy</rdfs:label>
         <skos:definition>healthcare facility area used for preparation, storage, control, and dispensing of medications.</skos:definition>
     </owl:Class>
@@ -4852,7 +3251,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/physical_therapy_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>physical therapy room</rdfs:label>
         <skos:definition>treatment space equipped for therapeutic exercise, mobility training, or other physical rehabilitation activities.</skos:definition>
     </owl:Class>
@@ -4863,7 +3261,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/protective_environment_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>protective environment room</rdfs:label>
         <skos:definition>patient room designed to reduce exposure of a highly susceptible occupant to airborne contaminants from surrounding indoor areas.</skos:definition>
     </owl:Class>
@@ -4884,7 +3281,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/recovery_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>recovery room</rdfs:label>
         <skos:definition>clinical room in which patients are monitored after anesthesia or a procedure until they meet criteria for transfer or discharge.</skos:definition>
     </owl:Class>
@@ -4894,21 +3290,7 @@ outdoor air change per hour</skos:definition>
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/roomVolume -->
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/roomVolume">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingMeasurement"/>
-        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/BuildingServiceComponent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#atTime"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label>room volume</rdfs:label>
         <skos:definition>space volume bounded by the room’s enclosing surfaces.</skos:definition>
     </owl:Class>
@@ -4919,7 +3301,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/serology_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>serology lab</rdfs:label>
         <skos:definition>laboratory space used to examine serum for antibodies, antigens, or related immunologic markers.</skos:definition>
     </owl:Class>
@@ -4930,7 +3311,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/service_area">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>service area</rdfs:label>
         <skos:definition>designated space within a facility utilized for utility maintenance, equipment storage, or logistical support operations.</skos:definition>
     </owl:Class>
@@ -4941,7 +3321,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/soiled_linen_and_trash_chute_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>soiled linen and trash chute room</rdfs:label>
         <skos:definition>enclosed space housing vertical chutes for the gravity-assisted transport of waste and soiled linens.</skos:definition>
     </owl:Class>
@@ -4952,7 +3331,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/soiled_linen_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>soiled linen storage</rdfs:label>
         <skos:definition>room designated for the temporary containment of used or contaminated linens prior to laundering.</skos:definition>
     </owl:Class>
@@ -4963,7 +3341,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/soiled_workroom">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>soiled workroom</rdfs:label>
         <skos:definition>service room used to receive, hold, clean, or process contaminated supplies or equipment before decontamination or disposal.</skos:definition>
     </owl:Class>
@@ -4974,7 +3351,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterile_storage">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>sterile storage</rdfs:label>
         <skos:definition>room designated for the secure storage of sterilized medical supplies and instruments prior to clinical use.</skos:definition>
     </owl:Class>
@@ -4985,7 +3361,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterilizer_equipment_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>sterilizer equipment room</rdfs:label>
         <skos:definition>service room containing equipment used to eliminate viable microorganisms from reusable medical items.</skos:definition>
     </owl:Class>
@@ -4996,7 +3371,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterilizing_and_supply_area">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/diagnostic_and_treatment_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>sterilizing and supply area</rdfs:label>
         <skos:definition>service area used for decontamination, preparation, microbial-elimination processing, storage, or distribution of reusable medical supplies and equipment.</skos:definition>
     </owl:Class>
@@ -5007,7 +3381,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/sterilizing_lab">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/laboratory_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>sterilizing lab</rdfs:label>
         <skos:definition>laboratory support space equipped to render reusable items free of viable microorganisms by a validated sterilization process.</skos:definition>
     </owl:Class>
@@ -5018,7 +3391,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/toilet_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/nursing_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>toilet room</rdfs:label>
         <skos:definition>enclosed healthcare facility space containing a toilet and intended for sanitary use.</skos:definition>
     </owl:Class>
@@ -5029,7 +3401,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/trauma_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>trauma room</rdfs:label>
         <skos:definition>clinical room equipped for rapid assessment, resuscitation, and stabilization of patients with acute injuries.</skos:definition>
     </owl:Class>
@@ -5040,7 +3411,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/treatment_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/critical_care_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>traetment room</rdfs:label>
         <skos:definition>clinical room equipped for non-operative therapeutic procedures performed on patients.</skos:definition>
     </owl:Class>
@@ -5051,7 +3421,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/x-ray_room">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/radiology_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>x-ray room</rdfs:label>
         <skos:definition>radiology-area room containing equipment used to produce diagnostic images with X-radiation.</skos:definition>
     </owl:Class>
@@ -5062,7 +3431,6 @@ outdoor air change per hour</skos:definition>
 
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/janitor&apos;s_closet">
         <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/central_medical_and_surgical_supply_area"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/rec/core/Room"/>
         <rdfs:label>janitor&apos;s closet</rdfs:label>
         <skos:definition>small utility room utilized for the storage of cleaning supplies, chemical agents, and janitorial equipment.</skos:definition>
     </owl:Class>
@@ -5102,22 +3470,6 @@ outdoor air change per hour</skos:definition>
     <owl:Class rdf:about="https://w3id.org/rec/core/Room">
         <skos:definition>indoor space enclosed or bounded to support a defined occupancy, care, treatment, or service function</skos:definition>
     </owl:Class>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/BaseUnit -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/BaseUnit">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit"/>
-    </rdf:Description>
-    
-
-
-    <!-- https://www.omg.org/spec/Commons/QuantitiesAndUnits/DerivedUnit -->
-
-    <rdf:Description rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/DerivedUnit">
-        <rdfs:subClassOf rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MeasurementUnit"/>
-    </rdf:Description>
     
 
 
@@ -6834,4 +5186,5 @@ outdoor air change per hour</skos:definition>
 
 
 
-<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
