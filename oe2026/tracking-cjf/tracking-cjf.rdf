@@ -516,6 +516,10 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasState">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/ConversationMoveWithState"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/State"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasCurrentStateAssignment"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/assignedState"/>
+        </owl:propertyChainAxiom>
         <rdfs:label>has state</rdfs:label>
         <skos:definition>has its evidence-based standing at a specified point in the conversation characterized by</skos:definition>
     </owl:ObjectProperty>
@@ -556,7 +560,7 @@
         <rdfs:label>has triggering relationship</rdfs:label>
         <skos:definition>has its recorded state transition triggered by</skos:definition>
         <skos:prefLabel>has triggering relationship</skos:prefLabel>
-        <cmns-av:usageNote>Links a relationship-based state assignment to the relationship individual that triggers that transition. The relationship must target the same conversation move and be established by evidence available at the assignment's effective utterance. Earlier contextual evidence alone does not establish the trigger. Initial assignments and evidence-based transitions need not have a triggering relationship; multiple relationships may jointly trigger one transition.</cmns-av:usageNote>
+        <cmns-av:usageNote>Links a relationship-based state assignment to the relationship individual that triggers that transition. The relationship must target the same conversation move and be established by evidence available at the assignment&apos;s effective utterance. Earlier contextual evidence alone does not establish the trigger. Initial assignments and evidence-based transitions need not have a triggering relationship; multiple relationships may jointly trigger one transition.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1432,45 +1436,8 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
-                                    <owl:Restriction>
-                                        <owl:onProperty>
-                                            <rdf:Description>
-                                                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasStateAssignment"/>
-                                            </rdf:Description>
-                                        </owl:onProperty>
-                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
-                                    </owl:Restriction>
                                     <owl:Class>
                                         <owl:unionOf rdf:parseType="Collection">
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasPreviousAssignment"/>
-                                                        <owl:someValuesFrom>
-                                                            <owl:Class>
-                                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
-                                                                    <owl:Restriction>
-                                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/assignedState"/>
-                                                                        <owl:someValuesFrom>
-                                                                            <owl:Class>
-                                                                                <owl:unionOf rdf:parseType="Collection">
-                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Unassessed"/>
-                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Supported"/>
-                                                                                </owl:unionOf>
-                                                                            </owl:Class>
-                                                                        </owl:someValuesFrom>
-                                                                    </owl:Restriction>
-                                                                </owl:intersectionOf>
-                                                            </owl:Class>
-                                                        </owl:someValuesFrom>
-                                                    </owl:Restriction>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasTriggeringRelationship"/>
-                                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Challenge"/>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
                                                     <owl:Restriction>
@@ -1492,16 +1459,53 @@
                                                         <owl:someValuesFrom>
                                                             <owl:Class>
                                                                 <owl:unionOf rdf:parseType="Collection">
-                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Support"/>
                                                                     <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Challenge"/>
+                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Support"/>
                                                                 </owl:unionOf>
                                                             </owl:Class>
                                                         </owl:someValuesFrom>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasPreviousAssignment"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Class>
+                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
+                                                                    <owl:Restriction>
+                                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/assignedState"/>
+                                                                        <owl:someValuesFrom>
+                                                                            <owl:Class>
+                                                                                <owl:unionOf rdf:parseType="Collection">
+                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Supported"/>
+                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Unassessed"/>
+                                                                                </owl:unionOf>
+                                                                            </owl:Class>
+                                                                        </owl:someValuesFrom>
+                                                                    </owl:Restriction>
+                                                                </owl:intersectionOf>
+                                                            </owl:Class>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasTriggeringRelationship"/>
+                                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Challenge"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
                                         </owl:unionOf>
                                     </owl:Class>
+                                    <owl:Restriction>
+                                        <owl:onProperty>
+                                            <rdf:Description>
+                                                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasStateAssignment"/>
+                                            </rdf:Description>
+                                        </owl:onProperty>
+                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
+                                    </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
                         </owl:someValuesFrom>
@@ -1964,14 +1968,14 @@
     <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasTriggeringRelationship"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CollectiveJudgmentFormationConversationMoveRelationship"/>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasStateEvidence"/>
+                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/TextSpan"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasStateEvidence"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/TextSpan"/>
+                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasTriggeringRelationship"/>
+                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CollectiveJudgmentFormationConversationMoveRelationship"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2031,45 +2035,8 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
-                                    <owl:Restriction>
-                                        <owl:onProperty>
-                                            <rdf:Description>
-                                                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasStateAssignment"/>
-                                            </rdf:Description>
-                                        </owl:onProperty>
-                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
-                                    </owl:Restriction>
                                     <owl:Class>
                                         <owl:unionOf rdf:parseType="Collection">
-                                            <owl:Class>
-                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasPreviousAssignment"/>
-                                                        <owl:someValuesFrom>
-                                                            <owl:Class>
-                                                                <owl:intersectionOf rdf:parseType="Collection">
-                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
-                                                                    <owl:Restriction>
-                                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/assignedState"/>
-                                                                        <owl:someValuesFrom>
-                                                                            <owl:Class>
-                                                                                <owl:unionOf rdf:parseType="Collection">
-                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Unassessed"/>
-                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Contested"/>
-                                                                                </owl:unionOf>
-                                                                            </owl:Class>
-                                                                        </owl:someValuesFrom>
-                                                                    </owl:Restriction>
-                                                                </owl:intersectionOf>
-                                                            </owl:Class>
-                                                        </owl:someValuesFrom>
-                                                    </owl:Restriction>
-                                                    <owl:Restriction>
-                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasTriggeringRelationship"/>
-                                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Support"/>
-                                                    </owl:Restriction>
-                                                </owl:intersectionOf>
-                                            </owl:Class>
                                             <owl:Class>
                                                 <owl:intersectionOf rdf:parseType="Collection">
                                                     <owl:Restriction>
@@ -2091,16 +2058,53 @@
                                                         <owl:someValuesFrom>
                                                             <owl:Class>
                                                                 <owl:unionOf rdf:parseType="Collection">
-                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Support"/>
                                                                     <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Challenge"/>
+                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Support"/>
                                                                 </owl:unionOf>
                                                             </owl:Class>
                                                         </owl:someValuesFrom>
                                                     </owl:Restriction>
                                                 </owl:intersectionOf>
                                             </owl:Class>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasPreviousAssignment"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Class>
+                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
+                                                                    <owl:Restriction>
+                                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/assignedState"/>
+                                                                        <owl:someValuesFrom>
+                                                                            <owl:Class>
+                                                                                <owl:unionOf rdf:parseType="Collection">
+                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Contested"/>
+                                                                                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Unassessed"/>
+                                                                                </owl:unionOf>
+                                                                            </owl:Class>
+                                                                        </owl:someValuesFrom>
+                                                                    </owl:Restriction>
+                                                                </owl:intersectionOf>
+                                                            </owl:Class>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasTriggeringRelationship"/>
+                                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Support"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
                                         </owl:unionOf>
                                     </owl:Class>
+                                    <owl:Restriction>
+                                        <owl:onProperty>
+                                            <rdf:Description>
+                                                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasStateAssignment"/>
+                                            </rdf:Description>
+                                        </owl:onProperty>
+                                        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
+                                    </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
                         </owl:someValuesFrom>
