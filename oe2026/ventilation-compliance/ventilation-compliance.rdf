@@ -138,7 +138,9 @@
 
     <!-- http://www.w3.org/ns/prov#wasDerivedFrom -->
 
-    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isTransitivelyDerivedFrom"/>
+    </owl:ObjectProperty>
     
 
 
@@ -288,7 +290,7 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/evaluatesOn">
         <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isEvaluatedBy"/>
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/CompliancePolicy"/>
-         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/Measurement"/>
         <rdfs:label>evaluates on</rdfs:label>
         <skos:definition>relation that holds between a compliance policy and a measurement when the measurement provides evidence used to determine whether the requirements expressed by the policy are satisfied</skos:definition>
     </owl:ObjectProperty>
@@ -493,7 +495,6 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isTransitivelyDerivedFrom -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/isTransitivelyDerivedFrom">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInfluencedBy"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Entity"/>
@@ -1486,13 +1487,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SensorMeasurement"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn"/>
-                <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
+                            <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/SupplyAirFlowRate"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -5338,6 +5333,12 @@ outdoor air change per hour</skos:definition>
     <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/m">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
+    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ca">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/pa">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
     <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/p">
         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
     </rdf:Description>
@@ -5581,6 +5582,65 @@ outdoor air change per hour</skos:definition>
                         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
                         <swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/wasAssociatedWithComponent"/>
                         <swrl:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/a"/>
+                        <swrl:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/c"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment>lift components from policy assessments to the compliance assessment</rdfs:comment>
+        <rdfs:label>S11</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ComplianceAssessment"/>
+                        <swrl:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ca"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/hasPolicyAssessment"/>
+                                <swrl:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ca"/>
+                                <swrl:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/pa"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/wasAssociatedWithComponent"/>
+                                        <swrl:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/pa"/>
+                                        <swrl:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/c"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/wasAssociatedWithComponent"/>
+                        <swrl:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/ca"/>
                         <swrl:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/c"/>
                     </rdf:Description>
                 </rdf:first>
@@ -6774,4 +6834,4 @@ outdoor air change per hour</skos:definition>
 
 
 
-<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
