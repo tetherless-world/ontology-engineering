@@ -1,231 +1,165 @@
-[Concept Map](#conceptual-model) | [Ontology File](#ontologies) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+---
+layout: default
+title: Concept Map and Ontology
+toc: true
+---
 
-## Conceptual Model
-
-**Download:** [OE_6 Team CJF Conceptual Model](files/conceptual-models/oe6/OE_6_TeamCJF_ConceptualModel.docx)
-
-### Provenance Diagram
-
-![Provenance diagram connecting CJF milestones to supporting text, utterances, conversations, and speakers](images/conceptual-model/oe6/milestones_relationships-ProvinanceV3.drawio.png)
-
-The diagram depicts how the underlying text is connected to the model, where each CJFMilestone is connected to an evidence TextSpan. The property chain supports the inference of the associatedWithSpeaker relationship, which is used to answer CQ5 and CQ6. The supporting TextSpan and turn number can also be retrieved to answer CQ5, CQ6, and CQ7.
-
-### CJF Milestones with States
-
-![CJF milestone taxonomy showing milestones with states](images/conceptual-model/oe6/milestones_relationships-MilestoneWithStateTaxonomy.drawio.png)
-
-The diagram shows how the milestone classes are grouped under the general CJFMilestone class. DeliberativeMilestone and InformationRequest are grouped under MilestoneWithState because they represent milestones that have states that change during a conversation. Outcome and ExpressedPosition are directly under CJFMilestone since they do not have states. This distinction relates to CQ1, which asks which milestones occurred and what state information is known for the milestones where a state applies.
-
-### A Deliberative CFJ Milestone
-
-![Deliberative milestone taxonomy showing Claim, Issue, and Option](images/conceptual-model/oe6/milestones_relationships-DeliberativeMilestoneTaxonomy.drawio.png)
-
-This diagram expands the DeliberativeMilestone class from the previous diagram into three subclasses: Claim, Issue, and Option. Each is a type of DeliberativeMilestone and therefore also belongs to MilestoneWithState. This grouping supports CQ1 by identifying milestone types for which the ontology represents state information.
-
-### CJF Milestones State Taxonomy
-
-![State taxonomy for milestones with state](images/conceptual-model/oe6/milestones_relationships-StateTaxonomyV2.drawio.png)
-
-This diagram shows the state taxonomy linked to each milestone type through hasState. These states relate to CQ1 about milestone state information and CQs 2 and 4 about whether Issues are Addressed or Resolved. Each MilestoneWithState has exactly one current State. A State can be shared by any number of milestones.
-
-### Previous State Assignment Diagram
-
-![State assignment model showing current and historical milestone states](images/conceptual-model/oe6/milestones_relationships-StateAssignment.drawio.png)
-
-This diagram shows how milestones with states retain their state history as the current State updates. Each milestone has one current State and one or more StateAssignment records, including current and historical states. Each StateAssignment identifies the recorded State, the Utterance at which it became applicable, and the TextSpan evidence supporting it. A StateAssignment may link to the preceding StateAssignment for the same milestone, allowing changes to be traced through the conversation. This provides supporting evidence for states in the competency questions through hasStateEvidence and assignedAtUtterance.
-
-### Expressed Position Subdiagram
-
-![Expressed position taxonomy showing Agreement and Disagreement](images/conceptual-model/oe6/milestones_relationships-ExpressedPositionTaxonomyConceptualDiagram.drawio.png)
-
-The diagram models Agreement and Disagreement as subclasses of ExpressedPosition, which is itself a subclass of CJFMilestone. The appropriate subclass is inferred from the supporting textual evidence: isPositiveSupportedBy indicates Agreement, whereas isNegativeSupportedBy indicates Disagreement. Together with conversation turn information, these relationships support CQs 5, 6, and 7.
-
-### Relationships between CJF Milestones
-
-![Relationships between CJF milestone types](images/conceptual-model/oe6/milestones_relationships-DeliberativeMilestoneConceptualDiagram.drawio.png)
-
-This diagram shows how the milestone types can be connected in the conversation. These relationships help retrieve related contributions and provide evidence for determining milestone states. Together with the state information and links to speakers and turns, they support all the competency questions.
-
-### Property Hierarchy
-
-![Property hierarchy for the CJF ontology](images/conceptual-model/oe6/milestones_relationships-propertyHierachy.drawio.png)
-
-The diagram shows the subproperty relationships of properties in the ontology. It contains four property segments and imports properties from the Semanticscience Integrated Ontology (SIO) [1] and the Deliberation Ontology [2].
-
-### Conceptual Model References
-
-1. M. Dumontier et al., “The Semanticscience Integrated Ontology (SIO) for biomedical research and knowledge discovery,” *Journal of Biomedical Semantics*, vol. 5, no. 1, Art. no. 14, 2014. [https://doi.org/10.1186/2041-1480-5-14](https://doi.org/10.1186/2041-1480-5-14)
-2. S. Vagnoni, “Deliberation Knowledge Graph.” Accessed October 13, 2026. [https://dkg.svagnoni.linkeddata.es/](https://dkg.svagnoni.linkeddata.es/)
+[Ontologies](#ontologies) | [Ontology Versions](#ontology-versions) | [Conceptual Model](#conceptual-model) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
 
 ## Ontologies
 
-### Study Cohort Ontology (SCO)
+### Current CJF Ontology
 
-**Link:**
-[https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl)
+[Download tracking-cjf.rdf](tracking-cjf.rdf)
 
-**View the ontology documentation at:**
-[https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
+The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
 
-#### Primary Classes and Definitions
+### Example Individuals and Supporting Files
 
-1. Research Study
-    - Definition: A scientific investigation that involves testing a hypothesis
-    - Immediate Superclass: None
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: Hasco
-1. Clinical Trial
-    - Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
-    - Immediate Superclass: Research Study
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: National Cancer Institute Thesarus (NCIT)
-1. Cohort
-    - Definition: A cohort is the group of subjects enrolled in a study
-    - Immediate Superclass: None
-    - Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: The Statistical Methods Ontology (STATO)
-1. Study Arm
-    - Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
-    or no intervention, according to the trial's protocol
-    - Immediate Superclass: Cohort
-    - Example: Metformin Conventional Therapy Arm
-    - Reused From: None
-1. Study Subject
-    - Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
-    professional or institution with the purpose to receive medical care when necessary
-    - Immediate Superclass: None
-    - Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: SemanticScience Integrated Ontology (SIO)
-1. Study Intervention
-    - Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
-    procedures, vaccines, and other products that are either investigational or already available
-    - Immediate Superclass: None
-    - Example: Metformin
-    - Reused From: ProvCaRe
-1. Subject Characteristic
-    - Definition: Property that summarizes important attributes of the participants enrolled in a study
-    - Immediate Superclass: None
-    - Example: Age
-    - Reused From: None
-1. Statistical Measure
-    - Definition: a standard unit used to express the size, amount, or degree of something
-    - Immediate Superclass: None
-    - Example: Mean
-    - Reused From: ProvCaRe
+These files accompany the schema; they are not separate releases of the ontology.
 
-### Accompanying Suite of Ontologies
+| File | Purpose |
+| --- | --- |
+| [CQ sample conversation](cq-sample-conversation.rdf) | Conversation, utterances, speakers, conversation moves, evidence, relationships, and state assignments used for the competency question examples |
+| [March 11 Group B individuals](mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
+| [Earlier conversation individuals](tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
+| [Ontology import catalog](catalog-v001.xml) | Local mappings used to resolve ontology imports |
+| [Local PROV-O copy](prov-o-cjf.owl) | Provenance vocabulary used by the project |
+| [Current state assignment SHACL rules](shacl/current-state-assignment-rules.ttl) | Rules and constraints for identifying the latest recorded assignment for each move with state |
 
-- [Diseases](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/diseases.owl)
-- [Lab results](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/labresults.owl)
-- [Medications](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/medications.owl)
-- [Therapies](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/therapies.owl)
-- [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
-- [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
+## Ontology Versions
+
+The [current schema](tracking-cjf.rdf) appears first above. The [complete ontology version list](ontology-versions.html) links every distinct committed schema snapshot, newest first, back to the seed ontology of October 5, 2026. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
+
+## Conceptual Model
+
+**Current version: OE Week 8.** [Download the complete conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx).
+
+The ten diagrams below are the current figures in the supplied document. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the RDF schema gives the identifiers used in code and queries.
+
+### Provenance
+
+<figure>
+  <a href="images/conceptual-model/oe8/provenance.png"><img src="images/conceptual-model/oe8/provenance.png" alt="Provenance links from conversation moves through text spans and utterances to conversations and speakers" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 1. Transcript evidence and speaker provenance for conversation moves.</figcaption>
+</figure>
+
+Each conversation move is supported by a TextSpan within an Utterance. The utterance records its turn number, conversation, and attributed Speaker. These connections let queries retrieve the original text and the person responsible for a contribution, supporting the evidence and speaker questions in CQs 5–7.
+
+### Conversation Moves with States
+
+<figure>
+  <a href="images/conceptual-model/oe8/conversation-moves-with-states.png"><img src="images/conceptual-model/oe8/conversation-moves-with-states.png" alt="Conversation move taxonomy separating moves with states from Outcome and ExpressedPosition" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 2. Conversation move taxonomy and the branch for moves with states.</figcaption>
+</figure>
+
+ConversationMoveWithState groups DeliberativeConversationMove and InformationRequest. Outcome and ExpressedPosition remain directly under the general conversation move class. This distinction supports CQ1: every relevant move can be retrieved, while state information is included where it applies.
+
+### Deliberative Conversation Moves
+
+<figure>
+  <a href="images/conceptual-model/oe8/deliberative-conversation-moves.png"><img src="images/conceptual-model/oe8/deliberative-conversation-moves.png" alt="Claim, Issue, and Option as subclasses of DeliberativeConversationMove" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 3. Claim, Issue, and Option as deliberative conversation moves.</figcaption>
+</figure>
+
+Claim, Issue, and Option introduce or develop the substance of the group's reasoning. Each is a DeliberativeConversationMove and therefore a ConversationMoveWithState. Grouping these classes allows common relationships and state history patterns to be represented consistently.
+
+### State Taxonomy
+
+<figure>
+  <a href="images/conceptual-model/oe8/state-taxonomy.png"><img src="images/conceptual-model/oe8/state-taxonomy.png" alt="State subclasses including Open, Addressed, Answered, Resolved, UnderConsideration, Selected, Rejected, Unassessed, Supported, Contested, and SupportedContested" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 4. State taxonomy and its association with conversation moves.</figcaption>
+</figure>
+
+States characterize a move's standing at a recorded conversation point. Information requests can be open or answered; issues can be open, addressed, or resolved; options can be under consideration, selected, or rejected; and claims can be unassessed, supported, or contested. Supported and Contested classifications can coexist. State information supports CQ1 and the issue-focused questions CQ2 and CQ4.
+
+The supplied figure's lower inset retains some earlier terminology, including “milestone” and “Accepted.” The current RDF class names and the latest term list should be used when constructing queries.
+
+### State Assignment History
+
+<figure>
+  <a href="images/conceptual-model/oe8/state-assignment-history.png"><img src="images/conceptual-model/oe8/state-assignment-history.png" alt="StateAssignment linked to a State, effective utterance, supporting text span, and predecessor assignment, with an issue history example" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 5. Evidence-backed state assignment records and an example history.</figcaption>
+</figure>
+
+A StateAssignment connects a move to its assigned State, the Utterance at which it applies, its evidence TextSpan, and optionally the preceding assignment for the same move. An initial assignment has no predecessor. The example illustrates retaining earlier records as new assignments are added. In the implementation, `hasCurrentStateAssignment` identifies the terminal assignment, and `hasState` follows that assignment's `assignedState` link. Rule-based transitions also record the relevant relationship through `hasTriggeringRelationship`.
+
+### Expressed Positions
+
+<figure>
+  <a href="images/conceptual-model/oe8/expressed-position.png"><img src="images/conceptual-model/oe8/expressed-position.png" alt="Agreement and Disagreement subclasses of ExpressedPosition with evidence and speaker links" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 6. Expressed positions, polarity evidence, and speaker attribution.</figcaption>
+</figure>
+
+Agreement and Disagreement specialize ExpressedPosition. Positive or negative supporting text provides evidence for the position, which is directed toward another conversation move and associated with a speaker. These links support questions about who agreed with the selected option and how a participant's positions developed, as in CQs 5–7.
+
+### Relationships between Conversation Moves
+
+<figure>
+  <a href="images/conceptual-model/oe8/conversation-move-relationships.png"><img src="images/conceptual-model/oe8/conversation-move-relationships.png" alt="Supports, challenges, addresses, resolves, selects, answers, respondsTo, isAbout, refines, and position relationships among conversation move types" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 7. Semantic relationships among the conversation move types.</figcaption>
+</figure>
+
+The model connects claims, issues, options, outcomes, positions, and information requests through relationships such as supports, challenges, answers, addresses, resolves, and selects. These links expose the structure of the group's reasoning. Their evidence also contributes to state interpretation and to retrieving the contributions relevant to a particular option or issue.
+
+### Property Hierarchy
+
+<figure>
+  <a href="images/conceptual-model/oe8/property-hierarchy.png"><img src="images/conceptual-model/oe8/property-hierarchy.png" alt="Property hierarchy for evidence, text containment, addresses and resolves, and deliberative responses" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 8. Subproperty relationships and reused vocabulary.</figcaption>
+</figure>
+
+The four segments group evidence properties, text containment, addressing and resolving, and conversational responses. Positive and negative support specialize the evidence relationship; resolves specializes addresses; and answers specializes respondsTo. The diagram also identifies relationships drawn from SIO and the Deliberation Ontology.
+
+### Relationship Class Taxonomy
+
+<figure>
+  <a href="images/conceptual-model/oe8/relationship-class-taxonomy.png"><img src="images/conceptual-model/oe8/relationship-class-taxonomy.png" alt="Reified relationship classes Challenge, Response, Position, Support, and Address, with Answer and Resolve specializations" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 9. Class hierarchy for reified conversation move relationships.</figcaption>
+</figure>
+
+Relationships can be represented as individuals of CollectiveJudgmentFormationConversationMoveRelationship. Its specialized classes include Challenge, Response, Position, Support, and Address. Answer specializes Response, and Resolve specializes Address. Giving relationships their own individuals allows evidence and contextual information to be attached to the connection itself.
+
+### Relationship Reification
+
+<figure>
+  <a href="images/conceptual-model/oe8/relationship-reification.png"><img src="images/conceptual-model/oe8/relationship-reification.png" alt="An Address relationship individual connecting a source Claim, Option, or Outcome to a target Issue, with supporting transcript evidence" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 10. Reifying an Address relationship and retaining its evidence.</figcaption>
+</figure>
+
+A source conversation move connects to an Address individual, which identifies the target Issue. The relationship individual is supported by a TextSpan in an Utterance. A property chain derives the direct addresses relationship from the source-to-relationship and relationship-to-target links. The same pattern lets queries retrieve both how two moves are connected and the evidence for that connection.
+
+### Previous Conceptual Models
+
+- [OE Week 6 conceptual model (.docx)](files/conceptual-models/oe6/OE_6_TeamCJF_ConceptualModel.docx)
+- [OE Week 6 diagrams](images/conceptual-model/oe6/milestones_relationships-ProvinanceV3.drawio.png) — earlier figure assets remain in `images/conceptual-model/oe6/`.
+- [OE Week 5 diagrams](images/conceptual-model/oe5/milestones_relationships-ProvenanceConceptualDiagram.png) — earlier figure assets remain in `images/conceptual-model/oe5/`.
 
 ## Ontologies Reused
 
-We group the ontologies we reuse by the purpose and the use-cases they are intended to serve, as vocabularies for.
+- [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A [local copy](prov-o-cjf.owl) accompanies the project.
+- [Semanticscience Integrated Ontology (SIO)](https://semanticscience.org/) supplies evidence and containment relationships used by the model.
+- [Deliberation Knowledge Graph](https://dkg.svagnoni.linkeddata.es/) supplies vocabulary for deliberative relationships.
+- [OMG Commons Annotation Vocabulary](https://www.omg.org/spec/Commons/AnnotationVocabulary/) and [Dates and Times](https://www.omg.org/spec/Commons/DatesAndTimes/) provide annotation and temporal vocabulary referenced in the ontology.
 
-### Study Design Ontologies
+### Conceptual Model References
 
-- [Provenance for Healthcare + Clinical Research (ProvCaRe)](https://provcare.case.edu/)
-- [Human-Aware Science Ontology](http://hadatac.org/ont/hasco/)
+1. M. Dumontier et al., “The Semanticscience Integrated Ontology (SIO) for biomedical research and knowledge discovery,” *Journal of Biomedical Semantics*, vol. 5, Art. no. 14, 2014. [https://doi.org/10.1186/2041-1480-5-14](https://doi.org/10.1186/2041-1480-5-14)
+2. S. Vagnoni, “Deliberation Knowledge Graph.” Accessed October 13, 2026. [https://dkg.svagnoni.linkeddata.es/](https://dkg.svagnoni.linkeddata.es/)
 
-### Medical Ontologies
+## Ontology Prefixes
 
-- [National Cancer Institute Thesarus (NCIT)](https://provcare.case.edu/)
-- [Children's Health Exposure Analysis Resource Ontology (CHEAR)](https://bioportal.bioontology.org/ontologies/NCIT)
-- [Human-Disease Ontology (DOID)](https://www.ebi.ac.uk/ols/ontologies/doid")
-
-### Mid-Level Ontologies
-
-- [SemanticScience Integrated Ontology
-  (SIO)](https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-subset-labels.owl)
-
-### Statistical Ontologies
-
-- [Units Ontology
-  (UO)](https://www.google.com/search?q=UO+ontology&rlz=1C5CHFA_enIN727IN729&oq=UO+ontology&aqs=chrome..69i57j69i60.3199j0j4&sourceid=chrome&ie=UTF-8)
-- [Statistical Methods Ontology (STATO)](https://www.ebi.ac.uk/ols/ontologies/stato)
-
-### Ontology Prefixes
-
-<table style="width:100%">
-  <tr>
-    <th>Prefix</th>
-    <th>Links</th>
-  </tr>
-  <tr>
-    <td>rdf</td>
-    <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns">Resource Description Framework</a></td>
-  </tr>
-  <tr>
-    <td>rdfs</td>
-    <td><a href="http://www.w3.org/2000/01/rdf-schema"> RDF Schema</a> </td>
-  </tr>
-  <tr>
-    <td>owl</td>
-    <td><a href="http://www.w3.org/2002/07/owl#">Web Ontology Language </a> </td>
-  </tr>
-  <tr>
-    <td> xsd</td>
-    <td> <a href="http://www.w3.org/2001/XMLSchema#">XML Schema Definition</a></td>
-  </tr>
-  <tr>
-    <td>dct</td>
-    <td> <a href="http://purl.org/dc/terms/">Dublin Core Term</a> </td>
-  </tr>
-  <tr>
-    <td>skos</td>
-    <td> <a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
-  </tr>
-  <tr>
-    <td>sco</td>
-    <td> <a href="https://idea.tw.rpi.edu/projects/heals/studycohort/"> Study Cohort Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>chear</td>
-    <td> <a href="http://hadatac.org/ont/chear#">Children’s Health Exposure Analysis Resource</a></td>
-  </tr>
-  <tr>
-    <td>hasco</td>
-    <td> <a href="http://hadatac.org/ont/hasco#"> Human-Aware Science Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>fibo-fnd-utl-av</td>
-    <td> <a href="http://www.omg.org/spec/EDMC-FIBO/FND/Utilities/AnnotationVocabulary/">Financial Industry Business
-        Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>sio</td>
-    <td> <a href="http://semanticscience.org/resource/">SemanticScience Integrated Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>obo</td>
-    <td> <a href="http://purl.obolibrary.org/obo/">OBO Foundry</a> </td>
-  </tr>
-  <tr>
-    <td>stato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/STATO_">The Statistical Methods Ontolgy</a> </td>
-  </tr>
-  <tr>
-    <td>uo</td>
-    <td><a href="http://purl.obolibrary.org/obo/UO_"> Units of Measurement Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>pato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/PATO_"> Human Phenotypic Quality Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>ncit</td>
-    <td> <a href="http://purl.obolibrary.org/obo/NCI_">National Cancer Institute Thesarus</a> </td>
-  </tr>
-  <tr>
-    <td>provcare</td>
-    <td> <a href="http://www.case.edu/ProvCaRe/provcare#">Provenance for Clinical + Healthcare Research</a> </td>
-  </tr>
-  <tr>
-    <td>ocre</td>
-    <td> <a href="http://purl.org/net/OCRe/OCRe.owl/#"> Ontology of Clinical Research</a> </td>
-  </tr>
-</table>
+| Prefix | Namespace |
+| --- | --- |
+| cjf | `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/` |
+| rdf | `http://www.w3.org/1999/02/22-rdf-syntax-ns#` |
+| rdfs | `http://www.w3.org/2000/01/rdf-schema#` |
+| owl | `http://www.w3.org/2002/07/owl#` |
+| xsd | `http://www.w3.org/2001/XMLSchema#` |
+| dct | `http://purl.org/dc/terms/` |
+| skos | `http://www.w3.org/2004/02/skos/core#` |
+| prov | `http://www.w3.org/ns/prov#` |
+| sio | `http://semanticscience.org/resource/` |
+| del | `https://w3id.org/deliberation/ontology#` |
+| AnnotationVocabulary | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` |
+| DatesAndTimes | `https://www.omg.org/spec/Commons/DatesAndTimes/` |
