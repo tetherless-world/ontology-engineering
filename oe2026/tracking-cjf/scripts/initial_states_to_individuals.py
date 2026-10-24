@@ -185,7 +185,7 @@ def main(state_types: tuple[str, ...] = DEFAULT_STATES) -> int:
     parser = argparse.ArgumentParser(description=f"Import {labels} initial state rows from States only.")
     parser.add_argument("workbook", type=Path)
     parser.add_argument("--individuals", type=Path, default=DEFAULT_INDIVIDUALS)
-    parser.add_argument("--ontology", type=Path, default=DEFAULT_INDIVIDUALS.with_name("tracking-cjf.rdf"))
+    parser.add_argument("--ontology", type=Path, default=DEFAULT_INDIVIDUALS.with_name("OE_8_TeamCJF.rdf"))
     parser.add_argument("--output", type=Path)
     parser.add_argument("--backup", type=Path)
     parser.add_argument("--report", type=Path)

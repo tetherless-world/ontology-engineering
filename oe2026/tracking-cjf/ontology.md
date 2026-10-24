@@ -10,7 +10,7 @@ toc: true
 
 ### Current CJF Ontology
 
-[Download tracking-cjf.rdf](tracking-cjf.rdf)
+[Download OE_8_TeamCJF.rdf](OE_8_TeamCJF.rdf)
 
 The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
 
@@ -20,7 +20,7 @@ These files accompany the schema; they are not separate releases of the ontology
 
 | File | Purpose |
 | --- | --- |
-| [CQ sample conversation](cq-sample-conversation.rdf) | Conversation, utterances, speakers, conversation moves, evidence, relationships, and state assignments used for the competency question examples |
+| [CQ sample conversation](OE_8_TeamCJF_Individuals.rdf) | Conversation, utterances, speakers, conversation moves, evidence, relationships, and state assignments used for the competency question examples |
 | [March 11 Group B individuals](mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
 | [Earlier conversation individuals](tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
 | [Ontology import catalog](catalog-v001.xml) | Local mappings used to resolve ontology imports |
@@ -29,13 +29,13 @@ These files accompany the schema; they are not separate releases of the ontology
 
 ## Ontology Versions
 
-The [current schema](tracking-cjf.rdf) appears first above. The [complete ontology version list](ontology-versions.html) links every distinct committed schema snapshot, newest first, back to the seed ontology of October 5, 2026. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
+The [current schema](OE_8_TeamCJF.rdf) appears first above. The [complete ontology version list](ontology-versions.html) links every distinct committed schema snapshot, newest first, back to the seed ontology of October 5, 2026. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
 
 ## Conceptual Model
 
 **Current version: OE Week 8.** [Download the complete conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx).
 
-The ten diagrams below are the current figures in the supplied document. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the RDF schema gives the identifiers used in code and queries.
+The ten diagrams below show the project's conceptual model. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the RDF schema gives the identifiers used in code and queries.
 
 ### Provenance
 
@@ -78,8 +78,8 @@ The supplied figure's lower inset retains some earlier terminology, including â€
 ### State Assignment History
 
 <figure>
-  <a href="images/conceptual-model/oe8/state-assignment-history.png"><img src="images/conceptual-model/oe8/state-assignment-history.png" alt="StateAssignment linked to a State, effective utterance, supporting text span, and predecessor assignment, with an issue history example" style="max-width:100%;height:auto;" /></a>
-  <figcaption>Figure 5. Evidence-backed state assignment records and an example history.</figcaption>
+  <a href="images/conceptual-model/oe8/state-assignment-history.png"><img src="images/conceptual-model/oe8/state-assignment-history.png" alt="StateAssignment linked to a State, triggering conversation move relationship, effective utterance, supporting text span, and predecessor assignment, with an issue history example" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 5. Evidence-backed state assignments, triggering relationships, and an example history.</figcaption>
 </figure>
 
 A StateAssignment connects a move to its assigned State, the Utterance at which it applies, its evidence TextSpan, and optionally the preceding assignment for the same move. An initial assignment has no predecessor. The example illustrates retaining earlier records as new assignments are added. In the implementation, `hasCurrentStateAssignment` identifies the terminal assignment, and `hasState` follows that assignment's `assignedState` link. Rule-based transitions also record the relevant relationship through `hasTriggeringRelationship`.

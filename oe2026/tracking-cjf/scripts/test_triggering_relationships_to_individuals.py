@@ -15,7 +15,7 @@ from triggering_relationships_to_individuals import link_triggers, main
 from xml_to_individuals import CJF, Statement, append_individuals, existing_subjects, individual, read_xml
 
 
-SCHEMA_PATH = Path(__file__).resolve().parents[1] / 'tracking-cjf.rdf'
+SCHEMA_PATH = Path(__file__).resolve().parents[1] / 'OE_8_TeamCJF.rdf'
 SCHEMA = SCHEMA_PATH.read_bytes()
 
 

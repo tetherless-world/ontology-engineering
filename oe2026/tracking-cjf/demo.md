@@ -5,7 +5,7 @@ title: Demonstration and Queries
 
 ## Sample Conversation
 
-The demonstration uses the [CQ sample conversation individuals](cq-sample-conversation.rdf) with the [current CJF schema](tracking-cjf.rdf). The [source conversation XML](files/conversations/CQ-sample-conversation.xml) preserves the utterance sequence and speaker labels.
+The demonstration uses the [CQ sample conversation individuals](OE_8_TeamCJF_Individuals.rdf) with the [current CJF schema](OE_8_TeamCJF.rdf). The [source conversation XML](files/conversations/CQ-sample-conversation.xml) preserves the utterance sequence and speaker labels.
 
 ## CQ1 Conversation Moves and Current States
 

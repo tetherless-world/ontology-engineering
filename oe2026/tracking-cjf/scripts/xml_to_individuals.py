@@ -23,6 +23,7 @@ import re
 import sys
 import tempfile
 import xml.etree.ElementTree as ET
+from xml.parsers import expat
 from xml.sax.saxutils import escape, quoteattr
 
 
@@ -70,11 +71,49 @@ def parse_time(value: str) -> time:
     return time(hour, minute, second)
 
 
+def rdf_namespace_entities(data: bytes) -> dict[str, str]:
+    """Accept the serializer's internal URI aliases, without external entities."""
+    if b"<!DOCTYPE" not in data.upper() and b"<!ENTITY" not in data.upper():
+        return {}
+    entities = {}
+    parser = expat.ParserCreate()
+
+    def doctype(name, system_id, public_id, internal):
+        if name.rsplit(':', 1)[-1] != 'RDF' or system_id is not None or public_id is not None:
+            raise ValueError('Only an internal RDF namespace DTD is supported')
+
+    def entity(name, parameter, value, base, system_id, public_id, notation):
+        if parameter or system_id is not None or public_id is not None or notation is not None or not re.fullmatch(
+            r'''https?://[^\s<>&%"']+''', value or ''
+        ):
+            raise ValueError('Only literal HTTP(S) namespace entities are supported')
+        entities[name] = value
+
+    parser.StartDoctypeDeclHandler = doctype
+    parser.EntityDeclHandler = entity
+    try:
+        parser.Parse(data, True)
+    except expat.ExpatError as error:
+        raise ValueError('Invalid RDF/XML entity declarations: ' + str(error)) from error
+    return entities
+
+
+def iri_attribute_pattern(iri: str, entities: dict[str, str]) -> str:
+    """Match either a full IRI or its entity-shortened XML attribute value."""
+    encode = lambda value: escape(value, {'"': '&quot;', "'": '&apos;'})
+    variants = {encode(iri)}
+    variants.update('&' + name + ';' + encode(iri[len(base):])
+                    for name, base in entities.items() if iri.startswith(base))
+    return '(?:' + '|'.join(re.escape(value) for value in sorted(variants)) + ')'
+
+
 def read_xml(data: bytes) -> ET.Element:
     # Dataset content is data; never execute instructions or external entities.
-    if b"<!DOCTYPE" in data.upper() or b"<!ENTITY" in data.upper():
-        raise ValueError("XML with a DTD/entity declaration is not supported")
-    return ET.fromstring(data)
+    rdf_namespace_entities(data)
+    root = ET.fromstring(data)
+    if b"<!DOCTYPE" in data.upper() and root.tag != '{' + RDF + '}RDF':
+        raise ValueError('Only RDF/XML may contain namespace entity declarations')
+    return root
 
 
 def make_individuals(
@@ -212,6 +251,15 @@ def qname(iri: str, namespaces: dict[str, str]) -> str:
         if prefix and iri.startswith(uri) and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.-]*", iri[len(uri):]):
             return prefix + ":" + iri[len(uri):]
     raise ValueError(f"Individuals file needs a namespace prefix for {iri}")
+
+
+def qname_pattern(iri: str, namespaces: dict[str, str]) -> str:
+    """Match every declared prefix alias for an XML qualified name."""
+    names = [prefix + ':' + iri[len(uri):] for prefix, uri in namespaces.items()
+             if prefix and iri.startswith(uri) and re.fullmatch(r'[A-Za-z_][A-Za-z0-9_.-]*', iri[len(uri):])]
+    if not names:
+        raise ValueError(f'Individuals file needs a namespace prefix for {iri}')
+    return '(?:' + '|'.join(re.escape(name) for name in names) + ')'
 
 
 def render_individual(item: Individual, namespaces: dict[str, str]) -> str:

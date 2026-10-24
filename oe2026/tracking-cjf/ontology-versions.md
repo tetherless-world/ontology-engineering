@@ -5,9 +5,9 @@ title: Ontology Version History
 
 ## Ontology Version History
 
-The [current CJF ontology](tracking-cjf.rdf) is the schema distributed with this website. The table below lists every distinct committed version of `tracking-cjf.rdf` reachable in this project branch as of October 23, 2026, newest first. These are development snapshots rather than numbered releases. Repeated commits containing identical file content are listed once.
+The [current CJF ontology](OE_8_TeamCJF.rdf) is the schema distributed with this website. The table below lists every distinct committed schema version reachable in this project branch as of October 23, 2026, newest first. The schema was renamed from `tracking-cjf.rdf` to `OE_8_TeamCJF.rdf`; older snapshot links retain the filename used at those commits. These are development snapshots rather than numbered releases. Repeated commits containing identical file content are listed once.
 
-Each snapshot link identifies an immutable Git commit in the project repository. The [complete Git history](https://github.com/DevinDeSilva/ontology-engineering/commits/tracking-cjf/oe2026/tracking-cjf/tracking-cjf.rdf) also records intermediate changes and merges. Example individual files, SHACL rules, and reused ontologies are documented separately on the [ontology page](ontology.html#ontologies).
+Each snapshot link identifies an immutable Git commit in the project repository. The [complete Git history](https://github.com/DevinDeSilva/ontology-engineering/commits/tracking-cjf/oe2026/tracking-cjf/OE_8_TeamCJF.rdf) also records intermediate changes and merges. Example individual files, SHACL rules, and reused ontologies are documented separately on the [ontology page](ontology.html#ontologies).
 
 | Date | Schema snapshot | Recorded change |
 | --- | --- | --- |

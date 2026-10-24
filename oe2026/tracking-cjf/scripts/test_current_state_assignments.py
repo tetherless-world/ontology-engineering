@@ -21,7 +21,7 @@ from xml_to_individuals import CJF, Statement
 C = Namespace(CJF)
 SH = Namespace('http://www.w3.org/ns/shacl#')
 SHAPES = DEFAULT_SHAPES.read_bytes()
-SCHEMA = DEFAULT_SHAPES.parents[1].joinpath('tracking-cjf.rdf').read_bytes()
+SCHEMA = DEFAULT_SHAPES.parents[1].joinpath('OE_8_TeamCJF.rdf').read_bytes()
 
 
 def data(changes=None):
@@ -46,6 +46,22 @@ class CurrentAssignmentTests(unittest.TestCase):
         updated, report = refresh_current_assignments(data([('Unassessed', 1, '1')]), SHAPES)
         self.assert_current(updated, SEED)
         self.assertEqual(report['moves_with_state'], 1)
+
+    def test_serialized_project_individuals_can_clear_and_refresh_current_pointers(self):
+        from rdflib.compare import isomorphic
+        from remove_current_state_assignments import clear_current_assignments
+
+        original = DEFAULT_SHAPES.parents[1].joinpath('OE_8_TeamCJF_Individuals.rdf').read_bytes()
+        before = graph(original)
+        expected_count = len(set(before.triples((None, C.hasCurrentStateAssignment, None))))
+        self.assertGreater(expected_count, 0)
+        cleared, count = clear_current_assignments(original)
+        self.assertEqual(count, expected_count)
+        self.assertFalse(list(graph(cleared).triples((None, C.hasCurrentStateAssignment, None))))
+        refreshed, report = refresh_current_assignments(cleared, SHAPES)
+        self.assertEqual(report['current_assignment_links'], expected_count)
+        self.assertTrue(isomorphic(before, graph(refreshed)))
+        self.assertEqual(refresh_current_assignments(refreshed, SHAPES)[0], refreshed)
 
     def test_same_turn_transition_is_selected_over_the_initial_assignment(self):
         updated, report = refresh_current_assignments(data([('Unassessed', 1, '1'), ('Supported', 1, '1')]), SHAPES)

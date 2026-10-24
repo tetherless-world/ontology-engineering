@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 from xml_to_individuals import (
     CJF, DC, DT, OWL, PROV, RDF, XSD,
-    append_individuals, main, make_individuals, parse_time,
+    append_individuals, main, make_individuals, parse_time, read_xml,
 )
 
 
@@ -129,6 +129,27 @@ class ConversionTests(unittest.TestCase):
         self.assertEqual(parse_time('12:00:00 AM').isoformat(), '00:00:00')
         with self.assertRaises(ValueError):
             parse_time('19:48:41 AM')
+
+    def test_serialized_rdf_namespace_entities_preserve_individuals(self):
+        source = TEMPLATE.replace(b'<rdf:RDF',
+            f'<!DOCTYPE rdf:RDF [<!ENTITY cjf "{CJF}">]>\n<rdf:RDF'.encode(), 1)
+        source = source.replace(b'</rdf:RDF>', EXAMPLE + b'</rdf:RDF>')
+        source = source.replace(CJF.encode() + b'Mar11GroupB', b'&cjf;Mar11GroupB')
+        generated, _ = make_individuals(dialogue(turn('1', '19:48:41 PM', 'link', 'moderator')), 'Mar11GroupB')
+        actual, added = append_individuals(source, generated)
+        self.assertEqual(actual, source)
+        self.assertEqual(added, 0)
+
+    def test_external_parameter_and_nested_entities_are_rejected(self):
+        declarations = [
+            '<!DOCTYPE rdf:RDF SYSTEM "https://example.test/external.dtd">',
+            '<!DOCTYPE rdf:RDF [<!ENTITY x SYSTEM "file:///unreadable.txt">]>',
+            '<!DOCTYPE rdf:RDF [<!ENTITY % x "https://example.test/">]>',
+            '<!DOCTYPE rdf:RDF [<!ENTITY x "https://example.test/"><!ENTITY y "&x;">]>',
+        ]
+        for declaration in declarations:
+            with self.subTest(declaration=declaration), self.assertRaises(ValueError):
+                read_xml(TEMPLATE.replace(b'<rdf:RDF', (declaration + '\n<rdf:RDF').encode(), 1))
 
     def test_untimed_dialogue_creates_conversation_and_named_speakers(self):
         source = b'''<Dialogue id="CQ-sample conversation">
