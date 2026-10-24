@@ -80,27 +80,27 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td>(a) <a href="ventilation-compliance.rdf">Your Ontology</a></td>
+    <td><a href="ventilation-compliance.rdf" target="_blank">Your Ontology</a></td>
   </tr>
   <tr>
     <td>2. Term List</td>
-    <td>(a) <a href="https://drive.google.com/file/d/1gwOJ5ys2GbuSqksmhdsI7tTmq4VHw1iw/view?usp=sharing" target="_blank" rel="noopener noreferrer">Mapped Vocabularies</a> </td>
+    <td><a href="https://drive.google.com/file/d/1gwOJ5ys2GbuSqksmhdsI7tTmq4VHw1iw/view?usp=sharing" target="_blank" rel="noopener noreferrer">Mapped Vocabularies</a> </td>
   </tr>
   <tr>
     <td>2. Competency Questions</td>
-    <td>(a) <a href="./knowledge-graph.html">SPARQL Queries</a> </td>
+    <td></td>
   </tr>
   <tr>
     <td>3. Presentations:</td>
-    <td>(a) <a href="https://docs.google.com/presentation/d/1wSRBm1VDHqOXQwgLubhackzqNtZPWQUAJs-v2jYV-0A/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project presentations during class</a> </td>
+    <td><a href="https://docs.google.com/presentation/d/1wSRBm1VDHqOXQwgLubhackzqNtZPWQUAJs-v2jYV-0A/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Most recent project presentations during class</a> </td>
   </tr>
   <tr>
     <td>4. Conceptual Diagram:</td>
-    <td>(a) <a href="https://docs.google.com/presentation/d/1oacoUe-KSjV9C4Cw9PoMRNOkiEssAn9xXeb80DQvkdA/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project presentations during class</a> </td>
+    <td><a href="https://docs.google.com/presentation/d/1YZVhzZQpMGUTspjL6kLXo2LWh4mtXWGKwcyxBZC5Rk0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Conceptual model presentation</a> </td>
   </tr>
   <tr>
     <td>5. Use Case:</td>
-    <td>(a) <a href="https://docs.google.com/document/d/1aCE5KPatFbRZ1qgsTR4XILGpqkdOzrEYLxcTxji3kBo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Project presentations during class</a> </td>
+    <td><a href="https://docs.google.com/presentation/d/1YZVhzZQpMGUTspjL6kLXo2LWh4mtXWGKwcyxBZC5Rk0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Use case document</a> </td>
   </tr>/table>
 
 ## Acknowledgements
