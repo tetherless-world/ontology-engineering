@@ -4,6 +4,8 @@
 Uses only the Python standard library. Utterance IRIs use their integer turn
 numbers. The ontology header, namespaces, imports, comments, and unrelated
 statements are preserved. See README.md for the mapping and usage.
+Optional conversation metadata links utterances and named speakers to a
+MultipartyConversation. Missing source dates and timestamps are never invented.
 """
 
 from __future__ import annotations
@@ -29,9 +31,9 @@ OWL = "http://www.w3.org/2002/07/owl#"
 XSD = "http://www.w3.org/2001/XMLSchema#"
 PROV = "http://www.w3.org/ns/prov#"
 DC = "http://purl.org/dc/elements/1.1/"
-CJF = "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/tracking-cjf/"
+CJF = "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/"
 DT = "https://www.omg.org/spec/Commons/DatesAndTimes/"
-DEFAULT_INDIVIDUALS = Path(__file__).resolve().parents[1] / "tracking-cjf-individuals.rdf"
+DEFAULT_INDIVIDUALS = Path(__file__).resolve().parents[1] / "mar11_groupb-individuals.rdf"
 MONTHS = ("", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 MAPPED_ATTRIBUTES = {"speaker", "end_time", "turn_no"}
 
@@ -76,13 +78,18 @@ def read_xml(data: bytes) -> ET.Element:
 
 
 def make_individuals(
-    xml_data: bytes, conversation_prefix: str, datetime_prefix: str | None = None
+    xml_data: bytes, conversation_prefix: str, datetime_prefix: str | None = None,
+    *, conversation_id: str | None = None,
 ) -> tuple[list[Individual], dict]:
     root = read_xml(xml_data)
     if root.tag != "Dialogue":
         raise ValueError(f"Expected a Dialogue root, found {root.tag!r}")
-    dialogue_date = date.fromisoformat(root.attrib["date"])
-    datetime_prefix = datetime_prefix or f"DT{MONTHS[dialogue_date.month]}{dialogue_date.day:02d}"
+    date_value = root.get("date", "").strip()
+    dialogue_date = date.fromisoformat(date_value) if date_value else None
+    datetime_prefix = datetime_prefix or (
+        f"DT{MONTHS[dialogue_date.month]}{dialogue_date.day:02d}"
+        if dialogue_date else f"DT{conversation_prefix}"
+    )
     for prefix in (conversation_prefix, datetime_prefix):
         if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", prefix):
             raise ValueError(f"Use an alphanumeric IRI prefix, found {prefix!r}")
@@ -91,6 +98,10 @@ def make_individuals(
         raise ValueError("Dialogue must contain one or more turn elements only")
     if len(turns) > 2_147_483_647:
         raise ValueError("Too many turns for the ontology's xsd:int range")
+    conversation_id = conversation_id if conversation_id is not None else root.get("id")
+    if conversation_id is not None and not conversation_id.strip():
+        raise ValueError("Conversation identifier must not be empty")
+    conversation_iri = CJF + conversation_prefix + "Conversation" if conversation_id is not None else None
 
     people: dict[str, str] = {}
     speaker_owners: dict[str, str] = {}
@@ -117,19 +128,25 @@ def make_individuals(
         people[speaker] = speaker_iri
         speaker_owners[speaker_iri] = speaker
 
-        timestamp = parse_time(turn.attrib["end_time"])
-        stamp = timestamp.strftime("%H%M%S")
-        datetime_iri = CJF + datetime_prefix + stamp
-        timestamps.setdefault(datetime_iri, individual(datetime_iri, DT + "DateTime"))
+        time_value = turn.get("end_time", "").strip()
+        datetime_iri = None
+        if time_value:
+            timestamp = parse_time(time_value)
+            stamp = timestamp.strftime("%H%M%S")
+            datetime_iri = CJF + datetime_prefix + stamp
+            timestamps.setdefault(datetime_iri, individual(datetime_iri, DT + "DateTime"))
+            time_counts[stamp] += 1
         utterance_iri = CJF + conversation_prefix + f"Turn{sequence}"
-        time_counts[stamp] += 1
 
         statements = [
             Statement(PROV + "wasAttributedTo", speaker_iri, True),
-            Statement(DT + "hasDateTime", datetime_iri, True),
             Statement(CJF + "hasConversationText", "".join(turn.itertext())),
             Statement(CJF + "hasTurnNumber", str(sequence), datatype=XSD + "integer"),
         ]
+        if datetime_iri:
+            statements.insert(1, Statement(DT + "hasDateTime", datetime_iri, True))
+        if conversation_iri:
+            statements.append(Statement(PROV + "wasGeneratedBy", conversation_iri, True))
         # 117.0/117.1 cannot both be represented as unique integer turn numbers.
         # Keep all 480 contributions in order; retain differing source IDs verbatim.
         if source_number != str(sequence):
@@ -148,17 +165,29 @@ def make_individuals(
     generated = [
         *timestamps.values(),
         *utterances,
-        *(individual(iri, CJF + "Speaker") for iri in people.values()),
+        *(individual(iri, CJF + "Speaker", *(
+            [Statement(CJF + "hasSpeakerName", name)] if conversation_iri else []
+        )) for name, iri in people.items()),
     ]
+    if conversation_iri:
+        generated.append(individual(
+            conversation_iri, CJF + "MultipartyConversation",
+            Statement(CJF + "hasConversationIdentifier", conversation_id),
+            *(Statement(PROV + "wasAssociatedWith", iri, True) for iri in people.values()),
+        ))
     if len({item.iri for item in generated}) != len(generated):
-        raise ValueError("Generated speaker, time, or utterance IRIs overlap; choose different prefixes")
+        raise ValueError("Generated conversation, speaker, time, or utterance IRIs overlap; choose different prefixes")
     report = {
-        "dialogue_date": dialogue_date.isoformat(),
+        "dialogue_date": dialogue_date.isoformat() if dialogue_date else None,
         "conversation_prefix": conversation_prefix,
+        "conversation_id": conversation_id,
+        "conversation_iri": conversation_iri,
+        "conversations": int(conversation_iri is not None),
         "datetime_prefix": datetime_prefix,
         "utterances": len(utterances),
         "speakers": len(people),
         "date_times": len(timestamps),
+        "turns_without_timestamps": sum(m["datetime_iri"] is None for m in mappings),
         "individuals_in_source_mapping": len(generated),
         "shared_timestamps": {stamp: count for stamp, count in time_counts.items() if count > 1},
         "renumbered_turns": sum(m["source_turn_no"] != str(m["hasTurnNumber"]) for m in mappings),
@@ -241,7 +270,11 @@ def check_individual(item: Individual, elements: list[ET.Element]) -> None:
                 f"expected {statement.predicate} = {statement.value!r}. No RDF was written."
             )
         # Prevent silently retaining conflicting text, sequence, or attribution.
-        if statement.predicate in {PROV + "wasAttributedTo", DT + "hasDateTime", CJF + "hasConversationText", CJF + "hasTurnNumber"}:
+        if statement.predicate in {
+            PROV + "wasAttributedTo", PROV + "wasGeneratedBy", DT + "hasDateTime",
+            CJF + "hasConversationText", CJF + "hasTurnNumber",
+            CJF + "hasSpeakerName", CJF + "hasConversationIdentifier",
+        }:
             for element in elements:
                 for child in element:
                     if isinstance(child.tag, str) and child.tag[1:].replace("}", "", 1) == statement.predicate and not matches(statement, child):
@@ -301,6 +334,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--individuals", type=Path, default=DEFAULT_INDIVIDUALS, help="Existing individuals.rdf template/target")
     parser.add_argument("--output", type=Path, help="Write a preview/copy instead of editing the individuals file")
     parser.add_argument("--conversation-prefix", help="IRI prefix, default: source filename without _annotated or underscores")
+    parser.add_argument("--conversation-id", help="Create a MultipartyConversation with this exact identifier (default: Dialogue id, if present)")
     parser.add_argument("--datetime-prefix", help="Override the example-style DTMar11 time prefix")
     parser.add_argument("--backup", type=Path, help="Backup path (default: target filename + .bak); never overwritten")
     parser.add_argument("--report", type=Path, help="Optional JSON report including original XML attributes and turn mappings")
@@ -317,7 +351,9 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError("XML, RDF, backup, and report paths must not overwrite one another")
         xml_data, rdf_data = xml_path.read_bytes(), template.read_bytes()
         prefix = args.conversation_prefix or re.sub(r"_annotated$", "", xml_path.stem, flags=re.I).replace("_", "")
-        generated, report = make_individuals(xml_data, prefix, args.datetime_prefix)
+        generated, report = make_individuals(
+            xml_data, prefix, args.datetime_prefix, conversation_id=args.conversation_id,
+        )
         updated, added = append_individuals(rdf_data, generated)
         changed = not target.exists() or target.read_bytes() != updated
         if changed:
@@ -340,6 +376,8 @@ def main(argv: list[str] | None = None) -> int:
         if report_path:
             atomic_write(report_path, (json.dumps(report, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
         print(f"Validated {report['utterances']} utterances, {report['speakers']} speakers, {report['date_times']} DateTime individuals.")
+        if report["conversation_iri"]:
+            print(f"Conversation: {report['conversation_id']} ({report['conversation_iri']})")
         print(f"Added {added}; already present {len(generated) - added}. Output: {target}")
         if report["renumbered_turns"]:
             print(f"Used integer sequence numbers; {report['renumbered_turns']} differing source turn IDs are retained as dc:identifier.")

@@ -130,6 +130,53 @@ class ConversionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             parse_time('19:48:41 AM')
 
+    def test_untimed_dialogue_creates_conversation_and_named_speakers(self):
+        source = b'''<Dialogue id="CQ-sample conversation">
+            <turn turn_no="1" speaker="Speaker A" end_time="">First</turn>
+            <turn turn_no="2" speaker="Speaker B">Second</turn>
+            <turn turn_no="3" speaker="Speaker C">Third</turn>
+        </Dialogue>'''
+        generated, report = make_individuals(source, 'CQSample')
+        output, added = append_individuals(TEMPLATE, generated)
+        root = ET.fromstring(output)
+        self.assertEqual(added, 7)
+        self.assertIsNone(report['dialogue_date'])
+        self.assertEqual(report['date_times'], 0)
+        self.assertEqual(report['turns_without_timestamps'], 3)
+        self.assertFalse(root.findall('.//{' + DT + '}hasDateTime'))
+        self.assertEqual(root.find('.//{' + CJF + '}hasConversationIdentifier').text, 'CQ-sample conversation')
+        self.assertEqual([v.text for v in root.findall('.//{' + CJF + '}hasSpeakerName')], ['Speaker A', 'Speaker B', 'Speaker C'])
+        links = root.findall('.//{' + PROV + '}wasGeneratedBy')
+        self.assertEqual(len(links), 3)
+        self.assertTrue(all(link.get('{' + RDF + '}resource') == CJF + 'CQSampleConversation' for link in links))
+        self.assertEqual(len(root.findall('.//{' + PROV + '}wasAssociatedWith')), 3)
+        repeated, added_again = append_individuals(output, generated)
+        self.assertEqual(added_again, 0)
+        self.assertEqual(repeated, output)
+
+    def test_explicit_conversation_identifier_overrides_xml_identifier(self):
+        source = b'<Dialogue id="original"><turn turn_no="1" speaker="a">Text</turn></Dialogue>'
+        generated, report = make_individuals(source, 'CQSample', conversation_id='CQ-sample conversation')
+        self.assertEqual(report['conversation_id'], 'CQ-sample conversation')
+        output, _ = append_individuals(TEMPLATE, generated)
+        conflicting, _ = make_individuals(source, 'CQSample', conversation_id='different conversation')
+        with self.assertRaises(ValueError):
+            append_individuals(output, conflicting)
+
+    def test_cli_reads_conversation_id_without_fabricating_timestamps(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rdf_path = Path(directory) / 'individuals.rdf'
+            xml_path = Path(directory) / 'CQSample.xml'
+            rdf_path.write_bytes(TEMPLATE)
+            xml_path.write_text('<Dialogue><turn turn_no="1" speaker="Speaker A">Text</turn></Dialogue>')
+            self.assertEqual(main([
+                str(xml_path), '--individuals', str(rdf_path),
+                '--conversation-id', 'CQ-sample conversation',
+            ]), 0)
+            root = ET.fromstring(rdf_path.read_bytes())
+            self.assertEqual(root.find('.//{' + CJF + '}hasConversationIdentifier').text, 'CQ-sample conversation')
+            self.assertFalse(root.findall('.//{' + DT + '}hasDateTime'))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,127 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/> .
+
+cjf:CurrentStateAssignmentRuleShape
+    a sh:NodeShape ;
+    rdfs:label "derive current state assignment" ;
+    # Target moves through the property itself; inferred class types are not required.
+    sh:targetSubjectsOf cjf:hasStateAssignment ;
+    sh:targetSubjectsOf cjf:hasCurrentStateAssignment ;
+    sh:property [
+        sh:path cjf:hasCurrentStateAssignment ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:class cjf:StateAssignment ;
+        sh:message "Each move with state must have exactly one current state assignment."
+    ] ;
+    sh:sparql [
+        sh:message "The current assignment must belong to this conversation move." ;
+        sh:select """
+            PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+            SELECT $this ?value WHERE {
+                $this cjf:hasCurrentStateAssignment ?value .
+                FILTER NOT EXISTS { $this cjf:hasStateAssignment ?value . }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A current assignment must have no successor for the same move. Refresh stale current links before executing the rule." ;
+        sh:select """
+            PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+            SELECT $this ?value WHERE {
+                $this cjf:hasCurrentStateAssignment ?value ;
+                      cjf:hasStateAssignment ?nextAssignment .
+                ?nextAssignment cjf:hasPreviousAssignment ?value .
+            }
+        """
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        rdfs:label "link each move to an assignment with no recorded successor" ;
+        sh:construct """
+            PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+            CONSTRUCT {
+                $this cjf:hasCurrentStateAssignment ?assignment .
+            }
+            WHERE {
+                $this cjf:hasStateAssignment ?assignment .
+                FILTER NOT EXISTS {
+                    $this cjf:hasStateAssignment ?nextAssignment .
+                    ?nextAssignment cjf:hasPreviousAssignment ?assignment .
+                }
+            }
+        """
+    ] .
+
+# Validate the history assumptions that make the terminal assignment the latest.
+# Equal turn numbers are allowed: predecessor links order changes within a turn.
+cjf:StateAssignmentHistoryShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf cjf:hasStateAssignment ;
+    sh:property [
+        sh:path [ sh:inversePath cjf:hasStateAssignment ] ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "A state assignment must belong to exactly one conversation move."
+    ] ;
+    sh:property [
+        sh:path cjf:assignedState ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path cjf:assignedAtUtterance ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path ( cjf:assignedAtUtterance cjf:hasTurnNumber ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path cjf:hasPreviousAssignment ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:class cjf:StateAssignment
+    ] ;
+    sh:sparql [
+        sh:message "The previous assignment must belong to the same conversation move." ;
+        sh:select """
+            PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+            SELECT $this ?value WHERE {
+                $this cjf:hasPreviousAssignment ?value .
+                FILTER NOT EXISTS {
+                    ?move cjf:hasStateAssignment $this, ?value .
+                }
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "State assignment histories must not contain cycles." ;
+        sh:select """
+            PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+            SELECT $this WHERE {
+                $this cjf:hasPreviousAssignment+ $this .
+            }
+        """
+    ] ;
+    sh:sparql [
+        sh:message "A successor assignment must not become effective before its predecessor." ;
+        sh:select """
+            PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+            SELECT $this ?value WHERE {
+                $this cjf:hasPreviousAssignment ?value ;
+                      cjf:assignedAtUtterance/cjf:hasTurnNumber ?turn .
+                ?value cjf:assignedAtUtterance/cjf:hasTurnNumber ?previousTurn .
+                FILTER (?turn < ?previousTurn)
+            }
+        """
+    ] .

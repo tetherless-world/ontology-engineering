@@ -166,11 +166,12 @@ def make_relationships(rows: list[dict], rdf_data: bytes, schema_data: bytes,
 
 
 def append_source_links(data: bytes, source_links: dict) -> tuple[bytes, int]:
-    """Insert just the missing makes assertions into existing milestone blocks."""
+    """Insert missing resource assertions into existing named subject blocks."""
     namespaces = root_namespaces(data)
     subjects = existing_subjects(read_xml(data))
     tag, about, resource = (qname(iri, namespaces) for iri in
                             (OWL + "NamedIndividual", RDF + "about", RDF + "resource"))
+    tags = '(?:' + re.escape(tag) + '|' + re.escape(qname(RDF + 'Description', namespaces)) + ')'
     text = data.decode("utf-8")
     added = 0
     for iri, statements in source_links.items():
@@ -178,9 +179,9 @@ def append_source_links(data: bytes, source_links: dict) -> tuple[bytes, int]:
             matches(statement, child) for node in subjects[iri] for child in node)]
         if not missing:
             continue
-        pattern = re.compile(r"(?P<start><" + re.escape(tag) + r"\b[^>]*\b" + re.escape(about) +
+        pattern = re.compile(r"(?P<start><(?P<element>" + tags + r")\b[^>]*\b" + re.escape(about) +
             r"=(?P<quote>[\"'])" + re.escape(iri) + r"(?P=quote)[^>]*>)(?P<body>.*?)(?P<end></" +
-            re.escape(tag) + r">)", re.S)
+            r"(?P=element)>)", re.S)
         markup = "".join("        <" + qname(statement.predicate, namespaces) + " " + resource +
                          "=" + quoteattr(statement.value) + "/>\n" for statement in missing)
 
@@ -197,7 +198,9 @@ def append_source_links(data: bytes, source_links: dict) -> tuple[bytes, int]:
     result = text.encode("utf-8")
     updated = existing_subjects(read_xml(result))
     for iri, statements in source_links.items():
-        check_individual(Individual(iri, tuple(statements)), updated[iri])
+        for statement in statements:
+            if not any(matches(statement, child) for node in updated[iri] for child in node):
+                raise ValueError(f"Resource assertion was not inserted: {iri}: {statement.predicate}")
     return result, added
 
 
