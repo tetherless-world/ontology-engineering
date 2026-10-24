@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY af "https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/">
+	<!ENTITY dcterms "http://purl.org/dc/terms/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xs "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/"
+	xmlns:af="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/">
+		<rdfs:label xml:lang="en">CUT competency-question test individuals</rdfs:label>
+		<dcterms:creator>Alex Clark</dcterms:creator>
+		<dcterms:creator>Hyejin Park</dcterms:creator>
+		<dcterms:creator>Liangliang Zhang</dcterms:creator>
+		<dcterms:creator>Xiye Fan</dcterms:creator>
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/"/>
+	</owl:Ontology>
+	
+	<owl:NamedIndividual rdf:about="&af;cardCandidate">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">card candidate</rdfs:label>
+		<skos:definition xml:lang="en">candidate object represented for CUT feasibility assessment, with associated edge thickness and rigidity feature values</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;cardEdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;cardRigidityValue"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;cardCarrotCutAssessment">
+		<rdf:type rdf:resource="&af;Assessment"/>
+		<rdfs:label xml:lang="en">card carrot cut assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment of whether the card candidate can perform the cut action on the carrot target</skos:definition>
+		<af:hasAction rdf:resource="&af;cut"/>
+		<af:hasCandidate rdf:resource="&af;cardCandidate"/>
+		<af:hasTarget rdf:resource="&af;carrotTarget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;cardEdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">card edge thickness value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the edge thickness of the card candidate at the low level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;low"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;cardRigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">card rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the rigidity of the card candidate at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;carrotHardnessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">carrot hardness value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the hardness of the carrot target at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;hardness"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;carrotTarget">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">carrot target</rdfs:label>
+		<skos:definition xml:lang="en">target object represented in CUT assessments, with an associated hardness feature value</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;carrotHardnessValue"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;feasibleJudgment">
+		<rdf:type rdf:resource="&af;Feasible"/>
+		<rdfs:label xml:lang="en">feasible judgment</rdfs:label>
+		<skos:definition xml:lang="en">feasibility judgment individual representing the feasible outcome category</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;infeasibleJudgment">
+		<rdf:type rdf:resource="&af;Infeasible"/>
+		<rdfs:label xml:lang="en">infeasible judgment</rdfs:label>
+		<skos:definition xml:lang="en">feasibility judgment individual representing the infeasible outcome category</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;insufficientInformationJudgment">
+		<rdf:type rdf:resource="&af;InsufficientInformation"/>
+		<rdfs:label xml:lang="en">insufficient information judgment</rdfs:label>
+		<skos:definition xml:lang="en">feasibility judgment individual representing an outcome in which available information is insufficient to determine feasibility</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;knifeBlade">
+		<rdf:type rdf:resource="&af;ObjectPart"/>
+		<rdfs:label xml:lang="en">knife blade</rdfs:label>
+		<skos:definition xml:lang="en">object part of the knife candidate with associated edge thickness and rigidity feature values</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;knifeBladeEdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;knifeBladeRigidityValue"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;knifeBladeEdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">knife blade edge thickness value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the edge thickness of the knife blade at the low level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;low"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;knifeBladeRigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">knife blade rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the rigidity of the knife blade at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;knifeCandidate">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">knife candidate</rdfs:label>
+		<skos:definition xml:lang="en">candidate object represented with a knife blade as an object part for CUT feasibility assessment</skos:definition>
+		<af:hasPart rdf:resource="&af;knifeBlade"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;knifeCarrotCutAssessment">
+		<rdf:type rdf:resource="&af;Assessment"/>
+		<rdfs:label xml:lang="en">knife carrot cut assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment of whether the knife candidate can perform the cut action on the carrot target</skos:definition>
+		<af:hasAction rdf:resource="&af;cut"/>
+		<af:hasCandidate rdf:resource="&af;knifeCandidate"/>
+		<af:hasTarget rdf:resource="&af;carrotTarget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;rollingPinCandidate">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">rolling pin candidate</rdfs:label>
+		<skos:definition xml:lang="en">candidate object represented for CUT feasibility assessment, with associated edge thickness and rigidity feature values</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;rollingPinEdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;rollingPinRigidityValue"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;rollingPinCarrotCutAssessment">
+		<rdf:type rdf:resource="&af;Assessment"/>
+		<rdfs:label xml:lang="en">rolling pin carrot cut assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment of whether the rolling pin candidate can perform the cut action on the carrot target</skos:definition>
+		<af:hasAction rdf:resource="&af;cut"/>
+		<af:hasCandidate rdf:resource="&af;rollingPinCandidate"/>
+		<af:hasTarget rdf:resource="&af;carrotTarget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;rollingPinEdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">rolling pin edge thickness value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the edge thickness of the rolling pin candidate at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;rollingPinRigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">rolling pin rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the rigidity of the rolling pin candidate at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsBlade1">
+		<rdf:type rdf:resource="&af;ObjectPart"/>
+		<rdfs:label xml:lang="en">scissors blade 1</rdfs:label>
+		<owl:differentFrom rdf:resource="&af;scissorsBlade2"/>
+		<skos:definition xml:lang="en">object part of the scissors candidate representing one blade, with associated edge thickness and rigidity feature values and an interaction with the second blade</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;scissorsBlade1EdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;scissorsBlade1RigidityValue"/>
+		<af:interactsWith rdf:resource="&af;scissorsBlade2"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsBlade1EdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">scissors blade 1 edge thickness value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the edge thickness of scissors blade 1 at the low level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;low"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsBlade1RigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">scissors blade 1 rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the rigidity of scissors blade 1 at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsBlade2">
+		<rdf:type rdf:resource="&af;ObjectPart"/>
+		<rdfs:label xml:lang="en">scissors blade 2</rdfs:label>
+		<skos:definition xml:lang="en">object part of the scissors candidate representing the second blade, with associated edge thickness and rigidity feature values and an interaction with the first blade</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;scissorsBlade2EdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;scissorsBlade2RigidityValue"/>
+		<af:interactsWith rdf:resource="&af;scissorsBlade1"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsBlade2EdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">scissors blade 2 edge thickness value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the edge thickness of scissors blade 2 at the low level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;low"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsBlade2RigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">scissors blade 2 rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the rigidity of scissors blade 2 at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsCandidate">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">scissors candidate</rdfs:label>
+		<skos:definition xml:lang="en">candidate object represented with two interacting blade parts for CUT feasibility assessment</skos:definition>
+		<af:hasPart rdf:resource="&af;scissorsBlade1"/>
+		<af:hasPart rdf:resource="&af;scissorsBlade2"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;scissorsCarrotCutAssessment">
+		<rdf:type rdf:resource="&af;Assessment"/>
+		<rdfs:label xml:lang="en">scissors carrot cut assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment of whether the scissors candidate can perform the cut action on the carrot target</skos:definition>
+		<af:hasAction rdf:resource="&af;cut"/>
+		<af:hasCandidate rdf:resource="&af;scissorsCandidate"/>
+		<af:hasTarget rdf:resource="&af;carrotTarget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;spongeCandidate">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">sponge candidate</rdfs:label>
+		<skos:definition xml:lang="en">candidate object represented for CUT feasibility assessment, with associated edge thickness and rigidity feature values</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;spongeEdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;spongeRigidityValue"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;spongeCarrotCutAssessment">
+		<rdf:type rdf:resource="&af;Assessment"/>
+		<rdfs:label xml:lang="en">sponge carrot cut assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment of whether the sponge candidate can perform the cut action on the carrot target</skos:definition>
+		<af:hasAction rdf:resource="&af;cut"/>
+		<af:hasCandidate rdf:resource="&af;spongeCandidate"/>
+		<af:hasTarget rdf:resource="&af;carrotTarget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;spongeEdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">sponge edge thickness value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the edge thickness of the sponge candidate at the high level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;spongeRigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">sponge rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">feature value representing the rigidity of the sponge candidate at the low level</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;low"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testAAssessment">
+		<rdf:type rdf:resource="&af;Assessment"/>
+		<rdfs:label xml:lang="en">test a carrot cut assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment of CUT using test candidate A and the existing carrot target; candidate configuration satisfies the encoded rigidity and edge thickness requirements</skos:definition>
+		<af:hasAction rdf:resource="&af;cut"/>
+		<af:hasCandidate rdf:resource="&af;testCandidateA"/>
+		<af:hasTarget rdf:resource="&af;carrotTarget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testAEdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">test a edgethickness value</rdfs:label>
+		<skos:definition xml:lang="en">categorical edgeThickness feature assertion of level low for test candidate A</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;low"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testAFlexibilityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">test a flexibility value</rdfs:label>
+		<skos:definition xml:lang="en">categorical flexibility feature assertion of level low for test candidate A</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;flexibility"/>
+		<af:hasLevel rdf:resource="&af;low"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testARigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">test a rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">categorical rigidity feature assertion of level high for test candidate A</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testBAssessment">
+		<rdf:type rdf:resource="&af;Assessment"/>
+		<rdfs:label xml:lang="en">test b carrot cut assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment of CUT using test candidate B and the existing carrot target; candidate configuration satisfies the encoded rigidity requirement but not the thin-edge match</skos:definition>
+		<af:hasAction rdf:resource="&af;cut"/>
+		<af:hasCandidate rdf:resource="&af;testCandidateB"/>
+		<af:hasTarget rdf:resource="&af;carrotTarget"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testBEdgeThicknessValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">test b edgethickness value</rdfs:label>
+		<skos:definition xml:lang="en">categorical edgeThickness feature assertion of level high for test candidate B</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;edgeThickness"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testBFlexibilityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">test b flexibility value</rdfs:label>
+		<skos:definition xml:lang="en">categorical flexibility feature assertion of level medium for test candidate B</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;flexibility"/>
+		<af:hasLevel rdf:resource="&af;medium"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testBRigidityValue">
+		<rdf:type rdf:resource="&af;FeatureValue"/>
+		<rdfs:label xml:lang="en">test b rigidity value</rdfs:label>
+		<skos:definition xml:lang="en">categorical rigidity feature assertion of level high for test candidate B</skos:definition>
+		<af:hasFeatureType rdf:resource="&af;rigidity"/>
+		<af:hasLevel rdf:resource="&af;high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testCandidateA">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">test candidate a</rdfs:label>
+		<skos:definition xml:lang="en">a controlled test candidate described by explicitly asserted rigidity, edge thickness and flexibility levels; scenario A</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;testAEdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;testAFlexibilityValue"/>
+		<af:hasFeatureValue rdf:resource="&af;testARigidityValue"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&af;testCandidateB">
+		<rdf:type rdf:resource="&af;WholeObject"/>
+		<rdfs:label xml:lang="en">test candidate b</rdfs:label>
+		<skos:definition xml:lang="en">a controlled test candidate described by explicitly asserted rigidity, edge thickness and flexibility levels; scenario B</skos:definition>
+		<af:hasFeatureValue rdf:resource="&af;testBEdgeThicknessValue"/>
+		<af:hasFeatureValue rdf:resource="&af;testBFlexibilityValue"/>
+		<af:hasFeatureValue rdf:resource="&af;testBRigidityValue"/>
+	</owl:NamedIndividual>
+
+</rdf:RDF>
