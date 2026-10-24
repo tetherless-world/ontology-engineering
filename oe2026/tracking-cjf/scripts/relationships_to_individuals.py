@@ -24,7 +24,8 @@ from milestones_to_individuals import (
 from xml_to_individuals import (
     CJF, OWL, RDF, DEFAULT_INDIVIDUALS, Individual, Statement,
     append_individuals, atomic_write, check_individual, existing_subjects,
-    individual, matches, qname, read_xml, root_namespaces,
+    individual, iri_attribute_pattern, matches, qname, qname_pattern,
+    rdf_namespace_entities, read_xml, root_namespaces,
 )
 
 
@@ -167,11 +168,12 @@ def make_relationships(rows: list[dict], rdf_data: bytes, schema_data: bytes,
 
 def append_source_links(data: bytes, source_links: dict) -> tuple[bytes, int]:
     """Insert missing resource assertions into existing named subject blocks."""
+    entities = rdf_namespace_entities(data)
     namespaces = root_namespaces(data)
     subjects = existing_subjects(read_xml(data))
-    tag, about, resource = (qname(iri, namespaces) for iri in
-                            (OWL + "NamedIndividual", RDF + "about", RDF + "resource"))
-    tags = '(?:' + re.escape(tag) + '|' + re.escape(qname(RDF + 'Description', namespaces)) + ')'
+    resource = qname(RDF + 'resource', namespaces)
+    tags = '(?:' + qname_pattern(OWL + 'NamedIndividual', namespaces) + '|' + \
+        qname_pattern(RDF + 'Description', namespaces) + ')'
     text = data.decode("utf-8")
     added = 0
     for iri, statements in source_links.items():
@@ -179,8 +181,8 @@ def append_source_links(data: bytes, source_links: dict) -> tuple[bytes, int]:
             matches(statement, child) for node in subjects[iri] for child in node)]
         if not missing:
             continue
-        pattern = re.compile(r"(?P<start><(?P<element>" + tags + r")\b[^>]*\b" + re.escape(about) +
-            r"=(?P<quote>[\"'])" + re.escape(iri) + r"(?P=quote)[^>]*>)(?P<body>.*?)(?P<end></" +
+        pattern = re.compile(r"(?P<start><(?P<element>" + tags + r")\b[^>]*\b" + qname_pattern(RDF + 'about', namespaces) +
+            r"=(?P<quote>[\"'])" + iri_attribute_pattern(iri, entities) + r"(?P=quote)[^>]*>)(?P<body>.*?)(?P<end></" +
             r"(?P=element)>)", re.S)
         markup = "".join("        <" + qname(statement.predicate, namespaces) + " " + resource +
                          "=" + quoteattr(statement.value) + "/>\n" for statement in missing)
@@ -208,7 +210,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("workbook", type=Path)
     parser.add_argument("--individuals", type=Path, default=DEFAULT_INDIVIDUALS)
-    parser.add_argument("--ontology", type=Path, default=DEFAULT_INDIVIDUALS.with_name("tracking-cjf.rdf"))
+    parser.add_argument("--ontology", type=Path, default=DEFAULT_INDIVIDUALS.with_name("OE_8_TeamCJF.rdf"))
     parser.add_argument("--output", type=Path)
     parser.add_argument("--backup", type=Path)
     parser.add_argument("--report", type=Path)

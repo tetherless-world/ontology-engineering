@@ -209,7 +209,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('workbook', type=Path)
     parser.add_argument('--individuals', type=Path, default=DEFAULT_INDIVIDUALS)
-    parser.add_argument('--ontology', type=Path, default=DEFAULT_INDIVIDUALS.with_name('tracking-cjf.rdf'))
+    parser.add_argument('--ontology', type=Path, default=DEFAULT_INDIVIDUALS.with_name('OE_8_TeamCJF.rdf'))
     parser.add_argument('--conversation-prefix', default='Mar11GroupB')
     parser.add_argument('--id-column', default='milestone_id')
     parser.add_argument('--output', type=Path)

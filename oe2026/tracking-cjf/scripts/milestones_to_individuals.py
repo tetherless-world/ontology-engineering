@@ -290,7 +290,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("workbook", type=Path)
     parser.add_argument("--individuals", type=Path, default=DEFAULT_INDIVIDUALS)
-    parser.add_argument("--ontology", type=Path, default=DEFAULT_INDIVIDUALS.with_name("tracking-cjf.rdf"))
+    parser.add_argument("--ontology", type=Path, default=DEFAULT_INDIVIDUALS.with_name("OE_8_TeamCJF.rdf"))
     parser.add_argument("--id-column", default="milestone_id", help="Workbook column containing milestone identifiers")
     parser.add_argument("--type-column", default="milestone_type", help="Workbook column containing milestone types")
     parser.add_argument("--conversation-prefix", default="Mar11GroupB", help="Existing utterance/speaker IRI prefix (default: Mar11GroupB)")

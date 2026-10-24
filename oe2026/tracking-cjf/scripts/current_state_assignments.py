@@ -17,7 +17,10 @@ import sys
 import xml.etree.ElementTree as ET
 
 from relationships_to_individuals import append_source_links
-from xml_to_individuals import CJF, OWL, RDF, Statement, atomic_write, qname, root_namespaces
+from xml_to_individuals import (
+    CJF, OWL, RDF, Statement, atomic_write, iri_attribute_pattern, qname_pattern,
+    rdf_namespace_entities, root_namespaces,
+)
 
 
 PROJECT = Path(__file__).resolve().parents[1]
@@ -65,17 +68,18 @@ def history_ends(graph, namespace):
 
 def remove_current_pointers(data, moves):
     """Remove derived pointers from named XML blocks, preserving other content."""
+    entities = rdf_namespace_entities(data)
     namespaces = root_namespaces(data)
-    tags = '(?:' + '|'.join(re.escape(qname(iri, namespaces)) for iri in
+    tags = '(?:' + '|'.join(qname_pattern(iri, namespaces) for iri in
                            (OWL + 'NamedIndividual', RDF + 'Description')) + ')'
-    about = re.escape(qname(RDF + 'about', namespaces))
-    predicate = re.escape(qname(CJF + 'hasCurrentStateAssignment', namespaces))
+    about = qname_pattern(RDF + 'about', namespaces)
+    predicate = qname_pattern(CJF + 'hasCurrentStateAssignment', namespaces)
     pointer = re.compile(r'[ \t]*<' + predicate + r'\b[^>]*(?:/\s*>|>.*?</' + predicate +
                          r'>)[ \t]*(?:\r?\n)?', re.S)
     text = data.decode('utf-8')
     for iri in moves:
         block = re.compile(r'(?P<start><(?P<tag>' + tags + r')\b[^>]*\b' + about +
-                           r'=(?P<quote>[\"\'])' + re.escape(iri) +
+                           r'=(?P<quote>[\"\'])' + iri_attribute_pattern(iri, entities) +
                            r'(?P=quote)[^>]*>)(?P<body>.*?)(?P<end></(?P=tag)>)', re.S)
         text = block.sub(lambda match: match['start'] + pointer.sub('', match['body']) + match['end'], text)
     return text.encode('utf-8')
@@ -143,7 +147,7 @@ def refresh_current_assignments(rdf_data, shapes_data):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--individuals', type=Path, default=PROJECT / 'cq-sample-conversation.rdf')
+    parser.add_argument('--individuals', type=Path, default=PROJECT / 'OE_8_TeamCJF_Individuals.rdf')
     parser.add_argument('--shapes', type=Path, default=DEFAULT_SHAPES)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--backup', type=Path)

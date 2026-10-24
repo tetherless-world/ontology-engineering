@@ -4,7 +4,11 @@
 to `../mar11_groupb-individuals.rdf`, following the existing individual structure
 and using turn numbers in utterance IRIs. It retains the ontology IRI, imports,
 prefixes, existing individuals, comments, and unrelated RDF statements. The main
-`tracking-cjf.rdf` is never modified.
+`OE_8_TeamCJF.rdf` is never modified.
+
+RDF/XML produced by RDF Toolkit with `-dtd` is supported, including internal
+HTTP(S) namespace entities such as `&tracking-cjf;`. External, parameter, and
+nested entities are rejected. Source dialogue XML must remain free of DTDs.
 
 Save any pending edits in Protégé before running the converter. Afterward, reload
 or reopen `mar11_groupb-individuals.rdf` to see the generated individuals; saving
@@ -115,7 +119,7 @@ unknown dates/times are represented by JSON `null` values.
 
 ## CQ sample conversation
 
-The sample is stored separately in `../cq-sample-conversation.rdf`, which imports
+The sample is stored separately in `../OE_8_TeamCJF_Individuals.rdf`, which imports
 the schema and contains 28 utterances, 4 speakers, and one `MultipartyConversation`
 with the exact identifier `CQ-sample conversation`. The source XML is saved at
 `../files/conversations/CQ-sample-conversation.xml`. Missing source dates and
@@ -125,7 +129,7 @@ Reimport the XML into the sample file explicitly:
 
 ```sh
 python3 xml_to_individuals.py ../files/conversations/CQ-sample-conversation.xml \
-  --individuals ../cq-sample-conversation.rdf --conversation-prefix CQSample
+  --individuals ../OE_8_TeamCJF_Individuals.rdf --conversation-prefix CQSample
 ```
 
 An unchanged rerun adds no duplicates. `mar11_groupb-individuals.rdf` retains its
@@ -156,7 +160,7 @@ The workbook column names and existing conversation IRI prefix are configurable:
 
 ```sh
 python3 milestones_to_individuals.py '/Users/devindesilva/Downloads/Annotation Workbook Synthetic Example.xlsx' \
-  --individuals ../cq-sample-conversation.rdf \
+  --individuals ../OE_8_TeamCJF_Individuals.rdf \
   --id-column conversation_move_id --type-column conversation_move_type \
   --conversation-prefix CQSample
 ```
@@ -352,7 +356,7 @@ From this directory, preview the sample import with:
 
 ```sh
 python3 state_transitions_to_individuals.py '/Users/devindesilva/Downloads/Annotation Workbook Synthetic Example.xlsx' \
-  --individuals ../cq-sample-conversation.rdf --conversation-prefix CQSample \
+  --individuals ../OE_8_TeamCJF_Individuals.rdf --conversation-prefix CQSample \
   --dry-run --report /tmp/cq-sample-transitions-preview.json
 ```
 
@@ -397,7 +401,7 @@ milestones, relationships, and state assignments first. For example:
 ```sh
 python3 triggering_relationships_to_individuals.py \
   "/path/to/Annotation Workbook Synthetic Example.xlsx" \
-  --individuals ../cq-sample-conversation.rdf --conversation-prefix CQSample \
+  --individuals ../OE_8_TeamCJF_Individuals.rdf --conversation-prefix CQSample \
   --dry-run --report /tmp/cq-sample-triggers-preview.json
 ```
 
@@ -437,7 +441,7 @@ are retained. The shared assertion-appending helper supports both
 `current_state_assignments.py` executes
 `../shacl/current-state-assignment-rules.ttl` with pySHACL Advanced Features,
 validates the histories, and writes `hasCurrentStateAssignment` links to the
-individuals RDF. It defaults to `../cq-sample-conversation.rdf`.
+individuals RDF. It defaults to `../OE_8_TeamCJF_Individuals.rdf`.
 
 From this scripts directory, using your Python environment:
 
@@ -494,7 +498,7 @@ saves a backup whose filename includes its original content hash.
 From this scripts directory, when removal is wanted:
 
 ```sh
-python remove_current_state_assignments.py ../cq-sample-conversation.rdf
+python remove_current_state_assignments.py ../OE_8_TeamCJF_Individuals.rdf
 ```
 
 To clear selected moves, add `--move-iri` with the full move IRI; repeat that
