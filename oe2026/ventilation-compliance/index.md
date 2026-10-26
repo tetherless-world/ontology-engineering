@@ -100,7 +100,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>5. Use Case:</td>
-    <td><a href="https://docs.google.com/presentation/d/1YZVhzZQpMGUTspjL6kLXo2LWh4mtXWGKwcyxBZC5Rk0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Use case document</a> </td>
+    <td><a href="https://docs.google.com/document/d/1RCC7ckAVQ72Vuaiv9svBhvNX9sJqbjfFS3GhDEIHQSY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Use case document</a> </td>
   </tr>/table>
 
 ## Acknowledgements
