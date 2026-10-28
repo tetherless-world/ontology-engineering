@@ -1,183 +1,82 @@
-[Concept Map](#conceptual-model) | [Ontology File](#ontologies) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+---
+layout: default
+title: Concept Map and Ontology
+---
+
+[Conceptual model](#conceptual-model) · [Ontology versions](#ontologies)
 
 ## Conceptual Model
 
-![Concept Map Subject Model, Diagram 1](images/Diagram1CoreClass.jpeg)
+The current conceptual model comes from the Assignment 8 document, last modified on October 23, 2026. It replaces the preliminary Assignment 5 model with `PhysicalFeature`, `FeatureValue`, `FeatureLevel`, `Assessment`, and `RequirementMapping`. The hierarchy panels show classification; open triangular arrowheads point toward the superclass. The relationship diagram shows object properties directed from domain to range. Click any diagram to open the full-size image.
 
-![Concept Map Subject Model, Diagram 2](images/Diagram2ClassRelation.jpeg)
+[Download the current conceptual model document](files/OE_8_TeamAffordance_ConceptualModel.docx) · [View its Google Drive source](https://docs.google.com/document/d/1Kkpk0DTprUycWd9IoTgjS5E9wsCXP51V/edit)
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
+<figure>
+  <a href="images/OE_8_Entity_Judgment_Hierarchies.png"><img src="images/OE_8_Entity_Judgment_Hierarchies.png" alt="PhysicalEntity subclasses WholeObject and ObjectPart, and FeasibilityJudgment outcome subclasses" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Diagram 1a. Physical entities and feasibility judgments.</strong></figcaption>
+</figure>
+
+`PhysicalEntity` distinguishes whole objects from object parts. `FeasibilityJudgment` groups the feasible, infeasible, and insufficient-information outcomes used to describe an assessment.
+
+<figure>
+  <a href="images/OE_8_Feature_Geometric_Mechanical.png"><img src="images/OE_8_Feature_Geometric_Mechanical.png" alt="Geometric and mechanical PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Diagram 1b. Geometric and mechanical physical features.</strong></figcaption>
+</figure>
+
+This panel organizes geometric features such as shape, size, edge geometry, point geometry, and contact area, together with mechanical features such as rigidity, flexibility, hardness, and strength. These classes supply vocabulary for the physical descriptions evaluated against CUT requirements.
+
+<figure>
+  <a href="images/OE_8_Feature_Material_Surface_Structural.png"><img src="images/OE_8_Feature_Material_Surface_Structural.png" alt="Material, surface, and structural PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Diagram 1c. Material, surface, and structural physical features.</strong></figcaption>
+</figure>
+
+This continuation of the feature hierarchy includes friction, smoothness, joint, rotational-structure, and multipart-structure features. Repeated superclass labels connect this panel to the preceding feature hierarchy; they do not represent separate models.
+
+<figure>
+  <a href="images/OE_8_Requirement_Geometric_Mechanical.png"><img src="images/OE_8_Requirement_Geometric_Mechanical.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Diagram 1d. Geometric and mechanical action requirements.</strong></figcaption>
+</figure>
+
+The requirement hierarchy parallels the feature vocabulary, including geometry, contact area, rigidity, flexibility, and strength requirements. It describes the kinds of physical conditions against which a candidate's represented evidence can be assessed.
+
+<figure>
+  <a href="images/OE_8_Requirement_Material_Surface_Structural.png"><img src="images/OE_8_Requirement_Material_Surface_Structural.png" alt="Material, surface, and structural ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Diagram 1e. Material, surface, and structural action requirements.</strong></figcaption>
+</figure>
+
+This panel continues the requirement hierarchy with material, friction, smoothness, joint, rotational-structure, and multipart-structure requirements. Together, the requirement panels provide vocabulary for comparing different physical realizations of CUT.
+
+<figure>
+  <a href="images/OE_8_Object_Property_Relationships.png"><img src="images/OE_8_Object_Property_Relationships.png" alt="Object-property relationships linking assessments, candidates, targets, actions, feature values, and requirement mappings" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Diagram 2. Object-property relationships for CUT assessment.</strong></figcaption>
+</figure>
+
+An `Assessment` connects a candidate, target, action, and judgment. A `PhysicalEntity` has `FeatureValue` instances, each connecting a `PhysicalFeature` to a categorical `FeatureLevel`. Actions link to requirements, and `RequirementMapping` connects target conditions to required feature levels. `hasPart` and `interactsWith` represent part structure and interactions. This structure supports individual assessments, candidate comparisons, and comparisons involving interacting parts such as scissor blades. Multiplicity 1 denotes exactly one related instance of the indicated class in the source model.
+
+### Earlier Conceptual Model
+
+- [Assignment 5 conceptual model](files/OE_5_TeamAffordance_ConceptualModel.docx)
 
 ## Ontologies
 
-### Study Cohort Ontology (SCO)
+Versions are listed with the most recent team ontology first. The Assignment 8 files were retrieved from Google Drive on October 25, 2026; their original ontology contents are preserved.
 
-**Link:**
-[https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl)
+| Version | Files |
+| --- | --- |
+| **Assignment 8 — repository release** | [Ontology RDF](files/OE_8_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_8_TeamAffordance_Individuals.rdf) |
+| Assignment 8 — full team merge from Google Drive | [Download RDF](files/OE_8_TeamAffordance_HP_XF_Alex_LZ_merged_full.rdf) · [Google Drive source](https://drive.google.com/file/d/1A-YQYQOtGq6J_Y9icRkcCUrtyH1LkfKi/view) |
+| Assignment 6 | [Download RDF](files/OE_6_TeamAffordance.rdf) |
+| Preliminary repository ontology | [Download RDF](physical-properties.rdf) |
 
-**View the ontology documentation at:**
-[https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
+### Assignment 8 Individuals
 
-#### Primary Classes and Definitions
+[Download the individuals ontology contributed by Liangliang Zhang](files/OE_8_TeamAffordance_Individuals_LiangliangZhang.rdf) · [Google Drive source](https://drive.google.com/file/d/1ji1mAx1tn-IUDPdaAC4gw_Z-Xs1-SSYC/view)
 
-1. Research Study
-    - Definition: A scientific investigation that involves testing a hypothesis
-    - Immediate Superclass: None
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: Hasco
-1. Clinical Trial
-    - Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
-    - Immediate Superclass: Research Study
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: National Cancer Institute Thesarus (NCIT)
-1. Cohort
-    - Definition: A cohort is the group of subjects enrolled in a study
-    - Immediate Superclass: None
-    - Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: The Statistical Methods Ontology (STATO)
-1. Study Arm
-    - Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
-    or no intervention, according to the trial's protocol
-    - Immediate Superclass: Cohort
-    - Example: Metformin Conventional Therapy Arm
-    - Reused From: None
-1. Study Subject
-    - Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
-    professional or institution with the purpose to receive medical care when necessary
-    - Immediate Superclass: None
-    - Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: SemanticScience Integrated Ontology (SIO)
-1. Study Intervention
-    - Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
-    procedures, vaccines, and other products that are either investigational or already available
-    - Immediate Superclass: None
-    - Example: Metformin
-    - Reused From: ProvCaRe
-1. Subject Characteristic
-    - Definition: Property that summarizes important attributes of the participants enrolled in a study
-    - Immediate Superclass: None
-    - Example: Age
-    - Reused From: None
-1. Statistical Measure
-    - Definition: a standard unit used to express the size, amount, or degree of something
-    - Immediate Superclass: None
-    - Example: Mean
-    - Reused From: ProvCaRe
+This is the separately supplied individuals file; its contributor label is retained rather than implying that it is a combined team individuals ontology.
 
-### Accompanying Suite of Ontologies
+### Intermediate Assignment 8 Merges
 
-- [Diseases](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/diseases.owl)
-- [Lab results](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/labresults.owl)
-- [Medications](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/medications.owl)
-- [Therapies](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/therapies.owl)
-- [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
-- [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
+These earlier working merges are retained as provenance links, in reverse order of modification. Use the repository release above for the current ontology.
 
-## Ontologies Reused
-
-We group the ontologies we reuse by the purpose and the use-cases they are intended to serve, as vocabularies for.
-
-### Study Design Ontologies
-
-- [Provenance for Healthcare + Clinical Research (ProvCaRe)](https://provcare.case.edu/)
-- [Human-Aware Science Ontology](http://hadatac.org/ont/hasco/)
-
-### Medical Ontologies
-
-- [National Cancer Institute Thesarus (NCIT)](https://provcare.case.edu/)
-- [Children's Health Exposure Analysis Resource Ontology (CHEAR)](https://bioportal.bioontology.org/ontologies/NCIT)
-- [Human-Disease Ontology (DOID)](https://www.ebi.ac.uk/ols/ontologies/doid")
-
-### Mid-Level Ontologies
-
-- [SemanticScience Integrated Ontology
-  (SIO)](https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-subset-labels.owl)
-
-### Statistical Ontologies
-
-- [Units Ontology
-  (UO)](https://www.google.com/search?q=UO+ontology&rlz=1C5CHFA_enIN727IN729&oq=UO+ontology&aqs=chrome..69i57j69i60.3199j0j4&sourceid=chrome&ie=UTF-8)
-- [Statistical Methods Ontology (STATO)](https://www.ebi.ac.uk/ols/ontologies/stato)
-
-### Ontology Prefixes
-
-<table style="width:100%">
-  <tr>
-    <th>Prefix</th>
-    <th>Links</th>
-  </tr>
-  <tr>
-    <td>rdf</td>
-    <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns">Resource Description Framework</a></td>
-  </tr>
-  <tr>
-    <td>rdfs</td>
-    <td><a href="http://www.w3.org/2000/01/rdf-schema"> RDF Schema</a> </td>
-  </tr>
-  <tr>
-    <td>owl</td>
-    <td><a href="http://www.w3.org/2002/07/owl#">Web Ontology Language </a> </td>
-  </tr>
-  <tr>
-    <td> xsd</td>
-    <td> <a href="http://www.w3.org/2001/XMLSchema#">XML Schema Definition</a></td>
-  </tr>
-  <tr>
-    <td>dct</td>
-    <td> <a href="http://purl.org/dc/terms/">Dublin Core Term</a> </td>
-  </tr>
-  <tr>
-    <td>skos</td>
-    <td> <a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
-  </tr>
-  <tr>
-    <td>sco</td>
-    <td> <a href="https://idea.tw.rpi.edu/projects/heals/studycohort/"> Study Cohort Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>chear</td>
-    <td> <a href="http://hadatac.org/ont/chear#">Children’s Health Exposure Analysis Resource</a></td>
-  </tr>
-  <tr>
-    <td>hasco</td>
-    <td> <a href="http://hadatac.org/ont/hasco#"> Human-Aware Science Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>fibo-fnd-utl-av</td>
-    <td> <a href="http://www.omg.org/spec/EDMC-FIBO/FND/Utilities/AnnotationVocabulary/">Financial Industry Business
-        Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>sio</td>
-    <td> <a href="http://semanticscience.org/resource/">SemanticScience Integrated Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>obo</td>
-    <td> <a href="http://purl.obolibrary.org/obo/">OBO Foundry</a> </td>
-  </tr>
-  <tr>
-    <td>stato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/STATO_">The Statistical Methods Ontolgy</a> </td>
-  </tr>
-  <tr>
-    <td>uo</td>
-    <td><a href="http://purl.obolibrary.org/obo/UO_"> Units of Measurement Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>pato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/PATO_"> Human Phenotypic Quality Ontology</a> </td>
-  </tr>
-  <tr>
-    <td>ncit</td>
-    <td> <a href="http://purl.obolibrary.org/obo/NCI_">National Cancer Institute Thesarus</a> </td>
-  </tr>
-  <tr>
-    <td>provcare</td>
-    <td> <a href="http://www.case.edu/ProvCaRe/provcare#">Provenance for Clinical + Healthcare Research</a> </td>
-  </tr>
-  <tr>
-    <td>ocre</td>
-    <td> <a href="http://purl.org/net/OCRe/OCRe.owl/#"> Ontology of Clinical Research</a> </td>
-  </tr>
-</table>
+- [HP, XF, and Alex merged draft](https://drive.google.com/file/d/1MyImpmcCujejinNQmc5TM6NwvB6bEOdV/view)
+- [HP and XF merged draft](https://drive.google.com/file/d/1se9iysw335EH3p3V0wk25zhUi1kF2zDR/view)
