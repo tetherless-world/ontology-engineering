@@ -1,18 +1,11 @@
 PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-# CQ1 for Protégé's Snap SPARQL Query view (start HermiT first).
-# Answers come from the reasoner, so hasState needs no materialized file.
-# moveType is limited to six explicit move classes; Agreement moves appear
-# as ExpressedPosition, their superclass.
-# Snap SPARQL differences from cq1-conversation-moves-current-states.rq:
-#   - No VALUES, and BIND cannot take a class, so the classes are a FILTER.
-#   - rdfs:subClassOf is entailed (reflexive, transitive), so no * path.
-#   - cjf:State is excluded with MINUS; a FILTER inside OPTIONAL crashes Snap.
-#   - Comments must come after the first PREFIX line; LIMIT is unsupported.
-
 SELECT DISTINCT ?move ?moveType ?stateType ?summary
+
 WHERE {
+
+    # select the issues , claims, options , InformationRequest,  expressed positions and Outcome
     ?move a ?moveType .
     FILTER (?moveType = cjf:Issue
             || ?moveType = cjf:Claim
@@ -21,16 +14,22 @@ WHERE {
             || ?moveType = cjf:ExpressedPosition
             || ?moveType = cjf:Outcome)
     
+    # get summary of each milestone
     ?move cjf:hasSummary ?summary .
 
     OPTIONAL {
+
+        # inffered property chain which denotes the current state individual for each conversation denoted above
         ?move cjf:hasState ?state .
+
+        # get the infered state individuals class
         ?state a ?stateType .
         ?stateType rdfs:subClassOf cjf:State .
+
+        # remove the generic state class triples
         MINUS {
             ?state a ?stateType .
             FILTER (?stateType = cjf:State)
         }
     }
 }
-ORDER BY ?move ?moveType
