@@ -32,6 +32,12 @@ def output_path(config, explicit, name):
     return Path(directory) / name
 
 
+def build_manifest_path(config, target):
+    """Keep non-RDF build artifacts in a configurable directory."""
+    directory = config.data["outputs"].get("artifacts_directory")
+    return (Path(directory) if directory else target.parent) / (target.name + ".manifest.json")
+
+
 def configure(config, **overrides):
     config = as_config(config)
     for key, value in overrides.items():
@@ -101,7 +107,7 @@ def build_individuals(config=None, *, workbook=None, ontology=None, transcript=N
     config = configure(config, workbook=workbook, ontology=ontology, transcript=transcript, base_individuals=base_individuals)
     target = output_path(config, output, "asserted-individuals.rdf")
     report = report or config.data["outputs"].get("report")
-    manifest_path = target.with_name(target.name + ".manifest.json")
+    manifest_path = build_manifest_path(config, target)
     paths = preflight(config, {"output": target, "manifest": manifest_path, "report": report}, overwrite=overwrite)
     snapshot = snapshot_inputs(input_paths(config))
     graph, manifest = _build(config)
@@ -205,7 +211,7 @@ def run_pipeline(config=None, *, workbook=None, ontology=None, transcript=None, 
     report = report or config.data["outputs"].get("report")
     # Check ALL destinations before the first successful stage writes anything.
     preflight(config, {"output": target, "intermediate": intermediate,
-        "manifest": intermediate.with_name(intermediate.name + ".manifest.json"), **report_paths(report)}, overwrite=overwrite)
+        "manifest": build_manifest_path(config, intermediate), **report_paths(report)}, overwrite=overwrite)
     if dry_run:
         enabled = config.data["reasoner"].get("enabled", False) if with_inference is None else with_inference
         if enabled:

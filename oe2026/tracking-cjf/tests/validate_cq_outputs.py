@@ -5,6 +5,7 @@ saved artifacts; it does not participate in production pipeline validation.
 """
 from collections import Counter
 from decimal import Decimal
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -18,7 +19,11 @@ C = Namespace('https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/')
 P = Namespace('http://www.w3.org/ns/prov#')
 SIO = URIRef('http://semanticscience.org/resource/SIO_000206')
 root = Path.cwd()
-sources = json.loads(Path('inputs/cq-source-manifest.json').read_text())
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--input-manifest', type=Path, default=Path('ontology/run_outputs/input-manifest.json'))
+parser.add_argument('--report', type=Path, default=Path('ontology/run_outputs/output-validation-report.json'))
+args = parser.parse_args()
+sources = json.loads(args.input_manifest.read_text())
 for path, expected in sources['input_sha256'].items():
     assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == expected, path
 
@@ -171,5 +176,6 @@ report = {
     'asserted_triples': len(asserted), 'current_triples': len(current),
     'output_sha256': {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in (asserted_path, current_path)},
 }
-Path('ontology/output-validation-report.json').write_text(json.dumps(report, indent=2) + '\n')
+args.report.parent.mkdir(parents=True, exist_ok=True)
+args.report.write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report, indent=2))

@@ -15,12 +15,12 @@ SECTIONS = {
     "state_events": {"event_mapping", "evidence_policy", "as_of_turn", "same_turn_relationships"},
     "validation": {"shapes"},
     "reasoner": {"enabled", "engine", "runtime"},
-    "outputs": {"directory", "output", "intermediate_output", "report"},
+    "outputs": {"directory", "output", "intermediate_output", "report", "artifacts_directory"},
 }
 PATH_KEYS = {("inputs", "annotations"), ("inputs", "transcript"), ("inputs", "base_individuals"),
              ("ontology", "file"), ("ontology", "import_map"), ("annotations", "column_map"),
              ("state_events", "event_mapping"), ("validation", "shapes"),
-             ("outputs", "directory"), ("outputs", "output"), ("outputs", "intermediate_output"), ("outputs", "report")}
+             ("outputs", "artifacts_directory"), ("outputs", "directory"), ("outputs", "output"), ("outputs", "intermediate_output"), ("outputs", "report")}
 
 
 def read_yaml(path):
