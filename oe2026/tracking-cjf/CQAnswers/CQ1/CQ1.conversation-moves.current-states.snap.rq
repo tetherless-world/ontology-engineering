@@ -1,7 +1,7 @@
 PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?move ?moveType ?stateType ?summary
+SELECT DISTINCT ?move ?moveType (IF(BOUND(?stateType), ?stateType, "N/A") AS ?stateResult) ?summary
 
 WHERE {
 
@@ -19,10 +19,10 @@ WHERE {
 
     OPTIONAL {
 
-        # inffered property chain which denotes the current state individual for each conversation denoted above
+        # inferred property chain which denotes the current state individual for each conversation denoted above
         ?move cjf:hasState ?state .
 
-        # get the infered state individuals class
+        # get the inferred state individuals class
         ?state a ?stateType .
         ?stateType rdfs:subClassOf cjf:State .
 
@@ -33,3 +33,4 @@ WHERE {
         }
     }
 }
+ORDER BY ?move ?moveType

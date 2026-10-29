@@ -9,7 +9,7 @@ CQ1:
 PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?move ?moveType ?stateType ?summary
+SELECT DISTINCT ?move ?moveType (IF(BOUND(?stateType), ?stateType, "N/A") AS ?stateResult) ?summary
 
 WHERE {
 
@@ -41,3 +41,4 @@ WHERE {
         }
     }
 }
+ORDER BY ?move ?moveType
