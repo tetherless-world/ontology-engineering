@@ -1,0 +1,44 @@
+How to Run:
+1. Open the oe2026\tracking-cjf\ontology\OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf using protege (this file is built using the annotated file and running SHACL on it, 
+    check oe2026\tracking-cjf\ontology\run_outputs\commands_ran.txt)
+2. Run the reasoner on it
+3. Use the snap SPARQL (you need to use the SNAP SPARQL)
+
+CQ1: Which CJF conversation moves have occurred in the conversation, and what is the latest known state of each conversation move, where a state applies?
+
+PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?move ?moveType (IF(BOUND(?stateType), ?stateType, "N/A") AS ?stateResult) ?summary
+
+WHERE {
+
+    # select the issues , claims, options , InformationRequest,  expressed positions and Outcome
+    ?move a ?moveType .
+    FILTER (?moveType = cjf:Issue
+            || ?moveType = cjf:Claim
+            || ?moveType = cjf:Option
+            || ?moveType = cjf:InformationRequest
+            || ?moveType = cjf:ExpressedPosition
+            || ?moveType = cjf:Outcome)
+    
+    # get summary of each milestone
+    ?move cjf:hasSummary ?summary .
+
+    OPTIONAL {
+
+        # inferred property chain which denotes the current state individual for each conversation denoted above
+        ?move cjf:hasState ?state .
+
+        # get the inferred state individuals class
+        ?state a ?stateType .
+        ?stateType rdfs:subClassOf cjf:State .
+
+        # remove the generic state class triples
+        MINUS {
+            ?state a ?stateType .
+            FILTER (?stateType = cjf:State)
+        }
+    }
+}
+ORDER BY ?move ?moveType
