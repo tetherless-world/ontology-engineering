@@ -48,3 +48,7 @@ To learn how to build human and machine-interpretable definitions of concepts an
 5. Franz Baader, Ian Horrocks, Carsten Lutz, and Uli Sattler (2017). An Introduction to Description Logic. ISBN: 9781139025355. Cambridge.University Press, June 2017. (optional)
 
 6. Franz Baader, Diego Calvanese, Deborah L. McGuinness, Daniele Nardi, and Peter F. Patel-Schneider, editors.  The Description Logic Handbook: Theory, Implementation and Applications, Second Edition. Cambridge University Press, June 28, 2010. [ISBN: 978-0521150118]. (optional)
+
+## Human annotation pipeline
+
+See [the file-based Python library and CLI guide](oe2026/tracking-cjf/PIPELINE.md) for XLSX-to-RDF conversion, minimal SHACL execution, and optional inference.

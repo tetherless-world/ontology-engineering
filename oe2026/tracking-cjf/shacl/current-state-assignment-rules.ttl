@@ -1,3 +1,20 @@
+# Current state assignment derivation and history validation
+# --------------------------------------------------------
+# The data graph contains moves and their recorded assignment histories. This
+# shapes graph supplies validation constraints and ONE triple-generating rule.
+# NodeShape checks a focus node; sh:property [...] supplies a PropertyShape
+# checking values reached by sh:path. Targets select the focus nodes.
+#
+# Runner order: clear old current pointers in memory -> execute the rule ->
+# validate the result -> save the generated pointers only if validation passes.
+# Turtle statement order is not execution order. SELECT constraints return bad
+# cases; CONSTRUCT creates triples. $this is the current focus node.
+# A validation failure stops the runner before any RDF output is written.
+#
+# These shapes select the current recorded assignment; they do not classify
+# states as Open/Addressed/Resolved or judge whether evidence justifies a state.
+# The runner uses no OWL inference and does not follow ontology imports.
+
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -8,7 +25,12 @@ cjf:CurrentStateAssignmentRuleShape
     rdfs:label "derive current state assignment" ;
     # Target moves through the property itself; inferred class types are not required.
     sh:targetSubjectsOf cjf:hasStateAssignment ;
+    # Not needed for clean initial data, but catches a current pointer on a
+    # node with no hasStateAssignment history (which Python does not clear).
     sh:targetSubjectsOf cjf:hasCurrentStateAssignment ;
+    # Exactly one endpoint must remain after rule execution. Branching histories
+    # (A <- B and A <- C) or disconnected chains produce multiple endpoints and
+    # fail maxCount; a wholly cyclic history has no endpoint and fails minCount.
     sh:property [
         sh:path cjf:hasCurrentStateAssignment ;
         sh:minCount 1 ;
@@ -17,6 +39,7 @@ cjf:CurrentStateAssignmentRuleShape
         sh:class cjf:StateAssignment ;
         sh:message "Each move with state must have exactly one current state assignment."
     ] ;
+    # A pointer must refer to an assignment recorded for this same move.
     sh:sparql [
         sh:message "The current assignment must belong to this conversation move." ;
         sh:select """
@@ -27,6 +50,10 @@ cjf:CurrentStateAssignmentRuleShape
             }
         """
     ] ;
+    # Stale means formerly current but now superseded. The Python runner clears
+    # old pointers before applying the rule, so this check is redundant in its
+    # normal flow. It catches stale pointers when these shapes run independently:
+    # CONSTRUCT only adds triples and cannot delete the old pointer itself.
     sh:sparql [
         sh:message "A current assignment must have no successor for the same move. Refresh stale current links before executing the rule." ;
         sh:select """
@@ -38,6 +65,10 @@ cjf:CurrentStateAssignmentRuleShape
             }
         """
     ] ;
+    # Choose the assignment with no successor FOR THE SAME MOVE. This follows
+    # recorded predecessor links rather than taking the maximum turn number;
+    # successive assignments at the same turn are therefore supported.
+    # This rule does not read its output predicate, so one pass suffices.
     sh:rule [
         a sh:SPARQLRule ;
         rdfs:label "link each move to an assignment with no recorded successor" ;
@@ -60,8 +91,10 @@ cjf:CurrentStateAssignmentRuleShape
 # Equal turn numbers are allowed: predecessor links order changes within a turn.
 cjf:StateAssignmentHistoryShape
     a sh:NodeShape ;
+    # Select assignments, not the moves selected by the first shape.
     sh:targetObjectsOf cjf:hasStateAssignment ;
     sh:property [
+        # Follow hasStateAssignment backwards to count owning moves.
         sh:path [ sh:inversePath cjf:hasStateAssignment ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -80,6 +113,7 @@ cjf:StateAssignmentHistoryShape
         sh:nodeKind sh:IRI
     ] ;
     sh:property [
+        # Follow assignment -> effective utterance -> positive integer turn.
         sh:path ( cjf:assignedAtUtterance cjf:hasTurnNumber ) ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -104,6 +138,8 @@ cjf:StateAssignmentHistoryShape
             }
         """
     ] ;
+    # '+' follows one or more predecessor links. This also detects a detached
+    # cycle alongside an otherwise valid chain with one terminal assignment.
     sh:sparql [
         sh:message "State assignment histories must not contain cycles." ;
         sh:select """
