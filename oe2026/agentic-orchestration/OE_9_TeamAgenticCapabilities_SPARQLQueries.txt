@@ -78,32 +78,29 @@ ORDER BY ?skillLabel
 # CQ5 SPARQL query
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
-PREFIX xsd:            <http://www.w3.org/2001/XMLSchema#>
 PREFIX prov:           <http://www.w3.org/ns/prov#>
 PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
 PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
 PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
- 
-SELECT ?stepLabel ?taskLabel ?capabilityLabel ?requirementLabel ?constraintLabel
-       ?skillLabel ?tool ?toolServer
+
+SELECT DISTINCT ?stepLabel ?taskLabel ?capabilityLabel ?requirementLabel ?constraintLabel
 WHERE {
+  ?plan a oe-agtorch:SelectedOrchestrationPlan .
   ?plan oe-agtorch:addresses oe-agtorch-ind:danteRequest .
-  ?evaluation oe-agtorch:evaluates ?plan .
-  ?evaluation oe-agtorch:hasRank "1"^^xsd:integer .
   ?plan oe-agtorch:hasStep ?step .
   ?step rdfs:label ?stepLabel .
   ?step agento:hasAssociatedTask ?task .
   ?task rdfs:label ?taskLabel .
   ?task agento:requiresCapability ?capability .
   ?capability rdfs:label ?capabilityLabel .
- 
+
   # an InformationRequirement of Dante's request that the capability satisfies
   OPTIONAL {
     oe-agtorch-ind:danteRequest oe-agtorch:expresses ?requirement .
     ?capability oe-agtorch:satisfiesRequirement ?requirement .
     ?requirement rdfs:label ?requirementLabel .
   }
- 
+
   # a Constraint from Dante's own preference settings that it satisfies
   OPTIONAL {
     oe-agtorch-ind:danteRequest prov:wasAttributedTo ?person .
@@ -113,22 +110,8 @@ WHERE {
     ?capability oe-agtorch:satisfiesConstraint ?constraint .
     ?constraint rdfs:label ?constraintLabel .
   }
- 
-  # the skill that performs the task, and the tools behind it
-  OPTIONAL {
-    ?task oe-agtorch:performedBySkill ?skill .
-    ?skill rdfs:label ?skillLabel .
-    OPTIONAL {
-      ?skill oe-agtorch:usesTool ?toolInd .
-      ?toolInd skos:altLabel ?tool .
-      OPTIONAL {
-        ?server oe-agtorch:exposes ?toolInd .
-        ?server rdfs:label ?toolServer .
-      }
-    }
-  }
- 
+
   # keep only capabilities justified by a requirement or constraint
   FILTER (BOUND(?requirementLabel) || BOUND(?constraintLabel))
 }
-ORDER BY ?stepLabel ?tool
+ORDER BY ?stepLabel
