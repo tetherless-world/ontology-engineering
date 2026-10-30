@@ -3,7 +3,7 @@
 # Gia Oriana Santos, Barbara Kotlan, Jialin Fang, Elioenai Lincon Guedes Alves, Jiaying Wang
 #
 # Ontologies: OE_9_TeamAgenticCapabilities.rdf (classes and properties) and OE_9_TeamAgenticCapabilities_Individuals.rdf
-# (145 individuals), with catalog-v001.xml and imports/, in the team folder oe2026/agentic-orchestration.
+# (146 individuals), with catalog-v001.xml and imports/, in the team folder oe2026/agentic-orchestration.
 #
 # How to run (Protege 5.6.9)
 # 1. Open OE_9_TeamAgenticCapabilities_Individuals.rdf from the team folder. It imports the main ontology; catalog-v001.xml
@@ -21,6 +21,234 @@
 # the answer. On 2026-10-30 every query was run through the Snap SPARQL Query plugin 6.0.0 (its own parser and query
 # engine) with Pellet and with HermiT, and the queries marked "none" also without inference; each returned the expected
 # answer given with it.
+#
+# CQ 1 follows the semantic processes of the use case in order, starting from Ken's request:
+#   step 1: the skills, tools and MCP servers that satisfy the information requirements and hard constraints of the
+#           request (semantic lookup);
+#   step 2: the candidate orchestration plans whose steps meet every requirement and hard constraint, violate none,
+#           and receive each input from an earlier step (dependency and constraint-based reasoning);
+#   then the CQ 1 query and its supporting queries: how the candidates were evaluated on Ken's soft constraints and
+#           which one is selected and which rejected (multi-criteria plan evaluation).
+# The step 1 and step 2 queries avoid FILTER NOT EXISTS and property paths, which Snap SPARQL does not support; step 2
+# uses MINUS instead. They were added after the 2026-10-30 Protege run and have so far been checked with rdflib 7, on
+# the asserted triples and on the triples HermiT infers, but not yet in Protege.
+
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov:           <http://www.w3.org/ns/prov#>
+PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
+PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
+PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
+# ======================================================================================================================
+# CQ 1, step 1 (semantic lookup): which skills, tools and MCP servers does Ken's request need?
+# Reasoning: none beyond the asserted triples (no RDFS or OWL inference). Runs in Snap SPARQL (with or without a
+#   reasoner) and in the SPARQL Query tab.
+#   The query starts from Ken's request. It takes the information requirements the request expresses and the hard
+#   constraints derived from a preference setting of the person the request is attributed to (or from the request
+#   itself), finds the capabilities that satisfy them, and lists the skills with those capabilities, the tools each
+#   skill uses for that capability and the MCP servers that expose the tools. Ken's soft constraints are not
+#   satisfied by a capability; they are measured by decision criteria when the candidate plans are ranked.
+# Individuals: kenRequest, Ken, kenSettings, the three information requirements of Ken's request and his hard
+#   constraint kenEvidenceConstraint; the capabilities, skills, tools and servers that satisfy them.
+# Expected answer: three skills and four tools; the iHerb search tool has no MCP server (6 rows):
+#   requirementLabel | hardConstraintLabel | capabilityLabel | skillLabel | tool | toolServer
+#   affordable products with good reviews (Ken) |  | product search capability | product selection skill | search | 
+#   supplement recommendations for building muscle mass (Ken) |  | supplement recommendation capability | personalized supplement recommendation skill | recommend_supplement | Supplement Advisor MCP server
+#   supporting scientific evidence (Ken) |  | evidence verification capability | evidence verification skill | download_articles_batch | PubMed MCP server
+#   supporting scientific evidence (Ken) |  | evidence verification capability | evidence verification skill | search_articles | PubMed MCP server
+#    | evidence verification (Ken) | evidence verification capability | evidence verification skill | download_articles_batch | PubMed MCP server
+#    | evidence verification (Ken) | evidence verification capability | evidence verification skill | search_articles | PubMed MCP server
+SELECT ?requirementLabel ?hardConstraintLabel ?capabilityLabel ?skillLabel ?tool ?toolServer
+WHERE {
+  {
+    oe-agtorch-ind:kenRequest oe-agtorch:expresses ?requirement .
+    ?requirement a oe-agtorch:InformationRequirement .
+    ?requirement rdfs:label ?requirementLabel .
+    ?capability oe-agtorch:satisfiesRequirement ?requirement .
+  }
+  UNION
+  {
+    {
+      oe-agtorch-ind:kenRequest prov:wasAttributedTo ?person .
+      ?settings a oe-agtorch:PreferenceSetting .
+      ?settings prov:wasAttributedTo ?person .
+      ?constraint prov:wasDerivedFrom ?settings .
+    }
+    UNION
+    {
+      ?constraint prov:wasDerivedFrom oe-agtorch-ind:kenRequest .
+    }
+    ?constraint a oe-agtorch:HardConstraint .
+    ?constraint rdfs:label ?hardConstraintLabel .
+    ?capability oe-agtorch:satisfiesConstraint ?constraint .
+  }
+  ?capability rdfs:label ?capabilityLabel .
+  ?skill a oe-agtorch:Skill .
+  ?skill oe-agtorch:hasCapability ?capability .
+  ?skill rdfs:label ?skillLabel .
+  OPTIONAL {
+    ?skill oe-agtorch:usesTool ?toolInd .
+    ?toolInd oe-agtorch:hasCapability ?capability .
+    ?toolInd skos:altLabel ?tool .
+    OPTIONAL {
+      ?server oe-agtorch:exposes ?toolInd .
+      ?server rdfs:label ?toolServer .
+    }
+  }
+}
+ORDER BY ?hardConstraintLabel ?requirementLabel ?tool
+
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov:           <http://www.w3.org/ns/prov#>
+PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
+PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
+PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
+# ======================================================================================================================
+# CQ 1, step 2 (dependency and constraint-based reasoning): which candidate orchestration plans can answer Ken's
+#       request, and how does each one meet his information requirements and constraints?
+# Reasoning: none beyond the asserted triples (no RDFS or OWL inference). Runs in Snap SPARQL (with or without a
+#   reasoner) and in the SPARQL Query tab. Snap SPARQL supports neither FILTER NOT EXISTS nor property paths, so the
+#   "every ... is satisfied" conditions are written as a double MINUS: the inner MINUS finds the requirements (or
+#   constraints, or inputs) a plan leaves unmet, and the outer MINUS drops the plans that have one.
+#   The query starts from Ken's request, as in step 1, and keeps a plan for the request only if
+#   (a) every information requirement the request expresses is satisfied by the capability a task of one of the
+#       plan's steps requires,
+#   (b) every hard constraint of the request (from the requester's preference settings or from the request itself)
+#       is satisfied in the same way, and the plan violates no hard constraint,
+#   (c) every information artifact a task of the plan consumes is produced by a task of one of the plan's steps, so
+#       no step waits for an input the plan never creates. (Without property paths the query cannot follow
+#       agento:nextStep to check that the producing step comes earlier; CQ 2 derives the step order from these
+#       inputs and outputs.)
+#   For each plan that is kept, it lists the step and skill that meet each requirement and hard constraint, found
+#   through the capability that satisfies it, and the decision criterion of the plan's evaluation that measures each
+#   soft constraint. Which candidate is then selected is the CQ 1 query below.
+#   The plans still have to address Ken's request: Jessica's plan also passes (a) to (c) for Ken's requirements,
+#   but its tasks work on Jessica's candidate supplements and products.
+# Individuals: kenRequest, Ken, kenSettings, his information requirements, hard constraint kenEvidenceConstraint and
+#   soft constraints kenFewToolCalls and kenLowTokenUse; kenPlan1 and kenPlan2 with their steps, tasks, information
+#   artifacts and plan evaluations; the capabilities and skills of step 1.
+# Expected answer: both of Ken's plans are candidates; plan 2 verifies evidence in two steps (14 rows):
+#   planLabel | requirementLabel | constraintLabel | stepLabel | skillLabel | criterionLabel
+#   Ken plan 1 | affordable products with good reviews (Ken) |  | Ken plan 1, step 4 | product selection skill | 
+#   Ken plan 1 | supplement recommendations for building muscle mass (Ken) |  | Ken plan 1, step 2 | personalized supplement recommendation skill | 
+#   Ken plan 1 | supporting scientific evidence (Ken) |  | Ken plan 1, step 6 | evidence verification skill | 
+#   Ken plan 1 |  | evidence verification (Ken) | Ken plan 1, step 6 | evidence verification skill | 
+#   Ken plan 1 |  | minimize external tool calls (Ken) |  |  | fewest external tool calls (Ken)
+#   Ken plan 1 |  | minimize token usage (Ken) |  |  | lowest token cost (Ken)
+#   Ken plan 2 | affordable products with good reviews (Ken) |  | Ken plan 2, step 2 | product selection skill | 
+#   Ken plan 2 | supplement recommendations for building muscle mass (Ken) |  | Ken plan 2, step 1 | personalized supplement recommendation skill | 
+#   Ken plan 2 | supporting scientific evidence (Ken) |  | Ken plan 2, step 3 | evidence verification skill | 
+#   Ken plan 2 | supporting scientific evidence (Ken) |  | Ken plan 2, step 5 | evidence verification skill | 
+#   Ken plan 2 |  | evidence verification (Ken) | Ken plan 2, step 3 | evidence verification skill | 
+#   Ken plan 2 |  | evidence verification (Ken) | Ken plan 2, step 5 | evidence verification skill | 
+#   Ken plan 2 |  | minimize external tool calls (Ken) |  |  | fewest external tool calls (Ken)
+#   Ken plan 2 |  | minimize token usage (Ken) |  |  | lowest token cost (Ken)
+SELECT ?planLabel ?requirementLabel ?constraintLabel ?stepLabel ?skillLabel ?criterionLabel
+WHERE {
+  ?plan a oe-agtorch:CandidateOrchestrationPlan .
+  ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
+  ?plan rdfs:label ?planLabel .
+  # (a) drop the plan if an information requirement of the request is not satisfied by a capability that a task of
+  #     one of the plan's steps requires
+  MINUS {
+    ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
+    oe-agtorch-ind:kenRequest oe-agtorch:expresses ?r1 .
+    ?r1 a oe-agtorch:InformationRequirement .
+    MINUS {
+      ?plan oe-agtorch:hasStep ?s1 .
+      ?s1 agento:hasAssociatedTask ?t1 .
+      ?t1 agento:requiresCapability ?c1 .
+      ?c1 oe-agtorch:satisfiesRequirement ?r1 .
+    }
+  }
+  # (b) drop the plan if a hard constraint of the request is not satisfied in the same way, or if it violates one
+  MINUS {
+    ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
+    {
+      oe-agtorch-ind:kenRequest prov:wasAttributedTo ?p2 .
+      ?settings2 a oe-agtorch:PreferenceSetting .
+      ?settings2 prov:wasAttributedTo ?p2 .
+      ?h2 prov:wasDerivedFrom ?settings2 .
+    }
+    UNION
+    {
+      ?h2 prov:wasDerivedFrom oe-agtorch-ind:kenRequest .
+    }
+    ?h2 a oe-agtorch:HardConstraint .
+    MINUS {
+      ?plan oe-agtorch:hasStep ?s2 .
+      ?s2 agento:hasAssociatedTask ?t2 .
+      ?t2 agento:requiresCapability ?c2 .
+      ?c2 oe-agtorch:satisfiesConstraint ?h2 .
+    }
+  }
+  MINUS {
+    ?plan oe-agtorch:violatesConstraint ?h3 .
+  }
+  # (c) drop the plan if a task of one of its steps consumes an information artifact that no task of the plan produces
+  MINUS {
+    ?plan oe-agtorch:hasStep ?s4 .
+    ?s4 agento:hasAssociatedTask ?t4 .
+    ?t4 oe-agtorch:consumes ?artifact .
+    MINUS {
+      ?plan oe-agtorch:hasStep ?s5 .
+      ?s5 agento:hasAssociatedTask ?t5 .
+      ?t5 oe-agtorch:produces ?artifact .
+    }
+  }
+  {
+    {
+      oe-agtorch-ind:kenRequest oe-agtorch:expresses ?requirement .
+      ?requirement a oe-agtorch:InformationRequirement .
+      ?requirement rdfs:label ?requirementLabel .
+      ?capability oe-agtorch:satisfiesRequirement ?requirement .
+    }
+    UNION
+    {
+      {
+        oe-agtorch-ind:kenRequest prov:wasAttributedTo ?person .
+        ?settings a oe-agtorch:PreferenceSetting .
+        ?settings prov:wasAttributedTo ?person .
+        ?constraint prov:wasDerivedFrom ?settings .
+      }
+      UNION
+      {
+        ?constraint prov:wasDerivedFrom oe-agtorch-ind:kenRequest .
+      }
+      ?constraint a oe-agtorch:HardConstraint .
+      ?constraint rdfs:label ?constraintLabel .
+      ?capability oe-agtorch:satisfiesConstraint ?constraint .
+    }
+    ?plan oe-agtorch:hasStep ?step .
+    ?step agento:hasAssociatedTask ?task .
+    ?task agento:requiresCapability ?capability .
+    ?step rdfs:label ?stepLabel .
+    ?skill a oe-agtorch:Skill .
+    ?skill oe-agtorch:hasCapability ?capability .
+    ?skill rdfs:label ?skillLabel .
+  }
+  UNION
+  {
+    {
+      oe-agtorch-ind:kenRequest prov:wasAttributedTo ?person .
+      ?settings a oe-agtorch:PreferenceSetting .
+      ?settings prov:wasAttributedTo ?person .
+      ?softConstraint prov:wasDerivedFrom ?settings .
+    }
+    UNION
+    {
+      ?softConstraint prov:wasDerivedFrom oe-agtorch-ind:kenRequest .
+    }
+    ?softConstraint a oe-agtorch:SoftConstraint .
+    ?softConstraint rdfs:label ?constraintLabel .
+    ?softConstraint oe-agtorch:isMeasuredBy ?criterion .
+    ?eval oe-agtorch:evaluates ?plan .
+    ?eval oe-agtorch:usesCriterion ?criterion .
+    ?criterion rdfs:label ?criterionLabel .
+  }
+}
+ORDER BY ?planLabel ?criterionLabel ?constraintLabel ?requirementLabel ?stepLabel
 
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>

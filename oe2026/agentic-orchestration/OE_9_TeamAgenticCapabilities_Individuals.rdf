@@ -34,7 +34,7 @@
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/">
 		<rdfs:label xml:lang="en">Agentic Tool and Skill Orchestration Individuals</rdfs:label>
-		<dct:abstract xml:lang="en">Test individuals for the Agentic Tool and Skill Orchestration Ontology, which this ontology imports. They follow the usage scenarios of use case AC-001: Ken&apos;s plan choice (competency question 1), the skills Jessica&apos;s request needs (competency question 3) and why each capability is in Dante&apos;s plan (competency question 5), plus parallel steps in Jessica&apos;s plan (competency question 2) and Olivia&apos;s plan comparison (competency question 6). Plan selection is not asserted; the reasoner infers it from the plan evaluations. Tool and server individuals for the PubMed, OpenFDA and Supplement Advisor MCP servers and the iHerb client let competency question 5 name the tool behind each skill. Ken&apos;s first plan has the nine steps of the use case&apos;s answer to competency question 1, and the step order of Jessica&apos;s and Dante&apos;s plans follows the use case&apos;s plans for competency questions 2 and 4.</dct:abstract>
+		<dct:abstract xml:lang="en">Test individuals for the Agentic Tool and Skill Orchestration Ontology, which this ontology imports. They follow the usage scenarios of use case AC-001: Ken&apos;s plan choice (competency question 1), the skills Jessica&apos;s request needs (competency question 3) and why each capability is in Dante&apos;s plan (competency question 5), plus parallel steps in Jessica&apos;s plan (competency question 2) and Olivia&apos;s plan comparison (competency question 6). Plan selection is not asserted; the reasoner infers it from the plan evaluations. Tool and server individuals for the PubMed, OpenFDA and Supplement Advisor MCP servers and the iHerb client let competency question 5 name the tool behind each skill. Ken&apos;s request has a hard constraint for evidence verification as well as his soft constraints, so competency question 1 can derive his candidate plans from his information requirements and constraints. Ken&apos;s first plan has the nine steps of the use case&apos;s answer to competency question 1, and the step order of Jessica&apos;s and Dante&apos;s plans follows the use case&apos;s plans for competency questions 2 and 4.</dct:abstract>
 		<dct:creator>Barbara Kotlan</dct:creator>
 		<dct:creator>Elioenai Lincon Guedes Alves</dct:creator>
 		<dct:creator>Gia Oriana Santos</dct:creator>
@@ -224,6 +224,7 @@
 		<rdfs:label xml:lang="en">evidence verification capability</rdfs:label>
 		<skos:definition xml:lang="en">data processing capability that checks published studies for evidence about a supplement</skos:definition>
 		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;evidenceVerificationConstraint"/>
+		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;kenEvidenceConstraint"/>
 		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needEvidenceForKen"/>
 		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needEvidenceSummary"/>
 		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needScientificEvidence"/>
@@ -541,6 +542,14 @@
 		<skos:definition xml:lang="en">evidence assessment of Ken&apos;s candidate supplements</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenEvidenceConstraint">
+		<rdf:type rdf:resource="&oe-agtorch;HardConstraint"/>
+		<rdfs:label xml:lang="en">evidence verification (Ken)</rdfs:label>
+		<skos:definition xml:lang="en">hard constraint, derived from Ken&apos;s execution settings, that every recommended supplement is supported by verified scientific evidence</skos:definition>
+		<skos:scopeNote xml:lang="en">Usage scenario 1 says Ken wants recommendations supported by scientific evidence but accepts a less comprehensive analysis if it costs less. Evidence verification is therefore a hard constraint that every candidate plan for his request must satisfy, while the amount of analysis is left to his soft constraints. Competency question 1 uses it to keep only the plans with a step whose capability satisfies it.</skos:scopeNote>
+		<prov:wasDerivedFrom rdf:resource="&oe-agtorch-ind;kenSettings"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenFewToolCalls">
 		<rdf:type rdf:resource="&oe-agtorch;SoftConstraint"/>
 		<rdfs:label xml:lang="en">minimize external tool calls (Ken)</rdfs:label>
@@ -573,6 +582,7 @@
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s7"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s8"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s9"/>
+		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;kenEvidenceConstraint"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenPlan1Evaluation">
@@ -617,6 +627,7 @@
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s5"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s6"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s7"/>
+		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;kenEvidenceConstraint"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenPlan2Evaluation">
@@ -697,7 +708,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenSettings">
 		<rdf:type rdf:resource="&oe-agtorch;PreferenceSetting"/>
 		<rdfs:label xml:lang="en">Ken&apos;s execution settings</rdfs:label>
-		<skos:definition xml:lang="en">preference setting in which Ken asks to minimize token usage and external tool calls</skos:definition>
+		<skos:definition xml:lang="en">preference setting in which Ken asks to minimize token usage and external tool calls and to have the evidence for each recommended supplement verified</skos:definition>
 		<prov:wasAttributedTo rdf:resource="&oe-agtorch-ind;Ken"/>
 	</owl:NamedIndividual>
 	
@@ -1354,6 +1365,8 @@
 			<rdf:Description rdf:about="&oe-agtorch-ind;kenDistinctCandidates">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch-ind;kenEvidenceAssessment">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;kenEvidenceConstraint">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch-ind;kenFewToolCalls">
 			</rdf:Description>
