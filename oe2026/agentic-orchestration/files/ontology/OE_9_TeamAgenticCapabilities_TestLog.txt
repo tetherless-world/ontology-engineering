@@ -1,0 +1,298 @@
+OE_9_TeamAgenticCapabilities test log (Assignment 9), run 2026-10-30
+
+== Reasoners, OWL 2 DL profile, regression tests (OWL API, Pellet, HermiT)
+Tools: OWL API 4.5.29.2024-05-13T12:11:03Z; Pellet 2.2.0 (course Protégé plugin libraries); HermiT 1.4.3.456 (Protégé 5.6.9 bundle); Java 27
+
+== Baseline ontology OE_9_TeamAgenticCapabilities.rdf: 31 ontologies in the import closure; 585 axioms, 165 logical
+Team axioms (excluding assertions) by type and the constructors they use; property restrictions: 28
+    (qualified cardinality): 5
+  axiom DataPropertyDomain: 8
+  axiom DataPropertyRange: 8
+  axiom DisjointClasses: 7
+  axiom EquivalentClasses: 13
+  axiom FunctionalDataProperty: 2
+  axiom ObjectPropertyDomain: 25
+  axiom ObjectPropertyRange: 27
+  axiom SubClassOf: 73
+  axiom SubPropertyChainOf: 2
+  constructor DataHasValue: 3
+  constructor ObjectAllValuesFrom: 3
+  constructor ObjectExactCardinality: 2
+  constructor ObjectIntersectionOf: 12
+  constructor ObjectInverseOf (inside a restriction): 5
+  constructor ObjectMaxCardinality: 1
+  constructor ObjectMinCardinality: 2
+  constructor ObjectSomeValuesFrom: 17
+  constructor ObjectUnionOf: 6
+  OWL 2 DL profile, baseline: 0 violations in its own axioms (16 in imported ontologies)
+  Pellet, baseline with imports: consistent=true, unsatisfiable classes=0 (367 ms)
+  HermiT, baseline with imports: consistent=true, unsatisfiable classes=0 (919 ms)
+
+== Individuals ontology OE_9_TeamAgenticCapabilities_Individuals.rdf: 146 individuals; imports [https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/]
+  OWL 2 DL profile, individuals: 0 violations in its own axioms (16 in imported ontologies)
+  Pellet, baseline + individuals: consistent=true, unsatisfiable classes=0 (227 ms)
+  HermiT, baseline + individuals: consistent=true, unsatisfiable classes=0 (4250 ms)
+
+== CQ 1. What orchestration plan should the agent follow to answer Ken's request, given his preference for few tool calls and low token use?
+  soft constraint kenFewToolCalls isMeasuredBy kenToolCallCriterion (minimize)
+  soft constraint kenLowTokenUse isMeasuredBy kenTokenCostCriterion (minimize)
+  kenPlan1: SelectedOrchestrationPlan (inferred); TokenCost=0.02; ToolCallCount=4; rank 1
+  Answer: follow kenPlan1: getUserProfileForKen -> getCandidatesForKen -> removeRedundantSupplementsForKen -> getProductsByPrice -> rankProductsByCostForKen -> verifyEvidenceForKen -> rankProductsByEvidenceForKen -> selectProductForKen -> produceRecommendationForKen (hasTask, inferred through hasStep o hasAssociatedTask: 9 tasks)
+    getUserProfileForKen; dependsOn (inferred): none
+    getCandidatesForKen: skill personalizedSupplementRecommendationSkill, tools supplementAdvisorRecommendTool on supplementAdvisorServer; dependsOn (inferred): none
+    removeRedundantSupplementsForKen; dependsOn (inferred): getCandidatesForKen
+    getProductsByPrice: skill productSelectionSkill, tools iherbSearchTool (no server); dependsOn (inferred): getCandidatesForKen
+    rankProductsByCostForKen; dependsOn (inferred): getProductsByPrice, removeRedundantSupplementsForKen
+    verifyEvidenceForKen: skill evidenceVerificationSkill, tools pubmedDownloadArticlesTool on pubmedServer, pubmedSearchArticlesTool on pubmedServer; dependsOn (inferred): getCandidatesForKen
+    rankProductsByEvidenceForKen; dependsOn (inferred): rankProductsByCostForKen, verifyEvidenceForKen
+    selectProductForKen: skill productSelectionSkill; dependsOn (inferred): rankProductsByEvidenceForKen
+    produceRecommendationForKen; dependsOn (inferred): selectProductForKen
+  kenPlan2: RejectedOrchestrationPlan (inferred); TokenCost=0.05; ToolCallCount=9; rank 2
+
+== CQ 3. What skills are required to satisfy Jessica's request?
+  Answer: evidenceVerificationSkill [ConstraintSatisfyingSkill, inferred] <- hasCapability evidenceVerificationCapability satisfiesRequirement needScientificEvidence satisfiesConstraint evidenceVerificationConstraint (hard constraint)
+  Answer: personalizedSupplementRecommendationSkill <- hasCapability supplementRecommendationCapability satisfiesRequirement needSupplementRecommendation
+  Answer: productSelectionSkill <- hasCapability productSearchCapability satisfiesRequirement needSupplementProducts
+  Answer: supplementSafetyScreeningSkill [ConstraintSatisfyingSkill, inferred] <- hasCapability interactionScreeningCapability satisfiesConstraint safetyScreeningConstraint (hard constraint)
+  Control: dosageCalculatorSkill ConstraintSatisfyingSkill inferred? false
+
+== CQ 5. Why was each agent capability chosen to execute in Dante's orchestration plan?
+  dantePlan: SelectedOrchestrationPlan (inferred)
+  Answer: screenCitrate requires interactionScreeningCapability [ConstraintSatisfyingCapability (inferred), JustifiedCapability (inferred)] because it satisfies hard constraint danteSafetyScreening
+     skill supplementSafetyScreeningSkill; tools openfdaAdverseEventsTool on openfdaServer, openfdaDrugLabelsTool on openfdaServer, openfdaRecallsTool on openfdaServer
+  Answer: screenGlycinate requires interactionScreeningCapability [ConstraintSatisfyingCapability (inferred), JustifiedCapability (inferred)] because it satisfies hard constraint danteSafetyScreening
+     skill supplementSafetyScreeningSkill; tools openfdaAdverseEventsTool on openfdaServer, openfdaDrugLabelsTool on openfdaServer, openfdaRecallsTool on openfdaServer
+  Answer: synthesizeEvidence requires evidenceSynthesisCapability [RequirementSatisfyingCapability (inferred), JustifiedCapability (inferred)] because it satisfies requirement needComparison
+     skill evidenceSynthesisSkill; tools none (no external tool)
+  Answer: verifyEvidenceCitrate requires evidenceVerificationCapability [RequirementSatisfyingCapability (inferred), ConstraintSatisfyingCapability (inferred), JustifiedCapability (inferred)] because it satisfies requirement needEvidenceSummary
+     skill evidenceVerificationSkill; tools pubmedDownloadArticlesTool on pubmedServer, pubmedSearchArticlesTool on pubmedServer
+  Answer: verifyEvidenceGlycinate requires evidenceVerificationCapability [RequirementSatisfyingCapability (inferred), ConstraintSatisfyingCapability (inferred), JustifiedCapability (inferred)] because it satisfies requirement needEvidenceSummary
+     skill evidenceVerificationSkill; tools pubmedDownloadArticlesTool on pubmedServer, pubmedSearchArticlesTool on pubmedServer
+  Control: dosageCalculationCapability JustifiedCapability inferred? false
+
+== Extra: CQ 2 (Jessica's parallel tasks) and CQ 6 (Olivia's plans)
+  getCandidateSupplements dependsOn (inferred): 
+  getSupplementProducts dependsOn (inferred): getCandidateSupplements
+  produceRecommendation dependsOn (inferred): selectSupplementProduct
+  screenInteractions dependsOn (inferred): getCandidateSupplements
+  selectSupplementProduct dependsOn (inferred): getSupplementProducts, screenInteractions, verifyEvidence
+  verifyEvidence dependsOn (inferred): getCandidateSupplements
+  planA: RejectedOrchestrationPlan (inferred)
+  planB: SelectedOrchestrationPlan (inferred)
+  jessicaPlan: SelectedOrchestrationPlan (inferred)
+  jessicaPlanWithoutScreening: RejectedOrchestrationPlan (inferred)
+
+== Negative tests (one wrong fact each; Pellet must report an inconsistency)
+  N1 a plan that violates a hard constraint is ranked first (hard-constraint rule vs. selection rule)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N2 Ken plan 2 is also ranked first, so Ken's request would have two selected plans (max 1)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N3 a soft constraint of Ken's is also typed as a hard constraint (hard and soft are disjoint)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N4 one plan evaluation evaluates both of Ken's plans (exactly 1)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N5 a user constraint that is stated to be neither hard nor soft (user constraint = hard or soft)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N6 a candidate plan that is stated to be neither selected nor rejected (candidate = selected or rejected)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N7 a workflow step of Ken plan 1 gets a second task (exactly 1 task per step)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N8 a plan evaluation gets two ranks (has rank is functional)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N9 a skill invocation that is stated to invoke no skill (a skill invocation invokes some skill)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+  N10 a request that is stated to express no information requirement (min 1)
+     expected: inconsistent; Pellet: inconsistent (test passed)
+
+== Positive tests (new facts that the axioms should classify; each with its own copy of the ontology)
+  P1 the iHerb search tool gets a parameter of no stated type (a tool's parameters are all parameters)
+     expected: testQueryParameter is a Parameter; Pellet: is (test passed)
+  P1c control: the same fact on an individual that is not a tool
+     expected: testQueryParameter is not a Parameter; Pellet: is not (test passed)
+  P2 Ken's candidate list, which getProductsByPrice consumes, fills a parameter with isRequired true
+     expected: kenCandidates is a RequiredInput; Pellet: is (test passed)
+  P3 Ken's candidate list fills a parameter with isRequired false
+     expected: kenCandidates is a OptionalInput; Pellet: is (test passed)
+  P3c control: with isRequired false it is not a required input
+     expected: kenCandidates is not a RequiredInput; Pellet: is not (test passed)
+
+== Positive check: without owl:AllDifferent the rejection of Ken plan 2 is no longer inferred
+  kenPlan2 RejectedOrchestrationPlan without AllDifferent: false; with AllDifferent: true
+
+== Course hygiene queries (.hygiene/curated_tests_some_errors, run with rdflib 7.6 on the two OE_9 files)
+2065 triples from 2 file(s)
+TOTAL no findings
+
+== SPARQL queries in the Snap SPARQL Query plugin 6.0.0 (its parser and engine), reasoner: pellet
+active ontology https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/, import closure 32
+reasoner Pellet 2.3.0, consistent true
+
+=== CQ 1, step 1 (semantic lookup): which skills, tools and MCP servers does Ken's request need?
+  whole block: 6 rows, expected 6, rows match
+  without comment lines: 6 rows, expected 6, rows match
+
+=== CQ 1, step 2 (dependency and constraint-based reasoning): which candidate orchestration plans can answer Ken's
+  whole block: 14 rows, expected 14, rows match
+  without comment lines: 14 rows, expected 14, rows match
+
+=== CQ 1. What orchestration plan should the agent follow to answer Ken's request for supplement recommendations,
+  whole block: 10 rows, expected 10, rows match
+  without comment lines: 10 rows, expected 10, rows match
+
+=== CQ 1 without a reasoner (SPARQL Query tab)
+  whole block: 10 rows, expected 10, rows match
+  without comment lines: 10 rows, expected 10, rows match
+
+=== CQ 1, supporting query: how Ken's two candidate plans were evaluated
+  whole block: 2 rows, expected 2, rows match
+  without comment lines: 2 rows, expected 2, rows match
+
+=== CQ 1, supporting query: which of Ken's candidate plans is rejected
+  whole block: 1 rows, expected 1, rows match
+  without comment lines: 1 rows, expected 1, rows match
+
+=== CQ 3. What skills are required to satisfy Jessica's request for supplement recommendations, given she explicitly
+  whole block: 4 rows, expected 4, rows match
+  without comment lines: 4 rows, expected 4, rows match
+
+=== CQ 3, supporting query: which of those skills are constraint-satisfying skills
+  whole block: 2 rows, expected 2, rows match
+  without comment lines: 2 rows, expected 2, rows match
+
+=== CQ 5. Why was each agent capability chosen to execute in a given orchestration plan? (Dante's plan from the CQ 4 example)
+  whole block: 5 rows, expected 5, rows match
+  without comment lines: 5 rows, expected 5, rows match
+
+=== CQ 5 without a reasoner (SPARQL Query tab)
+  whole block: 5 rows, expected 5, rows match
+  without comment lines: 5 rows, expected 5, rows match
+
+10 of 10 queries return their expected rows in Snap SPARQL with Pellet
+
+== SPARQL queries in the Snap SPARQL Query plugin 6.0.0 (its parser and engine), reasoner: hermit
+active ontology https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/, import closure 32
+reasoner HermiT 1.4.1.432, consistent true
+
+=== CQ 1, step 1 (semantic lookup): which skills, tools and MCP servers does Ken's request need?
+  whole block: 6 rows, expected 6, rows match
+  without comment lines: 6 rows, expected 6, rows match
+
+=== CQ 1, step 2 (dependency and constraint-based reasoning): which candidate orchestration plans can answer Ken's
+  whole block: 14 rows, expected 14, rows match
+  without comment lines: 14 rows, expected 14, rows match
+
+=== CQ 1. What orchestration plan should the agent follow to answer Ken's request for supplement recommendations,
+  whole block: 10 rows, expected 10, rows match
+  without comment lines: 10 rows, expected 10, rows match
+
+=== CQ 1 without a reasoner (SPARQL Query tab)
+  whole block: 10 rows, expected 10, rows match
+  without comment lines: 10 rows, expected 10, rows match
+
+=== CQ 1, supporting query: how Ken's two candidate plans were evaluated
+  whole block: 2 rows, expected 2, rows match
+  without comment lines: 2 rows, expected 2, rows match
+
+=== CQ 1, supporting query: which of Ken's candidate plans is rejected
+  whole block: 1 rows, expected 1, rows match
+  without comment lines: 1 rows, expected 1, rows match
+
+=== CQ 3. What skills are required to satisfy Jessica's request for supplement recommendations, given she explicitly
+  whole block: 4 rows, expected 4, rows match
+  without comment lines: 4 rows, expected 4, rows match
+
+=== CQ 3, supporting query: which of those skills are constraint-satisfying skills
+  whole block: 2 rows, expected 2, rows match
+  without comment lines: 2 rows, expected 2, rows match
+
+=== CQ 5. Why was each agent capability chosen to execute in a given orchestration plan? (Dante's plan from the CQ 4 example)
+  whole block: 5 rows, expected 5, rows match
+  without comment lines: 5 rows, expected 5, rows match
+
+=== CQ 5 without a reasoner (SPARQL Query tab)
+  whole block: 5 rows, expected 5, rows match
+  without comment lines: 5 rows, expected 5, rows match
+
+10 of 10 queries return their expected rows in Snap SPARQL with HermiT
+
+== SPARQL queries in the Snap SPARQL Query plugin 6.0.0 (its parser and engine), reasoner: structural
+active ontology https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/, import closure 32
+reasoner Structural Reasoner 1.0.0, consistent true
+
+=== CQ 1, step 1 (semantic lookup): which skills, tools and MCP servers does Ken's request need?
+  whole block: 6 rows, expected 6, rows match
+  without comment lines: 6 rows, expected 6, rows match
+
+=== CQ 1, step 2 (dependency and constraint-based reasoning): which candidate orchestration plans can answer Ken's
+  whole block: 14 rows, expected 14, rows match
+  without comment lines: 14 rows, expected 14, rows match
+
+=== CQ 1. What orchestration plan should the agent follow to answer Ken's request for supplement recommendations,
+  whole block: 0 rows, expected 10, ROWS DIFFER
+    only expected: Ken plan 1 | Ken plan 1, step 1 | get user profile (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 2 | get candidate supplements (Ken) | personalized supplement recommendation skill | recommend_supplement | Supplement Advisor MCP server
+    only expected: Ken plan 1 | Ken plan 1, step 3 | remove redundant supplements (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 4 | get supplement products sorted by price (Ken) | product selection skill | search |
+    only expected: Ken plan 1 | Ken plan 1, step 5 | rank supplement products by cost (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | download_articles_batch | PubMed MCP server
+    only expected: Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | search_articles | PubMed MCP server
+    only expected: Ken plan 1 | Ken plan 1, step 7 | rank supplement products by evidence (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 8 | select supplement product (Ken) | product selection skill |  |
+    only expected: Ken plan 1 | Ken plan 1, step 9 | produce recommendation (Ken) |  |  |
+  without comment lines: 0 rows, expected 10, ROWS DIFFER
+    only expected: Ken plan 1 | Ken plan 1, step 1 | get user profile (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 2 | get candidate supplements (Ken) | personalized supplement recommendation skill | recommend_supplement | Supplement Advisor MCP server
+    only expected: Ken plan 1 | Ken plan 1, step 3 | remove redundant supplements (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 4 | get supplement products sorted by price (Ken) | product selection skill | search |
+    only expected: Ken plan 1 | Ken plan 1, step 5 | rank supplement products by cost (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | download_articles_batch | PubMed MCP server
+    only expected: Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | search_articles | PubMed MCP server
+    only expected: Ken plan 1 | Ken plan 1, step 7 | rank supplement products by evidence (Ken) |  |  |
+    only expected: Ken plan 1 | Ken plan 1, step 8 | select supplement product (Ken) | product selection skill |  |
+    only expected: Ken plan 1 | Ken plan 1, step 9 | produce recommendation (Ken) |  |  |
+
+=== CQ 1 without a reasoner (SPARQL Query tab)
+  whole block: 10 rows, expected 10, rows match
+  without comment lines: 10 rows, expected 10, rows match
+
+=== CQ 1, supporting query: how Ken's two candidate plans were evaluated
+  whole block: 2 rows, expected 2, rows match
+  without comment lines: 2 rows, expected 2, rows match
+
+=== CQ 1, supporting query: which of Ken's candidate plans is rejected
+  whole block: 0 rows, expected 1, ROWS DIFFER
+    only expected: Ken plan 2
+  without comment lines: 0 rows, expected 1, ROWS DIFFER
+    only expected: Ken plan 2
+
+=== CQ 3. What skills are required to satisfy Jessica's request for supplement recommendations, given she explicitly
+  whole block: 4 rows, expected 4, rows match
+  without comment lines: 4 rows, expected 4, rows match
+
+=== CQ 3, supporting query: which of those skills are constraint-satisfying skills
+  whole block: 0 rows, expected 2, ROWS DIFFER
+    only expected: evidence verification skill | evidence verification capability | evidence verification (Jessica)
+    only expected: supplement safety screening skill | interaction screening capability | safety screening against celecoxib (Jessica)
+  without comment lines: 0 rows, expected 2, ROWS DIFFER
+    only expected: evidence verification skill | evidence verification capability | evidence verification (Jessica)
+    only expected: supplement safety screening skill | interaction screening capability | safety screening against celecoxib (Jessica)
+
+=== CQ 5. Why was each agent capability chosen to execute in a given orchestration plan? (Dante's plan from the CQ 4 example)
+  whole block: 0 rows, expected 5, ROWS DIFFER
+    only expected: Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) |
+    only expected: Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+    only expected: Dante's orchestration plan, step 2a | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) |
+    only expected: Dante's orchestration plan, step 2b | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+    only expected: Dante's orchestration plan, step 3 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) |
+  without comment lines: 0 rows, expected 5, ROWS DIFFER
+    only expected: Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) |
+    only expected: Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+    only expected: Dante's orchestration plan, step 2a | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) |
+    only expected: Dante's orchestration plan, step 2b | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+    only expected: Dante's orchestration plan, step 3 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) |
+
+=== CQ 5 without a reasoner (SPARQL Query tab)
+  whole block: 5 rows, expected 5, rows match
+  without comment lines: 5 rows, expected 5, rows match
+
+6 of 10 queries return their expected rows in Snap SPARQL with Structural Reasoner

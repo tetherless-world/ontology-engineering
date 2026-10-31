@@ -1,0 +1,25 @@
+@startuml fig3c_justified_capabilities
+!include style.iuml
+skinparam nodesep 40
+skinparam ranksep 55
+skinparam noteBackgroundColor #FFFFFF
+skinparam noteBorderColor #333333
+
+class "Capability" as Capability <<AgentO>> #EDEDED
+class Skill #EDEDED
+class InformationRequirement #EDEDED
+class HardConstraint #EDEDED
+class JustifiedCapability <<defined>>
+class RequirementSatisfyingCapability <<defined>>
+class ConstraintSatisfyingCapability <<defined>>
+class ConstraintSatisfyingSkill <<defined>>
+
+Capability <|-- JustifiedCapability
+JustifiedCapability <|-- RequirementSatisfyingCapability
+JustifiedCapability <|-- ConstraintSatisfyingCapability
+RequirementSatisfyingCapability --> "1..*" InformationRequirement : satisfiesRequirement
+ConstraintSatisfyingCapability --> "1..*" HardConstraint : satisfiesConstraint
+Skill <|-- ConstraintSatisfyingSkill
+ConstraintSatisfyingSkill --> "1..*" ConstraintSatisfyingCapability : hasCapability
+note bottom of JustifiedCapability : {complete, overlapping}
+@enduml

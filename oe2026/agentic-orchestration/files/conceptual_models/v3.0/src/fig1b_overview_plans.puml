@@ -1,0 +1,28 @@
+@startuml fig1b_overview_plans
+!include style.iuml
+skinparam nodesep 50
+skinparam ranksep 60
+class "Plan" as Plan <<P-Plan>>
+class OrchestrationPlan
+class "CandidateOrchestrationPlan" as Candidate
+class PlanEvaluation
+class DecisionCriterion
+class "WorkflowStep" as WorkflowStep <<AgentO>>
+class "OrchestrationWorkflowStep" as Step
+class "Task" as Task <<AgentO>>
+class "Activity" as Activity <<P-Plan>>
+class Invocation
+class InformationArtifact
+Plan <|-- OrchestrationPlan
+OrchestrationPlan <|-- Candidate
+PlanEvaluation --> Candidate : evaluates
+PlanEvaluation --> DecisionCriterion : usesCriterion
+OrchestrationPlan -right-> Step : hasStep
+WorkflowStep <|-- Step
+WorkflowStep -right-> Task : agento:hasAssociatedTask
+Task --> InformationArtifact : consumes
+Task --> InformationArtifact : produces
+Activity <|-- Invocation
+Step <-- Invocation : pplan:correspondsToStep
+InformationArtifact <-- Invocation : prov:used
+@enduml

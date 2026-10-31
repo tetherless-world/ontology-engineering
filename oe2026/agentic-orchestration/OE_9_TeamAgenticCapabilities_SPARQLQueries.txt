@@ -30,8 +30,8 @@
 #   then the CQ 1 query and its supporting queries: how the candidates were evaluated on Ken's soft constraints and
 #           which one is selected and which rejected (multi-criteria plan evaluation).
 # The step 1 and step 2 queries avoid FILTER NOT EXISTS and property paths, which Snap SPARQL does not support; step 2
-# uses MINUS instead. They were added after the 2026-10-30 Protege run and have so far been checked with rdflib 7, on
-# the asserted triples and on the triples HermiT infers, but not yet in Protege.
+# uses MINUS instead. They were run with the other queries through the Snap SPARQL Query plugin 6.0.0 on
+# 2026-10-30.
 
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
@@ -505,11 +505,11 @@ PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-o
 #   capabilities, skills, tools and servers.
 # Expected answer: every capability in Dante's plan is justified by one of his requirements or constraints (5 rows):
 #   stepLabel | taskLabel | skillLabel | toolServer | capabilityLabel | requirementLabel | constraintLabel
-#   Dante's orchestration plan, step 1 | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
-#   Dante's orchestration plan, step 2 | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
-#   Dante's orchestration plan, step 3 | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
-#   Dante's orchestration plan, step 4 | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
-#   Dante's orchestration plan, step 5 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) | 
+#   Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
+#   Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+#   Dante's orchestration plan, step 2a | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
+#   Dante's orchestration plan, step 2b | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+#   Dante's orchestration plan, step 3 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) | 
 SELECT DISTINCT ?stepLabel ?taskLabel ?skillLabel ?toolServer ?capabilityLabel ?requirementLabel ?constraintLabel
 WHERE {
   ?plan a oe-agtorch:SelectedOrchestrationPlan .
@@ -563,11 +563,11 @@ PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-o
 # Individuals: as for CQ 5.
 # Expected answer: the same rows as the CQ 5 query (5 rows):
 #   stepLabel | taskLabel | skillLabel | toolServer | capabilityLabel | requirementLabel | constraintLabel
-#   Dante's orchestration plan, step 1 | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
-#   Dante's orchestration plan, step 2 | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
-#   Dante's orchestration plan, step 3 | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
-#   Dante's orchestration plan, step 4 | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
-#   Dante's orchestration plan, step 5 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) | 
+#   Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
+#   Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+#   Dante's orchestration plan, step 2a | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
+#   Dante's orchestration plan, step 2b | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
+#   Dante's orchestration plan, step 3 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) | 
 SELECT DISTINCT ?stepLabel ?taskLabel ?skillLabel ?toolServer ?capabilityLabel ?requirementLabel ?constraintLabel
 WHERE {
   ?eval oe-agtorch:evaluates ?plan .

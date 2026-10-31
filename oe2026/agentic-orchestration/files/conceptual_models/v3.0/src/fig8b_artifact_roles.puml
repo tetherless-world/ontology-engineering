@@ -1,0 +1,26 @@
+@startuml fig8b_artifact_roles
+!include style.iuml
+skinparam nodesep 40
+skinparam ranksep 50
+
+class "Task" as Task <<AgentO>> #EDEDED
+class InformationArtifact
+class Parameter #EDEDED {
+  isRequired : boolean
+}
+class "Input" as Input <<defined>>
+class "Output" as Output <<defined>>
+class "RequiredInput" as RequiredInput <<defined>>
+class "OptionalInput" as OptionalInput <<defined>>
+class "IntermediateArtifact" as IntermediateArtifact <<defined>>
+
+Task -right-> InformationArtifact : consumes
+Task -right-> InformationArtifact : produces
+InformationArtifact -right-> Parameter : fills
+InformationArtifact <|-- Input
+InformationArtifact <|-- Output
+Input <|-- RequiredInput
+Input <|-- OptionalInput
+Input <|-- IntermediateArtifact
+Output <|-- IntermediateArtifact
+@enduml

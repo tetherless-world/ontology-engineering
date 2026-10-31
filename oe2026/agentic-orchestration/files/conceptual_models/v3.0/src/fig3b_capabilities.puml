@@ -1,0 +1,26 @@
+@startuml fig3b_capabilities
+!include style.iuml
+skinparam nodesep 35
+skinparam ranksep 55
+
+class "Capability" as Capability <<AgentO>>
+class InformationAccess
+class DataProcessing
+class ContentGeneration
+class SystemInteraction
+class Skill #EDEDED
+class Tool #EDEDED
+class "Task" as Task <<AgentO>> #EDEDED
+class InformationRequirement #EDEDED
+class HardConstraint #EDEDED
+
+Capability <|-- InformationAccess
+Capability <|-- DataProcessing
+Capability <|-- ContentGeneration
+Capability <|-- SystemInteraction
+Skill --> Capability : hasCapability
+Tool --> Capability : hasCapability
+Task --> Capability : agento:requiresCapability
+Capability --> InformationRequirement : satisfiesRequirement
+Capability --> HardConstraint : satisfiesConstraint
+@enduml

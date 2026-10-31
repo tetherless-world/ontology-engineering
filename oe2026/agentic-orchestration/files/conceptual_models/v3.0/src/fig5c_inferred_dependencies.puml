@@ -1,0 +1,23 @@
+@startuml fig5c_inferred_dependencies
+!include style.iuml
+skinparam nodesep 45
+skinparam ranksep 60
+skinparam packageStyle rectangle
+skinparam packageFontSize 13
+
+package "What the reasoner infers for Jessica's plan: dependsOn" as I {
+  object "getCandidateSupplements" as i1
+  object "screenInteractions" as i2
+  object "verifyEvidence" as i3
+  object "getSupplementProducts" as i4
+  object "selectSupplementProduct" as i5
+}
+i2 -[#D55E00,dashed,thickness=2]up-> i1
+i3 -[#D55E00,dashed,thickness=2]up-> i1
+i4 -[#D55E00,dashed,thickness=2]up-> i1
+i5 -[#D55E00,dashed,thickness=2]up-> i2
+i5 -[#D55E00,dashed,thickness=2]up-> i3
+i5 -[#D55E00,dashed,thickness=2]up-> i4
+i2 -[hidden]right- i3
+i3 -[hidden]right- i4
+@enduml
