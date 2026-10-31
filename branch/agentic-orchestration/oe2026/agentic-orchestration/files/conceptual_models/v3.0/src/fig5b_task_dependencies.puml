@@ -1,0 +1,41 @@
+@startuml fig5b_task_dependencies
+!include style.iuml
+skinparam nodesep 30
+skinparam ranksep 40
+skinparam packageStyle rectangle
+skinparam packageFontSize 13
+skinparam noteBackgroundColor #FFFFFF
+skinparam noteBorderColor #333333
+
+package "Pattern" as P {
+  class "Task" as Task <<AgentO>>
+  class InformationArtifact #EDEDED
+  note "consumes o inverse(produces)\nSubPropertyOf dependsOn" as N1
+}
+Task --> InformationArtifact : consumes
+Task --> InformationArtifact : produces
+Task ..> Task : /dependsOn
+N1 .. Task
+
+package "Jessica's plan as stated (CQ 2)" as A {
+  object "getCandidateSupplements\n: Task" as t1
+  object "candidates\n: CandidateSupplement" as a1
+  object "screenInteractions\n: Task" as t2
+  object "verifyEvidence\n: Task" as t3
+  object "getSupplementProducts\n: Task" as t4
+  object "safetyAssessment\n: SafetyAssessment" as a2
+  object "evidenceAssessment\n: EvidenceAssessment" as a3
+  object "productList\n: ProductList" as a4
+  object "selectSupplementProduct\n: Task" as t5
+}
+t1 --> a1 : produces
+t2 -up-> a1 : consumes
+t3 -up-> a1 : consumes
+t4 -up-> a1 : consumes
+t2 --> a2 : produces
+t3 --> a3 : produces
+t4 --> a4 : produces
+t5 -up-> a2 : consumes
+t5 -up-> a3 : consumes
+t5 -up-> a4 : consumes
+@enduml

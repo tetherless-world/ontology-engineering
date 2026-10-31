@@ -1,0 +1,19 @@
+import requests
+import random
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path="api_keys.env")
+api_key = os.getenv("API_KEY_NewYorkTimes")
+print(api_key)
+url = f"https://api.nytimes.com/svc/archive/v1/2020/10.json?api-key={api_key}"
+
+
+response = requests.get(url)
+data = response.json()
+num_articles = data['response']['meta']['hits']
+print(data['response']['docs'][1].keys())
+for _ in range(5):
+    article_number = random.randint(0, num_articles-1)
+    #print(data['response']['docs'][article_number]['keywords'])
+    print(data['response']['docs'][article_number]['byline'])

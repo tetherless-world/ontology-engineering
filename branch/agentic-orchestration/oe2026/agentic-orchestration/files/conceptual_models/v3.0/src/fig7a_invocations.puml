@@ -1,0 +1,23 @@
+@startuml fig7a_invocations
+!include style.iuml
+skinparam nodesep 40
+skinparam ranksep 55
+
+class "Activity" as Activity <<P-Plan>> #EDEDED
+class Invocation
+class ToolInvocation
+class SkillInvocation
+class "LLMAgent" as LLMAgent <<AgentO>>
+class "OrchestrationWorkflowStep" as OWS #EDEDED
+class Tool #EDEDED
+class Skill #EDEDED
+
+Activity <|-- Invocation
+Invocation <|-- ToolInvocation
+Invocation <|-- SkillInvocation
+ToolInvocation -right-> SkillInvocation : isPartOf
+ToolInvocation --> Tool : invokes
+SkillInvocation --> Skill : invokes
+Invocation --> OWS : pplan:correspondsToStep
+Invocation --> LLMAgent : prov:wasAssociatedWith
+@enduml

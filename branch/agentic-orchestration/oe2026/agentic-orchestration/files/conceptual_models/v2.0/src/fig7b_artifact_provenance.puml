@@ -1,0 +1,18 @@
+@startuml fig7b_artifact_provenance
+!include style.iuml
+skinparam nodesep 60
+skinparam ranksep 70
+
+class "Entity" as Entity <<PROV-O>> #EDEDED
+class InformationArtifact
+class Answer
+class ExecutionTrace
+class Invocation #EDEDED
+
+Entity <|-- InformationArtifact
+Answer -up-> InformationArtifact : prov:wasDerivedFrom
+InformationArtifact <|-- ExecutionTrace
+InformationArtifact --> Invocation : prov:wasGeneratedBy
+Invocation --> InformationArtifact : prov:used
+ExecutionTrace --> Invocation : records
+@enduml
