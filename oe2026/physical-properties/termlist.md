@@ -11,6 +11,9 @@ This is the latest available **clean** term list located in the team's Assignmen
 
 ## Previous Versions
 
+- [Assignment 9 curated term list](files/OE_9_TeamAffordance_TermList.xlsx)
+- [Assignment 8 curated term list](files/OE_8_TeamAffordance_CuratedTermList.xlsx)
+- [Assignment 6 curated term list](files/OE_6_TeamAffordance_CuratedTermList_Clean.xlsx)
 - [Assignment 5 curated term list](files/OE_5_TeamAffordance_CuratedTermList.xlsx)
 - [Assignment 4 curated term list](files/OE_4_TeamAffordance_CuratedTermList.xlsx)
 - [Assignment 4 preliminary term list](files/OE_4_TeamAffordance_PreliminaryTermList.xlsx)

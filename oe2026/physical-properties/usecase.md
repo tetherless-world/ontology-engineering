@@ -15,6 +15,8 @@ The downloadable copy was retrieved from the team's Assignment 8 Google Drive fo
 
 ## Previous Versions
 
+- [Assignment 9 use case](files/OE_9_TeamAffordance_UseCase.docx)
+- [Assignment 8 use case](files/OE_8_TeamAffordance_UseCase.docx)
 - [Assignment 5 use case](files/OE_5_TeamAffordance_UseCase.docx)
 - [Assignment 4 use case](files/OE_4_TeamAffordance_UseCase.docx)
 - [Assignment 3 use case](files/OE_3_TeamAffordance_UseCase.docx)
