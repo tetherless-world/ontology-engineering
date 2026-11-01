@@ -15,10 +15,10 @@ This project is part of the Ontology Engineering course at Rensselaer Polytechni
 
 | Team member | GitHub profile | Contact |
 | --- | --- | --- |
-| Devin De Silva | [DevinDeSilva](https://github.com/DevinDeSilva) | [desild@rpi.edu](mailto:desild@rpi.edu) |
 | Tiziana Hernandez | [thernandez7](https://github.com/thernandez7) | [hernat@rpi.edu](mailto:hernat@rpi.edu) |
-| Matthew Lausev | [mlau-hue](https://github.com/mlau-hue) | [lausem@rpi.edu](mailto:lausem@rpi.edu) |
+| Devin De Silva | [DevinDeSilva](https://github.com/DevinDeSilva) | [desild@rpi.edu](mailto:desild@rpi.edu) |
 | Srihari Sridharan | [sridhs3](https://github.com/sridhs3) | [sridhs3@rpi.edu](mailto:sridhs3@rpi.edu) |
+| Matthew Lausev | [mlau-hue](https://github.com/mlau-hue) | [lausem@rpi.edu](mailto:lausem@rpi.edu) |
 
 ## Project Model
 
