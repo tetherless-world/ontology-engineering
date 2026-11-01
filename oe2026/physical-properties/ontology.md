@@ -7,7 +7,7 @@ title: Concept Map and Ontology
 
 ## Conceptual Model
 
-The current conceptual model comes from the Assignment 8 document, last modified on October 23, 2026. It replaces the preliminary Assignment 5 model with `PhysicalFeature`, `FeatureValue`, `FeatureLevel`, `Assessment`, and `RequirementMapping`. The hierarchy panels show classification; open triangular arrowheads point toward the superclass. The relationship diagram shows object properties directed from domain to range. Click any diagram to open the full-size image.
+The current conceptual model comes from the Assignment 9 document, last modified on October 23, 2026. It replaces the preliminary Assignment 5 model with `PhysicalFeature`, `FeatureValue`, `FeatureLevel`, `Assessment`, and `RequirementMapping`. The hierarchy panels show classification; open triangular arrowheads point toward the superclass. The relationship diagram shows object properties directed from domain to range. Click any diagram to open the full-size image.
 
 [Download the current conceptual model document](files/OE_9_TeamAffordance_ConceptualModel.docx) · [View its Google Drive source](https://docs.google.com/document/d/1Kkpk0DTprUycWd9IoTgjS5E9wsCXP51V/edit)
 
@@ -60,12 +60,13 @@ An `Assessment` connects a candidate, target, action, and judgment. A `PhysicalE
 
 ## Ontologies
 
-Versions are listed with the most recent team ontology first. The Assignment 8 files were retrieved from Google Drive on October 25, 2026; their original ontology contents are preserved.
+Versions are listed with the most recent team ontology first. The Assignment 9 files were retrieved from Google Drive on October 30, 2026; their original ontology contents are preserved.
 
 | Version | Files |
 | --- | --- |
 | **Assignment 9 — repository release** | [Ontology RDF](files/OE_9_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
-| **Assignment 8 — repository release** | [Ontology RDF](files/OE_8_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_8_TeamAffordance_Individuals.rdf) |
+| **Assignment 9 — individuals** | [Ontology RDF](files/OE_9_TeamAffordance_Individuals.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
+| Assignment 8 — ready to use verison | [Ontology RDF](files/OE_8_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_8_TeamAffordance_Individuals.rdf) |
 | Assignment 8 — full team merge from Google Drive | [Download RDF](files/OE_8_TeamAffordance_HP_XF_Alex_LZ_merged_full.rdf) · [Google Drive source](https://drive.google.com/file/d/1A-YQYQOtGq6J_Y9icRkcCUrtyH1LkfKi/view) |
 | Assignment 6 | [Download RDF](files/OE_6_TeamAffordance.rdf) |
 | Preliminary repository ontology | [Download RDF](physical-properties.rdf) |

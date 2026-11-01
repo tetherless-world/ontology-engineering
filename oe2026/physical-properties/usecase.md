@@ -5,9 +5,9 @@ title: Use Case
 
 ## Current Use Case
 
-**Assignment 8 — Reasoning About Action Feasibility from Physical Properties**
+**Assignment 9 — Reasoning About Action Feasibility from Physical Properties**
 
-[Read the current use case on Google Drive](https://docs.google.com/document/d/1KocB1PZCViBihoYhPqxoXpivEnaeglRxZkTmTsRgSSU/edit) · [Download the Word document](files/OE_8_TeamAffordance_UseCase.docx)
+[Read the current use case on Google Drive](https://docs.google.com/document/d/1KocB1PZCViBihoYhPqxoXpivEnaeglRxZkTmTsRgSSU/edit) · [Download the Word document](files/OE_9_TeamAffordance_UseCase.docx)
 
 The use case describes the evaluation of candidate and target physical features against CUT requirements. It covers a single feasibility assessment, comparison of alternative candidates, and comparison of part structures. Feasibility is grounded in physical evidence rather than an object's name or conventional function.
 
