@@ -38,22 +38,23 @@ The [current schema](ontology/OE_9_TeamCJF.rdf) appears first above. See the [on
 
  - [Download the conceptual model (.docx)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.docx)
  - [Download the conceptual model (.pdf)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.pdf)
+ - [Download the editable diagrams (.drawio)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.drawio)
 
-The diagrams below are from the OE Week 8 conceptual model. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the RDF schema gives the identifiers used in code and queries.
+The diagrams below show the current OE Week 9 conceptual model, using the supplied clean document and Draw.io source. The DOCX and PDF downloads contain the same ten figures. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the RDF schema gives the identifiers used in code and queries.
 
 ### Provenance
 
 <figure>
-  <a href="images/conceptual-model/oe8/provenance.png"><img src="images/conceptual-model/oe8/provenance.png" alt="Provenance links from conversation moves through text spans and utterances to conversations and speakers" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/provenance.png"><img src="images/conceptual-model/oe9/provenance.png" alt="Provenance links from conversation moves through text spans and utterances to conversations and speakers" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 1. Transcript evidence and speaker provenance for conversation moves.</figcaption>
 </figure>
 
-Each conversation move is supported by a TextSpan within an Utterance. The utterance records its turn number, conversation, and attributed Speaker. These connections let queries retrieve the original text and the person responsible for a contribution, supporting the evidence and speaker questions in CQs 5–7.
+Each conversation move is supported by a TextSpan within an Utterance. The utterance records its text, turn number, conversation, and attributed Speaker. A property chain infers `hasSpeaker` through the evidence and utterance links. These connections let CQs 5 and 6 retrieve the original text, source turn, and person responsible for a contribution. Conversation moves also carry `hasSummary`; speakers and conversations carry their names and identifiers.
 
 ### Conversation Moves with States
 
 <figure>
-  <a href="images/conceptual-model/oe8/conversation-moves-with-states.png"><img src="images/conceptual-model/oe8/conversation-moves-with-states.png" alt="Conversation move taxonomy separating moves with states from Outcome and ExpressedPosition" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/conversation-moves-with-states.png"><img src="images/conceptual-model/oe9/conversation-moves-with-states.png" alt="Conversation move taxonomy separating moves with states from Outcome and ExpressedPosition" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 2. Conversation move taxonomy and the branch for moves with states.</figcaption>
 </figure>
 
@@ -62,7 +63,7 @@ ConversationMoveWithState groups DeliberativeConversationMove and InformationReq
 ### Deliberative Conversation Moves
 
 <figure>
-  <a href="images/conceptual-model/oe8/deliberative-conversation-moves.png"><img src="images/conceptual-model/oe8/deliberative-conversation-moves.png" alt="Claim, Issue, and Option as subclasses of DeliberativeConversationMove" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/deliberative-conversation-moves.png"><img src="images/conceptual-model/oe9/deliberative-conversation-moves.png" alt="Claim, Issue, and Option as subclasses of DeliberativeConversationMove" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 3. Claim, Issue, and Option as deliberative conversation moves.</figcaption>
 </figure>
 
@@ -71,36 +72,36 @@ Claim, Issue, and Option introduce or develop the substance of the group's reaso
 ### State Taxonomy
 
 <figure>
-  <a href="images/conceptual-model/oe8/state-taxonomy.png"><img src="images/conceptual-model/oe8/state-taxonomy.png" alt="State subclasses including Open, Addressed, Answered, Resolved, UnderConsideration, Selected, Rejected, Unassessed, Supported, Contested, and SupportedContested" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/state-taxonomy.png"><img src="images/conceptual-model/oe9/state-taxonomy.png" alt="State subclasses including Open, Addressed, Answered, Resolved, UnderConsideration, Selected, Rejected, Unassessed, Supported, Contested, and SupportedContested" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 4. State taxonomy and its association with conversation moves.</figcaption>
 </figure>
 
 States characterize a move's standing at a recorded conversation point. Information requests can be open or answered; issues can be open, addressed, or resolved; options can be under consideration, selected, or rejected; and claims can be unassessed, supported, or contested. Supported and Contested classifications can coexist. State information supports CQ1 and the issue-focused questions CQ2 and CQ4.
 
-The supplied figure's lower inset retains some earlier terminology, including “milestone” and “Accepted.” The current RDF class names and the latest term list should be used when constructing queries.
+Each move with state has one current State individual. That individual can have more than one state classification, such as Supported and Contested. State individuals can be shared by multiple moves.
 
 ### State Assignment History
 
 <figure>
-  <a href="images/conceptual-model/oe8/state-assignment-history.png"><img src="images/conceptual-model/oe8/state-assignment-history.png" alt="StateAssignment linked to a State, triggering conversation move relationship, effective utterance, supporting text span, and predecessor assignment, with an issue history example" style="max-width:100%;height:auto;" /></a>
-  <figcaption>Figure 5. Evidence-backed state assignments, triggering relationships, and an example history.</figcaption>
+  <a href="images/conceptual-model/oe9/state-assignment-history.png"><img src="images/conceptual-model/oe9/state-assignment-history.png" alt="StateAssignment linked to a State, triggering conversation move relationship, effective utterance, supporting text span, and predecessor assignment, with current-assignment links" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 5. Current and historical state assignments with evidence and triggering relationships.</figcaption>
 </figure>
 
-A StateAssignment connects a move to its assigned State, the Utterance at which it applies, its evidence TextSpan, and optionally the preceding assignment for the same move. An initial assignment has no predecessor. The example illustrates retaining earlier records as new assignments are added. In the implementation, `hasCurrentStateAssignment` identifies the terminal assignment, and `hasState` follows that assignment's `assignedState` link. Rule-based transitions also record the relevant relationship through `hasTriggeringRelationship`.
+A StateAssignment connects a move to its assigned State, the Utterance at which it applies, its evidence TextSpan, and optionally the preceding assignment for the same move. An initial assignment has no predecessor. `hasStateAssignment` retains the full history; its subproperty `hasCurrentStateAssignment` identifies the terminal assignment. The reasoner derives `hasState` through that assignment's `assignedState` link. Rule-based transitions record the relevant relationship through `hasTriggeringRelationship`. Both StateAssignment and relationship records use `hasReason` for their explanations.
 
 ### Expressed Positions
 
 <figure>
-  <a href="images/conceptual-model/oe8/expressed-position.png"><img src="images/conceptual-model/oe8/expressed-position.png" alt="Agreement and Disagreement subclasses of ExpressedPosition with evidence and speaker links" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/expressed-position.png"><img src="images/conceptual-model/oe9/expressed-position.png" alt="Agreement and Disagreement subclasses of ExpressedPosition with evidence and speaker links" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 6. Expressed positions, polarity evidence, and speaker attribution.</figcaption>
 </figure>
 
-Agreement and Disagreement specialize ExpressedPosition. Positive or negative supporting text provides evidence for the position, which is directed toward another conversation move and associated with a speaker. These links support questions about who agreed with the selected option and how a participant's positions developed, as in CQs 5–7.
+Agreement and Disagreement specialize ExpressedPosition. The reasoner infers these classes from `isPositiveSupportedBy` and `isNegativeSupportedBy` evidence links. `hasPositionTowards` identifies the target move and `hasSpeaker` identifies the speaker. Together with source turns, these links support CQ5 about agreement with the selected option and CQ6 about a participant's positions throughout the conversation.
 
 ### Relationships between Conversation Moves
 
 <figure>
-  <a href="images/conceptual-model/oe8/conversation-move-relationships.png"><img src="images/conceptual-model/oe8/conversation-move-relationships.png" alt="Supports, challenges, addresses, resolves, selects, answers, respondsTo, isAbout, refines, and position relationships among conversation move types" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/conversation-move-relationships.png"><img src="images/conceptual-model/oe9/conversation-move-relationships.png" alt="Supports, challenges, addresses, resolves, selects, answers, respondsTo, isAbout, refines, and position relationships among conversation move types" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 7. Semantic relationships among the conversation move types.</figcaption>
 </figure>
 
@@ -109,29 +110,29 @@ The model connects claims, issues, options, outcomes, positions, and information
 ### Property Hierarchy
 
 <figure>
-  <a href="images/conceptual-model/oe8/property-hierarchy.png"><img src="images/conceptual-model/oe8/property-hierarchy.png" alt="Property hierarchy for evidence, text containment, addresses and resolves, and deliberative responses" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/property-hierarchy.png"><img src="images/conceptual-model/oe9/property-hierarchy.png" alt="Property hierarchy for evidence, text containment, addresses and resolves, and deliberative responses" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 8. Subproperty relationships and reused vocabulary.</figcaption>
 </figure>
 
-The four segments group evidence properties, text containment, addressing and resolving, and conversational responses. Positive and negative support specialize the evidence relationship; resolves specializes addresses; and answers specializes respondsTo. The diagram also identifies relationships drawn from SIO and the Deliberation Ontology.
+The four segments group evidence properties, text containment, state assignment properties, and conversational responses. Positive and negative support specialize the evidence relationship. `hasCurrentStateAssignment` specializes `hasStateAssignment`; `resolves` specializes `addresses`; and `answers` specializes `respondsTo`. `addresses` belongs under the Deliberation Ontology's `responseTo` property alongside the other response properties. The diagram also identifies reused SIO vocabulary.
 
 ### Relationship Class Taxonomy
 
 <figure>
-  <a href="images/conceptual-model/oe8/relationship-class-taxonomy.png"><img src="images/conceptual-model/oe8/relationship-class-taxonomy.png" alt="Reified relationship classes Challenge, Response, Position, Support, and Address, with Answer and Resolve specializations" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/relationship-class-taxonomy.png"><img src="images/conceptual-model/oe9/relationship-class-taxonomy.png" alt="Reified relationship classes Challenge, Response, Position, Support, and Address, with Answer and Resolve specializations" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 9. Class hierarchy for reified conversation move relationships.</figcaption>
 </figure>
 
-Relationships can be represented as individuals of CollectiveJudgmentFormationConversationMoveRelationship. Its specialized classes include Challenge, Response, Position, Support, and Address. Answer specializes Response, and Resolve specializes Address. Giving relationships their own individuals allows evidence and contextual information to be attached to the connection itself.
+Relationships can be represented as individuals of CollectiveJudgmentFormationConversationMoveRelationship. Its specialized classes include Challenge, Response, Position, Support, and Address. Answer specializes Response, and Resolve specializes Address. Giving relationships their own individuals allows evidence and contextual information to be attached to the connection itself. Their `hasReason` field records an explanation; `hasSummary` is reserved for conversation moves.
 
 ### Relationship Reification
 
 <figure>
-  <a href="images/conceptual-model/oe8/relationship-reification.png"><img src="images/conceptual-model/oe8/relationship-reification.png" alt="An Address relationship individual connecting a source Claim, Option, or Outcome to a target Issue, with supporting transcript evidence" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe9/relationship-reification.png"><img src="images/conceptual-model/oe9/relationship-reification.png" alt="An Address relationship individual connecting a source Claim, Option, or Outcome to a target Issue, with supporting transcript evidence" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 10. Reifying an Address relationship and retaining its evidence.</figcaption>
 </figure>
 
-A source conversation move connects to an Address individual, which identifies the target Issue. The relationship individual is supported by a TextSpan in an Utterance. A property chain derives the direct addresses relationship from the source-to-relationship and relationship-to-target links. The same pattern lets queries retrieve both how two moves are connected and the evidence for that connection.
+A source conversation move connects to an Address individual through `makesAddresses`, and the relationship identifies the target Issue through `isAimedAtAddresses`. The relationship individual records `hasReason` and is supported by a TextSpan in an Utterance. A property chain derives the direct `addresses` relationship from these two links. The same pattern lets queries retrieve both how two moves are connected and the text and turn that justify the connection.
 
 ### Previous Conceptual Models
 
