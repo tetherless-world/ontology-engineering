@@ -10,7 +10,7 @@ toc: true
 
 ### Current CJF Ontology
 
-[Download OE_8_TeamCJF.rdf](OE_8_TeamCJF.rdf)
+[Download OE_9_TeamCJF.rdf](ontology/OE_9_TeamCJF.rdf)
 
 The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
 
@@ -20,22 +20,26 @@ These files accompany the schema; they are not separate releases of the ontology
 
 | File | Purpose |
 | --- | --- |
-| [CQ sample conversation](OE_8_TeamCJF_Individuals.rdf) | Conversation, utterances, speakers, conversation moves, evidence, relationships, and state assignments used for the competency question examples |
-| [March 11 Group B individuals](mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
-| [Earlier conversation individuals](tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
-| [Ontology import catalog](catalog-v001.xml) | Local mappings used to resolve ontology imports |
-| [Local PROV-O copy](prov-o-cjf.owl) | Provenance vocabulary used by the project |
+| [Annotated CQ sample individuals](ontology/OE_9_TeamCJF_Individuals.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
+| [CQ sample individuals with current assignments](ontology/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ3, and CQ5 |
+| [March 11 Group B individuals](ontology/mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
+| [Earlier conversation individuals](ontology/tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
+| [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |
+| [Local PROV-O copy](ontology/prov-o-cjf.owl) | Provenance vocabulary used by the project |
 | [Current state assignment SHACL rules](shacl/current-state-assignment-rules.ttl) | Rules and constraints for identifying the latest recorded assignment for each move with state |
 
 ## Ontology Versions
 
-The [current schema](OE_8_TeamCJF.rdf) appears first above. The [complete ontology version list](ontology-versions.html) links every distinct committed schema snapshot, newest first, back to the seed ontology of October 5, 2026. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
+The [current schema](ontology/OE_9_TeamCJF.rdf) appears first above. See the [ontology version history](ontology-versions.html) for the current ontology and earlier versions. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
 
 ## Conceptual Model
 
-**Current version: OE Week 8.** [Download the complete conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx).
+**Current version: OE Week 9.**
 
-The ten diagrams below show the project's conceptual model. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the RDF schema gives the identifiers used in code and queries.
+ - [Download the conceptual model (.docx)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.docx)
+ - [Download the conceptual model (.pdf)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.pdf)
+
+The diagrams below are from the OE Week 8 conceptual model. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the RDF schema gives the identifiers used in code and queries.
 
 ### Provenance
 
@@ -131,13 +135,14 @@ A source conversation move connects to an Address individual, which identifies t
 
 ### Previous Conceptual Models
 
+- [OE Week 8 conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx)
 - [OE Week 6 conceptual model (.docx)](files/conceptual-models/oe6/OE_6_TeamCJF_ConceptualModel.docx)
 - [OE Week 6 diagrams](images/conceptual-model/oe6/milestones_relationships-ProvinanceV3.drawio.png) — earlier figure assets remain in `images/conceptual-model/oe6/`.
 - [OE Week 5 diagrams](images/conceptual-model/oe5/milestones_relationships-ProvenanceConceptualDiagram.png) — earlier figure assets remain in `images/conceptual-model/oe5/`.
 
 ## Ontologies Reused
 
-- [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A [local copy](prov-o-cjf.owl) accompanies the project.
+- [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A  [local copy](ontology/prov-o-cjf.owl) accompanies the project.
 - [Semanticscience Integrated Ontology (SIO)](https://semanticscience.org/) supplies evidence and containment relationships used by the model.
 - [Deliberation Knowledge Graph](https://dkg.svagnoni.linkeddata.es/) supplies vocabulary for deliberative relationships.
 - [OMG Commons Annotation Vocabulary](https://www.omg.org/spec/Commons/AnnotationVocabulary/) and [Dates and Times](https://www.omg.org/spec/Commons/DatesAndTimes/) provide annotation and temporal vocabulary referenced in the ontology.
