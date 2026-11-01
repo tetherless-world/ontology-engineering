@@ -23,11 +23,11 @@ This project is part of the Ontology Engineering course at Rensselaer Polytechni
 ## Project Model
 
 <figure>
-  <a href="images/conceptual-model/oe8/provenance.png"><img src="images/conceptual-model/oe8/provenance.png" alt="Conversation moves linked through evidence text spans to utterances, speakers, and a multiparty conversation" style="max-width:100%;height:auto;" /></a>
-  <figcaption>Figure 1. Provenance of conversation moves in the OE Week 8 conceptual model.</figcaption>
+  <a href="images/use-case/oe9/project-model.png"><img src="images/use-case/oe9/project-model.png" alt="High-level CJF tracking system overview showing annotated conversation data, ontology population and validation, the ontology schema, semantic reasoning, the knowledge graph, and user queries" style="max-width:100%;height:auto;" /></a>
+  <figcaption>Figure 1. High-level component overview from the OE Week 9 use case.</figcaption>
 </figure>
 
-A conversation move is grounded in a text span within an utterance. The utterance preserves its position in the conversation and its speaker attribution. These links allow retrieved reasoning and state information to be accompanied by the original conversational evidence. The [conceptual model page](ontology.html#conceptual-model) displays the complete set of diagrams with descriptions.
+Annotated conversation data populates the CJF knowledge graph and is validated against the ontology schema. The semantic reasoner uses the schema's rules to infer supported states, while the query engine retrieves facts, provenance, and state information for the user. The [use case](usecase.html) describes this workflow and the questions it supports. The [conceptual model page](ontology.html#conceptual-model) shows the ontology's classes and relationships.
 
 ## Current Resources
 

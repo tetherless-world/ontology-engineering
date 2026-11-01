@@ -76,10 +76,6 @@ Claim, Issue, and Option introduce or develop the substance of the group's reaso
   <figcaption>Figure 4. State taxonomy and its association with conversation moves.</figcaption>
 </figure>
 
-States characterize a move's standing at a recorded conversation point. Information requests can be open or answered; issues can be open, addressed, or resolved; options can be under consideration, selected, or rejected; and claims can be unassessed, supported, or contested. Supported and Contested classifications can coexist. State information supports CQ1 and the issue-focused questions CQ2 and CQ4.
-
-Each move with state has one current State individual. That individual can have more than one state classification, such as Supported and Contested. State individuals can be shared by multiple moves.
-
 ### State Assignment History
 
 <figure>
