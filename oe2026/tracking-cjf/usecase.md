@@ -7,6 +7,10 @@ title: Use Case
 
 **Current version: OE Week 9, revised October 30, 2026.**
 
+<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftetherless-world.github.io%2Fontology-engineering%2Fbranch%2Ftracking-cjf%2Foe2026%2Ftracking-cjf%2Ffiles%2Fuse-cases%2FOE_9_TeamCJF_UseCase_Clean.docx" title="OE Week 9 use case preview" style="width:100%;height:700px;border:0;" allowfullscreen></iframe>
+
+### Download
+
 [Download the current use case (.docx)](files/use-cases/OE_9_TeamCJF_UseCase_Clean.docx)
 
 The **CJF-TRACKING** use case represents the evolving state of collective judgment formation in multiparty dialogue. A human user or researcher can query the group's developing reasoning, the relationships among its contributions, and the matters that remain unresolved as the conversation unfolds.
