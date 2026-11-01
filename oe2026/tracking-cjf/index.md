@@ -33,9 +33,9 @@ A conversation move is grounded in a text span within an utterance. The utteranc
 
 | Resource | Contents |
 | --- | --- |
-| [Use case](usecase.html) | Current OE Week 8 use case, scope, competency questions, and earlier documents |
-| [Terminology list](termlist.html) | Current OE Week 8 curated term list and previous versions |
+| [Use case](usecase.html) | Current OE Week 9 use case, scope, competency questions, and earlier documents |
+| [Terminology list](termlist.html) | Current OE Week 9 curated term list and previous versions |
 | [Conceptual model and ontology](ontology.html) | Current diagrams, schema, example individuals, reused vocabularies, and ontology versions |
 | [Ontology version history](ontology-versions.html) | Committed schema snapshots, newest first |
-| [Demonstration and queries](demo.html) | CQ1 query and recorded answers for the sample conversation |
+| [Demonstration and queries](demo.html) | CQ1, CQ3, and CQ5 queries and recorded answers for the sample conversation |
 | [Getting involved](gettinginvolved.html) | Project contacts and contribution information |

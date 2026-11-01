@@ -1,0 +1,29 @@
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
+
+SELECT DISTINCT ?move ?relation ?stateclass ?summary
+WHERE {
+    {
+        ?move cjf:supports sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:supports),"tracking-cjf/") AS ?relation) .
+    }
+    UNION
+    {
+        ?move cjf:challenges sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:challenges), 'tracking-cjf/') AS ?relation) .
+    }
+    
+    ?move a cjf:Claim .
+    ?move cjf:hasState ?state_ind . 
+    ?state_ind a ?stateclass .
+    
+    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
+
+    OPTIONAL {
+        ?move cjf:hasSummary ?summary .
+    }
+}
+ORDER BY ?relation ?move
+

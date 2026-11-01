@@ -42,3 +42,91 @@ WHERE {
     }
 }
 ORDER BY ?move ?moveType
+
+CQ3: What Claims support or challenge Platform A? Are any of the Claims Supported?
+CQ3 part 1: What Claims support or challenge Platform A?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
+
+SELECT DISTINCT ?move ?relation ?stateclass ?summary
+WHERE {
+    {
+        ?move cjf:supports sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:supports),"tracking-cjf/") AS ?relation) .
+    }
+    UNION
+    {
+        ?move cjf:challenges sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:challenges), 'tracking-cjf/') AS ?relation) .
+    }
+    
+    ?move a cjf:Claim .
+    ?move cjf:hasState ?state_ind . 
+    ?state_ind a ?stateclass .
+    
+    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
+
+    OPTIONAL {
+        ?move cjf:hasSummary ?summary .
+    }
+}
+ORDER BY ?relation ?move
+
+CQ3 part 2: Are any of the Claims Supported?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?move ?relation ?summary
+WHERE {
+    {
+        ?move cjf:supports sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:supports),"tracking-cjf/") AS ?relation) .
+    }
+    UNION
+    {
+        ?move cjf:challenges sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:challenges), 'tracking-cjf/') AS ?relation) .
+    }
+    
+    ?move a cjf:Claim .
+
+    ?move cjf:hasState ?state .
+    ?state a cjf:Supported .
+
+    OPTIONAL {
+        ?move cjf:hasSummary ?summary .
+    }
+}
+ORDER BY ?relation ?move
+
+CQ5: For the final platform-selection Outcome, which speakers explicitly agreed with its selected Option, and which ExpressedPosition moves and source turns provide the evidence?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+
+SELECT DISTINCT ?pos ?speaker_name ?support_text ?turn
+WHERE {
+    # the outcome directly asserts which option it selects
+    sample:Move_OCT21_A-M0067 cjf:selects ?option .
+    ?pos cjf:hasPositionTowards ?option .
+
+    # select the agreement (inferred)
+    ?pos a cjf:Agreement .
+
+    # hasSpeaker is a property chain
+    ?pos cjf:hasSpeaker ?speaker .
+    ?speaker cjf:hasSpeakerName ?speaker_name .
+
+    # find the supporting text in the conversation
+    ?pos cjf:isPositiveSupportedBy ?support .
+    ?support cjf:hasConversationText ?support_text .
+
+    # at what turn was this spoken
+    ?pos cjf:hasUtterance ?utterance .
+    ?utterance cjf:hasTurnNumber ?turn .
+} order by ?turn
