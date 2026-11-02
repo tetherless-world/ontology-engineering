@@ -22,7 +22,9 @@ OWL-S, PROV-O, BEAM and the OMG Commons library.
 
 ## Overview Diagram
 
-![Conceptual model, Figure 1: overview of the core classes](files/conceptual_models/v2.0/fig1_overview.png)
+![Conceptual model, Figure 1a: requests, requirements, constraints and capabilities](files/conceptual_models/v3.0/fig1a_overview_requests.png)
+
+![Conceptual model, Figure 1b: plans, steps, tasks, evaluation and invocations](files/conceptual_models/v3.0/fig1b_overview_plans.png)
 
 Each box is a class of the ontology and each arrow a property; the [Concept Map & Ontology](ontology.html) page has all
 figures.
@@ -36,7 +38,7 @@ figures.
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td><a href="agentic-orchestration.rdf">agentic-orchestration.rdf</a> (RDF/XML), described on the <a href="ontology.html">Concept Map &amp; Ontology</a> page</td>
+    <td><a href="OE_9_TeamAgenticCapabilities.rdf">OE_9_TeamAgenticCapabilities.rdf</a> and its <a href="OE_9_TeamAgenticCapabilities_Individuals.rdf">individuals</a> (RDF/XML), described on the <a href="ontology.html">Concept Map &amp; Ontology</a> page</td>
   </tr>
   <tr>
     <td>2. Use Case</td>
@@ -47,8 +49,8 @@ figures.
     <td><a href="termlist.html">Curated terminology list</a></td>
   </tr>
   <tr>
-    <td>4. Competency Question Examples</td>
-    <td><a href="files/ontology/cq_examples.ttl">Example individuals</a> and <a href="files/ontology/cq_results.txt">reasoner answers</a> for CQ 1, CQ 3 and CQ 5 (and CQ 2 and CQ 6)</td>
+    <td>4. Competency Question Queries</td>
+    <td><a href="demo.html">SPARQL queries and answers</a> for CQ 1, CQ 3 and CQ 5, and the <a href="OE_9_TeamAgenticCapabilities_SPARQLQueries.txt">query file</a> to run in Protégé</td>
   </tr>
   <tr>
     <td>5. Presentations</td>

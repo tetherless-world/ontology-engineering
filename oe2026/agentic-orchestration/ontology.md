@@ -2,30 +2,40 @@
 
 ## Conceptual Model
 
-**Current version: 2.0 (Assignment 6, October 15, 2026).** The model is aligned with the ontology below: every class,
-is-a line, arrow and attribute in the diagrams is a term of the ontology with the same name.
+**Current version: 3.0 (Assignment 8, October 22, 2026), unchanged in Assignment 9.** The model is aligned with the
+ontology below: every class, is-a line, arrow and attribute in the diagrams is a term of the ontology with the same name,
+and every class and property of the ontology appears in a diagram.
 
-![Figure 1. Overview of the core classes](files/conceptual_models/v2.0/fig1_overview.png)
+![Figure 1a. Requests, requirements, constraints and capabilities](files/conceptual_models/v3.0/fig1a_overview_requests.png)
+
+![Figure 1b. Plans, steps, tasks, evaluation and invocations](files/conceptual_models/v3.0/fig1b_overview_plans.png)
 
 <iframe src="files/conceptual_models/OE_8_TeamAgenticCapabilities_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
-Figures as images (PNG; SVG and PlantUML sources in [files/conceptual_models/v2.0](files/conceptual_models/v2.0/src/)):
-[1](files/conceptual_models/v2.0/fig1_overview.png) ·
-[2](files/conceptual_models/v2.0/fig2_requests_constraints.png) ·
-[3a](files/conceptual_models/v2.0/fig3a_skills_resources.png) ·
-[3b](files/conceptual_models/v2.0/fig3b_capabilities.png) ·
-[4](files/conceptual_models/v2.0/fig4_tools_servers.png) ·
-[5a](files/conceptual_models/v2.0/fig5a_plan_structure.png) ·
-[5b](files/conceptual_models/v2.0/fig5b_task_dependencies.png) ·
-[6](files/conceptual_models/v2.0/fig6_plan_selection.png) ·
-[7a](files/conceptual_models/v2.0/fig7a_invocations.png) ·
-[7b](files/conceptual_models/v2.0/fig7b_artifact_provenance.png) ·
-[8a](files/conceptual_models/v2.0/fig8a_artifact_kinds.png) ·
-[8b](files/conceptual_models/v2.0/fig8b_artifact_roles.png) ·
-[8c](files/conceptual_models/v2.0/fig8c_evidence_assessment.png)
+Figures as images (PNG and SVG; the PlantUML sources, which load into PlantUML, are in
+[files/conceptual_models/v3.0/src](files/conceptual_models/v3.0/src/)):
+[1a](files/conceptual_models/v3.0/fig1a_overview_requests.png) ·
+[1b](files/conceptual_models/v3.0/fig1b_overview_plans.png) ·
+[2](files/conceptual_models/v3.0/fig2_requests_constraints.png) ·
+[3a](files/conceptual_models/v3.0/fig3a_skills_resources.png) ·
+[3b](files/conceptual_models/v3.0/fig3b_capabilities.png) ·
+[3c](files/conceptual_models/v3.0/fig3c_justified_capabilities.png) ·
+[4](files/conceptual_models/v3.0/fig4_tools_servers.png) ·
+[5a](files/conceptual_models/v3.0/fig5a_plan_structure.png) ·
+[5b](files/conceptual_models/v3.0/fig5b_task_dependencies.png) ·
+[5c](files/conceptual_models/v3.0/fig5c_inferred_dependencies.png) ·
+[6a](files/conceptual_models/v3.0/fig6a_plan_selection.png) ·
+[6b](files/conceptual_models/v3.0/fig6b_plan_metrics.png) ·
+[7a](files/conceptual_models/v3.0/fig7a_invocations.png) ·
+[7b](files/conceptual_models/v3.0/fig7b_artifact_provenance.png) ·
+[8a](files/conceptual_models/v3.0/fig8a_artifact_kinds.png) ·
+[8b](files/conceptual_models/v3.0/fig8b_artifact_roles.png)
 
 ### Previous Versions
 
+- [Version 2.0 (Assignment 6)](files/conceptual_models/OE_6_TeamAgenticCapabilities_ConceptualModel.pdf)
+  ([redlined](files/conceptual_models/OE_6_TeamAgenticCapabilities_RedlinedConceptualModel.pdf)), figures and PlantUML
+  sources in [files/conceptual_models/v2.0](files/conceptual_models/v2.0/src/)
 - [Version 1.1 (Assignment 5)](files/conceptual_models/OE_5_TeamAgenticCapabilities_ConceptualModel.pdf)
 - Protégé OntoGraf views of the Figure 4 and Figure 7 classes:
   [Figure 4](files/conceptual_models/Figure4-Tools-Servers.png),
@@ -34,16 +44,23 @@ Figures as images (PNG; SVG and PlantUML sources in [files/conceptual_models/v2.
 
 ## Ontology
 
-- **File:** [OE_8_TeamAgenticCapabilities.rdf](OE_8_TeamAgenticCapabilities.rdf) (OWL 2 in RDF/XML, written with the course serializer);
-  submitted to the course drive as OE_6_TeamAgenticCapabilities.rdf
+- **Files (Assignment 9):** [OE_9_TeamAgenticCapabilities.rdf](OE_9_TeamAgenticCapabilities.rdf) (classes and properties)
+  and [OE_9_TeamAgenticCapabilities_Individuals.rdf](OE_9_TeamAgenticCapabilities_Individuals.rdf) (individuals; imports
+  the main ontology), OWL 2 in RDF/XML written with the course serializer
+- **SPARQL queries:** [OE_9_TeamAgenticCapabilities_SPARQLQueries.txt](OE_9_TeamAgenticCapabilities_SPARQLQueries.txt);
+  the queries for CQ 1, CQ 3 and CQ 5 and their answers are on the [Demonstration & Queries](demo.html) page
 - **Namespace:** `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/`
-- **Size:** 65 classes, 33 object properties, 9 datatype properties and 11 individuals of the team's own; consistent, with
-  no unsatisfiable classes (Pellet and HermiT)
-- **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII, highlighted in orange)
-- **Example data:** [cq_examples.ttl](files/ontology/cq_examples.ttl) holds individuals for the three questions (and for CQ 2 and CQ 6), and
-  [cq_results.txt](files/ontology/cq_results.txt) holds the reasoner's answers
-- **Opening it in Protégé:** open the file from this folder. `catalog-v001.xml` points the AgentO import to the copy in
-  `imports/`, because the AgentO IRI currently redirects to a web page instead of the ontology file.
+- **Size:** 64 classes, 27 object properties and 8 datatype properties of the team's own, and 146 individuals; consistent,
+  with no unsatisfiable classes (Pellet 2.2.0 and HermiT 1.4.3.456); [test log](files/ontology/OE_9_TeamAgenticCapabilities_TestLog.txt)
+- **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII)
+- **Opening it in Protégé:** open OE_9_TeamAgenticCapabilities_Individuals.rdf from this folder. `catalog-v001.xml` maps
+  the main ontology IRI to OE_9_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the copies in `imports/`:
+  the AgentO IRI redirects to a web page, and the P-Plan purl did not resolve on October 29, 2026.
+- **Previous versions:** Assignment 8, [main](archived/OE_8_TeamAgenticCapabilities.txt) and
+  [individuals](archived/OE_8_TeamAgenticCapabilities_Individuals.txt); Assignment 6,
+  [main](archived/agentic-orchestration.txt), [example individuals](archived/cq_examples.txt) and
+  [reasoner answers](archived/cq_results.txt). Archived ontology files are stored as .txt so that the hygiene check
+  skips them.
 
 ### Main Classes and Definitions
 
@@ -70,7 +87,7 @@ The full list of classes, properties and individuals, with sources, is the [term
 ## Ontologies Reused
 
 - [AgentO v0.2](https://w3id.org/agentic-ai/onto) (`agento:`): agents, tasks, tools, capabilities, workflow steps
-- [P-Plan](http://purl.org/net/p-plan) (`pplan:`): plans, steps and the activities that carry them out
+- [P-Plan](http://purl.org/net/p-plan) (`pplan:`): plans, steps and the activities that carry them out (version 1.3, copy in `imports/`)
 - [OWL-S 1.2 Process](https://www.w3.org/submissions/OWL-S/) (`process:`): tool parameters and preconditions
 - [BEAM](http://w3id.org/beam/core) (`beam:`): the resource class above SkillResource
 - [PROV-O](https://www.w3.org/TR/prov-o/) (`prov:`): provenance of invocations and information artifacts
