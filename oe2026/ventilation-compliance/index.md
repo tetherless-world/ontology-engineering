@@ -88,8 +88,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>2. Competency Questions</td>
-    <td>a. <a href="https://docs.google.com/document/d/17PMngIgp1zkGrxAJy3VSjCbdqSPk6pXczj8IaPUhMn4/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Google drive file</a> </td>
-    <td>b. <a href="OE 9 Team HVCC SPARQL Queries.txt" target="_blank" rel="noopener noreferrer">local file</a> </td>
+    <td><a href="https://docs.google.com/document/d/17PMngIgp1zkGrxAJy3VSjCbdqSPk6pXczj8IaPUhMn4/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Google drive file</a> / <a href="OE 9 Team HVCC SPARQL Queries.txt" target="_blank" rel="noopener noreferrer">local file</a> </td>
   </tr>
   <tr>
     <td>3. Presentations:</td>
