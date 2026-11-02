@@ -1,0 +1,299 @@
+﻿How to run these queries
+Open OE_9_TeamHVCC_Individuals.rdf in Protege. It declares owl:imports on OE_9_TeamHVCC.rdf, so opening the individual file loads both (Keep the two files in the same folder). 
+Snap SPARQL Query tab (plugin) evaluates against the reasoner, so OWL DL entailments and SWRL conclusions are visible. Start Pellet before using it: Reasoner > Pellet > Start reasoner. HermiT will not work, because it rejects the SWRL built-ins swrlb:lessThan and swrlb:greaterThanOrEqual that classify our policy assessments. 
+(SNAP-SPARQL supports only a subset of SPARQL: no property paths, no VALUES, no BIND, no EXISTS, no aggregates, no subqueries.)
+
+
+Competency Question 1.1
+Question: Which building service systems and connected service components serve room 4E-12?
+Output fields: room, serving building service system, connected building service component 
+PREFIX v: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX core: <https://w3id.org/rec/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+SELECT DISTINCT ?roomName ?systemName ?componentName
+WHERE {
+  # 1. Get the Room
+  ?room rdf:type core:Room ;
+        rdfs:label ?roomName .
+  FILTER(CONTAINS(STR(?roomName), "4E-12"))
+  # 2. Get the Connected Component
+  ?component v:connectsTo ?room ;
+             rdfs:label ?componentName .  
+  # 3. Get the Serving Building Service System that contains the component
+  ?system v:hasServiceComponent ?component ;
+          rdfs:label ?systemName ;
+          rdf:type ?systemType .
+          
+  ?systemType rdfs:subClassOf v:BuildingServiceSystem .
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reasoning needed: OWL DL reasoning is required. The relationships between the serving building service systems and the rooms are not explicitly asserted in the individuals file. One primary inference is required: 
+1. The property chain hasServiceComponent o connectsTo -> servesRoom derives which system serves which room. v:servesRoom is asserted zero times in the individuals file, so it exists only as a conclusion. 
+Run in: Snap SPARQL Query tab, with Pellet started. In the built-in SPARQL Query tab this returns 0 rows, which is the intended demonstration rather than a fault. 
+Expected Answer: (4 rows). System HVAC-3, room ICU-01 (room 4E-12), and the connected building service components AHU-3, DF-412, SD-3, and VAV-412. HVAC-4 is correctly absent because it serves rooms ICU-02 and ICU-03, not 4E-12. 
+
+
+Competency Question 1.2
+Question: What is the complete compliance assessment history (including the standard, evaluated policy, and overall status) for room 4E-12? 
+Output fields: room, time, compliance standard, compliance policy, compliance status 
+PREFIX v: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX core: <https://w3id.org/rec/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+
+SELECT DISTINCT ?roomName ?time ?standardName ?policyName ?complianceStatus
+WHERE {
+  ?room rdf:type core:Room ;
+        rdfs:label ?roomName .
+  FILTER(CONTAINS(STR(?roomName), "4E-12"))
+  ?context v:forRoom ?room ;
+           v:usesFramework ?standard ;
+           v:usesMeasurement ?measurement .
+  ?standard rdfs:label ?standardName .
+  
+  # Using the correct PROV-O property for the timestamp
+  ?measurement prov:generatedAtTime ?time .
+  ?assessment v:hasContext ?context ;
+              rdf:type ?complianceStatus ;
+              v:hasPolicyAssessment ?policyAssessment .
+  FILTER(CONTAINS(STR(?complianceStatus), "ComplianceAssessment"))
+  ?policyAssessment v:evaluatedPolicy ?policy .
+  ?policy rdfs:label ?policyName .
+}
+
+
+Reasoning needed: OWL DL with SWRL rules. Not one compliance fact in this answer is asserted. Inferences are required to evaluate the raw data: 
+1. SWRL rules S1 to S7 compare each measurement against the bound of the policy it is evaluated against, and classify every PolicyAssessment as Satisfied or Unsatisfied. 
+2. The OWL class definitions then classify the overarching ComplianceAssessment (e.g., inferring a PartiallySatisfiedComplianceAssessment based on the underlying policy assessments).
+On the date: The query carries no date filter because it does not need one. The individuals file records exactly one ventilation test, and every prov:generatedAtTime in it falls on 9 October 2026, at 14:10, 14:20, 14:25 and 14:30. Adding a second test day would make a date filter necessary. 
+
+
+Run in: Built-in SPARQL Query tab, with Pellet started. (This tab is required because the strict Snap SPARQL DL parser does not natively recognize the imported prov:generatedAtTime property without throwing a signature error). 
+Expected answer: (8 rows). Room ICU-01 (room 4E-12), the timestamps (2026-10-09T14:25:00 and 14:30:00), the CDC framework, specific policies (relative humidity range, min outdoor air changes per hour), and the inferred overarching v:ComplianceAssessment and v:PartiallySatisfiedComplianceAssessment outcomes. Satisfied assessments are correctly included because this query traces the full assessment history rather than filtering solely for failures. 
+
+
+Competency Question 2.1
+
+
+Question: Which ICU rooms met the CDC ventilation standard in the 14:30 test on 9 October 2026?
+
+
+Output fields: room, time, compliance standard, compliance policy, compliance status (include both satisfied and unsatisfied).
+
+
+Query:
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIXv:<https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+
+SELECT DISTINCT ?roomName ?time ?standardName ?policyName ?status
+WHERE {
+       ?assessment v:hasContext ?context .
+       ?assessment v:hasPolicyAssessment ?pa .
+       ?context v:forRoom ?room .
+       ?context v:usesFramework ?standard .
+       ?context v:usesMeasurement ?measurement .
+       ?measurement v:isEvaluatedAt ?pa .
+       ?measurement prov:generatedAtTime ?time .
+       ?pa v:evaluatedPolicy ?policy .
+       ?pa rdf:type ?status .
+       ?room rdfs:label ?roomName .
+       ?standard rdfs:label ?standardName .
+       ?policy rdfs:label ?policyName .
+       FILTER (
+           ?status = v:SatisfiedPolicyAssessment ||
+           ?status = v:UnsatisfiedPolicyAssessment ||
+           ?status = v:UnknownPolicyAssessment
+       )
+   }
+   ORDER BY ?roomName ?policyName
+
+
+Expected answer: The query returns two policy assessments for each of the three ICU rooms. ICU-01 (room 4E-12) has one unsatisfied minimum outdoor air changes per hour policy and one satisfied relative humidity policy. ICU-02 and ICU-03 satisfy both policies. The results also show the CDC framework, measurement times, and inferred compliance statuses.
+
+
+Reasoning needed: Pellet uses the SWRL-based policy assessment classifications. The query returns policy statuses and underlying contextual fields to make the compliance decision explainable, instead of filtering only unsatisfied results.
+Validation: Tested in Protégé with Pellet; six rows returned for ICU-01, ICU-02, and ICU-03.
+
+
+Competency Question 2.2
+
+
+Question: For room ICU-01, which compliance policies were not satisfied in that test, and which measurements show it?
+Output fields: Room, policy, policy status, evidence measurement, actual value, lower/upper bound, measurement unit, measurement time.
+Query: 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX v: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX test: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/>
+PREFIX qu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT DISTINCT ?roomName ?policyName ?status ?measurementName
+              ?actual ?minimum ?maximum ?unit ?time
+WHERE {
+test:A_ICU_01 v:hasContext ?context ;
+              v:hasPolicyAssessment ?pa .
+?context v:forRoom ?room ;
+         v:usesFramework ?standard ;
+         v:usesMeasurement ?measurement .
+?pa v:evaluatedPolicy ?policy ;
+    rdf:type ?status .
+?measurement v:isEvaluatedAt ?pa ;
+             qu:hasQuantityValue ?quantity ;
+             prov:generatedAtTime ?time ;
+             rdfs:label ?measurementName .
+?quantity qu:hasNumericValue ?actual ;
+          qu:hasMeasurementUnit ?unit .
+?room rdfs:label ?roomName .
+?policy rdfs:label ?policyName .
+OPTIONAL {
+  ?policy qu:hasLowerBound ?lower .
+  ?lower qu:hasNumericValue ?minimum .
+}
+OPTIONAL {
+  ?policy qu:hasUpperBound ?upper .
+  ?upper qu:hasNumericValue ?maximum .
+}
+FILTER (
+  ?status = v:SatisfiedPolicyAssessment ||
+  ?status = v:UnsatisfiedPolicyAssessment ||
+  ?status = v:UnknownPolicyAssessment
+)
+}
+ORDER BY ?policyName
+	
+
+Expected answer: The query shows both policy rows for ICU-01, so the failed ACH policy can be compared with the satisfied relative-humidity policy. The unsatisfied row is P_ACH_min / M_0412: 1.4 air changes per hour, below the 2.0 lower bound, measured 2026-10-09 at 14:25. The RH row is satisfied with its recorded value and bounds.
+
+
+Reasoning needed: The status of each PolicyAssessment is inferred using the compliance rules. Measurement values, timestamps, policy bounds, and units are retrieved from RDF triples. OPTIONAL retains upper/lower bounds as appropriate for each policy.
+Validation: Tested in Protégé with Pellet; two rows returned for ICU-01, showing ACH unsatisfied and relative humidity satisfied.
+
+
+
+
+Competency Question 3.1
+
+
+Question: Which HVAC system served the rooms that did not meet the standard in the ventilation test on 9 October 2026?
+
+
+Output fields: serving system, room, compliance outcome
+
+
+PREFIX v: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+ 
+SELECT DISTINCT ?systemName ?roomName ?outcome
+WHERE {
+?assessment rdf:type ?outcome .
+?assessment v:hasContext ?context .
+FILTER ( ?outcome = v:PartiallySatisfiedComplianceAssessment || ?outcome = v:UnsatisfiedComplianceAssessment )
+?context v:forRoom ?room .
+?system v:servesRoom ?room .
+?system rdfs:label ?systemName .
+?room rdfs:label ?roomName .
+} 
+
+
+
+
+
+
+Reasoning needed: OWL DL with SWRL rules. Not one fact in this answer is asserted. Three inferences are required:
+1. SWRL rules S1 to S7 compare each measurement against the bound of the policy it is evaluated against, and classify every PolicyAssessment as Satisfied or Unsatisfied.
+2. The OWL class definitions then classify the ComplianceAssessment. PartiallySatisfiedComplianceAssessment is defined as ComplianceAssessment and (hasPolicyAssessment some SatisfiedPolicyAssessment) and (hasPolicyAssessment some UnsatisfiedPolicyAssessment). Each assessment also carries a closure axiom on hasPolicyAssessment, which is what makes the "only" half of these definitions usable.
+3. The property chain hasServiceComponent o connectsTo -> servesRoom derives which system serves which room. v:servesRoom is asserted zero times in the individuals file, so it exists only as a conclusion.
+On the date: the query carries no date filter because it does not need one. The individuals file records exactly one ventilation test, and every prov:generatedAtTime in it falls on 9 October 2026, at 14:10, 14:20, 14:25 and 14:30. Adding a second test day would make a date filter necessary.
+
+
+Run in: Snap SPARQL Query tab, with Pellet started. In the built-in SPARQL Query tab this returns 0 rows, which is the intended demonstration rather than a fault.
+
+
+Expected answer: (1 row). System HVAC-3, room ICU-01 (room 4E-12), outcome PartiallySatisfiedComplianceAssessment. HVAC-4 is correctly absent: it serves ICU-02 and ICU-03, and both of those assessments classify as SatisfiedComplianceAssessment.
+
+
+
+
+Competency Question 3.2
+
+
+Question: Which components of which HVAC system may be causing a room to fall short of the minimum outdoor air changes per hour policy?
+
+
+Output fields:  room, compliance policy, measurement unit, associated building service component, associated building service system
+
+
+The room is a variable rather than a fixed individual, so this answer joins directly onto the room column of CQ 1.1 and CQ 1.2.
+
+
+PREFIX v: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX qu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+ 
+SELECT DISTINCT ?roomName ?policyName ?unitName ?componentName ?systemName
+WHERE {
+?assessment v:hasContext ?context .
+?assessment v:hasPolicyAssessment ?pa .
+?context v:forRoom ?room .
+?room rdfs:label ?roomName .
+?pa rdf:type v:UnsatisfiedPolicyAssessment .
+?pa v:evaluatedPolicy ?policy .
+?pa v:wasAssociatedWithComponent ?component .
+?pa v:wasAssociatedWithSystem ?system .
+?policy rdf:type v:MinimumAirChangesOfOutdoorAirPerHour .
+?policy qu:hasLowerBound ?lb .
+?policy rdfs:label ?policyName .
+?lb qu:hasMeasurementUnit ?unit .
+?unit rdfs:label ?unitName .
+?component rdfs:label ?componentName .
+?system rdfs:label ?systemName .
+}
+ORDER BY ?componentName
+
+
+
+
+
+
+Reasoning needed  OWL DL with SWRL rules. Every column except the policy name is inferred, in five steps:
+4. SWRL rule S2 marks the policy assessment unsatisfied, because the measured 1.4 air changes per hour is below the policy lower bound of 2.0. The rule binds one variable for both units, so a comparison across mismatched units cannot fire.
+5. prov:wasDerivedFrom is a sub-property of v:isTransitivelyDerivedFrom, which is transitive, so the reasoner closes the provenance chain: the outdoor air change rate M-0412 derives from the outdoor air flow rate M-0413, which derives from the supply air flow rate M-0411.
+6. SWRL rule S9 attaches every component acting on any measurement in that chain to the policy assessment, as v:wasAssociatedWithComponent.
+7. col:hasPart is transitive and is the inverse of col:isPartOf, and v:hasServiceComponent is a sub-property of it. FL-3 is therefore a part of HVAC-3 even though it is only ever asserted to be a part of AHU-3.
+8. SWRL rule S10 lifts the blame from the component to the system containing it, as v:wasAssociatedWithSystem. This is why the query needs no hard-coded reference to HVAC-3 - the system is derived.
+Run in: Snap SPARQL Query tab, with Pellet started. Returns 0 rows in the built-in SPARQL Query tab, because every column except the policy name depends on the reasoner.
+
+
+ICU-02 and ICU-03 are correctly absent: both satisfied the policy, so rule S2 never fires for them and nothing is ever blamed. AHU-3 is correctly absent from the component column, because although it is a part of HVAC-3 it acts on no measurement in the failing derivation chain, so no rule implicates it. These are candidates linked to the failing evidence, not a confirmed cause: the use case is explicit about this in requirement R7, the system narrows the search for a facilities engineer, it does not diagnose.
