@@ -40,194 +40,94 @@ PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
 PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
 PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
 # ======================================================================================================================
-# CQ 1, step 1 with the skill/tool property chains (semantic lookup): which skills, tools and MCP servers does Ken's
-#       request need?
-# Reasoning: OWL 2 DL entailment (property chains). Run in Snap SPARQL with HermiT or Pellet started.
-#   oe-agtorch:hasHardConstraint (request -> person -> preference setting -> hard constraint, or request -> hard
-#   constraint) replaces the UNION over prov:wasAttributedTo / prov:wasDerivedFrom, and skillSatisfiesRequirement,
-#   skillSatisfiesHardConstraint, toolSatisfiesRequirement and toolSatisfiesHardConstraint replace the path through
-#   the capability.
-# Expected answer: the same 6 rows as CQ 1 step 1, without the capability column:
-#   requirement | hardConstraint | skill | tool | server
-SELECT ?requirementLabel ?hardConstraintLabel ?skillLabel ?tool ?toolServer
+# CQ 1, step 2 (dependency and constraint-based reasoning): which candidate orchestration plans can answer Ken's
+#       request, and which of their steps meet his information requirements and hard constraints?
+# Reasoning: OWL 2 DL entailment (needs a DL reasoner). Run in Snap SPARQL with HermiT or Pellet started. Without a
+#   reasoner the query returns no rows, because every property it uses below except hasStep, hasAssociatedTask,
+#   performedBySkill, expresses and violatesConstraint is inferred and never asserted.
+#   The reasoner infers these triples from OWL 2 property chains ("o" composes properties; isX is the reflexive
+#   marker of class X, defined by X EquivalentTo isX Self, so a chain can test that an element belongs to X):
+#   - request to constraint (request -> person -> preference setting -> constraint):
+#       hasPreferenceSetting        <- isRequest o prov:wasAttributedTo o inverse(prov:wasAttributedTo) o isPreferenceSetting
+#       hasHardConstraint           <- hasPreferenceSetting o inverse(prov:wasDerivedFrom) o isHardConstraint
+#       hasHardConstraint           <- isRequest o inverse(prov:wasDerivedFrom) o isHardConstraint
+#     so kenRequest hasHardConstraint kenEvidenceConstraint (Ken -> kenSettings -> kenEvidenceConstraint).
+#   - step to what it satisfies, through the capability its task requires:
+#       stepRequiresCapability      <- agento:hasAssociatedTask o agento:requiresCapability
+#       stepSatisfiesRequirement    <- stepRequiresCapability o satisfiesRequirement
+#       stepSatisfiesHardConstraint <- stepRequiresCapability o satisfiesConstraint o isHardConstraint
+#   - plan to what its steps satisfy, consume and produce:
+#       planSatisfiesRequirement    <- hasStep o stepSatisfiesRequirement
+#       planSatisfiesHardConstraint <- hasStep o stepSatisfiesHardConstraint
+#       hasTask                     <- hasStep o agento:hasAssociatedTask
+#       planConsumes                <- hasTask o consumes
+#       planProduces                <- hasTask o produces
+#   - class membership: CandidateOrchestrationPlan is the union of SelectedOrchestrationPlan and
+#     RejectedOrchestrationPlan, so kenPlan1 (inferred selected) and kenPlan2 (inferred rejected) are candidates.
+#   The query keeps a plan for Ken's request only if
+#   (a) every information requirement the request expresses is in planSatisfiesRequirement of the plan,
+#   (b) every hard constraint in hasHardConstraint of the request is in planSatisfiesHardConstraint of the plan, and
+#       the plan violates no hard constraint,
+#   (c) every information artifact in planConsumes of the plan is also in planProduces, so no step waits for an input
+#       the plan never creates. (Without property paths the query cannot follow agento:nextStep to check that the
+#       producing step comes earlier; CQ 2 derives the step order from these inputs and outputs.)
+#   These "every" checks stay in SPARQL as nested MINUS (a requirement exists that the plan does not satisfy): under
+#   OWL's open-world assumption, and in SWRL, which has no negation, a reasoner cannot conclude that something is
+#   missing. For each plan that is kept, the query lists the steps whose stepSatisfiesRequirement or
+#   stepSatisfiesHardConstraint links them to Ken's requirements and hard constraint, with the skill that performs
+#   the step's task. Ken's soft constraints are not satisfied by a step; they are measured by the decision criteria of
+#   the plan evaluations (CQ 1 supporting query). Which candidate is then selected is the CQ 1 query below.
+# Individuals: kenRequest, Ken, kenSettings, his information requirements (needAffordableProducts, needEvidenceForKen,
+#   needMuscleSupplements) and hard constraint kenEvidenceConstraint; kenPlan1 and kenPlan2 with their steps, tasks,
+#   information artifacts and plan evaluations; the capabilities and skills of step 1.
+# Expected answer: both of Ken's plans are candidates; plan 2 verifies evidence in two steps (10 rows):
+#   plan | requirement | constraint | stepLabel | skill
+#   kenPlan1 | needAffordableProducts |  | Ken plan 1, step 4 | productSelectionSkill
+#   kenPlan1 | needEvidenceForKen |  | Ken plan 1, step 6 | evidenceVerificationSkill
+#   kenPlan1 | needMuscleSupplements |  | Ken plan 1, step 2 | personalizedSupplementRecommendationSkill
+#   kenPlan1 |  | kenEvidenceConstraint | Ken plan 1, step 6 | evidenceVerificationSkill
+#   kenPlan2 | needAffordableProducts |  | Ken plan 2, step 2 | productSelectionSkill
+#   kenPlan2 | needEvidenceForKen |  | Ken plan 2, step 3 | evidenceVerificationSkill
+#   kenPlan2 | needEvidenceForKen |  | Ken plan 2, step 5 | evidenceVerificationSkill
+#   kenPlan2 | needMuscleSupplements |  | Ken plan 2, step 1 | personalizedSupplementRecommendationSkill
+#   kenPlan2 |  | kenEvidenceConstraint | Ken plan 2, step 3 | evidenceVerificationSkill
+#   kenPlan2 |  | kenEvidenceConstraint | Ken plan 2, step 5 | evidenceVerificationSkill
+SELECT ?plan ?requirement ?constraint ?stepLabel ?skill
 WHERE {
+  ?plan a oe-agtorch:CandidateOrchestrationPlan .
+  ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
+  # (a) drop the plan if it leaves an information requirement of the request unsatisfied
+  MINUS {
+    oe-agtorch-ind:kenRequest oe-agtorch:expresses ?r1 .
+    ?r1 a oe-agtorch:InformationRequirement .
+    MINUS { ?plan oe-agtorch:planSatisfiesRequirement ?r1 . }
+  }
+  # (b) drop the plan if it leaves a hard constraint of the request unsatisfied, or violates one
+  MINUS {
+    oe-agtorch-ind:kenRequest oe-agtorch:hasHardConstraint ?h2 .
+    MINUS { ?plan oe-agtorch:planSatisfiesHardConstraint ?h2 . }
+  }
+  MINUS { ?plan oe-agtorch:violatesConstraint ?h3 . }
+  # (c) drop the plan if it consumes an information artifact that it never produces
+  MINUS {
+    ?plan oe-agtorch:planConsumes ?artifact .
+    MINUS { ?plan oe-agtorch:planProduces ?artifact . }
+  }
+  ?plan oe-agtorch:hasStep ?step .
+  ?step rdfs:label ?stepLabel .
+  ?step agento:hasAssociatedTask ?task .
+  ?task oe-agtorch:performedBySkill ?skill .
   {
     oe-agtorch-ind:kenRequest oe-agtorch:expresses ?requirement .
-    ?requirement a oe-agtorch:InformationRequirement .
-    ?requirement rdfs:label ?requirementLabel .
-    ?skill oe-agtorch:skillSatisfiesRequirement ?requirement .
-    OPTIONAL {
-      ?skill oe-agtorch:usesTool ?toolInd .
-      ?toolInd oe-agtorch:toolSatisfiesRequirement ?requirement .
-      ?toolInd skos:altLabel ?tool .
-      OPTIONAL { ?server oe-agtorch:exposes ?toolInd . ?server rdfs:label ?toolServer . }
-    }
+    ?step oe-agtorch:stepSatisfiesRequirement ?requirement .
   }
   UNION
   {
     oe-agtorch-ind:kenRequest oe-agtorch:hasHardConstraint ?constraint .
-    ?constraint rdfs:label ?hardConstraintLabel .
-    ?skill oe-agtorch:skillSatisfiesHardConstraint ?constraint .
-    OPTIONAL {
-      ?skill oe-agtorch:usesTool ?toolInd .
-      ?toolInd oe-agtorch:toolSatisfiesHardConstraint ?constraint .
-      ?toolInd skos:altLabel ?tool .
-      OPTIONAL { ?server oe-agtorch:exposes ?toolInd . ?server rdfs:label ?toolServer . }
-    }
-  }
-  ?skill rdfs:label ?skillLabel .
-}
-ORDER BY ?hardConstraintLabel ?requirementLabel ?tool
-
-PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
-PREFIX prov:           <http://www.w3.org/ns/prov#>
-PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
-PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
-PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
-# ======================================================================================================================
-# CQ 1, step 2 (dependency and constraint-based reasoning): which candidate orchestration plans can answer Ken's
-#       request, and how does each one meet his information requirements and constraints?
-# Reasoning: none beyond the asserted triples (no RDFS or OWL inference). Runs in Snap SPARQL (with or without a
-#   reasoner) and in the SPARQL Query tab.
-#   The query starts from Ken's request, as in step 1, and keeps a plan for the request only if
-#   (a) every information requirement the request expresses is satisfied by the capability a task of one of the
-#       plan's steps requires,
-#   (b) every hard constraint of the request (from the requester's preference settings or from the request itself)
-#       is satisfied in the same way, and the plan violates no hard constraint,
-#   (c) every information artifact a task of the plan consumes is produced by a task of one of the plan's steps, so
-#       no step waits for an input the plan never creates. (Without property paths the query cannot follow
-#       agento:nextStep to check that the producing step comes earlier; CQ 2 derives the step order from these
-#       inputs and outputs.)
-#   For each plan that is kept, it lists the step and skill that meet each requirement and hard constraint, found
-#   through the capability that satisfies it, and the decision criterion of the plan's evaluation that measures each
-#   soft constraint. Which candidate is then selected is the CQ 1 query below.
-#   The plans still have to address Ken's request: Jessica's plan also passes (a) to (c) for Ken's requirements,
-#   but its tasks work on Jessica's candidate supplements and products.
-# Individuals: kenRequest, Ken, kenSettings, his information requirements, hard constraint kenEvidenceConstraint and
-#   soft constraints kenFewToolCalls and kenLowTokenUse; kenPlan1 and kenPlan2 with their steps, tasks, information
-#   artifacts and plan evaluations; the capabilities and skills of step 1.
-# Expected answer: both of Ken's plans are candidates; plan 2 verifies evidence in two steps (14 rows):
-#   planLabel | requirementLabel | constraintLabel | stepLabel | skillLabel | criterionLabel
-#   Ken plan 1 | affordable products with good reviews (Ken) |  | Ken plan 1, step 4 | product selection skill | 
-#   Ken plan 1 | supplement recommendations for building muscle mass (Ken) |  | Ken plan 1, step 2 | personalized supplement recommendation skill | 
-#   Ken plan 1 | supporting scientific evidence (Ken) |  | Ken plan 1, step 6 | evidence verification skill | 
-#   Ken plan 1 |  | evidence verification (Ken) | Ken plan 1, step 6 | evidence verification skill | 
-#   Ken plan 1 |  | minimize external tool calls (Ken) |  |  | fewest external tool calls (Ken)
-#   Ken plan 1 |  | minimize token usage (Ken) |  |  | lowest token cost (Ken)
-#   Ken plan 2 | affordable products with good reviews (Ken) |  | Ken plan 2, step 2 | product selection skill | 
-#   Ken plan 2 | supplement recommendations for building muscle mass (Ken) |  | Ken plan 2, step 1 | personalized supplement recommendation skill | 
-#   Ken plan 2 | supporting scientific evidence (Ken) |  | Ken plan 2, step 3 | evidence verification skill | 
-#   Ken plan 2 | supporting scientific evidence (Ken) |  | Ken plan 2, step 5 | evidence verification skill | 
-#   Ken plan 2 |  | evidence verification (Ken) | Ken plan 2, step 3 | evidence verification skill | 
-#   Ken plan 2 |  | evidence verification (Ken) | Ken plan 2, step 5 | evidence verification skill | 
-#   Ken plan 2 |  | minimize external tool calls (Ken) |  |  | fewest external tool calls (Ken)
-#   Ken plan 2 |  | minimize token usage (Ken) |  |  | lowest token cost (Ken)
-SELECT ?planLabel ?requirementLabel ?constraintLabel ?stepLabel ?skillLabel ?criterionLabel
-WHERE {
-  ?plan a oe-agtorch:CandidateOrchestrationPlan .
-  ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
-  ?plan rdfs:label ?planLabel .
-  # (a) drop the plan if an information requirement of the request is not satisfied by a capability that a task of
-  #     one of the plan's steps requires
-  MINUS {
-    ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
-    oe-agtorch-ind:kenRequest oe-agtorch:expresses ?r1 .
-    ?r1 a oe-agtorch:InformationRequirement .
-    MINUS {
-      ?plan oe-agtorch:hasStep ?s1 .
-      ?s1 agento:hasAssociatedTask ?t1 .
-      ?t1 agento:requiresCapability ?c1 .
-      ?c1 oe-agtorch:satisfiesRequirement ?r1 .
-    }
-  }
-  # (b) drop the plan if a hard constraint of the request is not satisfied in the same way, or if it violates one
-  MINUS {
-    ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
-    {
-      oe-agtorch-ind:kenRequest prov:wasAttributedTo ?p2 .
-      ?settings2 a oe-agtorch:PreferenceSetting .
-      ?settings2 prov:wasAttributedTo ?p2 .
-      ?h2 prov:wasDerivedFrom ?settings2 .
-    }
-    UNION
-    {
-      ?h2 prov:wasDerivedFrom oe-agtorch-ind:kenRequest .
-    }
-    ?h2 a oe-agtorch:HardConstraint .
-    MINUS {
-      ?plan oe-agtorch:hasStep ?s2 .
-      ?s2 agento:hasAssociatedTask ?t2 .
-      ?t2 agento:requiresCapability ?c2 .
-      ?c2 oe-agtorch:satisfiesConstraint ?h2 .
-    }
-  }
-  MINUS {
-    ?plan oe-agtorch:violatesConstraint ?h3 .
-  }
-  # (c) drop the plan if a task of one of its steps consumes an information artifact that no task of the plan produces
-  MINUS {
-    ?plan oe-agtorch:hasStep ?s4 .
-    ?s4 agento:hasAssociatedTask ?t4 .
-    ?t4 oe-agtorch:consumes ?artifact .
-    MINUS {
-      ?plan oe-agtorch:hasStep ?s5 .
-      ?s5 agento:hasAssociatedTask ?t5 .
-      ?t5 oe-agtorch:produces ?artifact .
-    }
-  }
-  {
-    {
-      oe-agtorch-ind:kenRequest oe-agtorch:expresses ?requirement .
-      ?requirement a oe-agtorch:InformationRequirement .
-      ?requirement rdfs:label ?requirementLabel .
-      ?capability oe-agtorch:satisfiesRequirement ?requirement .
-    }
-    UNION
-    {
-      {
-        oe-agtorch-ind:kenRequest prov:wasAttributedTo ?person .
-        ?settings a oe-agtorch:PreferenceSetting .
-        ?settings prov:wasAttributedTo ?person .
-        ?constraint prov:wasDerivedFrom ?settings .
-      }
-      UNION
-      {
-        ?constraint prov:wasDerivedFrom oe-agtorch-ind:kenRequest .
-      }
-      ?constraint a oe-agtorch:HardConstraint .
-      ?constraint rdfs:label ?constraintLabel .
-      ?capability oe-agtorch:satisfiesConstraint ?constraint .
-    }
-    ?plan oe-agtorch:hasStep ?step .
-    ?step agento:hasAssociatedTask ?task .
-    ?task agento:requiresCapability ?capability .
-    ?step rdfs:label ?stepLabel .
-    ?skill a oe-agtorch:Skill .
-    ?skill oe-agtorch:hasCapability ?capability .
-    ?skill rdfs:label ?skillLabel .
-  }
-  UNION
-  {
-    {
-      oe-agtorch-ind:kenRequest prov:wasAttributedTo ?person .
-      ?settings a oe-agtorch:PreferenceSetting .
-      ?settings prov:wasAttributedTo ?person .
-      ?softConstraint prov:wasDerivedFrom ?settings .
-    }
-    UNION
-    {
-      ?softConstraint prov:wasDerivedFrom oe-agtorch-ind:kenRequest .
-    }
-    ?softConstraint a oe-agtorch:SoftConstraint .
-    ?softConstraint rdfs:label ?constraintLabel .
-    ?softConstraint oe-agtorch:isMeasuredBy ?criterion .
-    ?eval oe-agtorch:evaluates ?plan .
-    ?eval oe-agtorch:usesCriterion ?criterion .
-    ?criterion rdfs:label ?criterionLabel .
+    ?step oe-agtorch:stepSatisfiesHardConstraint ?constraint .
   }
 }
-ORDER BY ?planLabel ?criterionLabel ?constraintLabel ?requirementLabel ?stepLabel
+ORDER BY ?plan ?constraint ?requirement ?stepLabel
 
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>

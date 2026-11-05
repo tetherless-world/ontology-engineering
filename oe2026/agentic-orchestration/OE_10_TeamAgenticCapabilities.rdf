@@ -1266,6 +1266,58 @@
 		<cmns-av:adaptedFrom xml:lang="en">AgentO v0.2 performedBy (“Indicates the tool/agent that performs the task in a step.”); named after performedByAgent</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;planConsumes">
+		<rdfs:label xml:lang="en">plan consumes</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
+		<rdfs:range rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;hasTask">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;consumes">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from an orchestration plan to an information artifact that a task of the plan consumes</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;planProduces">
+		<rdfs:label xml:lang="en">plan produces</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
+		<rdfs:range rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;hasTask">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;produces">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from an orchestration plan to an information artifact that a task of the plan produces</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;planSatisfiesHardConstraint">
+		<rdfs:label xml:lang="en">plan satisfies hard constraint</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
+		<rdfs:range rdf:resource="&oe-agtorch;HardConstraint"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;hasStep">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;stepSatisfiesHardConstraint">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from an orchestration plan to a hard constraint satisfied by one of its steps</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;planSatisfiesRequirement">
+		<rdfs:label xml:lang="en">plan satisfies requirement</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>
+		<rdfs:range rdf:resource="&oe-agtorch;InformationRequirement"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;hasStep">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;stepSatisfiesRequirement">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from an orchestration plan to an information requirement satisfied by one of its steps</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;produces">
 		<rdfs:label xml:lang="en">produces</rdfs:label>
 		<rdfs:domain rdf:resource="&agento;Task"/>
@@ -1335,6 +1387,47 @@
 			</rdf:Description>
 		</owl:propertyChainAxiom>
 		<skos:definition>a relationship that shows a skill satisfiying an information requirement</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;stepRequiresCapability">
+		<rdfs:label xml:lang="en">step requires capability</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:range rdf:resource="&agento;Capability"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&agento;hasAssociatedTask">
+			</rdf:Description>
+			<rdf:Description rdf:about="&agento;requiresCapability">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from a workflow step to a capability that the task of the step requires</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;stepSatisfiesHardConstraint">
+		<rdfs:label xml:lang="en">step satisfies hard constraint</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:range rdf:resource="&oe-agtorch;HardConstraint"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;stepRequiresCapability">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;satisfiesConstraint">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isHardConstraint">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from a workflow step to a hard constraint satisfied by a capability that the task of the step requires</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;stepSatisfiesRequirement">
+		<rdfs:label xml:lang="en">step satisfies requirement</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:range rdf:resource="&oe-agtorch;InformationRequirement"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;stepRequiresCapability">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;satisfiesRequirement">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from a workflow step to an information requirement satisfied by a capability that the task of the step requires</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;toolSatisfiesHardConstraint">
