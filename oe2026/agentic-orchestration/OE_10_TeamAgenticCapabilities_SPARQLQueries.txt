@@ -598,3 +598,41 @@ WHERE {
   }
 }
 ORDER BY ?rank ?plan ?hardConstraint ?softConstraint
+
+# CQ 8. What skills depend on other skills?
+
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
+PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
+PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
+# ======================================================================================================================
+# Reasoning: OWL 2 DL entailment (needs a DL reasoner). Run in Snap SPARQL with Pellet or HermiT started. Without a
+#   reasoner the query returns no rows, because no dependsOn triple is asserted in the individuals file.
+#   The reasoner infers task dependencies from the property chain dependsOn <- consumes o inverse(produces): a task
+#   depends on another task when it consumes an information artifact that the other task produces. The query lifts
+#   these inferred task dependencies to the skills that perform the tasks (performedBySkill): skill S depends on
+#   skill P when a task performed by S depends on a task performed by P. The FILTER drops the product selection
+#   skill's dependency on itself (selecting a product consumes the product list that the same skill retrieved).
+# Individuals: the tasks of Jessica's plan (getCandidateSupplements, screenInteractions, verifyEvidence,
+#   getSupplementProducts, selectSupplementProduct) and of Ken's plans (getCandidatesForKen, getProductsByPrice,
+#   verifyEvidenceForKen, screenInteractionsForKen, secondEvidencePassForKen, selectProductForKenPlan2), their
+#   consumed and produced information artifacts, and the skills that perform them.
+# Expected answer (5 rows):
+#   skillLabel | dependsOnSkillLabel
+#   evidence verification skill | personalized supplement recommendation skill
+#   product selection skill | evidence verification skill
+#   product selection skill | personalized supplement recommendation skill
+#   product selection skill | supplement safety screening skill
+#   supplement safety screening skill | personalized supplement recommendation skill
+#   The personalized supplement recommendation skill depends on no other skill; the evidence synthesis and dosage
+#   calculator skills do not appear, because no task they perform consumes an artifact another skill's task produces.
+SELECT DISTINCT ?skillLabel ?dependsOnSkillLabel
+WHERE {
+  ?task oe-agtorch:performedBySkill ?skill .
+  ?prerequisiteTask oe-agtorch:performedBySkill ?dependsOnSkill .
+  ?task oe-agtorch:dependsOn ?prerequisiteTask .
+  ?skill rdfs:label ?skillLabel .
+  ?dependsOnSkill rdfs:label ?dependsOnSkillLabel .
+  FILTER (?skill != ?dependsOnSkill)
+}
+ORDER BY ?skillLabel ?dependsOnSkillLabel
