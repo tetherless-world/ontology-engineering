@@ -38,7 +38,7 @@
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
 		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/"/>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/"/>
-		<owl:versionInfo>Assignment 9</owl:versionInfo>
+		<owl:versionInfo>Assignment 10</owl:versionInfo>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -93,6 +93,20 @@
 		<skos:definition xml:lang="en">person who asks for the best heart-health supplement and wants strong scientific evidence from as few external tool calls as possible</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;candidateCitrate">
+		<rdf:type rdf:resource="&oe-agtorch;CandidateSupplement"/>
+		<rdfs:label xml:lang="en">magnesium citrate (Dante)</rdfs:label>
+		<skos:definition xml:lang="en">candidate supplement named in Dante&apos;s request: magnesium citrate</skos:definition>
+		<prov:wasDerivedFrom rdf:resource="&oe-agtorch-ind;danteRequest"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;candidateGlycinate">
+		<rdf:type rdf:resource="&oe-agtorch;CandidateSupplement"/>
+		<rdfs:label xml:lang="en">magnesium glycinate (Dante)</rdfs:label>
+		<skos:definition xml:lang="en">candidate supplement named in Dante&apos;s request: magnesium glycinate</skos:definition>
+		<prov:wasDerivedFrom rdf:resource="&oe-agtorch-ind;danteRequest"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;candidates">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateSupplement"/>
 		<rdfs:label xml:lang="en">candidate supplements (Jessica)</rdfs:label>
@@ -141,12 +155,27 @@
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;synthesizeEvidence"/>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;danteAnswer">
+		<rdf:type rdf:resource="&oe-agtorch;Answer"/>
+		<rdfs:label xml:lang="en">comparison for Dante</rdfs:label>
+		<skos:definition xml:lang="en">answer returned to Dante that compares magnesium glycinate and magnesium citrate for sleep and summarizes the evidence for each</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;danteExecutionTimeCriterion">
+		<rdf:type rdf:resource="&oe-agtorch;DecisionCriterion"/>
+		<rdfs:label xml:lang="en">short execution time (Dante)</rdfs:label>
+		<skos:definition xml:lang="en">decision criterion that minimizes the execution time of a plan</skos:definition>
+		<oe-agtorch:hasDirection>minimize</oe-agtorch:hasDirection>
+		<oe-agtorch:hasWeight rdf:datatype="&xsd;decimal">1.0</oe-agtorch:hasWeight>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;danteFastExecution">
 		<rdf:type rdf:resource="&oe-agtorch;SoftConstraint"/>
 		<rdfs:label xml:lang="en">minimize execution time (Dante)</rdfs:label>
 		<skos:definition xml:lang="en">soft constraint, derived from Dante&apos;s execution settings, to minimize execution time</skos:definition>
 		<prov:wasDerivedFrom rdf:resource="&oe-agtorch-ind;danteSettings"/>
 		<oe-agtorch:hasPriority rdf:datatype="&xsd;integer">1</oe-agtorch:hasPriority>
+		<oe-agtorch:isMeasuredBy rdf:resource="&oe-agtorch-ind;danteExecutionTimeCriterion"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;dantePlan">
@@ -168,6 +197,7 @@
 		<skos:definition xml:lang="en">plan evaluation that ranks Dante&apos;s orchestration plan first</skos:definition>
 		<oe-agtorch:evaluates rdf:resource="&oe-agtorch-ind;dantePlan"/>
 		<oe-agtorch:hasRank rdf:datatype="&xsd;integer">1</oe-agtorch:hasRank>
+		<oe-agtorch:usesCriterion rdf:resource="&oe-agtorch-ind;danteExecutionTimeCriterion"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;danteRequest">
@@ -212,6 +242,18 @@
 		<rdf:type rdf:resource="&oe-agtorch;EvidenceAssessment"/>
 		<rdfs:label xml:lang="en">evidence assessment (Jessica)</rdfs:label>
 		<skos:definition xml:lang="en">evidence assessment of Jessica&apos;s candidate supplements</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;evidenceAssessmentCitrate">
+		<rdf:type rdf:resource="&oe-agtorch;EvidenceAssessment"/>
+		<rdfs:label xml:lang="en">evidence assessment of magnesium citrate (Dante)</rdfs:label>
+		<skos:definition xml:lang="en">evidence assessment of the studies on magnesium citrate for sleep</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;evidenceAssessmentGlycinate">
+		<rdf:type rdf:resource="&oe-agtorch;EvidenceAssessment"/>
+		<rdfs:label xml:lang="en">evidence assessment of magnesium glycinate (Dante)</rdfs:label>
+		<skos:definition xml:lang="en">evidence assessment of the studies on magnesium glycinate for sleep</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;evidenceCoverageCriterion">
@@ -1084,6 +1126,18 @@
 		<skos:definition xml:lang="en">safety assessment of Jessica&apos;s candidate supplements against celecoxib</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;safetyAssessmentCitrate">
+		<rdf:type rdf:resource="&oe-agtorch;SafetyAssessment"/>
+		<rdfs:label xml:lang="en">safety assessment of magnesium citrate (Dante)</rdfs:label>
+		<skos:definition xml:lang="en">safety assessment of magnesium citrate from its adverse events, labels and recalls</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;safetyAssessmentGlycinate">
+		<rdf:type rdf:resource="&oe-agtorch;SafetyAssessment"/>
+		<rdfs:label xml:lang="en">safety assessment of magnesium glycinate (Dante)</rdfs:label>
+		<skos:definition xml:lang="en">safety assessment of magnesium glycinate from its adverse events, labels and recalls</skos:definition>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;safetyScreeningConstraint">
 		<rdf:type rdf:resource="&oe-agtorch;HardConstraint"/>
 		<rdfs:label xml:lang="en">safety screening against celecoxib (Jessica)</rdfs:label>
@@ -1096,7 +1150,9 @@
 		<rdfs:label xml:lang="en">screen interactions (magnesium citrate)</rdfs:label>
 		<skos:definition xml:lang="en">task that screens magnesium citrate for interactions</skos:definition>
 		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;interactionScreeningCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;candidateCitrate"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;supplementSafetyScreeningSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;safetyAssessmentCitrate"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;screenGlycinate">
@@ -1104,7 +1160,9 @@
 		<rdfs:label xml:lang="en">screen interactions (magnesium glycinate)</rdfs:label>
 		<skos:definition xml:lang="en">task that screens magnesium glycinate for interactions</skos:definition>
 		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;interactionScreeningCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;candidateGlycinate"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;supplementSafetyScreeningSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;safetyAssessmentGlycinate"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;screenInteractions">
@@ -1271,7 +1329,12 @@
 		<rdfs:label xml:lang="en">synthesize evidence (Dante)</rdfs:label>
 		<skos:definition xml:lang="en">task that combines the evidence for both forms of magnesium into a comparison</skos:definition>
 		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;evidenceSynthesisCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;evidenceAssessmentCitrate"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;evidenceAssessmentGlycinate"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;safetyAssessmentCitrate"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;safetyAssessmentGlycinate"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceSynthesisSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;danteAnswer"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;toolUsageCriterion">
@@ -1298,7 +1361,9 @@
 		<rdfs:label xml:lang="en">verify evidence (magnesium citrate)</rdfs:label>
 		<skos:definition xml:lang="en">task that verifies the scientific evidence for magnesium citrate</skos:definition>
 		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;candidateCitrate"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;evidenceAssessmentCitrate"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;verifyEvidenceForKen">
@@ -1316,7 +1381,9 @@
 		<rdfs:label xml:lang="en">verify evidence (magnesium glycinate)</rdfs:label>
 		<skos:definition xml:lang="en">task that verifies the scientific evidence for magnesium glycinate</skos:definition>
 		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;candidateGlycinate"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;evidenceAssessmentGlycinate"/>
 	</owl:NamedIndividual>
 	
 	<owl:AnnotationProperty rdf:about="&cmns-av;copyright">
@@ -1631,6 +1698,22 @@
 			<rdf:Description rdf:about="&oe-agtorch-ind;verifyEvidenceForKen">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch-ind;verifyEvidenceGlycinate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;candidateGlycinate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;candidateCitrate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;evidenceAssessmentGlycinate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;evidenceAssessmentCitrate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;safetyAssessmentGlycinate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;safetyAssessmentCitrate">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;danteAnswer">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;danteExecutionTimeCriterion">
 			</rdf:Description>
 		</owl:distinctMembers>
 	</owl:AllDifferent>
