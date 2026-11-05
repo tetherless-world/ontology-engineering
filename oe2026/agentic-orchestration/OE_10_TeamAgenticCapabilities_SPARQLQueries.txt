@@ -557,3 +557,44 @@ WHERE {
   }
 }
 ORDER BY ?preconditionLabel ?requiredInputLabel
+
+# CQ 7
+
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
+PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
+
+SELECT DISTINCT ?plan ?planStatus ?hardConstraint ?softConstraint ?criterion ?criterionPriority ?rank ?score ?toolCalls ?evidenceCoverage
+WHERE {
+  ?plan oe-agtorch:addresses oe-agtorch-ind:oliviaRequest .
+  ?plan a oe-agtorch:CandidateOrchestrationPlan .
+  OPTIONAL { ?plan a oe-agtorch:RejectedOrchestrationPlan . oe-agtorch:RejectedOrchestrationPlan rdfs:label ?planStatus . }
+  OPTIONAL { ?plan a oe-agtorch:SelectedOrchestrationPlan . oe-agtorch:SelectedOrchestrationPlan rdfs:label ?planStatus . }
+  # Part 1: hard constraints of Olivia's request that the plan violates
+  {
+    ?plan oe-agtorch:violatesConstraint ?hardConstraint .
+    oe-agtorch-ind:oliviaRequest oe-agtorch:hasHardConstraint ?hardConstraint .
+  }
+  UNION
+  # Part 2: soft constraints of Olivia's request used to evaluate the plan
+  {
+    oe-agtorch-ind:oliviaRequest oe-agtorch:hasSoftConstraint ?softConstraint .
+    ?softConstraint oe-agtorch:isMeasuredBy ?criterion .
+    ?softConstraint oe-agtorch:hasPriority ?criterionPriority .
+    ?evaluation oe-agtorch:evaluates ?plan .
+    ?evaluation oe-agtorch:usesCriterion ?criterion .
+    ?evaluation oe-agtorch:hasRank ?rank .
+    ?evaluation oe-agtorch:hasScore ?score .
+    OPTIONAL {
+      ?evaluation oe-agtorch:hasMeasurement ?toolCallMeasurement .
+      ?toolCallMeasurement a oe-agtorch:ToolCallCount .
+      ?toolCallMeasurement oe-agtorch:hasValue ?toolCalls .
+    }
+    OPTIONAL {
+      ?evaluation oe-agtorch:hasMeasurement ?coverageMeasurement .
+      ?coverageMeasurement a oe-agtorch:EvidenceCoverage .
+      ?coverageMeasurement oe-agtorch:hasValue ?evidenceCoverage .
+    }
+  }
+}
+ORDER BY ?rank ?plan ?hardConstraint ?softConstraint
