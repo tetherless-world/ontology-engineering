@@ -6,6 +6,7 @@
 	<!ENTITY oe-agtorch "https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/">
 	<!ENTITY oe-agtorch-ind "https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY process "http://www.daml.org/services/owl-s/1.2/Process.owl#">
 	<!ENTITY prov "http://www.w3.org/ns/prov#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
@@ -19,6 +20,7 @@
 	xmlns:oe-agtorch="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/"
 	xmlns:oe-agtorch-ind="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
 	xmlns:prov="http://www.w3.org/ns/prov#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -95,6 +97,7 @@
 		<rdf:type rdf:resource="&oe-agtorch;CandidateSupplement"/>
 		<rdfs:label xml:lang="en">candidate supplements (Jessica)</rdfs:label>
 		<skos:definition xml:lang="en">candidate supplement list produced for Jessica&apos;s request</skos:definition>
+		<oe-agtorch:fills rdf:resource="&oe-agtorch-ind;evidenceSupplementsParameter"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;d1">
@@ -219,6 +222,13 @@
 		<oe-agtorch:hasWeight rdf:datatype="&xsd;decimal">1.0</oe-agtorch:hasWeight>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;evidenceSupplementsParameter">
+		<rdf:type rdf:resource="&oe-agtorch;Parameter"/>
+		<rdfs:label xml:lang="en">supplements parameter (evidence verification skill)</rdfs:label>
+		<skos:definition xml:lang="en">required parameter of the evidence verification skill that takes the supplements whose evidence is checked</skos:definition>
+		<oe-agtorch:isRequired rdf:datatype="&xsd;boolean">true</oe-agtorch:isRequired>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;evidenceSynthesisCapability">
 		<rdf:type rdf:resource="&oe-agtorch;ContentGeneration"/>
 		<rdfs:label xml:lang="en">evidence synthesis capability</rdfs:label>
@@ -257,6 +267,7 @@
 		<rdfs:label xml:lang="en">evidence verification skill</rdfs:label>
 		<skos:definition xml:lang="en">skill that verifies the scientific evidence for a supplement</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
+		<oe-agtorch:hasPrecondition rdf:resource="&oe-agtorch-ind;pubmedReachablePrecondition"/>
 		<oe-agtorch:usesTool rdf:resource="&oe-agtorch-ind;pubmedDownloadArticlesTool"/>
 		<oe-agtorch:usesTool rdf:resource="&oe-agtorch-ind;pubmedSearchArticlesTool"/>
 	</owl:NamedIndividual>
@@ -332,6 +343,12 @@
 		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;safetyScreeningConstraint"/>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaAgent">
+		<rdf:type rdf:resource="&agento;LLMAgent"/>
+		<rdfs:label xml:lang="en">Jessica&apos;s supplement agent</rdfs:label>
+		<skos:definition xml:lang="en">LLM agent that carries out Jessica&apos;s orchestration plan</skos:definition>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaAnswer">
 		<rdf:type rdf:resource="&oe-agtorch;Answer"/>
 		<rdfs:label xml:lang="en">recommendation for Jessica</rdfs:label>
@@ -377,6 +394,21 @@
 		<oe-agtorch:violatesConstraint rdf:resource="&oe-agtorch-ind;safetyScreeningConstraint"/>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaPubmedCheckInvocation">
+		<rdf:type rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:label xml:lang="en">PubMed reachability check (Jessica)</rdfs:label>
+		<skos:definition xml:lang="en">invocation in which Jessica&apos;s agent checked that the PubMed MCP server can be reached</skos:definition>
+		<prov:wasAssociatedWith rdf:resource="&oe-agtorch-ind;jessicaAgent"/>
+		<oe-agtorch:confirmsPrecondition rdf:resource="&oe-agtorch-ind;pubmedReachablePrecondition"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaQueryInvocation">
+		<rdf:type rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:label xml:lang="en">search query formulation (Jessica)</rdfs:label>
+		<skos:definition xml:lang="en">invocation in which Jessica&apos;s agent turned her request into a PubMed search query</skos:definition>
+		<prov:wasAssociatedWith rdf:resource="&oe-agtorch-ind;jessicaAgent"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaRequest">
 		<rdf:type rdf:resource="&oe-agtorch;Request"/>
 		<rdfs:label xml:lang="en">Jessica&apos;s request</rdfs:label>
@@ -392,6 +424,24 @@
 		<rdfs:label xml:lang="en">Jessica&apos;s safety screening setting</rdfs:label>
 		<skos:definition xml:lang="en">preference setting in which Jessica asks to screen supplements against her current medication</skos:definition>
 		<prov:wasAttributedTo rdf:resource="&oe-agtorch-ind;Jessica"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaSearchQuery">
+		<rdf:type rdf:resource="&oe-agtorch;SearchQuery"/>
+		<rdfs:label xml:lang="en">evidence search query (Jessica)</rdfs:label>
+		<skos:definition xml:lang="en">PubMed search query for evidence on supplements that support joint health, written from Jessica&apos;s request</skos:definition>
+		<prov:wasDerivedFrom rdf:resource="&oe-agtorch-ind;jessicaRequest"/>
+		<prov:wasGeneratedBy rdf:resource="&oe-agtorch-ind;jessicaQueryInvocation"/>
+		<oe-agtorch:fills rdf:resource="&oe-agtorch-ind;pubmedQueryParameter"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaTrace">
+		<rdf:type rdf:resource="&oe-agtorch;ExecutionTrace"/>
+		<rdfs:label xml:lang="en">execution trace (Jessica)</rdfs:label>
+		<skos:definition xml:lang="en">execution trace of Jessica&apos;s orchestration plan at the moment the agent is about to run the evidence verification skill; it records the invocation that confirmed the PubMed MCP server is reachable and the invocation that wrote the search query</skos:definition>
+		<skos:scopeNote xml:lang="en">Test for competency question 9: the personalized supplement recommendation step has not run yet, so the candidate supplements have no generation record and the evidence verification skill is not ready.</skos:scopeNote>
+		<oe-agtorch:records rdf:resource="&oe-agtorch-ind;jessicaPubmedCheckInvocation"/>
+		<oe-agtorch:records rdf:resource="&oe-agtorch-ind;jessicaQueryInvocation"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s1">
@@ -972,9 +1022,23 @@
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;pubmedQueryParameter">
+		<rdf:type rdf:resource="&oe-agtorch;Parameter"/>
+		<rdfs:label xml:lang="en">query parameter (PubMed search_articles)</rdfs:label>
+		<skos:definition xml:lang="en">required parameter of the PubMed search_articles tool that takes the search terms</skos:definition>
+		<oe-agtorch:isRequired rdf:datatype="&xsd;boolean">true</oe-agtorch:isRequired>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;pubmedReachablePrecondition">
+		<rdf:type rdf:resource="&oe-agtorch;Precondition"/>
+		<rdfs:label xml:lang="en">PubMed MCP server is reachable</rdfs:label>
+		<skos:definition xml:lang="en">precondition of the evidence verification skill that the PubMed MCP server can be reached</skos:definition>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;pubmedSearchArticlesTool">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
 		<rdfs:label xml:lang="en">PubMed article search tool</rdfs:label>
+		<process:hasParameter rdf:resource="&oe-agtorch-ind;pubmedQueryParameter"/>
 		<skos:altLabel>search_articles</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the PubMed MCP server that searches PubMed for articles matching a query and returns their PubMed identifiers</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
@@ -1224,6 +1288,7 @@
 		<skos:definition xml:lang="en">task that verifies the scientific evidence for Jessica&apos;s candidate supplements</skos:definition>
 		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
 		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;candidates"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;jessicaSearchQuery"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
 		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;evidenceAssessment"/>
 	</owl:NamedIndividual>
@@ -1266,6 +1331,22 @@
 			<rdf:Description rdf:about="&oe-agtorch-ind;Ken">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch-ind;Olivia">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;jessicaAgent">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;jessicaTrace">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;jessicaPubmedCheckInvocation">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;jessicaQueryInvocation">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;jessicaSearchQuery">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;pubmedQueryParameter">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;evidenceSupplementsParameter">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch-ind;pubmedReachablePrecondition">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch-ind;candidates">
 			</rdf:Description>

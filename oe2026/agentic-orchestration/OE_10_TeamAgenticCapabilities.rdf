@@ -905,6 +905,14 @@
 		<skos:definition xml:lang="en">relation from an orchestration plan to the request it is intended to handle</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;confirmsPrecondition">
+		<rdfs:label xml:lang="en">confirms precondition</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;Invocation"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Precondition"/>
+		<skos:definition xml:lang="en">relation from an invocation to a precondition that the invocation checked and found to hold</skos:definition>
+		<skos:scopeNote xml:lang="en">A precondition holds in an agent&apos;s current phase of orchestration when the execution trace records an invocation that confirms it. Competency question 9 uses it, with prov:wasGeneratedBy for required inputs, to decide whether a skill is ready to execute. Under OWL&apos;s open-world semantics, an unconfirmed precondition is unknown, not false.</skos:scopeNote>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;conflictsWith">
 		<rdfs:label xml:lang="en">conflicts with</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;SoftConstraint"/>
