@@ -1127,10 +1127,18 @@
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasReason -->
 
     <owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/hasReason">
-        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CollectiveJudgmentFormationConversationMoveRelationship"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CollectiveJudgmentFormationConversationMoveRelationship"/>
+                    <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:label>has reason</rdfs:label>
-        <skos:definition>has the explanation of how conversational evidence establishes an annotated relationship recorded as</skos:definition>
+        <skos:definition>has the explanation of how conversational evidence establishes an annotated relationship or state assignment recorded as</skos:definition>
+        <skos:scopeNote>For state assignments, this property is used when conversational evidence directly establishes a state change without an associated relationship that explains the change.</skos:scopeNote>
     </owl:DatatypeProperty>
     
 
