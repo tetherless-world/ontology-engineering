@@ -308,6 +308,12 @@
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;UserConstraint"/>
 		<rdfs:label xml:lang="en">hard constraint</rdfs:label>
 		<owl:disjointWith rdf:resource="&oe-agtorch;SoftConstraint"/>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;isHardConstraint"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">user constraint that an acceptable orchestration plan must satisfy</skos:definition>
 	</owl:Class>
 	
@@ -592,6 +598,12 @@
 	
 	<owl:Class rdf:about="&oe-agtorch;PreferenceSetting">
 		<rdfs:label xml:lang="en">preference setting</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;isPreferenceSetting"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">configuration item expressing a user preference that can be used to derive a user constraint</skos:definition>
 	</owl:Class>
 	
@@ -635,6 +647,12 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">request</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;isRequest"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">user input that expresses a task, action, or information need for an agent to address</skos:definition>
 		<skos:scopeNote xml:lang="en">A request expresses at least one information requirement and is addressed by at most one selected orchestration plan.</skos:scopeNote>
 	</owl:Class>
@@ -745,6 +763,12 @@
 	<owl:Class rdf:about="&oe-agtorch;Skill">
 		<rdfs:label xml:lang="en">skill</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, version 1.1, Figure 7 (page 8); OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;isSkill"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">specification of a focused agent behavior that can be applied to perform a class of tasks</skos:definition>
 		<skos:scopeNote xml:lang="en">A reusable behavior specification, not an invocation. Included as a shared reference from Figure 3; Skill is not modeled as a subclass of Capability, following the conceptual model Figure 3 decision.</skos:scopeNote>
 	</owl:Class>
@@ -771,6 +795,12 @@
 	<owl:Class rdf:about="&oe-agtorch;SoftConstraint">
 		<rdfs:subClassOf rdf:resource="&oe-agtorch;UserConstraint"/>
 		<rdfs:label xml:lang="en">soft constraint</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;isSoftConstraint"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">user constraint that represents a preference or desirable condition that may be relaxed when evaluating an orchestration plan</skos:definition>
 	</owl:Class>
 	
@@ -811,6 +841,12 @@
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">tool</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
+		<owl:equivalentClass>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&oe-agtorch;isTool"/>
+				<owl:hasSelf rdf:datatype="&xsd;boolean">true</owl:hasSelf>
+			</owl:Restriction>
+		</owl:equivalentClass>
 		<skos:definition xml:lang="en">callable computational resource that performs a defined operation when invoked</skos:definition>
 	</owl:Class>
 	
@@ -978,7 +1014,28 @@
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasHardConstraint">
 		<rdfs:subPropertyOf rdf:resource="&oe-agtorch;hasUserConstraint"/>
 		<rdfs:label>has hard constraint</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;Request"/>
+		<rdfs:range rdf:resource="&oe-agtorch;HardConstraint"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;hasPreferenceSetting">
+			</rdf:Description>
+			<rdf:Description>
+				<owl:inverseOf rdf:resource="&prov;wasDerivedFrom"/>
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isHardConstraint">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;isRequest">
+			</rdf:Description>
+			<rdf:Description>
+				<owl:inverseOf rdf:resource="&prov;wasDerivedFrom"/>
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isHardConstraint">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
 		<skos:definition>a relation to a user&apos;s request that corresponds to a hard constraint</skos:definition>
+		<skos:scopeNote xml:lang="en">Inferred by two property chains: from a request to a hard constraint derived from a preference setting of the person the request is attributed to (through has preference setting), or derived from the request itself.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasMeasurement">
@@ -995,6 +1052,25 @@
 		<rdfs:range rdf:resource="&oe-agtorch;Precondition"/>
 		<skos:definition xml:lang="en">relation from a skill to a precondition that must hold before the skill can be validly applied</skos:definition>
 		<skos:scopeNote xml:lang="en">Tools use OWL-S process:hasPrecondition, whose domain is process:Process. This property serves skills, which are not processes, as in conceptual model Figure 3.</skos:scopeNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;hasPreferenceSetting">
+		<rdfs:label xml:lang="en">has preference setting</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;Request"/>
+		<rdfs:range rdf:resource="&oe-agtorch;PreferenceSetting"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;isRequest">
+			</rdf:Description>
+			<rdf:Description rdf:about="&prov;wasAttributedTo">
+			</rdf:Description>
+			<rdf:Description>
+				<owl:inverseOf rdf:resource="&prov;wasAttributedTo"/>
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isPreferenceSetting">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<skos:definition xml:lang="en">relation from a request to a preference setting of the person the request is attributed to</skos:definition>
+		<skos:scopeNote xml:lang="en">Inferred by a property chain: request, prov:wasAttributedTo, person, inverse of prov:wasAttributedTo, preference setting. The is request and is preference setting markers keep the chain from starting at a preference setting or ending at a request or another entity attributed to the same person.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasPriority">
@@ -1030,7 +1106,28 @@
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasSoftConstraint">
 		<rdfs:subPropertyOf rdf:resource="&oe-agtorch;hasUserConstraint"/>
 		<rdfs:label>has soft constraint</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;Request"/>
+		<rdfs:range rdf:resource="&oe-agtorch;SoftConstraint"/>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;hasPreferenceSetting">
+			</rdf:Description>
+			<rdf:Description>
+				<owl:inverseOf rdf:resource="&prov;wasDerivedFrom"/>
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isSoftConstraint">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-agtorch;isRequest">
+			</rdf:Description>
+			<rdf:Description>
+				<owl:inverseOf rdf:resource="&prov;wasDerivedFrom"/>
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isSoftConstraint">
+			</rdf:Description>
+		</owl:propertyChainAxiom>
 		<skos:definition>a relation to a user&apos;s request that corresponds to a soft constraint</skos:definition>
+		<skos:scopeNote xml:lang="en">Inferred by two property chains: from a request to a soft constraint derived from a preference setting of the person the request is attributed to (through has preference setting), or derived from the request itself.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasStep">
@@ -1071,6 +1168,8 @@
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasUserConstraint">
 		<rdfs:label>has user constraint</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;Request"/>
+		<rdfs:range rdf:resource="&oe-agtorch;UserConstraint"/>
 		<skos:definition>a relation to a user&apos;s request that corresponds to a user constraint</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -1105,6 +1204,11 @@
 		<skos:definition xml:lang="en">links an invocation to the tool or skill specification executed by that occurrence</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isHardConstraint">
+		<rdfs:label xml:lang="en">is hard constraint</rdfs:label>
+		<skos:definition xml:lang="en">marker relation from every hard constraint to itself; HardConstraint is equivalent to (isHardConstraint Self), so a property chain can require that one of its elements is a hard constraint</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;isMeasuredBy">
 		<rdfs:label xml:lang="en">is measured by</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;SoftConstraint"/>
@@ -1120,6 +1224,16 @@
 		<skos:definition xml:lang="en">links a tool invocation to the skill invocation that made that tool call</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isPreferenceSetting">
+		<rdfs:label xml:lang="en">is preference setting</rdfs:label>
+		<skos:definition xml:lang="en">marker relation from every preference setting to itself; PreferenceSetting is equivalent to (isPreferenceSetting Self), so a property chain can require that one of its elements is a preference setting</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isRequest">
+		<rdfs:label xml:lang="en">is request</rdfs:label>
+		<skos:definition xml:lang="en">marker relation from every request to itself; Request is equivalent to (isRequest Self), so a property chain can require that one of its elements is a request</skos:definition>
+	</owl:ObjectProperty>
+	
 	<owl:DatatypeProperty rdf:about="&oe-agtorch;isRequired">
 		<rdfs:label xml:lang="en">is required</rdfs:label>
 		<dct:source xml:lang="en">OE_5_TeamAgenticCapabilities_ConceptualModel.pdf, Figure 4; OE_5_TeamAgenticCapabilities_CuratedTermList.xlsx, Prioritized List.</dct:source>
@@ -1128,6 +1242,21 @@
 		<skos:definition xml:lang="en">boolean attribute of a parameter indicating whether an input must be supplied for invocation</skos:definition>
 		<skos:scopeNote xml:lang="en">true marks a required parameter and false an optional one. An absent assertion means unknown. This metadata does not perform runtime validation under OWL&apos;s open-world semantics.</skos:scopeNote>
 	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isSkill">
+		<rdfs:label xml:lang="en">is skill</rdfs:label>
+		<skos:definition xml:lang="en">marker relation from every skill to itself; Skill is equivalent to (isSkill Self), so a property chain can require that one of its elements is a skill</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isSoftConstraint">
+		<rdfs:label xml:lang="en">is soft constraint</rdfs:label>
+		<skos:definition xml:lang="en">marker relation from every soft constraint to itself; SoftConstraint is equivalent to (isSoftConstraint Self), so a property chain can require that one of its elements is a soft constraint</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-agtorch;isTool">
+		<rdfs:label xml:lang="en">is tool</rdfs:label>
+		<skos:definition xml:lang="en">marker relation from every tool to itself; Tool is equivalent to (isTool Self), so a property chain can require that one of its elements is a tool</skos:definition>
+	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;performedBySkill">
 		<rdfs:label xml:lang="en">performed by skill</rdfs:label>
@@ -1181,10 +1310,13 @@
 		<rdfs:domain rdf:resource="&oe-agtorch;Skill"/>
 		<rdfs:range rdf:resource="&oe-agtorch;HardConstraint"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description>
-				<owl:inverseOf rdf:resource="&oe-agtorch;hasCapability"/>
+			<rdf:Description rdf:about="&oe-agtorch;isSkill">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;hasCapability">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch;satisfiesConstraint">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isHardConstraint">
 			</rdf:Description>
 		</owl:propertyChainAxiom>
 		<skos:definition>a relationship that shows a skill satisfiying an hard constraint</skos:definition>
@@ -1195,8 +1327,9 @@
 		<rdfs:domain rdf:resource="&oe-agtorch;Skill"/>
 		<rdfs:range rdf:resource="&oe-agtorch;InformationRequirement"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description>
-				<owl:inverseOf rdf:resource="&oe-agtorch;hasCapability"/>
+			<rdf:Description rdf:about="&oe-agtorch;isSkill">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;hasCapability">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch;satisfiesRequirement">
 			</rdf:Description>
@@ -1209,10 +1342,13 @@
 		<rdfs:domain rdf:resource="&oe-agtorch;Tool"/>
 		<rdfs:range rdf:resource="&oe-agtorch;HardConstraint"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description>
-				<owl:inverseOf rdf:resource="&oe-agtorch;hasCapability"/>
+			<rdf:Description rdf:about="&oe-agtorch;isTool">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;hasCapability">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch;satisfiesConstraint">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;isHardConstraint">
 			</rdf:Description>
 		</owl:propertyChainAxiom>
 		<skos:definition>a relationship that shows a tool satisfiying a hard constraint</skos:definition>
@@ -1223,8 +1359,9 @@
 		<rdfs:domain rdf:resource="&oe-agtorch;Tool"/>
 		<rdfs:range rdf:resource="&oe-agtorch;InformationRequirement"/>
 		<owl:propertyChainAxiom rdf:parseType="Collection">
-			<rdf:Description>
-				<owl:inverseOf rdf:resource="&oe-agtorch;hasCapability"/>
+			<rdf:Description rdf:about="&oe-agtorch;isTool">
+			</rdf:Description>
+			<rdf:Description rdf:about="&oe-agtorch;hasCapability">
 			</rdf:Description>
 			<rdf:Description rdf:about="&oe-agtorch;satisfiesRequirement">
 			</rdf:Description>
