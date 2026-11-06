@@ -1,0 +1,29 @@
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT DISTINCT ?issue ?summary ?stateclass ?turn ?speaker_name ?evidence
+WHERE {
+    # CQ2 asks only for Issues whose current state is Addressed or Resolved
+    VALUES ?stateclass { cjf:Addressed cjf:Resolved }
+
+    ?issue a cjf:Issue ;
+           cjf:hasSummary ?summary ;
+           cjf:hasCurrentStateAssignment ?stateassignment .
+    ?stateassignment cjf:assignedState ?state .
+    ?state a ?stateclass .
+
+    # Resolved is a subclass of Addressed, so a Resolved state is also Addressed; report only Resolved
+    FILTER (?stateclass = cjf:Resolved || NOT EXISTS { ?state a cjf:Resolved })
+
+    # evidence: text spans of the relationships that triggered the current assignment
+    ?stateassignment cjf:hasTriggeringRelationship ?relation .
+    ?relation sio:SIO_000206 ?text_span .                  # sio:isSupportedBy
+    ?text_span cjf:hasConversationText ?evidence ;
+               cjf:isPartOfUtterance ?utterance .
+    ?utterance cjf:hasTurnNumber ?turn ;
+               prov:wasAttributedTo ?speaker .
+    ?speaker cjf:hasSpeakerName ?speaker_name .
+}
+ORDER BY ?issue ?turn
