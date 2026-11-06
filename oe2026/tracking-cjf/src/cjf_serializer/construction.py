@@ -348,11 +348,11 @@ class Builder:
             if not reason:
                 raise InputValidationError(f"Relationships row {row['excel_row']}: reason required")
             relationship = None
+            if mapping.get("same_type") and self.moves[source_id]["kind"] != self.moves[target_id]["kind"]:
+                raise InputValidationError("refines requires moves of the same type")
             if mapping.get("property"):
                 prop = self.require(mapping["property"])
                 self.endpoint(source, prop, RDFS.domain); self.endpoint(target, prop, RDFS.range)
-                if mapping.get("same_type") and self.moves[source_id]["kind"] != self.moves[target_id]["kind"]:
-                    raise InputValidationError("refines requires moves of the same type")
                 self.graph.add((source, prop, target))
             else:
                 relationship = self.typed(self.iri("Relationship_" + stable(identity)), mapping["class"])
