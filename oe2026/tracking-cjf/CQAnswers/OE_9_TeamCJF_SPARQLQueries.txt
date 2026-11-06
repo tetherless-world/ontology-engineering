@@ -1,5 +1,5 @@
 How to Run:
-1. Open the oe2026\tracking-cjf\ontology\OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf using protege (this file is built using the annotated file and running SHACL on it, 
+1. Open the oe2026\tracking-cjf\prev-ontology-versions\OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf using protege (this file is built using the annotated file and running SHACL on it, 
     check oe2026\tracking-cjf\ontology\run_outputs\commands_ran.txt)
 2. Run the reasoner on it
 3. Use the snap SPARQL (you need to use the SNAP SPARQL)
@@ -42,6 +42,29 @@ WHERE {
     }
 }
 ORDER BY ?move ?moveType
+
+CQ2: Which issues are currently addressed or resolved, and what evidence supports each current state?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+select distinct ?issues ?stateclass ?evidence
+where {
+    ?issues a cjf:Issue .
+    ?issues cjf:hasCurrentStateAssignment ?stateassignment .
+    ?stateassignment cjf:assignedState ?state .
+    ?state a ?stateclass
+
+    # remove the generic state class triples
+    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
+    ?stateassignment cjf:hasTriggeringRelationship ?relation .
+    
+    # sio:isSupportedBy
+    ?relation sio:SIO_000206 ?text_span . 
+    ?text_span cjf:hasConversationText ?evidence . 
+}
 
 CQ3: What Claims support or challenge Platform A? Are any of the Claims Supported?
 CQ3 part 1: What Claims support or challenge Platform A?

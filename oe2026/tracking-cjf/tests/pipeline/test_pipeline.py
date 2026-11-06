@@ -19,7 +19,7 @@ from cjf_serializer.cli import main
 
 C = Namespace("https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/")
 ROOT = Path(__file__).resolve().parents[2]
-REAL_SCHEMA = ROOT / "ontology/OE_9_TeamCJF.rdf"
+REAL_SCHEMA = ROOT / "ontology/OE_10_TeamCJF.rdf"
 
 
 def xlsx(path, sheets):
