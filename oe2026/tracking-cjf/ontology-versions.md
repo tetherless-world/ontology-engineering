@@ -11,7 +11,7 @@ Each snapshot link identifies an immutable Git commit in the project repository.
 
 ## Downloadable Versions
 
-- **OE Week 10:** [Schema](ontology/OE_10_TeamCJF.rdf), [annotated individuals](ontology/OE_10_TeamCJF_Individuals.rdf), and [individuals with current assignments](ontology/OE_10_TeamCJF_Individuals_CurrentStateAdded.rdf).
+- **OE Week 10:** [Schema](ontology/OE_10_TeamCJF.rdf), [annotated individuals](ontology/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf), and [individuals with current assignments](ontology/OE_10_TeamCJF_Individuals.rdf).
 - **OE Week 9:** [Schema](prev-ontology-versions/OE_9_TeamCJF.rdf), [annotated individuals](prev-ontology-versions/OE_9_TeamCJF_Individuals.rdf), and [individuals with current assignments](prev-ontology-versions/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf).
 - **OE Week 8:** [Schema](prev-ontology-versions/OE_8_TeamCJF.rdf) and [individuals](prev-ontology-versions/OE_8_TeamCJF_Individuals.rdf).
 

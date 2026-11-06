@@ -20,8 +20,8 @@ These files accompany the schema; they are not separate releases of the ontology
 
 | File | Purpose |
 | --- | --- |
-| [Annotated CQ sample individuals](ontology/OE_10_TeamCJF_Individuals.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
-| [CQ sample individuals with current assignments](ontology/OE_10_TeamCJF_Individuals_CurrentStateAdded.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ3, and CQ5 |
+| [Annotated CQ sample individuals](ontology/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
+| [CQ sample individuals with current assignments](ontology/OE_10_TeamCJF_Individuals.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ3, and CQ5 |
 | [March 11 Group B individuals](ontology/mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
 | [Earlier conversation individuals](ontology/tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
 | [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |

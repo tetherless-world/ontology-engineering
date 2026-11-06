@@ -27,8 +27,8 @@ sources = json.loads(args.input_manifest.read_text())
 for path, expected in sources['input_sha256'].items():
     assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == expected, path
 
-asserted_path = Path('ontology/OE_10_TeamCJF_Individuals.rdf')
-current_path = Path('ontology/OE_10_TeamCJF_Individuals_CurrentStateAdded.rdf')
+asserted_path = Path('ontology/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf')
+current_path = Path('ontology/OE_10_TeamCJF_Individuals.rdf')
 asserted = Graph().parse(asserted_path, format='xml')
 current = Graph().parse(current_path, format='xml')
 assert not list(asserted.triples((None, C.hasCurrentStateAssignment, None)))
