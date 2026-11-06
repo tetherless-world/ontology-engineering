@@ -8,7 +8,7 @@ title: Demonstration and Queries
 
 ## Sample Conversation
 
-The demonstration uses the [CQ sample conversation individuals](ontology/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf) with the [current CJF schema](ontology/OE_9_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [current generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
+The demonstration uses the [CQ sample conversation individuals](prev-ontology-versions/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf) with the [OE Week 9 CJF schema](prev-ontology-versions/OE_9_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [current generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
 
 ## Running the Queries
 

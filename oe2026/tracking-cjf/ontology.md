@@ -10,7 +10,7 @@ toc: true
 
 ### Current CJF Ontology
 
-[Download OE_9_TeamCJF.rdf](ontology/OE_9_TeamCJF.rdf)
+[Download OE_10_TeamCJF.rdf](ontology/OE_10_TeamCJF.rdf)
 
 The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
 
@@ -20,8 +20,8 @@ These files accompany the schema; they are not separate releases of the ontology
 
 | File | Purpose |
 | --- | --- |
-| [Annotated CQ sample individuals](ontology/OE_9_TeamCJF_Individuals.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
-| [CQ sample individuals with current assignments](ontology/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ3, and CQ5 |
+| [Annotated CQ sample individuals](ontology/OE_10_TeamCJF_Individuals.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
+| [CQ sample individuals with current assignments](ontology/OE_10_TeamCJF_Individuals_CurrentStateAdded.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ3, and CQ5 |
 | [March 11 Group B individuals](ontology/mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
 | [Earlier conversation individuals](ontology/tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
 | [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |
@@ -30,7 +30,7 @@ These files accompany the schema; they are not separate releases of the ontology
 
 ## Ontology Versions
 
-The [current schema](ontology/OE_9_TeamCJF.rdf) appears first above. See the [ontology version history](ontology-versions.html) for the current ontology and earlier versions. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
+The [current schema](ontology/OE_10_TeamCJF.rdf) appears first above. See the [ontology version history](ontology-versions.html) for the current ontology and earlier versions. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
 
 ## Conceptual Model
 

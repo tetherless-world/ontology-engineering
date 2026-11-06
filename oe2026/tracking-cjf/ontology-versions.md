@@ -5,13 +5,14 @@ title: Ontology Version History
 
 ## Ontology Version History
 
-The [current CJF ontology](ontology/OE_9_TeamCJF.rdf) is the schema distributed with this website. The table below lists every distinct committed schema version reachable in this project branch, newest first. The schema was renamed from `tracking-cjf.rdf` to `OE_8_TeamCJF.rdf`; older snapshot links retain the filename used at those commits. These are development snapshots rather than numbered releases. Repeated commits containing identical file content are listed once.
+The [current CJF ontology](ontology/OE_10_TeamCJF.rdf) is the schema distributed with this website. The table below lists every distinct committed schema version reachable in this project branch, newest first. The schema was renamed from `tracking-cjf.rdf` to `OE_8_TeamCJF.rdf`; older snapshot links retain the filename used at those commits. These are development snapshots rather than numbered releases. Repeated commits containing identical file content are listed once.
 
-Each snapshot link identifies an immutable Git commit in the project repository. The [current schema history](https://github.com/DevinDeSilva/ontology-engineering/commits/tracking-cjf/oe2026/tracking-cjf/ontology/OE_9_TeamCJF.rdf) also records intermediate changes and merges. Example individual files, SHACL rules, and reused ontologies are documented separately on the [ontology page](ontology.html#ontologies).
+Each snapshot link identifies an immutable Git commit in the project repository. The [current schema history](https://github.com/DevinDeSilva/ontology-engineering/commits/tracking-cjf/oe2026/tracking-cjf/ontology/OE_10_TeamCJF.rdf) also records intermediate changes and merges. Example individual files, SHACL rules, and reused ontologies are documented separately on the [ontology page](ontology.html#ontologies).
 
 ## Downloadable Versions
 
-- **OE Week 9:** [Schema](ontology/OE_9_TeamCJF.rdf), [annotated individuals](ontology/OE_9_TeamCJF_Individuals.rdf), and [individuals with current assignments](ontology/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf).
+- **OE Week 10:** [Schema](ontology/OE_10_TeamCJF.rdf), [annotated individuals](ontology/OE_10_TeamCJF_Individuals.rdf), and [individuals with current assignments](ontology/OE_10_TeamCJF_Individuals_CurrentStateAdded.rdf).
+- **OE Week 9:** [Schema](prev-ontology-versions/OE_9_TeamCJF.rdf), [annotated individuals](prev-ontology-versions/OE_9_TeamCJF_Individuals.rdf), and [individuals with current assignments](prev-ontology-versions/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf).
 - **OE Week 8:** [Schema](prev-ontology-versions/OE_8_TeamCJF.rdf) and [individuals](prev-ontology-versions/OE_8_TeamCJF_Individuals.rdf).
 
 ## Development Snapshots Through October 23, 2026
