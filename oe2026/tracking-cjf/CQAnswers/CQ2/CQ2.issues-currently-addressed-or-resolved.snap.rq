@@ -1,29 +1,20 @@
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
-PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
-SELECT DISTINCT ?issue ?summary ?stateclass ?turn ?speaker_name ?evidence
-WHERE {
-    # CQ2 asks only for Issues whose current state is Addressed or Resolved
-    VALUES ?stateclass { cjf:Addressed cjf:Resolved }
-
-    ?issue a cjf:Issue ;
-           cjf:hasSummary ?summary ;
-           cjf:hasCurrentStateAssignment ?stateassignment .
+select distinct ?issues ?stateclass ?evidence
+where {
+    ?issues a cjf:Issue .
+    ?issues cjf:hasCurrentStateAssignment ?stateassignment .
     ?stateassignment cjf:assignedState ?state .
-    ?state a ?stateclass .
+    ?state a ?stateclass
 
-    # Resolved is a subclass of Addressed, so a Resolved state is also Addressed; report only Resolved
-    FILTER (?stateclass = cjf:Resolved || NOT EXISTS { ?state a cjf:Resolved })
-
-    # evidence: text spans of the relationships that triggered the current assignment
+    # remove the generic state class triples
+    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
     ?stateassignment cjf:hasTriggeringRelationship ?relation .
-    ?relation sio:SIO_000206 ?text_span .                  # sio:isSupportedBy
-    ?text_span cjf:hasConversationText ?evidence ;
-               cjf:isPartOfUtterance ?utterance .
-    ?utterance cjf:hasTurnNumber ?turn ;
-               prov:wasAttributedTo ?speaker .
-    ?speaker cjf:hasSpeakerName ?speaker_name .
+    
+    # sio:isSupportedBy
+    ?relation sio:SIO_000206 ?text_span . 
+    ?text_span cjf:hasConversationText ?evidence . 
 }
-ORDER BY ?issue ?turn
