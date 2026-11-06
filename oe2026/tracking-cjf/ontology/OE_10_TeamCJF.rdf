@@ -735,7 +735,20 @@
         <skos:definition>represents an expression of a participant’s attitude toward</skos:definition>
         <skos:prefLabel>is aimed at position towards</skos:prefLabel>
     </owl:ObjectProperty>
-    
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isAimedAtRefines -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isAimedAtRefines">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isAimedAt"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Refinement"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/DeliberativeConversationMove"/>
+        <rdfs:label>is aimed at refines</rdfs:label>
+        <skos:definition>represents an extension, correction, or reformulation of the content of</skos:definition>
+        <skos:prefLabel>is aimed at refines</skos:prefLabel>
+    </owl:ObjectProperty>
+
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isAimedAtResolves -->
@@ -914,7 +927,20 @@
         <skos:definition>serves as the source of an expression of a participant’s attitude toward another conversation move, as represented by</skos:definition>
         <skos:prefLabel>makes position towards</skos:prefLabel>
     </owl:ObjectProperty>
-    
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makesRefines -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makesRefines">
+        <rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makes"/>
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/DeliberativeConversationMove"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Refinement"/>
+        <rdfs:label>makes refines</rdfs:label>
+        <skos:definition>serves as the source of an extension, correction, or reformulation of another conversation move, as represented by</skos:definition>
+        <skos:prefLabel>makes refines</skos:prefLabel>
+    </owl:ObjectProperty>
+
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makesResolves -->
@@ -968,6 +994,10 @@
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines">
         <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/DeliberativeConversationMove"/>
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/DeliberativeConversationMove"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makesRefines"/>
+            <rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isAimedAtRefines"/>
+        </owl:propertyChainAxiom>
         <rdfs:label>refines</rdfs:label>
         <skos:definition>extends, corrects, or reformulates the content of</skos:definition>
         <skos:prefLabel>refines</skos:prefLabel>
@@ -1925,7 +1955,18 @@
         <skos:definition>CJF conversation move relationship in which the source Expressed Position communicates a participant’s attitude toward the target deliberative conversation move</skos:definition>
         <skos:prefLabel>position</skos:prefLabel>
     </owl:Class>
-    
+
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Refinement -->
+
+    <owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Refinement">
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CollectiveJudgmentFormationConversationMoveRelationship"/>
+        <rdfs:label>refinement</rdfs:label>
+        <skos:definition>CJF conversation move relationship in which a source Claim, Option, or Issue extends, corrects, or reformulates the content of an earlier target conversation move of the same type</skos:definition>
+        <skos:prefLabel>refinement</skos:prefLabel>
+    </owl:Class>
+
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Rejected -->

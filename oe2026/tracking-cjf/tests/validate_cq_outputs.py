@@ -89,8 +89,9 @@ reified = {
     'answers': ('Answer', 'makesAnswers', 'isAimedAtAnswers'),
     'positionToward': ('Position', 'makesPositionTowards', 'isAimedAtPositionTowards'),
     'respondsTo': ('Response', 'makesRespondsTo', 'isAimedAtRespondsTo'),
+    'refines': ('Refinement', 'makesRefines', 'isAimedAtRefines'),
 }
-direct = {'selects': 'selects', 'isAbout': 'isAbout', 'refines': 'refines', 'alternativeTo': 'isAlternativeTo'}
+direct = {'selects': 'selects', 'isAbout': 'isAbout', 'alternativeTo': 'isAlternativeTo'}
 relationships, _ = read_worksheet(workbook, 'Relationships', set())
 checked_relationships = set()
 for row in relationships:
@@ -113,7 +114,7 @@ for row in relationships:
         assert next(asserted.objects(span, C.hasConversationText)) == next(asserted.objects(u, C.hasConversationText))
         actual_evidence.add(int(next(asserted.objects(u, C.hasTurnNumber))))
     assert actual_evidence == expected_evidence, row
-assert len(checked_relationships) == 86
+assert len(checked_relationships) == 88
 
 initial_map = {'Issue': C.Open, 'InformationRequest': C.Open, 'Claim': C.Unassessed, 'Option': C.UnderConsideration}
 all_assignments = set(asserted.subjects(RDF.type, C.StateAssignment))
@@ -169,7 +170,7 @@ assert (starters, candidates) == (54, 31)
 
 report = {
     'passed': True, 'turns': 28, 'speakers': 4, 'moves': 67,
-    'relationship_rows_verified': 98, 'reified_relationships': 86,
+    'relationship_rows_verified': 98, 'reified_relationships': 88,
     'starter_assignments': starters, 'generic_relationship_assignments': candidates,
     'human_transition_assignments': 0, 'current_assignment_links': len(added),
     'shacl_only_added_current_links': True, 'inputs_unchanged': True,
