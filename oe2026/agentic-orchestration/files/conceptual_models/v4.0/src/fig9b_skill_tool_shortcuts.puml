@@ -1,0 +1,18 @@
+@startuml fig9b_skill_tool_shortcuts
+!include style.iuml
+skinparam nodesep 110
+skinparam ranksep 75
+
+class InformationRequirement
+class Skill
+class Tool
+class HardConstraint
+
+Skill .up.> InformationRequirement : /skillSatisfiesRequirement
+Tool .up.> InformationRequirement : /toolSatisfiesRequirement
+Skill ..> HardConstraint : /skillSatisfiesHardConstraint
+Tool ..> HardConstraint : /toolSatisfiesHardConstraint
+Skill --> Skill : isSkill
+Tool --> Tool : isTool
+HardConstraint --> HardConstraint : isHardConstraint
+@enduml

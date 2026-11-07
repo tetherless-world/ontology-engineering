@@ -5,8 +5,9 @@ title: About
 
 ## Ontology-Guided Agentic Tool and Skill Orchestration
 
-Team AgenticCapabilities: Gia Oriana Santos, Barbara Kotlan, Jiaying (Michael) Wang, Jialin (Gary) Fang and
-Elioenai Lincon Guedes Alves.
+Team AgenticCapabilities: [Gia Oriana Santos](https://github.com/haimgia),
+[Barbara Kotlan](https://github.com/barbarakotlan), [Jiaying (Michael) Wang](https://github.com/QuellaMC),
+[Jialin (Gary) Fang](https://github.com/1jifang) and Elioenai Lincon Guedes Alves.
 
 ## Abstract
 
@@ -38,7 +39,7 @@ figures.
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td><a href="OE_9_TeamAgenticCapabilities.rdf">OE_9_TeamAgenticCapabilities.rdf</a> and its <a href="OE_9_TeamAgenticCapabilities_Individuals.rdf">individuals</a> (RDF/XML), described on the <a href="ontology.html">Concept Map &amp; Ontology</a> page</td>
+    <td><a href="OE_10_TeamAgenticCapabilities.rdf">OE_10_TeamAgenticCapabilities.rdf</a> and its <a href="OE_10_TeamAgenticCapabilities_Individuals.rdf">individuals</a> (RDF/XML), described on the <a href="ontology.html">Concept Map &amp; Ontology</a> page</td>
   </tr>
   <tr>
     <td>2. Use Case</td>
@@ -50,7 +51,7 @@ figures.
   </tr>
   <tr>
     <td>4. Competency Question Queries</td>
-    <td><a href="demo.html">SPARQL queries and answers</a> for CQ 1, CQ 3 and CQ 5, and the <a href="OE_9_TeamAgenticCapabilities_SPARQLQueries.txt">query file</a> to run in Protégé</td>
+    <td><a href="demo.html">SPARQL queries and answers</a> for all nine competency questions, and the <a href="OE_10_TeamAgenticCapabilities_Queries.txt">query file</a> to run in Protégé</td>
   </tr>
   <tr>
     <td>5. Presentations</td>

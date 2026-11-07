@@ -1,0 +1,21 @@
+@startuml fig1a_overview_requests
+!include style.iuml
+skinparam nodesep 60
+skinparam ranksep 60
+class OrchestrationPlan #EDEDED
+class "Task" as Task <<AgentO>> #EDEDED
+class "Constraint" as Constraint <<AgentO>>
+class Request
+class "Capability" as Capability <<AgentO>>
+class InformationRequirement
+class Skill
+class Tool
+OrchestrationPlan --> Constraint : satisfiesConstraint
+OrchestrationPlan --> Request : addresses
+Task --> Capability : agento:requiresCapability
+Request --> InformationRequirement : expresses
+Capability --> InformationRequirement : satisfiesRequirement
+Capability <-- Skill : hasCapability
+Capability <-- Tool : hasCapability
+Skill -right-> Tool : usesTool
+@enduml
