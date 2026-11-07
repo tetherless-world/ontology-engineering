@@ -1,0 +1,137 @@
+# ONTOLOGY ENGINEERING — ASSIGNMENT 9 — TEAM CJF
+# CQ3 queries — Matthew — updated for Tiziana's October 29 feedback
+# CQ3: Which Claims or Issues support or challenge Platform A, and which of
+#      those Claims are currently Supported?
+#
+# Run ONE SELECT query at a time in Protégé 5.6.9 / Snap SPARQL Query.
+# Active ontology: ontology/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf
+# Imports: ontology/OE_9_TeamCJF.rdf
+# Platform A: sample:Move_OCT21_A-M0003
+# Query A1/A2 — Reasoner: None. Query B1/B2 — Reasoner: HermiT (active).
+# The ?summary field is the actual source utterance/text-span, not a separately
+# authored human summary. A single move may have multiple text spans.
+#
+# OBSERVED TESTS, OCTOBER 29 2026, CURRENT GENERATED INDIVIDUALS:
+# A1 = 6 rows/6 Claims; A2 = 7 rows/6 moves (M0050 has two text spans).
+# B1 = 5 supporting Claims in state Supported: M0004, M0008, M0018, M0038, M0060.
+# B2 = 1 challenging Claim in state Supported: M0013.
+# M0019 supports Platform A but its current state was typed Unassessed.
+#
+# ---------------------------------------------------------------------------
+# CQ3-A1: Conversation moves that explicitly SUPPORT Platform A
+# Observed: 6 rows, all Claim; Reasoner: None.
+# ---------------------------------------------------------------------------
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
+
+SELECT DISTINCT ?move ?moveType ?summary
+WHERE {
+    ?move cjf:makesSupports ?relationship .
+    ?relationship cjf:isAimedAtSupports sample:Move_OCT21_A-M0003 .
+    ?move rdf:type ?moveType .
+    FILTER (?moveType = cjf:Claim || ?moveType = cjf:Issue)
+    OPTIONAL {
+        ?move sio:SIO_000206 ?textSpan .
+        ?textSpan cjf:hasConversationText ?summary .
+    }
+}
+ORDER BY ?move
+
+
+# ---------------------------------------------------------------------------
+# CQ3-A2: Conversation moves that explicitly CHALLENGE Platform A
+# Observed: 7 text evidence rows, 6 distinct moves; Reasoner: None.
+# M0050 appears twice because it links to two separate text spans.
+# ---------------------------------------------------------------------------
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
+
+SELECT DISTINCT ?move ?moveType ?summary
+WHERE {
+    ?move cjf:makesChallenges ?relationship .
+    ?relationship cjf:isAimedAtChallenges sample:Move_OCT21_A-M0003 .
+    ?move rdf:type ?moveType .
+    FILTER (?moveType = cjf:Claim || ?moveType = cjf:Issue)
+    OPTIONAL {
+        ?move sio:SIO_000206 ?textSpan .
+        ?textSpan cjf:hasConversationText ?summary .
+    }
+}
+ORDER BY ?move
+
+
+# ---------------------------------------------------------------------------
+# CQ3-B1: Which Claims SUPPORTING Platform A currently have state Supported?
+# Observed: 5 results: M0004, M0008, M0018, M0038, M0060.
+# Reasoner: HermiT active. This observation alone does not prove which of the
+# Supported classifications are asserted versus newly inferred.
+# ---------------------------------------------------------------------------
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?move ?state
+WHERE {
+    ?move cjf:makesSupports ?relationship .
+    ?relationship cjf:isAimedAtSupports sample:Move_OCT21_A-M0003 .
+    ?move rdf:type cjf:Claim .
+    ?move cjf:hasCurrentStateAssignment ?assignment .
+    ?assignment cjf:assignedState ?state .
+    ?state rdf:type cjf:Supported .
+}
+ORDER BY ?move
+
+
+# ---------------------------------------------------------------------------
+# CQ3-B2: Which Claims CHALLENGING Platform A currently have state Supported?
+# Observed: 1 result: M0013.
+# Reasoner: HermiT active.
+# ---------------------------------------------------------------------------
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?move ?state
+WHERE {
+    ?move cjf:makesChallenges ?relationship .
+    ?relationship cjf:isAimedAtChallenges sample:Move_OCT21_A-M0003 .
+    ?move rdf:type cjf:Claim .
+    ?move cjf:hasCurrentStateAssignment ?assignment .
+    ?assignment cjf:assignedState ?state .
+    ?state rdf:type cjf:Supported .
+}
+ORDER BY ?move
+
+
+# ---------------------------------------------------------------------------
+# OPTIONAL reasoning demonstration C1: direct inferred supports property
+# Adapted to new sample: IRIs. NOT RE-TESTED against the regenerated A9 file.
+# Prior pre-regeneration version: with None 0, with HermiT 6.
+# ---------------------------------------------------------------------------
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+
+SELECT DISTINCT ?move
+WHERE {
+    ?move cjf:supports sample:Move_OCT21_A-M0003 .
+}
+ORDER BY ?move
+
+
+# ---------------------------------------------------------------------------
+# OPTIONAL reasoning demonstration C2: direct inferred challenges property
+# Adapted to new sample: IRIs. NOT RE-TESTED against the regenerated A9 file.
+# Prior pre-regeneration version: HermiT returned 6 moves.
+# ---------------------------------------------------------------------------
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+
+SELECT DISTINCT ?move
+WHERE {
+    ?move cjf:challenges sample:Move_OCT21_A-M0003 .
+}
+ORDER BY ?move

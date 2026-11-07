@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://saref.etsi.org/core/"
+     xml:base="https://saref.etsi.org/core/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://saref.etsi.org/core/">
+        <owl:versionIRI rdf:resource="https://saref.etsi.org/core/v4.1.1/"/>
+        <dcterms:creator rdf:resource="http://maxime-lefrancois.info/me#"/>
+        <dcterms:creator rdf:resource="http://www.garcia-castro.com/foaf.rdf#me"/>
+        <dcterms:creator rdf:resource="https://w3id.org/people/mpoveda/"/>
+        <dcterms:creator rdf:resource="https://www.linkedin.com/in/bouterca"/>
+        <dcterms:creator rdf:resource="https://www.linkedin.com/in/giulia-biagioni"/>
+        <dcterms:creator rdf:resource="https://www.linkedin.com/in/lauradaniele"/>
+        <dcterms:creator rdf:resource="https://www.linkedin.com/in/david-gnabasik-0056a0ba/"/>
+        <dcterms:description xml:lang="en">The Smart Applications REFerence ontology (SAREF) is intended to enable interoperability between solutions from different providers and among various activity sectors in the Internet of Things (IoT), thus contributing to the development of the global digital market.</dcterms:description>
+        <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-31</dcterms:issued>
+        <dcterms:license rdf:resource="https://forge.etsi.org/etsi-software-license"/>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-06</dcterms:modified>
+        <dcterms:publisher rdf:resource="https://www.etsi.org/"/>
+        <dcterms:source rdf:resource="https://saref.etsi.org/sources/saref-core/"/>
+        <dcterms:title xml:lang="en">SAREF: the Smart Applications REFerence ontology</dcterms:title>
+        <vann:preferredNamespacePrefix>saref</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://saref.etsi.org/core/</vann:preferredNamespaceUri>
+        <rdfs:comment>Information about changes to version 2.1.1:
+
+- The classes and properties related to how to represent devices in building spaces (such as the saref:BuildingSpace class,  saref:BuildingObject class and saref:isLocatedIn property) have been removed from SAREF and incorporated  into the SAREF4BLDG extension related to buildings, including the reuse of the W3C? WGS84 geo positioning vocabulary.
+- The saref:DeviceCategory and saref:FunctionCategory classes have been removed. Instead, the hierarchy of device categories has been implemented directly as subclasses of the saref:Device class.
+- The information specific for energy efficiency has been moved to the SAREF4ENER extension. For example, the saref:Profile class has been redefined to accommodate only the properties that are general enough for any type of profile, not only for energy and power. Details on how to specifically model a power profile can be found in the SAREF4ENER extension. 
+- The subclasses of the saref:Energy class  have been removed (i.e., Average Energy, Maximum Energy, Minimum Energy, Total Energy, HVAC Energy, Hot Water Energy and Lighting Energy).
+- The saref:Property class has been split into two classes (saref:Property and saref:Measurement), as it is done in the SAREF4ENVI extension, in order to properly accommodate the distinction between the concept of property (an observable quality of something) and the concept of measurement (a concrete value observed for a property).
+- Too restrictive cardinality restrictions have been revised, sometimes making them optional rather than mandatory (better to make properties mandatory in the extensions that specialize SAREF for a specific purpose, rather than restricting SAREF, whose purpose is more general). For example, definitions of units of measurement using an enumeration (owl:oneOf) were too restrictive because they did not allow using other units than those enumerated. Therefore, the individuals of each class are still there, but the owl:oneOf enumeration has been removed.
+- The saref:UnitOfMeasure subclasses use individuals from the OM ontology for unit of measures, but this is not the only solution. It has been clarified in the comments that the OM ontology is an example, but other ontologies can be used.
+- The global restrictions (rdfs:domain and rdfs:range) in object properties have been completely removed not to hinder interoperability. Object properties are now only restricted locally in the classes. 
+- The subclasses of saref:Task have been transormed in individuals.
+- The saref:hasTask property has been removed from the saref:Profile class to resolve an ambiguity with the saref:Task class.</rdfs:comment>
+        <rdfs:comment>Information about changes to version 3.1.1:
+
+NOTE:	In some cases, references have been added to indicate the issue in the ETSI Forge (https://saref.etsi.org/sources/saref-core/issues) where the change was discussed and implemented.
+
+- Added the saref:FeatureOfInterest class and the properties used to relate it to saref:Measurement (saref:hasMeasurement and saref:isMeasurementOf) and to saref:Property (saref:hasProperty and saref:isPropertyOf).
+- Added the saref:measurementMadeBy property as inverse of saref:makesMeasurement.
+- The saref:relatesToProperty and saref:relatesToMeasurement properties are now inverse of each other.
+- The range of saref:hasValue, which was defined as xsd:float, has been removed to support other datatypes for measurements.
+- The range of datatype properties, which was defined as xsd:string, has been removed in order to support strings with language tags (rdf:langString). This affects saref:hasDescription, saref:hasManufacturer, saref:hasModel and saref:hasName, which now have implicitly a range of rdfs:Literal.
+- The saref:hasName property has been removed and the use of rdfs:label is recommended. 
+- The saref:hasDescription property has been deprecated and the use of rdfs:comment is recommended. 
+- Too restrictive restrictions have been removed and in some cases the ontology documentation has been updated to reflect this: a saref:Command having at most one saref:hasDescription; a saref:Task being accomplished by at least one saref:Device; a saref:Device having a typical consumption of only energy or power; a saref:Commodity being measured in units of measure; restrictions on the values of saref:accomplishes that only covered specific use cases; universal restrictions on the saref:actsUpon property have been changed to existential ones; restrictions on the commands that a saref:Function may have, since there could be others not included in the defined enumerations; restrictive documentation of saref:EventFunction and saref:SmokeSensor.
+- Bugs have been fixed: some devices (saref:DoorSwitch, saref:EnergyMeter, saref:LigthSwitch, saref:SmokeSensor, and saref:TemperatureSensor) were defined as subclass of a device and at the same time as consisting of such device; a saref:LightSwitch controls light and does not measure light, since it is an actuator; incorrect documentation of saref:OnState and saref:OffState.
+- The saref:BuildingRelated, saref:EnergyRelated and saref:FunctionRelated classes have been removed, since the different extensions already classify the device types.
+- The instances of the subclasses of saref:Command have been removed, since they represent examples.
+- The instances of saref:UnitOfMeasure have been moved to examples.
+- The classes related to the SAREF4ENER extension have been removed: saref:Generator, saref:Storage, saref:Load and saref:EnergyMeter.
+- Some instances of saref:Device have been moved to examples: saref:WashingMachine, saref:LightingDevice, saref:MicroRenewable, saref:Multimedia, and saref:Network.
+- Added domain and range axioms wherever the definition of a property unambiguously identifies the domain or the range of the property.
+- The OWL Time ontology is not imported anymore.
+- The documentation of some ontology terms has been updated for clarification.
+- Language tags have been added to all labels and comments.
+</rdfs:comment>
+        <rdfs:comment>Information about changes to version 3.2.1:
+
+NOTE: Rationale and decisions for many of the changes in V3.2.1 are available in issues in project https://saref.etsi.org/sources/saref-core/issues.
+
+- Definition of saref:FeatureOfInterest is clarified, not only properties are measured, but properties and states can be observed and controlled.
+- Definition of saref:FeatureOfInterest: Clarify it is a specific real world entity.
+- Definition of saref:FeatureOfInterest: allValuesFrom axioms are unnecessary and have been deleted.
+- Introduced class saref:FeatureKind
+- Use SKOS to organize generic classes in taxonomies.
+- Introduce hasClassKind for Class is Feature, Device, Property, State, Function, Command.
+- Add local restrictions on consistsOf on feature of interest
+- Defined domain of saref:hasManufacturer to union of feature kind and feature of interest.
+- Defined domain of saref:hasModel to union of feature kind and feature of interest.
+- Most axioms on saref:Device were useless and have been deleted.
+- definition of saref:Device clarifies it is a real world entity.
+- saref:Device is explicitly a subclass of saref:FeatureOfInterest and s4syst:System.
+- saref:actsUpon now holds not only between a command and a state. It generalizes actsUpon, observes, controls. Domain and range are unions of several classes.
+- Introduced property saref:isActedUponBy.
+- Introduced property saref:observes, as sub-property of saref:actsUpon. and generalization of measures.
+- Introduced property saref:controls, as sub-property of saref:actsUpon. and generalization of saref:controlsProperty.
+- Introduced property saref:isControlledBy.
+- saref:measuresProperty is deprecated: will be deleted in the next release of SAREF
+- saref:isMeasuredByDevice is deprecated: will be deleted in the next release of SAREF
+- saref:isControlledByDevice is deprecated: will be deleted in the next release of SAREF
+- saref:controlsProperty is deprecated: will be deleted in the next release of SAREF
+- Definition of saref:Appliance is grounded on tasks and commodities.
+- Definition of Sensor is simplified and grounded on saref:observes. Local restriction on saref:hasFunction is deleted.
+- Definition of Actuator is simplified and grounded on saref:controls. Local restriction on saref:hasFunction is deleted.
+- Definition of Meter is simplified and grounded on saref:observes. Local restriction on saref:hasFunction is deleted.
+- Deprecated saref:HVAC for it is only an example.
+- Deprecated saref:Switch for it is only an example.
+- Deprecated saref:DoorSwitch for it is only an example.
+- Deprecated saref:LightSwitch for it is only an example.
+- Deprecated saref:SmokeSensor for it is only an example.
+- Deprecated saref:TemperatureSensor for it is only an example.
+- The following tasks are deprecated, and may be deleted in the next release of SAREF: saref:Cleaning, saref:Comfort, saref:Drying, saref:EnergyEfficiency, saref:Entertainment, saref:Lighting, saref:MeterReading, saref:Safety, saref:Washing, saref:WellBeing.
+- Definition of saref:Commodity is simplified.
+- saref:Electricity is deprecated: will be defined as an instance of saref:Commodity in the next release of SAREF
+- saref:Gas is deprecated: will be defined as an instance of saref:Commodity in the next release of SAREF
+- saref:Coal is deprecated: will be defined as an instance of saref:Commodity in the next release of SAREF
+- saref:Water is deprecated: will be defined as an instance of saref:Commodity in the next release of SAREF
+- New category of commodities saref:EnergyCommodity
+- New category of commodities saref:NaturalResourceCommodity
+- Introduced saref:consumes, saref:isConsumedBy, saref:produces, saref:isProducedBy, saref:stores, saref:isStoredBy.
+- The definition and scope of usage for saref:Property is clarified. Axiomatization is simplified.
+- applicability of saref:hasProperty is relaxed to also saref:FeatureKind
+- Introduced saref:PropertyOfInterest to solved the ambiguity between generic vs specific properties.
+- Introduced saref:hasPropertyOfInterest and saref:isPropertyOfInterestOf. Cannot use saref:hasProperty due to the combination of cardinality restrictions and sub-property chain axioms makes the ontology exist the OWL 2 DL prodile.
+- Introduced saref:PropertyValue to simplify the association of a measure to a property, without always needing it to be a measurement made by a device.
+- Clarified definition of saref:hasValue.
+- Relaxed domain of saref:isMeasuredIn so it can apply to saref:PropertyValue as well as saref:Measurement. The new range will be enforced in the next release of SAREF.
+- Introduced saref:hasPropertyValue.
+- Introduced saref:isValueOfProperty.
+- The following classes are deprecated and may be defined as instances of saref:Property in the next release of SAREF: saref:Energy, saref:Humidity, saref:Light, saref:Motion, saref:Occupancy, saref:Power, saref:Pressure, saref:Price, saref:Smoke, saref:Temperature
+- saref:EnergyUnit is deprecated. Will be deleted in the next release of SAREF
+- saref:IlluminanceUnit is deprecated. Will be deleted in the next release of SAREF
+- saref:PowerUnit is deprecated. Will be deleted in the next release of SAREF
+- saref:PressureUnit is deprecated. Will be deleted in the next release of SAREF
+- saref:TemperatureUnit is deprecated. Will be deleted in the next release of SAREF
+- Clarified and generalized definition of saref:State. Can now apply to all features of interest, not just devices.
+- Relaxed domain of saref:hasState.
+- Introduced saref:isStateOf.
+- Introduced saref:StateOfInterest, parallel to saref:PropertyOfInterest.
+- Introduced saref:hasStateOfInterest and saref:isStateOfInterestOf, parallel to saref:hasPropertyOfInterest and saref:isPropertyOfInterestOf.
+- The following classes are deprecated and may be defined as instances of saref:State in the next release of SAREF: saref:CloseState, saref:MultiLevelState, saref:OffState, saref:OnOffState, saref:OnState, saref:OpenCloseState, saref:OpenState, saref:StartState, saref:StartStopState, saref:StopState.
+- Simplified definition and axiomatization of saref:Function. Added examples.
+- saref:SensingFunction is deprecated: may be defined as an instance of saref:Function in the next release of SAREF
+- saref:hasSensingRange is deprecated together with saref:SensingFunction. And may be defined as an instance of saref:Property in the next release of SAREF
+- saref:hasSensorType is deprecated together with saref:SensingFunction. Use saref:hasDeviceKind instead.
+- saref:EventFunction is deprecated: may be defined as an instance of saref:Function in the next release of SAREF
+- saref:hasThresholdMeasurement is deprecated together with saref:EventFunction. And may be defined as an instance of saref:Property in the next release of SAREF
+- saref:MeteringFunction is deprecated: may be defined as an instance of saref:Function in the next release of SAREF
+- deprecated saref:hasMeterReading together with saref:Measurement and saref:MeteringFunction
+- deprecated saref:hasMeterReadingType together with saref:MeteringFunction
+- saref:LevelControlFunction, saref:StartStopFunction, saref:OpenCloseFunction, saref:OnOffFunction,  
+- saref:ActuatingFunction are deprecated: may be defined as an instance of saref:Function in the next release of SAREF.
+- Domain of saref:hasFunction is relaxed.
+- Introduced saref:isFunctionOf.
+- Introduced saref:FunctionOfInterest, parallel to saref:PropertyOfInterest.
+- Simplified definition and axiomatization of saref:Command. Added examples.
+- Domain of saref:hasCommand is relaxed to saref:Function or saref:FunctionOfInterest.
+- Introduced mandatory and optional commands.
+- Introduced saref:hasInput and saref:hasOutput.
+- Introduced saref:CommandOfInterest, parallel to saref:PropertyOfInterest.
+- The following classes are deprecated and may be defined as instances of saref:Command in the next release of SAREF: saref:ToggleCommand, saref:GetCommand, saref:NotifyCommand, saref:GetSensingDataCommand, saref:GetCurrentMeterValueCommand, saref:GetMeterDataCommand, saref:GetMeterHistoryCommand, saref:SetAbsoluteLevelCommand, saref:SetRelativeLevelCommand, saref:SetLevelCommand, saref:StepDownCommand, saref:StepUpCommand, saref:PauseCommand, saref:StartCommand, saref:StopCommand, saref:CloseCommand, saref:OpenCommand, saref:OnCommand, saref:OffCommand.
+- Simplified definition of saref:Service. Added examples.
+- Relaxed domain and range of saref:represents.
+- Clarified definition of saref:offers.
+- Clarified definition of saref:isOfferedBy.
+- saref:SwitchOnService is deprecated for it is just an example. It may be deleted in the next release of SAREF
+- Introduced saref:Operation and associated properties from oneM2M base ontology.
+- Introduced saref:ProcedureExecution.
+- Introduce saref:madeBy (resp. saref:madeExecution) as generalization of saref:measurementMadeBy (resp. saref:makesMeasurement).
+- saref:makesMeasurement is deprecated as one of the properties related to saref:Measurement. It may be deleted in the next release of SAREF
+- saref:makesMeasurement is deprecated as one of the properties related to saref:Measurement. It may be deleted in the next release of SAREF
+- Introduced saref:hasResult as part of general will to make SAREF and SOSA/SSN converge.
+- Introduced saref:hasResultTime as part of general will to make SAREF and SOSA/SSN converge.
+- Introduced saref:hasPhenomenonTime as part of general will to make SAREF and SOSA/SSN converge.
+- Tried to clarify definition of saref:hasTimestamp. Still unclear.
+- Deprecated saref:Measurement in favour of saref:Observation, to generalize to observation of states and convergence with SOSA/SSN.
+- Deprecated saref:isMeasurementOf together with saref:Measurement.
+- Deprecated saref:isMeasurementOf together with saref:Measurement.
+- Deprecated saref:isMeasurementOf together with saref:Measurement.
+- Deprecated saref:isMeasurementOf together with saref:Measurement.
+- Class saref:Profile has been re-specified, to take into account findings from SAREF4ENER V1.2.1.
+- Relaxed domain of saref:hasProfile to saref:FeatureKind or saref:Device
+- Deprecated saref:hasTime and use OWL Time instead whenever possible.
+- Deprecated saref:Time and use OWL Time instead whenever possible.
+- Deprecated saref:hasTypicalConsumption. May be defined as an instance of saref:Property in the next release of SAREF.
+</rdfs:comment>
+        <rdfs:comment>Information about changes to version 4.1.1:
+
+NOTE: Rationale and decisions for many of the changes in V4.1.1 are available in issues in project https://labs.etsi.org/rep/saref/saref-core/-/milestones/3#tab-issues
+
+- Deprecated classes and properties have been deleted
+- Reworded definition of saref:Sensor and saref:Meter
+- saref:hasValue is now optional on saref:PropertyValue
+- improved parallel between Property and State descriptions
+- introduced saref:StateValue
+- Removed examples of commodity categories
+- Added notes and examples in multiple sections
+- Added clause 5.14 about composite properties
+- Reworked figures throughout the document
+- Added migration guide from V3.1.1 to V4.1.1
+- Updated the oneM2M base ontology to SAREF mapping
+- Added principle on generic versus specific entities distinction
+- Added references to EN 303 760
+</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="https://www.etsi.org/deliver/etsi_ts/103200_103299/103264/04.01.01_60/ts_103264v040101p.pdf"/>
+        <owl:priorVersion rdf:resource="https://saref.etsi.org/core/v3.2.1/"/>
+        <owl:versionInfo>v4.1.1</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#example -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#example"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#historyNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#historyNote"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#scopeNote -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#scopeNote"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

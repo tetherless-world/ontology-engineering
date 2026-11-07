@@ -1,0 +1,36 @@
+namespace: https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/
+classes:
+  Claim: Claim
+  Issue: Issue
+  Option: Option
+  Information Request: InformationRequest
+  InformationRequest: InformationRequest
+  Expressed Position: ExpressedPosition
+  ExpressedPosition: ExpressedPosition
+  Outcome: Outcome
+  Conversation Management: CollectiveJudgmentFormationConversationMove
+initial_states:
+  Issue: Open
+  InformationRequest: Open
+  Option: UnderConsideration
+  Claim: Unassessed
+state_classes: [Open, UnderConsideration, Unassessed, Addressed, Answered, Resolved, Supported, Contested, SupportedContested, Selected, Rejected]
+terms: {}
+sheets:
+  moves: Milestones
+  relationships: Relationships
+  states: States
+relationships:
+  addresses: {class: Address, makes: makesAddresses, target: isAimedAtAddresses, event_targets: [Issue]}
+  answers: {class: Answer, makes: makesAnswers, target: isAimedAtAnswers, event_targets: [InformationRequest]}
+  resolves: {class: Resolve, makes: makesResolves, target: isAimedAtResolves, event_targets: [Issue]}
+  supports: {class: Support, makes: makesSupports, target: isAimedAtSupports, event_targets: [Claim]}
+  challenges: {class: Challenge, makes: makesChallenges, target: isAimedAtChallenges, event_targets: [Claim]}
+  positionToward: {class: Position, makes: makesPositionTowards, target: isAimedAtPositionTowards}
+  response: {class: Response, makes: makesRespondsTo, target: isAimedAtRespondsTo}
+  respondsTo: {class: Response, makes: makesRespondsTo, target: isAimedAtRespondsTo}
+  selects: {property: selects, event_targets: [Option]}
+  isAbout: {property: isAbout}
+  refines: {property: refines, same_type: true}
+  alternativeTo: {property: isAlternativeTo}
+  isAlternativeTo: {property: isAlternativeTo}

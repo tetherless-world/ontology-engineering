@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cjf-serializer"
+version = "0.1.0"
+description = "Human-reviewed annotation to RDF and SHACL file pipeline"
+readme = "PIPELINE.md"
+requires-python = ">=3.10"
+dependencies = ["rdflib==7.6.0", "pyshacl==0.40.1", "PyYAML>=6,<7"]
+
+[project.scripts]
+cjf-serialize = "cjf_serializer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cjf_serializer = ["resources/profiles/*.yaml", "resources/shacl/*.ttl"]

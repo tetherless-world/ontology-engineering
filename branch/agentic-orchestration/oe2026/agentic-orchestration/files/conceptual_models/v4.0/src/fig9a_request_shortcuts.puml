@@ -1,0 +1,22 @@
+@startuml fig9a_request_shortcuts
+!include style.iuml
+skinparam nodesep 70
+skinparam ranksep 60
+
+class PreferenceSetting
+class Request
+class UserConstraint
+class HardConstraint
+class SoftConstraint
+
+Request .up.> PreferenceSetting : /hasPreferenceSetting
+Request --> UserConstraint : hasUserConstraint
+UserConstraint <|-- HardConstraint
+UserConstraint <|-- SoftConstraint
+Request ..> HardConstraint : /hasHardConstraint
+Request ..> SoftConstraint : /hasSoftConstraint
+Request --> Request : isRequest
+PreferenceSetting --> PreferenceSetting : isPreferenceSetting
+HardConstraint --> HardConstraint : isHardConstraint
+SoftConstraint --> SoftConstraint : isSoftConstraint
+@enduml
