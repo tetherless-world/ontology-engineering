@@ -1,364 +1,318 @@
 ---
+layout: default
+title: demo
 ---
 
-## Queries
+[How to run](#how-to-run-the-queries) | [Test scenario](#test-scenario) | [Use case 1](#use-case-1--locating-the-systems-and-sensor-readings-that-relate-to-a-room) | [Use case 2](#use-case-2--verifying-the-ventilation-compliance-of-critical-care-rooms) | [Use case 3](#use-case-3--tracing-compliance-failures-to-hvac-systems-and-components) | [Coverage](#what-the-queries-cover)
 
-<p class="message-highlight">List your SPARQL queries to your competency questions along with answers retrieved from your ontology/KG such as the below.</p>
+## Demonstration and Queries
 
-### Study Match: Is there a study that matches this patient on a feature (s)?
+This page lists the SPARQL queries that answer the project's competency questions, the reasoning each one depends on, and the rows each returns over the test individuals. There are two competency questions per [use case](usecase), six in total. The queries are also available as a single file, [OE 9 Team HVCC SPARQL Queries.txt](OE%209%20Team%20HVCC%20SPARQL%20Queries.txt), and in the shared [Google document](https://docs.google.com/document/d/17PMngIgp1zkGrxAJy3VSjCbdqSPk6pXczj8IaPUhMn4/edit?usp=sharing).
 
-#### Query 1: SPARQL Query to fetch study titles that match a patient's race and gender
+A recurring theme: **most of the answer columns below are never asserted in the data.** Which system serves a room, whether a policy was satisfied, how a room's assessment is classed and which components are implicated are all worked out by the reasoner, as described on the [ontology page](ontology#how-the-ontology-works). Running the same queries without a reasoner returns no rows for CQ 1.1, 3.1 and 3.2, which is the intended demonstration rather than a fault.
+
+## How to run the queries
+
+1. Keep [ventilation-compliance.rdf](ventilation-compliance.rdf), [individuals.rdf](individuals.rdf) and [catalog-v001.xml](catalog-v001.xml) in one folder together with `files/imports/`, and open **individuals.rdf** in Protégé. It declares `owl:imports` on the ontology, so both files load.
+2. Start the **Pellet** reasoner (Reasoner → Pellet → Start reasoner). HermiT will not work: it rejects the SWRL built-ins `swrlb:lessThan` and `swrlb:greaterThanOrEqual` that classify the policy assessments.
+3. Run the queries in the **Snap SPARQL Query** tab, which evaluates against the reasoner so OWL entailments and SWRL conclusions are visible. Snap SPARQL supports a subset of SPARQL (no property paths, `VALUES`, `BIND`, `EXISTS`, aggregates or sub-queries); the queries below respect that. CQ 1.2 uses the imported `prov:generatedAtTime` property, which the strict Snap SPARQL parser rejects, so run that one in the built-in **SPARQL Query** tab with Pellet started.
+
+All queries share these prefixes:
 
 ```sparql
-PREFIX resource: <http://semanticscience.org/resource/>
+PREFIX v:    <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX test: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/>
+PREFIX core: <https://w3id.org/rec/core/>
+PREFIX qu:   <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
+```
 
-SELECT DISTINCT ?studyTitle ?study
+## Test scenario
+
+The test individuals describe one ventilation test of three ICU rooms on 9 October 2026. Each reading keeps its value, unit and timestamp.
+
+**Rooms and readings**
+
+| Room | Outdoor air change rate | Relative humidity |
+|---|---|---|
+| ICU-01 (room 4E-12) | 1.4 ACH at 14:25 (M-0412, derived) | 45 %RH at 14:30 |
+| ICU-02 | 2.6 ACH at 14:30 | 40 %RH at 14:30 |
+| ICU-03 | 3.1 ACH at 14:30 | 50 %RH at 14:30 |
+
+ICU-01 also has two raw airflow readings from sensor AF-412 (12.4 m³/h at 14:20 and 12.1 m³/h at 14:10), a supply airflow reading M-0411 at 14:25, and the derivation chain M-0412 ← M-0413 (outdoor air flow rate to room) ← M-0411 (supply air flow rate), M-0414 (outdoor air fraction) and V-ICU-01 (room volume).
+
+**HVAC topology**
+
+| System | Service components | Connected rooms |
+|---|---|---|
+| HVAC-3 | AHU-3 (with filter FL-3 as a nested part), supply duct SD-3, VAV box VAV-412, diffuser DF-412 | all connect to ICU-01 |
+| HVAC-4 | VAV-421, VAV-431 | ICU-02, ICU-03 |
+
+VAV-412, DF-412, SD-3 and FL-3 each act on the supply airflow reading M-0411. VAV-421 and VAV-431 act on the ACH readings of ICU-02 and ICU-03.
+
+**Compliance policies** (CDC framework, applied to all three rooms; CDC *Environmental Infection Control* 2003, Appendix B, critical and intensive care)
+
+| Policy | Kind | Bound |
+|---|---|---|
+| min outdoor air changes per hour (`P_ACH_min`) | minimum outdoor air changes per hour, min-bounded | ≥ 2.0 ACH |
+| relative humidity range (`P_RH`) | relative humidity, range-bounded | 30 to 60 %RH |
+
+Only these two of the six CDC policy kinds are instantiated; the other CDC requirements are outside this test.
+
+## Use case 1 – Locating the systems and sensor readings that relate to a room
+
+*Actor: system maintenance technician. A work order reports room 4E-12 as stuffy.*
+
+### CQ 1.1 – Which building service systems and connected service components serve room 4E-12?
+
+```sparql
+SELECT DISTINCT ?roomName ?systemName ?componentName
 WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty [a ?studyIntervention] .
-  {
-    ?subPatient rdfs:subClassOf ?studyArm .
-    ?subPatient rdfs:subClassOf ?restriction .
-    ?restriction a owl:Restriction .
-    ?restriction owl:someValuesFrom ncit:C16352 .
-  }
-  {
-    ?subPatient1 rdfs:subClassOf ?studyArm .
-    ?subPatient1 rdfs:subClassOf ?restriction1 .
-    ?restriction1 a owl:Restriction .
-    ?restriction1 owl:someValuesFrom sio:Male .
-  }
+  ?room rdf:type core:Room ;
+        rdfs:label ?roomName .
+  FILTER(CONTAINS(STR(?roomName), "4E-12"))
+
+  ?component v:connectsTo ?room ;
+             rdfs:label ?componentName .
+
+  ?system v:hasServiceComponent ?component ;
+          rdfs:label ?systemName ;
+          rdf:type ?systemType .
+  ?systemType rdfs:subClassOf v:BuildingServiceSystem .
 }
 ```
 
-#### Result 1: Study titles retrieved from the study match query to find all studies in which African American Males are represented
+**Reasoning needed.** OWL DL. The relation between a system and a room is not asserted anywhere in the individuals file; the property chain `hasServiceComponent ∘ connectsTo ⊑ servesRoom` derives it, and this query exposes the two halves of that chain side by side. Run in Snap SPARQL with Pellet started.
 
-|Study Title|
-|-----------|
-| 10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes|
-| New insulin glargine 300 U/ml compared with glargine 100 U/ml in insulin-nave people with type 2 diabetes on oral glucose-lowering drugs: a randomized controlled trial (EDITION 3) |
-| Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes
-| Patientdirected titration for achieving glycaemic goals using a once daily basal insulin analogue: an assessment of two different fasting plasma glucose targets the TITRATETM study |
-| Glycaemic control and hypoglycaemia with new insulin glargine 300 U/ml versus insulin glargine 100 U/ml in people with type 2 diabetes using basal insulin and oral antihyperglycaemic drugs: the EDITION 2 randomized 12-month trial including 6-month extension. |
-| Glycaemic control and hypoglycaemia with new insulin glargine 300 U/ml versus insulin glargine 100 U/ml in people with type 2 diabetes using basal insulin and oral antihyperglycaemic drugs: the EDITION 2 randomized 12-month trial including 6-month extension |
-| Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH) diet. DASH-Sodium Collaborative Research Group |
-| Telmisartan, ramipril, or both in patients at high risk for vascular events |
-| Combined angiotensin inhibition for the treatment of diabetic nephropathy |
-| Effect of Finerenone on Albuminuria in Patients With Diabetic Nephropathy: A Randomized Clinical Trial |
-| A randomized trial of therapies for type 2 diabetes and coronary artery disease |
-| Effects of combination lipid therapy in type 2 diabetes mellitus |
-| Randomized controlled trial comparing impact on platelet reactivity of twice-daily with once-daily aspirin in people with Type 2 diabetes |
-| Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults with and without glucose disorders: a report from the ALLHAT study |
-| Effects of intensive blood-pressure control in type 2 diabetes mellitus |
+**Result (4 rows).** HVAC-4 is correctly absent because it serves ICU-02 and ICU-03, not 4E-12.
 
-### Study Limitations: Are there absence or underrepresentation of population groups in this study?
+| roomName | systemName | componentName |
+|---|---|---|
+| ICU-01 (room 4E-12) | HVAC-3 | AHU-3 |
+| ICU-01 (room 4E-12) | HVAC-3 | DF-412 |
+| ICU-01 (room 4E-12) | HVAC-3 | SD-3 |
+| ICU-01 (room 4E-12) | HVAC-3 | VAV-412 |
 
-#### Query 2: SPARQL Query to fetch study titles and range of values reported for Age
+### CQ 1.2 – What is the complete compliance assessment history (standard, evaluated policy and overall status) for room 4E-12?
 
 ```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-
-SELECT DISTINCT ?studyTitle ?propType ?lowerBound ?propVal ?upperBound
+SELECT DISTINCT ?roomName ?time ?standardName ?policyName ?complianceStatus
 WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasAttribute | sio:hasProperty ?prop .
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Mean .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a sio:StandardDeviation .
-    ?attr2 sio:hasValue ?propVal2 .
-    BIND((?propVal2  + 2*?propVal) AS ?upperBound) .
-    BIND((?propVal  - 2*?propVal2) AS ?lowerBound) .
-  }
-  UNION
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Median .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a stato:0000164 .
-    ?prop sio:hasAttribute sio:MaximalValue .
-    ?attr2 sio:hasValue ?upperBound .
-    ?prop sio:hasAttribute sio:MinimalValue .
-    ?attr2 sio:hasValue ?lowerBound .
-  }
-  FILTER (?upperBound <= 70) .
-  FILTER (?propType IN (sio:Age)) .
+  ?room rdf:type core:Room ;
+        rdfs:label ?roomName .
+  FILTER(CONTAINS(STR(?roomName), "4E-12"))
+
+  ?context v:forRoom ?room ;
+           v:usesFramework ?standard ;
+           v:usesMeasurement ?measurement .
+  ?standard rdfs:label ?standardName .
+  ?measurement prov:generatedAtTime ?time .
+
+  ?assessment v:hasContext ?context ;
+              rdf:type ?complianceStatus ;
+              v:hasPolicyAssessment ?policyAssessment .
+  FILTER(CONTAINS(STR(?complianceStatus), "ComplianceAssessment"))
+
+  ?policyAssessment v:evaluatedPolicy ?policy .
+  ?policy rdfs:label ?policyName .
 }
 ```
 
-## Result 2: Study Titles and Age Ranges retrieved from the study limitation query to find studies where old adults above 70 are not represented
+**Reasoning needed.** OWL DL with SWRL. Not one compliance fact in this answer is asserted. Rules S1 to S7 classify each policy assessment as satisfied or unsatisfied, and the class definitions then classify the room-level assessment; here `A_ICU_01` is inferred to be a `PartiallySatisfiedComplianceAssessment`. The query carries no date filter because the individuals file records exactly one test; a second test day would make one necessary. Run in the built-in SPARQL Query tab with Pellet started.
 
-<table style="width:100%">
-  <tr>
-    <th>Study Title </th>
-    <th>Lower Bound</th>
-    <th>Median/Mean Age</th>
-    <th>Upper Bound</th>
-  </tr>
-  <tr>
-    <td>Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH)
-      diet., DASH-Sodium Collaborative Research Group</td>
-    <td> 37</td>
-    <td>47</td>
-    <td>57 </td>
-  </tr>
-  <tr>
-    <td>Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH)
-      diet., DASH-Sodium Collaborative Research Group</td>
-    <td> 39</td>
-    <td>49</td>
-    <td> 59</td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>56.6</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>57.2</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Patientdirected titration for achieving glycaemic goals using a oncedaily basal insulin analogue: an assessment
-      of two different fasting plasma glucose targets the TITRATETM study</td>
-    <td> </td>
-    <td>56.9</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Randomized controlled trial comparing impact on platelet reactivity of twice-daily with once-daily aspirin in
-      people with Type 2 diabetes</td>
-    <td>44 </td>
-    <td>51</td>
-    <td> 58</td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>66</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>66</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>Cardiovascular outcomes using doxazosin vs. chlorthalidone for the treatment of hypertension in older adults
-      with and without glucose disorders: a report from the ALLHAT study</td>
-    <td> </td>
-    <td>67</td>
-    <td> </td>
-  </tr>
-</table>
+**Result (8 rows).** Both the asserted class `ComplianceAssessment` and the inferred class `PartiallySatisfiedComplianceAssessment` appear, for each of the two measurement times and the two policies. Satisfied policies are included because the question asks for the full history.
 
-### Study Quality Evaluation: Are there adequate population sizes and is there a heterogeneity of treatment effect among arms?
+| roomName | time | standardName | policyName | complianceStatus |
+|---|---|---|---|---|
+| ICU-01 (room 4E-12) | 2026-10-09T14:25:00 | CDC framework | min outdoor air changes per hour | v:ComplianceAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:25:00 | CDC framework | min outdoor air changes per hour | v:PartiallySatisfiedComplianceAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:25:00 | CDC framework | relative humidity range | v:ComplianceAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:25:00 | CDC framework | relative humidity range | v:PartiallySatisfiedComplianceAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:30:00 | CDC framework | min outdoor air changes per hour | v:ComplianceAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:30:00 | CDC framework | min outdoor air changes per hour | v:PartiallySatisfiedComplianceAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:30:00 | CDC framework | relative humidity range | v:ComplianceAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:30:00 | CDC framework | relative humidity range | v:PartiallySatisfiedComplianceAssessment |
 
-#### Query 3: SPARQL query to find large scale studies with intervention arms size being at least 1/3rd the overall cohort size
+## Use case 2 – Verifying the ventilation compliance of critical care rooms
+
+*Actor: healthcare administrator or nurse, ahead of an infection-control review.*
+
+### CQ 2.1 – Which ICU rooms met the CDC ventilation standard in the test on 9 October 2026?
 
 ```sparql
-PREFIX sco: <https://idea.tw.rpi.edu/projects/heals/studycohort/>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-PREFIX provcare: <http://www.case.edu/ProvCaRe/provcare#>
-
-SELECT DISTINCT ?studyTitle ?medicationLabel ?popSize ?totalCohortSize
+SELECT DISTINCT ?roomName ?time ?standardName ?policyName ?status
 WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasProperty ?intervention .
-  ?intervention a ?interventionType .
-  ?intervention prov:used ?medication .
-  ?medication rdfs:label ?medicationLabel .
-  ?studyArm sio:hasAttribute ?prop .
-  ?prop a sco:PopulationSize .
-  ?prop sio:hasValue ?popSize .
-  {
-    SELECT DISTINCT ?study (SUM(?popSize) AS ?totalCohortSize)
-    WHERE {
-      ?study sio:hasParticipant ?studyArm .
-      ?studyArm sio:hasAttribute ?prop .
-      ?prop a sco:PopulationSize .
-      ?prop sio:hasValue ?popSize .
-    }
-    GROUP BY ?study
-    HAVING (?totalCohortSize > 1000)
-  }
-  FILTER (?popSize >= (?totalCohortSize/3)) .
+  ?assessment v:hasContext ?context .
+  ?assessment v:hasPolicyAssessment ?pa .
+  ?context v:forRoom ?room .
+  ?context v:usesFramework ?standard .
+  ?context v:usesMeasurement ?measurement .
+  ?measurement v:isEvaluatedAt ?pa .
+  ?measurement prov:generatedAtTime ?time .
+  ?pa v:evaluatedPolicy ?policy .
+  ?pa rdf:type ?status .
+  ?room rdfs:label ?roomName .
+  ?standard rdfs:label ?standardName .
+  ?policy rdfs:label ?policyName .
   FILTER (
-    (?interventionType rdfs:subClassOf* provcare:Intervention )
-    && (?medication rdfs:subClassOf* chebi:24436 )
-  ) .
+    ?status = v:SatisfiedPolicyAssessment ||
+    ?status = v:UnsatisfiedPolicyAssessment ||
+    ?status = v:UnknownPolicyAssessment
+  )
 }
+ORDER BY ?roomName ?policyName
 ```
 
-#### Result 3: Cohort sizes and individual study arm sizes of clinical trials retrieved from a query to find the studies having a cohort population ≥ 1000 and individual study arm population sizes are at least 1rd ⁄3 the cohort size
+**Reasoning needed.** OWL DL with SWRL. Each `?status` is a SWRL conclusion: S2 fires for ICU-01's ACH (1.4 < 2.0), S1 for the other two rooms' ACH, and S5 for all three humidity readings. The query deliberately returns every tested policy, satisfied or not, with its room, time, standard and measurement, so that the compliance decision is explainable instead of filtering only for failures.
 
-<table style="width:100%">
-  <tr>
-    <th>Study Title</th>
-    <th>Cohort Size</th>
-    <th>Study Arm</th>
-    <th>Arm Size</th>
-  </tr>
-  <tr>
-    <td>Long-term Metformin Use and Vitamin B12 Deficiency in the Diabetes Prevention Program Outcomes Study</td>
-    <td> 1800 </td>
-    <td> Metformin</td>
-    <td> 753</td>
-  </tr>
-  <tr>
-    <td>Long-term Metformin Use and Vitamin B12 Deficiency in the Diabetes Prevention Program Outcomes Study</td>
-    <td> 1800 </td>
-    <td>Metformin </td>
-    <td> 859</td>
-  </tr>
-  <tr>
-    <td>Effects of combination lipid therapy in type 2 diabetes mellitus </td>
-    <td> 5518 </td>
-    <td> Metformin</td>
-    <td> 2765</td>
-  </tr>
-  <tr>
-    <td> Effects of combination lipid therapy in type 2 diabetes mellitus</td>
-    <td> 5518 </td>
-    <td> Metformin</td>
-    <td> 2753 </td>
-  </tr>
-  <tr>
-    <td> Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes </td>
-    <td> 7637 </td>
-    <td> Metformin</td>
-    <td> 3818</td>
-  </tr>
-  <tr>
-    <td> Efficacy and Safety of Degludec versus Glargine in Type 2 Diabetes </td>
-    <td>7637 </td>
-    <td> Metformin</td>
-    <td> 3819 </td>
-  </tr>
-</table>
+**Result (6 rows).** ICU-02 and ICU-03 met both tested policies; ICU-01 failed outdoor-air ACH but passed relative humidity.
 
-## Value Retrieval Query for Visualization 
+| roomName | time | standardName | policyName | status |
+|---|---|---|---|---|
+| ICU-01 (room 4E-12) | 2026-10-09T14:25:00 | CDC framework | min outdoor air changes per hour | v:UnsatisfiedPolicyAssessment |
+| ICU-01 (room 4E-12) | 2026-10-09T14:30:00 | CDC framework | relative humidity range | v:SatisfiedPolicyAssessment |
+| ICU-02 | 2026-10-09T14:30:00 | CDC framework | min outdoor air changes per hour | v:SatisfiedPolicyAssessment |
+| ICU-02 | 2026-10-09T14:30:00 | CDC framework | relative humidity range | v:SatisfiedPolicyAssessment |
+| ICU-03 | 2026-10-09T14:30:00 | CDC framework | min outdoor air changes per hour | v:SatisfiedPolicyAssessment |
+| ICU-03 | 2026-10-09T14:30:00 | CDC framework | relative humidity range | v:SatisfiedPolicyAssessment |
 
-### Star Plot Code
-
-We present a query below that is used to retrieve the central value, and upper and lower bounds for continuous characteristics of a study arm. The characteristics are those that overlap with the patient features that we gather for diabetic patients in NHANES, i.e. age, body mass index, systolic blood pressure, diastolic blood pressure, Hemoglobin A1C. This query is triggered in the faceted browser to generate the visualization.
-This query can flexibly retrieve values for both mean +/- standard deviation, median and interquartile range representations with being agnostic of the expression of the characteristic. Also, if we were to constrain the query for values of other parameters, we would just included them in the filter clause. Hence, this query is a generalized faceted browser query.
-
-To run the code, please follow the steps as below:
-
-1. `cd study-cohort-ontology`
-1. `python3 -m venv env`
-1. `source env/bin/activate`
-1. `pip install -r ../requirements.txt`
-1. `python3 starplot.py`
-
-The star plot code can be browsed at: [https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Code/starplot.py)
+### CQ 2.2 – For room ICU-01, which compliance policies were not satisfied in that test, and which measurements show it?
 
 ```sparql
-PREFIX sco: <small><https://idea.tw.rpi.edu/projects/heals/studycohort/></small>
-PREFIX resource: <http://semanticscience.org/resource/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX chear: <http://hadatac.org/ont/chear#>
-PREFIX obo: <http://purl.obolibrary.org/obo/>
-PREFIX stato: <http://purl.obolibrary.org/obo/STATO_>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
-
-SELECT DISTINCT ?studyTitle ?propType ?lowerBound ?propVal ?upperBound
+SELECT DISTINCT ?roomName ?policyName ?status ?measurementName
+                ?actual ?minimum ?maximum ?unit ?time
 WHERE {
-  ?study a ncit:C71104 .
-  ?study dct:title ?studyTitle .
-  ?study sio:hasParticipant ?studyArm .
-  ?studyArm sio:hasAttribute | sio:hasProperty ?prop .
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Mean .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a sio:StandardDeviation .
-    ?attr2 sio:hasValue ?propVal2 .
-    BIND((?propVal2  + ?propVal) AS ?upperBound) .
-    BIND((?propVal  - ?propVal2) AS ?lowerBound) .
+  test:A_ICU_01 v:hasContext ?context ;
+                v:hasPolicyAssessment ?pa .
+  ?context v:forRoom ?room ;
+           v:usesFramework ?standard ;
+           v:usesMeasurement ?measurement .
+  ?pa v:evaluatedPolicy ?policy ;
+      rdf:type ?status .
+  ?measurement v:isEvaluatedAt ?pa ;
+               qu:hasQuantityValue ?quantity ;
+               prov:generatedAtTime ?time ;
+               rdfs:label ?measurementName .
+  ?quantity qu:hasNumericValue ?actual ;
+            qu:hasMeasurementUnit ?unit .
+  ?room rdfs:label ?roomName .
+  ?policy rdfs:label ?policyName .
+  OPTIONAL {
+    ?policy qu:hasLowerBound ?lower .
+    ?lower qu:hasNumericValue ?minimum .
   }
-  UNION
-  {
-    ?prop a ?propType .
-    ?prop sio:hasAttribute ?attr .
-    ?attr a sio:Median .
-    ?attr sio:hasValue ?propVal .
-    ?prop sio:hasAttribute ?attr2 .
-    ?attr2 a stato:0000164 .
-    ?prop sio:hasAttribute sio:MaximalValue .
-    ?attr2 sio:hasValue ?upperBound .
-    ?prop sio:hasAttribute sio:MinimalValue .
-    ?attr2 sio:hasValue ?lowerBound .
+  OPTIONAL {
+    ?policy qu:hasUpperBound ?upper .
+    ?upper qu:hasNumericValue ?maximum .
   }
-  FILTER  (
-    ?propType IN (
-      sio:Age,
-      ncit:C64796,
-      sco:SystolicBloodPressure,
-      sco:DiastolicBloodPressure
-    )
-  ) .
+  FILTER (
+    ?status = v:SatisfiedPolicyAssessment ||
+    ?status = v:UnsatisfiedPolicyAssessment ||
+    ?status = v:UnknownPolicyAssessment
+  )
+}
+ORDER BY ?policyName
+```
+
+**Reasoning needed.** The status of each policy assessment is inferred by the SWRL rules; everything else (measured value, unit, time, policy bounds) is retrieved from asserted triples. The `OPTIONAL` blocks keep whichever bounds a policy has, so min-bounded and range-bounded policies come back in the same shape. The satisfied humidity row is included on purpose so the failed policy can be read against a passing one.
+
+**Result (2 rows).** The ACH policy is unsatisfied: 1.4 air changes per hour at 14:25, below the 2.0 lower bound. Relative humidity is satisfied at 45 %RH inside 30 to 60 %RH.
+
+| roomName | policyName | status | measurementName | actual | minimum | maximum | unit | time |
+|---|---|---|---|---|---|---|---|---|
+| ICU-01 (room 4E-12) | min outdoor air changes per hour | v:UnsatisfiedPolicyAssessment | M-0412 | 1.4 | 2.0 | | v:airChangesPerHour | 2026-10-09T14:25:00 |
+| ICU-01 (room 4E-12) | relative humidity range | v:SatisfiedPolicyAssessment | measurement ICU-01 RH | 45 | 30 | 60 | v:percentRelativeHumidity | 2026-10-09T14:30:00 |
+
+## Use case 3 – Tracing compliance failures to HVAC systems and components
+
+*Actor: system administrator responsible for the building systems, starting from the failed rooms of use case 2.*
+
+### CQ 3.1 – Which HVAC system served the rooms that did not meet the standard in the test on 9 October 2026?
+
+```sparql
+SELECT DISTINCT ?systemName ?roomName ?outcome
+WHERE {
+  ?assessment rdf:type ?outcome .
+  ?assessment v:hasContext ?context .
+  FILTER ( ?outcome = v:PartiallySatisfiedComplianceAssessment ||
+           ?outcome = v:UnsatisfiedComplianceAssessment )
+  ?context v:forRoom ?room .
+  ?system v:servesRoom ?room .
+  ?system rdfs:label ?systemName .
+  ?room rdfs:label ?roomName .
 }
 ```
+
+**Reasoning needed.** OWL DL with SWRL. Every column is inferred:
+
+1. Rules S1 to S7 classify each policy assessment as satisfied or unsatisfied.
+2. The OWL definition of `PartiallySatisfiedComplianceAssessment` (some satisfied *and* some unsatisfied policy assessment) classifies `A_ICU_01`. The closure axiom each assessment carries on `hasPolicyAssessment` is what makes the `only`-based sibling definitions usable.
+3. The property chain `hasServiceComponent ∘ connectsTo ⊑ servesRoom` derives which system serves which room; `servesRoom` is asserted zero times in the individuals file.
+
+Run in Snap SPARQL with Pellet started; the built-in tab without reasoning returns 0 rows.
+
+**Result (1 row).** HVAC-4 is correctly absent: it serves ICU-02 and ICU-03, both of which classify as `SatisfiedComplianceAssessment`.
+
+| systemName | roomName | outcome |
+|---|---|---|
+| HVAC-3 | ICU-01 (room 4E-12) | v:PartiallySatisfiedComplianceAssessment |
+
+### CQ 3.2 – Which components of which HVAC system may be causing a room to fall short of the minimum outdoor air changes per hour policy?
+
+The room is a variable rather than a fixed individual, so this answer joins directly onto the room column of CQ 1.1 and CQ 1.2.
+
+```sparql
+SELECT DISTINCT ?roomName ?policyName ?unitName ?componentName ?systemName
+WHERE {
+  ?assessment v:hasContext ?context .
+  ?assessment v:hasPolicyAssessment ?pa .
+  ?context v:forRoom ?room .
+  ?room rdfs:label ?roomName .
+  ?pa rdf:type v:UnsatisfiedPolicyAssessment .
+  ?pa v:evaluatedPolicy ?policy .
+  ?pa v:wasAssociatedWithComponent ?component .
+  ?pa v:wasAssociatedWithSystem ?system .
+  ?policy rdf:type v:MinimumAirChangesOfOutdoorAirPerHour .
+  ?policy qu:hasLowerBound ?lb .
+  ?policy rdfs:label ?policyName .
+  ?lb qu:hasMeasurementUnit ?unit .
+  ?unit rdfs:label ?unitName .
+  ?component rdfs:label ?componentName .
+  ?system rdfs:label ?systemName .
+}
+ORDER BY ?componentName
+```
+
+**Reasoning needed.** OWL DL with SWRL. Every column except the policy name is inferred, in five steps:
+
+1. Rule S2 marks the policy assessment unsatisfied, because 1.4 ACH is below the 2.0 ACH lower bound. The rule binds one variable for both units, so a comparison across mismatched units cannot fire.
+2. `prov:wasDerivedFrom` is a sub-property of the transitive `v:isTransitivelyDerivedFrom`, so the reasoner closes the provenance chain: M-0412 derives from M-0413, which derives from the supply airflow M-0411.
+3. Rule S9 attaches every component that acts on any measurement in that chain to the policy assessment as `wasAssociatedWithComponent`.
+4. `cmns-col:hasPart` is transitive and the inverse of `isPartOf`, and `hasServiceComponent` is a sub-property of it, so FL-3 is a part of HVAC-3 even though it is only asserted as part of AHU-3.
+5. Rule S10 lifts the association from the component to the system containing it as `wasAssociatedWithSystem`, which is why the query needs no hard-coded reference to HVAC-3.
+
+Run in Snap SPARQL with Pellet started; without the reasoner it returns 0 rows.
+
+**Result (4 rows).** ICU-02 and ICU-03 are absent because they satisfied the policy, so S2 never fires for them and nothing is associated. AHU-3 is absent from the component column: it is part of HVAC-3 but acts on no measurement in the failing derivation chain. These are candidates linked to the failing evidence, not a confirmed cause (use case requirement R7): the system narrows the search for a facilities engineer, it does not diagnose.
+
+| roomName | policyName | unitName | componentName | systemName |
+|---|---|---|---|---|
+| ICU-01 (room 4E-12) | min outdoor air changes per hour | air changes per hour | DF-412 | HVAC-3 |
+| ICU-01 (room 4E-12) | min outdoor air changes per hour | air changes per hour | FL-3 | HVAC-3 |
+| ICU-01 (room 4E-12) | min outdoor air changes per hour | air changes per hour | SD-3 | HVAC-3 |
+| ICU-01 (room 4E-12) | min outdoor air changes per hour | air changes per hour | VAV-412 | HVAC-3 |
+
+## What the queries cover
+
+| Competency question | Inference exercised |
+|---|---|
+| CQ 1.1 | property chain `servesRoom`; sub-class reasoning over `BuildingServiceSystem` |
+| CQ 1.2 | SWRL S1–S7; classification of the compliance assessment; measurement time via PROV-O |
+| CQ 2.1 | SWRL S1–S7 over all rooms, min-bounded and range-bounded policies |
+| CQ 2.2 | SWRL status plus asserted evidence: value, unit, bounds, time |
+| CQ 3.1 | compliance classification with closure axioms, plus the `servesRoom` chain |
+| CQ 3.2 | SWRL S2, S9 and S10; transitive derivation; transitive part-of |
+
+The six questions use the room, service, measurement and compliance modules of the ontology. They do not exercise `Building`, `BuildingSystem`, `hasBuildingSystem`, `hasServiceSystem` or `hasRoom`, and they instantiate only two of the six CDC policy kinds; questions about a whole building, or about the other policies, follow the same pattern without new rules. Policy assessments that would be *unknown* (no measurement logged) are not produced in this release, because that requires the closed-world SHACL step described under [known limitations](ontology#known-limitations-and-open-points).

@@ -1,181 +1,456 @@
-[Concept Map](#conceptual-model) | [Ontology File](#ontologies) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+---
+layout: default
+title: ontology
+---
+
+[Conceptual Model](#conceptual-model) | [Design Walkthrough](#design-walkthrough) | [How the Ontology Works](#how-the-ontology-works) | [Ontology Files](#ontology-files) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+
+## Overview
+
+The CareAir ventilation-compliance ontology joins three bodies of knowledge that normally live in three unconnected places: the **clinical space program** (which rooms exist and what they are used for), the **mechanical model** (which HVAC systems and components serve which rooms) and the **building management system** (what the sensors have measured). Once they are in one graph, a question such as *"did ICU-01 meet the CDC ventilation standard at 14:30, and if not, which equipment is involved?"* is asked once and answered by inference, with the evidence attached.
+
+| | |
+|---|---|
+| **Ontology IRI** | `https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/` |
+| **Default prefix** | `v:` |
+| **Language** | OWL 2 DL with SWRL rules (evaluated with Pellet) |
+| **Imports** | PROV-O (2013-04-30), SAREF4BLDG v2.1.1, RealEstateCore Core v3.3, OMG Commons Quantities and Units |
+| **Source files** | [ventilation-compliance.rdf](ventilation-compliance.rdf) (TBox and rules), [individuals.rdf](individuals.rdf) (test ABox), [catalog-v001.xml](catalog-v001.xml) (Protégé import catalog) |
+| **Creators** | Ahosan Habib, Nipun Deelaka, Andy Cheng, Carina Liu |
+
+The design follows the requirements of the [use case](usecase) (R1 to R9). Three of them shape almost every modelling decision:
+
+- **R3 – derive, do not assert, which system serves which room.** The relation between an air handling unit and a room is a consequence of the ductwork, so it is inferred from components and their connections.
+- **R5 / R6 – evaluate by inference and keep the provenance.** Policies are data with bounds and units, not code. Every determination links the measurement it used, the time it was taken and the policy it was compared against.
+- **R7 / R8 – report candidates, never a confirmed cause, and stay read-only.** The ontology attaches HVAC components and systems to a failed assessment as *associated with* it, not as its cause, and it never writes to the building.
 
 ## Conceptual Model
 
-![Concept Map Subject Model](images/ConceptMap_SubjectModel.png)
+<a href="images/conceptual/01-core-conceptual-diagram.png" target="_blank">
+  <img src="images/conceptual/01-core-conceptual-diagram.png" style="width:100%; max-width:1000px;">
+</a>
 
-An overview of the main classes and their property associations. Some property associations exist only upon
-representation of the Table 1 data, and so we highlight instances in pink
+*Core conceptual diagram (version 9). The full slide deck, with one slide per module and figure descriptions in the speaker notes, is linked from the [About page](index#list-of-resources).*
 
-## Ontologies
+The diagram uses colour to separate three kinds of data, because they arrive at different times and are stored in different places (see the [system architecture](index#system-architecture)):
 
-### Study Cohort Ontology (SCO)
+| Colour | Meaning | Examples |
+|---|---|---|
+| **Blue** classes and arrows | *Static* data about one building: its rooms, its service systems and components, the compliance frameworks that apply to it | `Building`, `Room`, `HVACSystem`, `BuildingServiceComponent`, `ComplianceFramework`, `CompliancePolicy`, `hasServiceComponent`, `connectsTo`, `hasPolicy` |
+| **Green** arrows | *Static* relations that cross module boundaries and are meant to be reused across buildings | `isPartOf`, `measures`, `evaluatesOn`, `actsOn` / `isAffectedBy` |
+| **Purple** classes and arrows | *Dynamic* data created by measuring and assessing, published as nanopublications in the proposed architecture | `Measurement`, `SensorMeasurement`, `DerivedMeasurement`, `AssessmentContext`, `usesMeasurement`, `forRoom` |
+| **Yellow** classes and arrows | *Inferred* data, worked out by the reasoner and never typed in by hand | `ComplianceAssessment` status classes, `PolicyAssessment` status classes, `servesRoom`, `wasAssociatedWithComponent`, `wasAssociatedWithSystem` |
 
-**Link:**
-[https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/studycohort.owl)
+The core diagram was designed around four behaviours observed in the use case, and the walkthrough below follows them in the same order:
 
-**View the ontology documentation at:**
-[https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html](https://tetherless-world.github.io/study-cohort-ontology/WidocoDocumentation/doc/index-en.html)
+1. How **rooms** connect to **building service components**, and how that connection decides which **building service system serves which room**.
+2. How **sensor measurements** taken at a time are tied to the **room** the sensor is in, and how **derived measurements** are computed from them.
+3. How **compliance policies** are grouped in **compliance frameworks** and declare which **measurement** each policy checks.
+4. How a **compliance assessment** of a room at a time is built from **policy assessments**, and how a failed assessment is traced back to the **system and components** involved.
 
-#### Primary Classes and Definitions
+## Design Walkthrough
 
-1. Research Study
-    - Definition: A scientific investigation that involves testing a hypothesis
-    - Immediate Superclass: None
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: Hasco
-1. Clinical Trial
-    - Definition: A prospective study designed to evaluate whether one or more interventions are associated with an outcome
-    - Immediate Superclass: Research Study
-    - Example: "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: National Cancer Institute Thesarus (NCIT)
-1. Cohort
-    - Definition: A cohort is the group of subjects enrolled in a study
-    - Immediate Superclass: None
-    - Example: Randomized Cohort in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: The Statistical Methods Ontology (STATO)
-1. Study Arm
-    - Definition: A group or subgroup of participants in a clinical trial that receives a specific intervention/treatment,
-    or no intervention, according to the trial's protocol
-    - Immediate Superclass: Cohort
-    - Example: Metformin Conventional Therapy Arm
-    - Reused From: None
-1. Study Subject
-    - Definition: A person who receives medical attention, care, or treatment, or who is registered with medical
-    professional or institution with the purpose to receive medical care when necessary
-    - Immediate Superclass: None
-    - Example: African American Male Subject in "10-Year Follow-up of Intensive Glucose Control in Type 2 Diabetes"
-    - Reused From: SemanticScience Integrated Ontology (SIO)
-1. Study Intervention
-    - Definition: A process or action that is the focus of a clinical study. Interventions include drugs, medical devices,
-    procedures, vaccines, and other products that are either investigational or already available
-    - Immediate Superclass: None
-    - Example: Metformin
-    - Reused From: ProvCaRe
-1. Subject Characteristic
-    - Definition: Property that summarizes important attributes of the participants enrolled in a study
-    - Immediate Superclass: None
-    - Example: Age
-    - Reused From: None
-1. Statistical Measure
-    - Definition: a standard unit used to express the size, amount, or degree of something
-    - Immediate Superclass: None
-    - Example: Mean
-    - Reused From: ProvCaRe
+Each step below takes one region of the conceptual diagram, shows the detailed slide for that module, and explains what was modelled, which vocabulary it was reused from, and why.
 
-### Accompanying Suite of Ontologies
+### Step 1 – Buildings and rooms
 
-- [Diseases](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/diseases.owl)
-- [Lab results](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/labresults.owl)
-- [Medications](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/medications.owl)
-- [Therapies](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/therapies.owl)
-- [Measures](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/measures.owl)
-- [Units](https://raw.githubusercontent.com/tetherless-world/study-cohort-ontology/master/Ontologies/units.owl)
+The starting point is the spatial context. A `core:Building` (from RealEstateCore) `hasRoom` zero or more `core:Room`s, and `hasBuildingSystem` zero or more `BuildingSystem`s. `hasRoom` is declared a sub-property of `cmns-col:hasPart`, so a room is formally a part of its building. Rooms are related to each other by `neighbor`, a symmetric property that the measurement module uses later (Step 3).
+
+<a href="images/conceptual/02-room-taxonomy.png" target="_blank">
+  <img src="images/conceptual/02-room-taxonomy.png" style="width:100%; max-width:900px;">
+</a>
+
+*Healthcare facility (room) taxonomy.*
+
+The room taxonomy is taken directly from the space list in the CDC *Guidelines for Environmental Infection Control in Health-Care Facilities*, Appendix B (Air), because that is the list the compliance policies are written against. Six top-level areas sit under `core:Room`:
+
+| Top-level area | Example subclasses in the ontology |
+|---|---|
+| `critical_care_area` | `ICU`, `operating_room`, `recovery_room`, `trauma_room`, `delievery_room`, `bronchoscopy_room`, `endoscopy_room`, `treatment_room` |
+| `nursing_area` | `patient_room`, `airborne_infection_isolation_room`, `protective_environment_room`, `isolation_alcove`, `labor_room`, `newborn_nursery_suite`, `patient_corridor`, `toilet_room` |
+| `diagnostic_and_treatment_area` | `examination_room`, `medication_room`, `physical_therapy_room`, `hydrotherapy_room`, `soiled_workroom`, `sterilizing_and_supply_area`, `ETO-sterilizer_room`, `sterilizer_equipment_room` |
+| `laboratory_area` | `general_lab`, `microbiology_lab`, `pathology_lab`, `autopsy_room`, `pharmacy`, `nonrefrigerated_body-holding_room`, and other laboratory types |
+| `radiology_area` | `x-ray_room`, `dark_room` |
+| `central_medical_and_surgical_supply_area` | `decontamination_room`, `clean_workroom`, `sterile_storage`, `service_area`, `general_laundry`, `soiled_linen_storage`, `clean_linen_storage`, `bedpan_room`, `bathroom`, `janitor's_closet`, and others |
+
+Every room class carries an `rdfs:label` and a `skos:definition`. The test individuals use a single class, `ICU`, for the three rooms ICU-01 (room 4E-12), ICU-02 and ICU-03.
+
+> **Design note.** The use case (requirement R1) asks for clinical function to be a time-bounded *role* of a space rather than a permanent subclass, because hospital rooms are re-designated. The current release types rooms directly (`ICU_01 a v:ICU`) for simplicity; the role-based representation is a planned extension and would not change the policy or assessment modules.
+
+### Step 2 – Building service systems, components and the *serves* relation
+
+<a href="images/conceptual/03-hvac-component-taxonomy.png" target="_blank">
+  <img src="images/conceptual/03-hvac-component-taxonomy.png" style="width:100%; max-width:900px;">
+</a>
+
+*HVAC component taxonomy and part-of structure.*
+
+The mechanical side of the model has two classes and three relations.
+
+- `BuildingServiceSystem` (a sub-class of `fso:System` from the Flow Systems Ontology) is a system that supplies, distributes or controls a utility or environmental service. `HVACSystem` is its only specialisation so far.
+- `BuildingServiceComponent` (a sub-class of `fso:Component`) is anything that is part of such a system and contributes to delivery, distribution, control or measurement. Its taxonomy, shown above, groups HVAC equipment under four sub-assemblies: `HeatingAndCoolingSource` (boiler, chiller, heat pump, direct-expansion unit), `AirLoop` (air handling unit, supply and return ductwork, VAV box, diffuser), `ExhaustAndReliefSystem` (exhaust inlet, exhaust ductwork, exhaust fan, outdoor discharge) and `Controls` (sensors, controllers, actuators). The AHU in turn has its own parts: fan, filter, heating coil, cooling coil and the outdoor-air, return-air and relief dampers. Equipment classes that already exist in SAREF4BLDG (`Boiler`, `Chiller`, `Fan`, `Sensor`, `Controller`, `Actuator`) are reused rather than redefined.
+- `hasServiceComponent` links a system to its components. It is declared a sub-property of **both** `fso:hasComponent` and `cmns-col:hasPart`. Part-of nesting *inside* a component (a filter inside an AHU) uses `cmns-col:isPartOf`, which is transitive and the inverse of `cmns-col:hasPart`. Because of this, a filter asserted only as part of AHU-3 is also inferred to be a part of HVAC-3.
+- `connectsTo` is the topological link from a component to the room it discharges into or draws from. A `BuildingServiceComponent` connects to at most one room (`connectsTo max 1 core:Room`).
+
+The relation the use case cares about, **`servesRoom`**, is never asserted. It is defined as a property chain:
+
+```
+hasServiceComponent ∘ connectsTo ⊑ servesRoom
+```
+
+so if HVAC-3 has the service component VAV-412 and VAV-412 connects to room 4E-12, the reasoner concludes that HVAC-3 serves 4E-12. `servesRoom` is a sub-property of `core:serves` from RealEstateCore, so any tool that understands RealEstateCore also understands the inferred relation. Nested parts are deliberately *not* used by the chain: a damper inside an AHU is a part of the system but does not by itself make the system serve a room.
+
+Supporting axioms on `BuildingServiceComponent`: it may only be part of another component or of a service system (`isPartOf only (BuildingServiceComponent or BuildingServiceSystem)`), and every component acts on at least one sensor measurement (Step 5).
+
+### Step 3 – Sensors and sensor measurements
+
+<a href="images/conceptual/04-sensor-measurement-taxonomy.png" target="_blank">
+  <img src="images/conceptual/04-sensor-measurement-taxonomy.png" style="width:100%; max-width:800px;">
+</a>
+
+*Sensor measurement taxonomy.*
+
+`Measurement` is the root of all observed and computed values. It is a sub-class of `prov:Entity` and must carry exactly one `prov:generatedAtTime` (`xsd:dateTime`), which is how the model records *when* a value was taken. It has three sub-classes:
+
+- `SensorMeasurement` – a value read directly from a sensor. It carries exactly one `cmns-qtu:hasQuantityValue` pointing to a `cmns-qtu:ScalarQuantityValue`, which in turn carries a `hasNumericValue` and exactly one `hasMeasurementUnit`. Keeping value and unit together on a separate node is what makes unit-aware comparison possible in Step 7.
+- `DerivedMeasurement` – a value calculated from other measurements (Step 4).
+- `BuildingMeasurement` – a static property of the building such as `roomVolume`, needed to turn an airflow into an air-change rate.
+
+The sensor measurement taxonomy covers the quantities the CDC policies need: `Temperature`, `Humidity`, `Pressure` and `AirFlowRate`, the last specialised into `SupplyAirFlowRate`, `ReturnAirFlowRate`, `ExhaustAirFlowRate` and `OutdoorAirFlowRate`, with AHU-level variants `AHUSupplyAirFlowRate` and `AHUOutdoorAirFlowRate`.
+
+<a href="images/conceptual/05-sensor-to-measurement.png" target="_blank">
+  <img src="images/conceptual/05-sensor-to-measurement.png" style="width:100%; max-width:900px;">
+</a>
+
+*Sensors to sensor measurement relation materialisation.*
+
+Sensors are `BuildingServiceComponent`s that live under `Controls` and are typed with the SAREF4BLDG class `saref4bldg:Sensor`. Four sub-classes (`TemperatureSensor`, `HumiditySensor`, `PressureSensor`, `AirFlowRateSensor`) are each restricted to `measures some` the matching measurement class, so the kind of sensor fixes the kind of reading. `measures` has the inverse `measuredBy`, and every sensor `measures min 1 SensorMeasurement`.
+
+A measurement is tied to a room in two layers:
+
+- `measuredIn` (domain `SensorMeasurement`) says the measured condition pertains to that room.
+- `recordedIn` (domain `Measurement`) is the more general "this record is about this room". `measuredIn` is a sub-property of `recordedIn`, so a query for everything recorded in a room also returns everything measured in it.
+- `recordedInNeighbor` is a property chain `recordedIn ∘ neighbor`, which lets a policy about air movement *relative to an adjacent area* find the readings of the neighbouring room.
+
+### Step 4 – Derived measurements and provenance
+
+<a href="images/conceptual/06-derived-measurements.png" target="_blank">
+  <img src="images/conceptual/06-derived-measurements.png" style="width:100%; max-width:1000px;">
+</a>
+
+*Derived measurement taxonomy and property materialisation.*
+
+The CDC thresholds are expressed in quantities no sensor reports directly, such as *outdoor air changes per hour*. The ontology therefore models the calculation chain explicitly as `DerivedMeasurement`s linked by `prov:wasDerivedFrom`:
+
+| Derived measurement | Derived from |
+|---|---|
+| `OutdoorAirFraction` | `AHUOutdoorAirFlowRate`, `AHUSupplyAirFlowRate` |
+| `OutdoorAirFlowRateToRoom` | `SupplyAirFlowRate`, `OutdoorAirFraction`, `roomVolume` |
+| `OutdoorAirChangePerHour` | `OutdoorAirFlowRateToRoom` |
+| `TotalAirChangePerHour` | `SupplyAirFlowRate`, `roomVolume` |
+| `IncomingTransferAirflowRate` | `ReturnAirFlowRate`, `ExhaustAirFlowRate` |
+
+Each class carries both an existential restriction (`wasDerivedFrom some X`) naming its inputs and a universal one (`wasDerivedFrom only Measurement`) so that derivations can only point at measurements.
+
+`prov:wasDerivedFrom` is intentionally *not* transitive in PROV-O. To let a rule walk a derivation chain of any depth, the ontology introduces the helper property `isTransitivelyDerivedFrom`, declared transitive, with `prov:wasDerivedFrom` as a sub-property. Nothing asserts the helper directly; the reasoner fills it in. This is what allows Step 8 to blame a component that acts on the *supply* airflow for a failure measured in *outdoor air changes per hour*, three derivations later.
+
+### Step 5 – How HVAC components affect measurements
+
+<a href="images/conceptual/07-component-effect-on-measurements.png" target="_blank">
+  <img src="images/conceptual/07-component-effect-on-measurements.png" style="width:100%; max-width:1000px;">
+</a>
+
+*HVAC component effect on measurements.*
+
+To explain a failure the model has to know which equipment can influence which quantity. This is expressed with `cmns-pas:actsOn` (inverse `cmns-pas:isAffectedBy`) from the OMG Commons Parties and Situations ontology. Every `BuildingServiceComponent` `actsOn some SensorMeasurement`, and each concrete component class narrows that to the measurement kinds it can physically influence, for example:
+
+| Component | acts on |
+|---|---|
+| `Fan` | supply, return and outdoor airflow rates, AHU airflow rates, pressure |
+| `Filter` | supply airflow rate, AHU supply airflow rate, pressure |
+| `OutdoorAirDamper` | outdoor airflow rates, return airflow rate, temperature, humidity |
+| `HeatingCoil`, `CoolingCoil`, `Boiler`, `Chiller`, `HeatPump`, `DirectExpansionUnit` | temperature, humidity |
+| `VariableAirVolumeBox`, `Diffuser`, `SupplyDuctwork` | supply airflow rate, pressure, temperature |
+| `ExhaustFan`, `ExhaustInlet`, `ExhaustDuctwork`, `OutdoorDischarge` | exhaust airflow rate, pressure |
+
+At the instance level the building model asserts `actsOn` from each installed component to the specific measurement individuals it influences (in the test data, VAV-412, DF-412, SD-3 and FL-3 each act on the supply airflow reading M-0411). These class-level restrictions document the intended coverage and keep the instance assertions consistent.
+
+### Step 6 – Compliance frameworks and policies
+
+<a href="images/conceptual/08-cdc-compliance-policy-taxonomy.png" target="_blank">
+  <img src="images/conceptual/08-cdc-compliance-policy-taxonomy.png" style="width:100%; max-width:1000px;">
+</a>
+
+*CDC compliance and policy taxonomy.*
+
+Requirements are **data, not code** (requirement R2). A `ComplianceFramework` `hasPolicy` one or more `CompliancePolicy`s and `appliesToRoom` the rooms it governs. `CDC_compliance_framework` is the framework modelled so far; it is restricted to have one policy of each of the six kinds named in the CDC Appendix B table for critical and intensive care:
+
+| Policy class | evaluates on |
+|---|---|
+| `MinimumAirChangesOfOutdoorAirPerHour` | `OutdoorAirChangePerHour` |
+| `AllAirExhaustedDirectlyToOutdoors` | `TotalAirChangePerHour` |
+| `AirMovementRelationshipToAdjacentArea` | `IncomingTransferAirflowRate` |
+| `RelativeHumidity` | `Humidity` |
+| `DesignTemperature` | `Temperature` |
+| `RecirculatedByMeansOfRoomUnits` | (permission flag; no measurement) |
+
+The six policy classes are pairwise disjoint. `evaluatesOn` (inverse `isEvaluatedBy`) is the link from a *kind* of policy to the *kind* of measurement that is evidence for it.
+
+Independently of its subject, every policy is also classified by the **shape of its bound**, again in three disjoint classes:
+
+- `MinBoundedCompliancePolicy` – exactly one `cmns-qtu:hasLowerBound`
+- `MaxBoundedCompliancePolicy` – exactly one `cmns-qtu:hasUpperBound`
+- `RangeBoundedCompliancePolicy` – exactly one lower and exactly one upper bound
+
+Bounds are `cmns-qtu:ScalarQuantityValue`s with a numeric value and a unit, exactly like measurements. The two classifications are orthogonal on purpose: the test policy `P_ACH_min` is both a `MinimumAirChangesOfOutdoorAirPerHour` and a `MinBoundedCompliancePolicy` (lower bound 2.0 air changes per hour), and `P_RH` is both a `RelativeHumidity` policy and a `RangeBoundedCompliancePolicy` (30 to 60 percent relative humidity). The SWRL rules in Step 7 key only on the bound shape, so a new CDC policy, or a policy from a different framework such as ASHRAE 170, needs **no new rule**.
+
+### Step 7 – Assessments: context, policy assessments and compliance assessments
+
+This is the yellow region at the top right of the core diagram. It follows the NIST OSCAL assessment model: an assessment has a scope, evaluates individual controls, and aggregates their findings.
+
+- `Assessment` is the abstract root ("evidence evaluated against criteria to determine an outcome").
+- `AssessmentContext` fixes *what* is being assessed and *under which rules*: `forRoom` (the room), `usesFramework` (the compliance framework) and `usesMeasurement` (the measurements logged for this test). Both `uses*` properties specialise `cmns-cxtdsg:uses`.
+- `ComplianceAssessment` is the room-level verdict. It `hasContext` an assessment context and `hasPolicyAssessment` one policy assessment per policy that was tested. `evaluatedCompliance` can additionally point straight at the framework.
+- `PolicyAssessment` is the unit of evaluation: it `evaluatedPolicy` one `CompliancePolicy`, and the measurement compared against it is linked by `isEvaluatedAt` (inverse `evaluatesMeasurement`). The context may also be linked to the policy assessment with `appliesToPolicyAssessment`.
+
+Status is modelled as **class membership**, not as a status attribute, so that it can be inferred:
+
+| Policy assessment status | Meaning |
+|---|---|
+| `SatisfiedPolicyAssessment` | the usable evidence meets every requirement of the policy |
+| `UnsatisfiedPolicyAssessment` | the usable evidence fails at least one requirement |
+| `UnknownPolicyAssessment` | the available information is insufficient to decide |
+
+| Compliance assessment status | OWL definition |
+|---|---|
+| `SatisfiedComplianceAssessment` | `ComplianceAssessment and (hasPolicyAssessment some PolicyAssessment) and (hasPolicyAssessment only SatisfiedPolicyAssessment)` |
+| `UnsatisfiedComplianceAssessment` | `... and (hasPolicyAssessment only UnsatisfiedPolicyAssessment)` |
+| `PartiallySatisfiedComplianceAssessment` | `ComplianceAssessment and (hasPolicyAssessment some SatisfiedPolicyAssessment) and (hasPolicyAssessment some UnsatisfiedPolicyAssessment)` |
+| `UnknownComplianceAssessment` | `... and (hasPolicyAssessment only UnknownPolicyAssessment)` |
+
+Because OWL is open-world, an `only` restriction can be concluded only when the reasoner knows the list of policy assessments is complete. Each `ComplianceAssessment` individual therefore carries a **closure axiom** of the form `hasPolicyAssessment only {PA_ICU_01_ACH, PA_ICU_01_RH}`. The "unknown" classes exist so that *absence of evidence is never treated as compliance* (post-condition Q3 of the use case); see the limitations note below on how unknown status is produced.
+
+### Step 8 – Associating failures with systems and components
+
+The final yellow arrows, `wasAssociatedWithComponent` and `wasAssociatedWithSystem`, are sub-properties of `prov:wasAssociatedWith`. They connect an `Assessment` to the `BuildingServiceComponent`s and `BuildingServiceSystem`s linked to its evidence. The wording is deliberate: a component is *associated with* a failed assessment because it acts on the failing measurement or on something that measurement was derived from. The ontology never states that the component *caused* the failure (requirement R7), and the system does not actuate anything (R8). `wasAssociatedWithComponentIndirectly` is reserved for components reached only through a part-of chain.
+
+### Mapping the diagram to the OWL file
+
+The conceptual diagram uses a few short-hand names that were replaced by reused vocabulary when the ontology was encoded:
+
+| On the diagram | In the ontology |
+|---|---|
+| `Measurement.numericalValue` | `cmns-qtu:hasQuantityValue` → `ScalarQuantityValue` with `hasNumericValue` and `hasMeasurementUnit` |
+| `CompliancePolicy.minimumValue` / `maximumValue` | `cmns-qtu:hasLowerBound` / `cmns-qtu:hasUpperBound` → `ScalarQuantityValue` |
+| `AssessmentContext.atTime` | `prov:generatedAtTime` on each measurement the context uses |
+| `effects` / `isEffectedBy` | `cmns-pas:actsOn` / `cmns-pas:isAffectedBy` |
+| `derivedFrom` | `prov:wasDerivedFrom` (plus the transitive helper `isTransitivelyDerivedFrom`) |
+| `isPartOf+` | `cmns-col:isPartOf` (transitive), `cmns-col:hasPart` (transitive, inverse) |
+| `connectedTo` | `connectsTo` |
+| `hasComplianceAssessment` (Room → ComplianceAssessment) | reached through `hasContext` ∘ `forRoom`; not a separate property |
+| `Sensors` | `saref4bldg:Sensor` |
+
+## How the Ontology Works
+
+The ontology is meant to answer the competency questions on the [demo page](demo) by inference. Reasoning happens in three layers, from cheapest to most expressive.
+
+### Layer 1 – OWL axioms (structure)
+
+These need only a DL reasoner and no rules:
+
+| Inference | Axiom |
+|---|---|
+| Which system serves a room | property chain `hasServiceComponent ∘ connectsTo ⊑ servesRoom` |
+| A nested part belongs to the system | `hasServiceComponent ⊑ cmns-col:hasPart`, `hasPart` transitive and inverse of `isPartOf` |
+| Everything measured in a room is recorded in it | `measuredIn ⊑ recordedIn` |
+| Readings of the room next door | property chain `recordedIn ∘ neighbor ⊑ recordedInNeighbor` |
+| Full derivation history of a measurement | `prov:wasDerivedFrom ⊑ isTransitivelyDerivedFrom`, the latter transitive |
+| Room-level verdict from policy-level verdicts | the four `ComplianceAssessment` definitions plus per-individual closure axioms |
+
+### Layer 2 – SWRL rules (numeric comparison)
+
+OWL cannot compare the numeric values of two different individuals, so the comparison of a measurement with a policy bound is done by SWRL rules S1 to S7, evaluated by Pellet. All seven share the same shape; the min-bounded "unsatisfied" rule is:
+
+```
+PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ MinBoundedCompliancePolicy(?p)
+  ^ cmns-qtu:hasLowerBound(?p, ?lb) ^ cmns-qtu:hasNumericValue(?lb, ?lv) ^ cmns-qtu:hasMeasurementUnit(?lb, ?u)
+  ^ isEvaluatedAt(?m, ?a) ^ cmns-qtu:hasQuantityValue(?m, ?q)
+  ^ cmns-qtu:hasNumericValue(?q, ?v) ^ cmns-qtu:hasMeasurementUnit(?q, ?u)
+  ^ swrlb:lessThan(?v, ?lv)
+  -> UnsatisfiedPolicyAssessment(?a)
+```
+
+| Rule | Bound shape | Condition | Conclusion |
+|---|---|---|---|
+| S1 | min | value ≥ lower bound | `SatisfiedPolicyAssessment` |
+| S2 | min | value < lower bound | `UnsatisfiedPolicyAssessment` |
+| S3 | max | value ≤ upper bound | `SatisfiedPolicyAssessment` |
+| S4 | max | value > upper bound | `UnsatisfiedPolicyAssessment` |
+| S5 | range | lower ≤ value ≤ upper | `SatisfiedPolicyAssessment` |
+| S6 | range | value < lower bound | `UnsatisfiedPolicyAssessment` |
+| S7 | range | value > upper bound | `UnsatisfiedPolicyAssessment` |
+
+Note the single variable `?u` bound to the unit of **both** the bound and the measurement. A reading in cubic metres per hour can never be compared with a bound in air changes per hour; the rule simply does not fire, and the policy assessment stays unclassified rather than being wrongly satisfied.
+
+Rules S8 to S11 then attach equipment to a failed assessment:
+
+| Rule | What it does |
+|---|---|
+| S8 | a component that `actsOn` the measurement a policy assessment evaluates → `wasAssociatedWithComponent` |
+| S9 | a component that `actsOn` any measurement the evaluated measurement `isTransitivelyDerivedFrom` → `wasAssociatedWithComponent` |
+| S10 | any `BuildingServiceSystem` that `hasPart` (directly or nested) an associated component → `wasAssociatedWithSystem` |
+| S11 | lift `wasAssociatedWithComponent` from the policy assessment up to its `ComplianceAssessment` |
+
+### Layer 3 – the intended operational flow
+
+In the proposed system (see the [architecture and activity diagrams](index#system-architecture)) the building graph and the policy graph are static named graphs, each sensor reading is published as a nanopublication with its time and source, and each assessment is published as its own nanopublication linking the readings and policies it used. The ontology above is the schema for all three graphs. The current release demonstrates the reasoning in Protégé over a single test ABox; the nanopublication store and query service are future work.
+
+### Worked example (test of 9 October 2026)
+
+The test individuals describe three ICU rooms, each with an outdoor-air-change reading and a relative-humidity reading, two HVAC systems and the CDC framework with its two encoded policies.
+
+1. **Policy level.** For ICU-01, the outdoor air change rate M-0412 is 1.4 ACH against a lower bound of 2.0 ACH, so S2 fires and `PA_ICU_01_ACH` becomes an `UnsatisfiedPolicyAssessment`. Relative humidity is 45 %RH inside 30 to 60 %RH, so S5 makes `PA_ICU_01_RH` a `SatisfiedPolicyAssessment`. ICU-02 (2.6 ACH, 40 %RH) and ICU-03 (3.1 ACH, 50 %RH) satisfy both.
+2. **Room level.** With its closure axiom, `A_ICU_01` has one satisfied and one unsatisfied policy assessment and is classified as a `PartiallySatisfiedComplianceAssessment`; `A_ICU_02` and `A_ICU_03` are `SatisfiedComplianceAssessment`s.
+3. **Which system.** HVAC-3 `hasServiceComponent` VAV-412, which `connectsTo` ICU-01, so the chain infers `HVAC-3 servesRoom ICU-01`. HVAC-4 serves only ICU-02 and ICU-03.
+4. **Which components.** M-0412 was derived from the outdoor air flow rate to the room M-0413, which was derived from the supply air flow rate M-0411. VAV-412, DF-412, SD-3 and FL-3 all `actsOn` M-0411, so S9 associates all four with the failed policy assessment. AHU-3 is correctly absent: it is part of HVAC-3 but acts on nothing in the failing chain.
+5. **Which system is implicated.** FL-3 is asserted only as part of AHU-3, but `hasPart` is transitive, so S10 lifts the association to HVAC-3 without any hard-coded reference to it.
+
+The queries that retrieve each of these results, with their expected rows, are on the [Demonstration and Queries](demo) page.
+
+### Known limitations and open points
+
+- **Unknown status is not yet inferred.** `UnknownPolicyAssessment` cannot be derived under OWL's open-world assumption, because "no measurement was logged" is an absence. The use case assigns this to a closed-world SHACL validation step over the assessment context; that step is planned, not implemented.
+- **Mixed states.** An assessment with one unsatisfied and one unknown policy assessment falls into none of the four compliance classes. Queries therefore read policy assessments directly rather than relying only on the room-level class.
+- **Reasoner.** The SWRL built-ins `swrlb:lessThan` and `swrlb:greaterThanOrEqual` are accepted by Pellet but rejected by HermiT, so the rules and the classification above require Pellet.
+- **Unit conversion** is not performed; measurement and bound must already share a unit.
+- **Clinical designation as a role** (R1), a staleness window on measurements, and other frameworks such as ASHRAE 170 are deferred extensions and fit the existing policy and assessment pattern without new rules.
+
+## Ontology Files
+
+| File | Contents |
+|---|---|
+| [ventilation-compliance.rdf](ventilation-compliance.rdf) | the ontology (TBox): classes, properties, restrictions, units, and SWRL rules S1 to S11 |
+| [individuals.rdf](individuals.rdf) | test ABox `…/test-individuals/`: three ICU rooms, two HVAC systems and their components, sensors, measurements, the CDC framework with two policies, and three compliance assessments. Imports the ontology. |
+| [catalog-v001.xml](catalog-v001.xml) | Protégé XML catalog that resolves the four imports to local copies in `files/imports/` (prov-o.rdf, saref4bldg.rdf, core.rdf, qun.rdf) |
+| [OE 9 Team HVCC SPARQL Queries.txt](OE%209%20Team%20HVCC%20SPARQL%20Queries.txt) | the competency-question queries and how to run them |
+
+To explore the ontology, open `individuals.rdf` in Protégé with the catalog in the same folder, start the **Pellet** reasoner, and use the Snap SPARQL Query tab (or the built-in SPARQL Query tab for queries that use `prov:generatedAtTime`).
 
 ## Ontologies Reused
 
-We group the ontologies we reuse by the purpose and the use-cases they are intended to serve, as vocabularies for.
+The reused vocabularies are grouped by the module they support. Full citations are on the [Related Work](related_work) page and in the references sheet of the [terminology list](termlist).
 
-### Study Design Ontologies
+### Imported
 
-- [Provenance for Healthcare + Clinical Research (ProvCaRe)](https://provcare.case.edu/)
-- [Human-Aware Science Ontology](http://hadatac.org/ont/hasco/)
+- [RealEstateCore Core 3.3](https://doc.realestatecore.io/3.3/core.html) (`core:`) – `Building`, `Room`, `serves`, `componentOf`. Supplies the spatial classes and the super-property of `servesRoom`.
+- [SAREF4BLDG 2.1.1](https://saref.etsi.org/saref4bldg/v2.1.1/) (`saref4bldg:`) – `Sensor`, `Boiler`, `Chiller`, `Fan`, `Controller`, `Actuator` and the SAREF core `Actuator`. Supplies equipment and sensor classes.
+- [W3C PROV-O](https://www.w3.org/TR/prov-o/) (`prov:`) – `Entity`, `generatedAtTime`, `wasDerivedFrom`, `wasAssociatedWith`, `wasInfluencedBy`. Supplies measurement time, derivation and the association of assessments with equipment.
+- [OMG Commons Quantities and Units](https://www.omg.org/spec/Commons/QuantitiesAndUnits/) (`cmns-qtu:`) – `ScalarQuantityValue`, `MeasurementUnit`, `hasQuantityValue`, `hasNumericValue`, `hasMeasurementUnit`, `hasLowerBound`, `hasUpperBound`. Supplies values with units for both measurements and policy bounds.
 
-### Medical Ontologies
+### Referenced without import
 
-- [National Cancer Institute Thesarus (NCIT)](https://provcare.case.edu/)
-- [Children's Health Exposure Analysis Resource Ontology (CHEAR)](https://bioportal.bioontology.org/ontologies/NCIT)
-- [Human-Disease Ontology (DOID)](https://www.ebi.ac.uk/ols/ontologies/doid")
+- [OMG Commons Collections](https://www.omg.org/spec/Commons/Collections/) (`cmns-col:`) – transitive `hasPart` / `isPartOf`.
+- [OMG Commons Parties and Situations](https://www.omg.org/spec/Commons/PartiesAndSituations/) (`cmns-pas:`) – `actsOn` / `isAffectedBy`.
+- [OMG Commons Contextual Designators](https://www.omg.org/spec/Commons/ContextualDesignators/) (`cmns-cxtdsg:`) – `uses` / `isUsedBy`.
+- [Flow Systems Ontology (FSO)](https://alikucukavci.github.io/FSO/) (`fso:`) – `System`, `Component`, `hasComponent`.
+- [SWRL](https://www.w3.org/submissions/SWRL/) and the SWRL built-ins (`swrl:`, `swrlb:`) – rule syntax and comparison built-ins.
+- [SKOS](http://www.w3.org/2004/02/skos/core#) – `definition`, `altLabel`, `note` annotations on every term.
 
-### Mid-Level Ontologies
+### Reviewed as sources of terms and definitions
 
-- [SemanticScience Integrated Ontology
-  (SIO)](https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-subset-labels.owl)
+- [ASHRAE Standard 223P](https://open223.info/) – building topology and observable properties; the current ontology does not import it but keeps its connection-point view of systems in mind.
+- [Brick Schema 1.4](https://ontology.brickschema.org/1.4/) – sensor point and equipment typing.
+- [W3C SSN / SOSA](https://www.w3.org/TR/vocab-ssn/) – observation and feature-of-interest pattern behind `measures` and `recordedIn`.
+- [QUDT](http://qudt.org/) – units reference; OMG Commons was chosen instead for its lighter footprint.
+- [NIST OSCAL assessment layer](https://pages.nist.gov/OSCAL/) – source of the assessment, context and policy-assessment decomposition.
+- [ODRL formal semantics](https://w3c.github.io/odrl/formal-semantics/) and [W3C EARL 1.0](https://www.w3.org/TR/EARL10-Schema/) – policy and evaluation-result vocabulary.
+- [ASHRAE Terminology](https://terminology.ashrae.org/), [ASHRAE 170 Table 7.1](https://icpsne.org/Ventilation%20Appendix%20Table%207.1%20Design%20Parameters.pdf), [CDC Infection Control: Air](https://www.cdc.gov/infection-control/hcp/environmental-control/air.html), [VIM (JCGM 200:2012)](https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf), [ISO/IEC 17000:2020](https://www.iso.org/standard/73029.html) and [ISO 704:2022](https://www.iso.org/standard/79077.html) – definitions of HVAC, measurement and conformity-assessment terms, written following ISO 704.
 
-### Statistical Ontologies
-
-- [Units Ontology
-  (UO)](https://www.google.com/search?q=UO+ontology&rlz=1C5CHFA_enIN727IN729&oq=UO+ontology&aqs=chrome..69i57j69i60.3199j0j4&sourceid=chrome&ie=UTF-8)
-- [Statistical Methods Ontology (STATO)](https://www.ebi.ac.uk/ols/ontologies/stato)
-
-### Ontology Prefixes
+## Ontology Prefixes
 
 <table style="width:100%">
   <tr>
     <th>Prefix</th>
-    <th>Links</th>
+    <th>Namespace</th>
+  </tr>
+  <tr>
+    <td>v</td>
+    <td><a href="ventilation-compliance.rdf">https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/</a> (CareAir ventilation-compliance ontology)</td>
+  </tr>
+  <tr>
+    <td>test</td>
+    <td><a href="individuals.rdf">https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/</a> (test individuals)</td>
   </tr>
   <tr>
     <td>rdf</td>
-    <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns">Resource Description Framework</a></td>
+    <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a></td>
   </tr>
   <tr>
     <td>rdfs</td>
-    <td><a href="http://www.w3.org/2000/01/rdf-schema"> RDF Schema</a> </td>
+    <td><a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></td>
   </tr>
   <tr>
     <td>owl</td>
-    <td><a href="http://www.w3.org/2002/07/owl#">Web Ontology Language </a> </td>
+    <td><a href="http://www.w3.org/2002/07/owl#">http://www.w3.org/2002/07/owl#</a></td>
   </tr>
   <tr>
-    <td> xsd</td>
-    <td> <a href="http://www.w3.org/2001/XMLSchema#">XML Schema Definition</a></td>
-  </tr>
-  <tr>
-    <td>dct</td>
-    <td> <a href="http://purl.org/dc/terms/">Dublin Core Term</a> </td>
+    <td>xsd</td>
+    <td><a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a></td>
   </tr>
   <tr>
     <td>skos</td>
-    <td> <a href="http://www.w3.org/2004/02/skos/core#">Simple Knowledge Organization System</a></td>
+    <td><a href="http://www.w3.org/2004/02/skos/core#">http://www.w3.org/2004/02/skos/core#</a></td>
   </tr>
   <tr>
-    <td>sco</td>
-    <td> <a href="https://idea.tw.rpi.edu/projects/heals/studycohort/"> Study Cohort Ontology</a> </td>
+    <td>dc / dcterms</td>
+    <td><a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a>, <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></td>
   </tr>
   <tr>
-    <td>chear</td>
-    <td> <a href="http://hadatac.org/ont/chear#">Children’s Health Exposure Analysis Resource</a></td>
+    <td>prov</td>
+    <td><a href="http://www.w3.org/ns/prov#">http://www.w3.org/ns/prov#</a> (W3C PROV Ontology)</td>
   </tr>
   <tr>
-    <td>hasco</td>
-    <td> <a href="http://hadatac.org/ont/hasco#"> Human-Aware Science Ontology</a> </td>
+    <td>core</td>
+    <td><a href="https://w3id.org/rec/core/">https://w3id.org/rec/core/</a> (RealEstateCore Core)</td>
   </tr>
   <tr>
-    <td>fibo-fnd-utl-av</td>
-    <td> <a href="http://www.omg.org/spec/EDMC-FIBO/FND/Utilities/AnnotationVocabulary/">Financial Industry Business
-        Ontology</a> </td>
+    <td>saref4bldg</td>
+    <td><a href="https://saref.etsi.org/saref4bldg/">https://saref.etsi.org/saref4bldg/</a> (SAREF extension for buildings)</td>
   </tr>
   <tr>
-    <td>sio</td>
-    <td> <a href="http://semanticscience.org/resource/">SemanticScience Integrated Ontology</a> </td>
+    <td>saref</td>
+    <td><a href="https://saref.etsi.org/core/">https://saref.etsi.org/core/</a> (SAREF core)</td>
   </tr>
   <tr>
-    <td>obo</td>
-    <td> <a href="http://purl.obolibrary.org/obo/">OBO Foundry</a> </td>
+    <td>fso</td>
+    <td><a href="https://w3id.org/fso#">https://w3id.org/fso#</a> (Flow Systems Ontology)</td>
   </tr>
   <tr>
-    <td>stato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/STATO_">The Statistical Methods Ontolgy</a> </td>
+    <td>cmns-qtu</td>
+    <td><a href="https://www.omg.org/spec/Commons/QuantitiesAndUnits/">https://www.omg.org/spec/Commons/QuantitiesAndUnits/</a></td>
   </tr>
   <tr>
-    <td>uo</td>
-    <td><a href="http://purl.obolibrary.org/obo/UO_"> Units of Measurement Ontology</a> </td>
+    <td>cmns-col</td>
+    <td><a href="https://www.omg.org/spec/Commons/Collections/">https://www.omg.org/spec/Commons/Collections/</a></td>
   </tr>
   <tr>
-    <td>pato</td>
-    <td> <a href="http://purl.obolibrary.org/obo/PATO_"> Human Phenotypic Quality Ontology</a> </td>
+    <td>cmns-pas</td>
+    <td><a href="https://www.omg.org/spec/Commons/PartiesAndSituations/">https://www.omg.org/spec/Commons/PartiesAndSituations/</a></td>
   </tr>
   <tr>
-    <td>ncit</td>
-    <td> <a href="http://purl.obolibrary.org/obo/NCI_">National Cancer Institute Thesarus</a> </td>
+    <td>cmns-cxtdsg</td>
+    <td><a href="https://www.omg.org/spec/Commons/ContextualDesignators/">https://www.omg.org/spec/Commons/ContextualDesignators/</a></td>
   </tr>
   <tr>
-    <td>provcare</td>
-    <td> <a href="http://www.case.edu/ProvCaRe/provcare#">Provenance for Clinical + Healthcare Research</a> </td>
+    <td>swrl / swrlb</td>
+    <td><a href="http://www.w3.org/2003/11/swrl#">http://www.w3.org/2003/11/swrl#</a>, <a href="http://www.w3.org/2003/11/swrlb#">http://www.w3.org/2003/11/swrlb#</a></td>
   </tr>
   <tr>
-    <td>ocre</td>
-    <td> <a href="http://purl.org/net/OCRe/OCRe.owl/#"> Ontology of Clinical Research</a> </td>
+    <td>swrla</td>
+    <td><a href="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">http://swrl.stanford.edu/ontologies/3.3/swrla.owl#</a> (rule enable/disable annotation)</td>
+  </tr>
+  <tr>
+    <td>sh</td>
+    <td><a href="http://www.w3.org/ns/shacl#">http://www.w3.org/ns/shacl#</a> (reserved for the planned closed-world validation step)</td>
   </tr>
 </table>
