@@ -15,16 +15,16 @@ I’ve framed this as **assessing compliance and identifying supporting evidence
 
 ## Project Overview Diagram 
 
-<a href="images/illustrative_figure.gif" target="_blank">
-  <img src="images/illustrative_figure.gif" style="width:100%; max-width:800px;">
+<a href="./files/images/illustrative_figure.gif" target="_blank">
+  <img src="./files/images/illustrative_figure.gif" style="width:100%; max-width:800px;">
 </a>
 
 Our system integrates a building model, time-varying sensor readings, and compliance policies to assess ventilation conditions across a healthcare facility. The building model provides the spatial and operational context, including zone properties and ventilation connections. Sensor readings capture changing conditions, while applicable policies are represented as symbolic constraints. As new readings arrive, the system updates its representation of the building’s state and symbolically infers whether each zone satisfies its applicable requirements. When a requirement is violated, it identifies the relevant measurements and unmet constraints, providing evidence that helps explain the finding.
 
 ### System Architecture 
 
-<a href="images/architecture.svg" target="_blank">
-  <img src="images/architecture.svg" style="width:100%; max-width:800px;">
+<a href="./files/images/architecture.svg" target="_blank">
+  <img src="./files/images/architecture.svg" style="width:100%; max-width:800px;">
 </a>
 
 The architecture combines a static knowledge graph with a temporal collection of nanopublications. Within the static knowledge graph, the building model and compliance policies occupy isolated named graphs. The building graph describes hospital zones, room properties, HVAC equipment, and ventilation connections. The policy graph represents the requirements applicable to those zones.
@@ -41,8 +41,8 @@ _These proposed UML activity diagrams describe the query and reasoning workflows
 
 #### Retrieve compliance status of hospital facility
 
-<a href="images/compliance-status-flow.svg" target="_blank">
-  <img src="images/compliance-status-flow.svg" style="width:100%; max-width:800px;">
+<a href="./files/images/compliance-status-flow.svg" target="_blank">
+  <img src="./files/images/compliance-status-flow.svg" style="width:100%; max-width:800px;">
 </a>
 
 A staff member selects an area and a time. The query service resolves the area through the building named graph, retrieves requirements from the policy named graph, and searches the nanopublication store for a reusable assessment. If one is unavailable, it invokes the reasoning activity. The response combines the assessment with its readings, applicable constraints, and provenance.
@@ -51,8 +51,8 @@ A reusable assessment must match the requested time, building and policy version
 
 #### Infer Status and evidence 
 
-<a href="images/compliance-reasoning-flow.svg" target="_blank">
-  <img src="images/compliance-reasoning-flow.svg" style="width:100%; max-width:800px;">
+<a href="./files/images/compliance-reasoning-flow.svg" target="_blank">
+  <img src="./files/images/compliance-reasoning-flow.svg" style="width:100%; max-width:800px;">
 </a>
 
 The reasoner combines building context, applicable symbolic constraints, and time-relevant observations. Sufficient usable observations allow constraint evaluation. A completed evaluation yields satisfied or violated requirements. The resulting assessment links its evidence, input versions, and inference provenance and is published as a nanopublication.
@@ -81,6 +81,10 @@ List resources you think a reader would benefit from to use your project. We lis
   <tr>
     <td>1. Ontology</td>
     <td><a href="ventilation-compliance.rdf" target="_blank">Your Ontology</a></td>
+  </tr>
+  <tr>
+    <td>1b. Test data and pipeline</td>
+    <td><a href="individuals.rdf" target="_blank">Test individuals</a> / <a href="code/README.md" target="_blank" rel="noopener noreferrer">Python generator, derived-measurement calculations and pySHACL check</a> </td>
   </tr>
   <tr>
     <td>2. Term List</td>
