@@ -9,8 +9,6 @@ title: use case
 
 ## Previous Versions
 
-<p class="message-highlight">Maintain links to previous versions of your use case documents here.</p>
-
 - [version 9 (10.02.2026)](./archived/use_case/OE%209%20Team%20HVCC%20Use%20Case.pdf)
 - [Version 8 (09.30.2026)](./archived/use_case/OE%208%20Team%20HVCC%20Use%20Case.pdf)
 - [Version 7 (09.23.2026)](./archived/use_case/OE%207%20Team%20HVCC%20Use%20Case.pdf)
