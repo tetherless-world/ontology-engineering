@@ -5,15 +5,17 @@ title: term list
 
 ## Terminology List
 
-**Current version: 8 (Assignment 9, October 30, 2026).** Every class and property of the [ontology](ontology.html) has a
+**Current version: 9 (Assignment 10, November 8, 2026).** Every class and property of the [ontology](ontology.html) has a
 row with the same label and definition; the individuals are not listed. New in this version, highlighted in yellow and
 listed on the sheet "A9 changes": definitions for plan and step, and a row for activity (pplan:Activity), the parent class
 of Invocation.
 
-<iframe src="files/terminology/OE_9_TeamAgenticCapabilities_TermList.xlsx" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/terminology/OE_10_TeamAgenticCapabilities_TermList.xlsx" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
+- [Version 9](files/terminology/OE_10_TeamAgenticCapabilities_TermList.xlsx) (current;
+  [redlined](files/terminology/OE_10_TeamAgenticCapabilities_RedlinedTermList.xlsx))
 - [Version 8](files/terminology/OE_9_TeamAgenticCapabilities_TermList.xlsx) (current;
   [without highlighting](files/terminology/OE_9_TeamAgenticCapabilities_TermList_Clean.xlsx))
 - [Version 7](files/terminology/OE_8_TeamAgenticCapabilities_CuratedTermList.xlsx)
