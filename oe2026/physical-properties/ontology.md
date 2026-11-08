@@ -9,7 +9,7 @@ title: Concept Map and Ontology
 
 The current conceptual model comes from the Assignment 9 document, last modified on October 23, 2026. It replaces the preliminary Assignment 5 model with `PhysicalFeature`, `FeatureValue`, `FeatureLevel`, `Assessment`, and `RequirementMapping`. The hierarchy panels show classification; open triangular arrowheads point toward the superclass. The relationship diagram shows object properties directed from domain to range. Click any diagram to open the full-size image.
 
-[Download the current conceptual model document](files/OE_9_TeamAffordance_ConceptualModel.docx) · [View its Google Drive source](https://docs.google.com/document/d/1Kkpk0DTprUycWd9IoTgjS5E9wsCXP51V/edit)
+[Download the current conceptual model document](files/OE_10_TeamAffordance_ConceptualModel.pdf) · [View its Google Drive source](https://docs.google.com/document/d/1Kkpk0DTprUycWd9IoTgjS5E9wsCXP51V/edit)
 
 <figure>
   <a href="images/OE_8_Entity_Judgment_Hierarchies.png"><img src="images/OE_8_Entity_Judgment_Hierarchies.png" alt="PhysicalEntity subclasses WholeObject and ObjectPart, and FeasibilityJudgment outcome subclasses" style="width:100%;height:auto;background:white;"></a>
@@ -54,7 +54,7 @@ This panel continues the requirement hierarchy with material, friction, smoothne
 An `Assessment` connects a candidate, target, action, and judgment. A `PhysicalEntity` has `FeatureValue` instances, each connecting a `PhysicalFeature` to a categorical `FeatureLevel`. Actions link to requirements, and `RequirementMapping` connects target conditions to required feature levels. `hasPart` and `interactsWith` represent part structure and interactions. This structure supports individual assessments, candidate comparisons, and comparisons involving interacting parts such as scissor blades. Multiplicity 1 denotes exactly one related instance of the indicated class in the source model.
 
 ### Earlier Conceptual Model
-
+- [Assignment 8 conceptual model](files/OE_9_TeamAffordance_ConceptualModel.docx)
 - [Assignment 8 conceptual model](files/OE_8_TeamAffordance_ConceptualModel.docx)
 - [Assignment 5 conceptual model](files/OE_5_TeamAffordance_ConceptualModel.docx)
 
