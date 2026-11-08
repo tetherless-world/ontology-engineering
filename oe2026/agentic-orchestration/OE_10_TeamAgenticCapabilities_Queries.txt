@@ -1,13 +1,15 @@
-# OE_9_TeamAgenticCapabilities_SPARQLQueries.txt
+# OE_10_TeamAgenticCapabilities_Queries.txt
 # Team AgenticCapabilities, use case AC-001: Ontology-Guided Agentic Capabilities Orchestration
 # Gia Oriana Santos, Barbara Kotlan, Jialin Fang, Elioenai Lincon Guedes Alves, Jiaying Wang
 #
-# Ontologies: OE_9_TeamAgenticCapabilities.rdf (classes and properties) and OE_9_TeamAgenticCapabilities_Individuals.rdf
-# (146 individuals), with catalog-v001.xml and imports/, in the team folder oe2026/agentic-orchestration.
+# Ontologies: OE_10_TeamAgenticCapabilities.rdf (classes and properties) and
+# OE_10_TeamAgenticCapabilities_Individuals.rdf (162 individuals), with catalog-v001.xml and imports/, in the team folder
+# oe2026/agentic-orchestration.
 #
 # How to run (Protege 5.6.9)
-# 1. Open OE_9_TeamAgenticCapabilities_Individuals.rdf from the team folder. It imports the main ontology; catalog-v001.xml
-#    maps that import to OE_9_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the copies in imports/.
+# 1. Open OE_10_TeamAgenticCapabilities_Individuals.rdf from the team folder. It imports the main ontology;
+#    catalog-v001.xml maps that import to OE_10_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the
+#    copies in imports/.
 # 2. Queries marked "Reasoning: OWL 2 DL": install the Snap SPARQL Query plugin (File > Check for plugins), start Pellet or
 #    HermiT (Reasoner menu), open Window > Views > Query views > Snap SPARQL Query, paste the query and execute it.
 # 3. Queries marked "Reasoning: none": paste the query into the SPARQL Query tab (Window > Tabs > SPARQL Query).
@@ -16,22 +18,23 @@
 #    which give the question, the reasoning, the individuals used and the expected answer (columns separated by " | ";
 #    an empty column is an unbound variable).
 #
-# The top three competency questions are CQ 1, CQ 3 and CQ 5 of the use case. Each has one main query. CQ 1 and CQ 5 also
-# have a version for the SPARQL Query tab, and CQ 1 and CQ 3 have supporting queries that show the inferences behind
-# the answer. On 2026-10-30 every query was run through the Snap SPARQL Query plugin 6.0.0 (its own parser and query
-# engine) with Pellet and with HermiT, and the queries marked "none" also without inference; each returned the expected
-# answer given with it.
+# The top three competency questions are CQ 1, CQ 3 and CQ 5 of the use case. CQ 1 has three queries (step 1, then
+# queries 1 and 2), CQ 3 has a main and a supporting query, and CQ 5 has a version for Snap SPARQL and one for the
+# SPARQL Query tab. The other competency questions follow under "Extra SPARQL queries": CQ 2, CQ 4, CQ 6, CQ 7, CQ 8 and
+# CQ 9, one query each. On 2026-11-06 every query was run through the Snap SPARQL Query plugin 6.0.0 (its own parser and
+# query engine) with Pellet and with HermiT, and the queries marked "none" also without inference; each returned the
+# expected answer given with it.
 #
 # CQ 1 follows the semantic processes of the use case in order, starting from Ken's request:
 #   step 1: the skills, tools and MCP servers that satisfy the information requirements and hard constraints of the
 #           request (semantic lookup);
-#   step 2: the candidate orchestration plans whose steps meet every requirement and hard constraint, violate none,
-#           and receive each input from an earlier step (dependency and constraint-based reasoning);
-#   then the CQ 1 query and its supporting queries: how the candidates were evaluated on Ken's soft constraints and
-#           which one is selected and which rejected (multi-criteria plan evaluation).
-# The step 1 and step 2 queries avoid FILTER NOT EXISTS and property paths, which Snap SPARQL does not support; step 2
-# uses MINUS instead. They were run with the other queries through the Snap SPARQL Query plugin 6.0.0 on
-# 2026-10-30.
+#   query 1: the candidate orchestration plans that meet every requirement and hard constraint, violate none and
+#           produce every information artifact they consume (dependency and constraint-based reasoning), with their
+#           scores, ranks and inferred status (multi-criteria plan evaluation);
+#   query 2: the steps of the selected plan, with the skill, tools and MCP servers of each step and the requirement or
+#           hard constraint it meets.
+# The queries avoid FILTER NOT EXISTS and property paths, which Snap SPARQL does not support; query 1 uses MINUS
+# instead.
 
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
@@ -47,8 +50,15 @@ PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-o
 #   constraint) replaces the UNION over prov:wasAttributedTo / prov:wasDerivedFrom, and skillSatisfiesRequirement,
 #   skillSatisfiesHardConstraint, toolSatisfiesRequirement and toolSatisfiesHardConstraint replace the path through
 #   the capability.
-# Expected answer: the same 6 rows as CQ 1 step 1, without the capability column:
-#   requirement | hardConstraint | skill | tool | server
+# Expected answer (6 rows; a requirement row has no hard constraint, and a hard-constraint row no requirement):
+#   requirementLabel | hardConstraintLabel | skillLabel | tool | toolServer
+#   | evidence verification (Ken) | evidence verification skill | PubMed article search tool | PubMed MCP server
+#   | evidence verification (Ken) | evidence verification skill | PubMed abstract download tool | PubMed MCP server
+#   affordable products with good reviews (Ken) | | product selection skill | iHerb product search tool |
+#   supporting scientific evidence (Ken) | | evidence verification skill | PubMed article search tool | PubMed MCP server
+#   supporting scientific evidence (Ken) | | evidence verification skill | PubMed abstract download tool | PubMed MCP server
+#   supplement recommendations for building muscle mass (Ken) | | personalized supplement recommendation skill | Supplement Advisor recommendation tool | Supplement Advisor MCP server
+#   No MCP server exposes the iHerb product search tool (iHerb-CLI), so its server column is empty.
 SELECT ?requirementLabel ?hardConstraintLabel ?skillLabel ?tool ?toolServer
 WHERE {
   {
@@ -163,12 +173,12 @@ PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-o
 #   constraint each of those steps meets (10 rows):
 #   planLabel | stepLabel | taskLabel | skillLabel | tool | toolServer | requirementLabel | hardConstraintLabel
 #   Ken plan 1 | Ken plan 1, step 1 | get user profile (Ken) |  |  |  |  | 
-#   Ken plan 1 | Ken plan 1, step 2 | get candidate supplements (Ken) | personalized supplement recommendation skill | recommend_supplement | Supplement Advisor MCP server | supplement recommendations for building muscle mass (Ken) | 
+#   Ken plan 1 | Ken plan 1, step 2 | get candidate supplements (Ken) | personalized supplement recommendation skill | Supplement Advisor recommendation tool | Supplement Advisor MCP server | supplement recommendations for building muscle mass (Ken) | 
 #   Ken plan 1 | Ken plan 1, step 3 | remove redundant supplements (Ken) |  |  |  |  | 
-#   Ken plan 1 | Ken plan 1, step 4 | get supplement products sorted by price (Ken) | product selection skill | search |  | affordable products with good reviews (Ken) | 
+#   Ken plan 1 | Ken plan 1, step 4 | get supplement products sorted by price (Ken) | product selection skill | iHerb product search tool |  | affordable products with good reviews (Ken) | 
 #   Ken plan 1 | Ken plan 1, step 5 | rank supplement products by cost (Ken) |  |  |  |  | 
-#   Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | download_articles_batch | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
-#   Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | search_articles | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
+#   Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | PubMed abstract download tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
+#   Ken plan 1 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | PubMed article search tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
 #   Ken plan 1 | Ken plan 1, step 7 | rank supplement products by evidence (Ken) |  |  |  |  | 
 #   Ken plan 1 | Ken plan 1, step 8 | select supplement product (Ken) | product selection skill |  |  |  | 
 #   Ken plan 1 | Ken plan 1, step 9 | produce recommendation (Ken) |  |  |  |  | 
@@ -602,7 +612,7 @@ WHERE {
 }
 ORDER BY ?rank
 
-# CQ 7
+# CQ 7. Which constraints were violated by a candidate orchestration plan? (Olivia's plans A and B from the CQ 6 example)
 
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
@@ -632,8 +642,9 @@ SELECT DISTINCT ?plan ?planStatus ?hardConstraint ?softConstraint ?criterion ?cr
 WHERE {
   ?plan oe-agtorch:addresses oe-agtorch-ind:oliviaRequest .
   ?plan a oe-agtorch:CandidateOrchestrationPlan .
-  OPTIONAL { ?plan a oe-agtorch:RejectedOrchestrationPlan . oe-agtorch:RejectedOrchestrationPlan rdfs:label ?planStatus . }
-  OPTIONAL { ?plan a oe-agtorch:SelectedOrchestrationPlan . oe-agtorch:SelectedOrchestrationPlan rdfs:label ?planStatus . }
+  ?plan a ?status .
+  FILTER (?status = oe-agtorch:SelectedOrchestrationPlan || ?status = oe-agtorch:RejectedOrchestrationPlan)
+  ?status rdfs:label ?planStatus .
   # Part 1: hard constraints of Olivia's request that the plan violates
   {
     ?plan oe-agtorch:violatesConstraint ?hardConstraint .
@@ -678,18 +689,21 @@ PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-o
 #   skill P when a task performed by S depends on a task performed by P. The FILTER drops the product selection
 #   skill's dependency on itself (selecting a product consumes the product list that the same skill retrieved).
 # Individuals: the tasks of Jessica's plan (getCandidateSupplements, screenInteractions, verifyEvidence,
-#   getSupplementProducts, selectSupplementProduct) and of Ken's plans (getCandidatesForKen, getProductsByPrice,
-#   verifyEvidenceForKen, screenInteractionsForKen, secondEvidencePassForKen, selectProductForKenPlan2), their
+#   getSupplementProducts, selectSupplementProduct), of Ken's plans (getCandidatesForKen, getProductsByPrice,
+#   verifyEvidenceForKen, screenInteractionsForKen, secondEvidencePassForKen, selectProductForKenPlan2) and of Dante's
+#   plan (verifyEvidenceGlycinate, screenGlycinate, verifyEvidenceCitrate, screenCitrate, synthesizeEvidence), their
 #   consumed and produced information artifacts, and the skills that perform them.
-# Expected answer (5 rows):
+# Expected answer (7 rows):
 #   skillLabel | dependsOnSkillLabel
+#   evidence synthesis skill | evidence verification skill
+#   evidence synthesis skill | supplement safety screening skill
 #   evidence verification skill | personalized supplement recommendation skill
 #   product selection skill | evidence verification skill
 #   product selection skill | personalized supplement recommendation skill
 #   product selection skill | supplement safety screening skill
 #   supplement safety screening skill | personalized supplement recommendation skill
-#   The personalized supplement recommendation skill depends on no other skill; the evidence synthesis and dosage
-#   calculator skills do not appear, because no task they perform consumes an artifact another skill's task produces.
+#   The personalized supplement recommendation skill depends on no other skill; the dosage calculator skill does not
+#   appear, because no task it performs consumes an artifact another skill's task produces.
 SELECT DISTINCT ?skillLabel ?dependsOnSkillLabel
 WHERE {
   ?task oe-agtorch:performedBySkill ?skill .
