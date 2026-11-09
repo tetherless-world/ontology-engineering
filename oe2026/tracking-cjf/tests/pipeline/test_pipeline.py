@@ -19,7 +19,7 @@ from cjf_serializer.cli import main
 
 C = Namespace("https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/")
 ROOT = Path(__file__).resolve().parents[2]
-REAL_SCHEMA = ROOT / "ontology/OE_9_TeamCJF.rdf"
+REAL_SCHEMA = ROOT / "ontology/OE_10_TeamCJF.rdf"
 
 
 def xlsx(path, sheets):
@@ -237,6 +237,21 @@ class PipelineTests(unittest.TestCase):
         event = next(e for e in result.summary["events"] if e["origin"] == "relationship")
         self.assertEqual(set(event["evidence"]), {"2", "3"})
         self.assertEqual(len([e for e in result.summary["events"] if e["origin"] == "relationship"]), 1)
+
+    def test_refines_is_reified_and_requires_same_type(self):
+        self.values["Relationships"].append(["C2", "refines", "C1", "2", "Restates the speed claim as time saved"])
+        xlsx(self.workbook, self.values)
+        graph = Graph().parse(build_individuals(self.config, output=self.root/"asserted.rdf").output_path)
+        source, target = URIRef(C + "Demo/Move_C2"), URIRef(C + "Demo/Move_C1")
+        refinement = next(graph.objects(source, C.makesRefines))
+        self.assertIn((refinement, RDF.type, C.Refinement), graph)
+        self.assertIn((refinement, C.isAimedAtRefines, target), graph)
+        self.assertIn((refinement, C.hasReason, Literal("Restates the speed claim as time saved")), graph)
+        self.assertNotIn((source, C.refines, target), graph)
+        self.values["Relationships"][-1][0] = "O1"
+        xlsx(self.workbook, self.values)
+        with self.assertRaisesRegex(InputValidationError, "same type"):
+            build_individuals(self.config, output=self.root/"asserted.rdf", overwrite=True)
 
     def test_changed_namespace_requires_explicit_shapes(self):
         profile = self.root/"profile.yaml"

@@ -20,15 +20,15 @@ P = Namespace('http://www.w3.org/ns/prov#')
 SIO = URIRef('http://semanticscience.org/resource/SIO_000206')
 root = Path.cwd()
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--input-manifest', type=Path, default=Path('ontology/run_outputs/input-manifest.json'))
-parser.add_argument('--report', type=Path, default=Path('ontology/run_outputs/output-validation-report.json'))
+parser.add_argument('--input-manifest', type=Path, default=Path('ontology/run_outputs/OE_10/input-manifest.json'))
+parser.add_argument('--report', type=Path, default=Path('ontology/run_outputs/OE_10/output-validation-report.json'))
 args = parser.parse_args()
 sources = json.loads(args.input_manifest.read_text())
 for path, expected in sources['input_sha256'].items():
     assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == expected, path
 
-asserted_path = Path('ontology/OE_9_TeamCJF_Individuals.rdf')
-current_path = Path('ontology/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf')
+asserted_path = Path('ontology/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf')
+current_path = Path('ontology/OE_10_TeamCJF_Individuals.rdf')
 asserted = Graph().parse(asserted_path, format='xml')
 current = Graph().parse(current_path, format='xml')
 assert not list(asserted.triples((None, C.hasCurrentStateAssignment, None)))
@@ -89,8 +89,9 @@ reified = {
     'answers': ('Answer', 'makesAnswers', 'isAimedAtAnswers'),
     'positionToward': ('Position', 'makesPositionTowards', 'isAimedAtPositionTowards'),
     'respondsTo': ('Response', 'makesRespondsTo', 'isAimedAtRespondsTo'),
+    'refines': ('Refinement', 'makesRefines', 'isAimedAtRefines'),
 }
-direct = {'selects': 'selects', 'isAbout': 'isAbout', 'refines': 'refines', 'alternativeTo': 'isAlternativeTo'}
+direct = {'selects': 'selects', 'isAbout': 'isAbout', 'alternativeTo': 'isAlternativeTo'}
 relationships, _ = read_worksheet(workbook, 'Relationships', set())
 checked_relationships = set()
 for row in relationships:
@@ -113,7 +114,7 @@ for row in relationships:
         assert next(asserted.objects(span, C.hasConversationText)) == next(asserted.objects(u, C.hasConversationText))
         actual_evidence.add(int(next(asserted.objects(u, C.hasTurnNumber))))
     assert actual_evidence == expected_evidence, row
-assert len(checked_relationships) == 86
+assert len(checked_relationships) == 88
 
 initial_map = {'Issue': C.Open, 'InformationRequest': C.Open, 'Claim': C.Unassessed, 'Option': C.UnderConsideration}
 all_assignments = set(asserted.subjects(RDF.type, C.StateAssignment))
@@ -169,7 +170,7 @@ assert (starters, candidates) == (54, 31)
 
 report = {
     'passed': True, 'turns': 28, 'speakers': 4, 'moves': 67,
-    'relationship_rows_verified': 98, 'reified_relationships': 86,
+    'relationship_rows_verified': 98, 'reified_relationships': 88,
     'starter_assignments': starters, 'generic_relationship_assignments': candidates,
     'human_transition_assignments': 0, 'current_assignment_links': len(added),
     'shacl_only_added_current_links': True, 'inputs_unchanged': True,
