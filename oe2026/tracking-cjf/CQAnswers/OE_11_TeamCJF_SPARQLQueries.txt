@@ -3,7 +3,7 @@ How to Run:
 2. Select HermiT and start the reasoner.
 3. Run the queries in SNAP SPARQL. Copy only the query, from PREFIX through its final line.
 
-CQ1: Which CJF conversation moves have occurred in the conversation, and what is the latest known state of each conversation move, where a state applies?
+CQ1:  Which CJF conversation moves have occurred in the conversation, and what are their identifiers, types, summaries, and recorded states, where applicable?
 
 PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -42,7 +42,17 @@ WHERE {
 }
 ORDER BY ?move ?moveType
 
-CQ2: Which issues are currently addressed or resolved, and what evidence supports each current state?
+Expected Answer: 
+M0001 – Issue (Addressed): Choose a platform for the new development project.
+M0001 – Issue (Resolved): Choose a platform for the new development project.
+M0002 – Claim (Unassessed): Choosing a platform today will allow environment setup to begin next week.
+M0003 – Option (Selected): Use Platform A for the new development project.
+M0004 – Claim (Supported): Platform A seems like the better fit for the delivery schedule.
+...
+(70 rows expected)
+
+------------------------------------------
+CQ2: Which Issues raised during the conversation have been assigned an Addressed or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
 
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -65,8 +75,17 @@ where {
     ?text_span cjf:hasConversationText ?evidence .
 }
 
-CQ3: What Claims support or challenge Platform A? Are any of the Claims Supported?
-CQ3 part 1: What Claims support or challenge Platform A?
+Expected Answer: 
+M0001 – Issue (Addressed): “For this project, I think Platform A’s tested integrations and simpler setup make it the better fit. I support choosing Platform A.”
+M0001 – Issue (Addressed): “I agree with choosing Platform A.”
+M0001 – Issue (Addressed): “I’m voting for Platform A as well. The full cost comparison and the integration test changed my mind.”
+M0001 – Issue (Addressed): “The training arrangements need to be confirmed but I’m comfortable selecting platform A today. I’ll record our decision and start the purchase request.”
+M0001 – Issue (Addressed): “We need to choose a platform for the new development project today so we can start setting up the environment next week.”
+...
+(expected 31 rows)
+
+------------------------------------------
+CQ3:  Which Claims support or challenge Platform A, what are their summaries and recorded states, and which of these Claims have been assigned a Supported state?
 
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
@@ -98,36 +117,34 @@ WHERE {
 }
 ORDER BY ?relation ?move
 
-CQ3 part 2: Are any of the Claims Supported?
+Expected Answer: 
+M0013 – Challenges (Supported): Using Platform A would require covering a $6,000 funding shortfall.
+M0015 – Challenges (Unassessed): Most developers have not used Platform A.
+M0016 – Challenges (Unassessed): Little time has been allowed for onboarding.
+M0004 – Supports (Supported): Platform A seems like the better fit for the delivery schedule.
+M0008 – Supports (Supported): Platform A could simplify implementation.
+M0018 – Supports (Supported): Platform A integrates well with the team's existing systems.
+M0019 – Supports (Unassessed): Platform A's connector worked with the team's identity service and build pipeline in last week's test.
+M0038 – Supports (Supported): The revised cost comparison puts Platform A lower than Platform B.
+M0060 – Supports (Supported): Platform A is the better fit for this project because of its tested integrations and simpler setup.
 
-PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
-PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+------------------------------------------
+CQ4:  Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states? 
 
-SELECT DISTINCT ?move ?relation ?summary
-WHERE {
-    {
-        ?move cjf:supports sample:Move_OCT21_A-M0003 .
-        BIND(STRAFTER(STR(cjf:supports),"tracking-cjf/") AS ?relation) .
-    }
-    UNION
-    {
-        ?move cjf:challenges sample:Move_OCT21_A-M0003 .
-        BIND(STRAFTER(STR(cjf:challenges), 'tracking-cjf/') AS ?relation) .
-    }
 
-    ?move a cjf:Claim .
 
-    ?move cjf:hasState ?state .
-    ?state a cjf:Supported .
 
-    OPTIONAL {
-        ?move cjf:hasSummary ?summary .
-    }
-}
-ORDER BY ?relation ?move
 
-CQ5: For the final platform-selection Outcome, which speakers explicitly agreed with its selected Option, and which ExpressedPosition moves and source turns provide the evidence?
+
+
+
+
+
+Expected Answer: 
+
+
+------------------------------------------
+CQ5: Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
 
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
@@ -154,7 +171,11 @@ WHERE {
     ?utterance cjf:hasTurnNumber ?turn .
 } order by ?turn
 
-CQ6: What positions did Speaker C express toward Platform A and B throughout the conversation?
+Expected Answer: 
+
+
+------------------------------------------
+CQ6: What positions did Speaker C express toward Platform A and Platform B throughout the conversation, and what are the identifiers, target Options, summaries, supporting utterances, and turn numbers of these Expressed Positions?
 
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
@@ -187,6 +208,6 @@ WHERE {
 }
 ORDER BY ?turn ?pos
 
-Expected answer (ordered by turn):
+Expected answer (ordered by turn):  
 - Turn 9: sample:Move_OCT21_A-M0020 targets Platform B (sample:Move_OCT21_A-M0021). Summary: C currently prefers Platform B. Supporting text: I’d still prefer Platform B at this point.
 - Turn 27: sample:Move_OCT21_A-M0063 targets Platform A (sample:Move_OCT21_A-M0003). Summary: C agrees with choosing Platform A. Supporting text: I’m voting for Platform A as well.
