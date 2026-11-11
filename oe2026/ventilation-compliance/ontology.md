@@ -66,12 +66,12 @@ The room taxonomy is taken directly from the space list in the CDC *Guidelines f
 
 | Top-level area | Example subclasses in the ontology |
 |---|---|
-| `critical_care_area` | `ICU`, `operating_room`, `recovery_room`, `trauma_room`, `delievery_room`, `bronchoscopy_room`, `endoscopy_room`, `treatment_room` |
-| `nursing_area` | `patient_room`, `airborne_infection_isolation_room`, `protective_environment_room`, `isolation_alcove`, `labor_room`, `newborn_nursery_suite`, `patient_corridor`, `toilet_room` |
-| `diagnostic_and_treatment_area` | `examination_room`, `medication_room`, `physical_therapy_room`, `hydrotherapy_room`, `soiled_workroom`, `sterilizing_and_supply_area`, `ETO-sterilizer_room`, `sterilizer_equipment_room` |
-| `laboratory_area` | `general_lab`, `microbiology_lab`, `pathology_lab`, `autopsy_room`, `pharmacy`, `nonrefrigerated_body-holding_room`, and other laboratory types |
-| `radiology_area` | `x-ray_room`, `dark_room` |
-| `central_medical_and_surgical_supply_area` | `decontamination_room`, `clean_workroom`, `sterile_storage`, `service_area`, `general_laundry`, `soiled_linen_storage`, `clean_linen_storage`, `bedpan_room`, `bathroom`, `janitor's_closet`, and others |
+| `CriticalCareArea` | `ICU`, `OperatingRoom`, `RecoveryRoom`, `TraumaRoom`, `DelieveryRoom`, `BronchoscopyRoom`, `EndoscopyRoom`, `TreatmentRoom` |
+| `NursingArea` | `PatientRoom`, `AirborneInfectionIsolationRoom`, `ProtectiveEnvironmentRoom`, `IsolationAlcove`, `LaborRoom`, `NewbornNurserySuite`, `PatientCorridor`, `ToiletRoom` |
+| `DiagnosticAndTreatmentArea` | `ExaminationRoom`, `MedicationRoom`, `PhysicalTherapyRoom`, `HydrotherapyRoom`, `SoiledWorkroom`, `SterilizingAndSupplyArea`, `ETOSterilizerRoom`, `SterilizerEquipmentRoom` |
+| `LaboratoryArea` | `GeneralLab`, `MicrobiologyLab`, `PathologyLab`, `AutopsyRoom`, `Pharmacy`, `NonrefrigeratedBodyHoldingRoom`, and other laboratory types |
+| `RadiologyArea` | `XRayRoom`, `DarkRoom` |
+| `CentralMedicalAndSurgicalSupplyArea` | `DecontaminationRoom`, `CleanWorkroom`, `SterileStorage`, `ServiceArea`, `GeneralLaundry`, `SoiledLinenStorage`, `CleanLinenStorage`, `BedpanRoom`, `Bathroom`, `JanitorsCloset`, and others |
 
 Every room class carries an `rdfs:label` and a `skos:definition`. The test individuals use a single class, `ICU`, for the three rooms ICU-01 (room 4E-12), ICU-02 and ICU-03.
 
@@ -114,7 +114,7 @@ Supporting axioms on `BuildingServiceComponent`: it may only be part of another 
 
 - `SensorMeasurement` – a value read directly from a sensor. It carries exactly one `cmns-qtu:hasQuantityValue` pointing to a `cmns-qtu:ScalarQuantityValue`, which in turn carries a `hasNumericValue` and exactly one `hasMeasurementUnit`. Keeping value and unit together on a separate node is what makes unit-aware comparison possible in Step 7.
 - `DerivedMeasurement` – a value calculated from other measurements (Step 4).
-- `BuildingMeasurement` – a static property of the building such as `roomVolume`, needed to turn an airflow into an air-change rate.
+- `BuildingMeasurement` – a static property of the building such as `RoomVolume`, needed to turn an airflow into an air-change rate.
 
 The sensor measurement taxonomy covers the quantities the CDC policies need: `Temperature`, `Humidity`, `Pressure` and `AirFlowRate`, the last specialised into `SupplyAirFlowRate`, `ReturnAirFlowRate`, `ExhaustAirFlowRate` and `OutdoorAirFlowRate`, with AHU-level variants `AHUSupplyAirFlowRate` and `AHUOutdoorAirFlowRate`.
 
@@ -145,9 +145,9 @@ The CDC thresholds are expressed in quantities no sensor reports directly, such 
 | Derived measurement | Derived from |
 |---|---|
 | `OutdoorAirFraction` | `AHUOutdoorAirFlowRate`, `AHUSupplyAirFlowRate` |
-| `OutdoorAirFlowRateToRoom` | `SupplyAirFlowRate`, `OutdoorAirFraction`, `roomVolume` |
+| `OutdoorAirFlowRateToRoom` | `SupplyAirFlowRate`, `OutdoorAirFraction`, `RoomVolume` |
 | `OutdoorAirChangePerHour` | `OutdoorAirFlowRateToRoom` |
-| `TotalAirChangePerHour` | `SupplyAirFlowRate`, `roomVolume` |
+| `TotalAirChangePerHour` | `SupplyAirFlowRate`, `RoomVolume` |
 | `IncomingTransferAirflowRate` | `ReturnAirFlowRate`, `ExhaustAirFlowRate` |
 
 Each class carries both an existential restriction (`wasDerivedFrom some X`) naming its inputs and a universal one (`wasDerivedFrom only Measurement`) so that derivations can only point at measurements.
@@ -183,7 +183,7 @@ At the instance level the building model asserts `actsOn` from each installed co
 
 *CDC compliance and policy taxonomy.*
 
-Requirements are **data, not code** (requirement R2). A `ComplianceFramework` `hasPolicy` one or more `CompliancePolicy`s and `appliesToRoom` the rooms it governs. `CDC_compliance_framework` is the framework modelled so far; it is restricted to have one policy of each of the seven kinds that correspond to the columns of the CDC Appendix B table:
+Requirements are **data, not code** (requirement R2). A `ComplianceFramework` `hasPolicy` one or more `CompliancePolicy`s and `appliesToRoom` the rooms it governs. `CDCComplianceFramework` is the framework modelled so far; it is restricted to have one policy of each of the seven kinds that correspond to the columns of the CDC Appendix B table:
 
 | Policy class | evaluates on |
 |---|---|
@@ -205,7 +205,7 @@ Independently of its subject, every policy is also classified by the **shape of 
 
 Bounds are `cmns-qtu:ScalarQuantityValue`s with a numeric value and a unit, exactly like measurements. The two classifications are orthogonal on purpose: the ICU policy `P_ACH_min` is both a `MinimumAirChangesOfOutdoorAirPerHour` and a `MinBoundedCompliancePolicy` (lower bound 2.0 air changes per hour), and `P_RH` is both a `RelativeHumidity` policy and a `RangeBoundedCompliancePolicy` (30 to 60 percent relative humidity). The same `RelativeHumidity` class is a `MaxBoundedCompliancePolicy` for the isolation and protective-environment rooms (at most 60 percent), and the `AirMovementRelationshipToAdjacentArea` class is min-bounded for an "In" room and max-bounded for an "Out" room. The SWRL rules in Step 7 key only on the bound shape, so a new CDC policy, or a policy from a different framework such as ASHRAE 170, needs **no new rule**.
 
-Requirement R2 asks for requirements to be data attached to a clinical designation. The test data therefore holds one framework individual per designation (ICU, operating room, airborne infection isolation room, protective environment room, patient room), each an instance of `CDC_compliance_framework`, each with its own policy individuals and bounds, and each applied to its rooms with `appliesToRoom`.
+Requirement R2 asks for requirements to be data attached to a clinical designation. The test data therefore holds one framework individual per designation (ICU, operating room, airborne infection isolation room, protective environment room, patient room), each an instance of `CDCComplianceFramework`, each with its own policy individuals and bounds, and each applied to its rooms with `appliesToRoom`.
 
 ### Step 7 – Assessments: context, policy assessments and compliance assessments
 
@@ -285,26 +285,26 @@ PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ MinBoundedCompliancePolicy(?p)
   -> UnsatisfiedPolicyAssessment(?a)
 ```
 
-| Rule | Bound shape | Condition | Conclusion |
-|---|---|---|---|
-| S1 | min | value ≥ lower bound | `SatisfiedPolicyAssessment` |
-| S2 | min | value < lower bound | `UnsatisfiedPolicyAssessment` |
-| S3 | max | value ≤ upper bound | `SatisfiedPolicyAssessment` |
-| S4 | max | value > upper bound | `UnsatisfiedPolicyAssessment` |
-| S5 | range | lower ≤ value ≤ upper | `SatisfiedPolicyAssessment` |
-| S6 | range | value < lower bound | `UnsatisfiedPolicyAssessment` |
-| S7 | range | value > upper bound | `UnsatisfiedPolicyAssessment` |
+| Rule | Title | Bound shape | Condition | Conclusion |
+|---|---|---|---|---|
+| S1 | Min bound met | min | value ≥ lower bound | `SatisfiedPolicyAssessment` |
+| S2 | Min bound violated | min | value < lower bound | `UnsatisfiedPolicyAssessment` |
+| S3 | Max bound met | max | value ≤ upper bound | `SatisfiedPolicyAssessment` |
+| S4 | Max bound exceeded | max | value > upper bound | `UnsatisfiedPolicyAssessment` |
+| S5 | Within range | range | lower ≤ value ≤ upper | `SatisfiedPolicyAssessment` |
+| S6 | Below range | range | value < lower bound | `UnsatisfiedPolicyAssessment` |
+| S7 | Above range | range | value > upper bound | `UnsatisfiedPolicyAssessment` |
 
 Note the single variable `?u` bound to the unit of **both** the bound and the measurement. A reading in cubic metres per hour can never be compared with a bound in air changes per hour; the rule simply does not fire, and the policy assessment stays unclassified rather than being wrongly satisfied.
 
 Rules S8 to S11 then attach equipment to a failed assessment:
 
-| Rule | What it does |
-|---|---|
-| S8 | a component that `actsOn` the measurement a policy assessment evaluates → `wasAssociatedWithComponent` |
-| S9 | a component that `actsOn` any measurement the evaluated measurement `isTransitivelyDerivedFrom` → `wasAssociatedWithComponent` |
-| S10 | any `BuildingServiceSystem` that `hasPart` (directly or nested) an associated component → `wasAssociatedWithSystem` |
-| S11 | lift `wasAssociatedWithComponent` from the policy assessment up to its `ComplianceAssessment` |
+| Rule | Title | What it does |
+|---|---|---|
+| S8 | Direct component association | a component that `actsOn` the measurement a policy assessment evaluates → `wasAssociatedWithComponent` |
+| S9 | Upstream component association | a component that `actsOn` any measurement the evaluated measurement `isTransitivelyDerivedFrom` → `wasAssociatedWithComponent` |
+| S10 | System association | any `BuildingServiceSystem` that `hasPart` (directly or nested) an associated component → `wasAssociatedWithSystem` |
+| S11 | Compliance-level component lift | lift `wasAssociatedWithComponent` from the policy assessment up to its `ComplianceAssessment` |
 
 ### Layer 2b – closed-world SHACL rules (missing evidence)
 
