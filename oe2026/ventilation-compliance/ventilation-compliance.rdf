@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY AnnotationVocabulary "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY cmns-col "https://www.omg.org/spec/Commons/Collections/">
 	<!ENTITY cmns-cxtdsg "https://www.omg.org/spec/Commons/ContextualDesignators/">
 	<!ENTITY cmns-qtu "https://www.omg.org/spec/Commons/QuantitiesAndUnits/">
 	<!ENTITY core "https://w3id.org/rec/core/">
+	<!ENTITY cpannotationschema "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#">
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fso "https://w3id.org/fso#">
+	<!ENTITY ns "http://creativecommons.org/ns#">
+	<!ENTITY o2o "https://karlhammar.com/owl2oas/o2o.owl#">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY prov "http://www.w3.org/ns/prov#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -16,6 +21,7 @@
 	<!ENTITY swrl "http://www.w3.org/2003/11/swrl#">
 	<!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
 	<!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#">
+	<!ENTITY vann "http://purl.org/vocab/vann/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/"
@@ -39,21 +45,30 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/">
+		<dct:abstract>Enable a hospital infection preventionist or facilities engineer to determine whether critical care spaces currently satisfy the ventilation requirements that their clinical designation imposes; to identify which air-handling equipment is responsible when a space falls out of compliance or would fall out of compliance during a planned outage; and to keep both the determination and its history correct when a space is re-designated to a different clinical use.</dct:abstract>
 		<dct:creator>Ahosan Habib</dct:creator>
 		<dct:creator>Andy Cheng</dct:creator>
 		<dct:creator>Carina Liu</dct:creator>
 		<dct:creator>Nipun Deelaka</dct:creator>
-        <dct:publisher>ventilation compliance team, OE 2026</dct:publisher>
-        <dct:modified>10.11.2026</dct:modified>
-        <dct:abstract>Enable a hospital infection preventionist or facilities engineer to determine whether critical care spaces currently satisfy the ventilation requirements that their clinical designation imposes; to identify which air-handling equipment is responsible when a space falls out of compliance or would fall out of compliance during a planned outage; and to keep both the determination and its history correct when a space is re-designated to a different clinical use.</dct:abstract>
-		<skos:changeNote> "10.11.2026 (0.11.0): Added ontology metadata, introduce versioning, truncate the base uri, fix class naming issues."</skos:changeNote>
-        <owl:priorVersion>0.10.0</owl:priorVersion>
-        <owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
+		<dct:modified>10.11.2026</dct:modified>
+		<dct:publisher>ventilation compliance team, OE 2026</dct:publisher>
+		<owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
 		<owl:imports rdf:resource="https://saref.etsi.org/saref4bldg/v2.1.1/"/>
 		<owl:imports rdf:resource="https://w3id.org/rec/core/3.3/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
+		<owl:priorVersion>0.10.0</owl:priorVersion>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/0.11.0"/>
+		<skos:changeNote>&quot;10.11.2026 (0.11.0): Added ontology metadata, introduce versioning, truncate the base uri, fix class naming issues.&quot;</skos:changeNote>
 	</owl:Ontology>
+	
+	<owl:AnnotationProperty rdf:about="&dct;abstract">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;bibliographicCitation">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;source">
+	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&swrla;isRuleEnabled">
 	</owl:AnnotationProperty>
@@ -61,19 +76,16 @@
 	<owl:AnnotationProperty rdf:about="&skos;altLabel">
 	</owl:AnnotationProperty>
 	
+	<owl:AnnotationProperty rdf:about="&skos;changeNote">
+	</owl:AnnotationProperty>
+	
 	<owl:AnnotationProperty rdf:about="&skos;definition">
 	</owl:AnnotationProperty>
 	
-	<owl:AnnotationProperty rdf:about="&skos;note">
-	</owl:AnnotationProperty>
-
-	<owl:AnnotationProperty rdf:about="&dct;source">
-	</owl:AnnotationProperty>
-
-	<owl:AnnotationProperty rdf:about="&dct;bibliographicCitation">
-	</owl:AnnotationProperty>
-
 	<owl:AnnotationProperty rdf:about="&skos;example">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;note">
 	</owl:AnnotationProperty>
 	
 	<owl:Class rdf:about="&prov;Entity">
@@ -404,10 +416,7 @@
 							<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/BuildingServiceSystem">
 							</rdf:Description>
 						</owl:unionOf>
-					
-		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
-		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
-	</owl:Class>
+					</owl:Class>
 				</owl:allValuesFrom>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -426,6 +435,8 @@
 		</rdfs:subClassOf>
 		<rdfs:label>building service component</rdfs:label>
 		<skos:definition>component that is part of a building service system and contributes to delivery, distribution, control, or measurement of a building service</skos:definition>
+		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
+		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/BuildingServiceSystem">
@@ -438,13 +449,12 @@
 					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/BuildingServiceSystem">
 					</rdf:Description>
 				</owl:unionOf>
-			
-		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
-		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
-	</owl:Class>
+			</owl:Class>
 		</rdfs:subClassOf>
 		<rdfs:label>building service system</rdfs:label>
 		<skos:definition>system of building services that supplies, distributes, or controls utilities and environmental services within a building to support its use and operation</skos:definition>
+		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
+		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/BuildingSystem">
@@ -913,10 +923,7 @@
 					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/BuildingServiceSystem">
 					</rdf:Description>
 				</owl:unionOf>
-			
-		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
-		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
-	</owl:Class>
+			</owl:Class>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -944,6 +951,8 @@
 		</rdfs:subClassOf>
 		<rdfs:label>hvac system</rdfs:label>
 		<skos:definition>building services system that provides heating, ventilation, and air conditioning to control conditions in one or more indoor spaces.</skos:definition>
+		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
+		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/HeatPump">
@@ -1166,6 +1175,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>min bounded compliance policy</rdfs:label>
 		<skos:definition>Compliance policy that specifies a minimum value as the lowest acceptable measurement and specifies no maximum value.</skos:definition>
+		<skos:example>The outdoor air change policy for ICU rooms has a lower bound of 2.0 ACH and no upper bound. ICU-02 at 2.6 ACH satisfies it (rule S1), while ICU-01 at 1.4 ACH violates it (rule S2).</skos:example>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/MinimumAirChangesOfOutdoorAirPerHour">
@@ -1249,6 +1259,7 @@
 		<skos:definition>Room air-change rate calculated from outdoor-airflow rate to the room divided by room volume.</skos:definition>
 		<dct:source rdf:resource="https://icpsne.org/Ventilation%20Appendix%20Table%207.1%20Design%20Parameters.pdf"/>
 		<dct:bibliographicCitation>Ventilation of Health Care Facilities, ANSI/ASHRAE/ASHE Standard 170-2021, ASHRAE, Atlanta, GA, USA, 2021. (Table 7.1, Design Parameters.) [Online].</dct:bibliographicCitation>
+		<skos:example>M-0412 is the outdoor air change rate of ICU-01 (1.4 ACH). It is not read from a sensor: it was derived (prov:wasDerivedFrom) from the outdoor air flow rate to the room M-0413, which in turn was derived from the supply air flow rate M-0411 and the room volume.</skos:example>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/OutdoorAirDamper">
@@ -1381,14 +1392,14 @@ outdoor air change per hour</skos:definition>
 						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
-			
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>compliance assessment containing at least one satisfied policy assessment and at least one unsatisfied policy assessment, with no unknown policy assessment</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
 		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
-	</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>compliance assessment containing at least one satisfied policy assessment and at least one unsatisfied policy assessment, with no unknown policy assessment</skos:definition>
+		<skos:example>A_ICU_01 has two policy assessments: PA_ICU_01_RH is satisfied (45 %RH within 30 to 60 %RH) and PA_ICU_01_ACH is unsatisfied (1.4 ACH below the 2.0 ACH minimum). With no unknown policy assessment, the reasoner classifies A_ICU_01 as a PartiallySatisfiedComplianceAssessment.</skos:example>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/PathologyLab">
@@ -1501,6 +1512,7 @@ outdoor air change per hour</skos:definition>
 		</rdfs:subClassOf>
 		<rdfs:label>range bounded compliance policy</rdfs:label>
 		<skos:definition>Compliance policy that specifies both a minimum value and a maximum value, between which an acceptable measurement lies.</skos:definition>
+		<skos:example>The relative humidity policy for ICU rooms has a lower bound of 30 %RH and an upper bound of 60 %RH; a reading of 45 %RH lies between them (rule S5), whereas the operating-room temperature of 24.1 °C exceeds the 20 to 23 °C design range (rule S7).</skos:example>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/RecirculatedByMeansOfRoomUnits">
@@ -1666,14 +1678,13 @@ outdoor air change per hour</skos:definition>
 						<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/SatisfiedPolicyAssessment"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
-			
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>compliance assessment covering one or more applicable policies whose policy assessments are all satisfied</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
 		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
-	</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>compliance assessment covering one or more applicable policies whose policy assessments are all satisfied</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/SatisfiedPolicyAssessment">
@@ -1905,14 +1916,13 @@ outdoor air change per hour</skos:definition>
 						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnknownPolicyAssessment"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
-			
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>compliance assessment containing at least one unknown policy assessment</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
 		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
-	</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>compliance assessment containing at least one unknown policy assessment</skos:definition>
 		<skos:note>Revised in the November 2026 revision from &quot;all policy assessments unknown&quot; to &quot;at least one policy assessment unknown&quot;, so that a room with a single missing measurement is reported as unknown rather than left unclassified; unknown therefore takes precedence over the other three outcomes (use case post-condition Q3).</skos:note>
 	</owl:Class>
 	
@@ -1922,6 +1932,7 @@ outdoor air change per hour</skos:definition>
 		<skos:definition>policy assessment for which the available information is insufficient to determine whether the evaluated policy’s applicable requirements are met</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<skos:example>PE-01 at 08:00: the humidity sensor did not answer, so the humidity policy assessment has no isEvaluatedAt measurement. SHACL rule U1 types it as an UnknownPolicyAssessment, and the room's compliance assessment becomes an UnknownComplianceAssessment even though its other policy assessments are satisfied.</skos:example>
 		<sh:rule>
 			<sh:SPARQLRule>
 				<sh:construct>CONSTRUCT { $this a &lt;https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnknownPolicyAssessment&gt; . }
@@ -1951,14 +1962,13 @@ outdoor air change per hour</skos:definition>
 						<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
-			
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition>compliance assessment covering one or more applicable policies whose policy assessments are all unsatisfied</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
 		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
-	</owl:Class>
-		</owl:equivalentClass>
-		<skos:definition>compliance assessment covering one or more applicable policies whose policy assessments are all unsatisfied</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnsatisfiedPolicyAssessment">
@@ -1967,6 +1977,7 @@ outdoor air change per hour</skos:definition>
 		<skos:definition>policy assessment whose available and usable evidence fails to meet at least one applicable requirement of the evaluated policy</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<skos:example>PA_ICU_01_ACH is the policy assessment of the minimum outdoor air change policy for ICU-01. Its evidence M-0412 (OutdoorAirChangePerHour) is 1.4 ACH against a lower bound of 2.0 ACH, so SWRL rule S2 (Min bound violated) classifies it as an UnsatisfiedPolicyAssessment.</skos:example>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/VariableAirVolumeBox">
@@ -2300,6 +2311,7 @@ outdoor air change per hour</skos:definition>
 		<skos:definition>relation that holds between an entity and any entity it was derived from, directly or through a chain of intermediate derivations; the transitive closure of prov:wasDerivedFrom</skos:definition>
 		<dct:source rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
 		<dct:bibliographicCitation>Object Management Group, “Commons Parties and Situations Ontology,” ver. 20250801. [Online].</dct:bibliographicCitation>
+		<skos:example>M-0412 (outdoor air changes per hour) is asserted only as wasDerivedFrom M-0413, and M-0413 as wasDerivedFrom M-0411 (supply air flow rate). The reasoner infers M-0412 isTransitivelyDerivedFrom M-0411, which lets rule S9 find the components acting on the supply air flow for a failure measured in air changes per hour.</skos:example>
 	</owl:ObjectProperty>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/kilogramWaterPerKilogramDryAir">
@@ -2490,6 +2502,7 @@ outdoor air change per hour</skos:definition>
 		<skos:definition>relation that holds between an assessment and a building service system when the outcome of the assessment is associated with that system</skos:definition>
 		<dct:source rdf:resource="https://www.w3.org/TR/prov-o/"/>
 		<dct:bibliographicCitation>W3C, “PROV-O: The PROV Ontology,” W3C Recommendation, Apr. 30, 2013. [Online].</dct:bibliographicCitation>
+		<skos:example>FL-3 (a filter) is asserted only as part of the air handler AHU-3, and it acts on the failing supply air flow M-0411. Because hasPart is transitive, rule S10 infers PA_ICU_01_ACH wasAssociatedWithSystem HVAC-3, with no hard-coded reference to HVAC-3.</skos:example>
 	</owl:ObjectProperty>
 	
 	<owl:Class rdf:about="&fso;Component">
@@ -2609,9 +2622,22 @@ outdoor air change per hour</skos:definition>
 	<owl:ObjectProperty rdf:about="&cmns-qtu;hasUpperBound">
 	</owl:ObjectProperty>
 	
+	<rdf:Description>
+	</rdf:Description>
+	<rdf:Description>
+	</rdf:Description>
+	<rdf:Description>
+	</rdf:Description>
+	<rdf:Description>
+	</rdf:Description>
+	<rdf:Description>
+	</rdf:Description>
+	<rdf:Description>
+	</rdf:Description>
+	<rdf:Description>
+	</rdf:Description>
 	<swrl:Imp>
 		<rdfs:label>Max bound met</rdfs:label>
-		<skos:altLabel>S3</skos:altLabel>
 		<rdfs:comment>Max-bounded: value &lt;= upper bound -&gt; Satisfied</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -2679,10 +2705,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/SatisfiedPolicyAssessment"/>
 			</swrl:ClassAtom>
 		</swrl:head>
+		<skos:altLabel>S3</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Max bound exceeded</rdfs:label>
-		<skos:altLabel>S4</skos:altLabel>
 		<rdfs:comment>Max-bounded: value &gt; upper bound -&gt; Unsatisfied</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -2750,10 +2776,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
 			</swrl:ClassAtom>
 		</swrl:head>
+		<skos:altLabel>S4</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Min bound violated</rdfs:label>
-		<skos:altLabel>S2</skos:altLabel>
 		<rdfs:comment>Min-bounded: value &lt; lower bound -&gt; Unsatisfied</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -2821,10 +2847,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
 			</swrl:ClassAtom>
 		</swrl:head>
+		<skos:altLabel>S2</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Min bound met</rdfs:label>
-		<skos:altLabel>S1</skos:altLabel>
 		<rdfs:comment>Min-bounded: value &gt;= lower bound -&gt; Satisfied</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -2892,10 +2918,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/SatisfiedPolicyAssessment"/>
 			</swrl:ClassAtom>
 		</swrl:head>
+		<skos:altLabel>S1</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Within range</rdfs:label>
-		<skos:altLabel>S5</skos:altLabel>
 		<rdfs:comment>Range-bounded: lower &lt;= value &lt;= upper -&gt; Satisfied</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -2982,10 +3008,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/SatisfiedPolicyAssessment"/>
 			</swrl:ClassAtom>
 		</swrl:head>
+		<skos:altLabel>S5</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Below range</rdfs:label>
-		<skos:altLabel>S6</skos:altLabel>
 		<rdfs:comment>Range-bounded: value &lt; lower bound -&gt; Unsatisfied</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -3053,10 +3079,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
 			</swrl:ClassAtom>
 		</swrl:head>
+		<skos:altLabel>S6</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Above range</rdfs:label>
-		<skos:altLabel>S7</skos:altLabel>
 		<rdfs:comment>Range-bounded: value &gt; upper bound -&gt; Unsatisfied</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -3124,10 +3150,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnsatisfiedPolicyAssessment"/>
 			</swrl:ClassAtom>
 		</swrl:head>
+		<skos:altLabel>S7</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Direct component association</rdfs:label>
-		<skos:altLabel>S8</skos:altLabel>
 		<rdfs:comment>component, direct (a component acts on the measurement the policy assessment evaluates)</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -3157,10 +3183,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/wasAssociatedWithComponent"/>
 			</swrl:IndividualPropertyAtom>
 		</swrl:head>
+		<skos:altLabel>S8</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Upstream component association</rdfs:label>
-		<skos:altLabel>S9</skos:altLabel>
 		<rdfs:comment>component, indirect (a component acts on any measurement the evaluated measurement was derived from, at any depth)</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -3195,10 +3221,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/wasAssociatedWithComponent"/>
 			</swrl:IndividualPropertyAtom>
 		</swrl:head>
+		<skos:altLabel>S9</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>Compliance-level component lift</rdfs:label>
-		<skos:altLabel>S11</skos:altLabel>
 		<rdfs:comment>lift components from policy assessments to the compliance assessment</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -3224,10 +3250,10 @@ outdoor air change per hour</skos:definition>
 				<swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/wasAssociatedWithComponent"/>
 			</swrl:IndividualPropertyAtom>
 		</swrl:head>
+		<skos:altLabel>S11</skos:altLabel>
 	</swrl:Imp>
 	<swrl:Imp>
 		<rdfs:label>System association</rdfs:label>
-		<skos:altLabel>S10</skos:altLabel>
 		<rdfs:comment>system (any building service system that has the associated component as a part, directly or nested; hasPart is transitive)</rdfs:comment>
 		<swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
 		<swrl:body rdf:parseType="Collection">
@@ -3257,6 +3283,7 @@ outdoor air change per hour</skos:definition>
 				<swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/wasAssociatedWithSystem"/>
 			</swrl:IndividualPropertyAtom>
 		</swrl:head>
+		<skos:altLabel>S10</skos:altLabel>
 	</swrl:Imp>
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
