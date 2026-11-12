@@ -108,7 +108,10 @@ The full list of classes, properties and individuals, with sources, is the [term
 
 ## Ontologies Reused
 
-- [AgentO v0.2](https://w3id.org/agentic-ai/onto) (`agento:`): agents, tasks, tools, capabilities, workflow steps
+- [AgentO v0.2](https://w3id.org/agentic-ai/onto) (`agento:`): agents, tasks, tools, capabilities, workflow steps.
+  *Note:* as of November 12, 2026 this IRI redirects to sepses.ifs.tuwien.ac.at, which is not responding (likely a
+  temporary outage on their end); a backup copy is in
+  [imports/agento-v0.2.owl](imports/agento-v0.2.owl) (RDF/XML)
 - [P-Plan](http://purl.org/net/p-plan) (`pplan:`): plans, steps and the activities that carry them out (version 1.3, copy in `imports/`)
 - [OWL-S 1.2 Process](https://www.w3.org/submissions/OWL-S/) (`process:`): tool parameters and preconditions
 - [BEAM](http://w3id.org/beam/core) (`beam:`): the resource class above SkillResource
