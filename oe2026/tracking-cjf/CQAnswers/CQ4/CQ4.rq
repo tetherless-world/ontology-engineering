@@ -1,19 +1,46 @@
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sio: <http://semanticscience.org/resource/>
 
-select distinct ?issues ?stateclass ?evidence
-where {
-    ?issues a cjf:Issue .
-    ?issues cjf:hasCurrentStateAssignment ?stateassignment .
-    ?stateassignment cjf:assignedState ?state .
-    ?state a ?stateclass
+SELECT DISTINCT ?issue ?assignment ?stateType ?sourceMove ?evidence
+WHERE {
+    ?issue cjf:makesChallenges ?challenge .
 
-    # remove the generic state class triples
-    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
-    ?stateassignment cjf:hasTriggeringRelationship ?relation .
-    
-    # sio:isSupportedBy
-    ?relation sio:SIO_000206 ?text_span . 
-    ?text_span cjf:hasConversationText ?evidence . 
+    ?challenge cjf:isAimedAtChallenges
+        sample:Move_OCT21_A-M0003 .
+
+    OPTIONAL {
+        ?issue rdf:type ?issueType .
+    }
+
+    FILTER (?issueType = cjf:Issue)
+
+    ?issue cjf:hasStateAssignment ?assignment .
+
+    ?assignment cjf:assignedState ?state .
+
+    OPTIONAL {
+        ?state rdf:type ?stateType .
+    }
+
+    FILTER (
+        ?stateType = cjf:Open ||
+        ?stateType = cjf:Addressed ||
+        ?stateType = cjf:Resolved
+    )
+
+    OPTIONAL {
+        ?assignment cjf:hasTriggeringRelationship ?trigger .
+
+        OPTIONAL {
+            ?sourceMove cjf:makesAddresses ?trigger .
+
+            OPTIONAL {
+                ?sourceMove sio:SIO_000206 ?textSpan .
+                ?textSpan cjf:hasConversationText ?evidence .
+            }
+        }
+    }
 }
+ORDER BY ?issue ?assignment ?stateType ?sourceMove

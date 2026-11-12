@@ -139,19 +139,86 @@ https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tr
 ------------------------------------------
 CQ4:  Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states? 
 
+# Run in Protégé using Snap SPARQL Query.
+# Active ontology: OE_10_TeamCJF_Individuals.rdf
+# Imported ontology: OE_10_TeamCJF.rdf
+# Reasoner: HermiT (active)
 
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
 
+SELECT DISTINCT ?issue ?assignment ?stateType ?sourceMove ?evidence
+WHERE {
+    ?issue cjf:makesChallenges ?challenge .
 
+    ?challenge cjf:isAimedAtChallenges
+        sample:Move_OCT21_A-M0003 .
 
+    OPTIONAL {
+        ?issue rdf:type ?issueType .
+    }
 
+    FILTER (?issueType = cjf:Issue)
 
+    ?issue cjf:hasStateAssignment ?assignment .
 
+    ?assignment cjf:assignedState ?state .
 
+    OPTIONAL {
+        ?state rdf:type ?stateType .
+    }
 
-Expected Answer: 
+    FILTER (
+        ?stateType = cjf:Open ||
+        ?stateType = cjf:Addressed ||
+        ?stateType = cjf:Resolved
+    )
 
+    OPTIONAL {
+        ?assignment cjf:hasTriggeringRelationship ?trigger .
 
-Actual Answer: 
+        OPTIONAL {
+            ?sourceMove cjf:makesAddresses ?trigger .
+
+            OPTIONAL {
+                ?sourceMove sio:SIO_000206 ?textSpan .
+                ?textSpan cjf:hasConversationText ?evidence .
+            }
+        }
+    }
+}
+ORDER BY ?issue ?assignment ?stateType ?sourceMove
+
+Expected Answer:
+
+M0010 - Cost concern:
+Recorded states: Open, Addressed, Resolved.
+Evidence moves: M0021, M0039, M0048.
+Current state: Resolved.
+
+M0014 - Training concern:
+Recorded states: Open, Addressed.
+Evidence move: M0051.
+Current state: Addressed.
+
+M0050 - Training schedule concern:
+Recorded states: Open, Addressed.
+Evidence move: M0051.
+Current state: Addressed.
+
+Tested result: 11 rows representing 8 distinct state assignments.
+Some rows repeat because of OWL-inferred classifications
+and multiple supporting text spans.
+
+Note: This query retrieves Issues that explicitly challenge
+Platform A. Initial Open states may have blank evidence
+when no Address/Resolve trigger is recorded.
+
+Actual Answer:
+
+Pending saved results CSV and GitHub link.
 
 
 ------------------------------------------
