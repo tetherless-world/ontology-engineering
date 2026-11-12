@@ -59,10 +59,10 @@ Version 4.0, the others are unchanged from Version 3.0):
 
 ## Ontology
 
-- **Files (Assignment 10):** [OE_10_TeamAgenticCapabilities.rdf](OE_10_TeamAgenticCapabilities.rdf) (classes and
-  properties) and [OE_10_TeamAgenticCapabilities_Individuals.rdf](OE_10_TeamAgenticCapabilities_Individuals.rdf)
+- **Files (Assignment 10):** [OE_11_TeamAgenticCapabilities.rdf](OE_11_TeamAgenticCapabilities.rdf) (classes and
+  properties) and [OE_11_TeamAgenticCapabilities_Individuals.rdf](OE_11_TeamAgenticCapabilities_Individuals.rdf)
   (individuals; imports the main ontology), OWL 2 in RDF/XML written with the course serializer
-- **SPARQL queries:** [OE_10_TeamAgenticCapabilities_Queries.txt](OE_10_TeamAgenticCapabilities_Queries.txt); the queries
+- **SPARQL queries:** [OE_11_TeamAgenticCapabilities_Queries.txt](OE_11_TeamAgenticCapabilities_Queries.txt); the queries
   for all nine competency questions and their answers are on the [Demonstration & Queries](demo.html) page
 - **New in Assignment 10:** 22 object properties, most of them shortcuts defined by property chains (for example
   hasHardConstraint, skillSatisfiesRequirement, stepSatisfiesHardConstraint, planConsumes), so that the queries can follow
@@ -72,8 +72,8 @@ Version 4.0, the others are unchanged from Version 3.0):
   consistent, with no unsatisfiable classes (Pellet 2.2.0 and HermiT 1.4.3.456);
   [test log](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt)
 - **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII); the queries cover all nine
-- **Opening it in Protégé:** open OE_10_TeamAgenticCapabilities_Individuals.rdf from this folder. `catalog-v001.xml` maps
-  the main ontology IRI to OE_10_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the copies in `imports/`:
+- **Opening it in Protégé:** open OE_11_TeamAgenticCapabilities_Individuals.rdf from this folder. `catalog-v001.xml` maps
+  the main ontology IRI to OE_11_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the copies in `imports/`:
   the AgentO IRI redirects to a web page, and the P-Plan purl did not resolve on October 29, 2026.
 - **Previous versions:** Assignment 9, [main](archived/OE_9_TeamAgenticCapabilities.txt),
   [individuals](archived/OE_9_TeamAgenticCapabilities_Individuals.txt),

@@ -39,7 +39,7 @@ figures.
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td><a href="OE_10_TeamAgenticCapabilities.rdf">OE_10_TeamAgenticCapabilities.rdf</a> and its <a href="OE_10_TeamAgenticCapabilities_Individuals.rdf">individuals</a> (RDF/XML), described on the <a href="ontology.html">Concept Map &amp; Ontology</a> page</td>
+    <td><a href="OE_11_TeamAgenticCapabilities.rdf">OE_11_TeamAgenticCapabilities.rdf</a> and its <a href="OE_11_TeamAgenticCapabilities_Individuals.rdf">individuals</a> (RDF/XML), described on the <a href="ontology.html">Concept Map &amp; Ontology</a> page</td>
   </tr>
   <tr>
     <td>2. Use Case</td>
@@ -51,7 +51,7 @@ figures.
   </tr>
   <tr>
     <td>4. Competency Question Queries</td>
-    <td><a href="demo.html">SPARQL queries and answers</a> for all nine competency questions, and the <a href="OE_10_TeamAgenticCapabilities_Queries.txt">query file</a> to run in Protégé</td>
+    <td><a href="demo.html">SPARQL queries and answers</a> for all nine competency questions, and the <a href="OE_11_TeamAgenticCapabilities_Queries.txt">query file</a> to run in Protégé</td>
   </tr>
   <tr>
     <td>5. Presentations</td>

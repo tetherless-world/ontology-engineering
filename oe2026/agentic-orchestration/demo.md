@@ -7,9 +7,9 @@ title: queries
 
 SPARQL queries for the competency questions of the [use case](usecase.html) (Section VII): the three that scope the
 ontology (CQ 1, CQ 3 and CQ 5) and the other six. They run on
-[OE_10_TeamAgenticCapabilities_Individuals.rdf](OE_10_TeamAgenticCapabilities_Individuals.rdf), which imports
-[OE_10_TeamAgenticCapabilities.rdf](OE_10_TeamAgenticCapabilities.rdf). The
-[query file](OE_10_TeamAgenticCapabilities_Queries.txt) gives every query with its prefixes, the reasoning it needs, the
+[OE_11_TeamAgenticCapabilities_Individuals.rdf](OE_11_TeamAgenticCapabilities_Individuals.rdf), which imports
+[OE_11_TeamAgenticCapabilities.rdf](OE_11_TeamAgenticCapabilities.rdf). The
+[query file](OE_11_TeamAgenticCapabilities_Queries.txt) gives every query with its prefixes, the reasoning it needs, the
 individuals it uses and its expected answer; it also has a version of CQ 5 for Protégé's SPARQL Query tab.
 
 Queries marked **OWL 2 DL** need a reasoner: run them in the Snap SPARQL Query plugin with Pellet or HermiT started.

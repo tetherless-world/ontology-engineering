@@ -10,7 +10,7 @@ row with the same label and definition; the individuals are not listed. New in t
 listed on the sheet "A9 changes": definitions for plan and step, and a row for activity (pplan:Activity), the parent class
 of Invocation.
 
-<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftetherless-world.github.io%2Fontology-engineering%2Foe2026%2Fagentic-orchestration%2Ffiles%2Fterminology%2FOE_10_TeamAgenticCapabilities_TermList.xlsx" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftetherless-world.github.io%2Fontology-engineering%2Fbranch%2Fagentic-orchestration%2Foe2026%2Fagentic-orchestration%2Ffiles%2Fterminology%2FOE_10_TeamAgenticCapabilities_TermList.xlsx" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
