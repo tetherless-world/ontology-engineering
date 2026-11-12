@@ -1147,6 +1147,15 @@
 		<skos:definition xml:lang="en">relationship connecting an orchestration plan with one of its constituent steps</skos:definition>
 	</owl:ObjectProperty>
 	
+	<owl:DatatypeProperty rdf:about="&oe-agtorch;hasStepPosition">
+		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
+		<rdfs:label xml:lang="en">has step position</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:range rdf:resource="&xsd;positiveInteger"/>
+		<skos:definition xml:lang="en">position of a workflow step in the execution order of its orchestration plan, starting at 1 for the steps that run first</skos:definition>
+		<skos:scopeNote xml:lang="en">Steps that may run at the same time share a position, and a step has a higher position than every step it follows through AgentO next step. AgentO next step records the order step by step but branches where steps run in parallel; the position gives each step one number, so competency question queries can list a plan&apos;s steps in execution order (ORDER BY) instead of by label.</skos:scopeNote>
+	</owl:DatatypeProperty>
+	
 	<owl:ObjectProperty rdf:about="&oe-agtorch;hasTask">
 		<rdfs:label xml:lang="en">has task</rdfs:label>
 		<rdfs:domain rdf:resource="&oe-agtorch;OrchestrationPlan"/>

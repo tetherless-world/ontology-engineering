@@ -29,7 +29,7 @@
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/">
 		<rdfs:label xml:lang="en">Agentic Tool and Skill Orchestration Individuals</rdfs:label>
-		<dct:abstract xml:lang="en">Test individuals for the Agentic Tool and Skill Orchestration Ontology, which this ontology imports. They follow the usage scenarios of use case AC-001: Ken&apos;s plan choice (competency question 1), the skills Jessica&apos;s request needs (competency question 3) and why each capability is in Dante&apos;s plan (competency question 5), plus parallel steps in Jessica&apos;s plan (competency question 2) and Olivia&apos;s plan comparison (competency question 6). Plan selection is not asserted; the reasoner infers it from the plan evaluations. Tool and server individuals for the PubMed, OpenFDA and Supplement Advisor MCP servers and the iHerb client let competency question 5 name the tool behind each skill. Ken&apos;s request has a hard constraint for evidence verification as well as his soft constraints, so competency question 1 can derive his candidate plans from his information requirements and constraints. Ken&apos;s first plan has the nine steps of the use case&apos;s answer to competency question 1, and the step order of Jessica&apos;s and Dante&apos;s plans follows the use case&apos;s plans for competency questions 2 and 4.</dct:abstract>
+		<dct:abstract xml:lang="en">Test individuals for the Agentic Tool and Skill Orchestration Ontology, which this ontology imports. They follow the usage scenarios of use case AC-001: Ken&apos;s plan choice (competency question 1), the skills Jessica&apos;s request needs (competency question 3) and why each capability is in Dante&apos;s plan (competency question 5), plus parallel steps in Jessica&apos;s plan (competency question 2) and Olivia&apos;s plan comparison (competency question 6). Plan selection is not asserted; the reasoner infers it from the plan evaluations. Tool and server individuals for the PubMed, OpenFDA and Supplement Advisor MCP servers and the iHerb client let competency question 5 name the tool behind each skill. Ken&apos;s request has a hard constraint for evidence verification as well as his soft constraints, so competency question 1 can derive his candidate plans from his information requirements and constraints. Ken&apos;s first plan has the nine steps of the use case&apos;s answer to competency question 1, with evidence verification split into two consecutive steps (searching PubMed for articles, then downloading their abstracts) so that each step calls one tool; Ken&apos;s second plan splits both of its evidence passes the same way, and the step order of Jessica&apos;s and Dante&apos;s plans follows the use case&apos;s plans for competency questions 2 and 4.</dct:abstract>
 		<dct:creator>Barbara Kotlan</dct:creator>
 		<dct:creator>Elioenai Lincon Guedes Alves</dct:creator>
 		<dct:creator>Gia Oriana Santos</dct:creator>
@@ -93,6 +93,28 @@
 		<skos:definition xml:lang="en">person who asks for the best heart-health supplement and wants strong scientific evidence from as few external tool calls as possible</skos:definition>
 	</owl:NamedIndividual>
 	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;abstractDownloadCapability">
+		<rdf:type rdf:resource="&oe-agtorch;InformationAccess"/>
+		<rdfs:label xml:lang="en">abstract download capability</rdfs:label>
+		<skos:definition xml:lang="en">information access capability that retrieves the abstracts of research articles found for a supplement, as the second part of evidence verification</skos:definition>
+		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;evidenceVerificationConstraint"/>
+		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;kenEvidenceConstraint"/>
+		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needEvidenceForKen"/>
+		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needEvidenceSummary"/>
+		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needScientificEvidence"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;articleSearchCapability">
+		<rdf:type rdf:resource="&oe-agtorch;InformationAccess"/>
+		<rdfs:label xml:lang="en">article search capability</rdfs:label>
+		<skos:definition xml:lang="en">information access capability that finds research articles about a supplement in a literature database, as the first part of evidence verification</skos:definition>
+		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;evidenceVerificationConstraint"/>
+		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;kenEvidenceConstraint"/>
+		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needEvidenceForKen"/>
+		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needEvidenceSummary"/>
+		<oe-agtorch:satisfiesRequirement rdf:resource="&oe-agtorch-ind;needScientificEvidence"/>
+	</owl:NamedIndividual>
+	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;candidateCitrate">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateSupplement"/>
 		<rdfs:label xml:lang="en">magnesium citrate (Dante)</rdfs:label>
@@ -121,6 +143,7 @@
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;verifyEvidenceGlycinate"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;d3"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;d4"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">1</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;d2">
@@ -130,6 +153,7 @@
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;screenGlycinate"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;d3"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;d4"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">1</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;d3">
@@ -138,6 +162,7 @@
 		<skos:definition xml:lang="en">workflow step 2a of Dante&apos;s orchestration plan, associated with the task verify evidence (magnesium citrate)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;verifyEvidenceCitrate"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;d5"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">2</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;d4">
@@ -146,6 +171,7 @@
 		<skos:definition xml:lang="en">workflow step 2b of Dante&apos;s orchestration plan, associated with the task screen interactions (magnesium citrate)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;screenCitrate"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;d5"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">2</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;d5">
@@ -153,6 +179,7 @@
 		<rdfs:label xml:lang="en">Dante&apos;s orchestration plan, step 3</rdfs:label>
 		<skos:definition xml:lang="en">workflow step 3 of Dante&apos;s orchestration plan, associated with the task synthesize evidence (Dante)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;synthesizeEvidence"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">3</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;danteAnswer">
@@ -236,6 +263,26 @@
 		<skos:definition xml:lang="en">skill that calculates supplement doses</skos:definition>
 		<skos:scopeNote xml:lang="en">Control case: no request in these examples needs it, so the reasoner must not classify it as a constraint-satisfying skill.</skos:scopeNote>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;dosageCalculationCapability"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;downloadBroaderEvidenceAbstractsForKen">
+		<rdf:type rdf:resource="&agento;Task"/>
+		<rdfs:label xml:lang="en">download abstracts and verify evidence again (Ken)</rdfs:label>
+		<skos:definition xml:lang="en">task of Ken plan 2 that downloads the abstracts of the articles found by the broader search and assesses the evidence they give</skos:definition>
+		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;abstractDownloadCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;kenBroadArticleSearchResults"/>
+		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;kenBroadEvidenceAssessment"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;downloadEvidenceAbstractsForKen">
+		<rdf:type rdf:resource="&agento;Task"/>
+		<rdfs:label xml:lang="en">download abstracts and verify evidence (Ken)</rdfs:label>
+		<skos:definition xml:lang="en">task that downloads the abstracts of the articles found for Ken&apos;s candidate supplements and assesses the evidence they give</skos:definition>
+		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;abstractDownloadCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;kenArticleSearchResults"/>
+		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;kenEvidenceAssessment"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;evidenceAssessment">
@@ -492,6 +539,15 @@
 		<skos:definition xml:lang="en">workflow step 1 of Ken plan 1, associated with the task get user profile (Ken)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;getUserProfileForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s2"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">1</oe-agtorch:hasStepPosition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s10">
+		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:label xml:lang="en">Ken plan 1, step 10</rdfs:label>
+		<skos:definition xml:lang="en">workflow step 10 of Ken plan 1, associated with the task produce recommendation (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;produceRecommendationForKen"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">10</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s2">
@@ -500,6 +556,7 @@
 		<skos:definition xml:lang="en">workflow step 2 of Ken plan 1, associated with the task get candidate supplements (Ken)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;getCandidatesForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s3"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">2</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s3">
@@ -508,6 +565,7 @@
 		<skos:definition xml:lang="en">workflow step 3 of Ken plan 1, associated with the task remove redundant supplements (Ken)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;removeRedundantSupplementsForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s4"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">3</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s4">
@@ -516,6 +574,7 @@
 		<skos:definition xml:lang="en">workflow step 4 of Ken plan 1, associated with the task get supplement products sorted by price (Ken)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;getProductsByPrice"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s5"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">4</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s5">
@@ -524,37 +583,43 @@
 		<skos:definition xml:lang="en">workflow step 5 of Ken plan 1, associated with the task rank supplement products by cost (Ken)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;rankProductsByCostForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s6"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">5</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s6">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 1, step 6</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 6 of Ken plan 1, associated with the task verify evidence (Ken)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;verifyEvidenceForKen"/>
+		<skos:definition xml:lang="en">workflow step 6 of Ken plan 1, associated with the task search evidence articles (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;searchEvidenceArticlesForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s7"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">6</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s7">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 1, step 7</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 7 of Ken plan 1, associated with the task rank supplement products by evidence (Ken)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;rankProductsByEvidenceForKen"/>
+		<skos:definition xml:lang="en">workflow step 7 of Ken plan 1, associated with the task download abstracts and verify evidence (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;downloadEvidenceAbstractsForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s8"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">7</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s8">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 1, step 8</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 8 of Ken plan 1, associated with the task select supplement product (Ken)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;selectProductForKen"/>
+		<skos:definition xml:lang="en">workflow step 8 of Ken plan 1, associated with the task rank supplement products by evidence (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;rankProductsByEvidenceForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s9"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">8</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k1s9">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 1, step 9</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 9 of Ken plan 1, associated with the task produce recommendation (Ken)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;produceRecommendationForKen"/>
+		<skos:definition xml:lang="en">workflow step 9 of Ken plan 1, associated with the task select supplement product (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;selectProductForKen"/>
+		<agento:nextStep rdf:resource="&oe-agtorch-ind;k1s10"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">9</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s1">
@@ -563,6 +628,7 @@
 		<skos:definition xml:lang="en">workflow step 1 of Ken plan 2, associated with the task get candidate supplements (Ken)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;getCandidatesForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s2"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">1</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s2">
@@ -571,45 +637,69 @@
 		<skos:definition xml:lang="en">workflow step 2 of Ken plan 2, associated with the task get supplement products sorted by price (Ken)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;getProductsByPrice"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s3"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">2</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s3">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 2, step 3</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 3 of Ken plan 2, associated with the task verify evidence (Ken)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;verifyEvidenceForKen"/>
+		<skos:definition xml:lang="en">workflow step 3 of Ken plan 2, associated with the task search evidence articles (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;searchEvidenceArticlesForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s4"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">3</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s4">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 2, step 4</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 4 of Ken plan 2, associated with the task screen interactions (Ken)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;screenInteractionsForKen"/>
+		<skos:definition xml:lang="en">workflow step 4 of Ken plan 2, associated with the task download abstracts and verify evidence (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;downloadEvidenceAbstractsForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s5"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">4</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s5">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 2, step 5</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 5 of Ken plan 2, associated with the task verify evidence again with a broader query (Ken)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;secondEvidencePassForKen"/>
+		<skos:definition xml:lang="en">workflow step 5 of Ken plan 2, associated with the task screen interactions (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;screenInteractionsForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s6"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">5</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s6">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 2, step 6</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 6 of Ken plan 2, associated with the task select supplement product (Ken plan 2)</skos:definition>
-		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;selectProductForKenPlan2"/>
+		<skos:definition xml:lang="en">workflow step 6 of Ken plan 2, associated with the task search evidence articles again with a broader query (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;searchBroaderEvidenceArticlesForKen"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s7"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">6</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s7">
 		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
 		<rdfs:label xml:lang="en">Ken plan 2, step 7</rdfs:label>
-		<skos:definition xml:lang="en">workflow step 7 of Ken plan 2, associated with the task produce recommendation (Ken plan 2)</skos:definition>
+		<skos:definition xml:lang="en">workflow step 7 of Ken plan 2, associated with the task download abstracts and verify evidence again (Ken)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;downloadBroaderEvidenceAbstractsForKen"/>
+		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s8"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">7</oe-agtorch:hasStepPosition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s8">
+		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:label xml:lang="en">Ken plan 2, step 8</rdfs:label>
+		<skos:definition xml:lang="en">workflow step 8 of Ken plan 2, associated with the task select supplement product (Ken plan 2)</skos:definition>
+		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;selectProductForKenPlan2"/>
+		<agento:nextStep rdf:resource="&oe-agtorch-ind;k2s9"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">8</oe-agtorch:hasStepPosition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;k2s9">
+		<rdf:type rdf:resource="&oe-agtorch;OrchestrationWorkflowStep"/>
+		<rdfs:label xml:lang="en">Ken plan 2, step 9</rdfs:label>
+		<skos:definition xml:lang="en">workflow step 9 of Ken plan 2, associated with the task produce recommendation (Ken plan 2)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;produceRecommendationForKenPlan2"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">9</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenAnswer">
@@ -622,6 +712,18 @@
 		<rdf:type rdf:resource="&oe-agtorch;Answer"/>
 		<rdfs:label xml:lang="en">recommendation for Ken (Ken plan 2)</rdfs:label>
 		<skos:definition xml:lang="en">answer that Ken plan 2 would return to Ken</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenArticleSearchResults">
+		<rdf:type rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<rdfs:label xml:lang="en">article search results (Ken)</rdfs:label>
+		<skos:definition xml:lang="en">PubMed identifiers of the articles found for Ken&apos;s candidate supplements</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenBroadArticleSearchResults">
+		<rdf:type rdf:resource="&oe-agtorch;InformationArtifact"/>
+		<rdfs:label xml:lang="en">broader article search results (Ken plan 2)</rdfs:label>
+		<skos:definition xml:lang="en">PubMed identifiers of the articles found for Ken&apos;s candidate supplements by the broader search of Ken plan 2</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenBroadEvidenceAssessment">
@@ -680,6 +782,7 @@
 		<skos:definition xml:lang="en">candidate orchestration plan for Ken&apos;s request with one evidence pass and products sorted by price</skos:definition>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;kenRequest"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s1"/>
+		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s10"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s2"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s3"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s4"/>
@@ -724,7 +827,7 @@
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">Ken plan 2</rdfs:label>
 		<owl:differentFrom rdf:resource="&oe-agtorch-ind;kenPlan1"/>
-		<skos:definition xml:lang="en">candidate orchestration plan for Ken&apos;s request that adds interaction screening and a second evidence pass</skos:definition>
+		<skos:definition xml:lang="en">candidate orchestration plan for Ken&apos;s request that adds interaction screening and a second evidence pass; each evidence pass is an article search followed by an abstract download</skos:definition>
 		<skos:scopeNote xml:lang="en">Test for competency question 1: it is not asserted as rejected; the reasoner infers it because Ken&apos;s request can have only one selected plan, Ken plan 1 ranks first, and the two plans are declared different individuals.</skos:scopeNote>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;kenRequest"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s1"/>
@@ -734,6 +837,8 @@
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s5"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s6"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s7"/>
+		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s8"/>
+		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k2s9"/>
 		<oe-agtorch:satisfiesConstraint rdf:resource="&oe-agtorch-ind;kenEvidenceConstraint"/>
 	</owl:NamedIndividual>
 	
@@ -1063,6 +1168,7 @@
 		<rdfs:label xml:lang="en">PubMed abstract download tool</rdfs:label>
 		<skos:altLabel>download_articles_batch</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the PubMed MCP server that downloads the abstracts of a batch of PubMed articles</skos:definition>
+		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;abstractDownloadCapability"/>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
 	</owl:NamedIndividual>
 	
@@ -1085,6 +1191,7 @@
 		<process:hasParameter rdf:resource="&oe-agtorch-ind;pubmedQueryParameter"/>
 		<skos:altLabel>search_articles</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the PubMed MCP server that searches PubMed for articles matching a query and returns their PubMed identifiers</skos:definition>
+		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;articleSearchCapability"/>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
 	</owl:NamedIndividual>
 	
@@ -1187,14 +1294,24 @@
 		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;kenSafetyAssessment"/>
 	</owl:NamedIndividual>
 	
-	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;secondEvidencePassForKen">
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;searchBroaderEvidenceArticlesForKen">
 		<rdf:type rdf:resource="&agento;Task"/>
-		<rdfs:label xml:lang="en">verify evidence again with a broader query (Ken)</rdfs:label>
-		<skos:definition xml:lang="en">task that repeats the evidence check for Ken&apos;s candidate supplements with a broader search query</skos:definition>
-		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
+		<rdfs:label xml:lang="en">search evidence articles again with a broader query (Ken)</rdfs:label>
+		<skos:definition xml:lang="en">task of Ken plan 2 that repeats the PubMed article search for Ken&apos;s candidate supplements with a broader search query</skos:definition>
+		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;articleSearchCapability"/>
 		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;kenCandidates"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
-		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;kenBroadEvidenceAssessment"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;kenBroadArticleSearchResults"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;searchEvidenceArticlesForKen">
+		<rdf:type rdf:resource="&agento;Task"/>
+		<rdfs:label xml:lang="en">search evidence articles (Ken)</rdfs:label>
+		<skos:definition xml:lang="en">task that searches PubMed for articles about Ken&apos;s candidate supplements</skos:definition>
+		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;articleSearchCapability"/>
+		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;kenCandidates"/>
+		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
+		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;kenArticleSearchResults"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;selectProductForKen">
@@ -1243,6 +1360,7 @@
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;step2"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;step3"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;step4"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">1</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;step2">
@@ -1251,6 +1369,7 @@
 		<skos:definition xml:lang="en">workflow step 2 of Jessica&apos;s orchestration plan, associated with the task screen interactions (Jessica)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;screenInteractions"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;step5"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">2</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;step3">
@@ -1259,6 +1378,7 @@
 		<skos:definition xml:lang="en">workflow step 3 of Jessica&apos;s orchestration plan, associated with the task verify evidence (Jessica)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;verifyEvidence"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;step5"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">2</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;step4">
@@ -1267,6 +1387,7 @@
 		<skos:definition xml:lang="en">workflow step 4 of Jessica&apos;s orchestration plan, associated with the task get supplement products (Jessica)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;getSupplementProducts"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;step5"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">2</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;step5">
@@ -1275,6 +1396,7 @@
 		<skos:definition xml:lang="en">workflow step 5 of Jessica&apos;s orchestration plan, associated with the task select supplement product (Jessica)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;selectSupplementProduct"/>
 		<agento:nextStep rdf:resource="&oe-agtorch-ind;step6"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">3</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;step6">
@@ -1282,6 +1404,7 @@
 		<rdfs:label xml:lang="en">Jessica&apos;s orchestration plan, step 6</rdfs:label>
 		<skos:definition xml:lang="en">workflow step 6 of Jessica&apos;s orchestration plan, associated with the task produce recommendation (Jessica)</skos:definition>
 		<agento:hasAssociatedTask rdf:resource="&oe-agtorch-ind;produceRecommendation"/>
+		<oe-agtorch:hasStepPosition rdf:datatype="&xsd;positiveInteger">4</oe-agtorch:hasStepPosition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;strongEvidenceConstraint">
@@ -1366,16 +1489,6 @@
 		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;candidateCitrate"/>
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
 		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;evidenceAssessmentCitrate"/>
-	</owl:NamedIndividual>
-	
-	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;verifyEvidenceForKen">
-		<rdf:type rdf:resource="&agento;Task"/>
-		<rdfs:label xml:lang="en">verify evidence (Ken)</rdfs:label>
-		<skos:definition xml:lang="en">task that verifies the scientific evidence for Ken&apos;s candidate supplements</skos:definition>
-		<agento:requiresCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
-		<oe-agtorch:consumes rdf:resource="&oe-agtorch-ind;kenCandidates"/>
-		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
-		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;kenEvidenceAssessment"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;verifyEvidenceGlycinate">
