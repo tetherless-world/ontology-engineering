@@ -321,6 +321,12 @@ The same shapes file validates the data: a missing reading is reported as a warn
 
 In the proposed system (see the [architecture and activity diagrams](index#system-architecture)) the building graph and the policy graph are static named graphs, each sensor reading is published as a nanopublication with its time and source, and each assessment is published as its own nanopublication linking the readings and policies it used. The ontology above is the schema for all three graphs. The current release demonstrates the reasoning in Protégé over a single test ABox; the nanopublication store and query service are future work.
 
+## Conceptual modeling versions
+
+- [latest version (11.13.2026)](https://docs.google.com/presentation/d/1NoYcqfvN8uW35NnwdWYQgPO05StpM1jnNAIIVC1966I/edit?usp=sharing)
+- [version 2 (11.02.2026)](https://docs.google.com/presentation/d/1YZVhzZQpMGUTspjL6kLXo2LWh4mtXWGKwcyxBZC5Rk0/edit?usp=share_link)
+- [version 1 (10.19.2026)](https://docs.google.com/presentation/d/1oacoUe-KSjV9C4Cw9PoMRNOkiEssAn9xXeb80DQvkdA/edit?usp=share_link)
+
 ### Worked example (test of 9 October 2026)
 
 The test individuals describe three ICU rooms, each with an outdoor-air-change reading and a relative-humidity reading, two HVAC systems and the CDC framework with its two encoded policies.
@@ -353,12 +359,23 @@ The queries that retrieve each of these results, with their expected rows, are o
 |---|---|
 | [ventilation-compliance.rdf](ventilation-compliance.rdf) | the ontology (TBox): classes, properties, restrictions, units, and SWRL rules S1 to S11 |
 | [individuals.rdf](individuals.rdf) | test ABox `…/test-individuals/`: the hand-authored ICU scenario (three ICU rooms, HVAC-3 and HVAC-4, one test) plus the generated scenario (operating room, airborne infection isolation room, protective environment room, patient room and a corridor; HVAC-5 and HVAC-6; CDC policies per room type; readings at three test times; derived measurements with provenance; 15 compliance assessments). Imports the ontology. |
-| [code/](code/README.md) | the Python pipeline that generates the individuals file: scenario, building model, derived-measurement calculations, assessment builder, pySHACL closed-world check, and a reference check that prints the expected competency-question answers |
-| [code/shacl/unknown-policy-assessment.ttl](code/shacl/unknown-policy-assessment.ttl) | SHACL-AF rules U1 and U2 and the data-quality shapes |
 | [catalog-v001.xml](catalog-v001.xml) | Protégé XML catalog that resolves the four imports to local copies in `files/imports/` (prov-o.rdf, saref4bldg.rdf, core.rdf, qun.rdf) |
 | [OE 9 Team HVCC SPARQL Queries.txt](OE%209%20Team%20HVCC%20SPARQL%20Queries.txt) | the competency-question queries and how to run them |
 
 To explore the ontology, open `individuals.rdf` in Protégé with the catalog in the same folder, start the **Pellet** reasoner, and use the Snap SPARQL Query tab (or the built-in SPARQL Query tab for queries that use `prov:generatedAtTime`). To change the test data, edit `code/careair/scenario.py` and run `python code/run_pipeline.py`; the pipeline keeps the hand-authored ICU individuals and regenerates the rest.
+
+## Ontology version
+
+- [Version 4 (11.06.2026)](https://drive.google.com/file/d/1de2D0Ak8-VkJLT9Oi_ddR3Lg3guIO7Ic/view?usp=share_link)
+- [Version 3 (10.30.2026)](https://drive.google.com/file/d/1rGgHYWUm7wlkjHZNXfRHlBUZ8ZOu0SW-/view?usp=share_link)
+- [Version 2 (10.23.2026)](https://drive.google.com/file/d/1nNHGjs25XlDSVxKEhhvMXQtPy7v8S-jL/view?usp=share_link)
+- [Version 1 (10.16.2026)](https://drive.google.com/file/d/1zr3qJ27BeCt3b2nh3yUHK3FnfZHq25Kz/view?usp=share_link)
+
+## Individuals version 
+
+- [Version 3 (11.06.2026)](https://drive.google.com/file/d/1Tfh3-cf3_ezMEniaGQR8FZapGVnEUqST/view?usp=share_link)
+- [Version 2 (10.30.2026)](https://drive.google.com/file/d/1WGas4wosLwdDy4xTW6RV-koixCsDdf2H/view?usp=share_link)
+- [Version 1 (10.23.2026)](https://drive.google.com/file/d/1Q_sXuOQL58013yIvjluCNNwDzQz6zL2p/view?usp=share_link)
 
 ## Ontologies Reused
 

@@ -5,7 +5,7 @@ title: term list
 
 ## Terminology List
 
-<iframe src="./archived/term_list/OE 10 Team HVCC Curated Term List.xlsm" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/1OdFa8_DSi4GUeHSLTiIhc-V9mCPdFd0UTkxosowFiR8/pubhtml?widget=true&headers=false" style="width: 100%; height: 700px; border: none;"></iframe>
 
 ## Previous Versions
 
