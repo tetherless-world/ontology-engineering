@@ -5,7 +5,9 @@ title: presentations
 
 ## Presentations
 
-<iframe src="./archived/presentation/OE 9 Hospital Ventilation Compliance Presentation.pptx" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/1BhKsSRUMwoeoC1V4MKj-9SNpAQwNX3oEzHhuefthHwA/embed?start=false&loop=false&delayms=3000"
+        frameborder="0" width="960" height="569" allowfullscreen="true"
+        mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ## Previous Version
 
