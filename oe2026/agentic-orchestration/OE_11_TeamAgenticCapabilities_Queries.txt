@@ -19,8 +19,7 @@
 #    an empty column is an unbound variable).
 #
 # The top three competency questions are CQ 1, CQ 3 and CQ 5 of the use case. CQ 1 has three queries (step 1, then
-# queries 1 and 2), CQ 3 has a main and a supporting query, and CQ 5 has a version for Snap SPARQL and one for the
-# SPARQL Query tab. The other competency questions follow under "Extra SPARQL queries": CQ 2, CQ 4, CQ 6, CQ 7, CQ 8 and
+# queries 1 and 2). The other competency questions follow under "Extra SPARQL queries": CQ 2, CQ 4, CQ 6, CQ 7, CQ 8 and
 # CQ 9, one query each. On 2026-11-06 every query was run through the Snap SPARQL Query plugin 6.0.0 (its own parser and
 # query engine) with Pellet and with HermiT, and the queries marked "none" also without inference; each returned the
 # expected answer given with it.
@@ -261,38 +260,6 @@ WHERE {
 ORDER BY ?skillLabel
 
 # ======================================================================================================================
-# CQ 3, supporting query: which of those skills are constraint-satisfying skills
-# Reasoning: OWL 2 DL entailment (needs a DL reasoner). Run in Snap SPARQL with Pellet or HermiT started.
-#   ConstraintSatisfyingSkill is a defined class: a skill with a capability that satisfies at least one hard
-#   constraint (ConstraintSatisfyingCapability). Neither class is asserted for any individual; the reasoner
-#   classifies the skills a plan for Jessica must include because of her hard constraints.
-# Individuals: as for CQ 3.
-# Expected answer: evidence verification and supplement safety screening, one for each of Jessica's hard constraints (2 rows):
-#   skillLabel | capabilityLabel | hardConstraintLabel
-#   evidence verification skill | evidence verification capability | evidence verification (Jessica)
-#   supplement safety screening skill | interaction screening capability | safety screening against celecoxib (Jessica)
-PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
-PREFIX prov:           <http://www.w3.org/ns/prov#>
-PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
-PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
-PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
-SELECT ?skillLabel ?capabilityLabel ?hardConstraintLabel
-WHERE {
-  ?skill a oe-agtorch:ConstraintSatisfyingSkill .
-  ?skill rdfs:label ?skillLabel .
-  ?skill oe-agtorch:hasCapability ?capability .
-  ?capability rdfs:label ?capabilityLabel .
-  ?capability oe-agtorch:satisfiesConstraint ?constraint .
-  ?constraint a oe-agtorch:HardConstraint .
-  ?constraint rdfs:label ?hardConstraintLabel .
-  ?constraint prov:wasDerivedFrom ?settings .
-  ?settings prov:wasAttributedTo ?person .
-  oe-agtorch-ind:jessicaRequest prov:wasAttributedTo ?person .
-}
-ORDER BY ?skillLabel
-
-# ======================================================================================================================
 # CQ 5. Why was each agent capability chosen to execute in a given orchestration plan? (Dante's plan from the CQ 4 example)
 # Reasoning: OWL 2 DL entailment (needs a DL reasoner). Run in Snap SPARQL with Pellet or HermiT started.
 #   Dante's plan is selected by inference, as in CQ 1. For each step, the capability its task requires is listed
@@ -350,67 +317,6 @@ WHERE {
   FILTER (BOUND(?requirementLabel) || BOUND(?constraintLabel))
 }
 ORDER BY ?stepLabel
-
-# ======================================================================================================================
-# CQ 5 without a reasoner (SPARQL Query tab)
-# Reasoning: none beyond the asserted triples (no RDFS or OWL inference). Run in the SPARQL Query tab; Snap SPARQL
-#   gives the same rows.
-#   As for CQ 1, the query states the selection rule (the plan whose evaluation has rank 1) instead of using the
-#   inferred class.
-# Individuals: as for CQ 5.
-# Expected answer: the same rows as the CQ 5 query (5 rows):
-#   stepLabel | taskLabel | skillLabel | toolServer | capabilityLabel | requirementLabel | constraintLabel
-#   Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
-#   Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
-#   Dante's orchestration plan, step 2a | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
-#   Dante's orchestration plan, step 2b | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
-#   Dante's orchestration plan, step 3 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) | 
-PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
-PREFIX prov:           <http://www.w3.org/ns/prov#>
-PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
-PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
-PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
-SELECT DISTINCT ?stepLabel ?taskLabel ?skillLabel ?toolServer ?capabilityLabel ?requirementLabel ?constraintLabel
-WHERE {
-  ?eval oe-agtorch:evaluates ?plan .
-  ?eval oe-agtorch:hasRank ?rank .
-  FILTER (?rank = 1)
-  ?plan oe-agtorch:addresses oe-agtorch-ind:danteRequest .
-  ?plan oe-agtorch:hasStep ?step .
-  ?step rdfs:label ?stepLabel .
-  ?step agento:hasAssociatedTask ?task .
-  ?task rdfs:label ?taskLabel .
-  ?task agento:requiresCapability ?capability .
-  ?capability rdfs:label ?capabilityLabel .
-  OPTIONAL {
-    ?task oe-agtorch:performedBySkill ?skill .
-    ?skill rdfs:label ?skillLabel .
-  }
-  OPTIONAL {
-    ?task oe-agtorch:performedBySkill ?skill .
-    ?skill oe-agtorch:usesTool ?toolInd .
-    ?toolInd oe-agtorch:hasCapability ?capability .
-    ?server oe-agtorch:exposes ?toolInd .
-    ?server rdfs:label ?toolServer .
-  }
-  OPTIONAL {
-    oe-agtorch-ind:danteRequest oe-agtorch:expresses ?requirement .
-    ?capability oe-agtorch:satisfiesRequirement ?requirement .
-    ?requirement rdfs:label ?requirementLabel .
-  }
-  OPTIONAL {
-    oe-agtorch-ind:danteRequest prov:wasAttributedTo ?person .
-    ?settings a oe-agtorch:PreferenceSetting .
-    ?settings prov:wasAttributedTo ?person .
-    ?constraint prov:wasDerivedFrom ?settings .
-    ?capability oe-agtorch:satisfiesConstraint ?constraint .
-    ?constraint rdfs:label ?constraintLabel .
-  }
-  FILTER (BOUND(?requirementLabel) || BOUND(?constraintLabel))
-}
-ORDER BY ?stepLabel
-
 
 # Extra SPARQL queries
 
