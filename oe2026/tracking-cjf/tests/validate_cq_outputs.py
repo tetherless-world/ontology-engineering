@@ -1,6 +1,6 @@
 """Independent source-to-output checks for the supplied CQ conversation run.
 
-Run from tracking-cjf after the separate build and shacl commands. This checks
+Run from tracking-cjf to verify the archived OE_10 run. This checks
 saved artifacts; it does not participate in production pipeline validation.
 """
 from collections import Counter
@@ -20,15 +20,19 @@ P = Namespace('http://www.w3.org/ns/prov#')
 SIO = URIRef('http://semanticscience.org/resource/SIO_000206')
 root = Path.cwd()
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--input-manifest', type=Path, default=Path('ontology/run_outputs/OE_10/input-manifest.json'))
-parser.add_argument('--report', type=Path, default=Path('ontology/run_outputs/OE_10/output-validation-report.json'))
+parser.add_argument('--input-manifest', type=Path, default=Path('prev-ontology-versions/run_outputs/OE_10/input-manifest.json'))
+parser.add_argument('--report', type=Path, default=Path('prev-ontology-versions/run_outputs/OE_10/output-validation-report.json'))
 args = parser.parse_args()
 sources = json.loads(args.input_manifest.read_text())
+archive = Path('prev-ontology-versions/OE_10')
 for path, expected in sources['input_sha256'].items():
-    assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == expected, path
+    source_path = Path(path)
+    if source_path.parent == Path('ontology'):
+        source_path = archive / source_path.name
+    assert hashlib.sha256(source_path.read_bytes()).hexdigest() == expected, source_path
 
-asserted_path = Path('ontology/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf')
-current_path = Path('ontology/OE_10_TeamCJF_Individuals.rdf')
+asserted_path = archive / 'OE_10_TeamCJF_Individuals_withoutCurrentState.rdf'
+current_path = archive / 'OE_10_TeamCJF_Individuals.rdf'
 asserted = Graph().parse(asserted_path, format='xml')
 current = Graph().parse(current_path, format='xml')
 assert not list(asserted.triples((None, C.hasCurrentStateAssignment, None)))
