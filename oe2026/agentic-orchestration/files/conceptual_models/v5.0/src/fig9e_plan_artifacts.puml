@@ -1,0 +1,16 @@
+@startuml fig9e_plan_artifacts
+!include style.iuml
+skinparam nodesep 120
+skinparam ranksep 75
+
+class Input <<defined>>
+class OrchestrationPlan
+class "Task" as Task <<AgentO>>
+class Output <<defined>>
+
+OrchestrationPlan .right.> Task : /hasTask
+Task -up-> Input : consumes
+OrchestrationPlan .up.> Input : /planConsumes
+Task --> Output : produces
+OrchestrationPlan ..> Output : /planProduces
+@enduml

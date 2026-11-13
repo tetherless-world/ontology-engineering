@@ -2,26 +2,26 @@
 
 ## Conceptual Model
 
-**Current version: 4.0 (Assignment 10, November 6, 2026).** Version 4.0 adds Figures 9a to 9e, which draw the 22
-object properties added to the ontology for the Assignment 10 queries (most of them shortcuts defined by property chains,
-with a table of the chains under each figure), and confirmsPrecondition in Figure 7a. The model is aligned with the
-ontology below: every class, is-a line, arrow and attribute in the diagrams is a term of the ontology with the same name,
-and every class and property of the ontology appears in a diagram.
+**Current version: 4.1 (Assignment 11, November 13, 2026).** Version 4.1 follows the Assignment 11 ontology,
+OE_11_TeamAgenticCapabilities.rdf, which adds the step attribute hasStepPosition (Figure 5a); the other figures are
+unchanged from Version 4.0. The model is aligned with the ontology below: every class, is-a line, arrow and attribute in
+the diagrams is a term of the ontology with the same name, and every class and property of the ontology appears in a
+diagram.
 
 ![Figure 1a. Requests, requirements, constraints and capabilities](files/conceptual_models/v3.0/fig1a_overview_requests.png)
 
 ![Figure 1b. Plans, steps, tasks, evaluation and invocations](files/conceptual_models/v3.0/fig1b_overview_plans.png)
 
-![Figure 9a. Shortcuts from a request to its preference settings and constraints](files/conceptual_models/v4.0/fig9a_request_shortcuts.png)
+![Figure 5a. Plan structure: plans, workflow steps and tasks](files/conceptual_models/v5.0/fig5a_plan_structure.png)
 
-PDF: [clean](files/conceptual_models/OE_10_TeamAgenticCapabilities_ConceptMap_Clean.pdf) ·
-[new parts in blue](files/conceptual_models/OE_10_TeamAgenticCapabilities_ConceptMap.pdf)
+PDF: [clean](files/conceptual_models/OE_11_TeamAgenticCapabilities_ConceptMap_Clean.pdf) ·
+[redlined](files/conceptual_models/OE_11_TeamAgenticCapabilities_RedlinedConceptMap.pdf)
 
-<iframe src="files/conceptual_models/OE_10_TeamAgenticCapabilities_ConceptMap_Clean.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/conceptual_models/OE_11_TeamAgenticCapabilities_ConceptMap_Clean.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 Figures as images (PNG and SVG; the PlantUML sources of all figures, which load into PlantUML, are in
-[files/conceptual_models/v4.0/src](files/conceptual_models/v4.0/src/); Figures 7a and 9a to 9e are new or changed in
-Version 4.0, the others are unchanged from Version 3.0):
+[files/conceptual_models/v5.0/src](files/conceptual_models/v5.0/src/); Figure 5a is changed in Version 4.1, Figures 7a
+and 9a to 9e are from Version 4.0, and the others are unchanged from Version 3.0):
 [1a](files/conceptual_models/v3.0/fig1a_overview_requests.png) ·
 [1b](files/conceptual_models/v3.0/fig1b_overview_plans.png) ·
 [2](files/conceptual_models/v3.0/fig2_requests_constraints.png) ·
@@ -29,7 +29,7 @@ Version 4.0, the others are unchanged from Version 3.0):
 [3b](files/conceptual_models/v3.0/fig3b_capabilities.png) ·
 [3c](files/conceptual_models/v3.0/fig3c_justified_capabilities.png) ·
 [4](files/conceptual_models/v3.0/fig4_tools_servers.png) ·
-[5a](files/conceptual_models/v3.0/fig5a_plan_structure.png) ·
+[5a](files/conceptual_models/v5.0/fig5a_plan_structure.png) ·
 [5b](files/conceptual_models/v3.0/fig5b_task_dependencies.png) ·
 [5c](files/conceptual_models/v3.0/fig5c_inferred_dependencies.png) ·
 [6a](files/conceptual_models/v3.0/fig6a_plan_selection.png) ·
@@ -46,6 +46,9 @@ Version 4.0, the others are unchanged from Version 3.0):
 
 ### Previous Versions
 
+- Version 4.0 (Assignment 10): [clean](files/conceptual_models/OE_10_TeamAgenticCapabilities_ConceptMap_Clean.pdf) and
+  [new parts in blue](files/conceptual_models/OE_10_TeamAgenticCapabilities_ConceptMap.pdf), figures and PlantUML
+  sources in [files/conceptual_models/v4.0](files/conceptual_models/v4.0/src/)
 - [Version 3.0 (Assignment 8, unchanged in Assignment 9)](files/conceptual_models/OE_8_TeamAgenticCapabilities_ConceptualModel.pdf),
   figures and PlantUML sources in [files/conceptual_models/v3.0](files/conceptual_models/v3.0/src/)
 - [Version 2.0 (Assignment 6)](files/conceptual_models/OE_6_TeamAgenticCapabilities_ConceptualModel.pdf)
@@ -59,23 +62,29 @@ Version 4.0, the others are unchanged from Version 3.0):
 
 ## Ontology
 
-- **Files (Assignment 10):** [OE_11_TeamAgenticCapabilities.rdf](OE_11_TeamAgenticCapabilities.rdf) (classes and
+- **Files (Assignment 11):** [OE_11_TeamAgenticCapabilities.rdf](OE_11_TeamAgenticCapabilities.rdf) (classes and
   properties) and [OE_11_TeamAgenticCapabilities_Individuals.rdf](OE_11_TeamAgenticCapabilities_Individuals.rdf)
   (individuals; imports the main ontology), OWL 2 in RDF/XML written with the course serializer
 - **SPARQL queries:** [OE_11_TeamAgenticCapabilities_Queries.txt](OE_11_TeamAgenticCapabilities_Queries.txt); the queries
   for all nine competency questions and their answers are on the [Demonstration & Queries](demo.html) page
-- **New in Assignment 10:** 22 object properties, most of them shortcuts defined by property chains (for example
+- **New in Assignment 11:** the datatype property hasStepPosition, the position of a step in its plan's execution
+  order, which the queries over plan steps use to sort their rows (Figure 5a); in the individuals, Ken's evidence steps
+  are now separate article search and abstract download steps
+- **Added in Assignment 10:** 22 object properties, most of them shortcuts defined by property chains (for example
   hasHardConstraint, skillSatisfiesRequirement, stepSatisfiesHardConstraint, planConsumes), so that the queries can follow
   one property where Snap SPARQL, which has no property paths, needed a chain of patterns; see Figures 9a to 9e
 - **Namespace:** `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/`
-- **Size:** 64 classes, 49 object properties and 8 datatype properties of the team's own, and 162 individuals;
-  consistent, with no unsatisfiable classes (Pellet 2.2.0 and HermiT 1.4.3.456);
-  [test log](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt)
+- **Size:** 64 classes, 49 object properties and 9 datatype properties of the team's own, and 171 individuals
+- **Reasoner check:** the Assignment 10 version was consistent, with no unsatisfiable classes (Pellet 2.2.0 and HermiT
+  1.4.3.456); [test log](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt)
 - **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII); the queries cover all nine
 - **Opening it in Protégé:** open OE_11_TeamAgenticCapabilities_Individuals.rdf from this folder. `catalog-v001.xml` maps
   the main ontology IRI to OE_11_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the copies in `imports/`:
   the AgentO IRI redirects to a web page, and the P-Plan purl did not resolve on October 29, 2026.
-- **Previous versions:** Assignment 9, [main](archived/OE_9_TeamAgenticCapabilities.txt),
+- **Previous versions:** Assignment 10, [main](archived/OE_10_TeamAgenticCapabilities.txt),
+  [individuals](archived/OE_10_TeamAgenticCapabilities_Individuals.txt),
+  [queries](archived/OE_10_TeamAgenticCapabilities_Queries.txt) and
+  [test log](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt); Assignment 9, [main](archived/OE_9_TeamAgenticCapabilities.txt),
   [individuals](archived/OE_9_TeamAgenticCapabilities_Individuals.txt),
   [queries](archived/OE_9_TeamAgenticCapabilities_SPARQLQueries.txt) and
   [test log](files/ontology/OE_9_TeamAgenticCapabilities_TestLog.txt); Assignment 8, [main](archived/OE_8_TeamAgenticCapabilities.txt) and
