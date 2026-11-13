@@ -72,7 +72,7 @@
           // Render source values as text so evidence and IRIs cannot become HTML.
           cell.textContent = value.trim();
           if (index === 0) cell.className = "cjf-result-identifier";
-          if (/summary|support_text/.test(headers[index])) {
+          if (/summary|support_text|evidence/.test(headers[index])) {
             cell.className = "cjf-result-text";
           }
         });
