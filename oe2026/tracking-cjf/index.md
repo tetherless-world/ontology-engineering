@@ -13,12 +13,12 @@ For conversation moves with states, the model records each state assignment, its
 
 This project is part of the Ontology Engineering course at Rensselaer Polytechnic Institute, Fall 2026.
 
-| Team member | GitHub profile | Contact |
-| --- | --- | --- |
-| Tiziana Hernandez | [thernandez7](https://github.com/thernandez7) | [hernat@rpi.edu](mailto:hernat@rpi.edu) |
-| Devin De Silva | [DevinDeSilva](https://github.com/DevinDeSilva) | [desild@rpi.edu](mailto:desild@rpi.edu) |
-| Srihari Sridharan | [sridhs3](https://github.com/sridhs3) | [sridhs3@rpi.edu](mailto:sridhs3@rpi.edu) |
-| Matthew Lausev | [mlau-hue](https://github.com/mlau-hue) | [lausem@rpi.edu](mailto:lausem@rpi.edu) |
+| Team member | Website or profile | GitHub | Contact |
+| --- | --- | --- | --- |
+| Tiziana Hernandez | [TWC profile](https://tw.rpi.edu/person/tiziana-hernandez) | [thernandez7](https://github.com/thernandez7) | [hernat@rpi.edu](mailto:hernat@rpi.edu) |
+| Devin De Silva | [TWC profile](https://tw.rpi.edu/person/devin-de-silva) | [DevinDeSilva](https://github.com/DevinDeSilva) | [desild@rpi.edu](mailto:desild@rpi.edu) |
+| Srihari Sridharan | [TWC profile](https://tw.rpi.edu/person/srihari-sridharan) | [sridhs3](https://github.com/sridhs3) | [sridhs3@rpi.edu](mailto:sridhs3@rpi.edu) |
+| Matthew Lausev | [LinkedIn](https://www.linkedin.com/in/matthew-lausev-742691410) | [mlau-hue](https://github.com/mlau-hue) | [lausem@rpi.edu](mailto:lausem@rpi.edu) |
 
 ## Project Model
 
@@ -31,11 +31,14 @@ Annotated conversation data populates the CJF knowledge graph and is validated a
 
 ## Current Resources
 
+**OE Week 11** updates the ontology, individuals, conceptual diagrams, and query demonstrations.
+
 | Resource | Contents |
 | --- | --- |
-| [Use case](usecase.html) | Current OE Week 10 use case, scope, competency questions, and earlier documents |
-| [Terminology list](termlist.html) | Current OE Week 10 curated term list and previous versions |
+| [Use case](usecase.html) | Project scope, competency questions, and archived use case documents |
+| [Terminology list](termlist.html) | Curated terminology workbooks, including OE Week 10 |
 | [Conceptual model and ontology](ontology.html) | Current diagrams, schema, example individuals, reused vocabularies, and ontology versions |
-| [Ontology version history](ontology-versions.html) | Committed schema snapshots, newest first |
+| [Ontology version history](ontology-versions.html) | Schema and individuals downloads for OE Weeks 8–11, plus development snapshots |
 | [Demonstration and queries](demo.html) | CQ1, CQ2, CQ3, CQ5, and CQ6 queries and recorded answers for the sample conversation |
+| [Presentations](presentations.html) | Project proposal and course presentations |
 | [Getting involved](gettinginvolved.html) | Project contacts and contribution information |

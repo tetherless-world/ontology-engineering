@@ -8,43 +8,40 @@ toc: true
 
 ## Ontologies
 
-### Current CJF Ontology
+### OE Week 11 CJF Ontology
 
-[Download OE_11_TeamCJF.rdf](ontology/OE_11_TeamCJF.rdf)
+<a href="ontology/OE_11_TeamCJF.rdf" download>Download the OE Week 11 schema (.rdf)</a>
 
 The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
 
 ### Example Individuals and Supporting Files
 
-These files accompany the schema; they are not separate releases of the ontology.
+For earlier schema and individuals downloads, see the [version archive](ontology-versions.html#downloadable-versions).
 
 | File | Purpose |
 | --- | --- |
-| [Annotated CQ sample individuals](ontology/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
-| [CQ sample individuals with current assignments](ontology/OE_11_TeamCJF_Individuals.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ2, CQ3, CQ5, and CQ6 |
-| [March 11 Group B individuals](prev-ontology-versions/mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
-| [Earlier conversation individuals](prev-ontology-versions/tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
+| <a href="ontology/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf" download>Annotated CQ sample individuals (.rdf)</a> | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
+| <a href="ontology/OE_11_TeamCJF_Individuals.rdf" download>CQ sample individuals with current assignments (.rdf)</a> | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ2, CQ3, CQ5, and CQ6 |
+| <a href="prev-ontology-versions/mar11_groupb-individuals.rdf" download>March 11 Group B individuals (.rdf)</a> | Annotated example individuals from a corpus conversation |
+| <a href="prev-ontology-versions/tracking-cjf-individuals.rdf" download>Earlier conversation individuals (.rdf)</a> | Earlier instance dataset retained alongside the current examples |
 | [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |
 | [Local PROV-O copy](prev-ontology-versions/prov-o-cjf.owl) | Provenance vocabulary used by the project |
 | [Current state assignment SHACL rules](shacl/current-state-assignment-rules.ttl) | Rules and constraints for identifying the latest recorded assignment for each move with state |
 
 ## Ontology Versions
 
-The [current schema](ontology/OE_11_TeamCJF.rdf) appears first above. See the [ontology version history](ontology-versions.html) for the current ontology and earlier versions. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
+The [version archive](ontology-versions.html#downloadable-versions) provides schema and individuals downloads for OE Weeks 8–11 and links to development snapshots.
 
 ## Conceptual Model
 
-**Current version: OE Week 10.**
+The gallery shows the latest project diagrams. Open an image to view it at full size, or download the editable file and open it in [diagrams.net](https://app.diagrams.net/). The [RDF schema](ontology/OE_11_TeamCJF.rdf) gives the implemented identifiers and axioms.
 
- - [Download the conceptual model (.docx)](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx)
- - [Download the conceptual model (.pdf)](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf)
-
-The ten diagrams below are the figures from the OE Week 10 conceptual model document, in document order. The DOCX and PDF downloads contain the same figures and descriptions. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the [Week 10 RDF schema](prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf) gives the identifiers used in code and queries.
+<a href="files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio" download>Download the editable diagrams (.drawio)</a>
 
 ### Provenance
 
 <figure>
-  <a href="images/conceptual-model/oe10/provenance.png"><img src="images/conceptual-model/oe10/provenance.png" alt="Provenance links from a conversation move through its supporting text span and utterance to the multiparty conversation and speaker, with a hasSpeaker link from ExpressedPosition to Speaker" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/provenance.png"><img src="images/conceptual-model/oe11/provenance.png" alt="Provenance links from a conversation move through its supporting text span and utterance to the multiparty conversation and speaker, with a hasSpeaker link from a conversation move to Speaker" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 1. Transcript evidence and speaker provenance for conversation moves.</figcaption>
 </figure>
 
@@ -53,16 +50,16 @@ Each conversation move is supported by a TextSpan, and each TextSpan is part of 
 ### Conversation Moves with States
 
 <figure>
-  <a href="images/conceptual-model/oe10/conversation-moves-with-states.png"><img src="images/conceptual-model/oe10/conversation-moves-with-states.png" alt="Conversation move taxonomy in which ConversationMoveWithState groups DeliberativeConversationMove and InformationRequest, while Outcome and ExpressedPosition sit directly under the conversation move class; Claim, Issue, and Option appear below" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/conversation-moves-with-states.png"><img src="images/conceptual-model/oe11/conversation-moves-with-states.png" alt="Conversation move taxonomy in which ConversationMoveWithState groups DeliberativeConversationMove and InformationRequest, while Outcome and ExpressedPosition sit directly under the conversation move class" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 2. Conversation move taxonomy and the branch for moves with states.</figcaption>
 </figure>
 
-ConversationMoveWithState groups DeliberativeConversationMove and InformationRequest, the moves whose states change during a conversation. Outcome and ExpressedPosition sit directly under the general conversation move class because they have no states. This distinction supports CQ1, which lists every move and reports a state only where one applies. The Claim, Issue, and Option group at the bottom is expanded in the next figure.
+ConversationMoveWithState groups DeliberativeConversationMove and InformationRequest, the moves whose states change during a conversation. Outcome and ExpressedPosition sit directly under the general conversation move class because they have no states. This distinction supports CQ1, which lists every move and reports a state only where one applies. The next figure shows the three types of deliberative moves.
 
 ### Deliberative Conversation Moves
 
 <figure>
-  <a href="images/conceptual-model/oe10/deliberative-conversation-moves.png"><img src="images/conceptual-model/oe10/deliberative-conversation-moves.png" alt="Claim, Issue, and Option as subclasses of DeliberativeConversationMove" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/deliberative-conversation-moves.png"><img src="images/conceptual-model/oe11/deliberative-conversation-moves.png" alt="Claim, Issue, and Option as subclasses of DeliberativeConversationMove" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 3. Claim, Issue, and Option as deliberative conversation moves.</figcaption>
 </figure>
 
@@ -71,16 +68,16 @@ DeliberativeConversationMove has three subclasses: Claim, Issue, and Option. Eac
 ### State Taxonomy
 
 <figure>
-  <a href="images/conceptual-model/oe10/state-taxonomy.png"><img src="images/conceptual-model/oe10/state-taxonomy.png" alt="State subclasses Open, Answered, Addressed, Resolved, UnderConsideration, Selected, Rejected, Unassessed, Supported, Contested, and SupportedContested linked to ConversationMoveWithState through hasState, with a table of applicable states by move type" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/state-taxonomy.png"><img src="images/conceptual-model/oe11/state-taxonomy.png" alt="State subclasses Open, Answered, Addressed, Resolved, UnderConsideration, Selected, Rejected, Unassessed, Supported, and Contested linked to ConversationMoveWithState through hasState" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 4. State taxonomy and the states that apply to each move type.</figcaption>
 </figure>
 
-Each ConversationMoveWithState is linked to its State through `hasState`. Each move with states has one current State, and any number of moves can share a State. The inset lists the states that apply to Information Requests, Issues, Options, and Claims. These states support CQ1 and the questions about Addressed and Resolved Issues in CQ2 and CQ4. The figure still shows SupportedContested, which the Week 10 schema and term list no longer define.
+Each ConversationMoveWithState is linked to its State through `hasState`. Each move with states has one current State, and any number of moves can share a State. These states support CQ1 and the question about Addressed and Resolved Issues in CQ2.
 
 ### State Assignment History
 
 <figure>
-  <a href="images/conceptual-model/oe10/state-assignment-history.png"><img src="images/conceptual-model/oe10/state-assignment-history.png" alt="StateAssignment linked to its State, triggering relationship, supporting text span, effective utterance, and previous assignment, with hasStateAssignment, hasCurrentStateAssignment, and inferred hasState links from ConversationMoveWithState" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/state-assignment-history.png"><img src="images/conceptual-model/oe11/state-assignment-history.png" alt="StateAssignment linked to its State, triggering relationship, supporting text span, effective utterance, and previous assignment, with hasStateAssignment, hasCurrentStateAssignment, and inferred hasState links from ConversationMoveWithState" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 5. Current and historical state assignments with evidence and triggering relationships.</figcaption>
 </figure>
 
@@ -89,7 +86,7 @@ Moves with states keep their state history as the current State changes. A move 
 ### Expressed Positions
 
 <figure>
-  <a href="images/conceptual-model/oe10/expressed-position.png"><img src="images/conceptual-model/oe10/expressed-position.png" alt="Agreement and Disagreement subclasses of ExpressedPosition, with positive and negative evidence links to TextSpan, a position link to DeliberativeConversationMove, and hasSpeaker to Speaker" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/expressed-position.png"><img src="images/conceptual-model/oe11/expressed-position.png" alt="Agreement and Disagreement subclasses of ExpressedPosition, with positive and negative evidence links to TextSpan, a position link to DeliberativeConversationMove, and a hasSpeaker link from the conversation move class to Speaker" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 6. Expressed positions, polarity evidence, and speaker attribution.</figcaption>
 </figure>
 
@@ -98,7 +95,7 @@ Agreement and Disagreement specialize ExpressedPosition, which is itself a conve
 ### Relationships between Conversation Moves
 
 <figure>
-  <a href="images/conceptual-model/oe10/conversation-move-relationships.png"><img src="images/conceptual-model/oe10/conversation-move-relationships.png" alt="Supports, challenges, addresses, resolves, selects, answers, respondsTo, isAbout, refines, and position relationships among conversation move types" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/conversation-move-relationships.png"><img src="images/conceptual-model/oe11/conversation-move-relationships.png" alt="Supports, challenges, addresses, resolves, selects, answers, respondsTo, isAbout, refines, and position relationships among conversation move types" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 7. Semantic relationships among the conversation move types.</figcaption>
 </figure>
 
@@ -107,7 +104,7 @@ The model connects claims, issues, options, outcomes, positions, and information
 ### Property Hierarchy
 
 <figure>
-  <a href="images/conceptual-model/oe10/property-hierarchy.png"><img src="images/conceptual-model/oe10/property-hierarchy.png" alt="Property hierarchy in four groups: positive and negative support under sio:isSupportedBy, isPartOfUtterance under sio:is proper part of, hasCurrentStateAssignment under hasStateAssignment, and challenges, respondsTo, hasPositionTowards, supports, and addresses under del:responseTo, with answers and resolves below them" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/property-hierarchy.png"><img src="images/conceptual-model/oe11/property-hierarchy.png" alt="Property hierarchy in four groups: positive and negative support under sio:isSupportedBy, isPartOfUtterance under sio:is proper part of, hasCurrentStateAssignment under hasStateAssignment, and selects, challenges, respondsTo, hasPositionTowards, supports, and addresses under del:responseTo, with answers and resolves below them" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 8. Subproperty relationships and reused vocabulary.</figcaption>
 </figure>
 
@@ -116,23 +113,24 @@ The four groups cover evidence, text containment, state assignment, and response
 ### Relationship Class Taxonomy
 
 <figure>
-  <a href="images/conceptual-model/oe10/relationship-class-taxonomy.png"><img src="images/conceptual-model/oe10/relationship-class-taxonomy.png" alt="CJFConversationMoveRelationship with subclasses Challenge, Response, Position, Support, and Address; Answer specializes Response and Resolve specializes Address" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/relationship-class-taxonomy.png"><img src="images/conceptual-model/oe11/relationship-class-taxonomy.png" alt="CJFConversationMoveRelationship with subclasses Refinement, Challenge, Response, Position, Support, and Address; Answer specializes Response and Resolve specializes Address" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 9. Class hierarchy for reified conversation move relationships.</figcaption>
 </figure>
 
-Relationships between conversation moves can be reified as individuals of CollectiveJudgmentFormationConversationMoveRelationship. Its subclasses are Challenge, Response, Position, Support, and Address. Answer specializes Response, and Resolve specializes Address.
+Relationships between conversation moves can be reified as individuals of CollectiveJudgmentFormationConversationMoveRelationship. Its subclasses are Refinement, Challenge, Response, Position, Support, and Address. Answer specializes Response, and Resolve specializes Address.
 
 ### Relationship Reification
 
 <figure>
-  <a href="images/conceptual-model/oe10/relationship-reification.png"><img src="images/conceptual-model/oe10/relationship-reification.png" alt="An Address relationship individual linking a Claim, Option, or Outcome to a target Issue, supported by a text span in an utterance, with the direct addresses link inferred" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/oe11/relationship-reification.png"><img src="images/conceptual-model/oe11/relationship-reification.png" alt="An Address relationship individual linking a Claim, Option, or Outcome to a target Issue, supported by a text span in an utterance, with the direct addresses link inferred" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 10. Reifying an Address relationship and retaining its evidence.</figcaption>
 </figure>
 
-Each relationship between conversation moves is an individual that connects a source move to a target move, so evidence and other context can be attached to the relationship itself. In the example, a Claim, Option, or Outcome connects to an Address individual through `makesAddresses`, and the Address identifies the target Issue through `isAimedAtAddresses`. A property chain over these two links infers the direct `addresses` relationship. The relationship records its reason, its supporting TextSpan, and its Utterance. The same pattern applies to supports, challenges, respondsTo, answers, resolves, and hasPositionTowards.
+Each relationship between conversation moves is an individual that connects a source move to a target move, so evidence and other context can be attached to the relationship itself. In the example, a Claim, Option, or Outcome connects to an Address individual through `makesAddresses`, and the Address identifies the target Issue through `isAimedAtAddresses`. A property chain over these two links infers the direct `addresses` relationship. The relationship records its reason, its supporting TextSpan, and its Utterance. The same pattern applies to supports, challenges, respondsTo, answers, resolves, refines, and hasPositionTowards.
 
 ### Previous Conceptual Models
 
+- OE Week 10 conceptual model: [.docx](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx) and [.pdf](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf)
 - OE Week 9 conceptual model: [.docx](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.drawio). Its figures remain in `images/conceptual-model/oe9/`, and the [asset notes](files/conceptual-models/oe9/README.md) describe how they were prepared.
 - [OE Week 8 conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx)
 - [OE Week 6 conceptual model (.docx)](files/conceptual-models/oe6/OE_6_TeamCJF_ConceptualModel.docx)

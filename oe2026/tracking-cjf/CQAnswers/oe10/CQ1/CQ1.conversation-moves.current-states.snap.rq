@@ -1,0 +1,36 @@
+PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?move ?moveType (IF(BOUND(?stateType), ?stateType, "N/A") AS ?stateResult) ?summary
+
+WHERE {
+
+    # select the issues , claims, options , InformationRequest,  expressed positions and Outcome
+    ?move a ?moveType .
+    FILTER (?moveType = cjf:Issue
+            || ?moveType = cjf:Claim
+            || ?moveType = cjf:Option
+            || ?moveType = cjf:InformationRequest
+            || ?moveType = cjf:ExpressedPosition
+            || ?moveType = cjf:Outcome)
+    
+    # get summary of each milestone
+    ?move cjf:hasSummary ?summary .
+
+    OPTIONAL {
+
+        # inferred property chain which denotes the current state individual for each conversation denoted above
+        ?move cjf:hasState ?state .
+
+        # get the inferred state individuals class
+        ?state a ?stateType .
+        ?stateType rdfs:subClassOf cjf:State .
+
+        # remove the generic state class triples
+        MINUS {
+            ?state a ?stateType .
+            FILTER (?stateType = cjf:State)
+        }
+    }
+}
+ORDER BY ?move ?moveType
