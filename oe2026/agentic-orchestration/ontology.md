@@ -75,8 +75,9 @@ and 9a to 9e are from Version 4.0, and the others are unchanged from Version 3.0
   one property where Snap SPARQL, which has no property paths, needed a chain of patterns; see Figures 9a to 9e
 - **Namespace:** `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/`
 - **Size:** 64 classes, 49 object properties and 9 datatype properties of the team's own, and 171 individuals
-- **Reasoner check:** the Assignment 10 version was consistent, with no unsatisfiable classes (Pellet 2.2.0 and HermiT
-  1.4.3.456); [test log](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt)
+- **Reasoner check:** consistent, with no unsatisfiable classes (Pellet 2.2.0 and HermiT 1.4.3.456); all 11 queries
+  return their expected answers with Pellet and with HermiT, and the course hygiene check has no findings;
+  [test log](files/ontology/OE_11_TeamAgenticCapabilities_TestLog.txt)
 - **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII); the queries cover all nine
 - **Opening it in Protégé:** open OE_11_TeamAgenticCapabilities_Individuals.rdf from this folder. `catalog-v001.xml` maps
   the main ontology IRI to OE_11_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the copies in `imports/`:
