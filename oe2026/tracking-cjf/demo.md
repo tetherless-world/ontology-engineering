@@ -62,7 +62,7 @@ The query follows each Issue’s current assignment and returns the assigned sta
 
 ## CQ3 Claims Supporting or Challenging Platform A
 
-**Question:** What Claims support or challenge Platform A? Are any of the Claims Supported?
+**Question:** Which Claims support or challenge Platform A, what are their summaries and current states, and which are classified as Supported?
 
 ### SPARQL query
 
