@@ -1,19 +1,41 @@
 PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?move ?moveType (IF(BOUND(?stateType), ?stateType, "N/A") AS ?stateResult) ?summary
+SELECT DISTINCT ?move ?moveClass (IF(BOUND(?stateClass), ?stateClass, "N/A") AS ?stateResult) ?summary
 
 WHERE {
 
     # select the issues , claims, options , InformationRequest,  expressed positions and Outcome
-    ?move a ?moveType .
-    FILTER (?moveType = cjf:Issue
-            || ?moveType = cjf:Claim
-            || ?moveType = cjf:Option
-            || ?moveType = cjf:InformationRequest
-            || ?moveType = cjf:ExpressedPosition
-            || ?moveType = cjf:Outcome)
-    
+    {
+        ?move a cjf:Issue .
+        BIND(STR("Issue") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:Claim .
+        BIND(STR("Claim") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:Option .
+        BIND(STR("Option") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:InformationRequest .
+        BIND(STR("InformationRequest") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:ExpressedPosition .
+        BIND(STR("ExpressedPosition") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:Outcome .
+        BIND(STR("Outcome") AS ?moveClass) .
+    }
+
     # get summary of each milestone
     ?move cjf:hasSummary ?summary .
 
@@ -23,13 +45,13 @@ WHERE {
         ?move cjf:hasState ?state .
 
         # get the inferred state individuals class
-        ?state a ?stateType .
-        ?stateType rdfs:subClassOf cjf:State .
+        ?state a ?stateClass .
+        ?stateClass rdfs:subClassOf cjf:State .
 
         # remove the generic state class triples
         MINUS {
-            ?state a ?stateType .
-            FILTER (?stateType = cjf:State)
+            ?state a ?stateClass .
+            FILTER (?stateClass = cjf:State)
         }
     }
 }
