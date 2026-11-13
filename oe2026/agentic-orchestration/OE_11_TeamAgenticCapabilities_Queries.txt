@@ -1,14 +1,14 @@
-# OE_10_TeamAgenticCapabilities_Queries.txt
+# OE_11_TeamAgenticCapabilities_Queries.txt
 # Team AgenticCapabilities, use case AC-001: Ontology-Guided Agentic Capabilities Orchestration
 # Gia Oriana Santos, Barbara Kotlan, Jialin Fang, Elioenai Lincon Guedes Alves, Jiaying Wang
 #
-# Ontologies: OE_10_TeamAgenticCapabilities.rdf (classes and properties) and
-# OE_10_TeamAgenticCapabilities_Individuals.rdf (162 individuals), with catalog-v001.xml and imports/, in the team folder
+# Ontologies: OE_11_TeamAgenticCapabilities.rdf (classes and properties) and
+# OE_11_TeamAgenticCapabilities_Individuals.rdf (171 individuals), with catalog-v001.xml and imports/, in the team folder
 # oe2026/agentic-orchestration.
 #
 # How to run (Protege 5.6.9)
-# 1. Open OE_10_TeamAgenticCapabilities_Individuals.rdf from the team folder. It imports the main ontology;
-#    catalog-v001.xml maps that import to OE_10_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the
+# 1. Open OE_11_TeamAgenticCapabilities_Individuals.rdf from the team folder. It imports the main ontology;
+#    catalog-v001.xml maps that import to OE_11_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the
 #    copies in imports/.
 # 2. Queries marked "Reasoning: OWL 2 DL": install the Snap SPARQL Query plugin (File > Check for plugins), start Pellet or
 #    HermiT (Reasoner menu), open Window > Views > Query views > Snap SPARQL Query, paste the query and execute it.
@@ -18,21 +18,25 @@
 #    which give the question, the reasoning, the individuals used and the expected answer (columns separated by " | ";
 #    an empty column is an unbound variable).
 #
-# The top three competency questions are CQ 1, CQ 3 and CQ 5 of the use case. CQ 1 has three queries (step 1, then
-# queries 1 and 2). The other competency questions follow under "Extra SPARQL queries": CQ 2, CQ 4, CQ 6, CQ 7, CQ 8 and
-# CQ 9, one query each. On 2026-11-06 every query was run through the Snap SPARQL Query plugin 6.0.0 (its own parser and
+# The top three competency questions are CQ 1, CQ 3 and CQ 5 of the use case, one query each except CQ 1, which has
+# three steps. The other competency questions follow under "Extra SPARQL queries": CQ 2, CQ 4, CQ 6, CQ 7, CQ 8 and
+# CQ 9, one query each. On 2026-11-13 every query was run through the Snap SPARQL Query plugin 6.0.0 (its own parser and
 # query engine) with Pellet and with HermiT, and the queries marked "none" also without inference; each returned the
 # expected answer given with it.
+#
+# Row order: queries over plan steps sort by the step's position in the plan (hasStepPosition), and queries over plans
+# by the plan's rank. The other queries return sets with no meaningful order, so they have no ORDER BY and their rows
+# may come in any order.
 #
 # CQ 1 follows the semantic processes of the use case in order, starting from Ken's request:
 #   step 1: the skills, tools and MCP servers that satisfy the information requirements and hard constraints of the
 #           request (semantic lookup);
-#   query 1: the candidate orchestration plans that meet every requirement and hard constraint, violate none and
+#   step 2: the candidate orchestration plans that meet every requirement and hard constraint, violate none and
 #           produce every information artifact they consume (dependency and constraint-based reasoning), with their
 #           scores, ranks and inferred status (multi-criteria plan evaluation);
-#   query 2: the steps of the selected plan, with the skill, tools and MCP servers of each step and the requirement or
+#   step 3: the steps of the selected plan, with the skill, tools and MCP servers of each step and the requirement or
 #           hard constraint it meets.
-# The queries avoid FILTER NOT EXISTS and property paths, which Snap SPARQL does not support; query 1 uses MINUS
+# The queries avoid FILTER NOT EXISTS and property paths, which Snap SPARQL does not support; step 2 uses MINUS
 # instead.
 
 # ======================================================================================================================
@@ -42,7 +46,8 @@
 #   constraint) replaces the UNION over prov:wasAttributedTo / prov:wasDerivedFrom, and skillSatisfiesRequirement,
 #   skillSatisfiesHardConstraint, toolSatisfiesRequirement and toolSatisfiesHardConstraint replace the path through
 #   the capability.
-# Expected answer (6 rows; a requirement row has no hard constraint, and a hard-constraint row no requirement):
+# Expected answer (6 rows, in any order; a requirement row has no hard constraint, and a hard-constraint row no
+#   requirement, because the two UNION branches bind one or the other):
 #   requirementLabel | hardConstraintLabel | skillLabel | tool | toolServer
 #   | evidence verification (Ken) | evidence verification skill | PubMed article search tool | PubMed MCP server
 #   | evidence verification (Ken) | evidence verification skill | PubMed abstract download tool | PubMed MCP server
@@ -85,7 +90,6 @@ WHERE {
   }
   ?skill rdfs:label ?skillLabel .
 }
-ORDER BY ?hardConstraintLabel ?requirementLabel ?tool
 
 # ======================================================================================================================
 # CQ 1, step 2: filtering and ranking the candidate plans
@@ -98,8 +102,8 @@ ORDER BY ?hardConstraintLabel ?requirementLabel ?tool
 #   Multi-criteria evaluation: the tool call count and token cost measured for Ken's two soft constraints, and the
 #   score and rank of each plan evaluation.
 #   Selection: ?status is the inferred class. SelectedOrchestrationPlan is defined as a candidate whose evaluation has
-#   rank 1; a request has at most one selected plan and every candidate is selected or rejected, so with the
-#   owl:AllDifferent axiom the reasoner also concludes that the other plan is a RejectedOrchestrationPlan.
+#   rank 1; a request has at most one selected plan and every candidate is selected or rejected, so because kenPlan2
+#   is declared owl:differentFrom kenPlan1, the reasoner also concludes that kenPlan2 is a RejectedOrchestrationPlan.
 # Individuals: kenRequest, Ken, kenSettings, his requirements and hard constraint kenEvidenceConstraint; kenPlan1 and
 #   kenPlan2 with their steps, tasks, information artifacts, plan evaluations and measurements.
 # Expected answer: both plans are candidates; plan 1 makes 4 external tool calls for 0.02 US dollars, ranks first and
@@ -147,7 +151,7 @@ ORDER BY ?rank
 # CQ 1, step 3: listing the steps of the selected plan
 # Reasoning: OWL 2 DL entailment (needs a DL reasoner). Run in Snap SPARQL with Pellet or HermiT started.
 #   Selection: no plan is asserted to be selected. SelectedOrchestrationPlan is a defined class: a candidate
-#   orchestration plan whose plan evaluation has rank 1. The reasoner classifies Ken plan 1 into it (query 1 shows
+#   orchestration plan whose plan evaluation has rank 1. The reasoner classifies Ken plan 1 into it (step 2 shows
 #   why), so without a reasoner this query returns no rows.
 #   Step order: each step's position (hasStepPosition) gives its place in the plan's execution order, and the rows
 #   are sorted by it instead of by the step label.
@@ -158,21 +162,24 @@ ORDER BY ?rank
 #   stepSatisfiesHardConstraint (property chains through the capability the step's task requires) and
 #   hasHardConstraint (request -> person -> preference setting -> hard constraint). Steps that only prepare or rank
 #   data satisfy neither, so both columns are empty for them.
+#   Other empty columns: the agent does steps 1, 3, 5, 8 and 10 itself, so no skill performs their tasks and the
+#   skill, tool and server columns are empty; the task of step 9 (select supplement product) requires no capability,
+#   so its skill uses no tool there; and no MCP server exposes the iHerb product search tool of step 4.
 # Individuals: kenRequest, Ken, kenSettings, his requirements and hard constraint kenEvidenceConstraint; kenPlan1 and
-#   its plan evaluation (rank 1); steps k1s1-k1s9 and their tasks; the skills, tools and MCP servers behind the tasks.
-# Expected answer: Ken plan 1 and its nine steps, with the tool calls of steps 2, 4 and 6 and the requirement or
-#   constraint each of those steps meets (10 rows):
+#   its plan evaluation (rank 1); steps k1s1-k1s10 and their tasks; the skills, tools and MCP servers behind the tasks.
+# Expected answer: Ken plan 1 and its ten steps in order, with the tool calls of steps 2, 4, 6 and 7 and the
+#   requirement or constraint each of those steps meets (10 rows, one per step):
 #   planLabel | position | stepLabel | taskLabel | skillLabel | tool | toolServer | requirementLabel | hardConstraintLabel
 #   Ken plan 1 | 1 | Ken plan 1, step 1 | get user profile (Ken) |  |  |  |  | 
 #   Ken plan 1 | 2 | Ken plan 1, step 2 | get candidate supplements (Ken) | personalized supplement recommendation skill | Supplement Advisor recommendation tool | Supplement Advisor MCP server | supplement recommendations for building muscle mass (Ken) | 
 #   Ken plan 1 | 3 | Ken plan 1, step 3 | remove redundant supplements (Ken) |  |  |  |  | 
 #   Ken plan 1 | 4 | Ken plan 1, step 4 | get supplement products sorted by price (Ken) | product selection skill | iHerb product search tool |  | affordable products with good reviews (Ken) | 
 #   Ken plan 1 | 5 | Ken plan 1, step 5 | rank supplement products by cost (Ken) |  |  |  |  | 
-#   Ken plan 1 | 6 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | PubMed abstract download tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
-#   Ken plan 1 | 6 | Ken plan 1, step 6 | verify evidence (Ken) | evidence verification skill | PubMed article search tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
-#   Ken plan 1 | 7 | Ken plan 1, step 7 | rank supplement products by evidence (Ken) |  |  |  |  | 
-#   Ken plan 1 | 8 | Ken plan 1, step 8 | select supplement product (Ken) | product selection skill |  |  |  | 
-#   Ken plan 1 | 9 | Ken plan 1, step 9 | produce recommendation (Ken) |  |  |  |  | 
+#   Ken plan 1 | 6 | Ken plan 1, step 6 | search evidence articles (Ken) | evidence verification skill | PubMed article search tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
+#   Ken plan 1 | 7 | Ken plan 1, step 7 | download abstracts and verify evidence (Ken) | evidence verification skill | PubMed abstract download tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken)
+#   Ken plan 1 | 8 | Ken plan 1, step 8 | rank supplement products by evidence (Ken) |  |  |  |  |
+#   Ken plan 1 | 9 | Ken plan 1, step 9 | select supplement product (Ken) | product selection skill |  |  |  |
+#   Ken plan 1 | 10 | Ken plan 1, step 10 | produce recommendation (Ken) |  |  |  |  |
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
 PREFIX prov:           <http://www.w3.org/ns/prov#>
@@ -215,7 +222,7 @@ WHERE {
     ?hardConstraint rdfs:label ?hardConstraintLabel .
   }
 }
-ORDER BY ?position ?tool
+ORDER BY ?position
 
 # ======================================================================================================================
 # CQ 3. What skills are required to satisfy Jessica's request for supplement recommendations, given she explicitly
@@ -226,7 +233,8 @@ ORDER BY ?position ?tool
 #   expresses, or a hard constraint derived from a preference setting of the person the request is attributed to.
 # Individuals: jessicaRequest, Jessica, jessicaEvidenceSetting and jessicaSafetySetting, the three information
 #   requirements and two hard constraints, the skills and their capabilities.
-# Expected answer: the four skills of the use case answer (4 rows):
+# Expected answer: the four skills of the use case answer (4 rows, in any order). Each skill is kept for either an
+#   information requirement or a hard constraint, so the other of those two columns is empty in its row:
 #   skillLabel | capabilityLabel | requirementLabel | hardConstraintLabel
 #   evidence verification skill | evidence verification capability | supporting scientific evidence (Jessica) | evidence verification (Jessica)
 #   personalized supplement recommendation skill | supplement recommendation capability | supplement recommendations (Jessica) | 
@@ -260,7 +268,6 @@ WHERE {
   }
   FILTER (BOUND(?requirementLabel) || BOUND(?hardConstraintLabel))
 }
-ORDER BY ?skillLabel
 
 # ======================================================================================================================
 # CQ 5. Why was each agent capability chosen to execute in a given orchestration plan? (Dante's plan from the CQ 4 example)
@@ -277,7 +284,9 @@ ORDER BY ?skillLabel
 #   1 | Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
 #   2 | Dante's orchestration plan, step 2a | verify evidence (magnesium citrate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) | 
 #   2 | Dante's orchestration plan, step 2b | screen interactions (magnesium citrate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante)
-#   3 | Dante's orchestration plan, step 3 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) | 
+#   3 | Dante's orchestration plan, step 3 | synthesize evidence (Dante) | evidence synthesis skill |  | evidence synthesis capability | comparison of magnesium glycinate and magnesium citrate (Dante) |
+#   Each capability is justified by a requirement or by a constraint, so the other of those columns is empty; the
+#   evidence synthesis skill uses no tool, so step 3 has no MCP server.
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
 PREFIX prov:           <http://www.w3.org/ns/prov#>
@@ -355,6 +364,7 @@ ORDER BY ?position
 #   2 | Jessica's orchestration plan, step 2 | screen interactions (Jessica) | candidate supplements (Jessica) | safety screening against celecoxib (Jessica) | Jessica's safety screening setting | Jessica's orchestration plan, step 5
 #   2 | Jessica's orchestration plan, step 3 | verify evidence (Jessica) | candidate supplements (Jessica) | evidence verification (Jessica) | Jessica's evidence setting | Jessica's orchestration plan, step 5
 #   2 | Jessica's orchestration plan, step 4 | get supplement products (Jessica) | candidate supplements (Jessica) |  |  | Jessica's orchestration plan, step 5
+#   Step 4 satisfies none of Jessica's hard constraints, so its constraint and setting columns are empty.
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
 PREFIX prov:           <http://www.w3.org/ns/prov#>
@@ -422,9 +432,9 @@ ORDER BY ?position
 #   dantePlanEvaluation; steps d1-d5, their tasks and the information artifacts the tasks consume and produce
 #   (candidateGlycinate, candidateCitrate, evidenceAssessmentGlycinate, evidenceAssessmentCitrate,
 #   safetyAssessmentGlycinate, safetyAssessmentCitrate, danteAnswer).
-# Expected answer: steps 1a and 1b run together at position 1, and 2a and 2b at position 2; step 3, at position 3,
-#   runs after all four (8 rows, sorted by the step's position and then the earlier step's position; rows with equal
-#   positions may come in either order):
+# Result: steps 1a and 1b run together at position 1, 2a and 2b at position 2, and step 3 runs after all four.
+# Expected answer (8 rows, sorted by position, then by the earlier step's position; equal positions in either order).
+#   Reason (1) rows leave the "runs after" columns empty, and reason (2) rows the "runs with" columns:
 #   position | stepLabel | taskLabel | runsWithStepLabel | sharedInputLabel | softConstraintLabel | runsAfterStepLabel | inputLabel
 #   1 | Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | Dante's orchestration plan, step 1b | magnesium glycinate (Dante) | minimize execution time (Dante) |  |
 #   1 | Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | Dante's orchestration plan, step 1a | magnesium glycinate (Dante) | minimize execution time (Dante) |  |
@@ -487,8 +497,7 @@ ORDER BY ?position ?runsAfterPosition
 #   reasoner the query returns no rows, because neither plan is asserted to be selected or rejected.
 #   SelectedOrchestrationPlan is defined as a candidate plan whose plan evaluation has rank 1, so the reasoner
 #   classifies plan B as selected. It classifies plan A as rejected: every candidate plan is either selected or
-#   rejected, a request has at most one selected plan, and plan A and plan B are different individuals
-#   (AllDifferent).
+#   rejected, a request has at most one selected plan, and plan A is declared owl:differentFrom plan B.
 #   The other columns are what the two plan evaluations recorded. Plan B makes 3 external tool calls and plan A 8;
 #   plan A finds supporting studies for every candidate supplement (evidence coverage 1.00), plan B for 0.70 of them.
 #   Olivia's two soft constraints have the same priority (1), and the decision criteria that measure them, high
@@ -603,7 +612,7 @@ ORDER BY ?rank ?plan ?hardConstraint ?softConstraint
 #   verifyEvidenceForKen, screenInteractionsForKen, secondEvidencePassForKen, selectProductForKenPlan2) and of Dante's
 #   plan (verifyEvidenceGlycinate, screenGlycinate, verifyEvidenceCitrate, screenCitrate, synthesizeEvidence), their
 #   consumed and produced information artifacts, and the skills that perform them.
-# Expected answer (7 rows):
+# Expected answer (7 rows, in any order):
 #   skillLabel | dependsOnSkillLabel
 #   evidence synthesis skill | evidence verification skill
 #   evidence synthesis skill | supplement safety screening skill
@@ -627,7 +636,6 @@ WHERE {
   ?dependsOnSkill rdfs:label ?dependsOnSkillLabel .
   FILTER (?skill != ?dependsOnSkill)
 }
-ORDER BY ?skillLabel ?dependsOnSkillLabel
 
 # ======================================================================================================================
 # CQ 9. Are all the prerequisites satisfied before executing the Evidence Verification skill, given the agent's current phase in
@@ -653,7 +661,9 @@ ORDER BY ?skillLabel ?dependsOnSkillLabel
 #   preconditionLabel | confirmedBy | requiredInputLabel | generatedBy | producerSkillLabel
 #   | | candidate supplements (Jessica) | | personalized supplement recommendation skill
 #   The evidence verification skill is not ready: the candidate supplements it requires have not been generated yet,
-#   and the personalized supplement recommendation skill must run first to produce them.
+#   and the personalized supplement recommendation skill must run first to produce them. The row comes from the
+#   required-input branch of the UNION, so the precondition columns are empty, and generatedBy is empty because no
+#   invocation in the trace has generated the candidates yet.
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
 PREFIX prov:           <http://www.w3.org/ns/prov#>
