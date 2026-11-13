@@ -11,15 +11,21 @@ Team AgenticCapabilities: [Gia Oriana Santos](https://github.com/haimgia),
 
 ## Abstract
 
-LLM agents now reach many external tools and skills through the Model Context Protocol, but which of them to call, in
-what order, and why is decided implicitly inside the model. This project puts an ontology between the user and the
-agent harness. The ontology links a user's request, its information requirements and the user's constraints to the
-capabilities that skills and tools provide; represents candidate orchestration plans with their steps, tasks and the
-information artifacts each task consumes and produces; records how one plan is evaluated and selected; and traces each
-invocation for provenance. A reasoner can then derive which tasks depend on each other, which skills a request needs, and
-why one plan was chosen over another. The use case is scoped to personalized supplement recommendation with the PubMed,
-Supplement Advisor and OpenFDA MCP servers and the iHerb command-line client, and the ontology reuses AgentO, P-Plan,
-OWL-S, PROV-O, BEAM and the OMG Commons library.
+Large language model (LLM) agents now extend themselves in two ways: through tools, exposed by external servers like
+Model Context Protocol (MCP) and command-line interfaces, and through skills, modular packages of instructions and
+resources the agent loads to perform specialized tasks. As both multiply, agents must decide which tools and which skills
+to invoke, in what order, under what dependencies, and against which user preferences, and they rarely explain those
+choices. We present the Agentic Capabilities Ontology, an OWL 2 DL ontology that acts as a semantic layer between the
+user and the agent harness. It treats tools and skills as parallel providers of capabilities, describing each one's
+inputs, outputs, preconditions, dependencies and constraints, and recording tool invocations and skill invocations alike
+as provenance. The ontology reuses AgentO, P-Plan, PROV-O and OWL-S, and models requests and their information
+requirements, hard and soft user constraints, candidate orchestration plans composed of workflow steps, and plan
+evaluations scored on decision criteria such as tool call count, token cost and evidence coverage. Defined classes and
+property chains let a reasoner infer which tools and skills satisfy which requirements, how steps depend on one another
+through the information artifacts they consume and produce, and which plan is selected. We evaluate the ontology on a
+personalized supplement-recommendation use case with four skills and four external servers, answering nine competency
+questions with SPARQL over the inferred knowledge graph, covering plan selection, required tools and skills, parallel
+execution, constraint violations, prerequisite readiness, and explanations of why each was chosen.
 
 ## Overview Diagram
 

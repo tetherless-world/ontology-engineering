@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY AnnotationVocabulary "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
 	<!ENTITY agento "http://www.w3id.org/agentic-ai/onto#">
 	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY oe-agtorch "https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/">
 	<!ENTITY oe-agtorch-ind "https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/">
@@ -11,11 +13,15 @@
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY vann "http://purl.org/vocab/vann/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/"
+	xmlns:AnnotationVocabulary="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
 	xmlns:agento="http://www.w3id.org/agentic-ai/onto#"
 	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:oe-agtorch="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/"
 	xmlns:oe-agtorch-ind="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/"
@@ -25,20 +31,24 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:vann="http://purl.org/vocab/vann/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/">
-		<rdfs:label xml:lang="en">Agentic Tool and Skill Orchestration Individuals</rdfs:label>
-		<dct:abstract xml:lang="en">Test individuals for the Agentic Tool and Skill Orchestration Ontology, which this ontology imports. They follow the usage scenarios of use case AC-001: Ken&apos;s plan choice (competency question 1), the skills Jessica&apos;s request needs (competency question 3) and why each capability is in Dante&apos;s plan (competency question 5), plus parallel steps in Jessica&apos;s plan (competency question 2) and Olivia&apos;s plan comparison (competency question 6). Plan selection is not asserted; the reasoner infers it from the plan evaluations. Tool and server individuals for the PubMed, OpenFDA and Supplement Advisor MCP servers and the iHerb client let competency question 5 name the tool behind each skill. Ken&apos;s request has a hard constraint for evidence verification as well as his soft constraints, so competency question 1 can derive his candidate plans from his information requirements and constraints. Ken&apos;s first plan has the nine steps of the use case&apos;s answer to competency question 1, with evidence verification split into two consecutive steps (searching PubMed for articles, then downloading their abstracts) so that each step calls one tool; Ken&apos;s second plan splits both of its evidence passes the same way, and the step order of Jessica&apos;s and Dante&apos;s plans follows the use case&apos;s plans for competency questions 2 and 4.</dct:abstract>
+		<rdfs:label>Agentic Tools and Skills Orchestration Individuals</rdfs:label>
+		<dct:abstract xml:lang="en">Test individuals for the Agentic Tools and Skills Orchestration Ontology, which this ontology imports. They follow the usage scenarios of use case AC-001: Ken&apos;s plan choice (competency question 1), the skills Jessica&apos;s request needs (competency question 3) and why each capability is in Dante&apos;s plan (competency question 5), plus parallel steps in Jessica&apos;s plan (competency question 2) and Olivia&apos;s plan comparison (competency question 6). Plan selection is not asserted; the reasoner infers it from the plan evaluations. Tool and server individuals for the PubMed, OpenFDA and Supplement Advisor MCP servers and the iHerb client let competency question 5 name the tool behind each skill. Ken&apos;s request has a hard constraint for evidence verification as well as his soft constraints, so competency question 1 can derive his candidate plans from his information requirements and constraints. Ken&apos;s first plan has the nine steps of the use case&apos;s answer to competency question 1, with evidence verification split into two consecutive steps (searching PubMed for articles, then downloading their abstracts) so that each step calls one tool; Ken&apos;s second plan splits both of its evidence passes the same way, and the step order of Jessica&apos;s and Dante&apos;s plans follows the use case&apos;s plans for competency questions 2 and 4.</dct:abstract>
 		<dct:creator>Barbara Kotlan</dct:creator>
 		<dct:creator>Elioenai Lincon Guedes Alves</dct:creator>
 		<dct:creator>Gia Oriana Santos</dct:creator>
 		<dct:creator>Jialin Fang</dct:creator>
 		<dct:creator>Jiaying Wang</dct:creator>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
+		<dct:modified>November 13, 2026</dct:modified>
+		<dct:publisher xml:lang="en">Team Agentic Capabilities</dct:publisher>
 		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/"/>
-		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/"/>
-		<owl:versionInfo>Assignment 10</owl:versionInfo>
+		<owl:versionIRI rdf:resource="&oe-agtorch-ind;v4.1"/>
+		<owl:versionInfo>Assignment 11</owl:versionInfo>
+		<skos:changeNote>added annotations to ontology header; added hasStepPosition values to the plan steps; split Ken&apos;s evidence steps into article search and abstract download steps</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -779,6 +789,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenPlan1">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">Ken plan 1</rdfs:label>
+		<owl:differentFrom rdf:resource="&oe-agtorch-ind;kenPlan2"/>
 		<skos:definition xml:lang="en">candidate orchestration plan for Ken&apos;s request with one evidence pass and products sorted by price</skos:definition>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;kenRequest"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;k1s1"/>
@@ -826,7 +837,6 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenPlan2">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">Ken plan 2</rdfs:label>
-		<owl:differentFrom rdf:resource="&oe-agtorch-ind;kenPlan1"/>
 		<skos:definition xml:lang="en">candidate orchestration plan for Ken&apos;s request that adds interaction screening and a second evidence pass; each evidence pass is an article search followed by an abstract download</skos:definition>
 		<skos:scopeNote xml:lang="en">Test for competency question 1: it is not asserted as rejected; the reasoner infers it because Ken&apos;s request can have only one selected plan, Ken plan 1 ranks first, and the two plans are declared different individuals.</skos:scopeNote>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;kenRequest"/>
