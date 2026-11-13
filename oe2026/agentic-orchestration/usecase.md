@@ -5,13 +5,15 @@ title: use case
 
 ## Use Case Document
 
-**Current version: 9 (Assignment 10, November 6, 2026).** A
-[redlined copy](files/usecase/OE_10_TeamAgenticCapabilities_RedlinedUseCase.pdf) shows the revisions.
+**Current version: 10 (Assignment 11, November 13, 2026).** A
+[redlined copy](files/usecase/OE_11_TeamAgenticCapabilities_RedlinedUseCase.pdf) shows the revisions.
 
-<iframe src="files/usecase/OE_10_TeamAgenticCapabilities_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/usecase/OE_11_TeamAgenticCapabilities_UseCase.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ## Previous Versions
 
+- [Version 9 (Assignment 10)](files/usecase/OE_10_TeamAgenticCapabilities_UseCase.pdf)
+  ([redlined](files/usecase/OE_10_TeamAgenticCapabilities_RedlinedUseCase.pdf))
 - [Version 8 (Assignment 9)](files/usecase/OE_9_TeamAgenticCapabilities_UseCase.pdf)
 - [Version 7](files/usecase/OE_8_TeamAgenticCapabilities_UseCase.pdf)
 - [Version 6](files/usecase/OE_6_TeamAgenticCapabilities_UseCase.pdf)
