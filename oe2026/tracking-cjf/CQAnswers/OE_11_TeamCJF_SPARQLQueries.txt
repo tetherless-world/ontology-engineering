@@ -166,37 +166,7 @@ https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tr
 ------------------------------------------
 CQ4:  Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
 
-PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
-PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sio: <http://semanticscience.org/resource/>
 
-select distinct ?issues ?stateclass ?evidence
-where {
-    ?issues a cjf:Issue .
-    ?issues cjf:challenges sample:Move_OCT21_A-M0003 .
-    ?issues cjf:hasCurrentStateAssignment ?stateassignment .
-    ?stateassignment cjf:assignedState ?state .
-    ?state a ?stateclass .
-    ?stateclass rdfs:subClassOf cjf:State .
-
-    # remove the generic state class triples
-    FILTER (?stateclass != cjf:State)
-    ?stateassignment cjf:hasTriggeringRelationship ?relation .
-
-    # sio:isSupportedBy
-    ?relation sio:SIO_000206 ?text_span .
-    ?text_span cjf:hasConversationText ?evidence .
-}
-
-Expected Answer:
-M0010 – Platform A tooling budget (Addressed and Resolved): 12 evidence rows.
-M0014 – Platform A training (Addressed): 3 evidence rows.
-M0050 – Onboarding attendance (Addressed): 2 evidence rows.
-(17 rows expected)
-
-Actual Answer:
-Local CSV: CQ4/CQ4.answers.csv
 ------------------------------------------
 CQ5: Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
 
