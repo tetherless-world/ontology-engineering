@@ -1,10 +1,12 @@
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sio: <http://semanticscience.org/resource/>
 
 select distinct ?issues ?stateclass ?evidence
 where {
     ?issues a cjf:Issue .
+    ?issues cjf:challenges sample:Move_OCT21_A-M0003 .
     ?issues cjf:hasCurrentStateAssignment ?stateassignment .
     ?stateassignment cjf:assignedState ?state .
     ?state a ?stateclass .
