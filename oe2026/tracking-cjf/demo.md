@@ -8,11 +8,11 @@ title: Demonstration and Queries
 
 ## Sample Conversation
 
-The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_10_TeamCJF_Individuals.rdf) with the [OE Week 10 CJF schema](ontology/OE_10_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [current generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
+The demonstration uses the [CQ sample conversation individuals with current assignments](prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals.rdf) with the [OE Week 10 CJF schema](prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
 
 ## Running the Queries
 
-These queries use OWL DL reasoning. Open `ontology/OE_10_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_10_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows.
+These queries use OWL DL reasoning. Open `prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_10_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows.
 
 - [Download the combined CQ1, CQ2, CQ3, CQ5, and CQ6 queries (.txt)](CQAnswers/OE_10_TeamCJF_SPARQLQueries.txt)
 - [Earlier OE Week 9 query set (.txt)](CQAnswers/OE_9_TeamCJF_SPARQLQueries.txt)

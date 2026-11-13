@@ -11,5 +11,5 @@ A2: 6 distinct challenging moves; 7 source-text rows since M0050 has two text sp
 B1: 5 supporting Claims currently Supported, HermiT active.
 B2: 1 challenging Claim currently Supported (M0013), HermiT active.
 
-Use the generated file prev-ontology-versions/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf.
+Use the generated file prev-ontology-versions/OE_9/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf.
 This package does not modify any ontology RDF data and is for review/integration into the team's canonical files.

@@ -10,7 +10,7 @@ toc: true
 
 ### Current CJF Ontology
 
-[Download OE_10_TeamCJF.rdf](ontology/OE_10_TeamCJF.rdf)
+[Download OE_11_TeamCJF.rdf](ontology/OE_11_TeamCJF.rdf)
 
 The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
 
@@ -20,17 +20,17 @@ These files accompany the schema; they are not separate releases of the ontology
 
 | File | Purpose |
 | --- | --- |
-| [Annotated CQ sample individuals](ontology/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
-| [CQ sample individuals with current assignments](ontology/OE_10_TeamCJF_Individuals.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ2, CQ3, CQ5, and CQ6 |
-| [March 11 Group B individuals](ontology/mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
-| [Earlier conversation individuals](ontology/tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
+| [Annotated CQ sample individuals](ontology/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf) | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
+| [CQ sample individuals with current assignments](ontology/OE_11_TeamCJF_Individuals.rdf) | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ2, CQ3, CQ5, and CQ6 |
+| [March 11 Group B individuals](prev-ontology-versions/mar11_groupb-individuals.rdf) | Annotated example individuals from a corpus conversation |
+| [Earlier conversation individuals](prev-ontology-versions/tracking-cjf-individuals.rdf) | Earlier instance dataset retained alongside the current examples |
 | [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |
-| [Local PROV-O copy](ontology/prov-o-cjf.owl) | Provenance vocabulary used by the project |
+| [Local PROV-O copy](prev-ontology-versions/prov-o-cjf.owl) | Provenance vocabulary used by the project |
 | [Current state assignment SHACL rules](shacl/current-state-assignment-rules.ttl) | Rules and constraints for identifying the latest recorded assignment for each move with state |
 
 ## Ontology Versions
 
-The [current schema](ontology/OE_10_TeamCJF.rdf) appears first above. See the [ontology version history](ontology-versions.html) for the current ontology and earlier versions. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
+The [current schema](ontology/OE_11_TeamCJF.rdf) appears first above. See the [ontology version history](ontology-versions.html) for the current ontology and earlier versions. Immutable commit links preserve earlier versions without confusing them with example individuals or imported dependencies.
 
 ## Conceptual Model
 
@@ -39,7 +39,7 @@ The [current schema](ontology/OE_10_TeamCJF.rdf) appears first above. See the [o
  - [Download the conceptual model (.docx)](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx)
  - [Download the conceptual model (.pdf)](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf)
 
-The ten diagrams below are the figures from the OE Week 10 conceptual model document, in document order. The DOCX and PDF downloads contain the same figures and descriptions. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the [RDF schema](ontology/OE_10_TeamCJF.rdf) gives the identifiers used in code and queries.
+The ten diagrams below are the figures from the OE Week 10 conceptual model document, in document order. The DOCX and PDF downloads contain the same figures and descriptions. Click an image to view it at full size. The diagrams use abbreviated labels for readability; the [Week 10 RDF schema](prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf) gives the identifiers used in code and queries.
 
 ### Provenance
 
@@ -141,7 +141,7 @@ Each relationship between conversation moves is an individual that connects a so
 
 ## Ontologies Reused
 
-- [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A  [local copy](ontology/prov-o-cjf.owl) accompanies the project.
+- [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A  [local copy](prev-ontology-versions/prov-o-cjf.owl) accompanies the project.
 - [Semanticscience Integrated Ontology (SIO)](https://semanticscience.org/) supplies evidence and containment relationships used by the model.
 - [Deliberation Knowledge Graph](https://dkg.svagnoni.linkeddata.es/) supplies vocabulary for deliberative relationships.
 - [OMG Commons Annotation Vocabulary](https://www.omg.org/spec/Commons/AnnotationVocabulary/) and [Dates and Times](https://www.omg.org/spec/Commons/DatesAndTimes/) provide annotation and temporal vocabulary referenced in the ontology.

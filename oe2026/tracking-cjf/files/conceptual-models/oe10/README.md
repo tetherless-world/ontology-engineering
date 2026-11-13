@@ -17,7 +17,7 @@ The ten website figures in `images/conceptual-model/oe10/` were extracted from t
 | relationship-class-taxonomy.png | Reification CJF Relationship Class Taxonomy | New export |
 | relationship-reification.png | Reification Diagram | New export |
 
-The figures still differ from `ontology/OE_10_TeamCJF.rdf` in a few labels, and the RDF is authoritative:
+The figures still differ from `prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf` in a few labels, and the RDF is authoritative:
 
 - The figures label `hasPositionToward` and `makesAddress`. The schema uses `hasPositionTowards` and `makesAddresses`.
 - The state taxonomy shows SupportedContested, and its inset lists Accepted for Claims. The Week 10 schema defines neither, and SupportedContested was removed from the Week 10 term list.

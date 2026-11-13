@@ -42,8 +42,8 @@ for SHACL, `PATH.shacl.txt` and `PATH.shacl.ttl`. Build writes a manifest beside
 the RDF as `<output>.manifest.json` by default. Set
 `outputs.artifacts_directory` to put build manifests in a separate folder,
 including when using the combined command. For example,
-`artifacts_directory: ../ontology/run_outputs` in a config under `configs/`.
-Use `--report ontology/run_outputs/<stage>-report.json` for stage reports. Path collisions are rejected before the
+`artifacts_directory: ../run_outputs` in a config under `configs/`.
+Use `--report run_outputs/<stage>-report.json` for stage reports. Path collisions are rejected before the
 first pipeline stage writes. Input hashes are rechecked before publication to
 detect concurrent edits during conversion.
 
