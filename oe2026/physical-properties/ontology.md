@@ -9,7 +9,7 @@ title: Concept Map and Ontology
 
 The current conceptual model comes from the Assignment 9 document, last modified on October 23, 2026. It replaces the preliminary Assignment 5 model with `PhysicalFeature`, `FeatureValue`, `FeatureLevel`, `Assessment`, and `RequirementMapping`. The hierarchy panels show classification; open triangular arrowheads point toward the superclass. The relationship diagram shows object properties directed from domain to range. Click any diagram to open the full-size image.
 
-[Download the current conceptual model document](files/OE_10_TeamAffordance_ConceptualModel.pdf) · [View its Google Drive source](https://docs.google.com/document/d/1Kkpk0DTprUycWd9IoTgjS5E9wsCXP51V/edit)
+<iframe src="files/OE_11_TeamAffordance_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 <figure>
   <a href="images/OE_8_Entity_Judgment_Hierarchies.png"><img src="images/OE_8_Entity_Judgment_Hierarchies.png" alt="PhysicalEntity subclasses WholeObject and ObjectPart, and FeasibilityJudgment outcome subclasses" style="width:100%;height:auto;background:white;"></a>
@@ -54,9 +54,10 @@ This panel continues the requirement hierarchy with material, friction, smoothne
 An `Assessment` connects a candidate, target, action, and judgment. A `PhysicalEntity` has `FeatureValue` instances, each connecting a `PhysicalFeature` to a categorical `FeatureLevel`. Actions link to requirements, and `RequirementMapping` connects target conditions to required feature levels. `hasPart` and `interactsWith` represent part structure and interactions. This structure supports individual assessments, candidate comparisons, and comparisons involving interacting parts such as scissor blades. Multiplicity 1 denotes exactly one related instance of the indicated class in the source model.
 
 ### Earlier Conceptual Model
-- [Assignment 8 conceptual model](files/OE_9_TeamAffordance_ConceptualModel.docx)
-- [Assignment 8 conceptual model](files/OE_8_TeamAffordance_ConceptualModel.docx)
-- [Assignment 5 conceptual model](files/OE_5_TeamAffordance_ConceptualModel.docx)
+- [Assignment 10 conceptual model](files/OE_10_TeamAffordance_ConceptualModel.pdf)
+- [Assignment 9 conceptual model](files/OE_9_TeamAffordance_ConceptualModel.pdf)
+- [Assignment 8 conceptual model](files/OE_8_TeamAffordance_ConceptualModel.pdf)
+- [Assignment 5 conceptual model](files/OE_5_TeamAffordance_ConceptualModel.pdf)
 
 ## Ontologies
 
@@ -64,11 +65,18 @@ Versions are listed with the most recent team ontology first. The Assignment 9 f
 
 | Version | Files |
 | --- | --- |
-| **Assignment 9 — repository release** | [Ontology RDF](files/OE_9_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
-| **Assignment 9 — individuals** | [Ontology RDF](files/OE_9_TeamAffordance_Individuals.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
+| **Assignment 11 — latest release** | [Ontology RDF](files/OE_11_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_11_TeamAffordance_Individuals.rdf) |
+
+| Assignment 10 | [Ontology RDF](files/OE_10_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_10_TeamAffordance_Individuals.rdf) |
+
+| Assignment 9 | [Ontology RDF](files/OE_9_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
+
 | Assignment 8 — ready to use verison | [Ontology RDF](files/OE_8_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_8_TeamAffordance_Individuals.rdf) |
+
 | Assignment 8 — full team merge from Google Drive | [Download RDF](files/OE_8_TeamAffordance_HP_XF_Alex_LZ_merged_full.rdf) · [Google Drive source](https://drive.google.com/file/d/1A-YQYQOtGq6J_Y9icRkcCUrtyH1LkfKi/view) |
+
 | Assignment 6 | [Download RDF](files/OE_6_TeamAffordance.rdf) |
+
 | Preliminary repository ontology | [Download RDF](physical-properties.rdf) |
 
 ### Assignment 8 Individuals
