@@ -26,20 +26,33 @@ The design follows the requirements of the [use case](usecase) (R1 to R9). Three
 
 ## Conceptual Model
 
-<a href="././files/images/conceptual/01-core-conceptual-diagram.png" target="_blank">
-  <img src="./files/images/conceptual/01-core-conceptual-diagram.png" style="width:100%; max-width:1000px;">
+<a href="./files/images/conceptual/modular/00-overview.png" target="_blank">
+  <img src="./files/images/conceptual/modular/00-overview.png" alt="Overview conceptual diagram" style="width:100%; max-width:1000px;">
 </a>
 
-*Core conceptual diagram (version 9). The full slide deck, with one slide per module and figure descriptions in the speaker notes, is linked from the [About page](index#list-of-resources).*
+*Overview diagram (version 10). It shows only the classes and relations needed to answer the use case: which room is assessed, against which policy, using which measurement, and which system serves it. Each module below zooms into one part. The full slide deck, with figure descriptions in the speaker notes, is linked from the [About page](index#list-of-resources).*
+
+The overview is split into modules so that each figure can be read on its own:
+
+| Module | Figure | Walkthrough |
+|---|---|---|
+| 1 – Buildings, services and rooms | [module 1](#step-1--buildings-and-rooms) | Steps 1 and 2 |
+| 2 – Sensors and measurements | [module 2](#step-3--sensors-and-sensor-measurements) | Steps 3 to 5 |
+| 3 – Frameworks and policies | [module 3](#step-6--compliance-frameworks-and-policies) | Step 6 |
+| 4a – Assessment context | [module 4a](#step-7--assessments-context-policy-assessments-and-compliance-assessments) | Step 7 |
+| 4b – Policy assessment | [module 4b](#step-7--assessments-context-policy-assessments-and-compliance-assessments) | Step 7 |
+| 4c – Failure attribution | [module 4c](#step-8--associating-failures-with-systems-and-components) | Step 8 |
+
+Every relation is drawn once, as one labelled arrow. A ⇄ after a label means an inverse property exists (for example `hasPolicy` / `isPolicyOf`, `measures` / `measuredBy`, `effects` / `isEffectedBy`); only the main direction is drawn. Dashed arrows are inferred.
 
 The diagram uses colour to separate three kinds of data, because they arrive at different times and are stored in different places (see the [system architecture](index#system-architecture)):
 
 | Colour | Meaning | Examples |
 |---|---|---|
 | **Blue** classes and arrows | *Static* data about one building: its rooms, its service systems and components, the compliance frameworks that apply to it | `Building`, `Room`, `HVACSystem`, `BuildingServiceComponent`, `ComplianceFramework`, `CompliancePolicy`, `hasServiceComponent`, `connectsTo`, `hasPolicy` |
-| **Green** arrows | *Static* relations that cross module boundaries and are meant to be reused across buildings | `isPartOf`, `measures`, `evaluatesOn`, `actsOn` / `isAffectedBy` |
+| **Green** arrows | *Static* relations that cross module boundaries and are meant to be reused across buildings | `hasServiceComponent`, `hasPolicy`, `measures`, `evaluatesOn` |
 | **Purple** classes and arrows | *Dynamic* data created by measuring and assessing, published as nanopublications in the proposed architecture | `Measurement`, `SensorMeasurement`, `DerivedMeasurement`, `AssessmentContext`, `usesMeasurement`, `forRoom` |
-| **Yellow** classes and arrows | *Inferred* data, worked out by the reasoner and never typed in by hand | `ComplianceAssessment` status classes, `PolicyAssessment` status classes, `servesRoom`, `wasAssociatedWithComponent`, `wasAssociatedWithSystem` |
+| **Yellow** classes and dashed arrows | *Inferred* data, worked out by the reasoner and never typed in by hand | `ComplianceAssessment` status classes, `PolicyAssessment` status classes, `servesRoom`, `usesMeasurement`, `wasAssociatedWithComponent`, `wasAssociatedWithSystem` |
 
 The core diagram was designed around four behaviours observed in the use case, and the walkthrough below follows them in the same order:
 
@@ -56,13 +69,13 @@ Each step below takes one region of the conceptual diagram, shows the detailed s
 
 The starting point is the spatial context. A `core:Building` (from RealEstateCore) `hasRoom` zero or more `core:Room`s, and `hasBuildingSystem` zero or more `BuildingSystem`s. `hasRoom` is declared a sub-property of `cmns-col:hasPart`, so a room is formally a part of its building. Rooms are related to each other by `neighbor`, a symmetric property that the measurement module uses later (Step 3).
 
-<a href="./files/images/conceptual/02-room-taxonomy.png" target="_blank">
-  <img src="./files/images/conceptual/02-room-taxonomy.png" style="width:100%; max-width:900px;">
+<a href="./files/images/conceptual/modular/01-buildings-services-rooms.png" target="_blank">
+  <img src="./files/images/conceptual/modular/01-buildings-services-rooms.png" alt="Module 1" style="width:100%; max-width:1000px;">
 </a>
 
-*Healthcare facility (room) taxonomy.*
+*Module 1: buildings, building service systems and components, and rooms.*
 
-The room taxonomy is taken directly from the space list in the CDC *Guidelines for Environmental Infection Control in Health-Care Facilities*, Appendix B (Air), because that is the list the compliance policies are written against. Six top-level areas sit under `core:Room`:
+The room taxonomy (kept out of the diagrams because it is not needed to read the model) is taken directly from the space list in the CDC *Guidelines for Environmental Infection Control in Health-Care Facilities*, Appendix B (Air), because that is the list the compliance policies are written against. Six top-level areas sit under `core:Room`:
 
 | Top-level area | Example subclasses in the ontology |
 |---|---|
@@ -103,6 +116,12 @@ so if HVAC-3 has the service component VAV-412 and VAV-412 connects to room 4E-1
 Supporting axioms on `BuildingServiceComponent`: it may only be part of another component or of a service system (`isPartOf only (BuildingServiceComponent or BuildingServiceSystem)`), and every component acts on at least one sensor measurement (Step 5).
 
 ### Step 3 – Sensors and sensor measurements
+
+<a href="./files/images/conceptual/modular/02-sensors-measurements.png" target="_blank">
+  <img src="./files/images/conceptual/modular/02-sensors-measurements.png" alt="Module 2" style="width:100%; max-width:1000px;">
+</a>
+
+*Module 2: sensors, measurements and the rooms they are recorded in.*
 
 <a href="./files/images/conceptual/04-sensor-measurement-taxonomy.png" target="_blank">
   <img src="./files/images/conceptual/04-sensor-measurement-taxonomy.png" style="width:100%; max-width:800px;">
@@ -177,6 +196,12 @@ At the instance level the building model asserts `actsOn` from each installed co
 
 ### Step 6 – Compliance frameworks and policies
 
+<a href="./files/images/conceptual/modular/03-frameworks-policies.png" target="_blank">
+  <img src="./files/images/conceptual/modular/03-frameworks-policies.png" alt="Module 3" style="width:100%; max-width:1000px;">
+</a>
+
+*Module 3: frameworks, policies and the measurement each policy is evaluated on.*
+
 <a href="./files/images/conceptual/08-cdc-compliance-policy-taxonomy.png" target="_blank">
   <img src="./files/images/conceptual/08-cdc-compliance-policy-taxonomy.png" style="width:100%; max-width:1000px;">
 </a>
@@ -209,7 +234,20 @@ Requirement R2 asks for requirements to be data attached to a clinical designati
 
 ### Step 7 – Assessments: context, policy assessments and compliance assessments
 
-This is the yellow region at the top right of the core diagram. It follows the NIST OSCAL assessment model: an assessment has a scope, evaluates individual controls, and aggregates their findings.
+This is modules 4a and 4b of the conceptual model. It follows the NIST OSCAL assessment model: an assessment has a scope, evaluates individual controls, and aggregates their findings.
+
+
+<a href="./files/images/conceptual/modular/04a-assessment-context.png" target="_blank">
+  <img src="./files/images/conceptual/modular/04a-assessment-context.png" alt="Module 4a" style="width:100%; max-width:1000px;">
+</a>
+
+*Module 4a: assessment context.*
+
+<a href="./files/images/conceptual/modular/04b-policy-assessment.png" target="_blank">
+  <img src="./files/images/conceptual/modular/04b-policy-assessment.png" alt="Module 4b" style="width:100%; max-width:1000px;">
+</a>
+
+*Module 4b: policy assessments and their measurements.*
 
 - `Assessment` is the abstract root ("evidence evaluated against criteria to determine an outcome").
 - `AssessmentContext` fixes *what* is being assessed and *under which rules*: `forRoom` (the room), `usesFramework` (the compliance framework) and `usesMeasurement` (the measurements logged for this test). Both `uses*` properties specialise `cmns-cxtdsg:uses`.
@@ -237,6 +275,12 @@ The "unknown" classes exist so that *absence of evidence is never treated as com
 
 ### Step 8 – Associating failures with systems and components
 
+<a href="./files/images/conceptual/modular/04c-failure-attribution.png" target="_blank">
+  <img src="./files/images/conceptual/modular/04c-failure-attribution.png" alt="Module 4c" style="width:100%; max-width:1000px;">
+</a>
+
+*Module 4c: failure attribution (inferred).*
+
 The final yellow arrows, `wasAssociatedWithComponent` and `wasAssociatedWithSystem`, are sub-properties of `prov:wasAssociatedWith`. They connect an `Assessment` to the `BuildingServiceComponent`s and `BuildingServiceSystem`s linked to its evidence. The wording is deliberate: a component is *associated with* a failed assessment because it acts on the failing measurement or on something that measurement was derived from. The ontology never states that the component *caused* the failure (requirement R7), and the system does not actuate anything (R8). `wasAssociatedWithComponentIndirectly` is reserved for components reached only through a part-of chain.
 
 ### Mapping the diagram to the OWL file
@@ -253,6 +297,7 @@ The conceptual diagram uses a few short-hand names that were replaced by reused 
 | `isPartOf+` | `cmns-col:isPartOf` (transitive), `cmns-col:hasPart` (transitive, inverse) |
 | `connectedTo` | `connectsTo` |
 | `hasComplianceAssessment` (Room → ComplianceAssessment) | reached through `hasContext` ∘ `forRoom`; not a separate property |
+| `isEvaluatedBy` (Measurement → PolicyAssessment) | `isEvaluatedBy`; the encoded modelling of the PolicyAssessment side uses `isEvaluatedAt` / `evaluatesMeasurement` (Step 7) |
 | `Sensors` | `saref4bldg:Sensor` |
 
 ## How the Ontology Works
@@ -323,7 +368,7 @@ In the proposed system (see the [architecture and activity diagrams](index#syste
 
 ## Conceptual modeling versions
 
-- [latest version (11.13.2026)](https://docs.google.com/presentation/d/1NoYcqfvN8uW35NnwdWYQgPO05StpM1jnNAIIVC1966I/edit?usp=sharing)
+- [latest version (11.13.2026): simplified overview plus modules 1 to 4c, modelled in draw.io (file *Hospital_AirCondition_Compliance_Project_v1.3_modular*)](https://docs.google.com/presentation/d/1NoYcqfvN8uW35NnwdWYQgPO05StpM1jnNAIIVC1966I/edit?usp=sharing)
 - [version 2 (11.02.2026)](https://docs.google.com/presentation/d/1YZVhzZQpMGUTspjL6kLXo2LWh4mtXWGKwcyxBZC5Rk0/edit?usp=share_link)
 - [version 1 (10.19.2026)](https://docs.google.com/presentation/d/1oacoUe-KSjV9C4Cw9PoMRNOkiEssAn9xXeb80DQvkdA/edit?usp=share_link)
 
