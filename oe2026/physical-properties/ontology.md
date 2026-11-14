@@ -25,22 +25,22 @@ The ontology organizes its main concepts into several class hierarchies, separat
 </figure>
 
 <figure>
-  <a href="images/OE_11_physical_feature.png"><img src="images/OE_11_physical_feature.png" alt="Material, surface, and structural PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <a href="images/OE_11_physical_feature_wSquare.png"><img src="images/OE_11_physical_feature_wSquare.png" alt="Material, surface, and structural PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
   <figcaption><strong>Figure 3. Physical Feature Hierarchy.</strong></figcaption>
 </figure>
-<!-- <figure> Alternative
+<figure>
   <a href="images/OE_10_physical_feature.png"><img src="images/OE_10_physical_feature.png" alt="Material, surface, and structural PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Figure 3. Physical Feature Hierarchy.</strong></figcaption>
-</figure> -->
+  <figcaption><strong>Alternative Figure 3. Physical Feature Hierarchy.</strong></figcaption>
+</figure>
 
 <figure>
-  <a href="images/OE_11_action_requirement.png"><img src="images/OE_11_action_requirement.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <a href="images/OE_11_action_requirement_wSquare.png"><img src="images/OE_11_action_requirement_wSquare.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
   <figcaption><strong>Figure 4. Action Requirement Heerarchy..</strong></figcaption>
 </figure>
-<!-- <figure> Alternative
-  <a href="images/OE_11_action_requirement.png"><img src="images/OE_11_action_requirement.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Figure 4. Action Requirement Heerarchy..</strong></figcaption>
-</figure> -->
+<figure>
+  <a href="images/OE_10_action_requirement.png"><img src="images/OE_10_action_requirement.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Alternative Figure 4. Action Requirement Heerarchy..</strong></figcaption>
+</figure>
 
 ### WOL-Defined Classification Pattern
 
