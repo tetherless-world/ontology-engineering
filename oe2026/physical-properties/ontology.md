@@ -7,56 +7,66 @@ title: Concept Map and Ontology
 
 ## Conceptual Model
 
-The current conceptual model comes from the Assignment 9 document, last modified on October 23, 2026. It replaces the preliminary Assignment 5 model with `PhysicalFeature`, `FeatureValue`, `FeatureLevel`, `Assessment`, and `RequirementMapping`. The hierarchy panels show classification; open triangular arrowheads point toward the superclass. The relationship diagram shows object properties directed from domain to range. Click any diagram to open the full-size image.
+The current conceptual model comes from the Assignment 11 document.
 
-[Download the current conceptual model document](files/OE_10_TeamAffordance_ConceptualModel.pdf) · [View its Google Drive source](https://docs.google.com/document/d/1Kkpk0DTprUycWd9IoTgjS5E9wsCXP51V/edit)
+<iframe src="files/OE_11_TeamAffordance_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
-<figure>
-  <a href="images/OE_8_Entity_Judgment_Hierarchies.png"><img src="images/OE_8_Entity_Judgment_Hierarchies.png" alt="PhysicalEntity subclasses WholeObject and ObjectPart, and FeasibilityJudgment outcome subclasses" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Diagram 1a. Physical entities and feasibility judgments.</strong></figcaption>
-</figure>
-
-`PhysicalEntity` distinguishes whole objects from object parts. `FeasibilityJudgment` groups the feasible, infeasible, and insufficient-information outcomes used to describe an assessment.
+### Asserted Class Hierarchies
+The ontology organizes its main concepts into several class hierarchies, separating physical entities, physical features, action requirements, and feasibility judgments. **PhysicalEntity** distinguishes complete objects and their constituent parts through **WholeObject** and **ObjectPart**. **PhysicalFeature** organizes the characteristics used to describe candidates and targets, including geometric, mechanical, material, surface, and structural features. The corresponding **ActionRequirement** hierarchy represents the physical characteristics relevant to determining whether CUT requirements can be met. Although **PhysicalFeature** and **ActionRequirement** contain related categories, they serve different purposes. **PhysicalFeature** describes what is represented about an entity, whereas **ActionRequirement** describes what is needed for an action. Keeping these concepts separate allows candidate and target characteristics to be evaluated against action-specific requirements. The **FeasibilityJudgment** hierarchy distinguishes **Feasible**, **Infeasible**, and **InsufficientInformation** outcomes. Additional asserted subclass relationships include **TwoCUTRequirementsSatisfiedAssessment**, a specialization of **Assessment**, and **HighHardnessRigidityMapping**, a specialization of **RequirementMapping**. These classes support the representation and evaluation of specific conditions within the CUT model.
 
 <figure>
-  <a href="images/OE_8_Feature_Geometric_Mechanical.png"><img src="images/OE_8_Feature_Geometric_Mechanical.png" alt="Geometric and mechanical PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Diagram 1b. Geometric and mechanical physical features.</strong></figcaption>
+  <a href="images/OE_10_physical_entity_judgement.png"><img src="images/OE_10_physical_entity_judgement.png" alt="PhysicalEntity subclasses WholeObject and ObjectPart, and FeasibilityJudgment outcome subclasses" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 1. Physical Entity and Feasibility Judgment Hierarchies.</strong></figcaption>
 </figure>
-
-This panel organizes geometric features such as shape, size, edge geometry, point geometry, and contact area, together with mechanical features such as rigidity, flexibility, hardness, and strength. These classes supply vocabulary for the physical descriptions evaluated against CUT requirements.
 
 <figure>
-  <a href="images/OE_8_Feature_Material_Surface_Structural.png"><img src="images/OE_8_Feature_Material_Surface_Structural.png" alt="Material, surface, and structural PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Diagram 1c. Material, surface, and structural physical features.</strong></figcaption>
+  <a href="images/OE_10_asserted_class.png"><img src="images/OE_10_asserted_class.png" alt="Geometric and mechanical PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 2. Additional Asserted Class Hierarchies.</strong></figcaption>
 </figure>
-
-This continuation of the feature hierarchy includes friction, smoothness, joint, rotational-structure, and multipart-structure features. Repeated superclass labels connect this panel to the preceding feature hierarchy; they do not represent separate models.
 
 <figure>
-  <a href="images/OE_8_Requirement_Geometric_Mechanical.png"><img src="images/OE_8_Requirement_Geometric_Mechanical.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Diagram 1d. Geometric and mechanical action requirements.</strong></figcaption>
+  <a href="images/OE_11_physical_feature.png"><img src="images/OE_11_physical_feature.png" alt="Material, surface, and structural PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 3. Physical Feature Hierarchy.</strong></figcaption>
 </figure>
-
-The requirement hierarchy parallels the feature vocabulary, including geometry, contact area, rigidity, flexibility, and strength requirements. It describes the kinds of physical conditions against which a candidate's represented evidence can be assessed.
+<!-- <figure> Alternative
+  <a href="images/OE_10_physical_feature.png"><img src="images/OE_10_physical_feature.png" alt="Material, surface, and structural PhysicalFeature class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 3. Physical Feature Hierarchy.</strong></figcaption>
+</figure> -->
 
 <figure>
-  <a href="images/OE_8_Requirement_Material_Surface_Structural.png"><img src="images/OE_8_Requirement_Material_Surface_Structural.png" alt="Material, surface, and structural ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Diagram 1e. Material, surface, and structural action requirements.</strong></figcaption>
+  <a href="images/OE_11_action_requirement.png"><img src="images/OE_11_action_requirement.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 4. Action Requirement Heerarchy..</strong></figcaption>
 </figure>
+<!-- <figure> Alternative
+  <a href="images/OE_11_action_requirement.png"><img src="images/OE_11_action_requirement.png" alt="Geometric and mechanical ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 4. Action Requirement Heerarchy..</strong></figcaption>
+</figure> -->
 
-This panel continues the requirement hierarchy with material, friction, smoothness, joint, rotational-structure, and multipart-structure requirements. Together, the requirement panels provide vocabulary for comparing different physical realizations of CUT.
+### WOL-Defined Classification Pattern
+
+The ontology organizes its main concepts into several class hierarchies, separating physical entities, physical features, action requirements, and feasibility judgments. **PhysicalEntity** distinguishes complete objects and their constituent parts through **WholeObject** and **ObjectPart**. **PhysicalFeature** organizes the characteristics used to describe candidates and targets, including geometric, mechanical, material, surface, and structural features. The corresponding **ActionRequirement** hierarchy represents the physical characteristics relevant to determining whether CUT requirements can be met. Although **PhysicalFeature** and **ActionRequirement** contain related categories, they serve different purposes. **PhysicalFeature** describes what is represented about an entity, whereas **ActionRequirement** describes what is needed for an action. Keeping these concepts separate allows candidate and target characteristics to be evaluated against action-specific requirements. The **FeasibilityJudgment** hierarchy distinguishes **Feasible**, **Infeasible**, and **InsufficientInformation** outcomes. Additional asserted subclass relationships include **TwoCUTRequirementsSatisfiedAssessment**, a specialization of **Assessment**, and **HighHardnessRigidityMapping**, a specialization of **RequirementMapping**. These classes support the representation and evaluation of specific conditions within the CUT model.
 
 <figure>
-  <a href="images/OE_8_Object_Property_Relationships.png"><img src="images/OE_8_Object_Property_Relationships.png" alt="Object-property relationships linking assessments, candidates, targets, actions, feature values, and requirement mappings" style="width:100%;height:auto;background:white;"></a>
-  <figcaption><strong>Diagram 2. Object-property relationships for CUT assessment.</strong></figcaption>
+  <a href="images/OE_10_OWL_DL.png"><img src="images/OE_10_OWL_DL.png" alt="Material, surface, and structural ActionRequirement class hierarchy" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 5. Selected OWL-Defined Classification Patterns.</strong></figcaption>
 </figure>
 
-An `Assessment` connects a candidate, target, action, and judgment. A `PhysicalEntity` has `FeatureValue` instances, each connecting a `PhysicalFeature` to a categorical `FeatureLevel`. Actions link to requirements, and `RequirementMapping` connects target conditions to required feature levels. `hasPart` and `interactsWith` represent part structure and interactions. This structure supports individual assessments, candidate comparisons, and comparisons involving interacting parts such as scissor blades. Multiplicity 1 denotes exactly one related instance of the indicated class in the source model.
+### Property-Grounded CUT Assessment Model
+
+The central assessment model connects an **Assessment** to its candidate, target, action, and feasibility judgment through the properties *hasCandidate*, *hasTarget*, *hasAction*, and *hasJudgment*. Candidate and target are modeled as **PhysicalEntity** instances, with their roles determined by their relationships to the assessment rather than by separate object categories. Physical characteristics are represented using **FeatureValue**, which connects a **PhysicalFeature** to a categorical **FeatureLevel**. This structure allows an entity to carry explicit information about its physical characteristics without deriving those characteristics from its name or conventional function. An **Action** is linked to its **ActionRequirement** instances through *hasRequirement*, and each requirement identifies the relevant feature through *concernsFeature*. **RequirementMapping** connects target feature conditions to the levels required for the corresponding action requirement. This allows CUT evaluation to account for both candidate characteristics and relevant target conditions. The model also uses *hasUnspecifiedFeatureType* to explicitly represent a feature type for which a value has not been supplied. This is important for distinguishing insufficient information from an explicitly conflicting feature value. Missing assertions alone are not treated as evidence of infeasibility. In OE11, hasUnresolvedRequirement was added to connect an Assessment to an ActionRequirement whose status remains unresolved because the relevant feature information is explicitly marked as unspecified. This property has Assessment as its domain and ActionRequirement as its range. It is also declared disjoint with satisfiesRequirement and conflictsWithRequirement, allowing the three requirement-evaluation relationships to be represented separately.
+
+<figure>
+  <a href="images/OE_11_object_property_relation.png"><img src="images/OE_11_object_property_relation.png" alt="Object-property relationships linking assessments, candidates, targets, actions, feature values, and requirement mappings" style="width:100%;height:auto;background:white;"></a>
+  <figcaption><strong>Figure 6. Object-Property Relationships Supporting Property-Grounded CUT Assessment.</strong></figcaption>
+</figure>
+
+Some CUT configurations depend not only on whole-object characteristics but also on the physical features and relationships of their constituent parts. As shown in Figure 6, the ontology represents part–whole relationships through *hasPart* and *isPartOf*, and interactions between object parts through *interactsWith*. Because **ObjectPart** is a subclass of **PhysicalEntity**, individual parts can also have their own **FeatureValue** descriptions. These relationships support the representation and evaluation of alternative CUT configurations, including knife and scissors assessments, without using conventional object functions as reasoning evidence. The OWL-defined classes shown in Figure 5 further support structural classification based on explicitly represented part relationships.
 
 ### Earlier Conceptual Model
-- [Assignment 8 conceptual model](files/OE_9_TeamAffordance_ConceptualModel.docx)
-- [Assignment 8 conceptual model](files/OE_8_TeamAffordance_ConceptualModel.docx)
-- [Assignment 5 conceptual model](files/OE_5_TeamAffordance_ConceptualModel.docx)
+- [Assignment 10 conceptual model](files/OE_10_TeamAffordance_ConceptualModel.pdf)
+- [Assignment 9 conceptual model](files/OE_9_TeamAffordance_ConceptualModel.pdf)
+- [Assignment 8 conceptual model](files/OE_8_TeamAffordance_ConceptualModel.pdf)
+- [Assignment 5 conceptual model](files/OE_5_TeamAffordance_ConceptualModel.pdf)
 
 ## Ontologies
 
@@ -64,11 +74,18 @@ Versions are listed with the most recent team ontology first. The Assignment 9 f
 
 | Version | Files |
 | --- | --- |
-| **Assignment 9 — repository release** | [Ontology RDF](files/OE_9_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
-| **Assignment 9 — individuals** | [Ontology RDF](files/OE_9_TeamAffordance_Individuals.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
+| **Assignment 11 — latest release** | [Ontology RDF](files/OE_11_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_11_TeamAffordance_Individuals.rdf) |
+
+| Assignment 10 | [Ontology RDF](files/OE_10_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_10_TeamAffordance_Individuals.rdf) |
+
+| Assignment 9 | [Ontology RDF](files/OE_9_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_9_TeamAffordance_Individuals.rdf) |
+
 | Assignment 8 — ready to use verison | [Ontology RDF](files/OE_8_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_8_TeamAffordance_Individuals.rdf) |
+
 | Assignment 8 — full team merge from Google Drive | [Download RDF](files/OE_8_TeamAffordance_HP_XF_Alex_LZ_merged_full.rdf) · [Google Drive source](https://drive.google.com/file/d/1A-YQYQOtGq6J_Y9icRkcCUrtyH1LkfKi/view) |
+
 | Assignment 6 | [Download RDF](files/OE_6_TeamAffordance.rdf) |
+
 | Preliminary repository ontology | [Download RDF](physical-properties.rdf) |
 
 ### Assignment 8 Individuals

@@ -24,8 +24,8 @@ The project supports three questions: evaluating one candidate and target, compa
 
 | Resource | Current material |
 | --- | --- |
-| Use case | [Assignment 9 use case and previous versions](usecase.html) |
-| Ontology | [Assignment 9 merged ontology and version history](ontology.html#ontologies) |
+| Use case | [Use case and previous versions](usecase.html) |
+| Ontology | [Merged ontology and version history](ontology.html#ontologies) |
 | Conceptual model | [Displayed diagrams, captions, and descriptions](ontology.html#conceptual-model) |
 | Terminology | [Latest available clean term list](termlist.html) |
 
