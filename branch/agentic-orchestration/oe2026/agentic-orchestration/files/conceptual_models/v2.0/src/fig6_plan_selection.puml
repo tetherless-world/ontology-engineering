@@ -1,0 +1,51 @@
+@startuml fig6_plan_selection
+!include style.iuml
+skinparam nodesep 30
+skinparam ranksep 55
+skinparam noteBackgroundColor #FFFFFF
+skinparam noteBorderColor #333333
+
+class OrchestrationPlan #EDEDED
+class CandidateOrchestrationPlan
+class SelectedOrchestrationPlan
+class RejectedOrchestrationPlan
+class PlanEvaluation {
+  hasScore : decimal
+  hasRank : integer
+}
+class DecisionCriterion {
+  hasDirection : {minimize, maximize}
+  hasWeight : decimal
+}
+class PlanMetric {
+  hasValue : decimal
+  hasUnit : string
+}
+class "Measure" as Measure <<Commons>> #EDEDED
+class ToolCallCount
+class EvidenceCoverage
+class ToolCost
+class TokenCost
+class Latency
+class SoftConstraint #EDEDED
+class HardConstraint #EDEDED
+class "Constraint" as Constraint <<AgentO>> #EDEDED
+
+OrchestrationPlan <|-- CandidateOrchestrationPlan
+CandidateOrchestrationPlan <|-- SelectedOrchestrationPlan
+CandidateOrchestrationPlan <|-- RejectedOrchestrationPlan
+PlanEvaluation --> CandidateOrchestrationPlan : evaluates
+PlanEvaluation --> DecisionCriterion : usesCriterion
+PlanEvaluation --> PlanMetric : hasMeasurement
+Measure <|-- PlanMetric
+PlanMetric <|-- ToolCallCount
+PlanMetric <|-- EvidenceCoverage
+PlanMetric <|-- ToolCost
+PlanMetric <|-- TokenCost
+PlanMetric <|-- Latency
+SoftConstraint --> DecisionCriterion : isMeasuredBy
+OrchestrationPlan --> Constraint : satisfiesConstraint
+CandidateOrchestrationPlan --> HardConstraint : violatesConstraint
+note "CandidateOrchestrationPlan and (violatesConstraint some HardConstraint)\nSubClassOf RejectedOrchestrationPlan\nSelectedOrchestrationPlan DisjointWith RejectedOrchestrationPlan" as N1
+N1 .. RejectedOrchestrationPlan
+@enduml

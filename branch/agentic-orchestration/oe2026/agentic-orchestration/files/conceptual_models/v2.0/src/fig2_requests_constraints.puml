@@ -1,0 +1,35 @@
+@startuml fig2_requests_constraints
+!include style.iuml
+skinparam noteBackgroundColor #FFFFFF
+skinparam noteBorderColor #333333
+
+class Request
+class "Goal" as Goal <<AgentO>>
+class InformationRequirement
+class "Constraint" as Constraint <<AgentO>>
+class UserConstraint
+class HardConstraint
+class SoftConstraint {
+  hasPriority : integer
+}
+class ExecutionConstraint
+class Precondition
+class InputConstraint
+class PreferenceSetting
+class DecisionCriterion #EDEDED
+
+Request --> Goal : expresses
+Request --> InformationRequirement : expresses
+Constraint <|-- UserConstraint
+Constraint <|-- ExecutionConstraint
+UserConstraint <|-- HardConstraint
+UserConstraint <|-- SoftConstraint
+ExecutionConstraint <|-- Precondition
+Precondition <|-- InputConstraint
+UserConstraint --> Request : prov:wasDerivedFrom
+UserConstraint --> PreferenceSetting : prov:wasDerivedFrom
+SoftConstraint -- SoftConstraint : conflictsWith
+SoftConstraint --> DecisionCriterion : isMeasuredBy
+note "UserConstraint DisjointWith ExecutionConstraint" as N1
+N1 .. Constraint
+@enduml

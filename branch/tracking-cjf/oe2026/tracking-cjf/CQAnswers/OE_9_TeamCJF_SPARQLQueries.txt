@@ -1,0 +1,156 @@
+How to Run:
+1. Open the oe2026\tracking-cjf\prev-ontology-versions\OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf using protege (this file is built using the annotated file and running SHACL on it, 
+    check oe2026\tracking-cjf\ontology\run_outputs\commands_ran.txt)
+2. Run the reasoner on it
+3. Use the snap SPARQL (you need to use the SNAP SPARQL)
+
+CQ1: Which CJF conversation moves have occurred in the conversation, and what is the latest known state of each conversation move, where a state applies?
+
+PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?move ?moveType (IF(BOUND(?stateType), ?stateType, "N/A") AS ?stateResult) ?summary
+
+WHERE {
+
+    # select the issues , claims, options , InformationRequest,  expressed positions and Outcome
+    ?move a ?moveType .
+    FILTER (?moveType = cjf:Issue
+            || ?moveType = cjf:Claim
+            || ?moveType = cjf:Option
+            || ?moveType = cjf:InformationRequest
+            || ?moveType = cjf:ExpressedPosition
+            || ?moveType = cjf:Outcome)
+    
+    # get summary of each milestone
+    ?move cjf:hasSummary ?summary .
+
+    OPTIONAL {
+
+        # inferred property chain which denotes the current state individual for each conversation denoted above
+        ?move cjf:hasState ?state .
+
+        # get the inferred state individuals class
+        ?state a ?stateType .
+        ?stateType rdfs:subClassOf cjf:State .
+
+        # remove the generic state class triples
+        MINUS {
+            ?state a ?stateType .
+            FILTER (?stateType = cjf:State)
+        }
+    }
+}
+ORDER BY ?move ?moveType
+
+CQ2: Which issues are currently addressed or resolved, and what evidence supports each current state?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+select distinct ?issues ?stateclass ?evidence
+where {
+    ?issues a cjf:Issue .
+    ?issues cjf:hasCurrentStateAssignment ?stateassignment .
+    ?stateassignment cjf:assignedState ?state .
+    ?state a ?stateclass
+
+    # remove the generic state class triples
+    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
+    ?stateassignment cjf:hasTriggeringRelationship ?relation .
+    
+    # sio:isSupportedBy
+    ?relation sio:SIO_000206 ?text_span . 
+    ?text_span cjf:hasConversationText ?evidence . 
+}
+
+CQ3: What Claims support or challenge Platform A? Are any of the Claims Supported?
+CQ3 part 1: What Claims support or challenge Platform A?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?move ?relation ?stateclass ?summary
+WHERE {
+    {
+        ?move cjf:supports sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:supports),"tracking-cjf/") AS ?relation) .
+    }
+    UNION
+    {
+        ?move cjf:challenges sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:challenges), 'tracking-cjf/') AS ?relation) .
+    }
+    
+    ?move a cjf:Claim .
+    ?move cjf:hasState ?state_ind . 
+    ?state_ind a ?stateclass .
+    
+    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
+
+    OPTIONAL {
+        ?move cjf:hasSummary ?summary .
+    }
+}
+ORDER BY ?relation ?move
+
+CQ3 part 2: Are any of the Claims Supported?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?move ?relation ?summary
+WHERE {
+    {
+        ?move cjf:supports sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:supports),"tracking-cjf/") AS ?relation) .
+    }
+    UNION
+    {
+        ?move cjf:challenges sample:Move_OCT21_A-M0003 .
+        BIND(STRAFTER(STR(cjf:challenges), 'tracking-cjf/') AS ?relation) .
+    }
+    
+    ?move a cjf:Claim .
+
+    ?move cjf:hasState ?state .
+    ?state a cjf:Supported .
+
+    OPTIONAL {
+        ?move cjf:hasSummary ?summary .
+    }
+}
+ORDER BY ?relation ?move
+
+CQ5: For the final platform-selection Outcome, which speakers explicitly agreed with its selected Option, and which ExpressedPosition moves and source turns provide the evidence?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+
+SELECT DISTINCT ?pos ?speaker_name ?support_text ?turn
+WHERE {
+    # the outcome directly asserts which option it selects
+    sample:Move_OCT21_A-M0067 cjf:selects ?option .
+    ?pos cjf:hasPositionTowards ?option .
+
+    # select the agreement (inferred)
+    ?pos a cjf:Agreement .
+
+    # hasSpeaker is a property chain
+    ?pos cjf:hasSpeaker ?speaker .
+    ?speaker cjf:hasSpeakerName ?speaker_name .
+
+    # find the supporting text in the conversation
+    ?pos cjf:isPositiveSupportedBy ?support .
+    ?support cjf:hasConversationText ?support_text .
+
+    # at what turn was this spoken
+    ?pos cjf:hasUtterance ?utterance .
+    ?utterance cjf:hasTurnNumber ?turn .
+} order by ?turn

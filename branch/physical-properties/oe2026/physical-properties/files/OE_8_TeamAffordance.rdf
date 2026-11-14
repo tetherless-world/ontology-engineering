@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY dcterms "http://purl.org/dc/terms/">
+	<!ENTITY ns1 "http://www.w3.org/2003/11/swrl#">
+	<!ENTITY ns2 "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xs "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:ns1="http://www.w3.org/2003/11/swrl#"
+	xmlns:ns2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/">
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<dcterms:creator>Alex Clark</dcterms:creator>
+		<dcterms:creator>Hyejin Park</dcterms:creator>
+		<dcterms:creator>Liangliang Zhang</dcterms:creator>
+		<dcterms:creator>Xiye Fan</dcterms:creator>
+	</owl:Ontology>
+	
+	<owl:AnnotationProperty rdf:about="&dcterms;contributor">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dcterms;creator">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&ns2;isRuleEnabled">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;definition">
+	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Action">
+		<rdfs:label xml:lang="en">action</rdfs:label>
+		<skos:definition xml:lang="en">physical action whose feasibility is evaluated using represented physical features and action requirements</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement">
+		<rdfs:label xml:lang="en">action requirement</rdfs:label>
+		<skos:definition xml:lang="en">represented physical condition relevant to determining whether an action is feasible</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasAction"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Action"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasJudgment"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeasibilityJudgment"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasCandidate"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasTarget"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">assessment</rdfs:label>
+		<skos:definition xml:lang="en">evaluation context that relates a candidate physical entity, a target physical entity, and an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ContactAreaFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricFeature"/>
+		<rdfs:label xml:lang="en">contact area feature</rdfs:label>
+		<skos:definition xml:lang="en">geometric feature describing the area of a physical entity available for contact during an interaction</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ContactAreaRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricRequirement"/>
+		<rdfs:label xml:lang="en">contact area requirement</rdfs:label>
+		<skos:definition xml:lang="en">geometric requirement concerning the contact area needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/DescribedObject">
+		<rdfs:label xml:lang="en">described object</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:equivalentClass>
+			<rdf:Description>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/WholeObject">
+					</rdf:Description>
+					<rdf:Description>
+						<owl:unionOf rdf:parseType="Collection">
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+							</owl:Restriction>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue"/>
+								<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureValue"/>
+							</owl:Restriction>
+						</owl:unionOf>
+					</rdf:Description>
+				</owl:intersectionOf>
+			</rdf:Description>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">object represented by at least one explicit object part or physical feature value</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/EdgeGeometryFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricFeature"/>
+		<rdfs:label xml:lang="en">edge geometry feature</rdfs:label>
+		<skos:definition xml:lang="en">geometric feature describing the shape or form of an edge relevant to physical interaction</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/EdgeGeometryRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricRequirement"/>
+		<rdfs:label xml:lang="en">edge geometry requirement</rdfs:label>
+		<skos:definition xml:lang="en">geometric requirement concerning the edge geometry needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeasibilityJudgment">
+		<rdfs:label xml:lang="en">feasibility judgment</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Feasible">
+					</rdf:Description>
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Infeasible">
+					</rdf:Description>
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InsufficientInformation">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">judgment representing the outcome of evaluating whether a candidate can physically support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Feasible">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeasibilityJudgment"/>
+		<rdfs:label xml:lang="en">feasible</rdfs:label>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Infeasible"/>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InsufficientInformation"/>
+		<skos:definition xml:lang="en">feasibility judgment indicating that at least one evaluated configuration is supported by the represented information</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel">
+		<rdfs:label xml:lang="en">feature level</rdfs:label>
+		<skos:definition xml:lang="en">categorical level used to represent the degree of a physical feature, such as low, medium, or high</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureValue">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">feature value</rdfs:label>
+		<skos:definition xml:lang="en">representation that associates a physical feature type with a categorical feature level for a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FlexibilityFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalFeature"/>
+		<rdfs:label xml:lang="en">flexibility feature</rdfs:label>
+		<skos:definition xml:lang="en">mechanical feature describing the degree to which a physical entity can bend or deform without failure</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FlexibilityRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalRequirement"/>
+		<rdfs:label xml:lang="en">flexibility requirement</rdfs:label>
+		<skos:definition xml:lang="en">mechanical requirement concerning the flexibility needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FrictionFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SurfaceFeature"/>
+		<rdfs:label xml:lang="en">friction feature</rdfs:label>
+		<skos:definition xml:lang="en">surface feature describing resistance to sliding between contacting surfaces</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FrictionRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SurfaceRequirement"/>
+		<rdfs:label xml:lang="en">friction requirement</rdfs:label>
+		<skos:definition xml:lang="en">surface requirement concerning the friction needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<rdfs:label xml:lang="en">geometric feature</rdfs:label>
+		<skos:definition xml:lang="en">physical feature describing the geometry, dimensions, or spatial form of a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<rdfs:label xml:lang="en">geometric requirement</rdfs:label>
+		<skos:definition xml:lang="en">action requirement concerning geometric characteristics needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/HardnessFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalFeature"/>
+		<rdfs:label xml:lang="en">hardness feature</rdfs:label>
+		<skos:definition xml:lang="en">mechanical feature describing resistance to localized deformation or indentation</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/HighHardnessRigidityMapping">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+		<rdfs:label xml:lang="en">high hardness rigidity mapping</rdfs:label>
+		<owl:equivalentClass>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/affectsRequirement"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityRequirement"/>
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/specifiesRequiredLevel"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/high"/>
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetFeatureType"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hardness"/>
+					</owl:Restriction>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetLevel"/>
+						<owl:hasValue rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/high"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">requirement mapping that connects high target hardness to a high required rigidity level for cutting</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Infeasible">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeasibilityJudgment"/>
+		<rdfs:label xml:lang="en">infeasible</rdfs:label>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InsufficientInformation"/>
+		<skos:definition xml:lang="en">feasibility judgment indicating that all evaluated configurations are explicitly blocked by represented information</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InsufficientInformation">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeasibilityJudgment"/>
+		<rdfs:label xml:lang="en">insufficient information</rdfs:label>
+		<skos:definition xml:lang="en">feasibility judgment indicating that the represented information is insufficient to determine feasibility or infeasibility</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InteractingPart">
+		<rdfs:label xml:lang="en">interacting part</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:equivalentClass>
+			<rdf:Description>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/interactsWith"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</rdf:Description>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">object part that physically interacts with another object part relevant to the represented action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InteractingPartObject">
+		<rdfs:label xml:lang="en">object with interacting parts</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:equivalentClass>
+			<rdf:Description>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/WholeObject">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InteractingPart"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</rdf:Description>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">object having at least one part that interacts with another object part</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/JointFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralFeature"/>
+		<rdfs:label xml:lang="en">joint feature</rdfs:label>
+		<skos:definition xml:lang="en">structural feature describing a connection between parts of a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/JointRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralRequirement"/>
+		<rdfs:label xml:lang="en">joint requirement</rdfs:label>
+		<skos:definition xml:lang="en">structural requirement concerning a connection between parts needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MaterialFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<rdfs:label xml:lang="en">material feature</rdfs:label>
+		<skos:definition xml:lang="en">physical feature describing a material characteristic of a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MaterialRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<rdfs:label xml:lang="en">material requirement</rdfs:label>
+		<skos:definition xml:lang="en">action requirement concerning a material characteristic needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<rdfs:label xml:lang="en">mechanical feature</rdfs:label>
+		<skos:definition xml:lang="en">physical feature describing the mechanical behavior of a physical entity under applied forces</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<rdfs:label xml:lang="en">mechanical requirement</rdfs:label>
+		<skos:definition xml:lang="en">action requirement concerning mechanical behavior needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MultiPartObject">
+		<rdfs:label xml:lang="en">multi-part object</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:equivalentClass>
+			<rdf:Description>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/WholeObject">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+						<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+						<owl:minQualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">2</owl:minQualifiedCardinality>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</rdf:Description>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">object with at least two distinct represented object parts</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MultiPartStructureFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralFeature"/>
+		<rdfs:label xml:lang="en">multi part structure feature</rdfs:label>
+		<skos:definition xml:lang="en">structural feature describing an arrangement in which multiple parts jointly participate in a physical configuration</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MultiPartStructureRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralRequirement"/>
+		<rdfs:label xml:lang="en">multi part structure requirement</rdfs:label>
+		<skos:definition xml:lang="en">structural requirement concerning the use or arrangement of multiple parts needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/isPartOf"/>
+				<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">object part</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<skos:definition xml:lang="en">physical entity represented as a constituent part of an object</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PairedInteractingObject">
+		<rdfs:label xml:lang="en">object with paired interacting parts</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:equivalentClass>
+			<rdf:Description>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/WholeObject">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+						<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/InteractingPart"/>
+						<owl:minQualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">2</owl:minQualifiedCardinality>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</rdf:Description>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">object with at least two distinct parts that each interact with another part</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PartBearingObject">
+		<rdfs:label xml:lang="en">part-bearing object</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:equivalentClass>
+			<rdf:Description>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/WholeObject">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</rdf:Description>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">object with at least one represented object part</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity">
+		<rdfs:label xml:lang="en">physical entity</rdfs:label>
+		<skos:definition xml:lang="en">physical entity that may participate in an action as an object, object part, candidate, or target</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature">
+		<rdfs:label xml:lang="en">physical feature</rdfs:label>
+		<skos:definition xml:lang="en">represented physical characteristic of a physical entity used in evaluating action feasibility</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PointGeometryFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricFeature"/>
+		<rdfs:label xml:lang="en">point geometry feature</rdfs:label>
+		<skos:definition xml:lang="en">geometric feature describing the shape or form of a point or tip of a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PointGeometryRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricRequirement"/>
+		<rdfs:label xml:lang="en">point geometry requirement</rdfs:label>
+		<skos:definition xml:lang="en">geometric requirement concerning the point or tip geometry needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/affectsRequirement"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/specifiesRequiredLevel"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetLevel"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetFeatureType"/>
+				<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+				<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">requirement mapping</rdfs:label>
+		<skos:definition xml:lang="en">mapping that relates a target feature condition to a required feature level for an action requirement</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RigidityFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalFeature"/>
+		<rdfs:label xml:lang="en">rigidity feature</rdfs:label>
+		<skos:definition xml:lang="en">mechanical feature describing the degree to which a physical entity resists bending or deformation</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RigidityRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalRequirement"/>
+		<rdfs:label xml:lang="en">rigidity requirement</rdfs:label>
+		<skos:definition xml:lang="en">mechanical requirement concerning the rigidity needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RotationalStructureFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralFeature"/>
+		<rdfs:label xml:lang="en">rotational structure feature</rdfs:label>
+		<skos:definition xml:lang="en">structural feature describing an arrangement that permits or constrains relative rotational movement between parts</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RotationalStructureRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralRequirement"/>
+		<rdfs:label xml:lang="en">rotational structure requirement</rdfs:label>
+		<skos:definition xml:lang="en">structural requirement concerning rotational relationships between parts needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ShapeFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricFeature"/>
+		<rdfs:label xml:lang="en">shape feature</rdfs:label>
+		<skos:definition xml:lang="en">geometric feature describing the shape or spatial form of a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ShapeRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricRequirement"/>
+		<rdfs:label xml:lang="en">shape requirement</rdfs:label>
+		<skos:definition xml:lang="en">geometric requirement concerning the shape needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SinglePartObject">
+		<rdfs:label xml:lang="en">single-part object</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:equivalentClass>
+			<rdf:Description>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/WholeObject">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+						<owl:onClass rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+						<owl:qualifiedCardinality rdf:datatype="&xs;nonNegativeInteger">1</owl:qualifiedCardinality>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</rdf:Description>
+		</owl:equivalentClass>
+		<skos:definition xml:lang="en">object constrained to have exactly one object part</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SizeFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricFeature"/>
+		<rdfs:label xml:lang="en">size feature</rdfs:label>
+		<skos:definition xml:lang="en">geometric feature describing a dimensional extent of a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SizeRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/GeometricRequirement"/>
+		<rdfs:label xml:lang="en">size requirement</rdfs:label>
+		<skos:definition xml:lang="en">geometric requirement concerning the dimensional extent needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SmoothnessFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SurfaceFeature"/>
+		<rdfs:label xml:lang="en">smoothness feature</rdfs:label>
+		<skos:definition xml:lang="en">surface feature describing the degree to which a surface lacks roughness or irregularity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SmoothnessRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SurfaceRequirement"/>
+		<rdfs:label xml:lang="en">smoothness requirement</rdfs:label>
+		<skos:definition xml:lang="en">surface requirement concerning the smoothness needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StrengthFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalFeature"/>
+		<rdfs:label xml:lang="en">strength feature</rdfs:label>
+		<skos:definition xml:lang="en">mechanical feature describing resistance to failure under an applied force</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StrengthRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/MechanicalRequirement"/>
+		<rdfs:label xml:lang="en">strength requirement</rdfs:label>
+		<skos:definition xml:lang="en">mechanical requirement concerning the strength needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<rdfs:label xml:lang="en">structural feature</rdfs:label>
+		<skos:definition xml:lang="en">physical feature describing the organization, arrangement, or relationship of parts within a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StructuralRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<rdfs:label xml:lang="en">structural requirement</rdfs:label>
+		<skos:definition xml:lang="en">action requirement concerning part structure or relationships between parts needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SurfaceFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<rdfs:label xml:lang="en">surface feature</rdfs:label>
+		<skos:definition xml:lang="en">physical feature describing a characteristic of the surface of a physical entity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SurfaceRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<rdfs:label xml:lang="en">surface requirement</rdfs:label>
+		<skos:definition xml:lang="en">action requirement concerning a surface characteristic needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/TensileStrengthFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StrengthFeature"/>
+		<rdfs:label xml:lang="en">tensile strength feature</rdfs:label>
+		<skos:definition xml:lang="en">strength feature describing resistance to failure when subjected to tensile force</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/TensileStrengthRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/StrengthRequirement"/>
+		<rdfs:label xml:lang="en">tensile strength requirement</rdfs:label>
+		<skos:definition xml:lang="en">strength requirement concerning resistance to tensile force needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ThicknessFeature">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SizeFeature"/>
+		<rdfs:label xml:lang="en">thickness feature</rdfs:label>
+		<skos:definition xml:lang="en">size feature describing the thickness of a physical entity or object part</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ThicknessRequirement">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/SizeRequirement"/>
+		<rdfs:label xml:lang="en">thickness requirement</rdfs:label>
+		<skos:definition xml:lang="en">size requirement concerning the thickness needed to support an action</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/TwoCUTRequirementsSatisfiedAssessment">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+		<rdfs:label xml:lang="en">two cut requirements satisfied assessment</rdfs:label>
+		<skos:definition xml:lang="en">assessment in which both modeled cutting requirements are represented as satisfied</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/WholeObject">
+		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+				<owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label xml:lang="en">whole object</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+		<skos:definition xml:lang="en">physical entity represented as a whole object that may serve as a candidate or target in an assessment</skos:definition>
+	</owl:Class>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/act">
+	</ns1:Variable>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/affectsRequirement">
+		<rdfs:label xml:lang="en">affects requirement</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<skos:definition xml:lang="en">relates a requirement mapping to the action requirement whose required level is determined by the mapping</skos:definition>
+	</owl:ObjectProperty>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/c">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/candidateFV">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/candidateType">
+	</ns1:Variable>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/concernsFeature">
+		<rdfs:label xml:lang="en">concerns feature</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<skos:definition xml:lang="en">relates an action requirement to the physical feature that the requirement concerns</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/conflictsWithRequirement">
+		<rdfs:label xml:lang="en">conflicts with requirement</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<owl:propertyDisjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/satisfiesRequirement"/>
+		<skos:definition xml:lang="en">relates an assessment to an action requirement that is not satisfied by the evaluated candidate configuration</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cut">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Action"/>
+		<rdfs:label xml:lang="en">cut</rdfs:label>
+		<skos:definition xml:lang="en">cut action evaluated by the ontology in physical feasibility assessments</skos:definition>
+		<hasRequirement rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutEdgeThicknessRequirement"/>
+		<hasRequirement rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityRequirement"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutEdgeThicknessMapping">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+		<rdfs:label xml:lang="en">cut edge thickness mapping</rdfs:label>
+		<skos:definition xml:lang="en">requirement mapping that maps high target hardness to a low required edge thickness level for the cut edge thickness requirement</skos:definition>
+		<affectsRequirement rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutEdgeThicknessRequirement"/>
+		<specifiesRequiredLevel rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/low"/>
+		<usesTargetFeatureType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hardness"/>
+		<usesTargetLevel rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutEdgeThicknessRequirement">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ThicknessRequirement"/>
+		<rdfs:label xml:lang="en">cut edge thickness requirement</rdfs:label>
+		<skos:definition xml:lang="en">action requirement for cut concerning the edge thickness of the candidate</skos:definition>
+		<concernsFeature rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/edgeThickness"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityMapping">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+		<rdfs:label xml:lang="en">cut rigidity mapping</rdfs:label>
+		<skos:definition xml:lang="en">requirement mapping that maps high target hardness to a high required rigidity level for the cut rigidity requirement</skos:definition>
+		<affectsRequirement rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityRequirement"/>
+		<specifiesRequiredLevel rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/high"/>
+		<usesTargetFeatureType rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hardness"/>
+		<usesTargetLevel rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/high"/>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityRequirement">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RigidityRequirement"/>
+		<rdfs:label xml:lang="en">cut rigidity requirement</rdfs:label>
+		<skos:definition xml:lang="en">action requirement for cut concerning the rigidity of the candidate</skos:definition>
+		<concernsFeature rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rigidity"/>
+	</owl:NamedIndividual>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eCandidateFV">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eCandidateType">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eRequiredLevel">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetFV">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetLevel">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetType">
+	</ns1:Variable>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/edgeThickness">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ThicknessFeature"/>
+		<rdfs:label xml:lang="en">edge thickness</rdfs:label>
+		<skos:definition xml:lang="en">physical feature representing the thickness of an edge</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/flexibility">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FlexibilityFeature"/>
+		<rdfs:label xml:lang="en">flexibility</rdfs:label>
+		<skos:definition xml:lang="en">physical feature representing the degree of flexibility of a physical entity</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hardness">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/HardnessFeature"/>
+		<rdfs:label xml:lang="en">hardness</rdfs:label>
+		<skos:definition xml:lang="en">physical feature representing the hardness of a physical entity</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasAction">
+		<rdfs:label xml:lang="en">has action</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Action"/>
+		<skos:definition xml:lang="en">relates an assessment to the action being evaluated</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasCandidate">
+		<rdfs:label xml:lang="en">has candidate</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+		<skos:definition xml:lang="en">relates an assessment to the physical entity being evaluated as the candidate for performing the action</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType">
+		<rdfs:label xml:lang="en">has feature type</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureValue"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<skos:definition xml:lang="en">relates a feature value to the physical feature type that it describes</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue">
+		<rdfs:label xml:lang="en">has feature value</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureValue"/>
+		<skos:definition xml:lang="en">relates a physical entity to a feature value that specifies one of its physical features and its level</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasJudgment">
+		<rdfs:label xml:lang="en">has judgment</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeasibilityJudgment"/>
+		<skos:definition xml:lang="en">relates an assessment to its feasibility judgment</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel">
+		<rdfs:label xml:lang="en">has level</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureValue"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+		<skos:definition xml:lang="en">relates a feature value to its categorical feature level</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart">
+		<rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+		<rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+		<rdfs:label xml:lang="en">has part</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+		<skos:definition xml:lang="en">relates a physical entity to an object part that constitutes part of that entity</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasRequirement">
+		<rdfs:label xml:lang="en">has requirement</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Action"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<skos:definition xml:lang="en">relates an action to an action requirement relevant to evaluating its physical feasibility</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasTarget">
+		<rdfs:label xml:lang="en">has target</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+		<skos:definition xml:lang="en">relates an assessment to the physical entity that serves as the target of the action</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/high">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+		<rdfs:label xml:lang="en">high</rdfs:label>
+		<skos:definition xml:lang="en">categorical feature level representing a high degree of a physical feature</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/interactsWith">
+		<rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdfs:label xml:lang="en">interacts with</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+		<skos:definition xml:lang="en">relates an object part to another object part with which it physically interacts in a configuration</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/isPartOf">
+		<rdfs:label xml:lang="en">is part of</rdfs:label>
+		<dcterms:contributor xml:lang="en">LZ</dcterms:contributor>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ObjectPart"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalEntity"/>
+		<owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasPart"/>
+		<skos:definition xml:lang="en">relates an object part to the physical entity that contains it as a part</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/low">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+		<rdfs:label xml:lang="en">low</rdfs:label>
+		<skos:definition xml:lang="en">categorical feature level representing a low degree of a physical feature</skos:definition>
+	</owl:NamedIndividual>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/m">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mE">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mR">
+	</ns1:Variable>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/medium">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+		<rdfs:label xml:lang="en">medium</rdfs:label>
+		<skos:definition xml:lang="en">categorical feature level representing a medium degree of a physical feature</skos:definition>
+	</owl:NamedIndividual>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rCandidateFV">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rCandidateType">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rRequiredLevel">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetFV">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetLevel">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetType">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/req">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/requiredLevel">
+	</ns1:Variable>
+	
+	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rigidity">
+		<rdf:type rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RigidityFeature"/>
+		<rdfs:label xml:lang="en">rigidity</rdfs:label>
+		<skos:definition xml:lang="en">physical feature representing the degree to which a physical entity resists bending or deformation</skos:definition>
+	</owl:NamedIndividual>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/satisfiesRequirement">
+		<rdfs:label xml:lang="en">satisfies requirement</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/ActionRequirement"/>
+		<skos:definition xml:lang="en">relates an assessment to an action requirement that is satisfied by the evaluated candidate configuration</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/specifiesRequiredLevel">
+		<rdfs:label xml:lang="en">specifies required level</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+		<skos:definition xml:lang="en">relates a requirement mapping to the feature level required for the affected action requirement</skos:definition>
+	</owl:ObjectProperty>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/t">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetFV">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetLevel">
+	</ns1:Variable>
+	
+	<ns1:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetType">
+	</ns1:Variable>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetFeatureType">
+		<rdfs:label xml:lang="en">uses target feature type</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/PhysicalFeature"/>
+		<skos:definition xml:lang="en">relates a requirement mapping to the physical feature type of the target used as a condition in the mapping</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetLevel">
+		<rdfs:label xml:lang="en">uses target level</rdfs:label>
+		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/FeatureLevel"/>
+		<skos:definition xml:lang="en">relates a requirement mapping to the feature level of the target used as a condition in the mapping</skos:definition>
+	</owl:ObjectProperty>
+	
+	<ns1:Imp>
+		<rdfs:label>S3</rdfs:label>
+		<rdfs:comment>IntegratedCUTRequirementMatching</rdfs:comment>
+		<ns2:isRuleEnabled rdf:datatype="&xs;boolean">true</ns2:isRuleEnabled>
+		<ns1:body rdf:parseType="Collection">
+			<ns1:ClassAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+			</ns1:ClassAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/c"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasCandidate"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/t"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasTarget"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/act"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasAction"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/act"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityRequirement"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasRequirement"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/act"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutEdgeThicknessRequirement"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasRequirement"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:ClassAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mR"/>
+				<ns1:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+			</ns1:ClassAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mR"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityRequirement"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/affectsRequirement"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mR"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mR"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/t"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetFV"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rTargetLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutRigidityRequirement"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rCandidateType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/concernsFeature"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mR"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rRequiredLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/specifiesRequiredLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/c"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rCandidateFV"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rCandidateFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rCandidateType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rCandidateFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/rRequiredLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:ClassAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mE"/>
+				<ns1:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+			</ns1:ClassAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mE"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutEdgeThicknessRequirement"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/affectsRequirement"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mE"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mE"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/t"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetFV"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eTargetLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/cutEdgeThicknessRequirement"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eCandidateType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/concernsFeature"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/mE"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eRequiredLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/specifiesRequiredLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/c"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eCandidateFV"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eCandidateFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eCandidateType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eCandidateFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/eRequiredLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel"/>
+			</ns1:IndividualPropertyAtom>
+		</ns1:body>
+		<ns1:head rdf:parseType="Collection">
+			<ns1:ClassAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/TwoCUTRequirementsSatisfiedAssessment"/>
+			</ns1:ClassAtom>
+		</ns1:head>
+	</ns1:Imp>
+	<ns1:Imp>
+		<rdfs:label>S1</rdfs:label>
+		<rdfs:comment>MatchTargetAndCandidateFeatures</rdfs:comment>
+		<ns2:isRuleEnabled rdf:datatype="&xs;boolean">true</ns2:isRuleEnabled>
+		<ns1:body rdf:parseType="Collection">
+			<ns1:ClassAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/Assessment"/>
+			</ns1:ClassAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/c"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasCandidate"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/t"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasTarget"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/act"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasAction"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/act"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/req"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasRequirement"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:ClassAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/m"/>
+				<ns1:classPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/RequirementMapping"/>
+			</ns1:ClassAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/m"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/req"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/affectsRequirement"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/m"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/m"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/usesTargetLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/t"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetFV"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/targetLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/req"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/candidateType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/concernsFeature"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/m"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/requiredLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/specifiesRequiredLevel"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/c"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/candidateFV"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureValue"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/candidateFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/candidateType"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasFeatureType"/>
+			</ns1:IndividualPropertyAtom>
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/candidateFV"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/requiredLevel"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/hasLevel"/>
+			</ns1:IndividualPropertyAtom>
+		</ns1:body>
+		<ns1:head rdf:parseType="Collection">
+			<ns1:IndividualPropertyAtom>
+				<ns1:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/a"/>
+				<ns1:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/req"/>
+				<ns1:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/satisfiesRequirement"/>
+			</ns1:IndividualPropertyAtom>
+		</ns1:head>
+	</ns1:Imp>
+</rdf:RDF>

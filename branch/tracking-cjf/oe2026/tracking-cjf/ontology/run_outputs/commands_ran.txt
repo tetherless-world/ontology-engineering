@@ -1,0 +1,28 @@
+
+Run: 2026-10-29
+Working directory: C:\Users\devin\Academics\sem5\OE\ontology-engineering\oe2026\tracking-cjf
+
+Read-only source snapshots retrieved through the Google Drive connector:
+Conversation: https://docs.google.com/document/d/12PBRlFO7ZR0oYFOCBEqX2Ij1W9EPQZA2/edit
+Saved as inputs/Oct21_A_Discussion.md
+Annotations: https://docs.google.com/spreadsheets/d/1XZoaG7k_DwkyWUPVe761kQagzJyBH9LD/edit
+Saved as inputs/Annotation_Workbook_CQs.xlsx
+Input hashes: inputs/cq-source-manifest.json
+Schema: ontology/OE_9_TeamCJF.rdf (unchanged)
+Config: configs/cq-sample.yaml; column aliases: configs/cq-sample-columns.yaml
+HermiT disabled. Independent checks cover RDF serialization and SHACL, not DL inference.
+
+Final successful PowerShell commands, executed as separate stages:
+
+& ../../.venv-shacl/Scripts/python.exe -m cjf_serializer build --config configs/cq-sample.yaml --output ontology/OE_9_TeamCJF_Individuals.rdf --report ontology/run_outputs/serialization-report.json --overwrite > ontology/run_outputs/serialization-console.json
+
+& ../../.venv-shacl/Scripts/python.exe -m cjf_serializer shacl --config configs/cq-sample.yaml --individuals ontology/OE_9_TeamCJF_Individuals.rdf --output ontology/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf --report ontology/run_outputs/shacl-report.json --overwrite > ontology/run_outputs/shacl-console.json
+
+Results: serialization PASS; SHACL conforms; independent source/output checks PASS;
+35 package tests PASS. 28 turns, 4 speakers, 67 moves, 98 relationship rows;
+54 starter assignments and 31 generic relationship-based assignments.
+No States worksheet / no explicit human-transition assignments in this input.
+Asserted RDF: 2,291 triples, zero current pointers.
+SHACL output: 2,345 triples, exactly 54 current pointers added and no other changes.
+All reports, manifests, logs and validation artifacts from this run are stored here.
+The two individuals RDF files remain in the parent ontology folder.

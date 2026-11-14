@@ -1,0 +1,1102 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3id.org/agentic-ai/onto#"
+     xml:base="http://www.w3id.org/agentic-ai/onto"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/">
+    <owl:Ontology rdf:about="http://www.w3id.org/agentic-ai/onto">
+        <dc:contributor>Fajar J. Ekaputra</dc:contributor>
+        <dc:creator>Kabul Kurniawan</dc:creator>
+        <dc:description xml:lang="en">An ontology for describing agentic AI systems, their components, interraction and patterns.</dc:description>
+        <dc:rights>http://creativecommons.org/licenses/by/4.0/</dc:rights>
+        <dc:title>Agentic AI Ontology</dc:title>
+        <vann:preferredNamespacePrefix>agento</vann:preferredNamespacePrefix>
+        <rdfs:comment>An ontology for describing agentic AI systems, their components, interraction and patterns.</rdfs:comment>
+        <rdfs:label>Agentic AI Ontology</rdfs:label>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.2</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/contributor -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/rights -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://w3id.org/beam/core#participatedIn -->
+
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/beam/core#participatedIn">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:comment>Indicates that an agent participated in an activity.</rdfs:comment>
+        <rdfs:label>participated in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#agentPrompt -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#agentPrompt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasPrompt"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Prompt"/>
+        <rdfs:comment>Prompt used by the agent to perform independently of its tasks.</rdfs:comment>
+        <rdfs:label>agent prompt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#agentResourceUsage -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#agentResourceUsage">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#resourceUsage"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://w3id.org/beam/core#Resource"/>
+        <rdfs:comment>Agent directly uses or consumes a resource.</rdfs:comment>
+        <rdfs:label>agent resource usage</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#agentToolUsage -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#agentToolUsage">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#toolUsage"/>
+        <rdfs:comment>Agent directly uses a tool to perform tasks or access resources.</rdfs:comment>
+        <rdfs:label>agent tool usage</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#containsResource -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#containsResource">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Environment"/>
+        <rdfs:range rdf:resource="http://w3id.org/beam/core#Resource"/>
+        <rdfs:comment>Relates an Environment into resources.</rdfs:comment>
+        <rdfs:label>contains resource</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#contributesToGoal -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#contributesToGoal">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Objective"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Goal"/>
+        <rdfs:comment>Relates a objective to the goal it helps achieve.</rdfs:comment>
+        <rdfs:label>contributes to goal</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#contributesToObjective -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#contributesToObjective">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Objective"/>
+        <rdfs:comment>task contributes to objective</rdfs:comment>
+        <rdfs:label>contributes to objective</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasAgentCapability -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasAgentCapability">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasCapability"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
+        <rdfs:comment>Capability that can be performed by agent</rdfs:comment>
+        <rdfs:label>has agent capability</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasAgentConfig -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasAgentConfig">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasConfig"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Config"/>
+        <rdfs:comment>Configuration settings specific to an LLM agent.</rdfs:comment>
+        <rdfs:label>has agent config</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasAgentGoal -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasAgentGoal">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasGoal"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Goal"/>
+        <rdfs:comment>Goal assigned to an LLM agent.</rdfs:comment>
+        <rdfs:label>has agent goal</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasAgentMember -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasAgentMember">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Team"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:comment>Links a team to its participating agents.</rdfs:comment>
+        <rdfs:label>has agent member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasAssociatedTask -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasAssociatedTask">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:comment>Links a workflow step to the task it corresponds to.</rdfs:comment>
+        <rdfs:label>has associated task</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasCapability -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasCapability">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Tool"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
+        <rdfs:comment>Capability that can berforme by agent</rdfs:comment>
+        <rdfs:label>has capability</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasConfig -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasConfig">
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Config"/>
+        <rdfs:comment>Configuration settings for various components.</rdfs:comment>
+        <rdfs:label>has config</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasEnvironmentConfig -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasEnvironmentConfig">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasConfig"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Environment"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Config"/>
+        <rdfs:comment>Configuration settings specific to an Environment.</rdfs:comment>
+        <rdfs:label>has environment config</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasGoal -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasGoal">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/agentic-ai/onto#Team"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Goal"/>
+        <rdfs:comment>Relates an agent or team to its goals.</rdfs:comment>
+        <rdfs:label>has goal</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasKnowledge -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasKnowledge">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#KnowledgeBase"/>
+        <rdfs:comment>Relates an agent to its knowledge base.</rdfs:comment>
+        <rdfs:label>has knowledge base</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasObjective -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasObjective">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/agentic-ai/onto#Team"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Objective"/>
+        <rdfs:comment>Objective of a Team or an Agent</rdfs:comment>
+        <rdfs:label>has objective</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasPrompt -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasPrompt">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/agentic-ai/onto#Task"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Prompt"/>
+        <rdfs:comment>Associates prompts with agents or tasks.</rdfs:comment>
+        <rdfs:label>has prompt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasRelatedPattern -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasRelatedPattern">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowPattern"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowPattern"/>
+        <rdfs:comment>Indicates a relationship between workflow patterns.</rdfs:comment>
+        <rdfs:label>has related pattern</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasSubPattern -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasSubPattern">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasRelatedPattern"/>
+        <rdfs:comment>Indicates a sub-pattern that is part of a larger workflow pattern.</rdfs:comment>
+        <rdfs:label>has sub pattern</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasSystemConfig -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasSystemConfig">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasConfig"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Team"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Config"/>
+        <rdfs:comment>Configuration settings specific to a Team system.</rdfs:comment>
+        <rdfs:label>has system config</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasTeamGoal -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasTeamGoal">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasGoal"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Team"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Goal"/>
+        <rdfs:comment>Goal assigned to a Team.</rdfs:comment>
+        <rdfs:label>has team goal</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasToolConfig -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasToolConfig">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasConfig"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Tool"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Config"/>
+        <rdfs:comment>Configuration settings specific to a Tool.</rdfs:comment>
+        <rdfs:label>has tool config</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasWorkflowPattern -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasWorkflowPattern">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Team"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowPattern"/>
+        <rdfs:comment>Relates a team to the workflow pattern it follows.</rdfs:comment>
+        <rdfs:label>has workflow pattern</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#hasWorkflowStep -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#hasWorkflowStep">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowPattern"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:comment>Specifies a step that is part of a workflow pattern.</rdfs:comment>
+        <rdfs:label>has workflow step</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#humanParticipatedIn -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#humanParticipatedIn">
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/beam/core#participatedIn"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#HumanAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:comment>Indicates that a human agent participated in a task.</rdfs:comment>
+        <rdfs:label>human participated in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#interactsWith -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#interactsWith">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:comment>Relates an agent to other agents it interacts with.</rdfs:comment>
+        <rdfs:label>interacts with</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#nextPattern -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#nextPattern">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasRelatedPattern"/>
+        <rdfs:comment>Defines the next workflow pattern in a sequential arrangement.</rdfs:comment>
+        <rdfs:label>next pattern</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#nextStep -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#nextStep">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#relatedStep"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:comment>Defines the next step in the workflow sequence.</rdfs:comment>
+        <rdfs:label>next step</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#operatesIn -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#operatesIn">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Environment"/>
+        <rdfs:comment>Relates an agent to its operational environment. (shall we not describing this at this stage?)</rdfs:comment>
+        <rdfs:label>operates in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#performedBy -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#performedBy">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Tool"/>
+        <rdfs:comment>Indicates the tool/agent that performs the task in a step.</rdfs:comment>
+        <rdfs:label>performed by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#performedByAgent -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#performedByAgent">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#performedBy"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:comment>Indicates the agent that performs the task in a step.</rdfs:comment>
+        <rdfs:label>performed by agent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#producedResource -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#producedResource">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:range rdf:resource="http://w3id.org/beam/core#Resource"/>
+        <rdfs:comment>Relates a task to resources produced as output.</rdfs:comment>
+        <rdfs:label>produced resource</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#relatedStep -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#relatedStep">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:comment>Indicates a relationship between workflow steps.</rdfs:comment>
+        <rdfs:label>related step</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#requiresCapability -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#requiresCapability">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Capability"/>
+        <rdfs:comment>capability needed for a task .</rdfs:comment>
+        <rdfs:label>requires capability (future work)</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#requiresResource -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#requiresResource">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:range rdf:resource="http://w3id.org/beam/core#Resource"/>
+        <rdfs:comment>Relates a task to resources needed for its execution</rdfs:comment>
+        <rdfs:label>requires resource</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#resourceUsage -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#resourceUsage">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Tool"/>
+        <rdfs:range rdf:resource="http://w3id.org/beam/core#Resource"/>
+        <rdfs:comment>Tool accesses a resource on behalf of the agent.</rdfs:comment>
+        <rdfs:label>resource usage</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#taskPrompt -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#taskPrompt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3id.org/agentic-ai/onto#hasPrompt"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Task"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Prompt"/>
+        <rdfs:comment>Prompt used within a task.</rdfs:comment>
+        <rdfs:label>task prompt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#toolUsage -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#toolUsage">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Tool"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#Tool"/>
+        <rdfs:comment>using another tool to perform tasks or access resources.</rdfs:comment>
+        <rdfs:label>tool usage</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#useLanguageModel -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/agentic-ai/onto#useLanguageModel">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/agentic-ai/onto#LanguageModel"/>
+        <rdfs:comment>link Agent to an Language Model</rdfs:comment>
+        <rdfs:label>use language model</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>An account of the resource.</rdfs:comment>
+        <rdfs:label>description</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/reference -->
+
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/reference">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A reference of resource.</rdfs:comment>
+        <rdfs:label>reference</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A name given to the resource.</rdfs:comment>
+        <rdfs:label>title</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#agentID -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#agentID">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A unique identifier for an agent.</rdfs:comment>
+        <rdfs:label>agent ID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#agentRole -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#agentRole">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#LLMAgent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The role of an agent.</rdfs:comment>
+        <rdfs:label>agent role</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#configKey -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#configKey">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Config"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A key or name for a configuration setting.</rdfs:comment>
+        <rdfs:label>config key</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#configValue -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#configValue">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Config"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The value associated with a configuration key.</rdfs:comment>
+        <rdfs:label>config value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#envType -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#envType">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Environment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>A string that describes the type of environment (e.g., virtual, physical).</rdfs:comment>
+        <rdfs:label>environment type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#promptContext -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#promptContext">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Prompt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The context or background information for the prompt.</rdfs:comment>
+        <rdfs:label>prompt context</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#promptInputData -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#promptInputData">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Prompt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The input data provided to the prompt.</rdfs:comment>
+        <rdfs:label>prompt input data</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#promptInstruction -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#promptInstruction">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Prompt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The instruction or main content of the prompt.</rdfs:comment>
+        <rdfs:label>prompt instruction</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#promptOutputIndicator -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#promptOutputIndicator">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#Prompt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The expected output or response from the prompt.</rdfs:comment>
+        <rdfs:label>prompt output indicator</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#stepOrder -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/agentic-ai/onto#stepOrder">
+        <rdfs:domain rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Workflow step order</rdfs:comment>
+        <rdfs:label>step order</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/net/p-plan#Plan -->
+
+
+    <owl:Class rdf:about="http://purl.org/net/p-plan#Plan"/>
+    
+
+
+    <!-- http://purl.org/net/p-plan#Step -->
+
+
+    <owl:Class rdf:about="http://purl.org/net/p-plan#Step"/>
+    
+
+
+    <!-- http://purl.org/net/p-plan#Variable -->
+
+
+    <owl:Class rdf:about="http://purl.org/net/p-plan#Variable"/>
+    
+
+
+    <!-- http://w3id.org/beam/core#Context -->
+
+
+    <owl:Class rdf:about="http://w3id.org/beam/core#Context"/>
+    
+
+
+    <!-- http://w3id.org/beam/core#Instance -->
+
+
+    <owl:Class rdf:about="http://w3id.org/beam/core#Instance">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/beam/core#Model -->
+
+
+    <owl:Class rdf:about="http://w3id.org/beam/core#Model">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/beam/core#Resource -->
+
+
+    <owl:Class rdf:about="http://w3id.org/beam/core#Resource">
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Variable"/>
+        <rdfs:label>Resource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/beam/core#SemanticModel -->
+
+
+    <owl:Class rdf:about="http://w3id.org/beam/core#SemanticModel">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Model"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/beam/core#StatisticalModel -->
+
+
+    <owl:Class rdf:about="http://w3id.org/beam/core#StatisticalModel">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#Model"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/beam/core#System -->
+
+
+    <owl:Class rdf:about="http://w3id.org/beam/core#System">
+        <rdfs:label>System</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Agent -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent"/>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Capability -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Capability">
+        <rdfs:comment>ability that can be performed by agent</rdfs:comment>
+        <rdfs:label>Capability</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Config -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Config">
+        <rdfs:comment>Configuration settings for various components.</rdfs:comment>
+        <rdfs:label>Config</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Constraint -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Constraint">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#KnowledgeBase"/>
+        <rdfs:comment>A rule or condition derived from the knowledge base that restricts or guides agent behavior or decision-making.</rdfs:comment>
+        <rdfs:label>Constraint</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Context -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Context"/>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#EndStep -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#EndStep">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:comment>The final step in a workflow pattern, indicating completion.</rdfs:comment>
+        <rdfs:label>End Step</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Environment -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Environment">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Context"/>
+        <rdfs:comment>The surroundings or context in which an agent operates.</rdfs:comment>
+        <rdfs:label>Environment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Goal -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Goal">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Context"/>
+        <rdfs:comment>An objective or desired state that an agent aims to achieve. (not only agent can have goal; team can also have goal)</rdfs:comment>
+        <rdfs:label>Goal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#HumanAgent -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#HumanAgent">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:comment>A human individual who can participate in tasks and interact with agents.</rdfs:comment>
+        <rdfs:label>Human Agent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Instance -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Instance"/>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#KnowledgeBase -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#KnowledgeBase">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Instance"/>
+        <rdfs:comment>A structured collection of information that an agent can reference.</rdfs:comment>
+        <rdfs:label>Knowledge Base</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#LLMAgent -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#LLMAgent">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Tool"/>
+        <rdfs:comment>An entity capable of perceiving its environment, processing information, and acting to achieve goals.</rdfs:comment>
+        <rdfs:label>LLM Agent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#LanguageModel -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#LanguageModel">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#StatisticalModel"/>
+        <rdfs:comment>Language Model that is used by AI Agent</rdfs:comment>
+        <rdfs:label>Language Model</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Memory -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Memory">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#KnowledgeBase"/>
+        <rdfs:comment>A knowledge structure that stores and retrieves past information, experiences, or states to support learning and decision-making.</rdfs:comment>
+        <rdfs:label>Memory</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Objective -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Objective">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#Context"/>
+        <rdfs:comment>A collective objective that a team is assigned to accomplish.</rdfs:comment>
+        <rdfs:label>Objective</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Prompt -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Prompt">
+        <rdfs:comment>A structured input or instruction provided to an agent to guide its actions or responses.</rdfs:comment>
+        <rdfs:label>Prompt</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#StartStep -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#StartStep">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/agentic-ai/onto#WorkflowStep"/>
+        <rdfs:comment>The initial step in a workflow pattern, marking the beginning of the process.</rdfs:comment>
+        <rdfs:label>Start Step</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Task -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Task">
+        <rdfs:comment>A specific activity that contributes to finishing a workflow step</rdfs:comment>
+        <rdfs:label>Task</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Team -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Team">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/beam/core#System"/>
+        <rdfs:comment>A coordinated group of agents organized to pursue a common objective or set of tasks (synonym: Crew)</rdfs:comment>
+        <rdfs:label>Team</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#Tool -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#Tool">
+        <rdfs:comment>An instrument used by an agent to enhance its capabilities.</rdfs:comment>
+        <rdfs:label>Tool</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#WorkflowPattern -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#WorkflowPattern">
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Plan"/>
+        <rdfs:comment>A reusable and structured template that defines a sequence or logic of tasks and interactions within an agentic workflow.</rdfs:comment>
+        <rdfs:label>Workflow Pattern</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3id.org/agentic-ai/onto#WorkflowStep -->
+
+
+    <owl:Class rdf:about="http://www.w3id.org/agentic-ai/onto#WorkflowStep">
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Step"/>
+        <rdfs:comment>An individual action or phase within a workflow pattern to achieve the team goals</rdfs:comment>
+        <rdfs:label>Workflow Step</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+
