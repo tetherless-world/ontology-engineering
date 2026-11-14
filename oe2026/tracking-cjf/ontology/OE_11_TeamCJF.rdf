@@ -495,7 +495,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Utterance"/>
         <dct:source>Tracking CJF</dct:source>
         <rdfs:label>assigned at utterance</rdfs:label>
-        <skos:definition>records a conversation move’s state as becoming applicable at</skos:definition>
+        <skos:definition>records at which utterance the linking state assignment became applicable and transitioned from the previous state assignment</skos:definition>
         <skos:prefLabel>assigned at utterance</skos:prefLabel>
         <cmns-av:usageNote>Identifies where the state becomes applicable in the conversation, rather than when an annotator entered the record. The turn number belongs to the linked Utterance.</cmns-av:usageNote>
     </owl:ObjectProperty>
@@ -509,7 +509,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/State"/>
         <dct:source>Tracking CJF</dct:source>
         <rdfs:label>assigned state</rdfs:label>
-        <skos:definition>records the conversation move’s condition at the specified point in the conversation as</skos:definition>
+        <skos:definition>relationship linking a state assignment with it's state.</skos:definition>
         <skos:prefLabel>assigned state</skos:prefLabel>
         <cmns-av:usageNote>Records the state for that assignment</cmns-av:usageNote>
     </owl:ObjectProperty>
@@ -552,7 +552,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
         <dct:source>Tracking CJF</dct:source>
         <rdfs:label>has current state assignment</rdfs:label>
-        <skos:definition>Links an entity to the state assignment that represents its current state.</skos:definition>
+        <skos:definition>relationship linking a CJF conversation move with the state assignment that represents its current state.</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -587,7 +587,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
         <dct:source>Tracking CJF</dct:source>
         <rdfs:label>has previous assignment</rdfs:label>
-        <skos:definition>has as its immediately preceding state record for the same conversation move</skos:definition>
+        <skos:definition>has as its immediately preceding state transition record for the same conversation move</skos:definition>
         <skos:prefLabel>has previous assignment</skos:prefLabel>
         <cmns-av:usageNote>Omit for the initial state assignment. The preceding assignment must concern the same conversation move (the current cardinality restriction does not enforce that condition.)</cmns-av:usageNote>
     </owl:ObjectProperty>
@@ -646,7 +646,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
         <dct:source>Tracking CJF</dct:source>
         <rdfs:label>has state assignment</rdfs:label>
-        <skos:definition>has its state at a specified point in the conversation recorded through</skos:definition>
+        <skos:definition>relationship linking a CJF conversation move with a state assignment record at specified turn in the conversation recorded through</skos:definition>
         <skos:prefLabel>has state assignment</skos:prefLabel>
         <cmns-av:usageNote>Links to all recorded state assignments, including the assignment corresponding to the current state.</cmns-av:usageNote>
     </owl:ObjectProperty>
@@ -738,6 +738,7 @@
         <rdfs:label>is aimed at</rdfs:label>
         <skos:definition>has as its target conversation move</skos:definition>
         <skos:prefLabel>is aimed at</skos:prefLabel>
+        <cmns-av:explanatoryNote>This is used for reification of the CJF conversation moves relationships. This points from a conversation move relationship in question to the conversation move it's pointing to. This is superclass from which we inherit for each relationship</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
     
 
@@ -929,6 +930,7 @@
         <rdfs:label>makes</rdfs:label>
         <skos:definition>serves as the source conversation move of</skos:definition>
         <skos:prefLabel>makes</skos:prefLabel>
+        <cmns-av:explanatoryNote>This is used for reification of the CJF conversation moves relationships. This points from a conversation move to the relationship in question. This is superclass from which we inherit for each relationship</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
     
 
@@ -2468,6 +2470,9 @@
         <cmns-av:adaptedFrom>C. Roberts, “Information structure in discourse: Towards an integrated formal theory of pragmatics,” in OSU Working Papers in Linguistics, vol. 49, J. H. Yoon and A. Kathol, Eds. Columbus, OH, USA: Ohio State University, 1996, pp. 91–136.</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>A state may change as later turns provide evidence.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Require evidence for a state change which is recorded in StateAssignment; the absence of further objections does not establish Resolved. Keep an Expressed Position’s positionType distinct from a conversation move’s State.</cmns-av:usageNote>
+        <dct:description>resolution and open questions motivate selected distinctions.</dct:description>
     </owl:Class>
     
 
