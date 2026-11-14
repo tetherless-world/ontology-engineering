@@ -8,10 +8,13 @@ where {
     ?issues a cjf:Issue .
     ?issues cjf:hasCurrentStateAssignment ?stateassignment .
     ?stateassignment cjf:assignedState ?state .
-    ?state a ?stateclass
+    
+    # get the inferred state individuals class
+    ?state a ?stateclass .
+    ?stateclass rdfs:subClassOf cjf:State .
 
     # remove the generic state class triples
-    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
+    FILTER (?stateclass != cjf:State)
     ?stateassignment cjf:hasTriggeringRelationship ?relation .
     
     # sio:isSupportedBy
