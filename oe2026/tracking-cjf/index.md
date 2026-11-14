@@ -24,19 +24,19 @@ This project is part of the Ontology Engineering course at Rensselaer Polytechni
 
 <figure>
   <a href="images/use-case/oe9/project-model.png"><img src="images/use-case/oe9/project-model.png" alt="High-level CJF tracking system overview showing annotated conversation data, ontology population and validation, the ontology schema, semantic reasoning, the knowledge graph, and user queries" style="max-width:100%;height:auto;" /></a>
-  <figcaption>Figure 1. High-level component overview from the OE Week 10 use case.</figcaption>
+  <figcaption>Figure 1. High-level component overview from the OE Week 11 use case.</figcaption>
 </figure>
 
 Annotated conversation data populates the CJF knowledge graph and is validated against the ontology schema. The semantic reasoner uses the schema's rules to infer supported states, while the query engine retrieves facts, provenance, and state information for the user. The [use case](usecase.html) describes this workflow and the questions it supports. The [conceptual model page](ontology.html#conceptual-model) shows the ontology's classes and relationships.
 
 ## Current Resources
 
-**OE Week 11** updates the ontology, individuals, conceptual diagrams, and query demonstrations.
+**OE Week 11** updates the use case, terminology, ontology, individuals, conceptual diagrams, and query demonstrations.
 
 | Resource | Contents |
 | --- | --- |
-| [Use case](usecase.html) | Project scope, competency questions, and archived use case documents |
-| [Terminology list](termlist.html) | Curated terminology workbooks, including OE Week 10 |
+| [Use case](usecase.html) | OE Week 11 project scope and competency questions, plus earlier versions |
+| [Terminology list](termlist.html) | OE Week 11 curated terminology workbook and earlier versions |
 | [Conceptual model and ontology](ontology.html) | Current diagrams, schema, example individuals, reused vocabularies, and ontology versions |
 | [Ontology version history](ontology-versions.html) | Schema and individuals downloads for OE Weeks 8–11, plus development snapshots |
 | [Demonstration and queries](demo.html) | CQ1, CQ2, CQ3, CQ5, and CQ6 queries and recorded answers for the sample conversation |

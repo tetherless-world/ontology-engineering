@@ -14,7 +14,7 @@ The demonstration uses the [CQ sample conversation individuals with current assi
 
 These queries use OWL DL reasoning. Open `ontology/OE_11_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_11_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
-- [Download the combined CQ1, CQ2, CQ3, CQ5, and CQ6 queries (.txt)](CQAnswers/OE_11_TeamCJF_SPARQLQueries.txt)
+- [Download the combined query notes (.txt)](CQAnswers/OE_11_TeamCJF_SPARQLQueries.txt)
 - [OE Week 10 demonstration and recorded answers](demo-oe10.html)
 - [Earlier OE Week 9 query set (.txt)](CQAnswers/OE_9_TeamCJF_SPARQLQueries.txt)
 
@@ -119,3 +119,5 @@ The query follows `selects` from the final Outcome to the chosen Option, then fi
 <p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ6/CQ6.speaker-c-platform-positions.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ6/CQ6.speaker-c-platform-positions.answers.csv">Recorded answers (.csv)</a></p>
 
 The query finds Speaker C's ExpressedPosition moves through the inferred `hasSpeaker` link and keeps those whose `hasPositionTowards` target is Platform A (M0003) or Platform B (M0021). For each position, it returns the summary, the supporting text, and the turn of the source utterance, which must be attributed to Speaker C and belong to the sample conversation. It does not filter for Agreement, so the earlier preference is retained. The recorded answers show Speaker C preferring Platform B at turn 9 (M0020) and agreeing with Platform A at turn 27 (M0063).
+
+The [OE Week 11 use case](usecase.html#competency-questions) describes CQ4. The combined notes include its OE Week 10 query. Recorded query results are available for the five questions above.
