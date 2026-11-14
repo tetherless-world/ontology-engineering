@@ -24,7 +24,7 @@ The queries are deliberately short. They return individuals rather than their la
 All queries share these prefixes:
 
 ```sparql
-PREFIX v:    <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/>
+PREFIX v:    <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/>
 PREFIX test: <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/>
 PREFIX qu:   <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
