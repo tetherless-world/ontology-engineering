@@ -6,15 +6,16 @@ title: Demonstration and Queries
 <link rel="stylesheet" href="styles/demo.css">
 <script src="scripts/demo.js" defer></script>
 
-## Sample Conversation
+## OE Week 11 Sample Conversation
 
-The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_10_TeamCJF_Individuals.rdf) with the [OE Week 10 CJF schema](ontology/OE_10_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [current generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
+The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_11_TeamCJF_Individuals.rdf) with the [OE Week 11 CJF schema](ontology/OE_11_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
 
 ## Running the Queries
 
-These queries use OWL DL reasoning. Open `ontology/OE_10_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_10_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows.
+These queries use OWL DL reasoning. Open `ontology/OE_11_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_11_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
-- [Download the combined CQ1, CQ2, CQ3, CQ5, and CQ6 queries (.txt)](CQAnswers/OE_10_TeamCJF_SPARQLQueries.txt)
+- [Download the combined query notes (.txt)](CQAnswers/OE_11_TeamCJF_SPARQLQueries.txt)
+- [OE Week 10 demonstration and recorded answers](demo-oe10.html)
 - [Earlier OE Week 9 query set (.txt)](CQAnswers/OE_9_TeamCJF_SPARQLQueries.txt)
 
 ## CQ1 Conversation Moves and Current States
@@ -57,20 +58,18 @@ The [SHACL rules](shacl/current-state-assignment-rules.ttl) identify terminal as
 
 <p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ2/CQ2.issues-currently-addressed-or-resolved.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ2/CQ2.issues-currently-addressed-or-resolved.answers.csv">Recorded answers (.csv)</a></p>
 
-The query starts from each Issue's `hasCurrentStateAssignment` and returns the classes of its assigned state, excluding the generic State, SIO entity, and `owl:Thing` classes. It then follows `hasTriggeringRelationship` to the relationship that triggered the assignment and returns that relationship's supporting text as evidence. The recorded answers cover six Issues. The platform-selection Issue (M0001) and the funding Issue (M0010) are Resolved; their state individuals are also classified as Addressed, so each evidence passage appears under both classes. The training (M0014), cost-comparison (M0028), attendance (M0050), and onboarding-content (M0055) Issues are Addressed.
+The query follows each Issue’s current assignment and returns the assigned state classes and supporting text from the triggering relationship.
 
 ## CQ3 Claims Supporting or Challenging Platform A
 
-**Question:** What Claims support or challenge Platform A? Are any of the Claims Supported?
+**Question:** Which Claims support or challenge Platform A, what are their summaries and current states, and which are classified as Supported?
 
-### Claims and their current states
-
-#### SPARQL query
+### SPARQL query
 
 {% capture cq3_all_query %}{% include_relative CQAnswers/CQ3/CQ3.claims-that-support-challenges-platform-a.snap.rq %}{% endcapture %}
 <pre class="cjf-query" tabindex="0" aria-label="CQ3 claims and states SPARQL query"><code class="language-sparql">{{ cq3_all_query | escape }}</code></pre>
 
-#### Recorded answers
+### Recorded answers
 
 <div class="cjf-results" tabindex="0" role="region" aria-label="CQ3 claims and states recorded answers" data-csv-source="CQAnswers/CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv">
   <p class="cjf-results-status" role="status">Loading recorded answers…</p>
@@ -79,23 +78,7 @@ The query starts from each Issue's `hasCurrentStateAssignment` and returns the c
 
 <p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ3/CQ3.claims-that-support-challenges-platform-a.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv">Recorded answers (.csv)</a></p>
 
-### Supported Claims
-
-#### SPARQL query
-
-{% capture cq3_supported_query %}{% include_relative CQAnswers/CQ3/CQ3.supported-claims-that-support-challenges-platform-a.snap.rq %}{% endcapture %}
-<pre class="cjf-query" tabindex="0" aria-label="CQ3 supported Claims SPARQL query"><code class="language-sparql">{{ cq3_supported_query | escape }}</code></pre>
-
-#### Recorded answers
-
-<div class="cjf-results" tabindex="0" role="region" aria-label="CQ3 supported Claims recorded answers" data-csv-source="CQAnswers/CQ3/CQ3.supported-claims-that-support-challenges-platform-a.answers.csv">
-  <p class="cjf-results-status" role="status">Loading recorded answers…</p>
-</div>
-<noscript><p>Enable JavaScript to view the recorded answer table, or use the CSV download below.</p></noscript>
-
-<p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ3/CQ3.supported-claims-that-support-challenges-platform-a.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ3/CQ3.supported-claims-that-support-challenges-platform-a.answers.csv">Recorded answers (.csv)</a></p>
-
-The first query finds Claims that support or challenge Platform A and shows their current states and summaries. Property chains infer the `supports`, `challenges`, and `hasState` links used by the query. The second query keeps Claims whose current state is `Supported`. A Claim can challenge Platform A and still have a Supported state. The recorded answers contain six supporting and three challenging Claims; five supporting Claims and one challenging Claim have a Supported current state.
+The query returns Claims that support or challenge Platform A, their current state classifications, and their summaries. A Claim can challenge Platform A and still have a Supported state.
 
 ## CQ5 Speakers Agreeing with the Selected Option
 
@@ -123,18 +106,18 @@ The query follows `selects` from the final Outcome to the chosen Option, then fi
 
 ### SPARQL query
 
-{% capture cq6_query %}{% include_relative CQAnswers/CQ6/CQ6.speaker-c-positions-platform-a-b.snap.rq %}{% endcapture %}
+{% capture cq6_query %}{% include_relative CQAnswers/CQ6/CQ6.speaker-c-platform-positions.snap.rq %}{% endcapture %}
 <pre class="cjf-query" tabindex="0" aria-label="CQ6 SPARQL query"><code class="language-sparql">{{ cq6_query | escape }}</code></pre>
 
 ### Recorded answers
 
-<div class="cjf-results" tabindex="0" role="region" aria-label="CQ6 recorded answers" data-csv-source="CQAnswers/CQ6/CQ6.speaker-c-positions-platform-a-b.answers.csv">
+<div class="cjf-results" tabindex="0" role="region" aria-label="CQ6 recorded answers" data-csv-source="CQAnswers/CQ6/CQ6.speaker-c-platform-positions.answers.csv">
   <p class="cjf-results-status" role="status">Loading recorded answers…</p>
 </div>
 <noscript><p>Enable JavaScript to view the recorded answer table, or use the CSV download below.</p></noscript>
 
-<p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ6/CQ6.speaker-c-positions-platform-a-b.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ6/CQ6.speaker-c-positions-platform-a-b.answers.csv">Recorded answers (.csv)</a></p>
+<p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ6/CQ6.speaker-c-platform-positions.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ6/CQ6.speaker-c-platform-positions.answers.csv">Recorded answers (.csv)</a></p>
 
 The query finds Speaker C's ExpressedPosition moves through the inferred `hasSpeaker` link and keeps those whose `hasPositionTowards` target is Platform A (M0003) or Platform B (M0021). For each position, it returns the summary, the supporting text, and the turn of the source utterance, which must be attributed to Speaker C and belong to the sample conversation. It does not filter for Agreement, so the earlier preference is retained. The recorded answers show Speaker C preferring Platform B at turn 9 (M0020) and agreeing with Platform A at turn 27 (M0063).
 
-CQ4 has no recorded query in the OE Week 10 query set. Its scenario and sample answer are described in the [current use case](usecase.html#competency-questions).
+The [OE Week 11 use case](usecase.html#competency-questions) describes CQ4. The combined notes include its OE Week 10 query. Recorded query results are available for the five questions above.

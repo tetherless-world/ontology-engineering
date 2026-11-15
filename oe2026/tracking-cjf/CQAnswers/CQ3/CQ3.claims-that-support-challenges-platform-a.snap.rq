@@ -8,12 +8,12 @@ SELECT DISTINCT ?move ?relation ?stateclass ?summary
 WHERE {
     {
         ?move cjf:supports sample:Move_OCT21_A-M0003 .
-        BIND(STRAFTER(STR(cjf:supports),"tracking-cjf/") AS ?relation) .
+        BIND(STR("supports") AS ?relation) .
     }
     UNION
     {
         ?move cjf:challenges sample:Move_OCT21_A-M0003 .
-        BIND(STRAFTER(STR(cjf:challenges), 'tracking-cjf/') AS ?relation) .
+        BIND(STR("challenges") AS ?relation) .
     }
     
     ?move a cjf:Claim .

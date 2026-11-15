@@ -53,14 +53,28 @@
         throw new Error("Unexpected CSV columns");
       }
 
+      const columns = headers.map((header, index) => {
+        const name = header.trim().replace(/^\?/, "");
+        let className = "";
+        if (/^(summary|support_text|evidence)$/.test(name)) {
+          className = "cjf-result-text";
+        } else if (/^(move|issues|pos|option)$/.test(name) || index === 0) {
+          className = "cjf-result-identifier";
+        } else if (name === "turn") {
+          className = "cjf-result-turn";
+        }
+        return { name, className };
+      });
+
       const table = document.createElement("table");
       const caption = table.createCaption();
       caption.textContent = `Recorded answers (${rows.length} rows)`;
       const heading = table.createTHead().insertRow();
-      for (const header of headers) {
+      for (const column of columns) {
         const cell = document.createElement("th");
         cell.scope = "col";
-        cell.textContent = header.trim().replace(/^\?/, "");
+        cell.textContent = column.name;
+        cell.className = column.className;
         heading.append(cell);
       }
 
@@ -71,10 +85,7 @@
           const cell = row.insertCell();
           // Render source values as text so evidence and IRIs cannot become HTML.
           cell.textContent = value.trim();
-          if (index === 0) cell.className = "cjf-result-identifier";
-          if (/summary|support_text|evidence/.test(headers[index])) {
-            cell.className = "cjf-result-text";
-          }
+          cell.className = columns[index].className;
         });
       }
       container.replaceChildren(table);

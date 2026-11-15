@@ -1,0 +1,329 @@
+How to Run:
+1. Open oe2026/tracking-cjf/ontology/OE_11_TeamCJF_Individuals.rdf in Protégé, with the matching OE_11_TeamCJF.rdf and its imports loaded.
+2. Select HermiT and start the reasoner.
+3. Run the queries in SNAP SPARQL. Copy only the query, from PREFIX through its final line.
+
+CQ1:  Which CJF conversation moves have occurred in the conversation, and what are their identifiers, types, summaries, and recorded states, where applicable?
+
+PREFIX cjf:  <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?move ?moveClass (IF(BOUND(?stateClass), ?stateClass, "N/A") AS ?stateResult) ?summary
+
+WHERE {
+
+    # select the issues , claims, options , InformationRequest,  expressed positions and Outcome
+    {
+        ?move a cjf:Issue .
+        BIND(STR("Issue") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:Claim .
+        BIND(STR("Claim") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:Option .
+        BIND(STR("Option") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:InformationRequest .
+        BIND(STR("InformationRequest") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:ExpressedPosition .
+        BIND(STR("ExpressedPosition") AS ?moveClass) .
+    }
+    UNION
+    {
+        ?move a cjf:Outcome .
+        BIND(STR("Outcome") AS ?moveClass) .
+    }
+
+    # get summary of each milestone
+    ?move cjf:hasSummary ?summary .
+
+    OPTIONAL {
+
+        # inferred property chain which denotes the current state individual for each conversation denoted above
+        ?move cjf:hasState ?state .
+
+        # get the inferred state individuals class
+        ?state a ?stateClass .
+        ?stateClass rdfs:subClassOf cjf:State .
+
+        # remove the generic state class triples
+        MINUS {
+            ?state a ?stateClass .
+            FILTER (?stateClass = cjf:State)
+        }
+    }
+}
+ORDER BY ?move ?moveClass
+
+Expected Answer:
+M0001 – Issue (Addressed): Choose a platform for the new development project.
+M0001 – Issue (Resolved): Choose a platform for the new development project.
+M0002 – Claim (Unassessed): Choosing a platform today will allow environment setup to begin next week.
+M0003 – Option (Selected): Use Platform A for the new development project.
+M0004 – Claim (Supported): Platform A seems like the better fit for the delivery schedule.
+...
+(70 rows expected)
+
+Actual Answer:
+Local CSV: CQ1/CQ1.conversation-moves.current-states.answers.csv
+https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ1/CQ1.conversation-moves.current-states.answers.csv
+------------------------------------------
+CQ2: Which Issues raised during the conversation have been assigned an Addressed or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+select distinct ?issues ?stateclass ?evidence
+where {
+    ?issues a cjf:Issue .
+    ?issues cjf:hasCurrentStateAssignment ?stateassignment .
+    ?stateassignment cjf:assignedState ?state .
+
+    # get the inferred state individuals class
+    ?state a ?stateclass .
+    ?stateclass rdfs:subClassOf cjf:State .
+
+    # remove the generic state class triples
+    FILTER (?stateclass != cjf:State)
+    ?stateassignment cjf:hasTriggeringRelationship ?relation .
+
+    # sio:isSupportedBy
+    ?relation sio:SIO_000206 ?text_span .
+    ?text_span cjf:hasConversationText ?evidence .
+}
+
+Expected Answer:
+M0001 – Issue (Addressed): “For this project, I think Platform A’s tested integrations and simpler setup make it the better fit. I support choosing Platform A.”
+M0001 – Issue (Addressed): “I agree with choosing Platform A.”
+M0001 – Issue (Addressed): “I’m voting for Platform A as well. The full cost comparison and the integration test changed my mind.”
+M0001 – Issue (Addressed): “The training arrangements need to be confirmed but I’m comfortable selecting platform A today. I’ll record our decision and start the purchase request.”
+M0001 – Issue (Addressed): “We need to choose a platform for the new development project today so we can start setting up the environment next week.”
+...
+(32 rows expected)
+
+Actual Answer:
+Local CSV: CQ2/CQ2.issues-currently-addressed-or-resolved.answers.csv
+https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ2/CQ2.issues-currently-addressed-or-resolved.answers.csv
+------------------------------------------
+CQ3:  Which Claims support or challenge Platform A, what are their summaries and recorded states, and which of these Claims have been assigned a Supported state?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?move ?relation ?stateclass ?summary
+WHERE {
+    {
+        ?move cjf:supports sample:Move_OCT21_A-M0003 .
+        BIND(STR("supports") AS ?relation) .
+    }
+    UNION
+    {
+        ?move cjf:challenges sample:Move_OCT21_A-M0003 .
+        BIND(STR("challenges") AS ?relation) .
+    }
+
+    ?move a cjf:Claim .
+    ?move cjf:hasState ?state_ind .
+    ?state_ind a ?stateclass .
+
+    FILTER (?stateclass != cjf:State && ?stateclass != sio:SIO_000000 && ?stateclass != owl:Thing)
+
+    OPTIONAL {
+        ?move cjf:hasSummary ?summary .
+    }
+}
+ORDER BY ?relation ?move
+
+Expected Answer:
+M0013 – Challenges (Supported): Using Platform A would require covering a $6,000 funding shortfall.
+M0015 – Challenges (Unassessed): Most developers have not used Platform A.
+M0016 – Challenges (Unassessed): Little time has been allowed for onboarding.
+M0004 – Supports (Supported): Platform A seems like the better fit for the delivery schedule.
+M0008 – Supports (Supported): Platform A could simplify implementation.
+M0018 – Supports (Supported): Platform A integrates well with the team's existing systems.
+M0019 – Supports (Unassessed): Platform A's connector worked with the team's identity service and build pipeline in last week's test.
+M0038 – Supports (Supported): The revised cost comparison puts Platform A lower than Platform B.
+M0060 – Supports (Supported): Platform A is the better fit for this project because of its tested integrations and simpler setup.
+(9 claims expected. Six are Supported.)
+
+Actual Answer:
+Local CSV: CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv
+https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv
+
+------------------------------------------
+CQ4:  Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states? 
+
+# Run in Protégé using Snap SPARQL Query.
+# Active ontology: OE_10_TeamCJF_Individuals.rdf
+# Imported ontology: OE_10_TeamCJF.rdf
+# Reasoner: HermiT (active)
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sio: <http://semanticscience.org/resource/>
+
+SELECT DISTINCT ?issue ?assignment ?stateType ?sourceMove ?evidence
+WHERE {
+    ?issue cjf:makesChallenges ?challenge .
+
+    ?challenge cjf:isAimedAtChallenges
+        sample:Move_OCT21_A-M0003 .
+
+    OPTIONAL {
+        ?issue rdf:type ?issueType .
+    }
+
+    FILTER (?issueType = cjf:Issue)
+
+    ?issue cjf:hasStateAssignment ?assignment .
+
+    ?assignment cjf:assignedState ?state .
+
+    OPTIONAL {
+        ?state rdf:type ?stateType .
+    }
+
+    FILTER (
+        ?stateType = cjf:Open ||
+        ?stateType = cjf:Addressed ||
+        ?stateType = cjf:Resolved
+    )
+
+    OPTIONAL {
+        ?assignment cjf:hasTriggeringRelationship ?trigger .
+
+        OPTIONAL {
+            ?sourceMove cjf:makesAddresses ?trigger .
+
+            OPTIONAL {
+                ?sourceMove sio:SIO_000206 ?textSpan .
+                ?textSpan cjf:hasConversationText ?evidence .
+            }
+        }
+    }
+}
+ORDER BY ?issue ?assignment ?stateType ?sourceMove
+
+Expected Answer:
+
+M0010 - Cost concern:
+Recorded states: Open, Addressed, Resolved.
+Evidence moves: M0021, M0039, M0048.
+Current state: Resolved.
+
+M0014 - Training concern:
+Recorded states: Open, Addressed.
+Evidence move: M0051.
+Current state: Addressed.
+
+M0050 - Training schedule concern:
+Recorded states: Open, Addressed.
+Evidence move: M0051.
+Current state: Addressed.
+
+Tested result: 11 rows representing 8 distinct state assignments.
+Some rows repeat because of OWL-inferred classifications
+and multiple supporting text spans.
+
+Note: This query retrieves Issues that explicitly challenge
+Platform A. Initial Open states may have blank evidence
+when no Address/Resolve trigger is recorded.
+
+Actual Answer:
+
+Pending saved results CSV and GitHub link.
+
+
+------------------------------------------
+CQ5: Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+
+SELECT DISTINCT ?pos ?speaker_name ?support_text ?turn
+WHERE {
+    # the outcome directly asserts which option it selects
+    sample:Move_OCT21_A-M0067 cjf:selects ?option .
+    ?pos cjf:hasPositionTowards ?option .
+
+    # select the agreement (inferred)
+    ?pos a cjf:Agreement .
+
+    # hasSpeaker is a property chain
+    ?pos cjf:hasSpeaker ?speaker .
+    ?speaker cjf:hasSpeakerName ?speaker_name .
+
+    # find the supporting text in the conversation
+    ?pos cjf:isPositiveSupportedBy ?support .
+    ?support cjf:hasConversationText ?support_text .
+
+    # at what turn was this spoken
+    ?pos cjf:hasUtterance ?utterance .
+    ?utterance cjf:hasTurnNumber ?turn .
+} order by ?turn
+
+Expected Answer:
+M0061 – Speaker D (Turn 25): “I support choosing Platform A.”
+M0062 – Speaker B (Turn 26): “I agree with choosing Platform A.”
+M0063 – Speaker C (Turn 27): “I’m voting for Platform A as well.”
+M0066 – Speaker A (Turn 28): “I’m comfortable selecting platform A today.”
+
+Actual Answer:
+Local CSV: CQ5/CQ5.speakers-that-agreed-with-group-outcome.answer.csv
+https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ5/CQ5.speakers-that-agreed-with-group-outcome.answer.csv
+------------------------------------------
+CQ6: What positions did Speaker C express toward Platform A and Platform B throughout the conversation, and what are the identifiers, target Options, summaries, supporting utterances, and turn numbers of these Expressed Positions?
+
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT DISTINCT ?pos ?option ?summary ?support_text ?turn
+WHERE {
+    # get Speaker C's expressed positions
+    ?pos a cjf:ExpressedPosition .
+    ?pos cjf:hasSpeaker ?speaker .
+    ?speaker cjf:hasSpeakerName "Speaker C" .
+
+    # keep positions about Platform A or Platform B
+    ?pos cjf:hasPositionTowards ?option .
+    FILTER (?option = sample:Move_OCT21_A-M0003
+            || ?option = sample:Move_OCT21_A-M0021)
+
+    OPTIONAL {
+        ?pos cjf:hasSummary ?summary .
+    }
+
+    # get the supporting text and its source turn
+    ?pos sio:SIO_000206 ?support .
+    ?support cjf:hasConversationText ?support_text .
+    ?support cjf:isPartOfUtterance ?utterance .
+    ?utterance prov:wasAttributedTo ?speaker .
+    ?utterance prov:wasGeneratedBy sample:Conversation .
+    ?utterance cjf:hasTurnNumber ?turn .
+}
+ORDER BY ?turn ?pos
+
+Expected answer (ordered by turn):
+- Turn 9: sample:Move_OCT21_A-M0020 targets Platform B (sample:Move_OCT21_A-M0021). Summary: C currently prefers Platform B. Supporting text: I’d still prefer Platform B at this point.
+- Turn 27: sample:Move_OCT21_A-M0063 targets Platform A (sample:Move_OCT21_A-M0003). Summary: C agrees with choosing Platform A. Supporting text: I’m voting for Platform A as well.
+
+Actual Answer:
+Local CSV: CQ6/CQ6.speaker-c-platform-positions.answers.csv
+https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ6/CQ6.speaker-c-platform-positions.answers.csv
