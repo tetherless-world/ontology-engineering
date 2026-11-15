@@ -56,9 +56,9 @@ The ontology, test individuals, queries and this website live in the course repo
 
 Team HVCC, Ontologies (CSCI 4340 / 6340), Rensselaer Polytechnic Institute, Fall 2026.
 
-- Ahosan Habib – <habiba5@rpi.edu> 
+- Ahosan Habib – <habiba5@rpi.edu> <https://github.com/ahosanhabibi>
 - Nipun Deelaka – <pathin@rpi.edu> <https://github.com/nipdep>
-- Andy Cheng – <cheng11@rpi.edu>
-- Carina Liu – <liuc17@rpi.edu> <https://github.com/carinaal>
+- Andy Cheng – <cheng11@rpi.edu> <https://github.com/haha666-rip>
+- Carina Liu – <liuc17@rpi.edu>  <https://github.com/carinaal>
 
 Advised by Dr. Deborah McGuinness and Ms. Elisa Kendall, with mentoring from Jade Franklin, Danielle Villa and Kelsey Rook.
