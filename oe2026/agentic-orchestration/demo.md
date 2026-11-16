@@ -3,6 +3,17 @@ layout: default
 title: queries
 ---
 
+<style>
+  /* Page-only table sizing: the Dinky content column is 650px, too narrow for the
+     7-10 column result tables at the theme's 18px headers and 10px cell padding. */
+  section table { font-size: 12px; line-height: 1.4; }
+  section th { font-size: 12px; padding: 5px 6px; vertical-align: bottom; }
+  section td { padding: 5px 6px; vertical-align: top; }
+  /* Widest table (CQ 1 step 3, eight columns) needs one step smaller. */
+  section table.dense, section table.dense th { font-size: 11px; }
+  section table.dense th, section table.dense td { padding: 4px 5px; }
+</style>
+
 ## Queries
 
 SPARQL queries for the competency questions of the [use case](usecase.html) (Section VII): the three that scope the
@@ -65,7 +76,7 @@ WHERE {
 
 **Answer** (6 rows, in any order; a requirement row has no hard constraint, and a hard-constraint row no requirement, because the two UNION branches bind one or the other):
 
-| requirementLabel | hardConstraintLabel | skillLabel | tool | toolServer |
+| requirement<wbr>Label | hard<wbr>Constraint<wbr>Label | skill<wbr>Label | tool | tool<wbr>Server |
 |---|---|---|---|---|
 | affordable products with good reviews (Ken) |  | product selection skill | iHerb product search tool |  |
 | supporting scientific evidence (Ken) |  | evidence verification skill | PubMed article search tool | PubMed MCP server |
@@ -121,7 +132,7 @@ ORDER BY ?rank
 
 **Answer:** both plans are candidates; plan 1 makes 4 external tool calls for 0.02 US dollars, ranks first and is selected (2 rows):
 
-| plan | status | toolCalls | tokenCost | score | rank |
+| plan | status | tool<wbr>Calls | token<wbr>Cost | score | rank |
 |---|---|---|---|---|---|
 | kenPlan1 | SelectedOrchestrationPlan | 4 | 0.02 | 2.00 | 1 |
 | kenPlan2 | RejectedOrchestrationPlan | 9 | 0.05 | 0.00 | 2 |
@@ -138,12 +149,11 @@ PREFIX agento:         <http://www.w3id.org/agentic-ai/onto#>
 PREFIX oe-agtorch:     <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/>
 PREFIX oe-agtorch-ind: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/>
 
-SELECT ?planLabel ?position ?stepLabel ?taskLabel ?skillLabel ?tool ?toolServer ?requirementLabel ?hardConstraintLabel
+SELECT ?position ?stepLabel ?taskLabel ?skillLabel ?tool ?toolServer ?requirementLabel ?hardConstraintLabel
 WHERE {
   ?plan a oe-agtorch:SelectedOrchestrationPlan .
   ?plan oe-agtorch:addresses oe-agtorch-ind:kenRequest .
   ?plan oe-agtorch:addresses ?request .
-  ?plan rdfs:label ?planLabel .
   ?plan oe-agtorch:hasStep ?step .
   ?step oe-agtorch:hasStepPosition ?position .
   ?step rdfs:label ?stepLabel .
@@ -179,18 +189,19 @@ ORDER BY ?position
 
 **Answer:** Ken plan 1 and its ten steps in order, with the tool calls of steps 2, 4, 6 and 7 and the requirement or constraint each of those steps meets (10 rows, one per step):
 
-| planLabel | position | stepLabel | taskLabel | skillLabel | tool | toolServer | requirementLabel | hardConstraintLabel |
-|---|---|---|---|---|---|---|---|---|
-| Ken plan 1 | 1 | Ken plan 1, step 1 | get user profile (Ken) |  |  |  |  |  |
-| Ken plan 1 | 2 | Ken plan 1, step 2 | get candidate supplements (Ken) | personalized supplement recommendation skill | Supplement Advisor recommendation tool | Supplement Advisor MCP server | supplement recommendations for building muscle mass (Ken) |  |
-| Ken plan 1 | 3 | Ken plan 1, step 3 | remove redundant supplements (Ken) |  |  |  |  |  |
-| Ken plan 1 | 4 | Ken plan 1, step 4 | get supplement products sorted by price (Ken) | product selection skill | iHerb product search tool |  | affordable products with good reviews (Ken) |  |
-| Ken plan 1 | 5 | Ken plan 1, step 5 | rank supplement products by cost (Ken) |  |  |  |  |  |
-| Ken plan 1 | 6 | Ken plan 1, step 6 | search evidence articles (Ken) | evidence verification skill | PubMed article search tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken) |
-| Ken plan 1 | 7 | Ken plan 1, step 7 | download abstracts and verify evidence (Ken) | evidence verification skill | PubMed abstract download tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken) |
-| Ken plan 1 | 8 | Ken plan 1, step 8 | rank supplement products by evidence (Ken) |  |  |  |  |  |
-| Ken plan 1 | 9 | Ken plan 1, step 9 | select supplement product (Ken) | product selection skill |  |  |  |  |
-| Ken plan 1 | 10 | Ken plan 1, step 10 | produce recommendation (Ken) |  |  |  |  |  |
+| position | step<wbr>Label | task<wbr>Label | skill<wbr>Label | tool | tool<wbr>Server | requirement<wbr>Label | hard<wbr>Constraint<wbr>Label |
+|---|---|---|---|---|---|---|---|
+| 1 | Ken plan 1, step 1 | get user profile (Ken) |  |  |  |  |  |
+| 2 | Ken plan 1, step 2 | get candidate supplements (Ken) | personalized supplement recommendation skill | Supplement Advisor recommendation tool | Supplement Advisor MCP server | supplement recommendations for building muscle mass (Ken) |  |
+| 3 | Ken plan 1, step 3 | remove redundant supplements (Ken) |  |  |  |  |  |
+| 4 | Ken plan 1, step 4 | get supplement products sorted by price (Ken) | product selection skill | iHerb product search tool |  | affordable products with good reviews (Ken) |  |
+| 5 | Ken plan 1, step 5 | rank supplement products by cost (Ken) |  |  |  |  |  |
+| 6 | Ken plan 1, step 6 | search evidence articles (Ken) | evidence verification skill | PubMed article search tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken) |
+| 7 | Ken plan 1, step 7 | download abstracts and verify evidence (Ken) | evidence verification skill | PubMed abstract download tool | PubMed MCP server | supporting scientific evidence (Ken) | evidence verification (Ken) |
+| 8 | Ken plan 1, step 8 | rank supplement products by evidence (Ken) |  |  |  |  |  |
+| 9 | Ken plan 1, step 9 | select supplement product (Ken) | product selection skill |  |  |  |  |
+| 10 | Ken plan 1, step 10 | produce recommendation (Ken) |  |  |  |  |  |
+{: .dense}
 
 #### CQ 3. What skills are required to satisfy Jessica's request for supplement recommendations, given she explicitly mentions her diagnosis and prescribed medication?
 
@@ -230,7 +241,7 @@ WHERE {
 
 **Answer:** the four skills of the use case answer (4 rows, in any order). Each skill is kept for either an information requirement or a hard constraint, so the other of those two columns is empty in its row:
 
-| skillLabel | capabilityLabel | requirementLabel | hardConstraintLabel |
+| skill<wbr>Label | capability<wbr>Label | requirement<wbr>Label | hard<wbr>Constraint<wbr>Label |
 |---|---|---|---|
 | personalized supplement recommendation skill | supplement recommendation capability | supplement recommendations (Jessica) |  |
 | product selection skill | product search capability | purchasable supplement products (Jessica) |  |
@@ -291,7 +302,7 @@ ORDER BY ?position
 
 **Answer:** every capability in Dante's plan is justified by one of his requirements or constraints, listed in step order (5 rows; steps with the same position run in parallel and may come in either order):
 
-| position | stepLabel | taskLabel | skillLabel | toolServer | capabilityLabel | requirementLabel | constraintLabel |
+| position | step<wbr>Label | task<wbr>Label | skill<wbr>Label | tool<wbr>Server | capability<wbr>Label | requirement<wbr>Label | constraint<wbr>Label |
 |---|---|---|---|---|---|---|---|
 | 1 | Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | supplement safety screening skill | OpenFDA MCP server | interaction screening capability |  | safety screening (Dante) |
 | 1 | Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | evidence verification skill | PubMed MCP server | evidence verification capability | evidence summary (Dante) |  |
@@ -361,7 +372,7 @@ ORDER BY ?position
 
 **Answer:** steps 2, 3 and 4 run in parallel on the candidate supplements, so they share position 2; step 5 waits for all three (3 rows, in any order):
 
-| position | stepLabel | taskLabel | sharedInputLabel | hardConstraintLabel | settingLabel | waitingStepLabel |
+| position | step<wbr>Label | task<wbr>Label | shared<wbr>Input<wbr>Label | hard<wbr>Constraint<wbr>Label | setting<wbr>Label | waiting<wbr>Step<wbr>Label |
 |---|---|---|---|---|---|---|
 | 2 | Jessica's orchestration plan, step 2 | screen interactions (Jessica) | candidate supplements (Jessica) | safety screening against celecoxib (Jessica) | Jessica's safety screening setting | Jessica's orchestration plan, step 5 |
 | 2 | Jessica's orchestration plan, step 3 | verify evidence (Jessica) | candidate supplements (Jessica) | evidence verification (Jessica) | Jessica's evidence setting | Jessica's orchestration plan, step 5 |
@@ -432,7 +443,7 @@ ORDER BY ?position ?runsAfterPosition
 
 **Answer** (8 rows, sorted by position, then by the earlier step's position; equal positions in either order). Reason (1) rows leave the "runs after" columns empty, and reason (2) rows the "runs with" columns:
 
-| position | stepLabel | taskLabel | runsWithStepLabel | sharedInputLabel | softConstraintLabel | runsAfterStepLabel | inputLabel |
+| position | step<wbr>Label | task<wbr>Label | runs<wbr>With<wbr>Step<wbr>Label | shared<wbr>Input<wbr>Label | soft<wbr>Constraint<wbr>Label | runs<wbr>After<wbr>Step<wbr>Label | input<wbr>Label |
 |---|---|---|---|---|---|---|---|
 | 1 | Dante's orchestration plan, step 1a | verify evidence (magnesium glycinate) | Dante's orchestration plan, step 1b | magnesium glycinate (Dante) | minimize execution time (Dante) |  |  |
 | 1 | Dante's orchestration plan, step 1b | screen interactions (magnesium glycinate) | Dante's orchestration plan, step 1a | magnesium glycinate (Dante) | minimize execution time (Dante) |  |  |
@@ -477,7 +488,7 @@ ORDER BY ?rank
 
 **Answer:** plan B is selected (rank 1, score 1.70) and plan A rejected (rank 2, score 1.00) (2 rows):
 
-| planLabel | statusLabel | rank | score | evidenceCoverage | toolCalls |
+| plan<wbr>Label | status<wbr>Label | rank | score | evidence<wbr>Coverage | tool<wbr>Calls |
 |---|---|---|---|---|---|
 | plan B (Olivia) | selected orchestration plan | 1 | 1.70 | 0.70 | 3 |
 | plan A (Olivia) | rejected orchestration plan | 2 | 1.00 | 1.00 | 8 |
@@ -530,12 +541,12 @@ ORDER BY ?rank ?plan ?hardConstraint ?softConstraint
 
 **Answer** (4 rows; ?hardConstraint is empty in every row because Olivia's request has no hard constraints):
 
-| plan | planStatus | hardConstraint | softConstraint | criterion | criterionPriority | rank | score | toolCalls | evidenceCoverage |
+| plan | plan<wbr>Status | hard<wbr>Constraint | soft<wbr>Constraint | criterion | criterion<wbr>Priority | rank | score | tool<wbr>Calls | evidence<wbr>Coverage |
 |---|---|---|---|---|---|---|---|---|---|
-| planB | selected orchestration plan |  | strongEvidenceConstraint | evidenceCoverageCriterion | 1 | 1 | 1.70 | 3 | 0.70 |
-| planB | selected orchestration plan |  | fewToolCallsConstraint | toolUsageCriterion | 1 | 1 | 1.70 | 3 | 0.70 |
-| planA | rejected orchestration plan |  | strongEvidenceConstraint | evidenceCoverageCriterion | 1 | 2 | 1.00 | 8 | 1.00 |
-| planA | rejected orchestration plan |  | fewToolCallsConstraint | toolUsageCriterion | 1 | 2 | 1.00 | 8 | 1.00 |
+| planB | selected orchestration plan |  | strong<wbr>Evidence<wbr>Constraint | evidence<wbr>Coverage<wbr>Criterion | 1 | 1 | 1.70 | 3 | 0.70 |
+| planB | selected orchestration plan |  | few<wbr>Tool<wbr>Calls<wbr>Constraint | tool<wbr>Usage<wbr>Criterion | 1 | 1 | 1.70 | 3 | 0.70 |
+| planA | rejected orchestration plan |  | strong<wbr>Evidence<wbr>Constraint | evidence<wbr>Coverage<wbr>Criterion | 1 | 2 | 1.00 | 8 | 1.00 |
+| planA | rejected orchestration plan |  | few<wbr>Tool<wbr>Calls<wbr>Constraint | tool<wbr>Usage<wbr>Criterion | 1 | 2 | 1.00 | 8 | 1.00 |
 
 Plan A violates no hard constraint. It ranks second because it falls short on the few external tool calls soft constraint (8 tool calls against plan B's 3), even though it has full evidence coverage (1.00 against 0.70).
 
@@ -562,7 +573,7 @@ WHERE {
 
 **Answer** (7 rows, in any order):
 
-| skillLabel | dependsOnSkillLabel |
+| skill<wbr>Label | depends<wbr>On<wbr>Skill<wbr>Label |
 |---|---|
 | product selection skill | personalized supplement recommendation skill |
 | supplement safety screening skill | personalized supplement recommendation skill |
@@ -623,7 +634,7 @@ WHERE {
 
 **Answer** (Snap SPARQL 6.0.0 with a reasoner started), one row:
 
-| preconditionLabel | confirmedBy | requiredInputLabel | generatedBy | producerSkillLabel |
+| precondition<wbr>Label | confirmed<wbr>By | required<wbr>Input<wbr>Label | generated<wbr>By | producer<wbr>Skill<wbr>Label |
 |---|---|---|---|---|
 |  |  | candidate supplements (Jessica) |  | personalized supplement recommendation skill |
 
