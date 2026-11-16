@@ -12,8 +12,7 @@
 	<!ENTITY v "https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/">
 	<!ENTITY xs "http://www.w3.org/2001/XMLSchema#">
 ]>
-<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/"
-	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
+<rdf:RDF xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:cmns-pas="https://www.omg.org/spec/Commons/PartiesAndSituations/"
 	xmlns:dcterms="http://purl.org/dc/terms/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -37,11 +36,11 @@
 		<dcterms:creator>Andy Cheng</dcterms:creator>
 		<dcterms:creator>Carina Liu</dcterms:creator>
 		<dcterms:creator>Nipun Deelaka</dcterms:creator>
-		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/0.12.0"/>
-		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/"/>
 		<dcterms:modified>11.16.2026</dcterms:modified>
-		<skos:changeNote>11.16.2026 (0.12.0): First versioned release. Expanded the individual set over time, policies, measurements and rooms to test the combinatorial inference: 8 rooms (three ICU rooms, an operating room, an airborne infection isolation room, a protective environment room, a patient room and a corridor) in 4 HVAC systems, 20 compliance policies (10 minimum-bounded, 4 maximum-bounded and 6 range-bounded) under 5 CDC compliance frameworks, 137 measurements, and 15 assessment contexts with 60 policy assessments, tested at 08:00, 14:30 and 20:00 on 9 October 2026 (the ICU rooms at 14:30). Commented out the asserted UnknownPolicyAssessment type on the PE-01 08:00 humidity policy assessment (and the UnknownComplianceAssessment type on its compliance assessment) so that the pySHACL closed-world check has to infer the unknown policy assessment itself; the unknown compliance assessment follows from the ontology definition. Renamed the remaining snake_case and lower-case class references to the ontology's UpperCamelCase classes (CDCComplianceFramework, AirborneInfectionIsolationRoom, OperatingRoom, PatientCorridor, PatientRoom, ProtectiveEnvironmentRoom, RoomVolume); added atTime to all 15 assessment contexts; set M_0412 to the 14:30 time of its context and recorded it in ICU_01, so that each context has a single time; and removed the asserted isEvaluatedAt and usesMeasurement links (118 statements), which the ontology now infers with SWRL rule E1 and its property chains.</skos:changeNote>
-		<skos:changeNote>11.11.2026: Updated the base URI to the shortened ontology URI and added annotations to the individuals file (history taken from the project's commit log).</skos:changeNote>
+		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/"/>
+		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/0.12.0"/>
+		<skos:changeNote>11.11.2026: Updated the base URI to the shortened ontology URI and added annotations to the individuals file (history taken from the project&apos;s commit log).</skos:changeNote>
+		<skos:changeNote>11.16.2026 (0.12.0): First versioned release. Expanded the individual set over time, policies, measurements and rooms to test the combinatorial inference: 8 rooms (three ICU rooms, an operating room, an airborne infection isolation room, a protective environment room, a patient room and a corridor) in 4 HVAC systems, 20 compliance policies (10 minimum-bounded, 4 maximum-bounded and 6 range-bounded) under 5 CDC compliance frameworks, 137 measurements, and 15 assessment contexts with 60 policy assessments, tested at 08:00, 14:30 and 20:00 on 9 October 2026 (the ICU rooms at 14:30). Commented out the asserted UnknownPolicyAssessment type on the PE-01 08:00 humidity policy assessment (and the UnknownComplianceAssessment type on its compliance assessment) so that the pySHACL closed-world check has to infer the unknown policy assessment itself; the unknown compliance assessment follows from the ontology definition. Renamed the remaining snake_case and lower-case class references to the ontology&apos;s UpperCamelCase classes (CDCComplianceFramework, AirborneInfectionIsolationRoom, OperatingRoom, PatientCorridor, PatientRoom, ProtectiveEnvironmentRoom, RoomVolume); added atTime to all 15 assessment contexts; set M_0412 to the 14:30 time of its context and recorded it in ICU_01, so that each context has a single time; and removed the asserted isEvaluatedAt and usesMeasurement links (118 statements), which the ontology now infers with SWRL rule E1 and its property chains.</skos:changeNote>
 	</owl:Ontology>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/AF_412">
@@ -493,8 +492,6 @@
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/A_PE_01_0800">
 		<rdf:type rdf:resource="&v;ComplianceAssessment"/>
-		<!-- Following subclass inference will be happen by SHACL closed-world inference, but if you want to validate the ontology consistency uncomment and run the reasoner. -->
-		<!-- <rdf:type rdf:resource="&v;UnknownComplianceAssessment"/> -->
 		<rdf:type>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&v;hasPolicyAssessment"/>
@@ -2782,7 +2779,6 @@
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/PA_PE_01_0800_P_PE_RH">
 		<rdf:type rdf:resource="&v;PolicyAssessment"/>
-		<!-- <rdf:type rdf:resource="&v;UnknownPolicyAssessment"/> -->
 		<rdfs:label>policy assessment PE-01 08:00 relative humidity maximum (PE room)</rdfs:label>
 		<v:evaluatedPolicy rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/test-individuals/P_PE_RH"/>
 	</owl:NamedIndividual>
