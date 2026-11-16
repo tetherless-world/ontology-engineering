@@ -84,7 +84,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1b. Test data and pipeline</td>
-    <td><a href="individuals.rdf" target="_blank">Test individuals</a> / <a href="code/README.md" target="_blank" rel="noopener noreferrer">Python generator, derived-measurement calculations and pySHACL check</a> </td>
+    <td><a href="ventilation-compliance-individuals.rdf" target="_blank">Test individuals</a> </td>
   </tr>
   <tr>
     <td>2. Term List</td>
