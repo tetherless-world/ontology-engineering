@@ -3,7 +3,7 @@ layout: default
 title: demo
 ---
 
-[How to run](#how-to-run-the-queries) | [Test scenario](#test-scenario) | [Use case 1](#use-case-1--locating-the-systems-and-sensor-readings-that-relate-to-a-room) | [Use case 2](#use-case-2--verifying-the-ventilation-compliance-of-critical-care-rooms) | [Use case 3](#use-case-3--tracing-compliance-failures-to-hvac-systems-and-components) | [Coverage](#what-the-queries-cover)
+[How to run](#how-to-run-the-queries) | [Run the assessment pipeline](#run-the-assessment-pipeline) | [Test scenario](#test-scenario) | [Use case 1](#use-case-1--locating-the-systems-and-sensor-readings-that-relate-to-a-room) | [Use case 2](#use-case-2--verifying-the-ventilation-compliance-of-critical-care-rooms) | [Use case 3](#use-case-3--tracing-compliance-failures-to-hvac-systems-and-components) | [Coverage](#what-the-queries-cover)
 
 ## Demonstration and Queries
 
@@ -30,6 +30,30 @@ PREFIX qu:   <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 ```
+
+## Run the assessment pipeline
+
+The reference pipeline derives the calculated measurements and runs the closed-world
+SHACL rules that classify policy assessments with missing evidence as unknown. From the
+project directory, run:
+
+```bash
+cd code
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python run_pipeline.py --out generated.rdf
+python cq_expected.py
+```
+
+The output is written to `code/generated.rdf`; the command does not overwrite the
+hand-edited test individuals. Use `python run_pipeline.py --check` to run all checks
+without writing an RDF file, or pass another path to `--out`. The most recent SHACL
+validation report is written to `code/shacl/last-report.txt`.
+
+The pipeline can be run repeatedly: existing assessment contexts and derived
+measurements are not duplicated. For implementation details and the calculation
+formulas, see the [pipeline documentation](code/README.md).
 
 ## Test scenario
 

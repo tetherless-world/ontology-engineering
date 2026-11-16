@@ -80,7 +80,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td><a href="ventilation-compliance.rdf" target="_blank">Your Ontology</a></td>
+    <td><a href="ventilation-compliance.rdf" target="_blank">Your Ontology</a> / <a href="ontology.html">Ontology documentation</a></td>
   </tr>
   <tr>
     <td>1b. Test data and pipeline</td>
@@ -93,6 +93,10 @@ List resources you think a reader would benefit from to use your project. We lis
   <tr>
     <td>2. Competency Questions</td>
     <td><a href="https://docs.google.com/document/d/17PMngIgp1zkGrxAJy3VSjCbdqSPk6pXczj8IaPUhMn4/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Google drive file</a> / <a href="OE 9 Team HVCC SPARQL Queries.txt" target="_blank" rel="noopener noreferrer">local file</a> </td>
+  </tr>
+  <tr>
+    <td>2b. Demo and run instructions</td>
+    <td><a href="demo.html">Queries, expected results, and assessment pipeline</a></td>
   </tr>
   <tr>
     <td>3. Presentations:</td>
