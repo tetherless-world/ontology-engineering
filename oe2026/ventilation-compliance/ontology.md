@@ -250,9 +250,9 @@ This is modules 4a and 4b of the conceptual model. It follows the NIST OSCAL ass
 *Module 4b: policy assessments and their measurements.*
 
 - `Assessment` is the abstract root ("evidence evaluated against criteria to determine an outcome").
-- `AssessmentContext` fixes *what* is being assessed and *under which rules*: `forRoom` (the room), `usesFramework` (the compliance framework) and `usesMeasurement` (the measurements logged for this test). Both `uses*` properties specialise `cmns-cxtdsg:uses`.
+- `AssessmentContext` fixes *what* is being assessed and *under which rules*: `forRoom` (the room), `atTime` (exactly one `xsd:dateTime`, the moment of the assessment), `usesFramework` (the compliance framework) and `usesMeasurement` (the measurements used for this test, which are those taken in that room at `atTime`; inferred, not typed in). Both `uses*` properties specialise `cmns-cxtdsg:uses`.
 - `ComplianceAssessment` is the room-level verdict. It `hasContext` an assessment context and `hasPolicyAssessment` one policy assessment per policy that was tested. `evaluatedCompliance` can additionally point straight at the framework.
-- `PolicyAssessment` is the unit of evaluation: it `evaluatedPolicy` one `CompliancePolicy`, and the measurement compared against it is linked by `isEvaluatedAt` (inverse `evaluatesMeasurement`). The context may also be linked to the policy assessment with `appliesToPolicyAssessment`.
+- `PolicyAssessment` is the unit of evaluation: it `evaluatedPolicy` one `CompliancePolicy`, and the measurement compared against it is linked by `isEvaluatedAt` (inverse `evaluatesMeasurement`). That link is inferred by rule E1 (see Layer 2) from the context's room and time and the kind of measurement the policy evaluates (`evaluatesOnKind`). The context is linked to its policy assessments by `appliesToPolicyAssessment`, also inferred.
 
 Status is modelled as **class membership**, not as a status attribute, so that it can be inferred:
 
@@ -291,13 +291,13 @@ The conceptual diagram uses a few short-hand names that were replaced by reused 
 |---|---|
 | `Measurement.numericalValue` | `cmns-qtu:hasQuantityValue` → `ScalarQuantityValue` with `hasNumericValue` and `hasMeasurementUnit` |
 | `CompliancePolicy.minimumValue` / `maximumValue` | `cmns-qtu:hasLowerBound` / `cmns-qtu:hasUpperBound` → `ScalarQuantityValue` |
-| `AssessmentContext.atTime` | `prov:generatedAtTime` on each measurement the context uses |
+| `AssessmentContext.atTime` | `atTime` (functional `xsd:dateTime` data property); each `AssessmentContext` has exactly one. The measurements it uses are those whose `prov:generatedAtTime` equals this time |
 | `effects` / `isEffectedBy` | `cmns-pas:actsOn` / `cmns-pas:isAffectedBy` |
 | `derivedFrom` | `prov:wasDerivedFrom` (plus the transitive helper `isTransitivelyDerivedFrom`) |
 | `isPartOf+` | `cmns-col:isPartOf` (transitive), `cmns-col:hasPart` (transitive, inverse) |
 | `connectedTo` | `connectsTo` |
 | `hasComplianceAssessment` (Room → ComplianceAssessment) | reached through `hasContext` ∘ `forRoom`; not a separate property |
-| `isEvaluatedBy` (Measurement → PolicyAssessment) | `isEvaluatedBy`; the encoded modelling of the PolicyAssessment side uses `isEvaluatedAt` / `evaluatesMeasurement` (Step 7) |
+| `isEvaluatedBy` (Measurement → PolicyAssessment) | `isEvaluatedAt` (inverse `evaluatesMeasurement`), inferred by rules E1. `isEvaluatedBy` itself is the inverse of `evaluatesOn` (measurement → policy) |
 | `Sensors` | `saref4bldg:Sensor` |
 
 ## How the Ontology Works
@@ -316,10 +316,15 @@ These need only a DL reasoner and no rules:
 | Readings of the room next door | property chain `recordedIn ∘ neighbor ⊑ recordedInNeighbor` |
 | Full derivation history of a measurement | `prov:wasDerivedFrom ⊑ isTransitivelyDerivedFrom`, the latter transitive |
 | Room-level verdict from policy-level verdicts | the four `ComplianceAssessment` definitions plus per-individual closure axioms |
+| A context belongs to one moment | `AssessmentContext ⊑ atTime exactly 1 xsd:dateTime`, `atTime` functional |
+| Which policy assessments a context applies to | property chain `hasContext⁻ ∘ hasPolicyAssessment ⊑ appliesToPolicyAssessment` |
+| Which measurements a context uses | property chain `appliesToPolicyAssessment ∘ evaluatesMeasurement ⊑ usesMeasurement` |
+| Which measurements a policy was evaluated on | property chain `evaluatedPolicy⁻ ∘ evaluatesMeasurement ⊑ evaluatesOn` |
+| Kind of a policy or measurement (for rule E1) | `evaluatesOnKind value X` on each policy class, `hasKind value X` on each measurement class |
 
-### Layer 2 – SWRL rules (numeric comparison)
+### Layer 2 – SWRL rules (evidence selection and numeric comparison)
 
-OWL cannot compare the numeric values of two different individuals, so the comparison of a measurement with a policy bound is done by SWRL rules S1 to S7, evaluated by Pellet. All seven share the same shape; the min-bounded "unsatisfied" rule is:
+Rule E1 (below) selects the evidence; the rules S1 to S11 then use it. OWL cannot compare the numeric values of two different individuals, so the comparison of a measurement with a policy bound is done by SWRL rules S1 to S7, evaluated by Pellet. All seven share the same shape; the min-bounded "unsatisfied" rule is:
 
 ```
 PolicyAssessment(?a) ^ evaluatedPolicy(?a, ?p) ^ MinBoundedCompliancePolicy(?p)
@@ -351,9 +356,43 @@ Rules S8 to S11 then attach equipment to a failed assessment:
 | S10 | System association | any `BuildingServiceSystem` that `hasPart` (directly or nested) an associated component → `wasAssociatedWithSystem` |
 | S11 | Compliance-level component lift | lift `wasAssociatedWithComponent` from the policy assessment up to its `ComplianceAssessment` |
 
+Rule E1 chooses the evidence, so that no one picks measurements by hand. Policies are shared (for example `P_AII_TEMP` serves the 08:00, 14:30 and 20:00 assessments), so the choice is anchored on the policy assessment, which is unique per context and policy, and not on the policy:
+
+```
+ComplianceAssessment(?ca) ^ hasContext(?ca, ?c) ^ hasPolicyAssessment(?ca, ?pa)
+  ^ evaluatedPolicy(?pa, ?p) ^ evaluatesOnKind(?p, ?k)
+  ^ atTime(?c, ?t) ^ forRoom(?c, ?r)
+  ^ hasKind(?m, ?k) ^ prov:generatedAtTime(?m, ?t) ^ recordedIn(?m, ?r)
+  -> isEvaluatedAt(?m, ?pa)
+```
+
+The rule is one rule for every policy, because the policy-to-measurement pairing is data the rule can join on, not a name written into the rule. SWRL cannot read a class-level restriction such as `RelativeHumidity evaluatesOn some Humidity`, so the pairing is also stated as two `owl:hasValue` axioms on a *kind*, which is a measurement class used as an individual (OWL 2 punning):
+
+| Axiom | Example | Effect |
+|---|---|---|
+| policy class `evaluatesOnKind value X` | `RelativeHumidity` ⊑ `evaluatesOnKind value Humidity` | every relative-humidity policy points at the kind `Humidity` |
+| measurement class `hasKind value X` | `Humidity` ⊑ `hasKind value Humidity` | every humidity measurement (and subclass) has the kind `Humidity` |
+
+Kinds currently defined: `Humidity`, `IncomingTransferAirflowRate`, `OutdoorAirChangePerHour`, `Temperature`, `TotalAirChangePerHour`.
+
+**To extend the framework**
+- *A new policy for an existing measurement type:* add the policy class with `evaluatesOn some X` and `evaluatesOnKind value X`. No rule changes.
+- *A new measurement type:* add the measurement class with `hasKind value <itself>`, and declare the class IRI also as an `owl:NamedIndividual`.
+- `code/run_pipeline.py` warns when a policy class has `evaluatesOn some X` but no matching `evaluatesOnKind value X`.
+
+The rest is derived by property chains, in one direction only (never from `evaluatesOn` back to `isEvaluatedAt`, which would close a triangle and give every policy assessment of a shared policy all of its measurements):
+
+| Property | Chain |
+|---|---|
+| `appliesToPolicyAssessment` | `hasContext⁻` ∘ `hasPolicyAssessment` |
+| `usesMeasurement` | `appliesToPolicyAssessment` ∘ `evaluatesMeasurement` |
+| `evaluatesOn` | `evaluatedPolicy⁻` ∘ `evaluatesMeasurement` |
+
+`isEvaluatedBy` stays the inverse of `evaluatesOn` (measurement → policy); the measurement → policy assessment link is `isEvaluatedAt`. The individuals file therefore contains no `isEvaluatedAt` or `usesMeasurement` assertions: start the reasoner and they appear (checked with Pellet: 59 `isEvaluatedAt`, 59 `usesMeasurement` and 59 `evaluatesOn` links). Every `AssessmentContext` must carry its `atTime`, and every measurement a room (`recordedIn` or `measuredIn`) and a `prov:generatedAtTime`, or no rule can select it. SHACL rule U1 below only sees inferred links, so run it on the reasoner output; `code/run_pipeline.py` does this by mirroring rule E1 in Python in memory.
+
 ### Layer 2b – closed-world SHACL rules (missing evidence)
 
-Rules S1 to S7 can only fire when a measurement exists. When a sensor did not answer, nothing is asserted, and under the open-world assumption the reasoner cannot tell "no reading" from "reading not yet stated". The project therefore runs two SHACL-AF rules with pySHACL over the data before it is opened in Protégé ([unknown-policy-assessment.ttl](unknown-policy-assessment.ttl)):
+Rules E1 and S1 to S7 can only fire when a measurement exists. When a sensor did not answer, nothing is asserted, and under the open-world assumption the reasoner cannot tell "no reading" from "reading not yet stated". The project therefore runs two SHACL-AF rules with pySHACL over the data before it is opened in Protégé ([unknown-policy-assessment.ttl](unknown-policy-assessment.ttl)):
 
 | Rule | Condition (closed world) | Conclusion |
 |---|---|---|
@@ -376,11 +415,12 @@ In the proposed system (see the [architecture and activity diagrams](index#syste
 
 The test individuals describe three ICU rooms, each with an outdoor-air-change reading and a relative-humidity reading, two HVAC systems and the CDC framework with its two encoded policies.
 
-1. **Policy level.** For ICU-01, the outdoor air change rate M-0412 is 1.4 ACH against a lower bound of 2.0 ACH, so S2 fires and `PA_ICU_01_ACH` becomes an `UnsatisfiedPolicyAssessment`. Relative humidity is 45 %RH inside 30 to 60 %RH, so S5 makes `PA_ICU_01_RH` a `SatisfiedPolicyAssessment`. ICU-02 (2.6 ACH, 40 %RH) and ICU-03 (3.1 ACH, 50 %RH) satisfy both.
-2. **Room level.** With its closure axiom, `A_ICU_01` has one satisfied and one unsatisfied policy assessment and is classified as a `PartiallySatisfiedComplianceAssessment`; `A_ICU_02` and `A_ICU_03` are `SatisfiedComplianceAssessment`s.
-3. **Which system.** HVAC-3 `hasServiceComponent` VAV-412, which `connectsTo` ICU-01, so the chain infers `HVAC-3 servesRoom ICU-01`. HVAC-4 serves only ICU-02 and ICU-03.
-4. **Which components.** M-0412 was derived from the outdoor air flow rate to the room M-0413, which was derived from the supply air flow rate M-0411. VAV-412, DF-412, SD-3 and FL-3 all `actsOn` M-0411, so S9 associates all four with the failed policy assessment. AHU-3 is correctly absent: it is part of HVAC-3 but acts on nothing in the failing chain.
-5. **Which system is implicated.** FL-3 is asserted only as part of AHU-3, but `hasPart` is transitive, so S10 lifts the association to HVAC-3 without any hard-coded reference to it.
+1. **Evidence.** The context `C_ICU_01` has `atTime` 14:30 and `forRoom` ICU-01. For the outdoor-air-change policy, which `evaluatesOnKind` `OutdoorAirChangePerHour`, rule E1 selects M-0412, the `OutdoorAirChangePerHour` measurement recorded in ICU-01 at 14:30, and links it to `PA_ICU_01_ACH` by `isEvaluatedAt`; the humidity measurement is selected for `PA_ICU_01_RH` in the same way. No link is typed in by hand.
+2. **Policy level.** For ICU-01, the outdoor air change rate M-0412 is 1.4 ACH against a lower bound of 2.0 ACH, so S2 fires and `PA_ICU_01_ACH` becomes an `UnsatisfiedPolicyAssessment`. Relative humidity is 45 %RH inside 30 to 60 %RH, so S5 makes `PA_ICU_01_RH` a `SatisfiedPolicyAssessment`. ICU-02 (2.6 ACH, 40 %RH) and ICU-03 (3.1 ACH, 50 %RH) satisfy both.
+3. **Room level.** With its closure axiom, `A_ICU_01` has one satisfied and one unsatisfied policy assessment and is classified as a `PartiallySatisfiedComplianceAssessment`; `A_ICU_02` and `A_ICU_03` are `SatisfiedComplianceAssessment`s.
+4. **Which system.** HVAC-3 `hasServiceComponent` VAV-412, which `connectsTo` ICU-01, so the chain infers `HVAC-3 servesRoom ICU-01`. HVAC-4 serves only ICU-02 and ICU-03.
+5. **Which components.** M-0412 was derived from the outdoor air flow rate to the room M-0413, which was derived from the supply air flow rate M-0411. VAV-412, DF-412, SD-3 and FL-3 all `actsOn` M-0411, so S9 associates all four with the failed policy assessment. AHU-3 is correctly absent: it is part of HVAC-3 but acts on nothing in the failing chain.
+6. **Which system is implicated.** FL-3 is asserted only as part of AHU-3, but `hasPart` is transitive, so S10 lifts the association to HVAC-3 without any hard-coded reference to it.
 
 The regenerated test data adds four more rooms of different types, each tested at 08:00, 14:30 and 20:00 on the same day, with full derivation chains from the supply, return, exhaust and air-handler readings. Three cases are worth tracing on the [demo page](demo):
 
@@ -392,7 +432,8 @@ The queries that retrieve each of these results, with their expected rows, are o
 
 ### Known limitations and open points
 
-- **Unknown status needs the SHACL step.** `UnknownPolicyAssessment` cannot be derived by OWL, because "no measurement was logged" is an absence. It is materialised by the pySHACL rules in [code/](code/README.md) before the file is opened in Protégé; data produced without that step would leave such policy assessments unclassified rather than unknown.
+- **Unknown status needs the SHACL step.** `UnknownPolicyAssessment` cannot be derived by OWL, because "no measurement was logged" is an absence. It is materialised by the pySHACL rules in [code/](code/README.md) before the file is opened in Protégé; data produced without that step would leave such policy assessments unclassified rather than unknown. Because the evidence links are now inferred, U1 must see them: the pipeline mirrors rule E1 in Python for this, and U1 run directly on the raw individuals would mark every policy assessment unknown.
+- **Evidence selection.** Rule E1 links every measurement of the right kind recorded in the context's room at exactly `atTime`, so several such readings would all become evidence for one policy assessment; the data is expected to hold one. Times must match exactly, with no tolerance window. It also relies on punning (a measurement class used as an individual), which Pellet handles but which has not been tried in Protégé's SWRL tab.
 - **Mixed states.** With the revised definition, unknown takes precedence: an assessment with unsatisfied *and* unknown policy assessments is both `UnknownComplianceAssessment` and, if it also has a satisfied one, `PartiallySatisfiedComplianceAssessment`. Queries that report failures should treat the unknown class as "not verified" rather than as a failure.
 - **Reasoner.** The SWRL built-ins `swrlb:lessThan` and `swrlb:greaterThanOrEqual` are accepted by Pellet but rejected by HermiT, so the rules and the classification above require Pellet.
 - **Unit conversion** is not performed; measurement and bound must already share a unit.
@@ -402,7 +443,7 @@ The queries that retrieve each of these results, with their expected rows, are o
 
 | File | Contents |
 |---|---|
-| [ventilation-compliance.rdf](ventilation-compliance.rdf) | the ontology (TBox): classes, properties, restrictions, units, and SWRL rules S1 to S11 |
+| [ventilation-compliance.rdf](ventilation-compliance.rdf) | the ontology (TBox): classes, properties, restrictions, units, and SWRL rules S1 to S11 and E1 |
 | [individuals.rdf](individuals.rdf) | test ABox `…/test-individuals/`: the hand-authored ICU scenario (three ICU rooms, HVAC-3 and HVAC-4, one test) plus the generated scenario (operating room, airborne infection isolation room, protective environment room, patient room and a corridor; HVAC-5 and HVAC-6; CDC policies per room type; readings at three test times; derived measurements with provenance; 15 compliance assessments). Imports the ontology. |
 | [catalog-v001.xml](catalog-v001.xml) | Protégé XML catalog that resolves the four imports to local copies in `files/imports/` (prov-o.rdf, saref4bldg.rdf, core.rdf, qun.rdf) |
 | [OE 9 Team HVCC SPARQL Queries.txt](OE%209%20Team%20HVCC%20SPARQL%20Queries.txt) | the competency-question queries and how to run them |
