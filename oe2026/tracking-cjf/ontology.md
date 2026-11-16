@@ -130,7 +130,7 @@ Each relationship between conversation moves is an individual that connects a so
 
 ### Previous Conceptual Models
 
-- OE Week 10 conceptual model: [.docx](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx) and [.pdf](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf)
+- OE Week 10 conceptual model: [.docx](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf), and <a href="files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio" download>Download editable diagrams (.drawio, OE Week 11)</a>
 - OE Week 9 conceptual model: [.docx](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.drawio). Its figures remain in `images/conceptual-model/oe9/`, and the [asset notes](files/conceptual-models/oe9/README.md) describe how they were prepared.
 - [OE Week 8 conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx)
 - [OE Week 6 conceptual model (.docx)](files/conceptual-models/oe6/OE_6_TeamCJF_ConceptualModel.docx)
