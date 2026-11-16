@@ -1,0 +1,57 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix qu:    <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix v:     <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/> .
+@prefix vsh:   <https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/shapes/> .
+
+#
+# Closed-world checks for the CareAir ventilation-compliance data.
+#
+# OWL cannot conclude that a policy assessment has *no* evidence, because under the
+# open-world assumption a missing measurement might simply be unstated.  
+#
+
+vsh:
+    a owl:Ontology ;
+    rdfs:label "CareAir closed-world shapes" ;
+    sh:declare [ sh:prefix "v" ;    sh:namespace "https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/"^^xsd:anyURI ] ,
+               [ sh:prefix "rdf" ;  sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ] ,
+               [ sh:prefix "prov" ; sh:namespace "http://www.w3.org/ns/prov#"^^xsd:anyURI ] ,
+               [ sh:prefix "qu" ;   sh:namespace "https://www.omg.org/spec/Commons/QuantitiesAndUnits/"^^xsd:anyURI ] .
+
+# ---------------------------------------------------------------------------
+# Rule U1: a policy assessment that evaluates no measurement is unknown.
+# ---------------------------------------------------------------------------
+vsh:PolicyAssessmentEvidenceShape
+    a sh:NodeShape ;
+    sh:targetClass v:PolicyAssessment ;
+    sh:severity sh:Warning ;
+    rdfs:comment "Every policy assessment should evaluate at least one measurement. One that does not is classified UnknownPolicyAssessment (rule U1) and reported as a warning: it is expected data (a sensor did not answer), not an error." ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        rdfs:label "U1 no evidence -> UnknownPolicyAssessment" ;
+        sh:order 1 ;
+        sh:prefixes vsh: ;
+        sh:construct """
+            CONSTRUCT { $this rdf:type v:UnknownPolicyAssessment . }
+            WHERE {
+                FILTER NOT EXISTS { ?m v:isEvaluatedAt $this . }
+                FILTER NOT EXISTS { $this v:evaluatesMeasurement ?m2 . }
+            }
+        """ ;
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Policy assessment evaluates no measurement: no reading was logged for the policy it checks, so its status is unknown, not satisfied." ;
+        sh:prefixes vsh: ;
+        sh:select """
+            SELECT $this WHERE {
+                FILTER NOT EXISTS { ?m v:isEvaluatedAt $this . }
+                FILTER NOT EXISTS { $this v:evaluatesMeasurement ?m2 . }
+            }
+        """ ;
+    ] .
