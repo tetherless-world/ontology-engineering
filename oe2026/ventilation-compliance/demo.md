@@ -90,7 +90,7 @@ Each room has supply, return, exhaust (except the operating room), temperature a
 
 The three failures on AHU-6 at 20:00 share one cause in the data: its outdoor-air damper OAD-6 is partly closed, so the outdoor air fraction drops from 0.30 to 0.12. Nothing in the data says so; CQ 3.2 and 3.3 recover it through the derivation chain.
 
-The two unknown cases differ in where the evidence went missing. In PE-01 the room's own humidity sensor did not answer. In OR-01 every room sensor answered, but the air handler's outdoor-air sensor did not, so no outdoor air change rate could be derived for the room. Both policy assessments are typed `UnknownPolicyAssessment` in the file; in practice that type comes from the closed-world SHACL check in [code/shacl/](code/shacl/unknown-policy-assessment.ttl), because OWL cannot conclude that a measurement is absent. The room-level verdicts are left to the reasoner.
+The two unknown cases differ in where the evidence went missing. In PE-01 the room's own humidity sensor did not answer. In OR-01 every room sensor answered, but the air handler's outdoor-air sensor did not, so no outdoor air change rate could be derived for the room. Both policy assessments are typed `UnknownPolicyAssessment` in the file; in practice that type comes from the closed-world SHACL check in [code/shacl/](unknown-policy-assessment.ttl), because OWL cannot conclude that a measurement is absent. The room-level verdicts are left to the reasoner.
 
 ## Use case 1 – Locating the systems and sensor readings that relate to a room
 
@@ -227,7 +227,7 @@ SELECT ?room ?assessment ?policy WHERE {
 ORDER BY ?room
 ```
 
-**Reasoning.** None in OWL: "no evidence" is a closed-world conclusion. The type is asserted in the test data; in practice the SHACL rule U1 in [code/shacl/unknown-policy-assessment.ttl](code/shacl/unknown-policy-assessment.ttl) asserts it for every policy assessment that evaluates no measurement. This is the use case's alternate flow (steps 4a to 4e): such rooms are reported as not verified rather than merged with the compliant ones.
+**Reasoning.** None in OWL: "no evidence" is a closed-world conclusion. The type is asserted in the test data; in practice the SHACL rule U1 in [unknown-policy-assessment.ttl](unknown-policy-assessment.ttl) asserts it for every policy assessment that evaluates no measurement. This is the use case's alternate flow (steps 4a to 4e): such rooms are reported as not verified rather than merged with the compliant ones.
 
 **Result (2 rows).** OR-01 is the indirect case, where an air-handler reading was missing; PE-01 is the direct case, where the room's own sensor gave no reading.
 

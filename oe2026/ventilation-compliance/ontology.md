@@ -353,7 +353,7 @@ Rules S8 to S11 then attach equipment to a failed assessment:
 
 ### Layer 2b – closed-world SHACL rules (missing evidence)
 
-Rules S1 to S7 can only fire when a measurement exists. When a sensor did not answer, nothing is asserted, and under the open-world assumption the reasoner cannot tell "no reading" from "reading not yet stated". The project therefore runs two SHACL-AF rules with pySHACL over the data before it is opened in Protégé ([unknown-policy-assessment.ttl](code/shacl/unknown-policy-assessment.ttl)):
+Rules S1 to S7 can only fire when a measurement exists. When a sensor did not answer, nothing is asserted, and under the open-world assumption the reasoner cannot tell "no reading" from "reading not yet stated". The project therefore runs two SHACL-AF rules with pySHACL over the data before it is opened in Protégé ([unknown-policy-assessment.ttl](unknown-policy-assessment.ttl)):
 
 | Rule | Condition (closed world) | Conclusion |
 |---|---|---|
