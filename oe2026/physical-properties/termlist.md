@@ -5,7 +5,7 @@ title: Term List
 
 ## Current Clean Terminology List
 
-<iframe src="files/OE_11_TeamAffordance_TermList.xlsx" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTwX-1K9GKFokuQ93IPuNC8TnqSh52IDlBOh7VOej__c9hDZoKKksYpFllt0Vfpfw/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
 
 This is the latest available **clean** term list located in the team's Assignment 9 Google Drive folder. The source retains the title “Copy of OE_6_TeamAffordance_CuratedTermList_Clean”; it was last modified on October 22, 2026 and retrieved on October 25, 2026. The assignment number in its filename is preserved to avoid implying a different document version.
 
