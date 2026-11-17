@@ -18,7 +18,8 @@
 	<!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
-<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/"
+<rdf:RDF xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/"
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/"
 	xmlns:cmns-col="https://www.omg.org/spec/Commons/Collections/"
 	xmlns:cmns-cxtdsg="https://www.omg.org/spec/Commons/ContextualDesignators/"
 	xmlns:cmns-qtu="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"
@@ -38,12 +39,17 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/">
+		<rdfs:label xml:lang="de">Lüftungs-Konformitätsontologie</rdfs:label>
+		<rdfs:label xml:lang="es">ontología de cumplimiento de ventilación</rdfs:label>
+		<rdfs:label xml:lang="en">ventilation compliance ontology</rdfs:label>
 		<dct:abstract>Enable a hospital infection preventionist or facilities engineer to determine whether critical care spaces currently satisfy the ventilation requirements that their clinical designation imposes; to identify which air-handling equipment is responsible when a space falls out of compliance or would fall out of compliance during a planned outage; and to keep both the determination and its history correct when a space is re-designated to a different clinical use.</dct:abstract>
+		<dct:created>2026-10-01</dct:created>
 		<dct:creator>Ahosan Habib</dct:creator>
 		<dct:creator>Andy Cheng</dct:creator>
 		<dct:creator>Carina Liu</dct:creator>
 		<dct:creator>Nipun Deelaka</dct:creator>
 		<dct:modified>11.16.2026</dct:modified>
+		<dct:provenance>Terms were taken from the project term list (the definitions of the unit individuals were written by the project); definitions are adapted from ASHRAE Terminology, the CDC guidelines, SAREF4BLDG, RealEstateCore, PROV-O and ODRL, as cited on each term by dct:source and dct:bibliographicCitation.</dct:provenance>
 		<dct:publisher>ventilation compliance team, OE 2026</dct:publisher>
 		<owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
 		<owl:imports rdf:resource="https://saref.etsi.org/saref4bldg/v2.1.1/"/>
@@ -51,7 +57,13 @@
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<owl:priorVersion rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/0.11.0"/>
 		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/0.12.0"/>
-		<skos:changeNote>11.16.2026 (0.12.0): Added skos:example annotations to nine classes and properties; added the datatype property atTime with an exactly-one axiom on AssessmentContext; replaced hand-written evidence links with inference: the SWRL rule E1 selects the measurement of each policy assessment from the context room and time and the kind of measurement its policy evaluates (new object properties evaluatesOnKind and hasKind, with measurement classes used as kind individuals), and property chains infer appliesToPolicyAssessment, usesMeasurement and evaluatesOn; and declared the prior version IRI as an owl:Ontology so that it has a type.</skos:changeNote>
+		<owl:versionInfo>0.12.0</owl:versionInfo>
+		<skos:changeNote>11.16.2026 (0.12.0): Added skos:example annotations to nine classes and properties; reused prov:atTime with an exactly-one axiom on AssessmentContext; replaced hand-written evidence links with inference: the SWRL rule E1 selects the measurement of each policy assessment from the context room and time and the kind of measurement its policy evaluates (new object properties evaluatesOnKind and hasKind, with measurement classes used as kind individuals), and property chains infer appliesToPolicyAssessment, usesMeasurement and evaluatesOn; and declared the prior version IRI as an owl:Ontology so that it has a type.</skos:changeNote>
+		<skos:changeNote>11.16.2026 (0.12.0): Added the missing definition sources from the curated term list (Assessment, CDCComplianceFramework, the exhaust classes, OutdoorDischarge, the three bounded policy classes, wasAssociatedWithComponentIndirectly, evaluatesOnKind, hasKind, prov:atTime) and definitions for the ten unit individuals.</skos:changeNote>
+		<skos:changeNote>11.16.2026 (0.12.0): Added usage-focused annotations: abbreviations and symbolic names (skos:altLabel), Spanish, German and French labels, scope, usage, editorial and history notes (skos:scopeNote, skos:note, skos:editorialNote, skos:historyNote), and provenance (dct:provenance, dct:created, owl:versionInfo) on the ontology header and on the main classes and properties.</skos:changeNote>
+		<skos:editorialNote>Verdict classes (satisfied, partially satisfied, unsatisfied, unknown) are defined for inference. The example data must not assert them, except as test cases.</skos:editorialNote>
+		<skos:note>Usage: import this ontology and add rooms, policies, measurements and contexts; the evidence links are inferred (SWRL rule E1 and the property chains), so no evidence link needs to be asserted.</skos:note>
+		<skos:scopeNote>Covers the compliance of critical-care rooms with the ventilation requirements of the CDC Guidelines for Environmental Infection Control in Health-Care Facilities (2003), Appendix B, Table B.2, and the equipment that serves them. It does not cover energy use, air quality beyond the listed measurements, or other jurisdictions.</skos:scopeNote>
 	</owl:Ontology>
 	
 	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/0.11.0">
@@ -62,6 +74,12 @@
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&dct;bibliographicCitation">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;created">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;provenance">
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&dct;source">
@@ -79,14 +97,31 @@
 	<owl:AnnotationProperty rdf:about="&skos;definition">
 	</owl:AnnotationProperty>
 	
+	<owl:AnnotationProperty rdf:about="&skos;editorialNote">
+	</owl:AnnotationProperty>
+	
 	<owl:AnnotationProperty rdf:about="&skos;example">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;historyNote">
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&skos;note">
 	</owl:AnnotationProperty>
 	
+	<owl:AnnotationProperty rdf:about="&skos;scopeNote">
+	</owl:AnnotationProperty>
+	
 	<owl:Class rdf:about="&prov;Entity">
 	</owl:Class>
+	
+	<owl:DatatypeProperty rdf:about="&prov;atTime">
+		<dct:bibliographicCitation>W3C, “PROV-O: The PROV Ontology,” W3C Recommendation, Apr. 30, 2013. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.w3.org/TR/prov-o/"/>
+		<skos:historyNote>Used on AssessmentContext from 0.12.0.</skos:historyNote>
+		<skos:note>Use xsd:dateTime values such as 2026-10-09T14:30:00. Time zones are not normalised, so use one convention across the data.</skos:note>
+		<skos:scopeNote>Reused from PROV-O for the single instant an assessment context refers to; E1 matches it by equality with prov:generatedAtTime of the measurement.</skos:scopeNote>
+	</owl:DatatypeProperty>
 	
 	<owl:AnnotationProperty rdf:about="&prov;definition">
 	</owl:AnnotationProperty>
@@ -290,9 +325,15 @@
 		</rdfs:subClassOf>
 		<rdfs:label>air handling unit</rdfs:label>
 		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
+		<dct:provenance>Definition adapted from ASHRAE Terminology; the label and abbreviation were taken from the project term list.</dct:provenance>
 		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
 		<skos:altLabel>AHU</skos:altLabel>
+		<skos:altLabel xml:lang="de">Lüftungsgerät</skos:altLabel>
+		<skos:altLabel>air handler</skos:altLabel>
+		<skos:altLabel xml:lang="fr">centrale de traitement d&apos;air</skos:altLabel>
+		<skos:altLabel xml:lang="es">unidad de tratamiento de aire</skos:altLabel>
 		<skos:definition>air-handling assembly that uses fans and air-treatment components to circulate, filter, mix, heat, cool, humidify, dehumidify, or otherwise condition air.</skos:definition>
+		<skos:note>AHU is the abbreviation used in the term list and in the individuals file (for example AHU-5).</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/AirLoop">
@@ -328,7 +369,10 @@
 		<rdfs:label>airborne infection isolation room</rdfs:label>
 		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
+		<skos:altLabel>AII room</skos:altLabel>
+		<skos:altLabel xml:lang="es">sala de aislamiento de infecciones aéreas</skos:altLabel>
 		<skos:definition>patient room designed to reduce airborne transmission from an occupant to surrounding indoor areas through controlled airflow and relationships.</skos:definition>
+		<skos:note>Held at negative pressure relative to adjacent areas; the related policy is the air movement relationship to the adjacent area.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/AllAirExhaustedDirectlyToOutdoors">
@@ -354,13 +398,15 @@
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/Assessment">
 		<rdfs:label>assessment</rdfs:label>
 		<rdfs:comment>concept derived from the NIST OSCAL assessment model, which represents planned and performed evaluations of controls and their resulting observations/findings, and formulated according to ISO 704:2022.</rdfs:comment>
+		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<skos:definition>process in which evidence is evaluated against specified criteria to determine an outcome</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/AssessmentContext">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/atTime"/>
+				<owl:onProperty rdf:resource="&prov;atTime"/>
 				<owl:onDataRange rdf:resource="&xsd;dateTime"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
 			</owl:Restriction>
@@ -368,7 +414,13 @@
 		<rdfs:label>assessment context</rdfs:label>
 		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
+		<skos:altLabel xml:lang="de">Bewertungskontext</skos:altLabel>
+		<skos:altLabel xml:lang="en">assessment context</skos:altLabel>
+		<skos:altLabel xml:lang="es">contexto de evaluación</skos:altLabel>
 		<skos:definition>context specifying the assessed entity, temporal scope, and applicable policy versions within which an assessment result is interpreted</skos:definition>
+		<skos:editorialNote>prov:atTime was made mandatory (exactly one) in 0.12.0 so that E1 can match measurements to a context without ambiguity.</skos:editorialNote>
+		<skos:note>Usage: create one context per room and time, then attach every policy assessment for that room and time to it through hasPolicyAssessment. Evidence is selected per context by rule E1.</skos:note>
+		<skos:scopeNote>Covers exactly one room (forRoom/appliesToRoom) and exactly one instant (prov:atTime). It does not model the policy version in force; assessments of the same room at different times need different contexts.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/AutopsyRoom">
@@ -526,7 +578,12 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>CDC compliance framework</rdfs:label>
+		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
+		<dct:provenance>Each framework individual stands for one room-type table row of the CDC Guidelines for Environmental Infection Control in Health-Care Facilities (2003), Appendix B, Table B.2.</dct:provenance>
+		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
+		<skos:altLabel>CDC framework</skos:altLabel>
 		<skos:definition>organized set of compliance requirements, policies, and assessment rules used to evaluate a target.</skos:definition>
+		<skos:scopeNote>Covers the room types in the term list only; rows of the CDC table that no room type uses are not modelled.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/CentralMedicalAndSurgicalSupplyArea">
@@ -560,7 +617,12 @@
 		<dct:bibliographicCitation>Conformity Assessment—Vocabulary and General Principles, ISO/IEC 17000:2020, International Organization for Standardization, Geneva, Switzerland, 2020. [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
 		<dct:source rdf:resource="https://www.snv.ch/files/content/Dokumente/News%20und%20Newslettertexte/ISO_IEC%2017000_Conformity%20assessment_Vocabulary%20and%20general%20principles.pdf"/>
+		<skos:altLabel>CA</skos:altLabel>
+		<skos:altLabel xml:lang="de">Konformitätsbewertung</skos:altLabel>
+		<skos:altLabel xml:lang="es">evaluación de cumplimiento</skos:altLabel>
 		<skos:definition>assessment that evaluates whether one or more compliance policies are satisfied for a defined target and context</skos:definition>
+		<skos:note>Usage: assert only the context and the policy assessments; leave the verdict class to the reasoner.</skos:note>
+		<skos:scopeNote>Aggregates the policy assessments of one assessment context for one room. Its overall verdict (satisfied, partially satisfied, unsatisfied, unknown) is always inferred from its policy assessments.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ComplianceFramework">
@@ -574,7 +636,11 @@
 		<rdfs:label>compliance policy</rdfs:label>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
+		<skos:altLabel xml:lang="de">Konformitätsrichtlinie</skos:altLabel>
+		<skos:altLabel xml:lang="es">política de cumplimiento</skos:altLabel>
 		<skos:definition>policy that specifies requirements used to determine whether an entity or situation is compliant</skos:definition>
+		<skos:note>Usage: add a new policy by subclassing one of the bounded policy classes and giving it an evaluatesOnKind value; no new rule is needed.</skos:note>
+		<skos:scopeNote>Policies are shared individuals: one policy individual can be evaluated in many contexts and rooms. Which measurement kind a policy evaluates is stated by evaluatesOnKind on its class.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/Controls">
@@ -689,6 +755,7 @@
 		<dct:bibliographicCitation>Ventilation of Health Care Facilities, ANSI/ASHRAE/ASHE Standard 170-2021, ASHRAE, Atlanta, GA, USA, 2021. (Table 7.1, Design Parameters.) [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://icpsne.org/Ventilation%20Appendix%20Table%207.1%20Design%20Parameters.pdf"/>
 		<skos:definition>indoor temperature requirement specifying the temperature or allowable range that the HVAC system is capable of maintaining during normal operation.</skos:definition>
+		<skos:note>Policies on design temperature are range bounded; compare the operating-room range of 20 to 23 °C in the example of RangeBoundedCompliancePolicy.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/DiagnosticAndTreatmentArea">
@@ -801,6 +868,8 @@
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ExhaustAndReliefSystem">
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/BuildingServiceComponent"/>
 		<rdfs:label>exhaust and relief system</rdfs:label>
+		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
 		<skos:definition>building service component comprising the equipment and ductwork that removes air from spaces and discharges it</skos:definition>
 	</owl:Class>
 	
@@ -825,6 +894,8 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>exhaust ductwork</rdfs:label>
+		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
 		<skos:definition>ductwork that conveys exhaust air from spaces toward an outdoor discharge</skos:definition>
 	</owl:Class>
 	
@@ -849,6 +920,8 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>exhaust fan</rdfs:label>
+		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
 		<skos:definition>fan that draws air out of a space or system and moves it toward discharge</skos:definition>
 	</owl:Class>
 	
@@ -873,6 +946,8 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>exhaust inlet</rdfs:label>
+		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
 		<skos:definition>opening through which air is drawn from a space into exhaust ductwork</skos:definition>
 	</owl:Class>
 	
@@ -945,6 +1020,10 @@
 					<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/BuildingServiceSystem">
 					</rdf:Description>
 				</owl:unionOf>
+				<skos:altLabel>HVAC</skos:altLabel>
+				<skos:altLabel xml:lang="de">Lüftungs- und Klimaanlage</skos:altLabel>
+				<skos:altLabel xml:lang="es">sistema de climatización</skos:altLabel>
+				<skos:scopeNote>Groups the air-handling equipment that serves rooms; the equipment that is responsible for a non-compliant room is found by following servesRoom and the component properties.</skos:scopeNote>
 			</owl:Class>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -1092,8 +1171,14 @@
 		<rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/CriticalCareArea"/>
 		<rdfs:label>ICU</rdfs:label>
 		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
+		<dct:provenance>Ventilation requirements for this class come from the CDC Guidelines for Environmental Infection Control in Health-Care Facilities (2003), Appendix B, Table B.2.</dct:provenance>
 		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
+		<skos:altLabel xml:lang="de">Intensivstation</skos:altLabel>
+		<skos:altLabel>intensive care unit</skos:altLabel>
+		<skos:altLabel xml:lang="es">unidad de cuidados intensivos</skos:altLabel>
+		<skos:altLabel xml:lang="fr">unité de soins intensifs</skos:altLabel>
 		<skos:definition>patient-care area providing continuous monitoring and advanced organ-support capabilities for patients with life-threatening conditions.</skos:definition>
+		<skos:scopeNote>Covers a single ICU patient room. The ICU as a hospital department is not modelled.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/IncomingTransferAirflowRate">
@@ -1166,7 +1251,13 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>max bounded compliance policy</rdfs:label>
+		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
+		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
+		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
+		<skos:altLabel>max policy</skos:altLabel>
 		<skos:definition>Compliance policy that specifies a maximum value as the highest acceptable measurement and specifies no minimum value.</skos:definition>
+		<skos:note>Satisfaction is inferred by rule S3 and violation by rule S4.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/Measurement">
@@ -1181,7 +1272,12 @@
 		<rdfs:label>measurement</rdfs:label>
 		<dct:bibliographicCitation>International Vocabulary of Metrology—Basic and General Concepts and Associated Terms (VIM), 3rd ed., JCGM 200:2012, Joint Committee for Guides in Metrology, 2012. [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf"/>
+		<skos:altLabel xml:lang="de">Messung</skos:altLabel>
+		<skos:altLabel xml:lang="es">medición</skos:altLabel>
+		<skos:altLabel xml:lang="fr">mesure</skos:altLabel>
 		<skos:definition>representation of a measured or calculated value for a physical, environmental, building, or operational quantity</skos:definition>
+		<skos:note>Usage: give every measurement hasKind (inferred from its class), recordedIn and prov:generatedAtTime, otherwise rule E1 cannot select it as evidence.</skos:note>
+		<skos:scopeNote>A value of one kind (hasKind) for one room (recordedIn) at one instant (prov:generatedAtTime). It covers sensor readings and values derived from other measurements.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/MedicationRoom">
@@ -1210,8 +1306,14 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>min bounded compliance policy</rdfs:label>
+		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
+		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
+		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
+		<skos:altLabel>min policy</skos:altLabel>
 		<skos:definition>Compliance policy that specifies a minimum value as the lowest acceptable measurement and specifies no maximum value.</skos:definition>
 		<skos:example>The outdoor air change policy for ICU rooms has a lower bound of 2.0 ACH and no upper bound. ICU-02 at 2.6 ACH satisfies it (rule S1), while ICU-01 at 1.4 ACH violates it (rule S2).</skos:example>
+		<skos:note>Violation is inferred by rule S2 and satisfaction by rule S1.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/MinimumAirChangesOfOutdoorAirPerHour">
@@ -1230,7 +1332,10 @@
 		</rdfs:subClassOf>
 		<rdfs:label>minimum air changes of outdoorAir perhour</rdfs:label>
 		<dct:bibliographicCitation>Ventilation of Health Care Facilities, ANSI/ASHRAE/ASHE Standard 170-2021, ASHRAE, Atlanta, GA, USA, 2021. (Table 7.1, Design Parameters.) [Online].</dct:bibliographicCitation>
+		<dct:provenance>Bounds are taken from the minimum outdoor air changes per hour column of the same table.</dct:provenance>
 		<dct:source rdf:resource="https://icpsne.org/Ventilation%20Appendix%20Table%207.1%20Design%20Parameters.pdf"/>
+		<skos:altLabel>OACH</skos:altLabel>
+		<skos:altLabel>min outdoor ACH</skos:altLabel>
 		<skos:definition>outdoor-air ventilation requirement specifying the minimum outdoor-air airflow rate divided by room volume, expressed in h⁻¹.</skos:definition>
 	</owl:Class>
 	
@@ -1250,8 +1355,11 @@
 		</rdfs:subClassOf>
 		<rdfs:label>minimum total air changes per hour</rdfs:label>
 		<dct:bibliographicCitation>Ventilation of Health Care Facilities, ANSI/ASHRAE/ASHE Standard 170-2021, ASHRAE, Atlanta, GA, USA, 2021. (Table 7.1, Design Parameters.) [Online].</dct:bibliographicCitation>
+		<dct:provenance>Bounds are taken from the minimum total air changes per hour column of the CDC Guidelines for Environmental Infection Control in Health-Care Facilities (2003), Appendix B, Table B.2.</dct:provenance>
 		<dct:source rdf:resource="https://icpsne.org/Ventilation%20Appendix%20Table%207.1%20Design%20Parameters.pdf"/>
+		<skos:altLabel>min total ACH</skos:altLabel>
 		<skos:definition>total-air ventilation requirement specifying the minimum total supply-airflow rate (outdoor plus recirculated air) divided by room volume, expressed in h⁻¹.</skos:definition>
+		<skos:historyNote>Added in the November 2026 revision (see its skos:note) and kept apart from the outdoor-air requirement.</skos:historyNote>
 		<skos:note>Added in the November 2026 revision so that the &quot;minimum total air changes per hour&quot; column of CDC Guidelines for Environmental Infection Control in Health-Care Facilities (2003), Appendix B, Table B.2, can be instantiated separately from the outdoor-air requirement. The term was already present in the curated term list.</skos:note>
 	</owl:Class>
 	
@@ -1292,6 +1400,11 @@
 		<rdfs:label>operating room</rdfs:label>
 		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
+		<skos:altLabel>OR</skos:altLabel>
+		<skos:altLabel xml:lang="de">Operationssaal</skos:altLabel>
+		<skos:altLabel xml:lang="es">quirófano</skos:altLabel>
+		<skos:altLabel xml:lang="fr">salle d&apos;opération</skos:altLabel>
+		<skos:altLabel>surgical theatre</skos:altLabel>
 		<skos:definition>clinical room equipped and controlled for invasive surgical procedures performed under aseptic conditions.</skos:definition>
 	</owl:Class>
 	
@@ -1427,6 +1540,8 @@ outdoor air change per hour</skos:definition>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>outdoor discharge</rdfs:label>
+		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
 		<skos:definition>terminal opening through which exhaust air leaves the building envelope</skos:definition>
 	</owl:Class>
 	
@@ -1502,7 +1617,12 @@ outdoor air change per hour</skos:definition>
 		<rdfs:label>policy assessment</rdfs:label>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
+		<skos:altLabel>PA</skos:altLabel>
+		<skos:altLabel xml:lang="de">Richtlinienbewertung</skos:altLabel>
+		<skos:altLabel xml:lang="es">evaluación de política</skos:altLabel>
 		<skos:definition>assessment that determines whether specified conditions satisfy the requirements expressed by a policy</skos:definition>
+		<skos:note>Usage: do not assert Satisfied/Unsatisfied/UnknownPolicyAssessment on instances. SWRL rules S1 to S11 and the SHACL rule U1 classify them.</skos:note>
+		<skos:scopeNote>One policy assessment checks one compliance policy within one assessment context. Several policy assessments may share a policy individual, so evidence is anchored on the policy assessment and never derived back from the policy.</skos:scopeNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/Pressure">
@@ -1538,7 +1658,10 @@ outdoor air change per hour</skos:definition>
 		<rdfs:label>protective environment room</rdfs:label>
 		<dct:bibliographicCitation>Centers for Disease Control and Prevention, “C. Air,” Infection Control, Dec. 21, 2023. [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://www.cdc.gov/infection-control/hcp/environmental-control/air.html"/>
+		<skos:altLabel>PE room</skos:altLabel>
+		<skos:altLabel xml:lang="es">sala de ambiente protegido</skos:altLabel>
 		<skos:definition>patient room designed to reduce exposure of a highly susceptible occupant to airborne contaminants from surrounding indoor areas.</skos:definition>
+		<skos:note>Held at positive pressure relative to adjacent areas; contrast with AirborneInfectionIsolationRoom.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/RadiologyArea">
@@ -1566,8 +1689,14 @@ outdoor air change per hour</skos:definition>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>range bounded compliance policy</rdfs:label>
+		<dct:bibliographicCitation>S. Abou-Zahra, Ed., “Evaluation and Report Language (EARL) 1.0 Schema,” W3C Working Group Note, Feb. 2, 2017. [Online].</dct:bibliographicCitation>
+		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
+		<dct:source rdf:resource="https://www.w3.org/TR/2017/NOTE-EARL10-Schema-20170202/"/>
+		<skos:altLabel>range policy</skos:altLabel>
 		<skos:definition>Compliance policy that specifies both a minimum value and a maximum value, between which an acceptable measurement lies.</skos:definition>
 		<skos:example>The relative humidity policy for ICU rooms has a lower bound of 30 %RH and an upper bound of 60 %RH; a reading of 45 %RH lies between them (rule S5), whereas the operating-room temperature of 24.1 °C exceeds the 20 to 23 °C design range (rule S7).</skos:example>
+		<skos:note>Satisfaction is inferred by rule S5 and violation by rules S6 and S7.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/RecirculatedByMeansOfRoomUnits">
@@ -1603,7 +1732,13 @@ outdoor air change per hour</skos:definition>
 		<rdfs:label>relative humidity</rdfs:label>
 		<dct:bibliographicCitation>ASHRAE, “ASHRAE Terminology: A comprehensive glossary of terms for the built environment.” [Online]. Accessed: Oct. 1, 2026.</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://terminology.ashrae.org/"/>
+		<skos:altLabel>%RH</skos:altLabel>
+		<skos:altLabel>RH</skos:altLabel>
+		<skos:altLabel xml:lang="es">humedad relativa</skos:altLabel>
+		<skos:altLabel xml:lang="fr">humidité relative</skos:altLabel>
+		<skos:altLabel xml:lang="de">relative Luftfeuchtigkeit</skos:altLabel>
 		<skos:definition>moisture-condition parameter equal to the partial, density, or mole fraction of water vapor in air divided by the corresponding saturation value at the same temperature and barometric conditions, usually expressed as a percentage.</skos:definition>
+		<skos:note>Policies on relative humidity are range bounded (rule S5/S6).</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ReliefDamper">
@@ -1754,6 +1889,7 @@ outdoor air change per hour</skos:definition>
 		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<skos:definition>policy assessment whose available and usable evidence meets all applicable requirements of the evaluated policy</skos:definition>
+		<skos:note>Inferred only; never assert this class.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/SensorMeasurement">
@@ -1995,6 +2131,7 @@ outdoor air change per hour</skos:definition>
 						<owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnknownPolicyAssessment"/>
 					</owl:Restriction>
 				</owl:intersectionOf>
+				<skos:editorialNote>Equivalent class definition revised in November 2026 from all to at least one unknown policy assessment.</skos:editorialNote>
 			</owl:Class>
 		</owl:equivalentClass>
 		<skos:definition>compliance assessment containing at least one unknown policy assessment</skos:definition>
@@ -2008,6 +2145,8 @@ outdoor air change per hour</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<skos:definition>policy assessment for which the available information is insufficient to determine whether the evaluated policy’s applicable requirements are met</skos:definition>
 		<skos:example>PE-01 at 08:00: the humidity sensor did not answer, so the humidity policy assessment has no isEvaluatedAt measurement. SHACL rule U1 types it as an UnknownPolicyAssessment, and the room&apos;s compliance assessment becomes an UnknownComplianceAssessment even though its other policy assessments are satisfied.</skos:example>
+		<skos:historyNote>Originally asserted by hand in the example data; from 0.12.0 it is inferred by the SHACL rule U1 because OWL cannot conclude the absence of evidence under the open-world assumption.</skos:historyNote>
+		<skos:scopeNote>Means no measurement was found for the policy assessment, not that the room is non-compliant.</skos:scopeNote>
 		<sh:rule>
 			<sh:SPARQLRule>
 				<sh:construct>CONSTRUCT { $this a &lt;https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/UnknownPolicyAssessment&gt; . }
@@ -2053,6 +2192,7 @@ outdoor air change per hour</skos:definition>
 		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
 		<skos:definition>policy assessment whose available and usable evidence fails to meet at least one applicable requirement of the evaluated policy</skos:definition>
 		<skos:example>PA_ICU_01_ACH is the policy assessment of the minimum outdoor air change policy for ICU-01. Its evidence M-0412 (OutdoorAirChangePerHour) is 1.4 ACH against a lower bound of 2.0 ACH, so SWRL rule S2 (Min bound violated) classifies it as an UnsatisfiedPolicyAssessment.</skos:example>
+		<skos:note>Inferred only; never assert this class.</skos:note>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/VariableAirVolumeBox">
@@ -2103,7 +2243,10 @@ outdoor air change per hour</skos:definition>
 		<rdf:type rdf:resource="&cmns-qtu;DerivedUnit"/>
 		<rdfs:label>air changes per hour</rdfs:label>
 		<rdfs:comment>Number of room-volume air changes per hour.</rdfs:comment>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>ACH</skos:altLabel>
+		<skos:definition>unit of measure for the rate at which the air in a room is replaced, equal to the airflow into the room per hour divided by the room volume</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/appliesTo">
@@ -2128,6 +2271,7 @@ outdoor air change per hour</skos:definition>
 			</rdf:Description>
 		</owl:propertyChainAxiom>
 		<skos:definition>relation that holds between an assessment context and a policy assessment when the context specifies the conditions under which the policy assessment is performed or interpreted</skos:definition>
+		<skos:note>Inferred by a property chain from hasContext and hasPolicyAssessment; do not assert.</skos:note>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/appliesToRoom">
@@ -2139,14 +2283,6 @@ outdoor air change per hour</skos:definition>
 		<rdfs:range rdf:resource="&core;Room"/>
 		<skos:definition>relation that holds between an entity and a room when the entity is relevant, valid, or applicable to that room under specified conditions</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:DatatypeProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/atTime">
-		<rdf:type rdf:resource="&owl;FunctionalProperty"/>
-		<rdfs:label>at time</rdfs:label>
-		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/AssessmentContext"/>
-		<rdfs:range rdf:resource="&xsd;dateTime"/>
-		<skos:definition>relation that holds between an assessment context and the single date and time at which the assessment is made; the measurements used in the context are those taken at this time</skos:definition>
-	</owl:DatatypeProperty>
 	
 	<swrl:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/c">
 	</swrl:Variable>
@@ -2184,33 +2320,48 @@ outdoor air change per hour</skos:definition>
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>cubic metre</rdfs:label>
 		<rdfs:comment>used to measure volume</rdfs:comment>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>m³</skos:altLabel>
+		<skos:definition>unit of volume equal to the volume of a cube with sides of one metre</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/cubicMetrePerHour">
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>cubic metre per hour</rdfs:label>
 		<rdfs:comment>used to measure air flow rate</rdfs:comment>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>m³/h</skos:altLabel>
+		<skos:definition>unit of volumetric flow rate equal to one cubic metre of fluid passing a given point in one hour</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/cubicMetrePerSecond">
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>cubic metre per second</rdfs:label>
 		<rdfs:comment>used to measure air flow rate</rdfs:comment>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>m³/s</skos:altLabel>
+		<skos:definition>unit of volumetric flow rate equal to one cubic metre of fluid passing a given point in one second</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/degreeCelsius">
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>degree Celsius</rdfs:label>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>°C</skos:altLabel>
+		<skos:definition>unit of temperature on the Celsius scale, on which water freezes at 0 degrees and boils at 100 degrees at standard atmospheric pressure</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/dimensionlessUnit">
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>dimensionless unit</rdfs:label>
 		<rdfs:comment>like just fractions or percentages</rdfs:comment>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
+		<skos:definition>unit of measure for a quantity that has no physical dimension, such as a ratio, fraction or percentage</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/evaluatedCompliance">
@@ -2261,12 +2412,20 @@ outdoor air change per hour</skos:definition>
 			</rdf:Description>
 		</owl:propertyChainAxiom>
 		<skos:definition>relation that holds between a compliance policy and a measurement when the measurement provides evidence used to determine whether the requirements expressed by the policy are satisfied</skos:definition>
+		<skos:note>Inferred by a property chain from evaluatedPolicy and evaluatesMeasurement; do not assert.</skos:note>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/evaluatesOnKind">
 		<rdfs:label>evaluates on kind</rdfs:label>
+		<dct:bibliographicCitation>Merriam-Webster, “evaluate,” Merriam-Webster.com Dictionary. [Online].</dct:bibliographicCitation>
+		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
+		<dct:source rdf:resource="https://www.merriam-webster.com/dictionary/evaluate"/>
 		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/CompliancePolicy"/>
 		<skos:definition>relation that holds between a compliance policy and the kind of measurement it evaluates; the kind is a measurement class used as an individual (punning)</skos:definition>
+		<skos:historyNote>Added in 0.12.0 to replace one hand-written rule per policy.</skos:historyNote>
+		<skos:note>Usage: state it as an owl:hasValue restriction on the policy class; rule E1 reads it for every policy.</skos:note>
+		<skos:scopeNote>Links a policy class to the measurement kind it checks (a punned individual named after a measurement class).</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/forRoom">
@@ -2282,7 +2441,10 @@ outdoor air change per hour</skos:definition>
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>gram of water per kilogram of dry air</rdfs:label>
 		<rdfs:comment>typically used to measure humidity</rdfs:comment>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>g/kg</skos:altLabel>
+		<skos:definition>unit of humidity ratio equal to one gram of water vapour carried by one kilogram of dry air</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/hasBuildingSystem">
@@ -2306,8 +2468,14 @@ outdoor air change per hour</skos:definition>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/hasKind">
 		<rdfs:label>has kind</rdfs:label>
+		<dct:bibliographicCitation>Merriam-Webster, “evaluate,” Merriam-Webster.com Dictionary. [Online].</dct:bibliographicCitation>
+		<dct:bibliographicCitation>W3C ODRL Community Group, “ODRL Formal Semantics,” evolving community document, secs. “Evaluation Report” and “General semantics of Rules.” [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://w3c.github.io/odrl/formal-semantics/"/>
+		<dct:source rdf:resource="https://www.merriam-webster.com/dictionary/evaluate"/>
 		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/Measurement"/>
 		<skos:definition>relation that holds between a measurement and its kind, the measurement class it belongs to, used as an individual (punning)</skos:definition>
+		<skos:historyNote>Added in 0.12.0.</skos:historyNote>
+		<skos:scopeNote>Links a measurement to its kind. The kind is stated once on each measurement class as an owl:hasValue restriction and is inferred for every instance.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/hasPolicy">
@@ -2376,6 +2544,9 @@ outdoor air change per hour</skos:definition>
 		<rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/Measurement"/>
 		<rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/PolicyAssessment"/>
 		<skos:definition>relation that holds between a measurement and a policy assessment when the measurement is used as evidence in the assessment to determine compliance with one or more policy requirements</skos:definition>
+		<skos:historyNote>Asserted by hand before 0.12.0; inferred since.</skos:historyNote>
+		<skos:note>Usage: do not assert. Inverse of evaluatesMeasurement.</skos:note>
+		<skos:scopeNote>Inferred by rule E1 from room, time and kind. It links a measurement to the policy assessment it is evidence for.</skos:scopeNote>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/isEvaluatedBy">
@@ -2416,7 +2587,10 @@ outdoor air change per hour</skos:definition>
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>kilogram of water per kilogram of dry air</rdfs:label>
 		<rdfs:comment>typically used to measure humidity</rdfs:comment>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>kg/kg</skos:altLabel>
+		<skos:definition>unit of humidity ratio equal to one kilogram of water vapour carried by one kilogram of dry air</skos:definition>
 	</owl:NamedIndividual>
 	
 	<swrl:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/lb">
@@ -2478,13 +2652,19 @@ outdoor air change per hour</skos:definition>
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/pascal">
 		<rdf:type rdf:resource="&cmns-qtu;BaseUnit"/>
 		<rdfs:label>pascal</rdfs:label>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>Pa</skos:altLabel>
+		<skos:definition>unit of pressure equal to one newton of force per square metre</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/percentRelativeHumidity">
 		<rdf:type rdf:resource="&cmns-qtu;DerivedUnit"/>
 		<rdfs:label>percent relative humidity</rdfs:label>
+		<dct:bibliographicCitation>Object Management Group, “Commons Quantities and Units Ontology,” ver. 20240801. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/"/>
 		<skos:altLabel>%RH</skos:altLabel>
+		<skos:definition>unit that expresses relative humidity as the percentage ratio of the partial pressure of water vapour in air to the saturation vapour pressure at the same temperature</skos:definition>
 	</owl:NamedIndividual>
 	
 	<swrl:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/q">
@@ -2574,6 +2754,7 @@ outdoor air change per hour</skos:definition>
 			</rdf:Description>
 		</owl:propertyChainAxiom>
 		<skos:definition>relation that holds between an assessment context and a measurement when the measurement provides evidence used for assessment within that context</skos:definition>
+		<skos:note>Inferred by a property chain through appliesToPolicyAssessment and evaluatesMeasurement; do not assert.</skos:note>
 	</owl:ObjectProperty>
 	
 	<swrl:Variable rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/uv">
@@ -2595,6 +2776,8 @@ outdoor air change per hour</skos:definition>
 	<owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/wasAssociatedWithComponentIndirectly">
 		<rdfs:subPropertyOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/wasAssociatedWithComponent"/>
 		<rdfs:label>was associated with component indirectly</rdfs:label>
+		<dct:bibliographicCitation>W3C, “PROV-O: The PROV Ontology,” W3C Recommendation, Apr. 30, 2013. [Online].</dct:bibliographicCitation>
+		<dct:source rdf:resource="https://www.w3.org/TR/prov-o/"/>
 		<skos:definition>relation that holds between an assessment and a building service component when the outcome of the assessment is associated with one of it&apos;s part of component</skos:definition>
 	</owl:ObjectProperty>
 	
@@ -3407,7 +3590,7 @@ outdoor air change per hour</skos:definition>
 			<swrl:DatavaluedPropertyAtom>
 				<swrl:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/c"/>
 				<swrl:argument2 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/t"/>
-				<swrl:propertyPredicate rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/atTime"/>
+				<swrl:propertyPredicate rdf:resource="&prov;atTime"/>
 			</swrl:DatavaluedPropertyAtom>
 			<swrl:IndividualPropertyAtom>
 				<swrl:argument1 rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/c"/>
