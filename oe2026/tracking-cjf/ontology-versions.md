@@ -5,17 +5,28 @@ title: Ontology Version History
 
 ## Ontology Version History
 
-The [current CJF ontology](ontology/OE_10_TeamCJF.rdf) is the schema distributed with this website. The table below lists every distinct committed schema version reachable in this project branch, newest first. The schema was renamed from `tracking-cjf.rdf` to `OE_8_TeamCJF.rdf`; older snapshot links retain the filename used at those commits. These are development snapshots rather than numbered releases. Repeated commits containing identical file content are listed once.
-
-Each snapshot link identifies an immutable Git commit in the project repository. The [current schema history](https://github.com/DevinDeSilva/ontology-engineering/commits/tracking-cjf/oe2026/tracking-cjf/ontology/OE_10_TeamCJF.rdf) also records intermediate changes and merges. Example individual files, SHACL rules, and reused ontologies are documented separately on the [ontology page](ontology.html#ontologies).
-
 ## Downloadable Versions
 
-- **OE Week 10:** [Schema](ontology/OE_10_TeamCJF.rdf), [annotated individuals](ontology/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf), and [individuals with current assignments](ontology/OE_10_TeamCJF_Individuals.rdf).
-- **OE Week 9:** [Schema](prev-ontology-versions/OE_9_TeamCJF.rdf), [annotated individuals](prev-ontology-versions/OE_9_TeamCJF_Individuals.rdf), and [individuals with current assignments](prev-ontology-versions/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf).
-- **OE Week 8:** [Schema](prev-ontology-versions/OE_8_TeamCJF.rdf) and [individuals](prev-ontology-versions/OE_8_TeamCJF_Individuals.rdf).
+Use the schema and individuals from the same week. The individuals with current assignments include the links used by the recorded query demonstrations.
 
-## Development Snapshots Through October 23, 2026
+| Version | Schema | Individuals | Individuals with current assignments |
+| --- | --- | --- | --- |
+| OE Week 11 (current) | <a href="ontology/OE_11_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="ontology/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="ontology/OE_11_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
+| OE Week 10 | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
+| OE Week 9 | <a href="prev-ontology-versions/OE_9/OE_9_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_9/OE_9_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_9/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf" download>Individuals (.rdf)</a> |
+| OE Week 8 | <a href="prev-ontology-versions/OE_8/OE_8_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_8/OE_8_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> | — |
+
+## Selected Development Snapshots
+
+| Date | RDF file | Recorded change |
+| --- | --- | --- |
+| 2026-11-12 | [OE_11_TeamCJF.rdf](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/d138536a736a4eb69c97ffe86d232bac05b36a93/oe2026/tracking-cjf/ontology/OE_11_TeamCJF.rdf) | Initial OE Week 11 ontology annotations |
+| 2026-11-05 | [OE_10_TeamCJF.rdf](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/dd033a3b175f9f1fe1607860a1bf61cf0874d578/oe2026/tracking-cjf/ontology/OE_10_TeamCJF.rdf) | Restored the state-assignment reason property |
+| 2026-10-29 | [OE_9_TeamCJF.rdf](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/f571f18f004f5dc2d28470641c5cc8d1d458f172/oe2026/tracking-cjf/ontology/OE_9_TeamCJF.rdf) | Updated Addressed state axioms |
+| 2026-10-23 | [tracking-cjf-individuals.rdf](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/bfe7de1b5c4e2e90627ea13912ecea59d5d51ef0/oe2026/tracking-cjf/tracking-cjf-individuals.rdf) | Earlier conversation individuals with states |
+| 2026-10-22 | [tracking-cjf-individuals.rdf](https://raw.githubusercontent.com/tetherless-world/ontology-engineering/d1bf6b3b6ee4b8daa51721a08cb47aaf5d4e97c8/oe2026/tracking-cjf/tracking-cjf-individuals.rdf) | Earlier conversation individuals with a state assignment for M0050 |
+
+## Earlier Schema Snapshots Through October 23, 2026
 
 | Date | Schema snapshot | Recorded change |
 | --- | --- | --- |

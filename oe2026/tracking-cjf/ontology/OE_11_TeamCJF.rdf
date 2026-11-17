@@ -1,0 +1,2860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY ns "http://www.w3.org/2003/06/sw-vocab-status/ns#">
+	<!ENTITY oe-cjf "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#">
+	<!ENTITY prov "http://www.w3.org/ns/prov#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY resource "http://semanticscience.org/resource/">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF
+	xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+	xmlns:oe-cjf="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+	xmlns:prov="http://www.w3.org/ns/prov#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:resource="http://semanticscience.org/resource/"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/">
+		<rdfs:label>Tracking collective judgment formation</rdfs:label>
+		<dct:abstract>Represents conversation moves, their evidenced relationships, and recorded state assignments in collective judgment formation.</dct:abstract>
+		<dct:creator>Devin De Silva</dct:creator>
+		<dct:creator>Matthew Lausev</dct:creator>
+		<dct:creator>Srihari Sridharan</dct:creator>
+		<dct:creator>Tiziana Hernandez</dct:creator>
+		<dct:modified rdf:datatype="&xsd;date">2026-11-13</dct:modified>
+		<dct:publisher>Tracking CJF</dct:publisher>
+		<owl:imports rdf:resource="http://www.w3.org/ns/prov#"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:priorVersion rdf:resource="https://raw.githubusercontent.com/DevinDeSilva/ontology-engineering/df1d49e3ae8ce1245100b112f14c182000cd5f23/oe2026/tracking-cjf/prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf"/>
+		<owl:versionIRI rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/OE_11/"/>
+		<skos:changeNote>Updated ontology metadata and version links, recorded definition sources, and added class examples and explanatory notes. Declared the date datatype used by the metadata.</skos:changeNote>
+	</owl:Ontology>
+	
+	<owl:AnnotationProperty rdf:about="&dc;description">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dc;identifier">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;alternative">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;bibliographicCitation">
+	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="&resource;SIO_000000">
+		<rdfs:label xml:lang="en">entity</rdfs:label>
+		<dc:identifier>SIO_000000</dc:identifier>
+		<dct:description xml:lang="en">Every thing is an entity.</dct:description>
+		<resource:subset>core</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000001">
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdfs:label xml:lang="en">is related to</rdfs:label>
+		<rdfs:comment>&apos;is related to&apos; is the top level relation in SIO</rdfs:comment>
+		<dc:identifier>SIO_000001</dc:identifier>
+		<dct:description xml:lang="en">A is related to B iff there is some relation between A and B.</dct:description>
+		<resource:subset>core</resource:subset>
+		<resource:subset>relations+</resource:subset>
+		<rdfs:domain rdf:resource="&resource;SIO_000000"/>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<rdfs:range rdf:resource="&resource;SIO_000000"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000028">
+		<rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000145"/>
+		<rdfs:label xml:lang="en">has part</rdfs:label>
+		<dc:identifier>SIO_000028</dc:identifier>
+		<dct:description xml:lang="en">has part is a transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.</dct:description>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<owl:inverseOf rdf:resource="&resource;SIO_000068"/>
+		<skos:example xml:lang="en">a collection of cars has as a car as a part;a car has an engine as a part; a car has a piston as a part;</skos:example>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000053">
+		<rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+		<rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000028"/>
+		<rdfs:label xml:lang="en">has proper part</rdfs:label>
+		<dc:identifier>SIO_000053</dc:identifier>
+		<dct:description xml:lang="en">has proper part is an antisymmetric, irreflexive (normally transitive) relation between a whole and a distinct part.</dct:description>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<owl:inverseOf rdf:resource="&resource;SIO_000093"/>
+		<skos:example xml:lang="en">a car has an engine as a proper part; a car has a piston as a proper part;</skos:example>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000061">
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000322"/>
+		<rdfs:label xml:lang="en">is located in</rdfs:label>
+		<dc:identifier>SIO_000061</dc:identifier>
+		<dct:description xml:lang="en">A is located in B iff the spatialtemporial region occupied by A is part of the spatialtemporal region occupied by B. [T][R]</dct:description>
+		<resource:equivalentTo>OBO_REL:located_in</resource:equivalentTo>
+		<resource:subset>core</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<owl:inverseOf rdf:resource="&resource;SIO_000145"/>
+		<skos:example xml:lang="en">A parasite in the interior of a person&apos;s intestine is located in their intestinal lumen.</skos:example>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000068">
+		<rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000061"/>
+		<rdfs:label xml:lang="en">is part of</rdfs:label>
+		<dc:identifier>SIO_000068</dc:identifier>
+		<dct:description xml:lang="en">is part of is a transitive, reflexive and anti-symmetric mereological relation between a whole and itself or a part and its whole.</dct:description>
+		<resource:equivalentTo>OBO_REL:part_of</resource:equivalentTo>
+		<resource:subset>core</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000093">
+		<rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+		<rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000068"/>
+		<rdfs:label xml:lang="en">is proper part of</rdfs:label>
+		<dc:identifier>SIO_000093</dc:identifier>
+		<dct:description xml:lang="en">is proper part of is an asymmetric, irreflexive (normally transitive) relation between a part and its distinct whole.</dct:description>
+		<resource:equivalentTo>OBO_REL:proper_part_of</resource:equivalentTo>
+		<resource:subset>core</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000145">
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000322"/>
+		<rdfs:label xml:lang="en">is location of</rdfs:label>
+		<dc:identifier>SIO_000145</dc:identifier>
+		<dct:description xml:lang="en">A is location of B iff the spatialtemporal region occupied by A has the spatialtemporal region occupied by B as a part. [T][R]</dct:description>
+		<resource:subset>nlp+</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000206">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000772"/>
+		<rdfs:label xml:lang="en">is supported by</rdfs:label>
+		<dc:identifier>SIO_000206</dc:identifier>
+		<dct:description xml:lang="en">is supported by is a relation between a proposition and something that supports the truth of the assertion.</dct:description>
+		<rdfs:domain rdf:nodeID="blank185"/>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<rdfs:range rdf:resource="&oe-cjf;TextSpan"/>
+		<owl:inverseOf rdf:resource="&resource;SIO_000208"/>
+		<skos:definition>directed grounding relationship linking a CJF conversation move to the Text Span that provides transcript evidence for the conversation move annotation</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000208">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000773"/>
+		<rdfs:label xml:lang="en">is supporting evidence for</rdfs:label>
+		<dc:identifier>SIO_000208</dc:identifier>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000212">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000001"/>
+		<rdfs:label xml:lang="en">is referred to by</rdfs:label>
+		<dc:identifier>SIO_000212</dc:identifier>
+		<dct:description xml:lang="en">A is referred to by B iff B is an informational entity that makes reference to A.</dct:description>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<owl:inverseOf rdf:resource="&resource;SIO_000628"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000252">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000212"/>
+		<rdfs:label xml:lang="en">is referenced by</rdfs:label>
+		<dc:identifier>SIO_000252</dc:identifier>
+		<dct:description xml:lang="en">is reference for is a relation between a document that provides information about an entity.</dct:description>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<owl:inverseOf rdf:resource="&resource;SIO_000631"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000322">
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000001"/>
+		<rdfs:label xml:lang="en">is spatiotemporally related to</rdfs:label>
+		<dc:identifier>SIO_000322</dc:identifier>
+		<dct:description xml:lang="en">A is spatiotemporally related to B iff A is in the spatial or temporal vicinity of B</dct:description>
+		<resource:subset>core</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000628">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000001"/>
+		<rdfs:label xml:lang="en">refers to</rdfs:label>
+		<dc:identifier>SIO_000628</dc:identifier>
+		<dct:description xml:lang="en">refers to is a relation between one entity and the entity that it makes reference to.</dct:description>
+		<resource:subset>core</resource:subset>
+		<resource:subset>nlp+</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000631">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000628"/>
+		<rdfs:label xml:lang="en">references</rdfs:label>
+		<dc:identifier>SIO_000631</dc:identifier>
+		<dct:alternative>mentions</dct:alternative>
+		<dct:description xml:lang="en">references is a relation between one entity and the entity that it makes reference to by name, but is not described by it.</dct:description>
+		<resource:subset>core</resource:subset>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000772">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000631"/>
+		<rdfs:label xml:lang="en">has evidence</rdfs:label>
+		<dc:identifier>SIO_000772</dc:identifier>
+		<dct:description xml:lang="en">has evidence is a relation between a proposition and something that demonstrates the truth of the assertion.</dct:description>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+		<owl:inverseOf rdf:resource="&resource;SIO_000773"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_000773">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000252"/>
+		<rdfs:label xml:lang="en">is evidence for</rdfs:label>
+		<dc:identifier>SIO_000773</dc:identifier>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&resource;SIO_001403">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000001"/>
+		<rdfs:label xml:lang="en">is associated with</rdfs:label>
+		<dc:description xml:lang="en">x is associated with y when x and y are logically or statistically related to one another.</dc:description>
+		<dc:identifier>SIO_001403</dc:identifier>
+		<rdfs:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+	</owl:ObjectProperty>
+	
+	<owl:AnnotationProperty rdf:about="&resource;equivalentTo">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&resource;subset">
+	</owl:AnnotationProperty>
+	
+	<rdfs:Datatype rdf:about="&xsd;date">
+	</rdfs:Datatype>
+	
+	<rdf:Description rdf:about="&prov;Activity">
+		<owl:disjointWith rdf:resource="&prov;Agent"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&prov;Agent">
+		<owl:disjointWith rdf:resource="&prov;Entity"/>
+	</rdf:Description>
+	
+	<owl:Class rdf:about="&oe-cjf;Address">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>address</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>CJF conversation move relationship in which a source Claim, Option, or Outcome provides information, reasoning, a proposed solution, or a group decision that directly responds to the problem or concern represented by a target Issue, without necessarily resolving it.</skos:definition>
+		<skos:prefLabel>address</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Addressed">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>addressed</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[32] W. Kunz and H. W. J. Rittel, “Issues as elements of information systems,” Institute of Urban and Regional Development, University of California, Berkeley, CA, USA, Working Paper No. 131, 1970. [Online]. Available: https://escholarship.org/uc/item/5cj786v8</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank179"/>
+		<skos:definition>A state of an Issue for which a Claim or Option provides information, reasoning, or a possible solution that directly responds to the problem or concern, without necessarily resolving it.</skos:definition>
+		<skos:prefLabel>addressed</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>Issue: A Claim or Option addresses the entire Issue.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Agreement">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdfs:label>agreement</rdfs:label>
+		<dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[20] Centre for Argument Technology, “A quick start guide to Inference Anchoring Theory (IAT),” Sep. 10, 2017. Accessed: Sep. 23, 2026. [Online]. Available: https://arg.tech/~chris/acl2019tut/IAT-guidelines.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank182"/>
+		<skos:definition>an Expressed Position in which a participant explicitly endorses or accepts an identifiable Claim, Option, or Issue.</skos:definition>
+		<skos:example>After another participant proposes O1, a speaker says, “I agree with O1.”</skos:example>
+		<skos:prefLabel>agreement</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://arg.tech/~chris/acl2019tut/IAT-guidelines.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Answer">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;Response"/>
+		<rdfs:label>answer</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>a response relationship in which a source Claim, Option, Issue, or Expressed Position provides a response that satisfies the information need expressed by a target Information Request.</skos:definition>
+		<skos:prefLabel>answer</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Answered">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>answered</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank183"/>
+		<skos:definition>state of an Information Request whose information need is satisfied by one or more contributions</skos:definition>
+		<skos:example>An information request asks “What time is it?” and a claim answers “It is 8 am.” The request has a recorded StateAssignment linked by hasPreviousAssignment to an assignment whose state is Open. With the answers relationship recorded, the State in the successor assignment is inferred as Answered.</skos:example>
+		<skos:prefLabel>answered</skos:prefLabel>
+		<skos:scopeNote>The Answered state applies when an Information Request&apos;s information need has been satisfied. OWL may classify a recorded transition to Answered when the required conditions are represented, but creating state assignments, checking their chronological order, and determining the latest state are handled separately.</skos:scopeNote>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Challenge">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>challenge</rdfs:label>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[34] N. Tran, D. Litman, and A. Godley, “Using large language models to analyze students’ collaborative argumentation in classroom discussions,” in Proc. Artificial Intelligence in Measurement and Education Conference (AIME-Con): Full Papers, Pittsburgh, PA, USA, 2025, pp. 111–125. [Online]. Available: https://aclanthology.org/2025.aimecon-main.13/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>CJF conversation move relationship in which a source Claim or Issue provides an objection, counterargument, or evidence against a target Claim, Option, or Issue.</skos:definition>
+		<skos:prefLabel>challenge</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Claim">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdfs:subClassOf rdf:nodeID="blank218"/>
+		<rdfs:subClassOf rdf:nodeID="blank222"/>
+		<rdfs:subClassOf rdf:nodeID="blank234"/>
+		<rdfs:label>claim</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[34] N. Tran, D. Litman, and A. Godley, “Using large language models to analyze students’ collaborative argumentation in classroom discussions,” in Proc. Artificial Intelligence in Measurement and Education Conference (AIME-Con): Full Papers, Pittsburgh, PA, USA, 2025, pp. 111–125. [Online]. Available: https://aclanthology.org/2025.aimecon-main.13/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<owl:disjointWith rdf:resource="&oe-cjf;Issue"/>
+		<owl:disjointWith rdf:resource="&oe-cjf;Option"/>
+		<skos:definition>CJF conversation move that introduces an assertion, interpretation, assessment, explanation, or piece of evidence for the group to consider</skos:definition>
+		<skos:example>A speaker presents a piece of evidence for the group to consider.</skos:example>
+		<skos:prefLabel>claim</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>A Claim does not need an argumentative target. A proposed choice is an Option, and a preference toward it is an Expressed Position.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;CollectiveJudgmentFormationConversationMove">
+		<rdfs:subClassOf rdf:resource="https://w3id.org/deliberation/ontology#Contribution"/>
+		<rdfs:subClassOf rdf:nodeID="blank233"/>
+		<rdfs:subClassOf rdf:nodeID="blank263"/>
+		<rdfs:subClassOf rdf:nodeID="blank284"/>
+		<rdfs:subClassOf rdf:nodeID="blank291"/>
+		<rdfs:label>collective judgment formation conversation move</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[27] R. Mallick et al., “Model of collective judgment formation for sequential teams in information-dense scenarios,” Proc. Human Factors Ergonom. Soc. Annu. Meeting, 2026, doi: 10.1177/10711813261475151.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[31] F. Macagno and S. Bigi, “Analyzing the pragmatic structure of dialogues,” Discourse Studies, vol. 19, no. 2, pp. 148–168, 2017, doi: 10.1177/1461445617691702.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<owl:disjointWith rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<skos:definition>a functionally distinct contribution to a deliberative dialogue that represents an information request, issue, option, claim, expressed position, outcome, or other element of collective reasoning and decision-making, and that may be related to and evaluated through subsequent conversational contributions.</skos:definition>
+		<skos:prefLabel>collective judgment formation conversation move</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1177/10711813261475151</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1177/1461445617691702</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship">
+		<rdfs:subClassOf rdf:resource="https://w3id.org/deliberation/ontology#Contribution"/>
+		<rdfs:subClassOf rdf:nodeID="blank230"/>
+		<rdfs:subClassOf rdf:nodeID="blank264"/>
+		<rdfs:subClassOf rdf:nodeID="blank281"/>
+		<rdfs:subClassOf rdf:nodeID="blank292"/>
+		<rdfs:label>collective judgment formation conversation move relationship</rdfs:label>
+		<dct:bibliographicCitation>[20] Centre for Argument Technology, “A quick start guide to Inference Anchoring Theory (IAT),” Sep. 10, 2017. Accessed: Sep. 23, 2026. [Online]. Available: https://arg.tech/~chris/acl2019tut/IAT-guidelines.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[3] N. Asher, J. Hunter, M. Morey, F. Benamara, and S. Afantenos, “Discourse structure and dialogue acts in multiparty dialogue: The STAC corpus,” in Proc. 10th International Conference on Language Resources and Evaluation (LREC’16), Portorož, Slovenia, 2016, pp. 2721–2727. [Online]. Available: https://aclanthology.org/L16-1432/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<skos:definition>relationship between a source CJF conversation move and a target CJF conversation move, represented as an individual to which information about that relationship can be attached</skos:definition>
+		<skos:prefLabel>collective judgment formation conversation move relationship</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/L16-1432/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://arg.tech/~chris/acl2019tut/IAT-guidelines.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Contested">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>contested</rdfs:label>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank158"/>
+		<skos:definition>a state of a Claim evidenced by a challenge from an Issue or another Claim.</skos:definition>
+		<skos:prefLabel>contested</skos:prefLabel>
+		<skos:scopeNote>Classifies a Claim state as Contested when an assignment is triggered by Challenge with an Unassessed or Supported predecessor. Contested membership is retained from a Contested predecessor when the assignment is triggered by Support or Challenge. A Claim state may be both Contested and Supported when both conditions are met.</skos:scopeNote>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;ConversationMoveWithState">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdfs:subClassOf rdf:nodeID="blank282"/>
+		<rdfs:label>conversation move with state</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[23] Tiziana Hernandez, &quot;Conversation Labels from Literature (conversation move_Taxonomy),&quot; working spreadsheet, 2026.</dct:bibliographicCitation>
+		<skos:definition>A collective judgment formation conversation move whose status is tracked through evidence-grounded State assignments as the conversation progresses.</skos:definition>
+		<skos:prefLabel>conversation move with state</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;DeliberativeConversationMove">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;ConversationMoveWithState"/>
+		<rdfs:label>deliberative conversation move</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[20] Centre for Argument Technology, “A quick start guide to Inference Anchoring Theory (IAT),” Sep. 10, 2017. Accessed: Sep. 23, 2026. [Online]. Available: https://arg.tech/~chris/acl2019tut/IAT-guidelines.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[32] W. Kunz and H. W. J. Rittel, “Issues as elements of information systems,” Institute of Urban and Regional Development, University of California, Berkeley, CA, USA, Working Paper No. 131, 1970. [Online]. Available: https://escholarship.org/uc/item/5cj786v8</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<skos:definition>a ConversationMoveWithState that introduces or develops the content of the group’s reasoning by stating a Claim, raising an Issue, or proposing an Option</skos:definition>
+		<skos:prefLabel>deliberative conversation move</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://arg.tech/~chris/acl2019tut/IAT-guidelines.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;DeliberativeDialogue">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;MultipartyConversation"/>
+		<rdfs:label>deliberative dialogue</rdfs:label>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<skos:definition>A type of multiparty dialogue in which participants engage in collaborative reasoning to address a problem, consider and evaluate possible courses of action, and seek agreement on a decision or course of action.</skos:definition>
+		<skos:prefLabel>deliberative dialogue</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Disagreement">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdfs:label>disagreement</rdfs:label>
+		<dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank164"/>
+		<skos:definition>An Expressed Position in which a participant explicitly disagrees with or rejects an identifiable Claim, Option, or Issue.</skos:definition>
+		<skos:prefLabel>disagreement</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;ExpressedPosition">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdfs:subClassOf rdf:nodeID="blank239"/>
+		<rdfs:subClassOf rdf:nodeID="blank240"/>
+		<rdfs:subClassOf rdf:nodeID="blank241"/>
+		<rdfs:label>expressed position</rdfs:label>
+		<dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<skos:definition>CJF conversation move that explicitly communicates a participant’s agreement or disagreement toward an identifiable deliberative conversation move</skos:definition>
+		<skos:prefLabel>expressed position</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>The type of position can be inferred as agreement or disagreement. Link the position to its target through hasPositionTowards, to its speaker through hasSpeaker, and to its source utterance through hasUtterance. An individual position is not by itself a group Outcome.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;InformationRequest">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;ConversationMoveWithState"/>
+		<rdfs:subClassOf rdf:nodeID="blank219"/>
+		<rdfs:subClassOf rdf:nodeID="blank223"/>
+		<rdfs:label>information request</rdfs:label>
+		<dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<skos:altLabel>info-request</skos:altLabel>
+		<skos:definition>CJF conversation move that creates an information need calling for another contribution to provide information, a claim, evidence, reasoning, an option, a position or reaction, or clarification</skos:definition>
+		<skos:example>What do you think of Option O1?</skos:example>
+		<skos:prefLabel>information request</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Issue">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdfs:subClassOf rdf:nodeID="blank220"/>
+		<rdfs:subClassOf rdf:nodeID="blank224"/>
+		<rdfs:subClassOf rdf:nodeID="blank236"/>
+		<rdfs:label>issue</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<owl:disjointWith rdf:resource="&oe-cjf;Option"/>
+		<skos:definition>CJF conversation move that introduces a problem, concern, challenge, objection, correction, limitation, or uncertainty requiring the group attention</skos:definition>
+		<skos:example>A speaker raises the issue of deciding which platform to adopt for a development project.</skos:example>
+		<skos:prefLabel>issue</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>Disagreement alone is an Expressed Position; a request for an answer is an Information Request; a negative fact presented as evidence is a Claim.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;MultipartyConversation">
+		<rdfs:subClassOf rdf:resource="&prov;Activity"/>
+		<rdfs:subClassOf rdf:nodeID="blank227"/>
+		<rdfs:subClassOf rdf:nodeID="blank242"/>
+		<rdfs:label>multiparty conversation</rdfs:label>
+		<dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<skos:altLabel>multi-speaker conversation</skos:altLabel>
+		<skos:definition>conversation among three or more identifiable participants who exchange ordered contributions that may respond to or build upon one another.</skos:definition>
+		<skos:prefLabel>multiparty conversation</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Open">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>open</rdfs:label>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[32] W. Kunz and H. W. J. Rittel, “Issues as elements of information systems,” Institute of Urban and Regional Development, University of California, Berkeley, CA, USA, Working Paper No. 131, 1970. [Online]. Available: https://escholarship.org/uc/item/5cj786v8</dct:bibliographicCitation>
+		<skos:definition>state of an Information Request or Issue when introduced, before evidence establishes another applicable state</skos:definition>
+		<skos:prefLabel>open</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Option">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdfs:subClassOf rdf:nodeID="blank221"/>
+		<rdfs:subClassOf rdf:nodeID="blank225"/>
+		<rdfs:subClassOf rdf:nodeID="blank237"/>
+		<rdfs:label>option</rdfs:label>
+		<dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<skos:altLabel>proposal</skos:altLabel>
+		<skos:altLabel>proposed solution</skos:altLabel>
+		<skos:definition>CJF conversation move that introduces a possible solution or course of action for the group to consider</skos:definition>
+		<skos:example>A speaker proposes a possible solution to a problem the group is discussing.</skos:example>
+		<skos:prefLabel>option</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Outcome">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdfs:label>outcome</rdfs:label>
+		<dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<skos:altLabel>decision</skos:altLabel>
+		<skos:altLabel>resolution</skos:altLabel>
+		<skos:definition>CJF conversation move that records an established group-level selection, resolution, or commitment reached through deliberation</skos:definition>
+		<skos:example>The group establishes a decision to select an Option.</skos:example>
+		<skos:prefLabel>outcome</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>A majority decision can be an Outcome without unanimity; an individual vote cannot establish one by itself.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Position">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>position</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>CJF conversation move relationship in which the source Expressed Position communicates a participant’s attitude toward the target deliberative conversation move</skos:definition>
+		<skos:prefLabel>position</skos:prefLabel>
+		<skos:scopeNote>A CJF conversation move relationship connecting an Expressed Position to the deliberative conversation move toward which the participant expresses an attitude. This relationship is distinct from the ExpressedPosition conversation move itself.</skos:scopeNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Refinement">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>refinement</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[34] N. Tran, D. Litman, and A. Godley, “Using large language models to analyze students’ collaborative argumentation in classroom discussions,” in Proc. Artificial Intelligence in Measurement and Education Conference (AIME-Con): Full Papers, Pittsburgh, PA, USA, 2025, pp. 111–125. [Online]. Available: https://aclanthology.org/2025.aimecon-main.13/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>CJF conversation move relationship in which a source Claim, Option, or Issue extends, corrects, or reformulates the content of an earlier target conversation move of the same type</skos:definition>
+		<skos:prefLabel>refinement</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Rejected">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>rejected</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<skos:definition>state of an Option evidenced by a group-level decision to rule out the Option as a possible course of action</skos:definition>
+		<skos:prefLabel>rejected</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Resolve">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;Address"/>
+		<rdfs:label>resolve</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>an address relationship in which a source Outcome explicitly settles the problem or concern represented by a target Issue through a group-level decision or agreement.</skos:definition>
+		<skos:prefLabel>resolve</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Resolved">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>resolved</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[32] W. Kunz and H. W. J. Rittel, “Issues as elements of information systems,” Institute of Urban and Regional Development, University of California, Berkeley, CA, USA, Working Paper No. 131, 1970. [Online]. Available: https://escholarship.org/uc/item/5cj786v8</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank165"/>
+		<skos:definition>state of an Issue evidenced by a group Outcome that explicitly settles the concern it represents</skos:definition>
+		<skos:prefLabel>resolved</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>Issue: An Outcome resolves the Issue.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Response">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>response</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>A CJF conversation move relationship in which a source Claim, Option, Issue, or Expressed Position provides a relevant response to the information need expressed by a target Information Request, without necessarily satisfying that need.</skos:definition>
+		<skos:prefLabel>response</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Selected">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>selected</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank169"/>
+		<skos:definition>state of an Option evidenced by a group Outcome that explicitly chooses the Option</skos:definition>
+		<skos:example>Outcome U1 selects Option O1. O1 has a recorded StateAssignment linked by hasPreviousAssignment to an assignment whose state is UnderConsideration. The State in the successor assignment is inferred as Selected.</skos:example>
+		<skos:prefLabel>selected</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>Option: An Outcome conversation move selects the Option.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Speaker">
+		<rdfs:subClassOf rdf:resource="&prov;Person"/>
+		<rdfs:subClassOf rdf:nodeID="blank232"/>
+		<rdfs:label>speaker</rdfs:label>
+		<dct:bibliographicCitation>[24] T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV Ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<skos:definition>prov:Agent that participates in a multiparty conversation and is identified as the source of one or more Utterances</skos:definition>
+		<skos:prefLabel>speaker</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/prov-o/</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;State">
+		<rdfs:label>state</rdfs:label>
+		<dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[5] C. Roberts, “Information structure in discourse: Towards an integrated formal theory of pragmatics,” in OSU Working Papers in Linguistics, vol. 49, J. H. Yoon and A. Kathol, Eds. Columbus, OH, USA: Ohio State University, 1996, pp. 91–136.</dct:bibliographicCitation>
+		<dct:description>resolution and open questions motivate selected distinctions.</dct:description>
+		<skos:definition>status assigned to a CJF conversation move at a specified point in a conversation based on evidence of how its information need, issue, option, or claim has been addressed or evaluated</skos:definition>
+		<skos:prefLabel>state</skos:prefLabel>
+		<cmns-av:adaptedFrom>C. Roberts, “Information structure in discourse: Towards an integrated formal theory of pragmatics,” in OSU Working Papers in Linguistics, vol. 49, J. H. Yoon and A. Kathol, Eds. Columbus, OH, USA: Ohio State University, 1996, pp. 91–136.</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>A state may change as later turns provide evidence.</cmns-av:explanatoryNote>
+		<cmns-av:usageNote>Require evidence for a state change which is recorded in StateAssignment; the absence of further objections does not establish Resolved. Keep an Expressed Position’s positionType distinct from a conversation move’s State.</cmns-av:usageNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;StateAssignment">
+		<rdfs:subClassOf rdf:nodeID="blank231"/>
+		<rdfs:subClassOf rdf:nodeID="blank235"/>
+		<rdfs:subClassOf rdf:nodeID="blank245"/>
+		<rdfs:subClassOf rdf:nodeID="blank246"/>
+		<rdfs:subClassOf rdf:nodeID="blank247"/>
+		<rdfs:subClassOf rdf:nodeID="blank283"/>
+		<rdfs:label>state assignment</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>record that associates a CJF conversation move with state with one State at a specified Utterance and with the Text Span evidence supporting that state assignment</skos:definition>
+		<skos:prefLabel>state assignment</skos:prefLabel>
+		<skos:scopeNote>Project-defined modeling construct documented in the Team CJF OE_10_TeamCJF_CuratedTermList.xlsx. State assignments record the state of a conversation move at a specified point and preserve earlier records when the state changes.</skos:scopeNote>
+		<cmns-av:usageNote>Preserve earlier assignment records when a conversation move changes state. Assignment records include both initial states and subsequent changes.</cmns-av:usageNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Support">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>support</rdfs:label>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[34] N. Tran, D. Litman, and A. Godley, “Using large language models to analyze students’ collaborative argumentation in classroom discussions,” in Proc. Artificial Intelligence in Measurement and Education Conference (AIME-Con): Full Papers, Pittsburgh, PA, USA, 2025, pp. 111–125. [Online]. Available: https://aclanthology.org/2025.aimecon-main.13/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<dct:source>Tracking CJF</dct:source>
+		<skos:definition>A CJF conversation move relationship in which a source Claim provides evidence, reasoning, or an explanation in favor of a target Claim, Option, or Issue.</skos:definition>
+		<skos:prefLabel>support</skos:prefLabel>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Supported">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>supported</rdfs:label>
+		<dct:bibliographicCitation>[16] P. Baroni, M. Romano, F. Toni, M. Aurisicchio, and G. Bertanza, “Automatic evaluation of design alternatives with quantitative argumentation,” Argument &amp; Computation, vol. 6, no. 1, pp. 24–49, 2015, doi: 10.1080/19462166.2014.1001791.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[7] R. Ruiz-Dolz, J. Lawrence, E. Schad, and C. Reed, “Overview of DialAM-2024: Argument mining in natural language dialogues,” in Proc. 11th Workshop on Argument Mining (ArgMining 2024), Bangkok, Thailand, 2024, pp. 83–92, doi: 10.18653/v1/2024.argmining-1.8.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
+		<owl:equivalentClass rdf:nodeID="blank173"/>
+		<skos:definition>a state of a Claim evidenced by supporting information or reasoning from another Claim.</skos:definition>
+		<skos:prefLabel>supported</skos:prefLabel>
+		<skos:scopeNote>Classifies a Claim state as Supported when an assignment is triggered by Support with an Unassessed or Contested predecessor. Supported membership is retained from a Supported predecessor when the assignment is triggered by Support or Challenge. A Claim state may be both Supported and Contested when both conditions are met.</skos:scopeNote>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1080/19462166.2014.1001791</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;TextSpan">
+		<rdfs:subClassOf rdf:resource="&prov;Entity"/>
+		<rdfs:subClassOf rdf:nodeID="blank228"/>
+		<rdfs:subClassOf rdf:nodeID="blank243"/>
+		<rdfs:label>text span</rdfs:label>
+		<dct:bibliographicCitation>[25] W3C, “Web Annotation Data Model,” W3C Recommendation, Feb. 23, 2017. [Online]. Available: https://www.w3.org/TR/annotation-model/</dct:bibliographicCitation>
+		<skos:definition>contiguous segment of transcript text delimited by start and end positions and used as the specific target of an annotation</skos:definition>
+		<skos:prefLabel>text span</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Unassessed">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>unassessed</rdfs:label>
+		<dct:bibliographicCitation>[16] P. Baroni, M. Romano, F. Toni, M. Aurisicchio, and G. Bertanza, “Automatic evaluation of design alternatives with quantitative argumentation,” Argument &amp; Computation, vol. 6, no. 1, pp. 24–49, 2015, doi: 10.1080/19462166.2014.1001791.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<skos:definition>state of a Claim introduced into the conversation, before evidence establishes another applicable state</skos:definition>
+		<skos:prefLabel>unassessed</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1080/19462166.2014.1001791</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;UnderConsideration">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;State"/>
+		<rdfs:label>under consideration</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[21] Tiziana Hernandez, “Conversation Labels from Literature (States_of_Conversation_Moves),” working spreadsheet, 2026.</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[33] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
+		<skos:definition>state of a proposed Option when introduced, before evidence establishes another applicable state</skos:definition>
+		<skos:prefLabel>under consideration</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>Option: Under Consideration is the initial state of a proposed option.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-cjf;Utterance">
+		<rdfs:subClassOf rdf:resource="&prov;Entity"/>
+		<rdfs:subClassOf rdf:nodeID="blank226"/>
+		<rdfs:subClassOf rdf:nodeID="blank229"/>
+		<rdfs:subClassOf rdf:nodeID="blank238"/>
+		<rdfs:subClassOf rdf:nodeID="blank244"/>
+		<rdfs:label>utterance</rdfs:label>
+		<dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[20] Centre for Argument Technology, “A quick start guide to Inference Anchoring Theory (IAT),” Sep. 10, 2017. Accessed: Sep. 23, 2026. [Online]. Available: https://arg.tech/~chris/acl2019tut/IAT-guidelines.pdf</dct:bibliographicCitation>
+		<dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
+		<skos:definition>speaker-attributed segment of a conversation bounded for annotation as one communicative contribution and capable of expressing one or more dialogue functions</skos:definition>
+		<skos:prefLabel>utterance</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;addresses">
+		<rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+		<rdfs:label>addresses</rdfs:label>
+		<rdfs:domain rdf:nodeID="blank206"/>
+		<rdfs:range rdf:resource="&oe-cjf;Issue"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank103"/>
+		<skos:definition>provides information, reasoning, or a possible solution that directly responds to the problem or concern represented by</skos:definition>
+		<skos:prefLabel>addresses</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;answers">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;respondsTo"/>
+		<rdfs:label>answers</rdfs:label>
+		<rdfs:domain rdf:nodeID="blank186"/>
+		<rdfs:range rdf:resource="&oe-cjf;InformationRequest"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank104"/>
+		<skos:definition>provides a response that satisfies the information need expressed by</skos:definition>
+		<skos:prefLabel>answers</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;assignedAtUtterance">
+		<rdfs:label>assigned at utterance</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdfs:range rdf:resource="&oe-cjf;Utterance"/>
+		<skos:definition>records at which utterance the linking state assignment became applicable and transitioned from the previous state assignment</skos:definition>
+		<skos:prefLabel>assigned at utterance</skos:prefLabel>
+		<cmns-av:usageNote>Identifies where the state becomes applicable in the conversation, rather than when an annotator entered the record. The turn number belongs to the linked Utterance.</cmns-av:usageNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;assignedState">
+		<rdfs:label>assigned state</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdfs:range rdf:resource="&oe-cjf;State"/>
+		<skos:definition>relationship linking a state assignment with it&apos;s state.</skos:definition>
+		<skos:prefLabel>assigned state</skos:prefLabel>
+		<cmns-av:usageNote>Records the state for that assignment</cmns-av:usageNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;challenges">
+		<rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+		<rdfs:label>challenges</rdfs:label>
+		<rdfs:domain rdf:nodeID="blank190"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank105"/>
+		<skos:definition>provides an identifiable objection, counterargument, or evidence against</skos:definition>
+		<skos:prefLabel>challenges</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-cjf;hasConversationIdentifier">
+		<rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+		<rdfs:label>has conversation identifier</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;MultipartyConversation"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>has as its unique conversation identifier</skos:definition>
+		<skos:prefLabel>has conversation identifier</skos:prefLabel>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-cjf;hasConversationText">
+		<rdfs:subPropertyOf rdf:resource="&prov;value"/>
+		<rdfs:label>has conversation text</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank211"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>has its conversation text recorded as</skos:definition>
+		<skos:prefLabel>has conversation text</skos:prefLabel>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasCurrentStateAssignment">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;hasStateAssignment"/>
+		<rdfs:label>has current state assignment</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;ConversationMoveWithState"/>
+		<rdfs:range rdf:resource="&oe-cjf;StateAssignment"/>
+		<skos:definition>relationship linking a CJF conversation move with the state assignment that represents its current state.</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasPositionTowards">
+		<rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+		<rdfs:label>has position towards</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank106"/>
+		<skos:definition>expresses the speaker’s attitude toward</skos:definition>
+		<skos:prefLabel>has position towards</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasPreviousAssignment">
+		<rdfs:label>has previous assignment</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdfs:range rdf:resource="&oe-cjf;StateAssignment"/>
+		<skos:definition>has as its immediately preceding state transition record for the same conversation move</skos:definition>
+		<skos:prefLabel>has previous assignment</skos:prefLabel>
+		<cmns-av:usageNote>Omit for the initial state assignment. The preceding assignment must concern the same conversation move (the current cardinality restriction does not enforce that condition.)</cmns-av:usageNote>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-cjf;hasReason">
+		<rdfs:label>has reason</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank212"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>has the explanation of how conversational evidence establishes an annotated relationship or state assignment recorded as</skos:definition>
+		<skos:scopeNote>For state assignments, this property is used when conversational evidence directly establishes a state change without an associated relationship that explains the change.</skos:scopeNote>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasSpeaker">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_001403"/>
+		<rdfs:label>has speaker</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank199"/>
+		<rdfs:range rdf:resource="&oe-cjf;Speaker"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank002"/>
+		<skos:definition>is expressed in a conversational contribution made by</skos:definition>
+		<skos:prefLabel>has speaker</skos:prefLabel>
+		<cmns-av:explanatoryNote>The relationship is inferred from the conversational contribution that expresses the conversation move.</cmns-av:explanatoryNote>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-cjf;hasSpeakerName">
+		<rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+		<rdfs:label>has speaker name</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Speaker"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>has as its speaker name</skos:definition>
+		<skos:prefLabel>has speaker name</skos:prefLabel>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasState">
+		<rdfs:label>has state</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;ConversationMoveWithState"/>
+		<rdfs:range rdf:resource="&oe-cjf;State"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank092"/>
+		<skos:definition>has its evidence-based standing at a specified point in the conversation characterized by</skos:definition>
+		<cmns-av:adaptedFrom>C. Roberts, “Information structure in discourse: Towards an integrated formal theory of pragmatics,” in OSU Working Papers in Linguistics, vol. 49, J. H. Yoon and A. Kathol, Eds. Columbus, OH, USA: Ohio State University, 1996, pp. 91–136.</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasStateAssignment">
+		<rdfs:label>has state assignment</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;ConversationMoveWithState"/>
+		<rdfs:range rdf:resource="&oe-cjf;StateAssignment"/>
+		<skos:definition>relationship linking a CJF conversation move with a state assignment record at specified turn in the conversation recorded through</skos:definition>
+		<skos:prefLabel>has state assignment</skos:prefLabel>
+		<cmns-av:usageNote>Links to all recorded state assignments, including the assignment corresponding to the current state.</cmns-av:usageNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasStateEvidence">
+		<rdfs:label>has state evidence</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdfs:range rdf:resource="&oe-cjf;TextSpan"/>
+		<skos:definition>has its assigned state justified by</skos:definition>
+		<skos:prefLabel>has state evidence</skos:prefLabel>
+		<cmns-av:usageNote>May link to multiple Text Spans, including evidence from earlier Utterances.</cmns-av:usageNote>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-cjf;hasSummary">
+		<rdfs:label>has summary</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdfs:range rdf:resource="&xsd;string"/>
+		<skos:definition>has the content of a conversation move concisely described in context as</skos:definition>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasTriggeringRelationship">
+		<rdfs:label>has triggering relationship</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdfs:range rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<skos:definition>has its recorded state transition triggered by</skos:definition>
+		<skos:prefLabel>has triggering relationship</skos:prefLabel>
+		<cmns-av:usageNote>Links a relationship-based state assignment to the relationship individual that triggers that transition. The relationship must target the same conversation move and be established by evidence available at the assignment&apos;s effective utterance. Earlier contextual evidence alone does not establish the trigger. Initial assignments and evidence-based transitions need not have a triggering relationship; multiple relationships may jointly trigger one transition.</cmns-av:usageNote>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&oe-cjf;hasTurnNumber">
+		<rdfs:subPropertyOf rdf:resource="&prov;value"/>
+		<rdfs:label>has turn number</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Utterance"/>
+		<rdfs:range rdf:resource="&xsd;int"/>
+		<skos:definition>has its position in the conversation identified by</skos:definition>
+		<skos:prefLabel>has turn number</skos:prefLabel>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;hasUtterance">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label>has utterance</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank203"/>
+		<rdfs:range rdf:resource="&oe-cjf;Utterance"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank001"/>
+		<skos:definition>has supporting conversational evidence in</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAbout">
+		<rdfs:label>is about</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;InformationRequest"/>
+		<rdfs:range rdf:nodeID="blank204"/>
+		<skos:definition>concerns the content of</skos:definition>
+		<skos:prefLabel>is about</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAt">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label>is aimed at</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:range rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<skos:definition>has as its target conversation move</skos:definition>
+		<skos:prefLabel>is aimed at</skos:prefLabel>
+		<cmns-av:explanatoryNote>This is used for reification of the CJF conversation moves relationships. This points from a conversation move relationship in question to the conversation move it&apos;s pointing to. This is superclass from which we inherit for each relationship</cmns-av:explanatoryNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtAddresses">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:label>is aimed at addresses</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Address"/>
+		<rdfs:range rdf:resource="&oe-cjf;Issue"/>
+		<skos:definition>represents engagement with the concern expressed by</skos:definition>
+		<skos:prefLabel>is aimed at addresses</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtAnswers">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAtRespondsTo"/>
+		<rdfs:label>is aimed at answers</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Answer"/>
+		<rdfs:range rdf:resource="&oe-cjf;InformationRequest"/>
+		<skos:definition>represents a response that fully satisfies the information need expressed by</skos:definition>
+		<skos:prefLabel>is aimed at answers</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtChallenges">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:label>is aimed at challenges</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Challenge"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<skos:definition>represents evidence or reasoning that weakens or rebuts the epistemic standing of</skos:definition>
+		<skos:prefLabel>is aimed at challenges</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtPositionTowards">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:label>is aimed at position towards</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Position"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<skos:definition>represents an expression of a participant’s attitude toward</skos:definition>
+		<skos:prefLabel>is aimed at position towards</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtRefines">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:label>is aimed at refines</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Refinement"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<skos:definition>represents an extension, correction, or reformulation of the content of</skos:definition>
+		<skos:prefLabel>is aimed at refines</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtResolves">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAtAddresses"/>
+		<rdfs:label>is aimed at resolves</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Resolve"/>
+		<rdfs:range rdf:resource="&oe-cjf;Issue"/>
+		<skos:definition>represents collective confirmation of a recommended Option that settles</skos:definition>
+		<skos:prefLabel>is aimed at resolves</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtRespondsTo">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:label>is aimed at responds to</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Response"/>
+		<rdfs:range rdf:resource="&oe-cjf;InformationRequest"/>
+		<skos:definition>represents a relevant response to</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtSupports">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:label>is aimed at supports</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Support"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<skos:definition>represents evidence or reasoning that strengthens the epistemic standing of</skos:definition>
+		<skos:prefLabel>is aimed at supports</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAlternativeTo">
+		<rdf:type rdf:resource="&owl;SymmetricProperty"/>
+		<rdfs:label>is alternative to</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;Option"/>
+		<rdfs:range rdf:resource="&oe-cjf;Option"/>
+		<skos:definition>is a competing course of action to</skos:definition>
+		<skos:prefLabel>is alternative to</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>The relationship is symmetric: if one Option is an alternative to another, the reverse also holds.</cmns-av:explanatoryNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isNegativeSupportedBy">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000206"/>
+		<rdfs:label>is negative supported by</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdfs:range rdf:resource="&oe-cjf;TextSpan"/>
+		<owl:propertyDisjointWith rdf:resource="&oe-cjf;isPositiveSupportedBy"/>
+		<skos:definition>has its interpretation as a negative-polarity position supported by the linguistic content of</skos:definition>
+		<skos:prefLabel>is negative supported by</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.11/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isPartOfUtterance">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000093"/>
+		<rdfs:label>is part of utterance</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;TextSpan"/>
+		<rdfs:range rdf:resource="&oe-cjf;Utterance"/>
+		<skos:definition>forms a textual part of</skos:definition>
+		<skos:prefLabel>is part of utterance</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;isPositiveSupportedBy">
+		<rdfs:subPropertyOf rdf:resource="&resource;SIO_000206"/>
+		<rdfs:label>is positive supported by</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdfs:range rdf:resource="&oe-cjf;TextSpan"/>
+		<skos:definition>has its interpretation as a positive-polarity position supported by the linguistic content of</skos:definition>
+		<skos:prefLabel>is positive supported by</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.11/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makes">
+		<rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+		<rdfs:label>makes</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdfs:range rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<skos:definition>serves as the source conversation move of</skos:definition>
+		<skos:prefLabel>makes</skos:prefLabel>
+		<cmns-av:explanatoryNote>This is used for reification of the CJF conversation moves relationships. This points from a conversation move to the relationship in question. This is superclass from which we inherit for each relationship</cmns-av:explanatoryNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesAddresses">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:label>makes addresses</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank205"/>
+		<rdfs:range rdf:resource="&oe-cjf;Address"/>
+		<skos:definition>serves as the source of engagement with an issue, as represented by</skos:definition>
+		<skos:prefLabel>makes addresses</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesAnswers">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makesRespondsTo"/>
+		<rdfs:label>makes answers</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank207"/>
+		<rdfs:range rdf:resource="&oe-cjf;Answer"/>
+		<skos:definition>serves as the source of a response that fully satisfies an information request, as represented by</skos:definition>
+		<skos:prefLabel>makes answers</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesChallenges">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:label>makes challenges</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank208"/>
+		<rdfs:range rdf:resource="&oe-cjf;Challenge"/>
+		<skos:definition>serves as the source of evidence or reasoning that weakens or rebuts another conversation move, as represented by</skos:definition>
+		<skos:prefLabel>makes challenges</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesPositionTowards">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:label>makes position towards</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdfs:range rdf:resource="&oe-cjf;Position"/>
+		<skos:definition>serves as the source of an expression of a participant’s attitude toward another conversation move, as represented by</skos:definition>
+		<skos:prefLabel>makes position towards</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesRefines">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:label>makes refines</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdfs:range rdf:resource="&oe-cjf;Refinement"/>
+		<skos:definition>serves as the source of an extension, correction, or reformulation of another conversation move, as represented by</skos:definition>
+		<skos:prefLabel>makes refines</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesResolves">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makesAddresses"/>
+		<rdfs:label>makes resolves</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Outcome"/>
+		<rdfs:range rdf:resource="&oe-cjf;Resolve"/>
+		<skos:definition>serves as the source of collective confirmation of a recommended Option that settles an Issue, as represented by</skos:definition>
+		<skos:prefLabel>makes resolves</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesRespondsTo">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:label>makes responds to</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:nodeID="blank209"/>
+		<rdfs:range rdf:resource="&oe-cjf;Response"/>
+		<skos:definition>serves as the source of a response to an information request, as represented by</skos:definition>
+		<skos:prefLabel>makes responds to</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesSupports">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:label>makes supports</rdfs:label>
+		<dct:source>Tracking CJF</dct:source>
+		<rdfs:domain rdf:resource="&oe-cjf;Claim"/>
+		<rdfs:range rdf:resource="&oe-cjf;Support"/>
+		<skos:definition>serves as the source of evidence or reasoning that strengthens another conversation move, as represented by</skos:definition>
+		<skos:prefLabel>makes supports</skos:prefLabel>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;refines">
+		<rdfs:label>refines</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank107"/>
+		<skos:definition>extends, corrects, or reformulates the content of</skos:definition>
+		<skos:prefLabel>refines</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;resolves">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;addresses"/>
+		<rdfs:label>resolves</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;Outcome"/>
+		<rdfs:range rdf:resource="&oe-cjf;Issue"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank108"/>
+		<skos:definition>records that a group Outcome explicitly settles the concern represented by</skos:definition>
+		<skos:prefLabel>resolves</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;respondsTo">
+		<rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+		<rdfs:label>responds to</rdfs:label>
+		<rdfs:domain rdf:nodeID="blank210"/>
+		<rdfs:range rdf:resource="&oe-cjf;InformationRequest"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank109"/>
+		<skos:definition>provides a relevant response to</skos:definition>
+		<skos:prefLabel>responds to</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>The relationship does not establish whether the information need is satisfied.</cmns-av:explanatoryNote>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;selects">
+		<rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+		<rdfs:label>selects</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;Outcome"/>
+		<rdfs:range rdf:resource="&oe-cjf;Option"/>
+		<skos:definition>records that a group Outcome chooses an</skos:definition>
+		<skos:prefLabel>selects</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&oe-cjf;supports">
+		<rdfs:subPropertyOf rdf:resource="https://w3id.org/deliberation/ontology#responseTo"/>
+		<rdfs:label>supports</rdfs:label>
+		<rdfs:domain rdf:resource="&oe-cjf;Claim"/>
+		<rdfs:range rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<owl:propertyChainAxiom rdf:nodeID="blank110"/>
+		<skos:definition>provides identifiable evidence or reasoning in favor of</skos:definition>
+		<skos:prefLabel>supports</skos:prefLabel>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="https://w3id.org/deliberation/ontology#Contribution">
+		<rdfs:label>Contribution</rdfs:label>
+		<rdfs:comment>Any input provided by a participant in a deliberation.</rdfs:comment>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="https://w3id.org/deliberation/ontology#responseTo">
+		<rdfs:label>response to</rdfs:label>
+		<rdfs:comment>Relates a contribution to another contribution it responds to.</rdfs:comment>
+		<rdfs:domain rdf:resource="https://w3id.org/deliberation/ontology#Contribution"/>
+		<rdfs:range rdf:resource="https://w3id.org/deliberation/ontology#Contribution"/>
+	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="&cmns-dt;DateTime">
+		<rdfs:subClassOf rdf:resource="&cmns-dt;TimeInstant"/>
+		<rdfs:label>date time</rdfs:label>
+		<skos:definition>time point including a date and a time, optionally including a time zone offset</skos:definition>
+		<skos:note>&apos;has date time value&apos; is omitted if the &apos;date time&apos; is not (yet) known. The time zone is implicitly UTC.</skos:note>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-dt;TemporalEntity">
+		<rdfs:label>temporal entity</rdfs:label>
+		<rdfs:seeAlso rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+		<skos:definition>time interval or instant</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&cmns-dt;TimeInstant">
+		<rdfs:subClassOf rdf:resource="&cmns-dt;TemporalEntity"/>
+		<rdfs:label>time instant</rdfs:label>
+		<skos:definition>temporal entity that is a member of a time scale, with no extent or duration</skos:definition>
+		<skos:example>The Battle of Hastings was on &apos;14 October 1066&apos;. (This gives the Julian date of the battle at a granularity of &apos;day&apos;. If desired, the battle could be given more precisely as a time period within that calendar day.)</skos:example>
+		<skos:note>For scales that have a granularity specified in days, a date is a time point; for scales down to the seconds, the equivalent of an xsd:dateTime or xsd:dateTimeStamp is a time point.</skos:note>
+		<skos:note>The duration of each time interval that is an instance of the time point is the granularity of the time scale of the time point.</skos:note>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/DTV/</cmns-av:adaptedFrom>
+		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/owl-time/#time:Instant</cmns-av:adaptedFrom>
+		<cmns-av:synonym>instant in time</cmns-av:synonym>
+		<cmns-av:synonym>time point</cmns-av:synonym>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&cmns-dt;hasDateTime">
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasTime"/>
+		<rdfs:label>has date time</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;DateTime"/>
+		<skos:definition>identifies a specific date and time of day, possibly excluding the time zone</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&cmns-dt;hasTime">
+		<rdfs:label>has time</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;TemporalEntity"/>
+		<rdfs:seeAlso rdf:resource="https://w3c.github.io/sdw/time/#time:hasTime"/>
+		<skos:definition>specifies a general time that can be associated with any element</skos:definition>
+		<skos:note>This property corresponds to the property of the same name in the W3C Time Ontology, and can be used to support mapping.</skos:note>
+	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:nodeID="blank001">
+		<rdf:first rdf:resource="&resource;SIO_000206"/>
+		<rdf:rest rdf:nodeID="blank101"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank002">
+		<rdf:first rdf:resource="&resource;SIO_000206"/>
+		<rdf:rest rdf:nodeID="blank102"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank003">
+		<rdf:first rdf:resource="&prov;wasAttributedTo"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank004">
+		<rdf:first rdf:resource="&oe-cjf;Addressed"/>
+		<rdf:rest rdf:nodeID="blank043"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank005">
+		<rdf:first rdf:resource="&oe-cjf;Addressed"/>
+		<rdf:rest rdf:nodeID="blank044"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank006">
+		<rdf:first rdf:resource="&oe-cjf;Addressed"/>
+		<rdf:rest rdf:nodeID="blank045"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank007">
+		<rdf:first rdf:resource="&oe-cjf;Answered"/>
+		<rdf:rest rdf:nodeID="blank041"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank008">
+		<rdf:first rdf:resource="&oe-cjf;Answered"/>
+		<rdf:rest rdf:nodeID="blank042"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank009">
+		<rdf:first rdf:resource="&oe-cjf;Challenge"/>
+		<rdf:rest rdf:nodeID="blank078"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank010">
+		<rdf:first rdf:resource="&oe-cjf;Challenge"/>
+		<rdf:rest rdf:nodeID="blank079"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank011">
+		<rdf:first rdf:resource="&oe-cjf;Claim"/>
+		<rdf:rest rdf:nodeID="blank038"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank012">
+		<rdf:first rdf:resource="&oe-cjf;Claim"/>
+		<rdf:rest rdf:nodeID="blank039"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank013">
+		<rdf:first rdf:resource="&oe-cjf;Claim"/>
+		<rdf:rest rdf:nodeID="blank046"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank014">
+		<rdf:first rdf:resource="&oe-cjf;Claim"/>
+		<rdf:rest rdf:nodeID="blank047"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank015">
+		<rdf:first rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdf:rest rdf:nodeID="blank019"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank016">
+		<rdf:first rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdf:rest rdf:nodeID="blank018"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank017">
+		<rdf:first rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+		<rdf:rest rdf:nodeID="blank020"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank018">
+		<rdf:first rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank019">
+		<rdf:first rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank020">
+		<rdf:first rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank021">
+		<rdf:first rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdf:rest rdf:nodeID="blank063"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank022">
+		<rdf:first rdf:resource="&oe-cjf;Contested"/>
+		<rdf:rest rdf:nodeID="blank080"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank023">
+		<rdf:first rdf:resource="&oe-cjf;Contested"/>
+		<rdf:rest rdf:nodeID="blank081"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank024">
+		<rdf:first rdf:resource="&oe-cjf;Contested"/>
+		<rdf:rest rdf:nodeID="blank087"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank025">
+		<rdf:first rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdf:rest rdf:nodeID="blank030"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank026">
+		<rdf:first rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdf:rest rdf:nodeID="blank031"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank027">
+		<rdf:first rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdf:rest rdf:nodeID="blank032"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank028">
+		<rdf:first rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdf:rest rdf:nodeID="blank033"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank029">
+		<rdf:first rdf:resource="&oe-cjf;DeliberativeConversationMove"/>
+		<rdf:rest rdf:nodeID="blank034"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank030">
+		<rdf:first rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank031">
+		<rdf:first rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank032">
+		<rdf:first rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank033">
+		<rdf:first rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank034">
+		<rdf:first rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank035">
+		<rdf:first rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdf:rest rdf:nodeID="blank154"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank036">
+		<rdf:first rdf:resource="&oe-cjf;ExpressedPosition"/>
+		<rdf:rest rdf:nodeID="blank155"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank037">
+		<rdf:first rdf:resource="&oe-cjf;InformationRequest"/>
+		<rdf:rest rdf:nodeID="blank128"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank038">
+		<rdf:first rdf:resource="&oe-cjf;Issue"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank039">
+		<rdf:first rdf:resource="&oe-cjf;Issue"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank040">
+		<rdf:first rdf:resource="&oe-cjf;Issue"/>
+		<rdf:rest rdf:nodeID="blank130"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank041">
+		<rdf:first rdf:resource="&oe-cjf;Open"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank042">
+		<rdf:first rdf:resource="&oe-cjf;Open"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank043">
+		<rdf:first rdf:resource="&oe-cjf;Open"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank044">
+		<rdf:first rdf:resource="&oe-cjf;Open"/>
+		<rdf:rest rdf:nodeID="blank053"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank045">
+		<rdf:first rdf:resource="&oe-cjf;Open"/>
+		<rdf:rest rdf:nodeID="blank054"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank046">
+		<rdf:first rdf:resource="&oe-cjf;Option"/>
+		<rdf:rest rdf:nodeID="blank049"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank047">
+		<rdf:first rdf:resource="&oe-cjf;Option"/>
+		<rdf:rest rdf:nodeID="blank050"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank048">
+		<rdf:first rdf:resource="&oe-cjf;Option"/>
+		<rdf:rest rdf:nodeID="blank131"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank049">
+		<rdf:first rdf:resource="&oe-cjf;Outcome"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank050">
+		<rdf:first rdf:resource="&oe-cjf;Outcome"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank051">
+		<rdf:first rdf:resource="&oe-cjf;Rejected"/>
+		<rdf:rest rdf:nodeID="blank055"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank052">
+		<rdf:first rdf:resource="&oe-cjf;Rejected"/>
+		<rdf:rest rdf:nodeID="blank056"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank053">
+		<rdf:first rdf:resource="&oe-cjf;Resolved"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank054">
+		<rdf:first rdf:resource="&oe-cjf;Resolved"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank055">
+		<rdf:first rdf:resource="&oe-cjf;Selected"/>
+		<rdf:rest rdf:nodeID="blank088"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank056">
+		<rdf:first rdf:resource="&oe-cjf;Selected"/>
+		<rdf:rest rdf:nodeID="blank089"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank057">
+		<rdf:first rdf:resource="&oe-cjf;State"/>
+		<rdf:rest rdf:nodeID="blank118"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank058">
+		<rdf:first rdf:resource="&oe-cjf;State"/>
+		<rdf:rest rdf:nodeID="blank119"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank059">
+		<rdf:first rdf:resource="&oe-cjf;State"/>
+		<rdf:rest rdf:nodeID="blank121"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank060">
+		<rdf:first rdf:resource="&oe-cjf;State"/>
+		<rdf:rest rdf:nodeID="blank123"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank061">
+		<rdf:first rdf:resource="&oe-cjf;State"/>
+		<rdf:rest rdf:nodeID="blank124"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank062">
+		<rdf:first rdf:resource="&oe-cjf;State"/>
+		<rdf:rest rdf:nodeID="blank125"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank063">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank064">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank115"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank065">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank116"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank066">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank132"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank067">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank133"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank068">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank134"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank069">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank135"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank070">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank136"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank071">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank137"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank072">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank138"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank073">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank139"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank074">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank140"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank075">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank143"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank076">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank144"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank077">
+		<rdf:first rdf:resource="&oe-cjf;StateAssignment"/>
+		<rdf:rest rdf:nodeID="blank147"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank078">
+		<rdf:first rdf:resource="&oe-cjf;Support"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank079">
+		<rdf:first rdf:resource="&oe-cjf;Support"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank080">
+		<rdf:first rdf:resource="&oe-cjf;Supported"/>
+		<rdf:rest rdf:nodeID="blank084"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank081">
+		<rdf:first rdf:resource="&oe-cjf;Supported"/>
+		<rdf:rest rdf:nodeID="blank085"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank082">
+		<rdf:first rdf:resource="&oe-cjf;Supported"/>
+		<rdf:rest rdf:nodeID="blank086"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank083">
+		<rdf:first rdf:resource="&oe-cjf;TextSpan"/>
+		<rdf:rest rdf:nodeID="blank090"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank084">
+		<rdf:first rdf:resource="&oe-cjf;Unassessed"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank085">
+		<rdf:first rdf:resource="&oe-cjf;Unassessed"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank086">
+		<rdf:first rdf:resource="&oe-cjf;Unassessed"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank087">
+		<rdf:first rdf:resource="&oe-cjf;Unassessed"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank088">
+		<rdf:first rdf:resource="&oe-cjf;UnderConsideration"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank089">
+		<rdf:first rdf:resource="&oe-cjf;UnderConsideration"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank090">
+		<rdf:first rdf:resource="&oe-cjf;Utterance"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank091">
+		<rdf:first rdf:resource="&oe-cjf;assignedState"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank092">
+		<rdf:first rdf:resource="&oe-cjf;hasCurrentStateAssignment"/>
+		<rdf:rest rdf:nodeID="blank091"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank093">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtAddresses"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank094">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtAnswers"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank095">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtChallenges"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank096">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtPositionTowards"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank097">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtRefines"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank098">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtResolves"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank099">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtRespondsTo"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank100">
+		<rdf:first rdf:resource="&oe-cjf;isAimedAtSupports"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank101">
+		<rdf:first rdf:resource="&oe-cjf;isPartOfUtterance"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank102">
+		<rdf:first rdf:resource="&oe-cjf;isPartOfUtterance"/>
+		<rdf:rest rdf:nodeID="blank003"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank103">
+		<rdf:first rdf:resource="&oe-cjf;makesAddresses"/>
+		<rdf:rest rdf:nodeID="blank093"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank104">
+		<rdf:first rdf:resource="&oe-cjf;makesAnswers"/>
+		<rdf:rest rdf:nodeID="blank094"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank105">
+		<rdf:first rdf:resource="&oe-cjf;makesChallenges"/>
+		<rdf:rest rdf:nodeID="blank095"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank106">
+		<rdf:first rdf:resource="&oe-cjf;makesPositionTowards"/>
+		<rdf:rest rdf:nodeID="blank096"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank107">
+		<rdf:first rdf:resource="&oe-cjf;makesRefines"/>
+		<rdf:rest rdf:nodeID="blank097"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank108">
+		<rdf:first rdf:resource="&oe-cjf;makesResolves"/>
+		<rdf:rest rdf:nodeID="blank098"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank109">
+		<rdf:first rdf:resource="&oe-cjf;makesRespondsTo"/>
+		<rdf:rest rdf:nodeID="blank099"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank110">
+		<rdf:first rdf:resource="&oe-cjf;makesSupports"/>
+		<rdf:rest rdf:nodeID="blank100"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank111">
+		<rdf:first rdf:nodeID="blank160"/>
+		<rdf:rest rdf:nodeID="blank112"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank112">
+		<rdf:first rdf:nodeID="blank162"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank113">
+		<rdf:first rdf:nodeID="blank175"/>
+		<rdf:rest rdf:nodeID="blank114"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank114">
+		<rdf:first rdf:nodeID="blank177"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank115">
+		<rdf:first rdf:nodeID="blank189"/>
+		<rdf:rest rdf:nodeID="blank126"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank116">
+		<rdf:first rdf:nodeID="blank200"/>
+		<rdf:rest rdf:nodeID="blank127"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank117">
+		<rdf:first rdf:nodeID="blank248"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank118">
+		<rdf:first rdf:nodeID="blank249"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank119">
+		<rdf:first rdf:nodeID="blank250"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank120">
+		<rdf:first rdf:nodeID="blank251"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank121">
+		<rdf:first rdf:nodeID="blank252"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank122">
+		<rdf:first rdf:nodeID="blank253"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank123">
+		<rdf:first rdf:nodeID="blank254"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank124">
+		<rdf:first rdf:nodeID="blank255"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank125">
+		<rdf:first rdf:nodeID="blank256"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank126">
+		<rdf:first rdf:nodeID="blank257"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank127">
+		<rdf:first rdf:nodeID="blank258"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank128">
+		<rdf:first rdf:nodeID="blank259"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank129">
+		<rdf:first rdf:nodeID="blank260"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank130">
+		<rdf:first rdf:nodeID="blank261"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank131">
+		<rdf:first rdf:nodeID="blank262"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank132">
+		<rdf:first rdf:nodeID="blank265"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank133">
+		<rdf:first rdf:nodeID="blank266"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank134">
+		<rdf:first rdf:nodeID="blank267"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank135">
+		<rdf:first rdf:nodeID="blank268"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank136">
+		<rdf:first rdf:nodeID="blank269"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank137">
+		<rdf:first rdf:nodeID="blank270"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank138">
+		<rdf:first rdf:nodeID="blank271"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank139">
+		<rdf:first rdf:nodeID="blank272"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank140">
+		<rdf:first rdf:nodeID="blank273"/>
+		<rdf:rest rdf:nodeID="blank117"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank141">
+		<rdf:first rdf:nodeID="blank274"/>
+		<rdf:rest rdf:nodeID="blank148"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank142">
+		<rdf:first rdf:nodeID="blank275"/>
+		<rdf:rest rdf:nodeID="blank151"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank143">
+		<rdf:first rdf:nodeID="blank276"/>
+		<rdf:rest rdf:nodeID="blank152"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank144">
+		<rdf:first rdf:nodeID="blank277"/>
+		<rdf:rest rdf:nodeID="blank122"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank145">
+		<rdf:first rdf:nodeID="blank278"/>
+		<rdf:rest rdf:nodeID="blank149"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank146">
+		<rdf:first rdf:nodeID="blank279"/>
+		<rdf:rest rdf:nodeID="blank153"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank147">
+		<rdf:first rdf:nodeID="blank280"/>
+		<rdf:rest rdf:nodeID="blank150"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank148">
+		<rdf:first rdf:nodeID="blank285"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank149">
+		<rdf:first rdf:nodeID="blank286"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank150">
+		<rdf:first rdf:nodeID="blank287"/>
+		<rdf:rest rdf:nodeID="blank129"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank151">
+		<rdf:first rdf:nodeID="blank288"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank152">
+		<rdf:first rdf:nodeID="blank289"/>
+		<rdf:rest rdf:nodeID="blank120"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank153">
+		<rdf:first rdf:nodeID="blank290"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank154">
+		<rdf:first rdf:nodeID="blank293"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank155">
+		<rdf:first rdf:nodeID="blank294"/>
+		<rdf:rest rdf:resource="&rdf;nil"/>
+	</rdf:Description>
+	
+	<owl:Class rdf:nodeID="blank156">
+		<owl:intersectionOf rdf:nodeID="blank071"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank157">
+		<owl:intersectionOf rdf:nodeID="blank037"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank158">
+		<owl:intersectionOf rdf:nodeID="blank057"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank159">
+		<owl:intersectionOf rdf:nodeID="blank064"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank160">
+		<owl:intersectionOf rdf:nodeID="blank141"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank161">
+		<owl:intersectionOf rdf:nodeID="blank070"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank162">
+		<owl:intersectionOf rdf:nodeID="blank142"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank163">
+		<owl:intersectionOf rdf:nodeID="blank066"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank164">
+		<owl:intersectionOf rdf:nodeID="blank035"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank165">
+		<owl:intersectionOf rdf:nodeID="blank058"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank166">
+		<owl:intersectionOf rdf:nodeID="blank075"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank167">
+		<owl:intersectionOf rdf:nodeID="blank069"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank168">
+		<owl:intersectionOf rdf:nodeID="blank040"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank169">
+		<owl:intersectionOf rdf:nodeID="blank059"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank170">
+		<owl:intersectionOf rdf:nodeID="blank076"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank171">
+		<owl:intersectionOf rdf:nodeID="blank073"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank172">
+		<owl:intersectionOf rdf:nodeID="blank048"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank173">
+		<owl:intersectionOf rdf:nodeID="blank060"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank174">
+		<owl:intersectionOf rdf:nodeID="blank065"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank175">
+		<owl:intersectionOf rdf:nodeID="blank145"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank176">
+		<owl:intersectionOf rdf:nodeID="blank072"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank177">
+		<owl:intersectionOf rdf:nodeID="blank146"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank178">
+		<owl:intersectionOf rdf:nodeID="blank067"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank179">
+		<owl:intersectionOf rdf:nodeID="blank061"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank180">
+		<owl:intersectionOf rdf:nodeID="blank077"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank181">
+		<owl:intersectionOf rdf:nodeID="blank068"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank182">
+		<owl:intersectionOf rdf:nodeID="blank036"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank183">
+		<owl:intersectionOf rdf:nodeID="blank062"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank184">
+		<owl:intersectionOf rdf:nodeID="blank074"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank185">
+		<owl:unionOf rdf:nodeID="blank015"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank186">
+		<owl:unionOf rdf:nodeID="blank025"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank187">
+		<owl:unionOf rdf:nodeID="blank022"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank188">
+		<owl:unionOf rdf:nodeID="blank023"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank189">
+		<owl:unionOf rdf:nodeID="blank111"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank190">
+		<owl:unionOf rdf:nodeID="blank011"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank191">
+		<owl:unionOf rdf:nodeID="blank009"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank192">
+		<owl:unionOf rdf:nodeID="blank082"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank193">
+		<owl:unionOf rdf:nodeID="blank007"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank194">
+		<owl:unionOf rdf:nodeID="blank008"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank195">
+		<owl:unionOf rdf:nodeID="blank005"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank196">
+		<owl:unionOf rdf:nodeID="blank006"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank197">
+		<owl:unionOf rdf:nodeID="blank051"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank198">
+		<owl:unionOf rdf:nodeID="blank052"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank199">
+		<owl:unionOf rdf:nodeID="blank016"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank200">
+		<owl:unionOf rdf:nodeID="blank113"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank201">
+		<owl:unionOf rdf:nodeID="blank010"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank202">
+		<owl:unionOf rdf:nodeID="blank024"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank203">
+		<owl:unionOf rdf:nodeID="blank017"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank204">
+		<owl:unionOf rdf:nodeID="blank026"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank205">
+		<owl:unionOf rdf:nodeID="blank013"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank206">
+		<owl:unionOf rdf:nodeID="blank014"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank207">
+		<owl:unionOf rdf:nodeID="blank027"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank208">
+		<owl:unionOf rdf:nodeID="blank012"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank209">
+		<owl:unionOf rdf:nodeID="blank028"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank210">
+		<owl:unionOf rdf:nodeID="blank029"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank211">
+		<owl:unionOf rdf:nodeID="blank083"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank212">
+		<owl:unionOf rdf:nodeID="blank021"/>
+	</owl:Class>
+	
+	<owl:Class rdf:nodeID="blank213">
+		<owl:unionOf rdf:nodeID="blank004"/>
+	</owl:Class>
+	
+	<owl:Restriction rdf:nodeID="blank214">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:allValuesFrom rdf:nodeID="blank188"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank215">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:allValuesFrom rdf:nodeID="blank194"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank216">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:allValuesFrom rdf:nodeID="blank196"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank217">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:allValuesFrom rdf:nodeID="blank198"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank218">
+		<owl:onProperty rdf:resource="&oe-cjf;hasState"/>
+		<owl:allValuesFrom rdf:nodeID="blank187"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank219">
+		<owl:onProperty rdf:resource="&oe-cjf;hasState"/>
+		<owl:allValuesFrom rdf:nodeID="blank193"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank220">
+		<owl:onProperty rdf:resource="&oe-cjf;hasState"/>
+		<owl:allValuesFrom rdf:nodeID="blank195"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank221">
+		<owl:onProperty rdf:resource="&oe-cjf;hasState"/>
+		<owl:allValuesFrom rdf:nodeID="blank197"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank222">
+		<owl:onProperty rdf:resource="&oe-cjf;hasStateAssignment"/>
+		<owl:allValuesFrom rdf:nodeID="blank214"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank223">
+		<owl:onProperty rdf:resource="&oe-cjf;hasStateAssignment"/>
+		<owl:allValuesFrom rdf:nodeID="blank215"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank224">
+		<owl:onProperty rdf:resource="&oe-cjf;hasStateAssignment"/>
+		<owl:allValuesFrom rdf:nodeID="blank216"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank225">
+		<owl:onProperty rdf:resource="&oe-cjf;hasStateAssignment"/>
+		<owl:allValuesFrom rdf:nodeID="blank217"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank226">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTurnNumber"/>
+		<owl:allValuesFrom rdf:resource="&xsd;int"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank227">
+		<owl:onProperty rdf:resource="&oe-cjf;hasConversationIdentifier"/>
+		<owl:allValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank228">
+		<owl:onProperty rdf:resource="&oe-cjf;hasConversationText"/>
+		<owl:allValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank229">
+		<owl:onProperty rdf:resource="&oe-cjf;hasConversationText"/>
+		<owl:allValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank230">
+		<owl:onProperty rdf:resource="&oe-cjf;hasReason"/>
+		<owl:allValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank231">
+		<owl:onProperty rdf:resource="&oe-cjf;hasReason"/>
+		<owl:allValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank232">
+		<owl:onProperty rdf:resource="&oe-cjf;hasSpeakerName"/>
+		<owl:allValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank233">
+		<owl:onProperty rdf:resource="&oe-cjf;hasSummary"/>
+		<owl:allValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank234">
+		<owl:onProperty rdf:resource="&oe-cjf;refines"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;Claim"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank235">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTriggeringRelationship"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank236">
+		<owl:onProperty rdf:resource="&oe-cjf;refines"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;Issue"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank237">
+		<owl:onProperty rdf:resource="&oe-cjf;refines"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;Option"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank238">
+		<owl:onProperty rdf:resource="&prov;wasAttributedTo"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;Speaker"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank239">
+		<owl:onProperty rdf:resource="&oe-cjf;hasSpeaker"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;Speaker"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank240">
+		<owl:onProperty rdf:resource="&oe-cjf;isNegativeSupportedBy"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;TextSpan"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank241">
+		<owl:onProperty rdf:resource="&oe-cjf;isPositiveSupportedBy"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;TextSpan"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank242">
+		<owl:onProperty rdf:resource="&prov;hadMember"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;Utterance"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank243">
+		<owl:onProperty rdf:resource="&oe-cjf;isPartOfUtterance"/>
+		<owl:allValuesFrom rdf:resource="&oe-cjf;Utterance"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank244">
+		<owl:onProperty rdf:resource="&cmns-dt;hasTime"/>
+		<owl:allValuesFrom rdf:resource="&cmns-dt;DateTime"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank245">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:onClass rdf:resource="&oe-cjf;StateAssignment"/>
+		<owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank246">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:onClass rdf:resource="&oe-cjf;State"/>
+		<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank247">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedAtUtterance"/>
+		<owl:onClass rdf:resource="&oe-cjf;Utterance"/>
+		<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank248">
+		<owl:onProperty rdf:nodeID="blank302"/>
+		<owl:someValuesFrom rdf:nodeID="blank157"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank249">
+		<owl:onProperty rdf:nodeID="blank296"/>
+		<owl:someValuesFrom rdf:nodeID="blank159"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank250">
+		<owl:onProperty rdf:nodeID="blank297"/>
+		<owl:someValuesFrom rdf:nodeID="blank166"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank251">
+		<owl:onProperty rdf:nodeID="blank304"/>
+		<owl:someValuesFrom rdf:nodeID="blank168"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank252">
+		<owl:onProperty rdf:nodeID="blank298"/>
+		<owl:someValuesFrom rdf:nodeID="blank170"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank253">
+		<owl:onProperty rdf:nodeID="blank305"/>
+		<owl:someValuesFrom rdf:nodeID="blank172"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank254">
+		<owl:onProperty rdf:nodeID="blank299"/>
+		<owl:someValuesFrom rdf:nodeID="blank174"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank255">
+		<owl:onProperty rdf:nodeID="blank300"/>
+		<owl:someValuesFrom rdf:nodeID="blank180"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank256">
+		<owl:onProperty rdf:nodeID="blank301"/>
+		<owl:someValuesFrom rdf:nodeID="blank184"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank257">
+		<owl:onProperty rdf:nodeID="blank303"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Claim"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank258">
+		<owl:onProperty rdf:nodeID="blank306"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Claim"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank259">
+		<owl:onProperty rdf:nodeID="blank295"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMove"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank260">
+		<owl:onProperty rdf:nodeID="blank307"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Issue"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank261">
+		<owl:onProperty rdf:nodeID="blank308"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Outcome"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank262">
+		<owl:onProperty rdf:nodeID="blank309"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Outcome"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank263">
+		<owl:onProperty rdf:resource="&resource;SIO_000206"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;TextSpan"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank264">
+		<owl:onProperty rdf:resource="&resource;SIO_000206"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;TextSpan"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank265">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:nodeID="blank192"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank266">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:nodeID="blank202"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank267">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:nodeID="blank213"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank268">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Addressed"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank269">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Contested"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank270">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Open"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank271">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Supported"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank272">
+		<owl:onProperty rdf:resource="&oe-cjf;assignedState"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;UnderConsideration"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank273">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank156"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank274">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank161"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank275">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank163"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank276">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank167"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank277">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank171"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank278">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank176"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank279">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank178"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank280">
+		<owl:onProperty rdf:resource="&oe-cjf;hasPreviousAssignment"/>
+		<owl:someValuesFrom rdf:nodeID="blank181"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank281">
+		<owl:onProperty rdf:resource="&oe-cjf;hasReason"/>
+		<owl:someValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank282">
+		<owl:onProperty rdf:resource="&oe-cjf;hasStateAssignment"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;StateAssignment"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank283">
+		<owl:onProperty rdf:resource="&oe-cjf;hasStateEvidence"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;TextSpan"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank284">
+		<owl:onProperty rdf:resource="&oe-cjf;hasSummary"/>
+		<owl:someValuesFrom rdf:resource="&xsd;string"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank285">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTriggeringRelationship"/>
+		<owl:someValuesFrom rdf:nodeID="blank191"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank286">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTriggeringRelationship"/>
+		<owl:someValuesFrom rdf:nodeID="blank201"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank287">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTriggeringRelationship"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Address"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank288">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTriggeringRelationship"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Challenge"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank289">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTriggeringRelationship"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Resolve"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank290">
+		<owl:onProperty rdf:resource="&oe-cjf;hasTriggeringRelationship"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Support"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank291">
+		<owl:onProperty rdf:resource="&oe-cjf;hasUtterance"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Utterance"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank292">
+		<owl:onProperty rdf:resource="&oe-cjf;hasUtterance"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;Utterance"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank293">
+		<owl:onProperty rdf:resource="&oe-cjf;isNegativeSupportedBy"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;TextSpan"/>
+	</owl:Restriction>
+	
+	<owl:Restriction rdf:nodeID="blank294">
+		<owl:onProperty rdf:resource="&oe-cjf;isPositiveSupportedBy"/>
+		<owl:someValuesFrom rdf:resource="&oe-cjf;TextSpan"/>
+	</owl:Restriction>
+	
+	<rdf:Description rdf:nodeID="blank295">
+		<owl:inverseOf rdf:resource="&oe-cjf;answers"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank296">
+		<owl:inverseOf rdf:resource="&oe-cjf;assignedState"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank297">
+		<owl:inverseOf rdf:resource="&oe-cjf;assignedState"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank298">
+		<owl:inverseOf rdf:resource="&oe-cjf;assignedState"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank299">
+		<owl:inverseOf rdf:resource="&oe-cjf;assignedState"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank300">
+		<owl:inverseOf rdf:resource="&oe-cjf;assignedState"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank301">
+		<owl:inverseOf rdf:resource="&oe-cjf;assignedState"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank302">
+		<owl:inverseOf rdf:resource="&oe-cjf;hasStateAssignment"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank303">
+		<owl:inverseOf rdf:resource="&oe-cjf;hasStateAssignment"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank304">
+		<owl:inverseOf rdf:resource="&oe-cjf;hasStateAssignment"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank305">
+		<owl:inverseOf rdf:resource="&oe-cjf;hasStateAssignment"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank306">
+		<owl:inverseOf rdf:resource="&oe-cjf;hasStateAssignment"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank307">
+		<owl:inverseOf rdf:resource="&oe-cjf;hasStateAssignment"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank308">
+		<owl:inverseOf rdf:resource="&oe-cjf;resolves"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:nodeID="blank309">
+		<owl:inverseOf rdf:resource="&oe-cjf;selects"/>
+	</rdf:Description>
+
+</rdf:RDF>
