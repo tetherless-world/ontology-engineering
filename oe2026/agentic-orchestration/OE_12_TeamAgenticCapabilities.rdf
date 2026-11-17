@@ -50,13 +50,12 @@
 		<owl:imports rdf:resource="http://purl.org/net/p-plan#"/>
 		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
 		<owl:imports rdf:resource="http://www.w3id.org/agentic-ai/onto"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.w3.org/ns/prov-o.owl"/>
 		<owl:priorVersion rdf:resource="&oe-agtorch;v4.1"/>
 		<owl:versionIRI rdf:resource="&oe-agtorch;v4.2"/>
 		<owl:versionInfo>v.4.2</owl:versionInfo>
-		<skos:changeNote xml:lang="en">Version 4.2: priorVersion is version IRI. updated version</skos:changeNote>
+		<skos:changeNote xml:lang="en">Version 4.2, November 20, 2026; changes from version 4.1. Header: owl:priorVersion is now the version IRI of version 4.1 instead of a link to the archived Assignment 10 file, owl:versionIRI and owl:versionInfo carry version 4.2, and the default namespace declaration (xmlns) was removed from the RDF/XML header; every term is written with a prefix, so no triple changed. Removed the import of FIBO Goals and Objectives (https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), which no axiom, individual or competency question query used and which brought in 22 further FIBO and OMG Commons ontologies. The OMG Commons classes Measure and MaterialMeasure, which the axioms on plan metric refer to and which came only through that import, are now declared in this ontology. HermiT and Pellet infer the same subclass, type and object property facts for the terms and individuals of this ontology as before.</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -2765,6 +2764,12 @@
 	
 	<owl:AnnotationProperty rdf:about="&cmns-av;usageNote">
 	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MaterialMeasure">
+	</owl:Class>
+	
+	<owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure">
+	</owl:Class>
 	
 	<owl:AllDisjointClasses>
 		<owl:members rdf:parseType="Collection">
