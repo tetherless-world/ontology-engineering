@@ -43,13 +43,13 @@
 		<dct:creator>Jialin Fang</dct:creator>
 		<dct:creator>Jiaying Wang</dct:creator>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
-		<dct:modified>November 13, 2026</dct:modified>
+		<dct:modified>November 16, 2026</dct:modified>
 		<dct:publisher xml:lang="en">Team Agentic Capabilities</dct:publisher>
-		<owl:imports rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/"/>
-		<owl:priorVersion>v.4.0</owl:priorVersion>
+		<owl:imports rdf:resource="&oe-agtorch;v4.1"/>
+		<owl:priorVersion rdf:resource="https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/archived/OE_10_TeamAgenticCapabilities_Individuals.txt"/>
 		<owl:versionIRI rdf:resource="&oe-agtorch-ind;v4.1"/>
 		<owl:versionInfo>v.4.1</owl:versionInfo>
-		<skos:changeNote>added annotations to ontology header; added hasStepPosition values to the plan steps; split Ken&apos;s evidence steps into article search and abstract download steps</skos:changeNote>
+		<skos:changeNote xml:lang="en">Version 4.1 (Assignment 11), November 16, 2026; changes from version 4.0 (Assignment 10). Header: added dct:publisher, dct:modified, owl:priorVersion (a link to the Assignment 10 version) and this change note, owl:versionIRI now carries the version (v4.1), and the ontology imports the main ontology by its version IRI (v4.1). The 30 workflow steps have hasStepPosition values, and Ken&apos;s evidence steps are split into an article search step and an abstract download step. The owl:AllDifferent axiom over all individuals is replaced by two owl:differentFrom statements (Ken plan 1 and Ken plan 2, plan A and plan B). 27 individuals that come from a stated source have a dct:source: the four persons and their requests (the usage scenarios in Section III of the use case and its competency questions in Section VII), the four skills of competency question 3, the five plans that the competency questions describe, and the MCP servers, their tools and the iHerb search tool (the repositories listed in Section VIII of the use case). The two Supplement Advisor individuals also have an editorial note, because that repository was no longer reachable.</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -60,6 +60,15 @@
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&dct;license">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;source">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;changeNote">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;editorialNote">
 	</owl:AnnotationProperty>
 	
 	<owl:Class rdf:about="&prov;Person">
@@ -83,24 +92,28 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;Dante">
 		<rdf:type rdf:resource="&prov;Person"/>
 		<rdfs:label xml:lang="en">Dante</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), second scenario (Dante); Section VII, competency questions 4 and 5</dct:source>
 		<skos:definition xml:lang="en">person who asks to compare magnesium glycinate and magnesium citrate for sleep, with the evidence for each, and wants safety screening and a short execution time</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;Jessica">
 		<rdf:type rdf:resource="&prov;Person"/>
 		<rdfs:label xml:lang="en">Jessica</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), first scenario (Ken and Jessica); Section VII, competency questions 2, 3 and 9</dct:source>
 		<skos:definition xml:lang="en">person who asks for bone-health supplements that take her osteoarthritis and her celecoxib prescription into account, screened against her medication and backed by verified evidence</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;Ken">
 		<rdf:type rdf:resource="&prov;Person"/>
 		<rdfs:label xml:lang="en">Ken</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), first scenario (Ken and Jessica); Section VII, competency question 1</dct:source>
 		<skos:definition xml:lang="en">person who asks for supplement recommendations for building muscle mass and prefers few external tool calls and low token use</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;Olivia">
 		<rdf:type rdf:resource="&prov;Person"/>
 		<rdfs:label xml:lang="en">Olivia</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), third scenario (Olivia); Section VII, competency questions 6 and 7</dct:source>
 		<skos:definition xml:lang="en">person who asks for the best heart-health supplement and wants strong scientific evidence from as few external tool calls as possible</skos:definition>
 	</owl:NamedIndividual>
 	
@@ -219,6 +232,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;dantePlan">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">Dante&apos;s orchestration plan</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency questions 4 and 5 (the orchestration plan for Dante&apos;s query)</dct:source>
 		<skos:definition xml:lang="en">candidate orchestration plan for Dante&apos;s request with an evidence check and an interaction screening for each form of magnesium, then an evidence synthesis</skos:definition>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;danteRequest"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;d1"/>
@@ -241,6 +255,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;danteRequest">
 		<rdf:type rdf:resource="&oe-agtorch;Request"/>
 		<rdfs:label xml:lang="en">Dante&apos;s request</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), second scenario (Dante); Section VII, competency questions 4 and 5</dct:source>
 		<skos:definition xml:lang="en">request in which Dante asks to compare magnesium glycinate and magnesium citrate for sleep and to summarize the evidence for each</skos:definition>
 		<prov:wasAttributedTo rdf:resource="&oe-agtorch-ind;Dante"/>
 		<oe-agtorch:expresses rdf:resource="&oe-agtorch-ind;needComparison"/>
@@ -365,6 +380,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;evidenceVerificationSkill">
 		<rdf:type rdf:resource="&oe-agtorch;Skill"/>
 		<rdfs:label xml:lang="en">evidence verification skill</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency question 3, sample answer (skills required for Jessica&apos;s request)</dct:source>
 		<skos:definition xml:lang="en">skill that verifies the scientific evidence for a supplement</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;evidenceVerificationCapability"/>
 		<oe-agtorch:hasPrecondition rdf:resource="&oe-agtorch-ind;pubmedReachablePrecondition"/>
@@ -429,6 +445,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;iherbSearchTool">
 		<rdf:type rdf:resource="&oe-agtorch;ExternalTool"/>
 		<rdfs:label xml:lang="en">iHerb product search tool</rdfs:label>
+		<dct:source xml:lang="en">iherb-cli by SeverinAlexB, GitHub repository, https://github.com/SeverinAlexB/iherb-cli, command search, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:altLabel>search</skos:altLabel>
 		<skos:definition xml:lang="en">command-line tool of the iHerb client that searches iHerb for the products of a supplement, sorted by price or rating</skos:definition>
 		<skos:scopeNote xml:lang="en">The iHerb client is a command-line program, not an MCP server, so no server exposes this tool.</skos:scopeNote>
@@ -465,6 +482,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaPlan">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">Jessica&apos;s orchestration plan</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency question 2 (the generated orchestration plan) and competency question 9 (Jessica&apos;s orchestration)</dct:source>
 		<skos:definition xml:lang="en">candidate orchestration plan for Jessica&apos;s request with six steps, one of which screens the candidates for interactions with celecoxib</skos:definition>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;jessicaRequest"/>
 		<oe-agtorch:hasStep rdf:resource="&oe-agtorch-ind;step1"/>
@@ -512,6 +530,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;jessicaRequest">
 		<rdf:type rdf:resource="&oe-agtorch;Request"/>
 		<rdfs:label xml:lang="en">Jessica&apos;s request</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), first scenario (Ken and Jessica); Section VII, competency questions 2, 3 and 9</dct:source>
 		<skos:definition xml:lang="en">request in which Jessica asks for supplements for bone health that take her osteoarthritis and her celecoxib prescription into account</skos:definition>
 		<prov:wasAttributedTo rdf:resource="&oe-agtorch-ind;Jessica"/>
 		<oe-agtorch:expresses rdf:resource="&oe-agtorch-ind;needScientificEvidence"/>
@@ -790,6 +809,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenPlan1">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">Ken plan 1</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency question 1, sample answer (the steps of Ken&apos;s plan)</dct:source>
 		<owl:differentFrom rdf:resource="&oe-agtorch-ind;kenPlan2"/>
 		<skos:definition xml:lang="en">candidate orchestration plan for Ken&apos;s request with one evidence pass and products sorted by price</skos:definition>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;kenRequest"/>
@@ -903,6 +923,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;kenRequest">
 		<rdf:type rdf:resource="&oe-agtorch;Request"/>
 		<rdfs:label xml:lang="en">Ken&apos;s request</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), first scenario (Ken and Jessica); Section VII, competency question 1</dct:source>
 		<skos:definition xml:lang="en">request in which Ken asks for supplement recommendations for building muscle mass</skos:definition>
 		<prov:wasAttributedTo rdf:resource="&oe-agtorch-ind;Ken"/>
 		<oe-agtorch:expresses rdf:resource="&oe-agtorch-ind;needAffordableProducts"/>
@@ -1008,6 +1029,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;oliviaRequest">
 		<rdf:type rdf:resource="&oe-agtorch;Request"/>
 		<rdfs:label xml:lang="en">Olivia&apos;s request</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section III (Usage Scenarios), third scenario (Olivia); Section VII, competency questions 6 and 7</dct:source>
 		<skos:definition xml:lang="en">request in which Olivia asks for the best heart-health supplement</skos:definition>
 		<prov:wasAttributedTo rdf:resource="&oe-agtorch-ind;Olivia"/>
 		<oe-agtorch:expresses rdf:resource="&oe-agtorch-ind;needHeartHealthSupplement"/>
@@ -1016,6 +1038,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;openfdaAdverseEventsTool">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
 		<rdfs:label xml:lang="en">OpenFDA adverse event search tool</rdfs:label>
+		<dct:source xml:lang="en">OpenFDA-MCP-Server by Augmented Nature, GitHub repository, https://github.com/Augmented-Nature/OpenFDA-MCP-Server, tool search_drug_adverse_events, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:altLabel>search_drug_adverse_events</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the OpenFDA MCP server that searches FDA adverse event reports for a drug or supplement</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;interactionScreeningCapability"/>
@@ -1024,6 +1047,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;openfdaDrugLabelsTool">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
 		<rdfs:label xml:lang="en">OpenFDA drug label search tool</rdfs:label>
+		<dct:source xml:lang="en">OpenFDA-MCP-Server by Augmented Nature, GitHub repository, https://github.com/Augmented-Nature/OpenFDA-MCP-Server, tool search_drug_labels, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:altLabel>search_drug_labels</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the OpenFDA MCP server that searches FDA drug labels for a drug or supplement</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;interactionScreeningCapability"/>
@@ -1032,6 +1056,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;openfdaRecallsTool">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
 		<rdfs:label xml:lang="en">OpenFDA recall search tool</rdfs:label>
+		<dct:source xml:lang="en">OpenFDA-MCP-Server by Augmented Nature, GitHub repository, https://github.com/Augmented-Nature/OpenFDA-MCP-Server, tool search_drug_recalls, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:altLabel>search_drug_recalls</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the OpenFDA MCP server that searches FDA recall notices for a drug or supplement</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;interactionScreeningCapability"/>
@@ -1040,6 +1065,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;openfdaServer">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolServer"/>
 		<rdfs:label xml:lang="en">OpenFDA MCP server</rdfs:label>
+		<dct:source xml:lang="en">OpenFDA-MCP-Server by Augmented Nature, GitHub repository, https://github.com/Augmented-Nature/OpenFDA-MCP-Server, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:definition xml:lang="en">server that gives agents access to FDA adverse event, drug label and recall data through the Model Context Protocol</skos:definition>
 		<oe-agtorch:exposes rdf:resource="&oe-agtorch-ind;openfdaAdverseEventsTool"/>
 		<oe-agtorch:exposes rdf:resource="&oe-agtorch-ind;openfdaDrugLabelsTool"/>
@@ -1049,6 +1075,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;personalizedSupplementRecommendationSkill">
 		<rdf:type rdf:resource="&oe-agtorch;Skill"/>
 		<rdfs:label xml:lang="en">personalized supplement recommendation skill</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency question 3, sample answer (skills required for Jessica&apos;s request)</dct:source>
 		<skos:definition xml:lang="en">skill that recommends supplements for a user&apos;s health goal</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;supplementRecommendationCapability"/>
 		<oe-agtorch:usesTool rdf:resource="&oe-agtorch-ind;supplementAdvisorRecommendTool"/>
@@ -1057,6 +1084,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;planA">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">plan A (Olivia)</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency questions 6 and 7 (plan A)</dct:source>
 		<owl:differentFrom rdf:resource="&oe-agtorch-ind;planB"/>
 		<skos:definition xml:lang="en">candidate orchestration plan for Olivia&apos;s request with interaction screening and a second evidence pass</skos:definition>
 		<skos:scopeNote xml:lang="en">Test for competency question 6: rejection inferred as for Ken plan 2, so plan A is declared different from plan B.</skos:scopeNote>
@@ -1095,6 +1123,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;planB">
 		<rdf:type rdf:resource="&oe-agtorch;CandidateOrchestrationPlan"/>
 		<rdfs:label xml:lang="en">plan B (Olivia)</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency question 6 (plan B)</dct:source>
 		<skos:definition xml:lang="en">candidate orchestration plan for Olivia&apos;s request with one evidence pass</skos:definition>
 		<oe-agtorch:addresses rdf:resource="&oe-agtorch-ind;oliviaRequest"/>
 	</owl:NamedIndividual>
@@ -1169,6 +1198,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;productSelectionSkill">
 		<rdf:type rdf:resource="&oe-agtorch;Skill"/>
 		<rdfs:label xml:lang="en">product selection skill</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency question 3, sample answer (skills required for Jessica&apos;s request)</dct:source>
 		<skos:definition xml:lang="en">skill that searches for and selects supplement products</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;productSearchCapability"/>
 		<oe-agtorch:usesTool rdf:resource="&oe-agtorch-ind;iherbSearchTool"/>
@@ -1177,6 +1207,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;pubmedDownloadArticlesTool">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
 		<rdfs:label xml:lang="en">PubMed abstract download tool</rdfs:label>
+		<dct:source xml:lang="en">pubmed-mcp, PubMed MCP server by aeghnnsw, GitHub repository, https://github.com/aeghnnsw/pubmed-mcp, tool download_articles_batch, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:altLabel>download_articles_batch</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the PubMed MCP server that downloads the abstracts of a batch of PubMed articles</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;abstractDownloadCapability"/>
@@ -1199,6 +1230,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;pubmedSearchArticlesTool">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
 		<rdfs:label xml:lang="en">PubMed article search tool</rdfs:label>
+		<dct:source xml:lang="en">pubmed-mcp, PubMed MCP server by aeghnnsw, GitHub repository, https://github.com/aeghnnsw/pubmed-mcp, tool search_articles, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<process:hasParameter rdf:resource="&oe-agtorch-ind;pubmedQueryParameter"/>
 		<skos:altLabel>search_articles</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the PubMed MCP server that searches PubMed for articles matching a query and returns their PubMed identifiers</skos:definition>
@@ -1209,6 +1241,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;pubmedServer">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolServer"/>
 		<rdfs:label xml:lang="en">PubMed MCP server</rdfs:label>
+		<dct:source xml:lang="en">pubmed-mcp, PubMed MCP server by aeghnnsw, GitHub repository, https://github.com/aeghnnsw/pubmed-mcp, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:definition xml:lang="en">server that gives agents access to the PubMed literature database through the Model Context Protocol</skos:definition>
 		<oe-agtorch:exposes rdf:resource="&oe-agtorch-ind;pubmedDownloadArticlesTool"/>
 		<oe-agtorch:exposes rdf:resource="&oe-agtorch-ind;pubmedSearchArticlesTool"/>
@@ -1430,15 +1463,19 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;supplementAdvisorRecommendTool">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolTool"/>
 		<rdfs:label xml:lang="en">Supplement Advisor recommendation tool</rdfs:label>
+		<dct:source xml:lang="en">supplement-advisor-mcp by erinheit451, GitHub repository, https://github.com/erinheit451/supplement-advisor-mcp, tool recommend_supplement (named in the sample answer to competency question 1, Section VII), listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:altLabel>recommend_supplement</skos:altLabel>
 		<skos:definition xml:lang="en">tool exposed by the Supplement Advisor MCP server that recommends supplements for a health goal</skos:definition>
+		<skos:editorialNote xml:lang="en">The repository https://github.com/erinheit451/supplement-advisor-mcp returned HTTP 404 on November 16, 2026, so the source is kept as the use case lists it; replace it if the server is republished or the use case switches to another supplement recommendation server.</skos:editorialNote>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;supplementRecommendationCapability"/>
 	</owl:NamedIndividual>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;supplementAdvisorServer">
 		<rdf:type rdf:resource="&oe-agtorch;ModelContextProtocolServer"/>
 		<rdfs:label xml:lang="en">Supplement Advisor MCP server</rdfs:label>
+		<dct:source xml:lang="en">supplement-advisor-mcp by erinheit451, GitHub repository, https://github.com/erinheit451/supplement-advisor-mcp, listed in use case AC-001, Section VIII (Resources)</dct:source>
 		<skos:definition xml:lang="en">server that recommends supplements for a health goal through the Model Context Protocol</skos:definition>
+		<skos:editorialNote xml:lang="en">The repository https://github.com/erinheit451/supplement-advisor-mcp returned HTTP 404 on November 16, 2026, so the source is kept as the use case lists it; replace it if the server is republished or the use case switches to another supplement recommendation server.</skos:editorialNote>
 		<oe-agtorch:exposes rdf:resource="&oe-agtorch-ind;supplementAdvisorRecommendTool"/>
 	</owl:NamedIndividual>
 	
@@ -1453,6 +1490,7 @@
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;supplementSafetyScreeningSkill">
 		<rdf:type rdf:resource="&oe-agtorch;Skill"/>
 		<rdfs:label xml:lang="en">supplement safety screening skill</rdfs:label>
+		<dct:source xml:lang="en">Team AgenticCapabilities, use case AC-001, Ontology-Guided Agentic Tool and Skill Orchestration (https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/usecase.html), Section VII, competency question 3, sample answer (skills required for Jessica&apos;s request)</dct:source>
 		<skos:definition xml:lang="en">skill that screens supplements for interactions with a user&apos;s medication</skos:definition>
 		<oe-agtorch:hasCapability rdf:resource="&oe-agtorch-ind;interactionScreeningCapability"/>
 		<oe-agtorch:usesTool rdf:resource="&oe-agtorch-ind;openfdaAdverseEventsTool"/>
