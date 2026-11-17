@@ -43,13 +43,13 @@
 		<dct:creator>Jialin Fang</dct:creator>
 		<dct:creator>Jiaying Wang</dct:creator>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
-		<dct:modified>November 16, 2026</dct:modified>
+		<dct:modified>November 20, 2026</dct:modified>
 		<dct:publisher xml:lang="en">Team Agentic Capabilities</dct:publisher>
 		<owl:imports rdf:resource="&oe-agtorch;v4.1"/>
-		<owl:priorVersion rdf:resource="https://tetherless-world.github.io/ontology-engineering/branch/agentic-orchestration/oe2026/agentic-orchestration/archived/OE_10_TeamAgenticCapabilities_Individuals.txt"/>
-		<owl:versionIRI rdf:resource="&oe-agtorch-ind;v4.1"/>
-		<owl:versionInfo>v.4.1</owl:versionInfo>
-		<skos:changeNote xml:lang="en">Version 4.1 (Assignment 11), November 16, 2026; changes from version 4.0 (Assignment 10). Header: added dct:publisher, dct:modified, owl:priorVersion (a link to the Assignment 10 version) and this change note, owl:versionIRI now carries the version (v4.1), and the ontology imports the main ontology by its version IRI (v4.1). The 30 workflow steps have hasStepPosition values, and Ken&apos;s evidence steps are split into an article search step and an abstract download step. The owl:AllDifferent axiom over all individuals is replaced by two owl:differentFrom statements (Ken plan 1 and Ken plan 2, plan A and plan B). 27 individuals that come from a stated source have a dct:source: the four persons and their requests (the usage scenarios in Section III of the use case and its competency questions in Section VII), the four skills of competency question 3, the five plans that the competency questions describe, and the MCP servers, their tools and the iHerb search tool (the repositories listed in Section VIII of the use case). The two Supplement Advisor individuals also have an editorial note, because that repository was no longer reachable.</skos:changeNote>
+		<owl:priorVersion rdf:resource="&oe-agtorch-ind;v4.1"/>
+		<owl:versionIRI rdf:resource="&oe-agtorch-ind;v4.2"/>
+		<owl:versionInfo>v.4.2</owl:versionInfo>
+		<skos:changeNote xml:lang="en">Version 4.2. Removed xmlns default headers. priorVersion is an IRI. changed version. Added source definition annotations in both classses and properties. Added example anotations.</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -62,20 +62,50 @@
 	<owl:AnnotationProperty rdf:about="&dct;license">
 	</owl:AnnotationProperty>
 	
+	<owl:AnnotationProperty rdf:about="&dct;modified">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&dct;publisher">
+	</owl:AnnotationProperty>
+	
 	<owl:AnnotationProperty rdf:about="&dct;source">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&process;hasParameter">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;altLabel">
 	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&skos;changeNote">
 	</owl:AnnotationProperty>
 	
+	<owl:AnnotationProperty rdf:about="&skos;definition">
+	</owl:AnnotationProperty>
+	
 	<owl:AnnotationProperty rdf:about="&skos;editorialNote">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&skos;scopeNote">
 	</owl:AnnotationProperty>
 	
 	<owl:Class rdf:about="&prov;Person">
 	</owl:Class>
 	
+	<owl:AnnotationProperty rdf:about="&prov;wasAssociatedWith">
+	</owl:AnnotationProperty>
+	
 	<owl:ObjectProperty rdf:about="&prov;wasAttributedTo">
 	</owl:ObjectProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;wasDerivedFrom">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;wasGeneratedBy">
+	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="&agento;LLMAgent">
+	</owl:Class>
 	
 	<owl:Class rdf:about="&agento;Task">
 	</owl:Class>
@@ -88,6 +118,99 @@
 	
 	<owl:ObjectProperty rdf:about="&agento;requiresCapability">
 	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="&oe-agtorch;Answer">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;CandidateOrchestrationPlan">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;CandidateSupplement">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ContentGeneration">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;DataProcessing">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;DecisionCriterion">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;EvidenceAssessment">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;EvidenceCoverage">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ExecutionTrace">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ExternalTool">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;HardConstraint">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;InformationAccess">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;InformationArtifact">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;InformationRequirement">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Invocation">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolServer">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ModelContextProtocolTool">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;OrchestrationWorkflowStep">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Parameter">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;PlanEvaluation">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Precondition">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;PreferenceSetting">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ProductList">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Request">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;SafetyAssessment">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;SearchQuery">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;Skill">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;SoftConstraint">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;TokenCost">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&oe-agtorch;ToolCallCount">
+	</owl:Class>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;addresses">
+	</owl:AnnotationProperty>
 	
 	<owl:NamedIndividual rdf:about="&oe-agtorch-ind;Dante">
 		<rdf:type rdf:resource="&prov;Person"/>
@@ -1549,6 +1672,93 @@
 		<oe-agtorch:performedBySkill rdf:resource="&oe-agtorch-ind;evidenceVerificationSkill"/>
 		<oe-agtorch:produces rdf:resource="&oe-agtorch-ind;evidenceAssessmentGlycinate"/>
 	</owl:NamedIndividual>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;confirmsPrecondition">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;conflictsWith">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;consumes">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;evaluates">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;exposes">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;expresses">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;fills">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasCapability">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasDirection">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasMeasurement">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasPrecondition">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasPriority">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasRank">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasScore">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasStep">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasStepPosition">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasUnit">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasValue">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;hasWeight">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;isMeasuredBy">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;isRequired">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;performedBySkill">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;produces">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;records">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;satisfiesConstraint">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;satisfiesRequirement">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;usesCriterion">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;usesTool">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&oe-agtorch;violatesConstraint">
+	</owl:AnnotationProperty>
 	
 	<owl:AnnotationProperty rdf:about="&cmns-av;copyright">
 	</owl:AnnotationProperty>
