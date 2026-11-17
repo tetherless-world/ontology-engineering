@@ -443,7 +443,7 @@ The queries that retrieve each of these results, with their expected rows, are o
 | File | Contents |
 |---|---|
 | [ventilation-compliance.rdf](ventilation-compliance.rdf) | the ontology (TBox): classes, properties, restrictions, units, and SWRL rules S1 to S11 and E1 |
-| [individuals.rdf](individuals.rdf) | test ABox `…/test-individuals/`: the hand-authored ICU scenario (three ICU rooms, HVAC-3 and HVAC-4, one test) plus the generated scenario (operating room, airborne infection isolation room, protective environment room, patient room and a corridor; HVAC-5 and HVAC-6; CDC policies per room type; readings at three test times; derived measurements with provenance; 15 compliance assessments). Imports the ontology. |
+| [individuals.rdf](ventilation-compliance-individuals.rdf) | the hand-authored ICU scenario (three ICU rooms, HVAC-3 and HVAC-4, one test) plus the generated scenario (operating room, airborne infection isolation room, protective environment room, patient room and a corridor; HVAC-5 and HVAC-6; CDC policies per room type; readings at three test times; derived measurements with provenance; 15 compliance assessments). Imports the ontology. |
 | [catalog-v001.xml](catalog-v001.xml) | Protégé XML catalog that resolves the four imports to local copies in `files/imports/` (prov-o.rdf, saref4bldg.rdf, core.rdf, qun.rdf) |
 | [OE 9 Team HVCC SPARQL Queries.txt](OE%209%20Team%20HVCC%20SPARQL%20Queries.txt) | the competency-question queries and how to run them |
 
