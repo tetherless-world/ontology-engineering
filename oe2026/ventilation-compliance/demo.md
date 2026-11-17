@@ -3,21 +3,21 @@ layout: default
 title: demo
 ---
 
-[How to run](#how-to-run-the-queries) | [Run the assessment pipeline](#run-the-assessment-pipeline) | [Test scenario](#test-scenario) | [Use case 1](#use-case-1--locating-the-systems-and-sensor-readings-that-relate-to-a-room) | [Use case 2](#use-case-2--verifying-the-ventilation-compliance-of-critical-care-rooms) | [Use case 3](#use-case-3--tracing-compliance-failures-to-hvac-systems-and-components) | [Coverage](#what-the-queries-cover)
+[How to run](#how-to-run-the-queries) | [Run the SHACL assessment](#run-the-shacl-assessment) | [Test scenario](#test-scenario) | [Use case 1](#use-case-1--locating-the-systems-and-sensor-readings-that-relate-to-a-room) | [Use case 2](#use-case-2--verifying-the-ventilation-compliance-of-critical-care-rooms) | [Use case 3](#use-case-3--tracing-compliance-failures-to-hvac-systems-and-components) | [Coverage](#what-the-queries-cover)
 
 ## Demonstration and Queries
 
-This page lists the SPARQL queries that answer the project's competency questions, the reasoning each one depends on, and the rows each returns over the test individuals in [individuals copy.rdf](individuals%20copy.rdf). There are three questions per [use case](usecase).
+This page lists the SPARQL queries that answer the project's competency questions, the reasoning each one depends on, and the rows each returns over the test individuals in [ventilation-compliance-individuals.rdf](ventilation-compliance-individuals.rdf). There are three questions per [use case](usecase).
 
 The queries are deliberately short. They return individuals rather than their labels, which Protégé displays by name anyway. They name a fixed individual directly, such as `test:ICU_01`, instead of searching labels. And they ask for the one status class the question is about instead of filtering a list of classes. The original, longer versions of the first six questions are kept in [OE 9 Team HVCC SPARQL Queries.txt](OE%209%20Team%20HVCC%20SPARQL%20Queries.txt) and in the shared [Google document](https://docs.google.com/document/d/17PMngIgp1zkGrxAJy3VSjCbdqSPk6pXczj8IaPUhMn4/edit?usp=sharing).
 
 **Most answers are never asserted in the data.** Which system serves a room, which readings were recorded in it, whether a policy was satisfied, how a room's assessment is classed and which components are implicated are all worked out by the reasoner, as described on the [ontology page](ontology#how-the-ontology-works). Without a reasoner, every query below except CQ 2.4 returns no rows.
 
-**How the results were checked.** The rows below were produced by running each query with rdflib over the test data with its inferences materialised: an OWL-RL reasoner supplied the property chains, sub-properties, inverses and transitive closures, and the project's [reference implementation](code/careair/reference.py) supplied the SWRL rules S1 to S11 and the outcome classes that need the closure axioms. The earlier, longer versions of the ICU queries were validated in Protégé with Pellet; the shortened queries on the expanded data still need that confirmation.
+**How the results were checked.** The rows below were produced by running each query with rdflib over the test data with its inferences materialised: an OWL-RL reasoner supplied the property chains, sub-properties, inverses and transitive closures, and a Python implementation of the SWRL rules (not part of this repository) supplied the SWRL rules S1 to S11 and the outcome classes that need the closure axioms. The earlier, longer versions of the ICU queries were validated in Protégé with Pellet; the shortened queries on the expanded data still need that confirmation.
 
 ## How to run the queries
 
-1. Keep [ventilation-compliance.rdf](ventilation-compliance.rdf), [individuals copy.rdf](individuals%20copy.rdf) and [catalog-v001.xml](catalog-v001.xml) in one folder together with `files/imports/`, and open **individuals copy.rdf** in Protégé. It declares `owl:imports` on the ontology, so both files load.
+1. Keep [ventilation-compliance.rdf](ventilation-compliance.rdf), [ventilation-compliance-individuals.rdf](ventilation-compliance-individuals.rdf) and [catalog-v001.xml](catalog-v001.xml) in one folder together with `files/imports/`, and open **ventilation-compliance-individuals.rdf** in Protégé. It declares `owl:imports` on the ontology, so both files load.
 2. Start the **Pellet** reasoner (Reasoner → Pellet → Start reasoner). HermiT will not work: it rejects the SWRL built-ins `swrlb:lessThan` and `swrlb:greaterThanOrEqual` that classify the policy assessments.
 3. Run the queries in the **Snap SPARQL Query** tab, which evaluates against the reasoner so OWL entailments and SWRL conclusions are visible. Snap SPARQL supports a subset of SPARQL (no property paths, `VALUES`, `BIND`, `EXISTS`, aggregates or sub-queries), and the queries below stay within it. CQ 1.2 and CQ 2.2 read the imported `prov:generatedAtTime` property; if Snap SPARQL reports a signature error for it, remove the `?time` variable and its triple, and the rest of the answer is unchanged.
 
@@ -31,29 +31,80 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 ```
 
-## Run the assessment pipeline
+## Run the SHACL assessment 
 
-The reference pipeline derives the calculated measurements and runs the closed-world
-SHACL rules that classify policy assessments with missing evidence as unknown. From the
-project directory, run:
+From the repository root, install Python 3.9+ dependencies and run:
 
 ```bash
-cd code
+cd oe2026/ventilation-compliance
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
-python run_pipeline.py --out generated.rdf
-python cq_expected.py
+python -m pip install -r requirements.txt
+python assess_unknown_policy.py
 ```
 
-The output is written to `code/generated.rdf`; the command does not overwrite the
-hand-edited test individuals. Use `python run_pipeline.py --check` to run all checks
-without writing an RDF file, or pass another path to `--out`. The most recent SHACL
-validation report is written to `code/shacl/last-report.txt`.
+The default output is `ventilation-compliance-individuals-assessed.rdf`.
+The default input and shapes are located relative to the script, so it can also
+be invoked from another working directory. To choose an output or overwrite:
 
-The pipeline can be run repeatedly: existing assessment contexts and derived
-measurements are not duplicated. For implementation details and the calculation
-formulas, see the [pipeline documentation](code/README.md).
+```bash
+python assess_unknown_policy.py -o annotated-individuals.rdf
+python assess_unknown_policy.py --in-place
+python assess_unknown_policy.py other-individuals.rdf -o other-assessed.rdf
+```
+
+To set input and output file paths explicitly:
+
+```bash
+python assess_unknown_policy.py --input-path ind.rdf --output-path ind-assess.rdf
+python assess_unknown_policy.py --input-path /path/to/data/ind.rdf --output-path /path/to/results/ind-assess.rdf
+```
+
+Both options accept **file paths**, including the filename. Relative paths resolve
+from the terminal's working directory. Missing output parent directories are
+created automatically. Without an output option, the script saves
+`<input-stem>-assessed.rdf` beside the input. The default shapes remain alongside
+the script; use `--shapes` to select another shapes file.
+Use either `--input-path` or a positional input filename. Use one of
+`--output-path`, `-o` / `--output`, or `--in-place`. To overwrite the input:
+
+```bash
+python assess_unknown_policy.py --input-path ind.rdf --in-place
+```
+
+The script runs `unknown-policy-assessment.ttl` with
+[pySHACL](https://github.com/RDFLib/pySHACL)'s advanced features, iterative rules,
+and in-place graph mutation, then serializes the enriched data graph as RDF/XML.
+The SHACL validation report is printed to the terminal, not mixed into the data.
+The added assertions are `rdf:type v:UnknownPolicyAssessment` triples, not OWL
+annotation properties. Existing triples are retained; XML formatting, prefixes,
+blank-node identifiers, and entity declarations may change during serialization.
+Writes use a temporary file and atomic replacement.
+
+Rule U1 classifies an explicitly typed `v:PolicyAssessment` as unknown when neither
+an incoming `v:isEvaluatedAt` link nor an outgoing `v:evaluatesMeasurement` link
+exists in the supplied data. The vocabulary URI includes the repeated path segment
+`ventilation-compliance/ventilation-compliance/`, matching the ontology and individuals.
+The closed-world assumption applies only to this evidence-presence check. This
+does not check measurement values, freshness, or overall room compliance. It does
+not load `owl:imports` or execute OWL/SWRL reasoning; run that reasoning afterward.
+
+The current sample contains six policy assessments, each with evidence, so it
+produces zero new assertions. A missing-evidence assessment produces an unknown
+type and an expected SHACL warning. Warnings permit saving (exit 0); violations
+prevent saving (exit 1); parsing or execution errors return exit 2. No explicitly
+typed policy assessments is treated as an error to catch namespace mismatches.
+
+This is additive materialization. Repeating a run on unchanged data does not add
+duplicates. If evidence changes later, regenerate from the unannotated source:
+previous unknown assertions are preserved and are not automatically retracted.
+
+Run the regression checks from `oe2026/ventilation-compliance` with:
+
+```bash
+python -m unittest discover -s . -p 'test_assess_unknown_policy.py'
+```
+
 
 ## Test scenario
 
@@ -79,7 +130,7 @@ ICU-01 also has two raw airflow readings from sensor AF-412 (12.4 m³/h at 14:20
 | PR-01 (patient room, 40 m³) | HVAC-6 via VAV-640, DF-640, EI-640 | outdoor ACH ≥ 2; total ACH ≥ 6; temperature 21 to 24 °C |
 | corridor 4E (patient corridor) | none | no framework applies, so the room is never assessed |
 
-Each room has supply, return, exhaust (except the operating room), temperature and humidity sensors; each air handler has outdoor-air and supply airflow sensors. The derived measurements (outdoor air fraction per air handler; outdoor airflow to room, outdoor and total air changes per hour, and incoming transfer airflow per room) are asserted in the file with their provenance: `prov:wasDerivedFrom` their inputs, `prov:wasGeneratedBy` a derivation run of the software agent `ALG_DERIVATION`, and a comment showing the calculation. In practice these individuals are created by a derivation algorithm, whose reference implementation is in [code/](code/README.md).
+Each room has supply, return, exhaust (except the operating room), temperature and humidity sensors; each air handler has outdoor-air and supply airflow sensors. The derived measurements (outdoor air fraction per air handler; outdoor airflow to room, outdoor and total air changes per hour, and incoming transfer airflow per room) are asserted in the file with their provenance: `prov:wasDerivedFrom` their inputs, `prov:wasGeneratedBy` a derivation run of the software agent `ALG_DERIVATION`, and a comment showing the calculation. 
 
 | Room | 08:00 | 14:30 | 20:00 |
 |---|---|---|---|
@@ -90,7 +141,7 @@ Each room has supply, return, exhaust (except the operating room), temperature a
 
 The three failures on AHU-6 at 20:00 share one cause in the data: its outdoor-air damper OAD-6 is partly closed, so the outdoor air fraction drops from 0.30 to 0.12. Nothing in the data says so; CQ 3.2 and 3.3 recover it through the derivation chain.
 
-The two unknown cases differ in where the evidence went missing. In PE-01 the room's own humidity sensor did not answer. In OR-01 every room sensor answered, but the air handler's outdoor-air sensor did not, so no outdoor air change rate could be derived for the room. Both policy assessments are typed `UnknownPolicyAssessment` in the file; in practice that type comes from the closed-world SHACL check in [code/shacl/](unknown-policy-assessment.ttl), because OWL cannot conclude that a measurement is absent. The room-level verdicts are left to the reasoner.
+The two unknown cases differ in where the evidence went missing. In PE-01 the room's own humidity sensor did not answer. In OR-01 every room sensor answered, but the air handler's outdoor-air sensor did not, so no outdoor air change rate could be derived for the room. Both policy assessments are typed `UnknownPolicyAssessment` in the file; in practice that type comes from the closed-world SHACL check in [shacl](unknown-policy-assessment.ttl), because OWL cannot conclude that a measurement is absent. The room-level verdicts are left to the reasoner.
 
 ## Use case 1 – Locating the systems and sensor readings that relate to a room
 

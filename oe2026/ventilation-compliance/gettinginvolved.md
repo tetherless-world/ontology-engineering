@@ -9,7 +9,7 @@ title: getting involved
 
 CareAir was built as a class project, but the team intends to carry it past the end of the semester, and the modelling choices were made with later extension in mind (see the *extensibility* decision in the [use case](usecase)). The policy below is meant to keep the ontology usable by anyone who starts depending on it.
 
-- **Stable identifiers.** The ontology IRI `https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/` and the IRIs of its terms will not change. Terms that are superseded will be deprecated with `owl:deprecated` and a pointer to their replacement rather than deleted, so existing data and queries keep resolving.
+- **Stable identifiers.** The ontology IRI `https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/` and the IRIs of its terms will not change. Terms that are superseded will be deprecated with `owl:deprecated` and a pointer to their replacement rather than deleted, so existing data and queries keep resolving.
 - **Versioning.** Each release carries an `owl:versionIRI` and a change note in the ontology header. Releases that break compatibility (a renamed property, a changed domain or range, a changed rule conclusion) will be published under a new version IRI, and the previous version will stay available, in the same way earlier use case, term list and presentation versions are kept under `archived/`.
 - **Reused vocabularies are pinned.** The four imports (PROV-O 2013-04-30, SAREF4BLDG 2.1.1, RealEstateCore Core 3.3, OMG Commons Quantities and Units) are resolved to local copies through `catalog-v001.xml`, so a change upstream cannot silently change what the ontology entails. Upgrading an import is treated as a release.
 - **Rules and axioms are tested against the individuals file.** Any change to the ontology must still return the expected rows for the six competency questions on the [demo page](demo) in Protégé with Pellet. New reasoning features come with a new competency question and expected result.
@@ -22,7 +22,7 @@ The current release is deliberately the smallest version that completes the thre
 
 **Reasoning and validation**
 
-- **Unknown status inside the reasoning loop.** A policy assessment with no logged measurement is now classed `UnknownPolicyAssessment` by a pySHACL step that runs before Protégé ([code/](code/README.md)), and unknown takes precedence in the room-level verdict. The next step is to run the same shapes as part of the query service, so that an assessment produced at request time is checked before it is published.
+- **Unknown status inside the reasoning loop.** A policy assessment with no logged measurement is now classed `UnknownPolicyAssessment` by a pySHACL step that runs before Protégé ([unknown-policy-assessment.ttl](unknown-policy-assessment.ttl)), and unknown takes precedence in the room-level verdict. The next step is to run the same shapes as part of the query service, so that an assessment produced at request time is checked before it is published.
 - **Explicit reasons for unknown.** The alternate flow of the use case distinguishes "no sensor connected", "sensor not responding" and "room covered by no framework". The SHACL check currently records only that evidence is missing; recording the reason as data is the next modelling decision in the assessment module.
 - **Unit conversion.** The SWRL rules only compare a measurement and a bound that share a unit. Adding declared conversions between, for example, m³/h and m³/s, or a pre-processing step that normalises units, would let a bound be matched against any sensor that reports the same quantity kind.
 
@@ -48,7 +48,7 @@ Out of scope on principle, and not planned: actuation or control of equipment (t
 The ontology, test individuals, queries and this website live in the course repository on GitHub: [tetherless-world/ontology-engineering](https://github.com/tetherless-world/ontology-engineering), under `oe2026/ventilation-compliance`.
 
 - **Report a problem or suggest a term.** Open an issue, or email the team, with the term or axiom concerned, the CDC or ASHRAE clause it comes from, and if possible a competency question that the change would answer.
-- **Propose a change.** Fork the repository, edit `ventilation-compliance.rdf` in Protégé (the catalog file resolves the imports offline), extend `code/careair/scenario.py` and rerun `code/run_pipeline.py` so the change is testable, confirm the existing queries still return their expected rows with Pellet, update the term list and the ontology page, and open a pull request.
+- **Propose a change.** Fork the repository, edit `ventilation-compliance.rdf` in Protégé (the catalog file resolves the imports offline), extend the test individuals so the change is testable, confirm the existing queries still return their expected rows with Pellet, update the term list and the ontology page, and open a pull request.
 - **Contribute data.** Anonymised building topology (systems, components, connections, room volumes) and sensor logs from a healthcare facility would let the team validate the model beyond the prototype hospital. No patient data is accepted.
 - **Reuse the ontology.** If you apply it to another facility or framework, tell us: the goal is for a new framework, room type or sensor to require only new data, not new rules, and reports of where that breaks down are the most useful feedback.
 
@@ -61,4 +61,4 @@ Team HVCC, Ontologies (CSCI 4340 / 6340), Rensselaer Polytechnic Institute, Fall
 - Andy Cheng – <cheng11@rpi.edu> <https://github.com/haha666-rip>
 - Carina Liu – <liuc17@rpi.edu>  <https://github.com/carinaal>
 
-Advised by Dr. Deborah McGuinness and Ms. Elisa Kendall, with mentoring from Jade Franklin, Danielle Villa and Kelsey Rook.
+Advised by Dr. Deborah McGuinness and Ms. Elisa Kendall, with mentoring from Danielle Villa.

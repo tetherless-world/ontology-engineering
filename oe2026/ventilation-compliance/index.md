@@ -83,7 +83,7 @@ List resources you think a reader would benefit from to use your project. We lis
     <td><a href="ventilation-compliance.rdf" target="_blank">Your Ontology</a> / <a href="ontology.html">Ontology documentation</a></td>
   </tr>
   <tr>
-    <td>1b. Test data and pipeline</td>
+    <td>1b. Test data</td>
     <td><a href="ventilation-compliance-individuals.rdf" target="_blank">Test individuals</a> </td>
   </tr>
   <tr>
@@ -96,7 +96,7 @@ List resources you think a reader would benefit from to use your project. We lis
   </tr>
   <tr>
     <td>2b. Demo and run instructions</td>
-    <td><a href="demo.html">Queries, expected results, and assessment pipeline</a></td>
+    <td><a href="demo.html">Queries, expected results, and SHACL assessment</a></td>
   </tr>
   <tr>
     <td>3. Presentations:</td>
