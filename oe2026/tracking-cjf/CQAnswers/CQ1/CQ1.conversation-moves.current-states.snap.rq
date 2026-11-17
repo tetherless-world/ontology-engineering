@@ -6,14 +6,36 @@ SELECT DISTINCT ?move ?moveType (IF(BOUND(?stateType), ?stateType, "N/A") AS ?st
 WHERE {
 
     # select the issues , claims, options , InformationRequest,  expressed positions and Outcome
-    ?move a ?moveType .
-    FILTER (?moveType = cjf:Issue
-            || ?moveType = cjf:Claim
-            || ?moveType = cjf:Option
-            || ?moveType = cjf:InformationRequest
-            || ?moveType = cjf:ExpressedPosition
-            || ?moveType = cjf:Outcome)
-    
+    {
+        ?move a cjf:Issue . 
+        BIND(str("Issue") AS ?moveType) .
+    }
+    UNION
+    {
+        ?move a cjf:Claim . 
+        BIND(str("Claim") AS ?moveType) .
+    }
+    UNION
+    {
+        ?move a cjf:Option . 
+        BIND(str("Option") AS ?moveType) .
+    }
+    UNION
+    {
+        ?move a cjf:InformationRequest . 
+        BIND(str("InformationRequest") AS ?moveType) .
+    }
+    UNION
+    {
+        ?move a cjf:ExpressedPosition . 
+        BIND(str("ExpressedPosition") AS ?moveType) .
+    }
+    UNION
+    {
+        ?move a cjf:Outcome . 
+        BIND(str("Outcome") AS ?moveType) .
+    }
+
     # get summary of each milestone
     ?move cjf:hasSummary ?summary .
 
@@ -25,12 +47,12 @@ WHERE {
         # get the inferred state individuals class
         ?state a ?stateType .
         ?stateType rdfs:subClassOf cjf:State .
-
+        
         # remove the generic state class triples
         MINUS {
             ?state a ?stateType .
             FILTER (?stateType = cjf:State)
-        }
+        } 
     }
 }
 ORDER BY ?move ?moveType
