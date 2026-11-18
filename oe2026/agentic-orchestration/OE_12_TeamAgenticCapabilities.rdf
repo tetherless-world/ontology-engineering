@@ -55,7 +55,7 @@
 		<owl:priorVersion rdf:resource="&oe-agtorch;v4.1"/>
 		<owl:versionIRI rdf:resource="&oe-agtorch;v4.2"/>
 		<owl:versionInfo>v.4.2</owl:versionInfo>
-		<skos:changeNote xml:lang="en">Version 4.2, November 20, 2026; changes from version 4.1. Header: owl:priorVersion is now the version IRI of version 4.1 instead of a link to the archived Assignment 10 file, owl:versionIRI and owl:versionInfo carry version 4.2, and the default namespace declaration (xmlns) was removed from the RDF/XML header; every term is written with a prefix, so no triple changed. Removed the import of FIBO Goals and Objectives (https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), which no axiom, individual or competency question query used and which brought in 22 further FIBO and OMG Commons ontologies. The OMG Commons classes Measure and MaterialMeasure, which the axioms on plan metric refer to and which came only through that import, are now declared in this ontology. HermiT and Pellet infer the same subclass, type and object property facts for the terms and individuals of this ontology as before. Domains and ranges (OOPS! pitfall P11): the helper properties is request, is tool, is skill, is hard constraint, is soft constraint and is preference setting now have their own class as domain and range; has capability has the domain skill or tool, and uses tool the domain LLM agent or skill. IRIs imported from other ontologies were left alone for interoperability. Added missing annotations to IRIs flagged by OOPS! (most of which are imported from other ontologies).</skos:changeNote>
+		<skos:changeNote xml:lang="en">Version 4.2, November 20, 2026; changes from version 4.1. Header: owl:priorVersion is now the version IRI of version 4.1 instead of a link to the archived Assignment 10 file, owl:versionIRI and owl:versionInfo carry version 4.2, and the default namespace declaration (xmlns) was removed from the RDF/XML header; every term is written with a prefix, so no triple changed. Removed the import of FIBO Goals and Objectives (https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), which no axiom, individual or competency question query used and which brought in 22 further FIBO and OMG Commons ontologies. The OMG Commons class Measure, the superclass of plan metric, came only through that import and is now declared in this ontology. OOPS! pitfall P04 (unconnected elements): the domains and ranges that P-Plan, PROV-O and OWL-S give pplan:correspondsToStep, prov:used, prov:wasGeneratedBy and process:hasParameter, and the subclass axioms pplan:Plan rdfs:subClassOf prov:Plan and prov:Plan rdfs:subClassOf prov:Entity, are restated unchanged, so the reused classes pplan:Activity, pplan:Step, pplan:Plan, prov:Entity and process:Process are connected in this file; prov:Activity, prov:Plan and process:Parameter are declared with annotations from their sources. These axioms were already entailed through the imports, so no inference changes. The OMG Commons class MaterialMeasure, which plan metric was declared disjoint with, was removed together with that disjointness axiom: without the Commons QuantitiesAndUnits module no individual can be a material measure, so the axiom had no effect, and OOPS! reported the class as unconnected (pitfall P04). HermiT and Pellet infer the same subclass, type and object property facts for the terms and individuals of this ontology as before. Domains and ranges (OOPS! pitfall P11): the helper properties is request, is tool, is skill, is hard constraint, is soft constraint and is preference setting now have their own class as domain and range; has capability has the domain skill or tool, and uses tool the domain LLM agent or skill. IRIs imported from other ontologies were left alone for interoperability. Added missing annotations to IRIs flagged by OOPS! (most of which are imported from other ontologies).</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -84,6 +84,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&pplan;Plan">
+		<rdfs:subClassOf rdf:resource="&prov;Plan"/>
 		<rdfs:label xml:lang="en">plan</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">D. Garijo and Y. Gil, “The P-Plan ontology,” version 1.3, Mar. 12, 2014. [Online]. Available: http://purl.org/net/p-plan</dct:bibliographicCitation>
 		<dct:source xml:lang="en">[P-Plan] class Plan</dct:source>
@@ -109,11 +110,13 @@
 		<rdfs:label xml:lang="en">corresponds to step</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">D. Garijo and Y. Gil, “The P-Plan ontology,” version 1.3, Mar. 12, 2014, class Activity and property correspondsToStep. [Online]. Available: https://www.opmw.org/model/p-plan/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">P-Plan ontology (D. Garijo and Y. Gil, 2012; http://purl.org/net/p-plan#), term correspondsToStep</dct:source>
+		<rdfs:domain rdf:resource="&pplan;Activity"/>
+		<rdfs:range rdf:resource="&pplan;Step"/>
 		<skos:definition xml:lang="en">links an execution activity to its planned workflow step</skos:definition>
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A6, Figure(s) 1, 7. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">An evidence-retrieval invocation corresponds to the plan&apos;s evidence-retrieval step.</skos:example>
 		<skos:note xml:lang="en">P-Plan connects runtime activities to their planned steps.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range as used here: invocation → workflow step (P-Plan: activity → step).</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range as used here: invocation → workflow step. The declared rdfs:domain and rdfs:range (P-Plan activity → step) are restated unchanged from P-Plan 1.3, so the reused classes they name are connected in this file (OOPS! pitfall P04); this ontology adds no narrower domain or range.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from P-Plan ontology (D. Garijo and Y. Gil, 2012; http://purl.org/net/p-plan#), term correspondsToStep.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The model specializes the endpoints to Invocation and WorkflowStep.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Link each invocation in an execution trace to the planned workflow step it carries out.</cmns-av:usageNote>
@@ -128,14 +131,25 @@
 		<dct:source xml:lang="en">[B] AgentO ontology v0.2 (Turtle) (beam:Resource, reused from BEAM), Zenodo doi:10.5281/zenodo.18342625; [A] Ekelhart et al., AgentO, ESWC 2026 (author preprint), Table 4, p. 19</dct:source>
 		<skos:altLabel xml:lang="en">Asset</skos:altLabel>
 		<skos:definition xml:lang="en">asset that an agent or tool uses to perform a task, or that a task produces as its output</skos:definition>
-		<skos:editorialNote xml:lang="en">Assignment 12: declared with the annotations of its term-list row, which the ontology file did not carry (OOPS! pitfall P08).</skos:editorialNote>
-		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): Claude Fable 5.1 (Anthropic, in Claude Code) - the term, its source passages (local copies of the cited documents), the definitions already in this sheet and the use case were provided; the model drafted a genus-plus-differentia definition and the notes, each quotation was matched mechanically against the source text, and the team member reviewed the result.</skos:editorialNote>
+		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): Claude Fable 5.1 (Anthropic, in Claude Code) - the term, its source passages (local copies of the cited documents), the definitions already in this sheet and the use case were provided; the model drafted a genus-plus-differentia definition and the notes, each quotation was matched mechanically against the source text, and the team member reviewed the result. Assignment 12: declared with the annotations of its term-list row, which the ontology file did not carry (OOPS! pitfall P08).</skos:editorialNote>
 		<skos:example xml:lang="en">The user&apos;s health profile; the candidate-supplement list produced by the Supplement Advisor MCP; the PubMed literature index.</skos:example>
 		<skos:note xml:lang="en">&quot;Any asset that can be utilized by an agent or tool to perform tasks&quot; ([A] Ekelhart et al., AgentO, ESWC 2026 (author preprint), Table 4, p. 19); &quot;Relates a task to resources needed for its execution&quot; ([B] AgentO ontology v0.2 (Turtle), requiresResource).</skos:note>
 		<skos:scopeNote xml:lang="en">In AgentO a resource is anything a task requires or produces (data, files, models, instances). In this ontology the information content consumed and produced by capabilities is modeled as Information Artifact (row 14); Resource is the broader class.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">[A] Ekelhart et al., AgentO, ESWC 2026 (author preprint), Table 4, p. 19; [B] AgentO ontology v0.2 (Turtle): beam:Resource rdfs:subClassOf pplan:Variable (no rdfs:comment); requiresResource and producedResource comments</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">AgentO reuses beam:Resource and links it to tasks with requiresResource (&quot;Relates a task to resources needed for its execution&quot;) and producedResource (&quot;Relates a task to resources produced as output&quot;); tools reach resources through resourceUsage.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use Resource for anything an orchestration step needs or yields; use Information Artifact for the information content itself; use Resource dependency (row 24) for the relation between steps that follows from it.</cmns-av:usageNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&process;Parameter">
+		<rdfs:label xml:lang="en">OWL-S parameter</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">D. Martin et al., “OWL-S: Semantic markup for web services,” W3C Member Submission, Nov. 22, 2004, sec. 5.1. [Online]. Available: https://www.w3.org/submissions/OWL-S/</dct:bibliographicCitation>
+		<dct:source xml:lang="en">OWL-S Process ontology (http://www.daml.org/services/owl-s/1.2/Process.owl), class Parameter</dct:source>
+		<skos:definition xml:lang="en">variable of a process through which the process receives an input value or returns an output value</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: added because the range of process:hasParameter is restated from the OWL-S Process ontology (OOPS! pitfall P04). The term has no row in the term list; the label and source were taken from the OWL-S Process ontology, whose comment does not define the class, so Claude Opus 5.5 (Anthropic, in Claude Code) drafted the definition from its subclasses Input and Output, and the notes.</skos:editorialNote>
+		<skos:example xml:lang="en">The query parameter of the PubMed search articles tool.</skos:example>
+		<skos:scopeNote xml:lang="en">Labeled OWL-S parameter to keep it apart from this ontology&apos;s own class parameter (Parameter), which is not asserted equivalent to it.</skos:scopeNote>
+		<cmns-av:directSource xml:lang="en">OWL-S 1.2 Process ontology, class Parameter, rdfs:comment: “This is the simplest way to relate parameters to SWRL (and DRS) variables.”</cmns-av:directSource>
+		<cmns-av:explanatoryNote xml:lang="en">Reused from OWL-S as the range of process:hasParameter; OWL-S makes Input and Output subclasses of it.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&process;Process">
@@ -155,11 +169,13 @@
 		<rdfs:label xml:lang="en">has parameter</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">D. Martin et al., “OWL-S: Semantic markup for web services,” W3C Member Submission, Nov. 22, 2004, sec. 5.1. [Online]. Available: https://www.w3.org/submissions/OWL-S/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">OWL-S Process ontology (http://www.daml.org/services/owl-s/1.2/Process.owl), term hasParameter</dct:source>
+		<rdfs:domain rdf:resource="&process;Process"/>
+		<rdfs:range rdf:resource="&process;Parameter"/>
 		<skos:definition xml:lang="en">relationship linking a process interface to a formal parameter through which values are supplied or returned</skos:definition>
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A15, Figure(s) 4. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">A search tool has a query parameter.</skos:example>
 		<skos:note xml:lang="en">OWL-S defines a Process-to-Parameter relation.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range as used here: tool → parameter (OWL-S domain: process).</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range as used here: tool → parameter. The declared rdfs:domain and rdfs:range (OWL-S process → parameter) are restated unchanged from the OWL-S Process ontology, so the reused classes they name are connected in this file (OOPS! pitfall P04); this ontology adds no narrower domain or range.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from OWL-S Process ontology (http://www.daml.org/services/owl-s/1.2/Process.owl), term hasParameter.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">Tools take parameters (tool → parameter); reusing the OWL-S property carries its process domain.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use for tool parameters; tools are OWL-S processes, so the OWL-S domain applies.</cmns-av:usageNote>
@@ -186,6 +202,18 @@
 	<owl:AnnotationProperty rdf:about="&skos;scopeNote">
 	</owl:AnnotationProperty>
 	
+	<owl:Class rdf:about="&prov;Activity">
+		<rdfs:label xml:lang="en">PROV-O activity</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
+		<dct:source xml:lang="en">PROV-O: The PROV Ontology, W3C Recommendation, 30 April 2013 (https://www.w3.org/TR/prov-o/), term Activity</dct:source>
+		<skos:definition xml:lang="en">something that occurs over a period of time and acts upon or with entities, and may include consuming, processing, transforming, modifying, relocating, using, or generating entities</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: added because the domain of prov:used and the range of prov:wasGeneratedBy restate PROV-O (OOPS! pitfall P04). The term has no row in the term list; the label, definition and source were taken from PROV-O, and Claude Opus 5.5 (Anthropic, in Claude Code) drafted the notes.</skos:editorialNote>
+		<skos:example xml:lang="en">An invocation of the PubMed search articles tool, which is a P-Plan activity and therefore a PROV-O activity.</skos:example>
+		<skos:scopeNote xml:lang="en">Labeled PROV-O activity to keep it apart from the P-Plan class activity (pplan:Activity), its subclass in P-Plan.</skos:scopeNote>
+		<cmns-av:directSource xml:lang="en">PROV-O, class Activity, prov:definition: “An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.”</cmns-av:directSource>
+		<cmns-av:explanatoryNote xml:lang="en">Reused from PROV-O; P-Plan makes pplan:Activity a subclass of it, so every invocation is a PROV-O activity.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&prov;Entity">
 		<rdfs:label xml:lang="en">entity</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
@@ -197,15 +225,30 @@
 		<cmns-av:explanatoryNote xml:lang="en">Reused from PROV-O; superclass of information artifact, drawn in Figure 7b, so artifacts can be used and generated by invocations.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&prov;Plan">
+		<rdfs:subClassOf rdf:resource="&prov;Entity"/>
+		<rdfs:label xml:lang="en">PROV-O plan</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
+		<dct:source xml:lang="en">PROV-O: The PROV Ontology, W3C Recommendation, 30 April 2013 (https://www.w3.org/TR/prov-o/), term Plan</dct:source>
+		<skos:definition xml:lang="en">entity that represents a set of actions or steps intended by one or more agents to achieve some goals</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: added because pplan:Plan rdfs:subClassOf prov:Plan and prov:Plan rdfs:subClassOf prov:Entity restate P-Plan and PROV-O (OOPS! pitfall P04). The term has no row in the term list; the label, definition and source were taken from P-Plan and PROV-O, and Claude Opus 5.5 (Anthropic, in Claude Code) drafted the notes.</skos:editorialNote>
+		<skos:example xml:lang="en">Ken plan 1, a candidate orchestration plan, which is a P-Plan plan and therefore a PROV-O plan.</skos:example>
+		<skos:scopeNote xml:lang="en">Labeled PROV-O plan to keep it apart from the P-Plan class plan (pplan:Plan), its subclass in P-Plan.</skos:scopeNote>
+		<cmns-av:directSource xml:lang="en">PROV-O, class Plan, prov:definition: “A plan is an entity that represents a set of actions or steps intended by one or more agents to achieve some goals.”</cmns-av:directSource>
+		<cmns-av:explanatoryNote xml:lang="en">Reused from PROV-O. The subclass axioms pplan:Plan rdfs:subClassOf prov:Plan (P-Plan) and prov:Plan rdfs:subClassOf prov:Entity (PROV-O) are restated unchanged in this file.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
 	<owl:ObjectProperty rdf:about="&prov;used">
 		<rdfs:label xml:lang="en">used</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">PROV-O: The PROV Ontology, W3C Recommendation, 30 April 2013 (https://www.w3.org/TR/prov-o/), term used</dct:source>
+		<rdfs:domain rdf:resource="&prov;Activity"/>
+		<rdfs:range rdf:resource="&prov;Entity"/>
 		<skos:definition xml:lang="en">links an invocation to an information artifact it used</skos:definition>
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A29, Figure(s) 1, 7. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">An invocation used a search-query artifact.</skos:example>
 		<skos:note xml:lang="en">PROV-O relates activities to utilized entities.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range as used here: invocation → information artifact (PROV-O: activity → entity).</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range as used here: invocation → information artifact. The declared rdfs:domain and rdfs:range (PROV-O activity → entity) are restated unchanged from PROV-O, so the reused classes they name are connected in this file (OOPS! pitfall P04); this ontology adds no narrower domain or range.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from PROV-O: The PROV Ontology, W3C Recommendation, 30 April 2013 (https://www.w3.org/TR/prov-o/), term used.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The ontology specializes the endpoints to invocation and information artifact.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Link an invocation to each information artifact it used as input.</cmns-av:usageNote>
@@ -243,11 +286,13 @@
 		<rdfs:label xml:lang="en">was generated by</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">PROV-O: The PROV Ontology, W3C Recommendation, 30 April 2013 (https://www.w3.org/TR/prov-o/), term wasGeneratedBy</dct:source>
+		<rdfs:domain rdf:resource="&prov;Entity"/>
+		<rdfs:range rdf:resource="&prov;Activity"/>
 		<skos:definition xml:lang="en">links a generated information artifact to the activity that produced it</skos:definition>
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A35, Figure(s) 7. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">An evidence-assessment artifact was generated by an invocation.</skos:example>
 		<skos:note xml:lang="en">PROV-O connects generated entities to generating activities.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range as used here: information artifact → invocation (PROV-O: entity → activity).</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range as used here: information artifact → invocation. The declared rdfs:domain and rdfs:range (PROV-O entity → activity) are restated unchanged from PROV-O, so the reused classes they name are connected in this file (OOPS! pitfall P04); this ontology adds no narrower domain or range.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from PROV-O: The PROV Ontology, W3C Recommendation, 30 April 2013 (https://www.w3.org/TR/prov-o/), term wasGeneratedBy.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">In the ontology the direction is information artifact → invocation.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Link an information artifact to the invocation that produced it.</cmns-av:usageNote>
@@ -263,8 +308,7 @@
 		<dct:bibliographicCitation xml:lang="en">K. Kurniawan and F. J. Ekaputra, “AgentO: An ontology for modeling agentic AI systems,” ontology release v0.2, Zenodo, Jan. 22, 2026, doi: 10.5281/zenodo.18342625. [Online]. Available: https://w3id.org/agentic-ai/onto</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Xu et al., The Evolution of Tool Use in LLM Agents: From Single-Tool Call to Multi-Tool Orchestration, which discusses goal drift in long-horizon tasks and maintaining alignment with a global objective.</dct:source>
 		<skos:definition xml:lang="en">objective or desired state that an agent aims to achieve</skos:definition>
-		<skos:editorialNote xml:lang="en">Assignment 12: declared with the annotations of its term-list row, which the ontology file did not carry (OOPS! pitfall P08).</skos:editorialNote>
-		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT - provided the model with the term, source, and use-case scope which was prompted to generate an ISO 704-compliant definition. The generated definition was subsequently manually revised for the ontology context. Earlier adapted-definition source (before the imported definition was adopted): “Toward an Ontology for EA Modeling and EA Model Quality,” which defines a goal as a statement about a state or condition to be brought about or sustained</skos:editorialNote>
+		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT - provided the model with the term, source, and use-case scope which was prompted to generate an ISO 704-compliant definition. The generated definition was subsequently manually revised for the ontology context. Earlier adapted-definition source (before the imported definition was adopted): “Toward an Ontology for EA Modeling and EA Model Quality,” which defines a goal as a statement about a state or condition to be brought about or sustained Assignment 12: declared with the annotations of its term-list row, which the ontology file did not carry (OOPS! pitfall P08).</skos:editorialNote>
 		<skos:example xml:lang="en">Retrieve the relevant policy and produce a summary of its key requirements.</skos:example>
 		<skos:note xml:lang="en">Also: “Toward an Ontology for EA Modeling and EA Model Quality,” which defines a goal as a statement about a state or condition to be brought about or sustained.</skos:note>
 		<skos:scopeNote xml:lang="en">The goal is the intended outcome; the plan and workflow steps are means for achieving it.</skos:scopeNote>
@@ -286,8 +330,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Classes!A27, Figure(s) 7 (ref 4). AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">The agent that invokes the supplement-recommendation skill and external tools.</skos:example>
 		<skos:note xml:lang="en">AgentO includes LLMAgent as an agent class.</skos:note>
-		<skos:scopeNote xml:lang="en">Represents the agent responsible for invocations, rather than the language model alone.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Reuses the AgentO class IRI; this is not a new local agent class.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Represents the agent responsible for invocations, rather than the language model alone. Reuses the AgentO class IRI; this is not a new local agent class.</skos:scopeNote>
 		<cmns-av:abbreviation xml:lang="en">LLM agent</cmns-av:abbreviation>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from AgentO ontology v0.2 (K. Kurniawan, Zenodo, doi:10.5281/zenodo.18342625; A. Ekelhart et al., ESWC 2026), term LLMAgent.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">LLM expands to large language model.</cmns-av:explanatoryNote>
@@ -303,8 +346,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Classes!A65, Figure(s) 1, 5 (ref 7). AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">The evidence-retrieval step preceding recommendation generation.</skos:example>
 		<skos:note xml:lang="en">AgentO represents WorkflowStep as a phase within a workflow.</skos:note>
-		<skos:scopeNote xml:lang="en">Represents the plan-level step, distinct from the invocation that realizes it.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Reuses the AgentO class IRI and its named superclass p-plan:Step. AgentO is imported from its published ontology.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Represents the plan-level step, distinct from the invocation that realizes it. Reuses the AgentO class IRI and its named superclass p-plan:Step. AgentO is imported from its published ontology.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from AgentO ontology v0.2 (K. Kurniawan, Zenodo, doi:10.5281/zenodo.18342625; A. Ekelhart et al., ESWC 2026), term WorkflowStep.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The model shows StartStep and EndStep as specializations.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Link a plan to its steps, each step to its task, and an invocation to the step it realizes.</cmns-av:usageNote>
@@ -385,8 +427,7 @@
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT — the related source concept and source were provided to the language model, which was prompted to generate an ISO 704-compliant specialized definition; the generated definition was subsequently manually revised for the agent-orchestration context.</skos:editorialNote>
 		<skos:example xml:lang="en">Candidate A uses PubMed and OpenFDA sequentially; Candidate B retrieves evidence and safety information in parallel.</skos:example>
 		<skos:note xml:lang="en">The IOF source provides the underlying plan specification pattern but does not define the term “Candidate Orchestration Plan.” The candidate distinction is therefore a project-specific specialization of the planning concept.</skos:note>
-		<skos:scopeNote xml:lang="en">A candidate orchestration plan is a proposed plan prior to selection; candidate status does not imply that the plan will be executed.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">After evaluation every candidate orchestration plan is either selected or rejected.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">A candidate orchestration plan is a proposed plan prior to selection; candidate status does not imply that the plan will be executed. After evaluation every candidate orchestration plan is either selected or rejected.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from IOF Core: plan specification</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">Multiple candidate orchestration plans may prescribe different capabilities, tools, ordering, or parallelization strategies for satisfying the same information requirement.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use only while a plan is being evaluated or compared during orchestration planning. Once selected, represent it as an Orchestration Plan according to the ontology&apos;s lifecycle modeling decision.</cmns-av:usageNote>
@@ -590,8 +631,7 @@
 		<skos:definition xml:lang="en">chronological record of a workflow&apos;s actual execution, capturing the steps performed and their outcomes</skos:definition>
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT - provided the model with the term, source, and use-case scope which was prompted to generate an ISO 704-compliant definition. The generated definition was subsequently manually revised for the ontology context.</skos:editorialNote>
 		<skos:example xml:lang="en">Agent receives a request → invokes a search tool → receives results → produces a response; the trace records those events and outcomes.</skos:example>
-		<skos:scopeNote xml:lang="en">An information artifact recording execution, not a workflow plan. The records property identifies the recorded invocations; explicit timestamps and ordering are outside Figures 4 and 7.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Records what occurred during execution, such as workflow steps and outcomes; distinct from a plan, which describes intended steps.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">An information artifact recording what occurred during execution, such as workflow steps and outcomes; it is not a workflow plan, which describes intended steps. The records property identifies the recorded invocations; explicit timestamps and ordering are outside Figures 4 and 7.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">OpenTelemetry, “Signals,” which describes a trace as the path of a request through an application</cmns-av:adaptedFrom>
 	</owl:Class>
 	
@@ -659,8 +699,7 @@
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT — the term, IAO source, and use case were provided to the language model, which was prompted to generate an ISO 704-compliant definition focused on information used, produced, or stored in an agent workflow.</skos:editorialNote>
 		<skos:example xml:lang="en">A CandidateSupplement record used by Evidence Verification, or the EvidenceAssessment that the skill produces.</skos:example>
 		<skos:note xml:lang="en">IAO describes information content entities as being about something. Our definition focuses on the information items used in an agent workflow.</skos:note>
-		<skos:scopeNote xml:lang="en">Includes inputs, intermediate results, final answers, and records kept about the workflow.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Includes supplied input and generated output. Figure 7 generation is expressed on Invocation using inverse prov:wasGeneratedBy, so an input artifact is not required to have been generated by an invocation in this workflow.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Includes supplied inputs, intermediate results, generated outputs such as final answers, and records kept about the workflow. Figure 7 generation is expressed on Invocation using inverse prov:wasGeneratedBy, so an input artifact is not required to have been generated by an invocation in this workflow.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">IAO, information content entity (IAO_0000030)</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The artifact contains information about something. For example, a supplement record is an information artifact; the physical supplement is not.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Record which artifacts each invocation uses and produces. These connections help explain dependencies between steps.</cmns-av:usageNote>
@@ -728,8 +767,7 @@
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): Claude Fable 5.1 (Anthropic, in Claude Code) - the term, its source passages (local copies of the cited documents), the definitions already in this sheet and the use case were provided; the model drafted a genus-plus-differentia definition and the notes, each quotation was matched mechanically against the source text, and the team member reviewed the result.</skos:editorialNote>
 		<skos:example xml:lang="en">max_results of PubMed search_articles must be an integer between 1 and 100; the medication name passed to OpenFDA must be a non-empty string.</skos:example>
 		<skos:note xml:lang="en">&quot;Validation keywords in a schema impose requirements for successful validation of an instance.&quot; (JSON Schema Validation, draft 2020-12, section 6); &quot;Input validation errors (e.g., date in wrong format, value out of range)&quot; are tool execution errors (Model Context Protocol Specification, rev. 2026-07-28, Tools &gt; Error Handling). Term source (Mulang&apos; et al., OpenReview 7MVoH9Y3mi) could not be opened for quotation on 9/25/2026 (OpenReview access check); the definition is adapted from the sources cited in column Q.</skos:note>
-		<skos:scopeNote xml:lang="en">Constrains a single input value at invocation time. Distinguished from Constraint (row 15) and its subclasses User Constraint and Execution Constraint, which govern plan selection rather than tool arguments.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Specializes precondition for conditions on the values that a tool or skill accepts for one of its parameters (Figure 4, constrains).</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Specializes precondition for conditions on the values that a tool or skill accepts for one of its parameters (Figure 4, constrains), and constrains a single input value at invocation time. Distinguished from Constraint (row 15) and its subclasses User Constraint and Execution Constraint, which govern plan selection rather than tool arguments.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Model Context Protocol Specification, rev. 2026-07-28, Tools &gt; Data Types &gt; Tool (inputSchema follows the JSON Schema usage guidelines); JSON Schema Validation, draft 2020-12, section 6 (validation keywords such as type, enum, minimum, maximum, pattern, required)</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">In MCP the constraints are the JSON Schema validation keywords inside the tool&apos;s inputSchema; a call whose arguments violate them (a value out of range, a date in the wrong format) is reported as a tool execution error (result with isError: true) that the model can use to correct the arguments and retry.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use to check candidate plans before execution: an invocation whose planned input violates an input constraint is not executable (CQ 8).</cmns-av:usageNote>
@@ -812,8 +850,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Classes!A26, Figure(s) 1, 7. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">One execution of the evidence-retrieval skill for a particular request.</skos:example>
 		<skos:note xml:lang="en">PROV-O Activity supplies the execution concept; P-Plan relates executions to planned steps.</skos:note>
-		<skos:scopeNote xml:lang="en">An actual occurrence, distinct from the tool or skill specification and from the planned workflow step. The required correspondsToStep value, combined with the functional P-Plan property, gives exactly one planned step. Existential restrictions do not require an explicitly asserted named value under OWL open-world semantics.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Represents a runtime occurrence, distinct from the reusable tool or skill and the planned workflow step.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Represents a runtime occurrence, distinct from the reusable tool or skill specification and from the planned workflow step. The required correspondsToStep value, combined with the functional P-Plan property, gives exactly one planned step. Existential restrictions do not require an explicitly asserted named value under OWL open-world semantics.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from PROV-O.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The model uses Invocation as the common parent of SkillInvocation and ToolInvocation.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Record the associated agent, used artifacts, generated artifacts, and corresponding workflow step.</cmns-av:usageNote>
@@ -1057,8 +1094,7 @@
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): Claude Fable 5.1 (Anthropic, in Claude Code) - the term, its source passages (local copies of the cited documents), the definitions already in this sheet and the use case were provided; the model drafted a genus-plus-differentia definition and the notes, each quotation was matched mechanically against the source text, and the team member reviewed the result.</skos:editorialNote>
 		<skos:example xml:lang="en">string (location); integer (max_results); object (health profile); array of strings (PMIDs).</skos:example>
 		<skos:note xml:lang="en">&quot;Every parameter has a type, specified using a URI. This is not the OWL class the parameter belongs to, but a specification of the class (or datatype) that values of the parameter belong to.&quot; (OWL-S 1.1 (W3C Member Submission, 2004), section 5.1); &quot;String values MUST be one of the six primitive types (&quot;null&quot;, &quot;boolean&quot;, &quot;object&quot;, &quot;array&quot;, &quot;number&quot;, or &quot;string&quot;), or &quot;integer&quot;&quot; (JSON Schema Validation, draft 2020-12, section 6.1.1). Term source (Mulang&apos; et al., OpenReview 7MVoH9Y3mi) could not be opened for quotation on 9/25/2026 (OpenReview access check); the definition is adapted from the sources cited in column Q.</skos:note>
-		<skos:scopeNote xml:lang="en">Instances describe permitted value types. They are type descriptions, not the values passed at runtime. hasType is not equivalent to the OWL-S datatype property parameterType.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">The type of the values, not the OWL class of the parameter itself; OWL-S makes this distinction explicitly.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Instances describe the permitted type of a parameter&apos;s values, not the OWL class of the parameter itself; OWL-S makes this distinction explicitly. They are type descriptions, not the values passed at runtime. hasType is not equivalent to the OWL-S datatype property parameterType.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">OWL-S 1.1 (W3C Member Submission, 2004), section 5.1 (&quot;a specification of the class (or datatype) that values of the parameter belong to&quot;); JSON Schema Validation, draft 2020-12, section 6.1.1 &quot;type&quot;</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">OWL-S gives every parameter a parameterType URI. JSON Schema, used by MCP input and output schemas, expresses it with the &quot;type&quot; keyword (null, boolean, object, array, number, string or integer), optionally refined by format, enum or a nested object schema.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use parameter types to check that the Output Type of a producing capability is compatible with the parameter type of the consuming capability when the dependency graph is built (basic flow step 8).</cmns-av:usageNote>
@@ -1081,8 +1117,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Classes!A37, Figure(s) 1, 6. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">An evaluation of Candidate A with token-cost, latency, and evidence-coverage measurements.</skos:example>
 		<skos:note xml:lang="en">The n-ary relation pattern supports a separate record for a relation involving several participants.</skos:note>
-		<skos:scopeNote xml:lang="en">Each plan evaluation evaluates exactly one candidate orchestration plan.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Represents the evaluation record connecting a plan, its criteria, and its measurements.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Represents the evaluation record connecting a plan, its criteria, and its measurements. Each plan evaluation evaluates exactly one candidate orchestration plan.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from Noy and Rector (2006), Defining N-ary Relations on the Semantic Web, Pattern 1 (“Introducing a new class for a relation”): “we create a new class and n new properties to represent an n-ary relation”. The participants are the plan, the decision criteria and the plan metrics; the criteria are as in NASA, 6.8 Decision Analysis: “Decision criteria are requirements for individually assessing the options and alternatives being considered.”</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The ontology specializes the pattern with evaluates, uses criterion and has measurement.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Create an evaluation for each plan comparison and attach its criteria and measurements.</cmns-av:usageNote>
@@ -1094,7 +1129,6 @@
 		<dct:bibliographicCitation xml:lang="en">Cambridge University Press, &quot;metric,&quot; Cambridge Advanced Learner&apos;s Dictionary &amp; Thesaurus (online). [Online]. Available: https://dictionary.cambridge.org/dictionary/english/metric [Accessed: Nov. 13, 2026].</dct:bibliographicCitation>
 		<dct:bibliographicCitation xml:lang="en">M. Fox and D. Long, &quot;PDDL2.1: An Extension to PDDL for Expressing Temporal Planning Domains,&quot; Journal of Artificial Intelligence Research, vol. 20, pp. 61–124, 2003, doi: 10.1613/jair.1129 (Section 4 &quot;Plan Metrics&quot;; Appendix A.4).</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Fox and Long (2003), PDDL2.1, Section 4 &quot;Plan Metrics&quot;</dct:source>
-		<owl:disjointWith rdf:resource="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MaterialMeasure"/>
 		<skos:definition xml:lang="en">measure used in an evaluation to characterize an orchestration plan on a specified dimension</skos:definition>
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Classes!A38, Figure(s) 6. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">A tool-call-count measurement associated with an evaluated candidate plan.</skos:example>
@@ -1220,8 +1254,7 @@
 		<skos:definition xml:lang="en">user input that expresses a task, action, or information need for an agent to address</skos:definition>
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT - provided the model with the term, source, and use-case scope which was prompted to generate an ISO 704-compliant definition. The generated definition was subsequently manually revised for the ontology context.</skos:editorialNote>
 		<skos:example xml:lang="en">“Find the latest approved policy and summarize its key requirements.”</skos:example>
-		<skos:scopeNote xml:lang="en">A request expresses at least one information requirement and is addressed by at most one selected orchestration plan.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Includes requests phrased as questions or instructions. It identifies what the agent is being asked to address; it is not the plan for carrying out the request.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Includes requests phrased as questions or instructions. It identifies what the agent is being asked to address; it is not the plan for carrying out the request. A request expresses at least one information requirement and is addressed by at most one selected orchestration plan.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">SIO, class Question, defined as a linguistic expression used to request information.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">Request is also equivalent to (is request Self), which gives every request the marker is request for the property chains of has preference setting, has hard constraint and has soft constraint.</cmns-av:explanatoryNote>
 	</owl:Class>
@@ -1369,8 +1402,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Classes!A50, Figure(s) 6. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">The candidate chosen after comparing the applicable criteria and constraints.</skos:example>
 		<skos:note xml:lang="en">NASA describes decision analysis as &quot;a framework within which analyses of diverse types are applied&quot; to choose among alternatives, and &quot;Generally, a single alternative should be recommended&quot;; the selected orchestration plan is that alternative.</skos:note>
-		<skos:scopeNote xml:lang="en">Selection identifies the chosen candidate; it does not establish that execution has completed.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">The scoring step computes the rank; the reasoner then classifies the plan whose evaluation has rank 1 as selected (competency question 1).</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">The scoring step computes the rank; the reasoner then classifies the plan whose evaluation has rank 1 as selected (competency question 1). Selection identifies the chosen candidate; it does not establish that execution has completed.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from NASA Systems Engineering Handbook, 6.8 Decision Analysis: the single alternative recommended after evaluating the candidates.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">Figure 6 retains selected plans as candidate-plan subclasses.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Retain its evaluation and connect subsequent invocations to its workflow steps.</cmns-av:usageNote>
@@ -1406,8 +1438,7 @@
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT — the source concept and source were provided to a language model, which was prompted to generate an ISO 704-compliant definition; the generated definition was subsequently manually revised to distinguish a skill from a general capability.</skos:editorialNote>
 		<skos:example xml:lang="en">Personalized Supplement Recommendation Skill; Safety Assessment Skill; Scientific Evidence Retrieval Skill.</skos:example>
 		<skos:note xml:lang="en">In A2A, skills appear in an Agent Card and describe specific abilities or functions supported by an agent, including descriptions, examples, input modes, and output modes.</skos:note>
-		<skos:scopeNote xml:lang="en">A reusable behavior specification, not an invocation. Included as a shared reference from Figure 3; Skill is not modeled as a subclass of Capability, following the conceptual model Figure 3 decision.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Represents a focused and describable behavior available to an agent. It does not represent an occurrence of that behavior.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Represents a focused and describable behavior available to an agent: a reusable behavior specification, not an invocation or other occurrence of that behavior. Included as a shared reference from Figure 3; Skill is not modeled as a subclass of Capability, following the conceptual model Figure 3 decision.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">A2A Protocol – AgentSkill</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">A2A defines an AgentSkill as a distinct capability or function that an agent can perform and describes skills as focused behaviors the agent is likely to perform successfully. Skill is also equivalent to (is skill Self), which gives every skill the marker is skill for the property chains of skill satisfies requirement and skill satisfies hard constraint.</cmns-av:explanatoryNote>
 		<cmns-av:synonym xml:lang="en">Agent Function</cmns-av:synonym>
@@ -1627,8 +1658,7 @@
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT — the related constraint concept and use case were provided to the language model, which was prompted to generate an ISO 704-compliant definition focused on constraints derived from the user&apos;s request, profile, and preferences.</skos:editorialNote>
 		<skos:example xml:lang="en">Jessica’s medication profile leads to a requirement for safety screening before the final recommendation.</skos:example>
 		<skos:note xml:lang="en">ODRL 2.2 states that “Constraints are boolean/logical expressions that can be used to refine the semantics of an Action and Party/Asset Collection or declare the conditions applicable to a Rule” (section 2.5).</skos:note>
-		<skos:scopeNote xml:lang="en">Covers constraints that come from the user’s request, profile, or settings.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Every user constraint is either a hard constraint or a soft constraint, and no constraint is both.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Covers constraints that come from the user’s request, profile, or settings. Every user constraint is either a hard constraint or a soft constraint, and no constraint is both.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">ODRL, section 2.5</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">A user constraint may also be an execution constraint. A user’s limit on tool calls is an example of both.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Keep a link to the request, profile information, or setting that led to the constraint.</cmns-av:usageNote>
@@ -1662,8 +1692,7 @@
 		<skos:editorialNote xml:lang="en">New in Assignment 10.</skos:editorialNote>
 		<skos:example xml:lang="en">The invocation PubMed reachability check (Jessica) confirms the precondition PubMed MCP server is reachable, a precondition of the evidence verification skill.</skos:example>
 		<skos:note xml:lang="en">OWL-S says a process can have any number of preconditions, “which must all hold in order for the process to be successfully invoked”; Cambridge defines confirm as “to prove or state the truth of something that was previously not completely certain”.</skos:note>
-		<skos:scopeNote xml:lang="en">A precondition holds in an agent&apos;s current phase of orchestration when the execution trace records an invocation that confirms it. Competency question 9 uses it, with prov:wasGeneratedBy for required inputs, to decide whether a skill is ready to execute. Under OWL&apos;s open-world semantics, an unconfirmed precondition is unknown, not false.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Domain → range: invocation → precondition.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: invocation → precondition. A precondition holds in an agent&apos;s current phase of orchestration when the execution trace records an invocation that confirms it. Competency question 9 uses it, with prov:wasGeneratedBy for required inputs, to decide whether a skill is ready to execute. Under OWL&apos;s open-world semantics, an unconfirmed precondition is unknown, not false.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from EP-Plan satisfied: “ep-plan:satisfied links ep-plan:Activity or ep-plan:Communication to a ep-plan:Constraint. The property indicates that the execution trace element satisfied the constraint.”</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">A precondition holds in the agent&apos;s current phase of orchestration when the execution trace records an invocation that confirms it. Under OWL&apos;s open-world semantics an unconfirmed precondition is unknown, not false.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use with prov:wasGeneratedBy for required inputs to decide whether a skill is ready to execute (competency question 9).</cmns-av:usageNote>
@@ -1843,8 +1872,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A13, Figure(s) 1, 3, 4. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">A search tool has an information-access capability.</skos:example>
 		<skos:note xml:lang="en">Adapted from AgentO capability modeling.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range: skill or tool → capability.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Shared by tools and skills in Figures 3 and 4, so the domain is the union skill or tool. A Tool-only domain would classify every skill using this property as a Tool. Figure 4 constrains the property locally on Tool.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: skill or tool → capability. Shared by tools and skills in Figures 3 and 4, so the domain is the union skill or tool; a Tool-only domain would classify every skill using this property as a Tool. Figure 4 constrains the property locally on Tool.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from AgentO.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The ontology uses a local relation with skill or tool endpoints; no owl:equivalentProperty assertion is implied.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Link a skill or tool to each capability it provides; the satisfies-requirement and satisfies-hard-constraint chains for skills and tools start from it.</cmns-av:usageNote>
@@ -1915,8 +1943,7 @@
 		<skos:editorialNote xml:lang="en">New in Assignment 10.</skos:editorialNote>
 		<skos:example xml:lang="en">Jessica&apos;s request has the hard constraints safety screening against celecoxib (Jessica) and evidence verification (Jessica), each derived from one of her preference settings.</skos:example>
 		<skos:note xml:lang="en">The OWL 2 Primer introduces property chains with hasGrandparent, which connects “all individuals that are linked by a chain of exactly two hasParent properties” (section 6.2). PROV-O defines derivation as “a transformation of one entity into another”.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range: request → hard constraint. Subproperty of has user constraint.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Inferred by two property chains: from a request to a hard constraint derived from a preference setting of the person the request is attributed to (through has preference setting), or derived from the request itself.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: request → hard constraint. Subproperty of has user constraint. Inferred by two property chains: from a request to a hard constraint derived from a preference setting of the person the request is attributed to (through has preference setting), or derived from the request itself.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from EP-Plan hasConstraint (“ep-plan:hasConstraint links ep-plan:Step, ep-plan:CommunicationSpec or ep-plan:Plan to a ep-plan:Constraint”), restricted to hard constraints in the sense of MiniBrass.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">Inferred by two property chains: has preference setting o inverse(prov:wasDerivedFrom) o is hard constraint (a hard constraint derived from a preference setting of the person who made the request), and is request o inverse(prov:wasDerivedFrom) o is hard constraint (a hard constraint derived from the request itself).</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use to find the mandatory conditions a plan must meet; competency questions 1 and 7 query it.</cmns-av:usageNote>
@@ -1948,8 +1975,7 @@
 		<skos:definition xml:lang="en">relation from a skill to a precondition that must hold before the skill can be validly applied</skos:definition>
 		<skos:editorialNote xml:lang="en">Definition drafting (moved from Definition Source in Assignment 10): The definition was written for this ontology and adapted from the source named in Definition Adapted from Source; generative AI use is described in the Assignment 6 report.</skos:editorialNote>
 		<skos:example xml:lang="en">The evidence verification skill has precondition PubMed MCP server is reachable.</skos:example>
-		<skos:scopeNote xml:lang="en">Domain → range: skill → precondition.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Tools use OWL-S process:hasPrecondition, whose domain is process:Process. This property serves skills, which are not processes, as in conceptual model Figure 3.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: skill → precondition. Tools use OWL-S process:hasPrecondition, whose domain is process:Process. This property serves skills, which are not processes, as in conceptual model Figure 3.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">D. Martin et al., OWL-S: Semantic Markup for Web Services, W3C Member Submission, 2004, section 5.1 (hasPrecondition). https://www.w3.org/submissions/OWL-S/</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
@@ -1978,8 +2004,7 @@
 		<skos:editorialNote xml:lang="en">New in Assignment 10.</skos:editorialNote>
 		<skos:example xml:lang="en">Jessica&apos;s request has the preference settings Jessica&apos;s safety screening setting and Jessica&apos;s evidence setting, because all three are attributed to Jessica.</skos:example>
 		<skos:note xml:lang="en">Adomavicius and Tuzhilin survey recommender systems, which estimate a user&apos;s preferences for items from the preferences the user has already expressed; PROV-O defines attribution as “the ascribing of an entity to an agent”.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range: request → preference setting.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Inferred by a property chain: request, prov:wasAttributedTo, person, inverse of prov:wasAttributedTo, preference setting. The is request and is preference setting markers keep the chain from starting at a preference setting or ending at a request or another entity attributed to the same person.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: request → preference setting. Inferred by a property chain: request, prov:wasAttributedTo, person, inverse of prov:wasAttributedTo, preference setting. The is request and is preference setting markers keep the chain from starting at a preference setting or ending at a request or another entity attributed to the same person.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from PROV-O prov:wasAttributedTo (“Attribution is the ascribing of an entity to an agent.”): the request and the preference setting are attributed to the same person.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">Inferred by the property chain is request o prov:wasAttributedTo o inverse(prov:wasAttributedTo) o is preference setting. The markers is request and is preference setting keep the chain from starting at a preference setting or ending at another entity attributed to the same person.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use to retrieve the stored settings that apply to a request before its constraints are derived (competency question 1).</cmns-av:usageNote>
@@ -2078,8 +2103,7 @@
 		<skos:editorialNote xml:lang="en">New in Assignment 10.</skos:editorialNote>
 		<skos:example xml:lang="en">Ken&apos;s request has the soft constraints minimize external tool calls (Ken) and minimize token usage (Ken), derived from Ken&apos;s execution settings; Olivia&apos;s request has few external tool calls (Olivia) and strong scientific evidence (Olivia), derived from the request itself.</skos:example>
 		<skos:note xml:lang="en">The OWL 2 Primer introduces property chains with hasGrandparent, which connects “all individuals that are linked by a chain of exactly two hasParent properties” (section 6.2). PROV-O defines derivation as “a transformation of one entity into another”.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range: request → soft constraint. Subproperty of has user constraint.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Inferred by two property chains: from a request to a soft constraint derived from a preference setting of the person the request is attributed to (through has preference setting), or derived from the request itself.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: request → soft constraint. Subproperty of has user constraint. Inferred by two property chains: from a request to a soft constraint derived from a preference setting of the person the request is attributed to (through has preference setting), or derived from the request itself.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from EP-Plan hasConstraint (“ep-plan:hasConstraint links ep-plan:Step, ep-plan:CommunicationSpec or ep-plan:Plan to a ep-plan:Constraint”), restricted to soft constraints in the sense of MiniBrass.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">Inferred by two property chains: has preference setting o inverse(prov:wasDerivedFrom) o is soft constraint (a soft constraint derived from a preference setting of the person who made the request), and is request o inverse(prov:wasDerivedFrom) o is soft constraint (a soft constraint derived from the request itself).</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use to find the preferences used to rank the acceptable plans; competency question 7 queries it.</cmns-av:usageNote>
@@ -2117,8 +2141,7 @@
 		<skos:editorialNote xml:lang="en">New in Assignment 11, added to the ontology with the step-position change. Label, definition, domain, range and notes match the Assignment 11 ontology; the definition adapts the Schema.org position definition to workflow steps, and steps that run in parallel share a position.</skos:editorialNote>
 		<skos:example xml:lang="en">In Jessica&apos;s orchestration plan, step 1 (get candidate supplements) has step position 1; steps 2, 3 and 4 (screen interactions, verify evidence, get supplement products) run in parallel and all have step position 2; step 5 (select supplement product) has 3 and step 6 (produce recommendation) has 4.</skos:example>
 		<skos:note xml:lang="en">Schema.org uses position for the position of an item in a series or sequence of items, such as a list item or a HowToStep (a step in instructions that form an ordered list); AgentO orders workflow steps only pairwise, with nextStep.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range: orchestration workflow step → xsd:positiveInteger (functional).</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Steps that may run at the same time share a position, and a step has a higher position than every step it follows through AgentO next step. AgentO next step records the order step by step but branches where steps run in parallel; the position gives each step one number, so competency question queries can list a plan&apos;s steps in execution order (ORDER BY) instead of by label.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: orchestration workflow step → xsd:positiveInteger (functional). Steps that may run at the same time share a position, and a step has a higher position than every step it follows through AgentO next step. AgentO next step records the order step by step but branches where steps run in parallel; the position gives each step one number, so competency question queries can list a plan&apos;s steps in execution order (ORDER BY) instead of by label.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Schema.org, property position: “The position of an item in a series or sequence of items.”</cmns-av:adaptedFrom>
 		<cmns-av:usageNote xml:lang="en">Give every orchestration workflow step of a plan a position, and sort query results by it instead of by step labels, which carry no machine-readable order.</cmns-av:usageNote>
 	</owl:DatatypeProperty>
@@ -2350,8 +2373,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Classes!G31 and G45, Figure(s) 8 (parameter referenced from 4). AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">An input filling a parameter with isRequired = true is a RequiredInput.</skos:example>
 		<skos:note xml:lang="en">JSON Schema distinguishes required properties from optional ones.</skos:note>
-		<skos:scopeNote xml:lang="en">true identifies required parameters; false identifies optional parameters in the supplied model.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">true marks a required parameter and false an optional one. An absent assertion means unknown. This metadata does not perform runtime validation under OWL&apos;s open-world semantics.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">true marks a required parameter and false an optional one; an absent assertion means unknown. This metadata does not perform runtime validation under OWL&apos;s open-world semantics.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from JSON Schema: Object.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">is required is a local attribute, not the literal JSON Schema keyword required.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Classify an input through the parameter it fills, preserving the true/false distinction.</cmns-av:usageNote>
@@ -2821,8 +2843,7 @@
 		<skos:definition xml:lang="en">links an agent or skill to a tool it uses</skos:definition>
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT - provided the model with the term, source, and use-case scope which was prompted to generate an ISO 704-compliant definition. The generated definition was subsequently manually revised for the ontology context.</skos:editorialNote>
 		<skos:example xml:lang="en">A research agent uses a search tool to retrieve sources for a task.</skos:example>
-		<skos:scopeNote xml:lang="en">Domain → range: LLM agent or skill → tool.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Shared by Figures 3a and 4, so the domain is the union LLM agent or skill; a skill that uses a tool is not classified as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: LLM agent or skill → tool. Shared by Figures 3a and 4, so the domain is the union LLM agent or skill; a skill that uses a tool is not classified as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Kurniawan, Agentic AI Ontology, “agent tool usage” relationship.</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
@@ -2842,8 +2863,7 @@
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A32, Figure(s) 6. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">A candidate without a required screening step violates the screening constraint.</skos:example>
 		<skos:note xml:lang="en">Longman defines &quot;violate&quot; as &quot;to disobey or do something against an official agreement, law, principle etc&quot;; violates links a candidate plan to a constraint it fails to meet.</skos:note>
-		<skos:scopeNote xml:lang="en">A soft constraint is never violated in this sense: it is measured by a decision criterion and only lowers the plan&apos;s score and rank.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Domain → range: candidate orchestration plan → hard constraint.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: candidate orchestration plan → hard constraint. A soft constraint is never violated in this sense: it is measured by a decision criterion and only lowers the plan&apos;s score and rank.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from the Longman Dictionary sense of &quot;violate&quot;: &quot;to disobey or do something against an official agreement, law, principle etc&quot;.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">A violation of a hard constraint prevents acceptance; a soft-constraint shortfall may affect ranking.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Assert when a candidate plan fails a hard constraint; the plan is then disqualified from selection.</cmns-av:usageNote>
@@ -2866,17 +2886,6 @@
 	
 	<owl:AnnotationProperty rdf:about="&cmns-av;usageNote">
 	</owl:AnnotationProperty>
-	
-	<owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MaterialMeasure">
-		<rdfs:label xml:lang="en">material measure</rdfs:label>
-		<dct:bibliographicCitation xml:lang="en">Object Management Group, “Commons Ontology Library (Commons), Version 1.2,” QuantitiesAndUnits module, version 20240801. [Online]. Available: https://www.omg.org/spec/Commons/</dct:bibliographicCitation>
-		<dct:source xml:lang="en">OMG Commons Ontology Library, QuantitiesAndUnits module (version 20240801), class MaterialMeasure</dct:source>
-		<skos:definition xml:lang="en">something that reproduces or supplies one or more quantities, each with an assigned quantity value</skos:definition>
-		<skos:editorialNote xml:lang="en">Assignment 12: the term has no row in the term list; the label, definition and source were taken from the source ontology to resolve the OOPS! missing-annotation pitfall (P08), and Claude Opus 5.5 (Anthropic, in Claude Code) drafted the notes.</skos:editorialNote>
-		<skos:example xml:lang="en">Ruler, standard weight, volume measure</skos:example>
-		<cmns-av:directSource xml:lang="en">OMG Commons QuantitiesAndUnits, class MaterialMeasure, skos:definition: “something that reproduces or supplies one or more quantities, each with an assigned quantity value” (Commons cites ISO 11240, clause 3.1.14)</cmns-av:directSource>
-		<cmns-av:explanatoryNote xml:lang="en">Declared so that plan metric can be stated disjoint with it: a plan metric is a measured value, not an instrument that reproduces a quantity.</cmns-av:explanatoryNote>
-	</owl:Class>
 	
 	<owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure">
 		<rdfs:label xml:lang="en">measure</rdfs:label>
