@@ -55,7 +55,7 @@
 		<owl:priorVersion rdf:resource="&oe-agtorch;v4.1"/>
 		<owl:versionIRI rdf:resource="&oe-agtorch;v4.2"/>
 		<owl:versionInfo>v.4.2</owl:versionInfo>
-		<skos:changeNote xml:lang="en">Version 4.2, November 20, 2026; changes from version 4.1. Header: owl:priorVersion is now the version IRI of version 4.1 instead of a link to the archived Assignment 10 file, owl:versionIRI and owl:versionInfo carry version 4.2, and the default namespace declaration (xmlns) was removed from the RDF/XML header; every term is written with a prefix, so no triple changed. Removed the import of FIBO Goals and Objectives (https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), which no axiom, individual or competency question query used and which brought in 22 further FIBO and OMG Commons ontologies. The OMG Commons classes Measure and MaterialMeasure, which the axioms on plan metric refer to and which came only through that import, are now declared in this ontology. HermiT and Pellet infer the same subclass, type and object property facts for the terms and individuals of this ontology as before.</skos:changeNote>
+		<skos:changeNote xml:lang="en">Version 4.2, November 20, 2026; changes from version 4.1. Header: owl:priorVersion is now the version IRI of version 4.1 instead of a link to the archived Assignment 10 file, owl:versionIRI and owl:versionInfo carry version 4.2, and the default namespace declaration (xmlns) was removed from the RDF/XML header; every term is written with a prefix, so no triple changed. Removed the import of FIBO Goals and Objectives (https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), which no axiom, individual or competency question query used and which brought in 22 further FIBO and OMG Commons ontologies. The OMG Commons classes Measure and MaterialMeasure, which the axioms on plan metric refer to and which came only through that import, are now declared in this ontology. HermiT and Pellet infer the same subclass, type and object property facts for the terms and individuals of this ontology as before. Domains and ranges (OOPS! pitfall P11): the helper properties is request, is tool, is skill, is hard constraint, is soft constraint and is preference setting now have their own class as domain and range; has capability has the domain skill or tool, and uses tool the domain LLM agent or skill. IRIs imported from other ontologies were left alone for interoperability</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -1763,13 +1763,23 @@
 		<rdfs:label xml:lang="en">has capability</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">A. Ekelhart, K. Kurniawan, F. J. Ekaputra, and E. Kiesling, “AgentO: An ontology for modeling agentic AI systems,” in The Semantic Web: ESWC 2026 (Lecture Notes in Computer Science, vol. 16550). Cham, Switzerland: Springer, 2026, pp. 298–320, doi: 10.1007/978-3-032-25159-6_16. [Online]. Available: https://agentic-patterns.github.io/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">AgentO.</dct:source>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-agtorch;Skill">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;Tool">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>
 		<rdfs:range rdf:resource="&agento;Capability"/>
 		<skos:definition xml:lang="en">relationship linking a skill or tool to an ability it provides</skos:definition>
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A13, Figure(s) 1, 3, 4. AI-assisted definition adapted for the use case (note moved from Explanatory Note in Assignment 10).</skos:editorialNote>
 		<skos:example xml:lang="en">A search tool has an information-access capability.</skos:example>
 		<skos:note xml:lang="en">Adapted from AgentO capability modeling.</skos:note>
-		<skos:scopeNote xml:lang="en">Domain → range: skill or tool → capability (the ontology declares only the range).</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Shared by tools and skills in Figures 3 and 4. No Tool-only global domain is asserted, because that would classify every skill using this property as a Tool. Figure 4 constrains the property locally on Tool.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: skill or tool → capability.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Shared by tools and skills in Figures 3 and 4, so the domain is the union skill or tool. A Tool-only domain would classify every skill using this property as a Tool. Figure 4 constrains the property locally on Tool.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from AgentO.</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">The ontology uses a local relation with skill or tool endpoints; no owl:equivalentProperty assertion is implied.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Link a skill or tool to each capability it provides; the satisfies-requirement and satisfies-hard-constraint chains for skills and tools start from it.</cmns-av:usageNote>
@@ -2178,6 +2188,8 @@
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, &quot;OWL and Rules,&quot; tutorial slides, Reasoning Web 2011, Galway, Ireland, Sept. 2011, slides 21–23 (&quot;Rolification&quot;). [Online]. Available: https://www.semantic-web-book.org/w/images/1/10/OWLRules-RW2011.pdf [Accessed: Nov. 5, 2026].</dct:bibliographicCitation>
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, M. Krötzsch, B. Parsia, P. F. Patel-Schneider, and S. Rudolph, Eds., &quot;OWL 2 Web Ontology Language Primer (Second Edition),&quot; W3C Recommendation, Dec. 11, 2012, sections 5.2 and 6.2. [Online]. Available: https://www.w3.org/TR/owl2-primer/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Krisnadhi, Maier and Hitzler (2011), OWL and Rules (rolification of a class); OWL 2 Primer, sections 5.2 (self restriction) and 6.2 (property chains)</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;HardConstraint"/>
+		<rdfs:range rdf:resource="&oe-agtorch;HardConstraint"/>
 		<skos:definition xml:lang="en">marker relation from a hard constraint to itself, used to restrict a property chain to hard constraints</skos:definition>
 		<skos:editorialNote xml:lang="en">New in Assignment 10. Added together with the equivalence axiom on Hard Constraint (row 58).</skos:editorialNote>
 		<skos:example xml:lang="en">Safety screening against celecoxib (Jessica) is hard constraint itself (inferred).</skos:example>
@@ -2231,6 +2243,8 @@
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, &quot;OWL and Rules,&quot; tutorial slides, Reasoning Web 2011, Galway, Ireland, Sept. 2011, slides 21–23 (&quot;Rolification&quot;). [Online]. Available: https://www.semantic-web-book.org/w/images/1/10/OWLRules-RW2011.pdf [Accessed: Nov. 5, 2026].</dct:bibliographicCitation>
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, M. Krötzsch, B. Parsia, P. F. Patel-Schneider, and S. Rudolph, Eds., &quot;OWL 2 Web Ontology Language Primer (Second Edition),&quot; W3C Recommendation, Dec. 11, 2012, sections 5.2 and 6.2. [Online]. Available: https://www.w3.org/TR/owl2-primer/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Krisnadhi, Maier and Hitzler (2011), OWL and Rules (rolification of a class); OWL 2 Primer, sections 5.2 (self restriction) and 6.2 (property chains)</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;PreferenceSetting"/>
+		<rdfs:range rdf:resource="&oe-agtorch;PreferenceSetting"/>
 		<skos:definition xml:lang="en">marker relation from a preference setting to itself, used to restrict a property chain to preference settings</skos:definition>
 		<skos:editorialNote xml:lang="en">New in Assignment 10. Added together with the equivalence axiom on Preference Setting (row 63).</skos:editorialNote>
 		<skos:example xml:lang="en">Jessica&apos;s safety screening setting is preference setting Jessica&apos;s safety screening setting (inferred).</skos:example>
@@ -2248,6 +2262,8 @@
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, &quot;OWL and Rules,&quot; tutorial slides, Reasoning Web 2011, Galway, Ireland, Sept. 2011, slides 21–23 (&quot;Rolification&quot;). [Online]. Available: https://www.semantic-web-book.org/w/images/1/10/OWLRules-RW2011.pdf [Accessed: Nov. 5, 2026].</dct:bibliographicCitation>
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, M. Krötzsch, B. Parsia, P. F. Patel-Schneider, and S. Rudolph, Eds., &quot;OWL 2 Web Ontology Language Primer (Second Edition),&quot; W3C Recommendation, Dec. 11, 2012, sections 5.2 and 6.2. [Online]. Available: https://www.w3.org/TR/owl2-primer/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Krisnadhi, Maier and Hitzler (2011), OWL and Rules (rolification of a class); OWL 2 Primer, sections 5.2 (self restriction) and 6.2 (property chains)</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;Request"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Request"/>
 		<skos:definition xml:lang="en">marker relation from a request to itself, used to restrict a property chain to requests</skos:definition>
 		<skos:editorialNote xml:lang="en">New in Assignment 10. Added together with the equivalence axiom on Request (row 42).</skos:editorialNote>
 		<skos:example xml:lang="en">Ken&apos;s request is request Ken&apos;s request (inferred).</skos:example>
@@ -2283,13 +2299,15 @@
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, &quot;OWL and Rules,&quot; tutorial slides, Reasoning Web 2011, Galway, Ireland, Sept. 2011, slides 21–23 (&quot;Rolification&quot;). [Online]. Available: https://www.semantic-web-book.org/w/images/1/10/OWLRules-RW2011.pdf [Accessed: Nov. 5, 2026].</dct:bibliographicCitation>
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, M. Krötzsch, B. Parsia, P. F. Patel-Schneider, and S. Rudolph, Eds., &quot;OWL 2 Web Ontology Language Primer (Second Edition),&quot; W3C Recommendation, Dec. 11, 2012, sections 5.2 and 6.2. [Online]. Available: https://www.w3.org/TR/owl2-primer/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Krisnadhi, Maier and Hitzler (2011), OWL and Rules (rolification of a class); OWL 2 Primer, sections 5.2 (self restriction) and 6.2 (property chains)</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;Skill"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Skill"/>
 		<skos:definition xml:lang="en">marker relation from a skill to itself, used to restrict a property chain to skills</skos:definition>
 		<skos:editorialNote xml:lang="en">New in Assignment 10. Added together with the equivalence axiom on Skill (row 8).</skos:editorialNote>
 		<skos:example xml:lang="en">The product selection skill is skill itself (inferred).</skos:example>
 		<skos:note xml:lang="en">Hitzler&apos;s Reasoning Web 2011 tutorial gives the rolification of a concept A as A ≡ ∃R_A.Self (slides 21–23, following Krisnadhi, Maier and Hitzler, 2011); the OWL 2 Primer shows the self restriction with the idea that “all narcissists love themselves” (section 5.2).</skos:note>
 		<skos:scopeNote xml:lang="en">Domain → range: skill → the same skill.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from the OWL 2 Primer, section 5.2: “As a special case of individuals being interlinked by properties, an individual might be linked to itself”; the class is rolified as in Krisnadhi, Maier and Hitzler (2011).</cmns-av:adaptedFrom>
-		<cmns-av:explanatoryNote xml:lang="en">Skill is equivalent to (is skill Self). The marker starts the property chains of skill satisfies requirement and skill satisfies hard constraint, so they start only at skills (has capability has no domain).</cmns-av:explanatoryNote>
+		<cmns-av:explanatoryNote xml:lang="en">Skill is equivalent to (is skill Self). The marker starts the property chains of skill satisfies requirement and skill satisfies hard constraint, so they start only at skills (the domain of has capability is skill or tool).</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Do not assert it: the reasoner infers it from the class axiom. It is not meant to be queried directly.</cmns-av:usageNote>
 	</owl:ObjectProperty>
 	
@@ -2300,6 +2318,8 @@
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, &quot;OWL and Rules,&quot; tutorial slides, Reasoning Web 2011, Galway, Ireland, Sept. 2011, slides 21–23 (&quot;Rolification&quot;). [Online]. Available: https://www.semantic-web-book.org/w/images/1/10/OWLRules-RW2011.pdf [Accessed: Nov. 5, 2026].</dct:bibliographicCitation>
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, M. Krötzsch, B. Parsia, P. F. Patel-Schneider, and S. Rudolph, Eds., &quot;OWL 2 Web Ontology Language Primer (Second Edition),&quot; W3C Recommendation, Dec. 11, 2012, sections 5.2 and 6.2. [Online]. Available: https://www.w3.org/TR/owl2-primer/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Krisnadhi, Maier and Hitzler (2011), OWL and Rules (rolification of a class); OWL 2 Primer, sections 5.2 (self restriction) and 6.2 (property chains)</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;SoftConstraint"/>
+		<rdfs:range rdf:resource="&oe-agtorch;SoftConstraint"/>
 		<skos:definition xml:lang="en">marker relation from a soft constraint to itself, used to restrict a property chain to soft constraints</skos:definition>
 		<skos:editorialNote xml:lang="en">New in Assignment 10. Added together with the equivalence axiom on Soft Constraint (row 69).</skos:editorialNote>
 		<skos:example xml:lang="en">Minimize token usage (Ken) is soft constraint itself (inferred).</skos:example>
@@ -2317,6 +2337,8 @@
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, &quot;OWL and Rules,&quot; tutorial slides, Reasoning Web 2011, Galway, Ireland, Sept. 2011, slides 21–23 (&quot;Rolification&quot;). [Online]. Available: https://www.semantic-web-book.org/w/images/1/10/OWLRules-RW2011.pdf [Accessed: Nov. 5, 2026].</dct:bibliographicCitation>
 		<dct:bibliographicCitation xml:lang="en">P. Hitzler, M. Krötzsch, B. Parsia, P. F. Patel-Schneider, and S. Rudolph, Eds., &quot;OWL 2 Web Ontology Language Primer (Second Edition),&quot; W3C Recommendation, Dec. 11, 2012, sections 5.2 and 6.2. [Online]. Available: https://www.w3.org/TR/owl2-primer/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Krisnadhi, Maier and Hitzler (2011), OWL and Rules (rolification of a class); OWL 2 Primer, sections 5.2 (self restriction) and 6.2 (property chains)</dct:source>
+		<rdfs:domain rdf:resource="&oe-agtorch;Tool"/>
+		<rdfs:range rdf:resource="&oe-agtorch;Tool"/>
 		<skos:definition xml:lang="en">marker relation from a tool to itself, used to restrict a property chain to tools</skos:definition>
 		<skos:editorialNote xml:lang="en">New in Assignment 10. Added together with the equivalence axiom on Tool (row 7).</skos:editorialNote>
 		<skos:example xml:lang="en">The iHerb product search tool is tool itself (inferred).</skos:example>
@@ -2563,7 +2585,7 @@
 		<skos:note xml:lang="en">IOF Core defines satisfies requirement as a “relation from an entity to a requirement specification that the entity conforms to”.</skos:note>
 		<skos:scopeNote xml:lang="en">Domain → range: skill → information requirement.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Adapted from IOF Core satisfiesRequirement (“relation from an entity to a requirement specification that the entity conforms to”), applied to a skill through the capabilities it has.</cmns-av:adaptedFrom>
-		<cmns-av:explanatoryNote xml:lang="en">Inferred by the property chain is skill o has capability o satisfies requirement. The is skill marker restricts the chain to skills, because has capability has no domain.</cmns-av:explanatoryNote>
+		<cmns-av:explanatoryNote xml:lang="en">Inferred by the property chain is skill o has capability o satisfies requirement. The is skill marker restricts the chain to skills, because the domain of has capability is skill or tool.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Use to find the skills that can meet an information requirement of a request.</cmns-av:usageNote>
 	</owl:ObjectProperty>
 	
@@ -2719,13 +2741,23 @@
 		<rdfs:label xml:lang="en">uses tool</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">K. Kurniawan, “AgentO: An ontology for modeling agentic AI systems,” Zenodo, Jan. 22, 2026, doi: 10.5281/zenodo.18342625. [Online]. Available: https://zenodo.org/records/18342625 [Accessed: Sep. 22, 2026].</dct:bibliographicCitation>
 		<dct:source xml:lang="en">Kurniawan, AgentO: An Ontology for Modeling Agentic AI Systems, version 1, Zenodo, January 22, 2026</dct:source>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&agento;LLMAgent">
+					</rdf:Description>
+					<rdf:Description rdf:about="&oe-agtorch;Skill">
+					</rdf:Description>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>
 		<rdfs:range rdf:resource="&agento;Tool"/>
 		<skos:altLabel xml:lang="en">Agent tool usage</skos:altLabel>
 		<skos:definition xml:lang="en">links an agent or skill to a tool it uses</skos:definition>
 		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT - provided the model with the term, source, and use-case scope which was prompted to generate an ISO 704-compliant definition. The generated definition was subsequently manually revised for the ontology context.</skos:editorialNote>
 		<skos:example xml:lang="en">A research agent uses a search tool to retrieve sources for a task.</skos:example>
-		<skos:scopeNote xml:lang="en">Domain → range: — → tool.</skos:scopeNote>
-		<skos:scopeNote xml:lang="en">Shared by Figures 3 and 4. No global domain is imposed, so skill use does not classify the skill as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Domain → range: LLM agent or skill → tool.</skos:scopeNote>
+		<skos:scopeNote xml:lang="en">Shared by Figures 3a and 4, so the domain is the union LLM agent or skill; a skill that uses a tool is not classified as an LLMAgent. The Figure 4 agent-to-tool restriction is scoped to LLMAgent.</skos:scopeNote>
 		<cmns-av:adaptedFrom xml:lang="en">Kurniawan, Agentic AI Ontology, “agent tool usage” relationship.</cmns-av:adaptedFrom>
 	</owl:ObjectProperty>
 	
