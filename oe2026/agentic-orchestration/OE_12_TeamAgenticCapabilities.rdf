@@ -55,7 +55,7 @@
 		<owl:priorVersion rdf:resource="&oe-agtorch;v4.1"/>
 		<owl:versionIRI rdf:resource="&oe-agtorch;v4.2"/>
 		<owl:versionInfo>v.4.2</owl:versionInfo>
-		<skos:changeNote xml:lang="en">Version 4.2, November 20, 2026; changes from version 4.1. Header: owl:priorVersion is now the version IRI of version 4.1 instead of a link to the archived Assignment 10 file, owl:versionIRI and owl:versionInfo carry version 4.2, and the default namespace declaration (xmlns) was removed from the RDF/XML header; every term is written with a prefix, so no triple changed. Removed the import of FIBO Goals and Objectives (https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), which no axiom, individual or competency question query used and which brought in 22 further FIBO and OMG Commons ontologies. The OMG Commons classes Measure and MaterialMeasure, which the axioms on plan metric refer to and which came only through that import, are now declared in this ontology. HermiT and Pellet infer the same subclass, type and object property facts for the terms and individuals of this ontology as before. Domains and ranges (OOPS! pitfall P11): the helper properties is request, is tool, is skill, is hard constraint, is soft constraint and is preference setting now have their own class as domain and range; has capability has the domain skill or tool, and uses tool the domain LLM agent or skill. IRIs imported from other ontologies were left alone for interoperability</skos:changeNote>
+		<skos:changeNote xml:lang="en">Version 4.2, November 20, 2026; changes from version 4.1. Header: owl:priorVersion is now the version IRI of version 4.1 instead of a link to the archived Assignment 10 file, owl:versionIRI and owl:versionInfo carry version 4.2, and the default namespace declaration (xmlns) was removed from the RDF/XML header; every term is written with a prefix, so no triple changed. Removed the import of FIBO Goals and Objectives (https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), which no axiom, individual or competency question query used and which brought in 22 further FIBO and OMG Commons ontologies. The OMG Commons classes Measure and MaterialMeasure, which the axioms on plan metric refer to and which came only through that import, are now declared in this ontology. HermiT and Pellet infer the same subclass, type and object property facts for the terms and individuals of this ontology as before. Domains and ranges (OOPS! pitfall P11): the helper properties is request, is tool, is skill, is hard constraint, is soft constraint and is preference setting now have their own class as domain and range; has capability has the domain skill or tool, and uses tool the domain LLM agent or skill. IRIs imported from other ontologies were left alone for interoperability. Added missing annotations to IRIs flagged by OOPS! (most of which are imported from other ontologies).</skos:changeNote>
 		<cmns-av:copyright>Copyright (c) 2026 Team AgenticCapabilities</cmns-av:copyright>
 	</owl:Ontology>
 	
@@ -72,8 +72,10 @@
 	</owl:AnnotationProperty>
 	
 	<owl:Class rdf:about="&pplan;Activity">
+		<rdfs:label xml:lang="en">activity</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">D. Garijo and Y. Gil, “The P-Plan ontology,” version 1.3, Mar. 12, 2014. [Online]. Available: http://purl.org/net/p-plan</dct:bibliographicCitation>
 		<dct:source xml:lang="en">[P-Plan] class Activity</dct:source>
+		<skos:definition xml:lang="en">execution process that carries out a planned step of a plan</skos:definition>
 		<skos:editorialNote xml:lang="en">Assignment 9: row added; the main ontology uses pplan:Activity as the parent of Invocation.</skos:editorialNote>
 		<skos:example xml:lang="en">An invocation of the PubMed search_articles tool that carries out the evidence-verification step of a plan.</skos:example>
 		<skos:scopeNote xml:lang="en">Parent class of invocation in this ontology; P-Plan makes it a subclass of prov:Activity.</skos:scopeNote>
@@ -82,8 +84,10 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&pplan;Plan">
+		<rdfs:label xml:lang="en">plan</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">D. Garijo and Y. Gil, “The P-Plan ontology,” version 1.3, Mar. 12, 2014. [Online]. Available: http://purl.org/net/p-plan</dct:bibliographicCitation>
 		<dct:source xml:lang="en">[P-Plan] class Plan</dct:source>
+		<skos:definition xml:lang="en">entity representing a set of steps that one or more agents intend to carry out to achieve a goal, in which each step uses and produces variables</skos:definition>
 		<skos:editorialNote xml:lang="en">Assignment 9: definition added (the row had none).</skos:editorialNote>
 		<skos:example xml:lang="en">Ken plan 1, a candidate orchestration plan with ten workflow steps, is a P-Plan plan.</skos:example>
 		<cmns-av:adaptedFrom xml:lang="en">P-Plan 1.3: “A p-plan:Plan is a specific type of prov:Plan. It is composed of smaller steps that use and produce Variables.”</cmns-av:adaptedFrom>
@@ -91,8 +95,10 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&pplan;Step">
+		<rdfs:label xml:lang="en">step</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">D. Garijo and Y. Gil, “The P-Plan ontology,” version 1.3, Mar. 12, 2014. [Online]. Available: http://purl.org/net/p-plan</dct:bibliographicCitation>
 		<dct:source xml:lang="en">[P-Plan] class Step</dct:source>
+		<skos:definition xml:lang="en">planned execution activity that forms part of a plan</skos:definition>
 		<skos:editorialNote xml:lang="en">Assignment 9: definition added (the row had none).</skos:editorialNote>
 		<skos:example xml:lang="en">Step 1 of Ken plan 1 (get user profile) is a P-Plan step through orchestration workflow step and AgentO workflow step.</skos:example>
 		<cmns-av:adaptedFrom xml:lang="en">P-Plan 1.3: “A p-plan:Step represents the planned execution activity.”</cmns-av:adaptedFrom>
@@ -112,6 +118,38 @@
 		<cmns-av:explanatoryNote xml:lang="en">The model specializes the endpoints to Invocation and WorkflowStep.</cmns-av:explanatoryNote>
 		<cmns-av:usageNote xml:lang="en">Link each invocation in an execution trace to the planned workflow step it carries out.</cmns-av:usageNote>
 	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="http://w3id.org/beam/core#Resource">
+		<rdfs:label xml:lang="en">resource</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">A. Ekelhart, K. Kurniawan, F. J. Ekaputra, and E. Kiesling, &quot;AgentO: An ontology for modeling agentic AI systems,&quot; in The Semantic Web: 23rd European Semantic Web Conference, ESWC 2026, Dubrovnik, Croatia, May 10-14, 2026, Proceedings, Part II (Lecture Notes in Computer Science, vol. 16550), M. Acosta, M. van Erp, S. Rudolph, O. Hartig, B. Spahiu, A. Rula, D. Garijo, and F. Osborne, Eds. Cham, Switzerland: Springer, 2026, pp. 298-320, doi: 10.1007/978-3-032-25159-6_16. Page numbers refer to the 22-page author preprint linked from the ESWC 2026 accepted-papers page (https://drive.google.com/file/d/1WrMSiXR-COZHrAKCEN6nE1M5QUB98gim/view).</dct:bibliographicCitation>
+		<dct:bibliographicCitation xml:lang="en">K. Kurniawan, “AgentO: An ontology for modeling agentic AI systems,” Zenodo, Jan. 22, 2026, doi: 10.5281/zenodo.18342625. [Online]. Available: https://zenodo.org/records/18342625 [Accessed: Sep. 22, 2026].</dct:bibliographicCitation>
+		<dct:bibliographicCitation xml:lang="en">R. Iannella and S. Villata, “ODRL Information Model 2.2,” W3C Recommendation, Feb. 15, 2018. [Online]. Available: https://www.w3.org/TR/odrl-model/</dct:bibliographicCitation>
+		<dct:bibliographicCitation xml:lang="en">“The BEAM ontology (Boxology&apos;s Extended Annotation Model),” version 0.1.0, Feb. 5, 2026, class Resource. [Online]. Available: http://w3id.org/beam/core [Accessed: Nov. 13, 2026].</dct:bibliographicCitation>
+		<dct:source xml:lang="en">[B] AgentO ontology v0.2 (Turtle) (beam:Resource, reused from BEAM), Zenodo doi:10.5281/zenodo.18342625; [A] Ekelhart et al., AgentO, ESWC 2026 (author preprint), Table 4, p. 19</dct:source>
+		<skos:altLabel xml:lang="en">Asset</skos:altLabel>
+		<skos:definition xml:lang="en">asset that an agent or tool uses to perform a task, or that a task produces as its output</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: declared with the annotations of its term-list row, which the ontology file did not carry (OOPS! pitfall P08).</skos:editorialNote>
+		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): Claude Fable 5.1 (Anthropic, in Claude Code) - the term, its source passages (local copies of the cited documents), the definitions already in this sheet and the use case were provided; the model drafted a genus-plus-differentia definition and the notes, each quotation was matched mechanically against the source text, and the team member reviewed the result.</skos:editorialNote>
+		<skos:example xml:lang="en">The user&apos;s health profile; the candidate-supplement list produced by the Supplement Advisor MCP; the PubMed literature index.</skos:example>
+		<skos:note xml:lang="en">&quot;Any asset that can be utilized by an agent or tool to perform tasks&quot; ([A] Ekelhart et al., AgentO, ESWC 2026 (author preprint), Table 4, p. 19); &quot;Relates a task to resources needed for its execution&quot; ([B] AgentO ontology v0.2 (Turtle), requiresResource).</skos:note>
+		<skos:scopeNote xml:lang="en">In AgentO a resource is anything a task requires or produces (data, files, models, instances). In this ontology the information content consumed and produced by capabilities is modeled as Information Artifact (row 14); Resource is the broader class.</skos:scopeNote>
+		<cmns-av:adaptedFrom xml:lang="en">[A] Ekelhart et al., AgentO, ESWC 2026 (author preprint), Table 4, p. 19; [B] AgentO ontology v0.2 (Turtle): beam:Resource rdfs:subClassOf pplan:Variable (no rdfs:comment); requiresResource and producedResource comments</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote xml:lang="en">AgentO reuses beam:Resource and links it to tasks with requiresResource (&quot;Relates a task to resources needed for its execution&quot;) and producedResource (&quot;Relates a task to resources produced as output&quot;); tools reach resources through resourceUsage.</cmns-av:explanatoryNote>
+		<cmns-av:usageNote xml:lang="en">Use Resource for anything an orchestration step needs or yields; use Information Artifact for the information content itself; use Resource dependency (row 24) for the relation between steps that follows from it.</cmns-av:usageNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&process;Process">
+		<rdfs:label xml:lang="en">process</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">D. Martin et al., “OWL-S: Semantic markup for web services,” W3C Member Submission, Nov. 22, 2004, sec. 5. [Online]. Available: https://www.w3.org/submissions/OWL-S/</dct:bibliographicCitation>
+		<dct:source xml:lang="en">OWL-S Process ontology (http://www.daml.org/services/owl-s/1.2/Process.owl), class Process; OWL-S W3C Member Submission (2004), section 5</dct:source>
+		<skos:definition xml:lang="en">specification of the ways a client may interact with a service</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: the term has no row in the term list; the label, definition and source were taken from the source ontology to resolve the OOPS! missing-annotation pitfall (P08), and Claude Opus 5.5 (Anthropic, in Claude Code) drafted the notes.</skos:editorialNote>
+		<skos:example xml:lang="en">The PubMed search articles tool, which is an OWL-S process through the class tool.</skos:example>
+		<skos:scopeNote xml:lang="en">OWL-S, section 5: “It is important to understand that a process is not a program to be executed.”</skos:scopeNote>
+		<cmns-av:adaptedFrom xml:lang="en">OWL-S W3C Member Submission (2004), section 5: “It is a specification of the ways a client may interact with a service.”</cmns-av:adaptedFrom>
+		<cmns-av:directSource xml:lang="en">OWL-S 1.2 Process ontology, class Process, rdfs:comment: “The most general class of processes”</cmns-av:directSource>
+		<cmns-av:explanatoryNote xml:lang="en">Reused from OWL-S; superclass of tool, drawn in Figure 4, so the OWL-S properties process:hasParameter and process:hasPrecondition apply to tools unchanged.</cmns-av:explanatoryNote>
+	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&process;hasParameter">
 		<rdfs:label xml:lang="en">has parameter</rdfs:label>
@@ -147,6 +185,17 @@
 	
 	<owl:AnnotationProperty rdf:about="&skos;scopeNote">
 	</owl:AnnotationProperty>
+	
+	<owl:Class rdf:about="&prov;Entity">
+		<rdfs:label xml:lang="en">entity</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
+		<dct:source xml:lang="en">PROV-O: The PROV Ontology, W3C Recommendation, 30 April 2013 (https://www.w3.org/TR/prov-o/), term Entity</dct:source>
+		<skos:definition xml:lang="en">physical, digital, conceptual, or other kind of thing with some fixed aspects, which may be real or imaginary</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: the term has no row in the term list; the label, definition and source were taken from the source ontology to resolve the OOPS! missing-annotation pitfall (P08), and Claude Opus 5.5 (Anthropic, in Claude Code) drafted the notes.</skos:editorialNote>
+		<skos:example xml:lang="en">Jessica&apos;s search query, an information artifact and therefore a PROV-O entity.</skos:example>
+		<cmns-av:directSource xml:lang="en">PROV-O, class Entity, prov:definition: “An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.”</cmns-av:directSource>
+		<cmns-av:explanatoryNote xml:lang="en">Reused from PROV-O; superclass of information artifact, drawn in Figure 7b, so artifacts can be used and generated by invocations.</cmns-av:explanatoryNote>
+	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&prov;used">
 		<rdfs:label xml:lang="en">used</rdfs:label>
@@ -208,6 +257,20 @@
 		<owl:equivalentClass rdf:resource="&oe-agtorch;Capability"/>
 	</rdf:Description>
 	
+	<owl:Class rdf:about="&agento;Goal">
+		<rdfs:label xml:lang="en">goal</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">H. Xu et al., “The evolution of tool use in LLM agents: From single-tool call to multi-tool orchestration,” arXiv:2603.22862v30, Mar. 24, 2026. [Online]. Available: https://arxiv.org/abs/2603.22862v30 [Accessed: Sep. 23, 2026].</dct:bibliographicCitation>
+		<dct:bibliographicCitation xml:lang="en">K. Kurniawan and F. J. Ekaputra, “AgentO: An ontology for modeling agentic AI systems,” ontology release v0.2, Zenodo, Jan. 22, 2026, doi: 10.5281/zenodo.18342625. [Online]. Available: https://w3id.org/agentic-ai/onto</dct:bibliographicCitation>
+		<dct:source xml:lang="en">Xu et al., The Evolution of Tool Use in LLM Agents: From Single-Tool Call to Multi-Tool Orchestration, which discusses goal drift in long-horizon tasks and maintaining alignment with a global objective.</dct:source>
+		<skos:definition xml:lang="en">objective or desired state that an agent aims to achieve</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: declared with the annotations of its term-list row, which the ontology file did not carry (OOPS! pitfall P08).</skos:editorialNote>
+		<skos:editorialNote xml:lang="en">Definition drafting/editing method (moved out of source fields): ChatGPT - provided the model with the term, source, and use-case scope which was prompted to generate an ISO 704-compliant definition. The generated definition was subsequently manually revised for the ontology context. Earlier adapted-definition source (before the imported definition was adopted): “Toward an Ontology for EA Modeling and EA Model Quality,” which defines a goal as a statement about a state or condition to be brought about or sustained</skos:editorialNote>
+		<skos:example xml:lang="en">Retrieve the relevant policy and produce a summary of its key requirements.</skos:example>
+		<skos:note xml:lang="en">Also: “Toward an Ontology for EA Modeling and EA Model Quality,” which defines a goal as a statement about a state or condition to be brought about or sustained.</skos:note>
+		<skos:scopeNote xml:lang="en">The goal is the intended outcome; the plan and workflow steps are means for achieving it.</skos:scopeNote>
+		<cmns-av:directSource xml:lang="en">AgentO ontology v0.2 (Turtle), class Goal, rdfs:comment: “An objective or desired state that an agent aims to achieve.”</cmns-av:directSource>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&agento;LLMAgent">
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -248,8 +311,10 @@
 	</owl:Class>
 	
 	<owl:ObjectProperty rdf:about="&agento;performedBy">
+		<rdfs:label xml:lang="en">performed by</rdfs:label>
 		<dct:bibliographicCitation xml:lang="en">A. Ekelhart, K. Kurniawan, F. J. Ekaputra, and E. Kiesling, “AgentO: An ontology for modeling agentic AI systems,” in The Semantic Web: ESWC 2026 (Lecture Notes in Computer Science, vol. 16550). Cham, Switzerland: Springer, 2026, pp. 298–320, doi: 10.1007/978-3-032-25159-6_16. [Online]. Available: https://agentic-patterns.github.io/</dct:bibliographicCitation>
 		<dct:source xml:lang="en">AgentO.</dct:source>
+		<skos:definition xml:lang="en">indicates the tool/agent that performs the task in a step</skos:definition>
 		<skos:editorialNote xml:lang="en">Traceability: AC-001_ConceptualModel_TermListTraceability.xlsx, Properties!A24, Figure(s) 5. The definition quotes the AgentO comment word for word, so its source moved to Definition Source in Assignment 11.</skos:editorialNote>
 		<skos:example xml:lang="en">The evidence-retrieval task is performed by a retrieval skill.</skos:example>
 		<skos:note xml:lang="en">Adapted from AgentO task-performance terminology.</skos:note>
@@ -2803,9 +2868,26 @@
 	</owl:AnnotationProperty>
 	
 	<owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/MaterialMeasure">
+		<rdfs:label xml:lang="en">material measure</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">Object Management Group, “Commons Ontology Library (Commons), Version 1.2,” QuantitiesAndUnits module, version 20240801. [Online]. Available: https://www.omg.org/spec/Commons/</dct:bibliographicCitation>
+		<dct:source xml:lang="en">OMG Commons Ontology Library, QuantitiesAndUnits module (version 20240801), class MaterialMeasure</dct:source>
+		<skos:definition xml:lang="en">something that reproduces or supplies one or more quantities, each with an assigned quantity value</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: the term has no row in the term list; the label, definition and source were taken from the source ontology to resolve the OOPS! missing-annotation pitfall (P08), and Claude Opus 5.5 (Anthropic, in Claude Code) drafted the notes.</skos:editorialNote>
+		<skos:example xml:lang="en">Ruler, standard weight, volume measure</skos:example>
+		<cmns-av:directSource xml:lang="en">OMG Commons QuantitiesAndUnits, class MaterialMeasure, skos:definition: “something that reproduces or supplies one or more quantities, each with an assigned quantity value” (Commons cites ISO 11240, clause 3.1.14)</cmns-av:directSource>
+		<cmns-av:explanatoryNote xml:lang="en">Declared so that plan metric can be stated disjoint with it: a plan metric is a measured value, not an instrument that reproduces a quantity.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="https://www.omg.org/spec/Commons/QuantitiesAndUnits/Measure">
+		<rdfs:label xml:lang="en">measure</rdfs:label>
+		<dct:bibliographicCitation xml:lang="en">Object Management Group, “Commons Ontology Library (Commons), Version 1.2,” QuantitiesAndUnits module, version 20240801. [Online]. Available: https://www.omg.org/spec/Commons/</dct:bibliographicCitation>
+		<dct:source xml:lang="en">OMG Commons Ontology Library, QuantitiesAndUnits module (version 20240801), class Measure</dct:source>
+		<skos:definition xml:lang="en">amount or degree of something; the dimensions, capacity, or amount of something ascertained by measuring</skos:definition>
+		<skos:editorialNote xml:lang="en">Assignment 12: the term has no row in the term list; the label, definition and source were taken from the source ontology to resolve the OOPS! missing-annotation pitfall (P08), and Claude Opus 5.5 (Anthropic, in Claude Code) drafted the notes.</skos:editorialNote>
+		<skos:example xml:lang="en">The token cost of a candidate orchestration plan, recorded as a plan metric.</skos:example>
+		<skos:note xml:lang="en">Commons: “Measure refers to the phenomenon or phenomena to be measured in a data set. In a data set, the instance of a measure is often called an observation.”</skos:note>
+		<cmns-av:directSource xml:lang="en">OMG Commons QuantitiesAndUnits, class Measure, skos:definition: “amount or degree of something; the dimensions, capacity, or amount of something ascertained by measuring” (Commons cites https://stats.oecd.org/glossary/detail.asp?ID=7062)</cmns-av:directSource>
+		<cmns-av:explanatoryNote xml:lang="en">Reused from OMG Commons; superclass of plan metric, drawn in Figure 6b.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:AllDisjointClasses>
