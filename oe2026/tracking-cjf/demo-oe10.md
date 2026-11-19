@@ -6,7 +6,7 @@ title: OE Week 10 Demonstration and Queries
 <link rel="stylesheet" href="styles/demo.css">
 <script src="scripts/demo.js" defer></script>
 
-[Current OE Week 11 demonstration](demo.html)
+[Current OE Week 12 demonstration](demo.html)
 
 ## OE Week 10 Sample Conversation
 
