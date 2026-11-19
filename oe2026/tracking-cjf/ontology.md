@@ -18,6 +18,8 @@ The Tracking Collective Judgment Formation ontology represents conversation move
 
 For earlier schema and individuals downloads, see the [version archive](ontology-versions.html#downloadable-versions).
 
+OE_12 is released under the [MIT License](license.html). See the [maintenance policy](maintenance.html) for versioning, compatibility, and community feedback, or [contact the team](gettinginvolved.html).
+
 | File | Purpose |
 | --- | --- |
 | <a href="ontology/OE_12_TeamCJF_Individuals_withoutCurrentState.rdf" download>Annotated CQ sample individuals (.rdf)</a> | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
