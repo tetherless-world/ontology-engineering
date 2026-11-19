@@ -11,7 +11,8 @@ Use the schema and individuals from the same week. The individuals with current 
 
 | Version | Schema | Individuals | Individuals with current assignments |
 | --- | --- | --- | --- |
-| OE Week 11 (current) | <a href="ontology/OE_11_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="ontology/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="ontology/OE_11_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
+| OE Week 12 (current) | <a href="ontology/OE_12_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="ontology/OE_12_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="ontology/OE_12_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
+| OE Week 11 | <a href="prev-ontology-versions/OE_11/OE_11_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_11/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_11/OE_11_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
 | OE Week 10 | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
 | OE Week 9 | <a href="prev-ontology-versions/OE_9/OE_9_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_9/OE_9_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_9/OE_9_TeamCJF_Individuals_CurrentStateAdded.rdf" download>Individuals (.rdf)</a> |
 | OE Week 8 | <a href="prev-ontology-versions/OE_8/OE_8_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_8/OE_8_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> | — |

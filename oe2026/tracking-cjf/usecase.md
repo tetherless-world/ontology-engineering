@@ -34,7 +34,7 @@ The OE Week 11 use case develops six questions around a group choosing a softwar
 5. Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
 6. What positions did Speaker C express toward Platform A and Platform B throughout the conversation, and what are the identifiers, target Options, summaries, supporting utterances, and turn numbers of these Expressed Positions?
 
-The document includes the full scenarios for all six questions. The [OE Week 11 demonstration](demo.html) provides runnable queries and recorded answers for CQ1, CQ2, CQ3, CQ5, and CQ6. See the [conceptual model](ontology.html#conceptual-model) and [terminology list](termlist.html) for the vocabulary used in the questions.
+The document includes the full scenarios for all six questions. The [OE Week 12 demonstration](demo.html) provides runnable queries and recorded answers for CQ1, CQ2, CQ3, CQ5, and CQ6. See the [conceptual model](ontology.html#conceptual-model) and [terminology list](termlist.html) for the vocabulary used in the questions.
 
 ## Previous Versions
 

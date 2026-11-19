@@ -8,9 +8,9 @@ toc: true
 
 ## Ontologies
 
-### OE Week 11 CJF Ontology
+### OE Week 12 CJF Ontology
 
-<a href="ontology/OE_11_TeamCJF.rdf" download>Download the OE Week 11 schema (.rdf)</a>
+<a href="ontology/OE_12_TeamCJF.rdf" download>Download the OE Week 12 schema (.rdf)</a>
 
 The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
 
@@ -20,8 +20,8 @@ For earlier schema and individuals downloads, see the [version archive](ontology
 
 | File | Purpose |
 | --- | --- |
-| <a href="ontology/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf" download>Annotated CQ sample individuals (.rdf)</a> | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
-| <a href="ontology/OE_11_TeamCJF_Individuals.rdf" download>CQ sample individuals with current assignments (.rdf)</a> | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ2, CQ3, CQ5, and CQ6 |
+| <a href="ontology/OE_12_TeamCJF_Individuals_withoutCurrentState.rdf" download>Annotated CQ sample individuals (.rdf)</a> | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
+| <a href="ontology/OE_12_TeamCJF_Individuals.rdf" download>CQ sample individuals with current assignments (.rdf)</a> | The same data with current-state-assignment links added by SHACL; use this file for CQ1, CQ2, CQ3, CQ5, and CQ6 |
 | <a href="prev-ontology-versions/mar11_groupb-individuals.rdf" download>March 11 Group B individuals (.rdf)</a> | Annotated example individuals from a corpus conversation |
 | <a href="prev-ontology-versions/tracking-cjf-individuals.rdf" download>Earlier conversation individuals (.rdf)</a> | Earlier instance dataset retained alongside the current examples |
 | [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |
@@ -30,11 +30,11 @@ For earlier schema and individuals downloads, see the [version archive](ontology
 
 ## Ontology Versions
 
-The [version archive](ontology-versions.html#downloadable-versions) provides schema and individuals downloads for OE Weeks 8–11 and links to development snapshots.
+The [version archive](ontology-versions.html#downloadable-versions) provides schema and individuals downloads for OE Weeks 8–12 and links to development snapshots.
 
 ## Conceptual Model
 
-The gallery shows the latest project diagrams. Open an image to view it at full size, or download the editable file and open it in [diagrams.net](https://app.diagrams.net/). The [RDF schema](ontology/OE_11_TeamCJF.rdf) gives the implemented identifiers and axioms.
+The gallery shows the latest project diagrams. Open an image to view it at full size, or download the editable file and open it in [diagrams.net](https://app.diagrams.net/). The [RDF schema](ontology/OE_12_TeamCJF.rdf) gives the implemented identifiers and axioms.
 
 <a href="files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio" download>Download the editable diagrams (.drawio)</a>
 
