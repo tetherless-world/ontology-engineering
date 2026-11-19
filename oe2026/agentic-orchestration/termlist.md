@@ -19,7 +19,7 @@ Download: [clean](files/terminology/OE_12_TeamAgenticCapabilities_TermList.xlsx)
 
 ## Previous Versions
 
-- [Version 9 (Assignment 11)](files/terminology/OE_11_TeamAgenticCapabilities_TermList.xlsx)
+- [Version 10 (Assignment 11)](files/terminology/OE_11_TeamAgenticCapabilities_TermList.xlsx)
   ([redlined](files/terminology/OE_11_TeamAgenticCapabilities_RedlinedTermList.xlsx))
 - [Version 9 (Assignment 10)](files/terminology/OE_10_TeamAgenticCapabilities_TermList.xlsx)
   ([redlined](files/terminology/OE_10_TeamAgenticCapabilities_RedlinedTermList.xlsx))
