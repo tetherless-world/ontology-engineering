@@ -14,9 +14,8 @@ The demonstration uses the [CQ sample conversation individuals with current assi
 
 These queries use OWL DL reasoning. Open `ontology/OE_12_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_12_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
-- [Download OE 12 queries (.txt)](CQAnswers/OE_12_TeamCJF_SPARQLQueries.txt)
+- [Download CJFs' competency question queries (.txt)](CQAnswers/OE_12_TeamCJF_SPARQLQueries.txt)
 - [OE Week 10 demonstration and recorded answers](demo-oe10.html)
-- [Earlier OE Week 9 query set (.txt)](CQAnswers/OE_9_TeamCJF_SPARQLQueries.txt)
 
 ## CQ1 Conversation Moves and Current States
 
