@@ -7,7 +7,7 @@ title: License
 
 We release the original Tracking Collective Judgment Formation (Tracking CJF) ontology, example individuals, project code, and documentation under the MIT License. Reused vocabularies and third-party materials carry their original copyright and license notices.
 
-The license permits reuse, modification, and redistribution with the copyright and permission notice included. See the [MIT License](https://opensource.org/license/mit) for the license text and the [maintenance policy](maintenance.html) for release and contribution practices.
+The license permits reuse, modification, and redistribution with the copyright and permission notice included. See the [MIT License](https://opensource.org/license/mit) for the license text and the [maintenance policy](gettinginvolved#maintenance-policy) for release and contribution practices.
 
 ### MIT License
 

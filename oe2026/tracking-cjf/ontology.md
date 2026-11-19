@@ -18,7 +18,7 @@ The Tracking Collective Judgment Formation ontology represents conversation move
 
 For earlier schema and individuals downloads, see the [version archive](ontology-versions.html#downloadable-versions).
 
-OE_12 is released under the [MIT License](license.html). See the [maintenance policy](maintenance.html) for versioning, compatibility, and community feedback, or [contact the team](gettinginvolved.html).
+OE_12 is released under the [MIT License](license.html). See the [maintenance policy](gettinginvolved#maintenance-policy) for versioning, compatibility, and community feedback, or [contact the team](gettinginvolved.html).
 
 | File | Purpose |
 | --- | --- |
