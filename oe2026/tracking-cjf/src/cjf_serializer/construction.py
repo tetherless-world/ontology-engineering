@@ -350,7 +350,12 @@ class Builder:
             relationship = None
             if mapping.get("same_type") and self.moves[source_id]["kind"] != self.moves[target_id]["kind"]:
                 raise InputValidationError("refines requires moves of the same type")
-            if mapping.get("property"):
+            # Retain direct-property output for schemas predating reification.
+            relationship_class = mapping.get("class")
+            reified = relationship_class and (
+                self.term(relationship_class), RDF.type, OWL.Class
+            ) in self.schema
+            if mapping.get("property") and not reified:
                 prop = self.require(mapping["property"])
                 self.endpoint(source, prop, RDFS.domain); self.endpoint(target, prop, RDFS.range)
                 self.graph.add((source, prop, target))

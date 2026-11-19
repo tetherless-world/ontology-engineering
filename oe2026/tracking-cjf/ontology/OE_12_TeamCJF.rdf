@@ -52,7 +52,12 @@
 		<rdfs:seeAlso rdf:resource="https://tetherless-world.github.io/ontology-engineering/branch/tracking-cjf/oe2026/tracking-cjf/gettinginvolved"/>
 		<rdfs:seeAlso rdf:resource="https://tetherless-world.github.io/ontology-engineering/branch/tracking-cjf/oe2026/tracking-cjf/license.html"/>
 		<skos:changeNote>Added the MIT license, project copyright, release label, and links to maintenance policies and community feedback.</skos:changeNote>
+		<skos:changeNote>Reified isAbout and selects as About and Selection relationships with evidence and reasons, with property chains deriving the direct links.</skos:changeNote>
 	</owl:Ontology>
+
+	<rdf:Description rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/OE_11/">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+	</rdf:Description>
 	
 	<owl:AnnotationProperty rdf:about="&dc;description">
 	</owl:AnnotationProperty>
@@ -1036,6 +1041,10 @@
 		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
 		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
 		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-cjf;makesIsAbout"/>
+			<rdf:Description rdf:about="&oe-cjf;isAimedAtIsAbout"/>
+		</owl:propertyChainAxiom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAt">
@@ -1318,6 +1327,10 @@
 		<skos:prefLabel>selects</skos:prefLabel>
 		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
 		<cmns-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+		<owl:propertyChainAxiom rdf:parseType="Collection">
+			<rdf:Description rdf:about="&oe-cjf;makesSelects"/>
+			<rdf:Description rdf:about="&oe-cjf;isAimedAtSelects"/>
+		</owl:propertyChainAxiom>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&oe-cjf;supports">
@@ -2862,5 +2875,68 @@
 	<rdf:Description rdf:nodeID="blank309">
 		<owl:inverseOf rdf:resource="&oe-cjf;selects"/>
 	</rdf:Description>
+
+	<owl:Class rdf:about="&oe-cjf;About">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>about</rdfs:label>
+		<skos:prefLabel>about</skos:prefLabel>
+		<skos:definition>CJF conversation move relationship in which a source Information Request concerns the content of a target Deliberative Conversation Move or Expressed Position.</skos:definition>
+		<dct:source>Tracking CJF</dct:source>
+	</owl:Class>
+
+	<owl:Class rdf:about="&oe-cjf;Selection">
+		<rdfs:subClassOf rdf:resource="&oe-cjf;CollectiveJudgmentFormationConversationMoveRelationship"/>
+		<rdfs:label>selection</rdfs:label>
+		<skos:prefLabel>selection</skos:prefLabel>
+		<skos:definition>CJF conversation move relationship in which a source Outcome records the group choosing a target Option.</skos:definition>
+		<dct:source>Tracking CJF</dct:source>
+	</owl:Class>
+
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesIsAbout">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:domain rdf:resource="&oe-cjf;InformationRequest"/>
+		<rdfs:range rdf:resource="&oe-cjf;About"/>
+		<rdfs:label>makes is about</rdfs:label>
+		<skos:prefLabel>makes is about</skos:prefLabel>
+		<skos:definition>links a source Information Request to an About relationship record</skos:definition>
+		<dct:source>Tracking CJF</dct:source>
+	</owl:ObjectProperty>
+
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtIsAbout">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:domain rdf:resource="&oe-cjf;About"/>
+		<rdfs:range>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&oe-cjf;DeliberativeConversationMove"/>
+					<rdf:Description rdf:about="&oe-cjf;ExpressedPosition"/>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:range>
+		<rdfs:label>is aimed at is about</rdfs:label>
+		<skos:prefLabel>is aimed at is about</skos:prefLabel>
+		<skos:definition>links an About relationship record to the Deliberative Conversation Move or Expressed Position it concerns</skos:definition>
+		<dct:source>Tracking CJF</dct:source>
+	</owl:ObjectProperty>
+
+	<owl:ObjectProperty rdf:about="&oe-cjf;makesSelects">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;makes"/>
+		<rdfs:domain rdf:resource="&oe-cjf;Outcome"/>
+		<rdfs:range rdf:resource="&oe-cjf;Selection"/>
+		<rdfs:label>makes selects</rdfs:label>
+		<skos:prefLabel>makes selects</skos:prefLabel>
+		<skos:definition>links a source Outcome to a Selection relationship record</skos:definition>
+		<dct:source>Tracking CJF</dct:source>
+	</owl:ObjectProperty>
+
+	<owl:ObjectProperty rdf:about="&oe-cjf;isAimedAtSelects">
+		<rdfs:subPropertyOf rdf:resource="&oe-cjf;isAimedAt"/>
+		<rdfs:domain rdf:resource="&oe-cjf;Selection"/>
+		<rdfs:range rdf:resource="&oe-cjf;Option"/>
+		<rdfs:label>is aimed at selects</rdfs:label>
+		<skos:prefLabel>is aimed at selects</skos:prefLabel>
+		<skos:definition>links a Selection relationship record to the Option chosen by the group Outcome</skos:definition>
+		<dct:source>Tracking CJF</dct:source>
+	</owl:ObjectProperty>
 
 </rdf:RDF>
