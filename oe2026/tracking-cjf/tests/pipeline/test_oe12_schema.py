@@ -32,6 +32,6 @@ class OE12SchemaTests(unittest.TestCase):
         self.assertIn((self.ontology, RDF.type, OWL.Ontology), self.schema)
         self.assertIn((DCTERMS.license, RDF.type, OWL.AnnotationProperty), self.schema)
         self.assertIn(
-            (self.ontology, DCTERMS.license, URIRef("https://opensource.org/license/mit")),
+            (self.ontology, DCTERMS.license, URIRef("https://spdx.org/licenses/MIT.html")),
             self.schema,
         )
