@@ -1399,7 +1399,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
-        <cmns-av:usageNote>Record a specific extension, correction, or reformulation; do not link unrelated contributions solely because they share a topic. The Claim, Issue, and Option class restrictions constrain each refinement target to the source move's type.</cmns-av:usageNote>
+        <cmns-av:usageNote>Record a specific extension, correction, or reformulation; do not link unrelated contributions solely because they share a topic. A move refined by a Claim, Issue, or Option is of the same type as that source move.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -2021,12 +2021,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
         <dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
@@ -2474,12 +2468,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
         <dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
@@ -2581,12 +2569,6 @@
                         </owl:allValuesFrom>
                     </owl:Restriction>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
@@ -3297,6 +3279,38 @@
         <cmns-av:synonym>time point</cmns-av:synonym>
     </owl:Class>
     
+
+
+    <!-- Same-type refinement. Every target of a refinement has its source move's type. -->
+    <owl:Restriction>
+        <owl:onProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
+            </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
+    </owl:Restriction>
+
+    <owl:Restriction>
+        <owl:onProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
+            </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
+    </owl:Restriction>
+
+    <owl:Restriction>
+        <owl:onProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
+            </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
+    </owl:Restriction>
 
 
     <!-- 
