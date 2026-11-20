@@ -6,17 +6,16 @@ title: Demonstration and Queries
 <link rel="stylesheet" href="styles/demo.css">
 <script src="scripts/demo.js" defer></script>
 
-## OE Week 11 Sample Conversation
+## OE Week 12 Sample Conversation
 
-The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_11_TeamCJF_Individuals.rdf) with the [OE Week 11 CJF schema](ontology/OE_11_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
+The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_12_TeamCJF_Individuals.rdf) with the [OE Week 12 CJF schema](ontology/OE_12_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
 
 ## Running the Queries
 
-These queries use OWL DL reasoning. Open `ontology/OE_11_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_11_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
+These queries use OWL DL reasoning. Open `ontology/OE_12_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_12_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
-- [Download the combined query notes (.txt)](CQAnswers/OE_11_TeamCJF_SPARQLQueries.txt)
+- [Download CJFs' competency question queries (.txt)](CQAnswers/OE_12_TeamCJF_SPARQLQueries.txt)
 - [OE Week 10 demonstration and recorded answers](demo-oe10.html)
-- [Earlier OE Week 9 query set (.txt)](CQAnswers/OE_9_TeamCJF_SPARQLQueries.txt)
 
 ## CQ1 Conversation Moves and Current States
 
@@ -120,4 +119,4 @@ The query follows `selects` from the final Outcome to the chosen Option, then fi
 
 The query finds Speaker C's ExpressedPosition moves through the inferred `hasSpeaker` link and keeps those whose `hasPositionTowards` target is Platform A (M0003) or Platform B (M0021). For each position, it returns the summary, the supporting text, and the turn of the source utterance, which must be attributed to Speaker C and belong to the sample conversation. It does not filter for Agreement, so the earlier preference is retained. The recorded answers show Speaker C preferring Platform B at turn 9 (M0020) and agreeing with Platform A at turn 27 (M0063).
 
-The [OE Week 11 use case](usecase.html#competency-questions) describes CQ4. The combined notes include its OE Week 10 query. Recorded query results are available for the five questions above.
+The [OE Week 11 use case](usecase.html#competency-questions) describes CQ4. The OE 12 queries file includes its OE Week 10 query. Recorded query results are available for the five questions above.
