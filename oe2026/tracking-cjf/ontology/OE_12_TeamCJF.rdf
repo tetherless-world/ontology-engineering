@@ -61,6 +61,11 @@
     <!-- http://purl.org/dc/elements/1.1/identifier -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
     
 
 
@@ -1073,6 +1078,18 @@
     
 
 
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isSelectedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isSelectedBy">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Outcome"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/selects"/>
+        <rdfs:label>is selected by</rdfs:label>
+        <skos:definition>is the option chosen by a group Outcome</skos:definition>
+        <skos:prefLabel>is selected by</skos:prefLabel>
+    </owl:ObjectProperty>
+
+
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makes -->
 
     <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makes">
@@ -1382,7 +1399,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
-        <cmns-av:usageNote>Record a specific extension, correction, or reformulation; do not link unrelated contributions solely because they share a topic.</cmns-av:usageNote>
+        <cmns-av:usageNote>Record a specific extension, correction, or reformulation; do not link unrelated contributions solely because they share a topic. The Claim, Issue, and Option class restrictions constrain each refinement target to the source move's type.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1860,6 +1877,7 @@
         <skos:definition>a response relationship in which a source Claim, Option, Issue, or Expressed Position provides a reply that satisfies the information need expressed by a target Information Request.</skos:definition>
         <skos:example>Claim C2 makesAnswers Answer A1; Answer A1 isAimedAtAnswers Information Request Q1. Q1 asks for a meeting date, and C2 gives that date.</skos:example>
         <skos:prefLabel>answer</skos:prefLabel>
+        <cmns-av:usageNote>Use Answer when the reply satisfies the information request. Use Response for a relevant reply when satisfaction has not been established.</cmns-av:usageNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
@@ -2606,6 +2624,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>A majority decision can be an Outcome without unanimity; an individual vote cannot establish one by itself.</cmns-av:explanatoryNote>
         <cmns-av:usageNote>Annotated only when the conversation establishes the result as the group’s decision.</cmns-av:usageNote>
+        <cmns-av:usageNote>Use Issue for the concern raised for deliberation and Outcome for the group decision or commitment reached through deliberation.</cmns-av:usageNote>
     </owl:Class>
     
 
