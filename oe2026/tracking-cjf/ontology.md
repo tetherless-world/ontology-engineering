@@ -27,7 +27,7 @@ OE_12 is released under the [MIT License](license.html). See the [maintenance po
 | <a href="prev-ontology-versions/mar11_groupb-individuals.rdf" download>March 11 Group B individuals (.rdf)</a> | Annotated example individuals from a corpus conversation |
 | <a href="prev-ontology-versions/tracking-cjf-individuals.rdf" download>Earlier conversation individuals (.rdf)</a> | Earlier instance dataset retained alongside the current examples |
 | [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |
-| [Local PROV-O copy](prev-ontology-versions/prov-o-cjf.owl) | Provenance vocabulary used by the project |
+| [Local PROV-O copy](prev-ontology-versions/prov-o-cjf-filtered.owl) | Provenance vocabulary used by the project |
 | [Current state assignment SHACL rules](shacl/current-state-assignment-rules.ttl) | Rules and constraints for identifying the latest recorded assignment for each move with state |
 
 ## Ontology Versions
@@ -154,7 +154,7 @@ Each relationship between conversation moves is an individual that connects a so
 
 ## Ontologies Reused
 
-- [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A  [local copy](prev-ontology-versions/prov-o-cjf.owl) accompanies the project.
+- [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A  [local copy](prev-ontology-versions/prov-o-cjf-filtered.owl) accompanies the project.
 - [Semanticscience Integrated Ontology (SIO)](https://semanticscience.org/) supplies evidence and containment relationships used by the model.
 - [Deliberation Knowledge Graph](https://dkg.svagnoni.linkeddata.es/) supplies vocabulary for deliberative relationships.
 - [OMG Commons Annotation Vocabulary](https://www.omg.org/spec/Commons/AnnotationVocabulary/) and [Dates and Times](https://www.omg.org/spec/Commons/DatesAndTimes/) provide annotation and temporal vocabulary referenced in the ontology.

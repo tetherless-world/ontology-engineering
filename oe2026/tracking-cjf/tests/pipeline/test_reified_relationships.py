@@ -35,7 +35,7 @@ class ReifiedRelationshipTests(unittest.TestCase):
         graph = Graph().parse(build_individuals(self.config, output=self.root / "asserted.rdf").output_path)
         for source_id, kind, target_id, cls, makes, aim, reason in [
             ("I1", "isAbout", "C1", C.About, C.makesIsAbout, C.isAimedAtIsAbout, "Asks about the speed claim"),
-            ("D1", "selects", "O1", C.Selection, C.makesSelects, C.isAimedAtSelects, "The group chooses Platform B"),
+            ("D1", "selects", "O1", C.Select, C.makesSelects, C.isAimedAtSelects, "The group chooses Platform B"),
         ]:
             with self.subTest(kind=kind):
                 source = URIRef(C + "Demo/Move_" + source_id)
@@ -57,7 +57,7 @@ class ReifiedRelationshipTests(unittest.TestCase):
         graph = Graph().parse(build_individuals(self.config, output=self.root / "asserted.rdf").output_path)
         self.assertIn((URIRef(C + "Demo/Move_I1"), C.isAbout, URIRef(C + "Demo/Move_C1")), graph)
         self.assertIn((URIRef(C + "Demo/Move_D1"), C.selects, URIRef(C + "Demo/Move_O1")), graph)
-        self.assertFalse(list(graph.subjects(RDF.type, C.Selection)))
+        self.assertFalse(list(graph.subjects(RDF.type, C.Select)))
         self.assertFalse(list(graph.subjects(RDF.type, C.About)))
 
     def test_current_schema_rejects_invalid_relationship_endpoints(self):
