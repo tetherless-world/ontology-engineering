@@ -23,8 +23,8 @@ describe skills alongside tools, and the plans that combine them.
   Science, vol. 16550, M. Acosta et al., Eds. Cham, Switzerland: Springer, 2026, pp. 298–320, doi:
   [10.1007/978-3-032-25159-6_16](https://doi.org/10.1007/978-3-032-25159-6_16).
 - K. Kurniawan and F. J. Ekaputra, "AgentO: An ontology for modeling agentic AI systems," ontology release v0.2, Zenodo,
-  Jan. 22, 2026, doi: [10.5281/zenodo.18342625](https://doi.org/10.5281/zenodo.18342625). [Online]. Available:
-  <https://w3id.org/agentic-ai/onto>
+  Jan. 22, 2026. [Zenodo release (DOI 10.5281/zenodo.18342625)](https://doi.org/10.5281/zenodo.18342625).
+  [Download the AgentO v0.2 RDF/XML used by this project](imports/agento-v0.2.owl).
 - IBM Research, "AI Atlas Nexus: AI risk ontology." [Online]. Available: <https://ibm.github.io/ai-atlas-nexus/ontology/>
 
 ### Agent tools, skills and planning
