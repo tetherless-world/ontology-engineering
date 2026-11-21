@@ -165,11 +165,11 @@ Local CSV: CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv
 https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv
 
 ------------------------------------------
-CQ4:  Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its current recorded states? 
+CQ4:  Which Issues challenge Platform A, how have their states changed throughout the conversation, and what evidence supports these changes? 
 
 # Run in Protégé using Snap SPARQL Query.
-# Active ontology: OE_10_TeamCJF_Individuals.rdf
-# Imported ontology: OE_10_TeamCJF.rdf
+# Active ontology: OE_12_TeamCJF_Individuals.rdf
+# Imported ontology: OE_12_TeamCJF.rdf
 # Reasoner: HermiT (active)
 
 PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
@@ -221,32 +221,30 @@ ORDER BY ?issue ?assignment ?stateType ?sourceMove
 
 Expected Answer:
 
-M0010 - Cost concern:
-Recorded states: Open, Addressed, Resolved.
-Evidence moves: M0021, M0039, M0048.
-Current state: Resolved.
+M0010 – Cost concern (7 rows):
+- Addressed (M0021): “We should consider adopting it instead.”
+- Addressed (M0048): “Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.”
+- Addressed (M0048): “That settles the funding concern.”
+- Resolved (M0048): “Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.”
+- Resolved (M0048): “That settles the funding concern.”
+- Addressed (M0039): “Then we could cover Platform A’s $6,000 gap by moving the funds reserved for the reporting add-on.”
+- Open: No source move or evidence recorded.
 
-M0014 - Training concern:
-Recorded states: Open, Addressed.
-Evidence move: M0051.
-Current state: Addressed.
+M0014 – Training concern (2 rows):
+- Open: No source move or evidence recorded.
+- Addressed (M0051): “We could use Monday’s five-to-six training slot for a vendor-led session, then give developers the recording and a practice environment.”
 
-M0050 - Training schedule concern:
-Recorded states: Open, Addressed.
-Evidence move: M0051.
-Current state: Addressed.
+M0050 – Training schedule concern (2 rows):
+- Open: No source move or evidence recorded.
+- Addressed (M0051): “We could use Monday’s five-to-six training slot for a vendor-led session, then give developers the recording and a practice environment.”
+(11 rows expected, representing 8 distinct state assignments across 3 Issues.)
 
-Tested result: 11 rows representing 8 distinct state assignments.
-Some rows repeat because of OWL-inferred classifications
-and multiple supporting text spans.
-
-Note: This query retrieves Issues that explicitly challenge
-Platform A. Initial Open states may have blank evidence
-when no Address/Resolve trigger is recorded.
+Note: This query retrieves Issues that explicitly challenge Platform A. Initial Open states may have blank evidence when no Address/Resolve trigger is recorded. 
+Some rows repeat because of OWL-inferred classifications and multiple supporting text spans.
 
 Actual Answer:
-
-Pending saved results CSV and GitHub link.
+Local CSV: CQ4/CQ4.issues-platform-a-historical-states.answers.csv
+https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.answers.csv
 
 
 ------------------------------------------

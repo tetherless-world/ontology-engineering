@@ -79,6 +79,26 @@ The query follows each Issue’s current assignment and returns the assigned sta
 
 The query returns Claims that support or challenge Platform A, their current state classifications, and their summaries. A Claim can challenge Platform A and still have a Supported state.
 
+## CQ4 Platform A Issues and Their States
+
+**Question:** Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
+
+### SPARQL query
+
+{% capture cq4_query %}{% include_relative CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.snap.rq %}{% endcapture %}
+<pre class="cjf-query" tabindex="0" aria-label="CQ4 SPARQL query"><code class="language-sparql">{{ cq4_query | escape }}</code></pre>
+
+### Recorded answers
+
+<div class="cjf-results" tabindex="0" role="region" aria-label="CQ4 recorded answers" data-csv-source="CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.answers.csv">
+  <p class="cjf-results-status" role="status">Loading recorded answers…</p>
+</div>
+<noscript><p>Enable JavaScript to view the recorded answer table, or use the CSV download below.</p></noscript>
+
+<p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.answers.csv">Recorded answers (.csv)</a></p>
+
+The query finds Issues that explicitly challenge Platform A. Each row shows one Open, Addressed, or Resolved classification for a recorded assignment and any supporting evidence. Initial Open assignments can have blank evidence.
+
 ## CQ5 Speakers Agreeing with the Selected Option
 
 **Question:** For the final platform-selection Outcome, which speakers explicitly agreed with its selected Option, and which ExpressedPosition moves and source turns provide the evidence?
@@ -118,5 +138,3 @@ The query follows `selects` from the final Outcome to the chosen Option, then fi
 <p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ6/CQ6.speaker-c-platform-positions.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ6/CQ6.speaker-c-platform-positions.answers.csv">Recorded answers (.csv)</a></p>
 
 The query finds Speaker C's ExpressedPosition moves through the inferred `hasSpeaker` link and keeps those whose `hasPositionTowards` target is Platform A (M0003) or Platform B (M0021). For each position, it returns the summary, the supporting text, and the turn of the source utterance, which must be attributed to Speaker C and belong to the sample conversation. It does not filter for Agreement, so the earlier preference is retained. The recorded answers show Speaker C preferring Platform B at turn 9 (M0020) and agreeing with Platform A at turn 27 (M0063).
-
-The [OE Week 11 use case](usecase.html#competency-questions) describes CQ4. The OE 12 queries file includes its OE Week 10 query. Recorded query results are available for the five questions above.

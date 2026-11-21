@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/"
+<rdf:RDF
      xml:base="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
@@ -25,17 +25,19 @@
         <dct:creator>Matthew Lausev</dct:creator>
         <dct:creator>Srihari Sridharan</dct:creator>
         <dct:creator>Tiziana Hernandez</dct:creator>
-        <dct:license rdf:resource="https://opensource.org/license/mit"/>
+        <dct:license rdf:resource="https://spdx.org/licenses/MIT.html"/>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-11-19</dct:modified>
         <dct:publisher>Tracking CJF</dct:publisher>
         <rdfs:label>Tracking collective judgment formation</rdfs:label>
         <rdfs:seeAlso rdf:resource="https://tetherless-world.github.io/ontology-engineering/branch/tracking-cjf/oe2026/tracking-cjf/gettinginvolved"/>
         <rdfs:seeAlso rdf:resource="https://tetherless-world.github.io/ontology-engineering/branch/tracking-cjf/oe2026/tracking-cjf/license.html"/>
         <owl:priorVersion rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/OE_11/"/>
+        <owl:priorVersion rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/OE_10/"/>
         <owl:versionInfo>OE_12</owl:versionInfo>
         <skos:changeNote>Added the MIT license, project copyright, release label, and links to maintenance policies and community feedback.</skos:changeNote>
         <skos:changeNote>Created the OE Week 12 starting schema from OE Week 11 and archived the previous release with its import catalog.</skos:changeNote>
-        <skos:changeNote>Reified isAbout and selects as About and Selection relationships with evidence and reasons, with property chains deriving the direct links.</skos:changeNote>
+        <skos:changeNote>Added the About and Select classes to record what an information request is about and which option an outcome selects. Each relationship record can carry a reason and supporting evidence. Property chains infer the direct isAbout and selects links.</skos:changeNote>
+        <skos:changeNote>Revised definitions and source citations to match the team’s terminology sheet. Added examples and usage notes.</skos:changeNote>
         <cmns-av:copyright>Copyright (c) 2026 Tracking CJF Ontology Team</cmns-av:copyright>
     </owl:Ontology>
     
@@ -61,6 +63,11 @@
     <!-- http://purl.org/dc/elements/1.1/identifier -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
     
 
 
@@ -389,10 +396,12 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>addresses</rdfs:label>
         <skos:definition>provides information, reasoning, a proposed solution, or a group decision that directly responds to the problem or concern represented by</skos:definition>
+        <skos:example>Option O1 addresses Issue I1; the group has not decided whether to adopt it.</skos:example>
         <skos:prefLabel>addresses</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use when the conversation move responds to or acknowledges an issue through providing information, reasoning, or a possible solution. Use resolves instead when an explicit Outcome settles the Issue</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -423,6 +432,8 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Claim C2 answers Information Request Q1: “Friday” answers “When is the meeting?”</cmns-av:usageNote>
+        <cmns-av:usageNote>Use when an information need is satisified by this contribution. Do not infer an answer simply from topical relevance.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -436,6 +447,7 @@
         <dct:bibliographicCitation>[20] Centre for Argument Technology, “A quick start guide to Inference Anchoring Theory (IAT),” May 2, 2022. [Online]. Available: https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</dct:bibliographicCitation>
         <rdfs:label>assigned at utterance</rdfs:label>
         <skos:definition>becomes effective at</skos:definition>
+        <skos:example>claim1_assignment2 assignedAtUtterance utterance_0370.</skos:example>
         <skos:prefLabel>assigned at utterance</skos:prefLabel>
         <cmns-av:usageNote>Identifies where the state becomes applicable in the conversation, rather than when an annotator entered the record. The turn number belongs to the linked Utterance.</cmns-av:usageNote>
     </owl:ObjectProperty>
@@ -451,8 +463,9 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>assigned state</rdfs:label>
         <skos:definition>records the conversation move&apos;s state at the specified point in the conversation as</skos:definition>
+        <skos:example>claim1_assignment2 assignedState supported_state_1.</skos:example>
         <skos:prefLabel>assigned state</skos:prefLabel>
-        <cmns-av:usageNote>Records the state for that assignment</cmns-av:usageNote>
+        <cmns-av:usageNote>Each StateAssignment records exactly one State.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -480,11 +493,13 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>challenges</rdfs:label>
         <skos:definition>provides an identifiable objection, counterargument, or evidence against</skos:definition>
+        <skos:example>Issue I2 challenges Option O1: ‘O1 exceeds our budget, so we need to address its cost.’</skos:example>
         <skos:prefLabel>challenges</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use when a Claim or Issue provides evidence, reasoning, objections, or concerns that question or oppose another conversation move. Do not use for simple disagreement.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -497,6 +512,8 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
         <rdfs:label>has current state assignment</rdfs:label>
         <skos:definition>has as a currently applicable state assignment</skos:definition>
+        <skos:example>claim_1 hasCurrentStateAssignment claim1_assignment2. claim1_assignment2 assignedState supported_state_1. claim1_assignment2 hasPreviousAssignment claim1_assignment1.</skos:example>
+        <cmns-av:usageNote>Use to identify the StateAssignment record representing a conversation move&apos;s currently applicable state(s). Preserve earlier assignments through hasStateAssignment, but do not mark historical assignments as current. If multiple states apply simultaneously, link each applicable StateAssignment.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -519,6 +536,7 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>has position towards</rdfs:label>
         <skos:definition>expresses the speaker’s attitude toward</skos:definition>
+        <skos:example>Expressed Position P1 hasPositionTowards Option O1: “I prefer O1.”</skos:example>
         <skos:prefLabel>has position towards</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
@@ -526,6 +544,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use hasPositionTowards to link an Expressed Position to a Claim, Option, or Issue it targets</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -537,8 +556,9 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/StateAssignment"/>
         <rdfs:label>has previous assignment</rdfs:label>
         <skos:definition>has as its immediately preceding state assignment record for the same conversation move as</skos:definition>
+        <skos:example>claim1_assignment2 hasPreviousAssignment claim1_assignment1.</skos:example>
         <skos:prefLabel>has previous assignment</skos:prefLabel>
-        <cmns-av:usageNote>Omit for the initial state assignment. The preceding assignment must concern the same conversation move (the current cardinality restriction does not enforce that condition.)</cmns-av:usageNote>
+        <cmns-av:usageNote>Omit for the initial assignment. The preceding assignment must concern the same conversation move; the current cardinality restriction does not enforce that condition.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -566,11 +586,13 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>has speaker</rdfs:label>
         <skos:definition>is expressed in a conversational contribution made by</skos:definition>
+        <skos:example>If an ExpressedPosition is supported by a TextSpan in an Utterance introduced by Speaker C, infer that the ExpressedPosition hasSpeaker Speaker C.</skos:example>
         <skos:prefLabel>has speaker</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://www.w3.org/TR/prov-o/</cmns-av:adaptedFrom>
-        <cmns-av:explanatoryNote>The relationship is inferred from the conversational contribution that expresses the conversation move.</cmns-av:explanatoryNote>
+        <cmns-av:explanatoryNote>The relationship is inferred by following the conversation move’s supporting TextSpan to its containing Utterance and then to the Speaker who introduced that Utterance.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Infer the relationship when the complete provenance path is represented.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -588,9 +610,12 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>has state</rdfs:label>
         <skos:definition>has its evidence-based standing at a specified point in the conversation characterized by</skos:definition>
-        <cmns-av:adaptedFrom>C. Roberts, “Information structure in discourse: Towards an integrated formal theory of pragmatics,” in OSU Working Papers in Linguistics, vol. 49, J. H. Yoon and A. Kathol, Eds. Columbus, OH, USA: Ohio State University, 1996, pp. 91–136.</cmns-av:adaptedFrom>
+        <skos:example>Issue I1 hasState Open at Turn 5 and hasState Resolved after Outcome O2 at Turn 18.</skos:example>
+        <skos:scopeNote>Applies only to state-bearing conversation moves. A later observation may associate the same conversation move with a different State as new evidence appears.</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>When implementation permits, record the conversation point or evidence supporting each state assertion so changes over time remain traceable.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Do not infer a terminal state merely from lack of further discussion; require positive evidence for transitions such as Resolved, Selected, or Accepted.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -603,6 +628,7 @@
         <dct:bibliographicCitation>[32] N. Noy and A. Rector, Eds., “Defining N-ary Relations on the Semantic Web,” W3C Working Group Note, Apr. 12, 2006. [Online]. Available: https://www.w3.org/TR/swbp-n-aryRelations/</dct:bibliographicCitation>
         <rdfs:label>has state assignment</rdfs:label>
         <skos:definition>relationship linking a CJF conversation move with a state assignment record at specified turn in the conversation recorded through</skos:definition>
+        <skos:example>claim_1 hasStateAssignment claim1_assignment2.</skos:example>
         <skos:prefLabel>has state assignment</skos:prefLabel>
         <cmns-av:usageNote>Links to all recorded state assignments, including the assignment corresponding to the current state.</cmns-av:usageNote>
     </owl:ObjectProperty>
@@ -618,6 +644,7 @@
         <dct:bibliographicCitation>[22] W3C, “Web Annotation Data Model,” W3C Recommendation, Feb. 23, 2017. [Online]. Available: https://www.w3.org/TR/annotation-model/</dct:bibliographicCitation>
         <rdfs:label>has state evidence</rdfs:label>
         <skos:definition>has its assigned state justified by conversational evidence contained in</skos:definition>
+        <skos:example>claim1_assignment2 hasStateEvidence span_0370_support.</skos:example>
         <skos:prefLabel>has state evidence</skos:prefLabel>
         <cmns-av:usageNote>May link to multiple Text Spans, including evidence from earlier Utterances.</cmns-av:usageNote>
     </owl:ObjectProperty>
@@ -661,6 +688,8 @@
         <rdfs:label>has utterance</rdfs:label>
         <skos:definition>has supporting conversational evidence in</skos:definition>
         <cmns-av:adaptedFrom>https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Links a CJF conversation move or relationship instance to the Utterance that provides its supporting evidence. This preserves the connection between an annotation and its source.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to identify the Utterance supporting a conversation move or relationship. Link to the Utterance individual rather than storing the text directly.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -687,11 +716,13 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>is about</rdfs:label>
         <skos:definition>concerns the content of</skos:definition>
+        <skos:example>Information Request Q1 isAbout Claim C1: “What evidence supports C1?”</skos:example>
         <skos:prefLabel>is about</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use when an information request concerns an identifiable existing conversation move; a later reply to the request uses respondsTo or answers.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -704,6 +735,7 @@
         <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CollectiveJudgmentFormationConversationMove"/>
         <rdfs:label>is aimed at</rdfs:label>
         <skos:definition>has as its target conversation move</skos:definition>
+        <skos:example>General target-linking property specialized for each modeled relationship type through isAimedAtRespondsTo, isAimedAtAnswers, isAimedAtAddresses, isAimedAtResolves, isAimedAtSupports, isAimedAtChallenges, and isAimedAtPositionTowards. Use the applicable specialized property to link the relationship individual to its target conversation move.</skos:example>
         <skos:prefLabel>is aimed at</skos:prefLabel>
         <cmns-av:explanatoryNote>This is used for reification of the CJF conversation moves relationships. This points from a conversation move relationship in question to the conversation move it&apos;s pointing to. This is superclass from which we inherit for each relationship</cmns-av:explanatoryNote>
     </owl:ObjectProperty>
@@ -721,10 +753,14 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>is aimed at addresses</rdfs:label>
         <skos:definition>represents information, reasoning, or a possible solution that directly responds to the problem or concern represented by</skos:definition>
+        <skos:example>Address AD1 isAimedAtAddresses Issue I1.</skos:example>
         <skos:prefLabel>is aimed at addresses</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the address relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesAddresses so the relationship has both its source and target. A claim, option, or outcome engages with an issue; this does not necessarily resolve it.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -740,10 +776,14 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/ |</dct:bibliographicCitation>
         <rdfs:label>is aimed at answers</rdfs:label>
         <skos:definition>represents a response that fully satisfies the information need expressed by</skos:definition>
+        <skos:example>Answer A1 isAimedAtAnswers Information Request Q1.</skos:example>
         <skos:prefLabel>is aimed at answers</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the answer relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesAnswers so the relationship has both its source and target. The response satisfies the information need in the question.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -760,11 +800,15 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>is aimed at challenges</rdfs:label>
         <skos:definition>represents an identifiable objection, counterargument, or evidence against</skos:definition>
+        <skos:example>Challenge CH1 isAimedAtChallenges Option O1.</skos:example>
         <skos:prefLabel>is aimed at challenges</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the challenge relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesChallenges so the relationship has both its source and target. A claim or issue gives a reason, objection, or counterevidence against another Claim, Option, or Issue.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -788,11 +832,15 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>is aimed at is about</rdfs:label>
         <skos:definition>is directed toward the conversation move that the request concerns</skos:definition>
+        <skos:example>About AB1 isAimedAtIsAbout Claim C1.</skos:example>
         <skos:prefLabel>is aimed at is about</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the Information Request concerns. The Information Request providing the relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesIsAbout so the relationship has both its source and target. The target must be the Claim, Option, Issue, or Expressed Position that the request concerns, not a response to the request.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -811,13 +859,17 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>is aimed at position towards</rdfs:label>
         <skos:definition>represents an expression of a speaker&apos;s attitude toward</skos:definition>
+        <skos:example>Position POS1 isAimedAtPositionTowards Option O1.</skos:example>
         <skos:prefLabel>is aimed at position towards</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the position relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesPositionTowards so the relationship has both its source and target. An expressed position communicates a participant&apos;s attitude toward a Claim, Option, or Issue.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -835,11 +887,15 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>is aimed at refines</rdfs:label>
         <skos:definition>represents an extension, correction, or reformulation of the content of</skos:definition>
+        <skos:example>Refinement RF1 isAimedAtRefines Option O1.</skos:example>
         <skos:prefLabel>is aimed at refines</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the refinement relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesRefines so the relationship has both its source and target. A later move extends, corrects, or reformulates an earlier move of the same type.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -854,9 +910,13 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>is aimed at resolves</rdfs:label>
         <skos:definition>represents the explicit settling of the concern represented by</skos:definition>
+        <skos:example>Resolve RV1 isAimedAtResolves Issue I1.</skos:example>
         <skos:prefLabel>is aimed at resolves</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the resolve relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesResolves so the relationship has both its source and target. An explicit group-level outcome settles an issue; this is a specific kind of addressing.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -872,9 +932,13 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>is aimed at responds to</rdfs:label>
         <skos:definition>represents a relevant response to</skos:definition>
+        <skos:example>Response R1 isAimedAtRespondsTo Information Request Q1.</skos:example>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the response relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesRespondsTo so the relationship has both its source and target. Relevant response to a question; the information need may remain unanswered.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -889,9 +953,13 @@
         <dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
         <rdfs:label>is aimed at selects</rdfs:label>
         <skos:definition>is directed toward the selected</skos:definition>
+        <skos:example>Selection SEL1 isAimedAtSelects Option O1.</skos:example>
         <skos:prefLabel>is aimed at selects</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the Option chosen by the group Outcome. The Outcome providing the selection relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesSelects so the relationship has both its source and target. The target must be the Option explicitly selected by the group.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -909,12 +977,16 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>is aimed at supports</rdfs:label>
         <skos:definition>represents identifiable evidence, reasoning, or an explanation in favor of</skos:definition>
+        <skos:example>Support S1 isAimedAtSupports Option O1.</skos:example>
         <skos:prefLabel>is aimed at supports</skos:prefLabel>
+        <skos:scopeNote>This links the relationship record to the move it concerns.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the conversation move that the support relationship concerns. The move providing that relationship is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use with makesSupports so the relationship has both its source and target. A claim gives reasons or evidence in favor of another Claim, Option, or Issue.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -930,11 +1002,13 @@
         <dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
         <rdfs:label>is alternative to</rdfs:label>
         <skos:definition>is a competing course of action to</skos:definition>
+        <skos:example>Option O1 isAlternativeTo Option O2.</skos:example>
         <skos:prefLabel>is alternative to</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>The relationship is symmetric: if one Option is an alternative to another, the reverse also holds.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when Options are offered as separate choices to the same issue they both address</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -952,11 +1026,14 @@
         <dct:bibliographicCitation>[22] W3C, “Web Annotation Data Model,” W3C Recommendation, Feb. 23, 2017. [Online]. Available: https://www.w3.org/TR/annotation-model/</dct:bibliographicCitation>
         <rdfs:label>is negative supported by</rdfs:label>
         <skos:definition>has its interpretation as a negative-polarity position supported by the linguistic content of</skos:definition>
+        <skos:example>An Expressed Position of Disagreement isNegativeSupportedBy the span “No, I do not support Option B.”</skos:example>
         <skos:prefLabel>is negative supported by</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.11/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the transcript evidence used to interpret a position as negative.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when the source text clearly expresses disagreement or an opposition position towards something. Do not use it to assert that one conversation move challenges another; use challenges for that semantic relation.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -973,6 +1050,8 @@
         <skos:definition>forms a textual part of</skos:definition>
         <skos:prefLabel>is part of utterance</skos:prefLabel>
         <cmns-av:adaptedFrom>https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects a TextSpan to the Utterance containing it, allowing specific portions of an utterance to be identified.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when a TextSpan represents part of an Utterance. This allows annotations to refer to the exact portion of text providing evidence.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -989,13 +1068,28 @@
         <dct:bibliographicCitation>[22] W3C, “Web Annotation Data Model,” W3C Recommendation, Feb. 23, 2017. [Online]. Available: https://www.w3.org/TR/annotation-model/</dct:bibliographicCitation>
         <rdfs:label>is positive supported by</rdfs:label>
         <skos:definition>has its interpretation as a positive-polarity position supported by the linguistic content of</skos:definition>
+        <skos:example>An Expressed Position of Agreement isPositiveSupportedBy the span “Yes, I agree with Option B.”</skos:example>
         <skos:prefLabel>is positive supported by</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.11/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Identifies the transcript evidence used to interpret a position as positive.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when the source text clearly expresses agreement or a favorable position towards something. Do not use it to assert that one conversation move supports another; use supports for that semantic relation.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
+
+
+    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isSelectedBy -->
+
+    <owl:ObjectProperty rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/isSelectedBy">
+        <rdfs:domain rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
+        <rdfs:range rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Outcome"/>
+        <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/selects"/>
+        <rdfs:label>is selected by</rdfs:label>
+        <skos:definition>is the option chosen by a group Outcome</skos:definition>
+        <skos:prefLabel>is selected by</skos:prefLabel>
+    </owl:ObjectProperty>
 
 
     <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/makes -->
@@ -1008,6 +1102,7 @@
         <skos:definition>serves as the source conversation move of</skos:definition>
         <skos:prefLabel>makes</skos:prefLabel>
         <cmns-av:explanatoryNote>This is used for reification of the CJF conversation moves relationships. This points from a conversation move to the relationship in question. This is superclass from which we inherit for each relationship</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>General source-linking property specialized for each modeled relationship type through makesRespondsTo, makesAnswers, makesAddresses, makesResolves, makesSupports, makesChallenges, and makesPositionTowards. Use the applicable specialized property to link the source conversation move to the relationship individual.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1031,10 +1126,14 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>makes addresses</rdfs:label>
         <skos:definition>serves as the source of information, reasoning, a proposed solution, or a group decision that directly responds to the problem or concern represented by</skos:definition>
+        <skos:example>Option O1 makesAddresses Address AD1.</skos:example>
         <skos:prefLabel>makes addresses</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the address relationship to a Address instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use for a direct response or proposed solution to an Issue. Do not treat it as resolution. Pair with isAimedAtAddresses to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1057,10 +1156,14 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/ |</dct:bibliographicCitation>
         <rdfs:label>makes answers</rdfs:label>
         <skos:definition>serves as the source of a response that fully satisfies an information request, as represented by</skos:definition>
+        <skos:example>Claim C2 makesAnswers Answer A1.</skos:example>
         <skos:prefLabel>makes answers</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the answer relationship to a Answer instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use only when the question is answered, not merely discussed. Pair with isAimedAtAnswers to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1084,11 +1187,15 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>makes challenges</rdfs:label>
         <skos:definition>serves as the source of an identifiable objection, counterargument, or evidence against another conversation move, as represented by</skos:definition>
+        <skos:example>Issue I2 makesChallenges Challenge CH1.</skos:example>
         <skos:prefLabel>makes challenges</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the challenge relationship to a Challenge instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use for an identifiable objection or counterargument, not simple disagreement. Pair with isAimedAtChallenges to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1105,11 +1212,15 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>makes is about</rdfs:label>
         <skos:definition>is the source of the subject-matter relationship represented by</skos:definition>
+        <skos:example>Information Request Q1 makesIsAbout About AB1.</skos:example>
         <skos:prefLabel>makes is about</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the Information Request to an About instance. The conversation move that the request concerns is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when an Information Request concerns an identifiable Claim, Option, Issue, or Expressed Position. Pair with isAimedAtIsAbout to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1128,13 +1239,17 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>makes position towards</rdfs:label>
         <skos:definition>serves as the source of an expression of a speaker&apos;s attitude toward another conversation move, as represented by</skos:definition>
+        <skos:example>Expressed Position P1 makesPositionTowards Position POS1.</skos:example>
         <skos:prefLabel>makes position towards</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the position relationship to a Position instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to connect an explicit agreement, disagreement to its target. Pair with isAimedAtPositionTowards to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1152,11 +1267,15 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>makes refines</rdfs:label>
         <skos:definition>serves as the source of an extension, correction, or reformulation of another conversation move, as represented by</skos:definition>
+        <skos:example>Option O2 makesRefines Refinement RF1.</skos:example>
         <skos:prefLabel>makes refines</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the refinement relationship to a Refinement instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use only for a clear revision between moves of the same type. Pair with isAimedAtRefines to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1171,9 +1290,13 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>makes resolves</rdfs:label>
         <skos:definition>serves as the source of resolution representing by</skos:definition>
+        <skos:example>Outcome OUT1 makesResolves Resolve RV1.</skos:example>
         <skos:prefLabel>makes resolves</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the resolve relationship to a Resolve instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use only for a group decision or agreement that settles the Issue. Pair with isAimedAtResolves to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1196,10 +1319,14 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>makes responds to</rdfs:label>
         <skos:definition>serves as the source of a response to an information request, as represented by</skos:definition>
+        <skos:example>Claim C2 makesRespondsTo Response R1.</skos:example>
         <skos:prefLabel>makes responds to</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the response relationship to a Response instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when a move responds to a question without necessarily answering it. Pair with isAimedAtRespondsTo to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1214,9 +1341,13 @@
         <dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
         <rdfs:label>makes selects</rdfs:label>
         <skos:definition>is the source of the group selection represented by</skos:definition>
+        <skos:example>Outcome OUT1 makesSelects Selection SEL1.</skos:example>
         <skos:prefLabel>makes selects</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the Outcome that records the group selection to a Selection instance. The chosen Option is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use only when an explicit group Outcome selects an Option. An individual preference or vote does not establish group selection. Pair with isAimedAtSelects to identify the selected Option.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1234,12 +1365,16 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>makes supports</rdfs:label>
         <skos:definition>serves as the source of identifiable evidence, reasoning, or an explanation in favor of another conversation move, as represented by</skos:definition>
+        <skos:example>Claim C2 makesSupports Support S1.</skos:example>
         <skos:prefLabel>makes supports</skos:prefLabel>
+        <skos:scopeNote>This links the move to its relationship record.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Connects the move that provides the support relationship to a Support instance. The target conversation move is connected separately.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use for an identifiable supporting reason, not simple agreement. Pair with isAimedAtSupports to identify the target.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1260,11 +1395,13 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>refines</rdfs:label>
         <skos:definition>extends, corrects, or reformulates the content of</skos:definition>
+        <skos:example>Claim C2 refines Claim C1 by correcting a figure in C1.</skos:example>
         <skos:prefLabel>refines</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Record a specific extension, correction, or reformulation; do not link unrelated contributions solely because they share a topic. A move refined by a Claim, Issue, or Option is of the same type as that source move.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1283,9 +1420,11 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>resolves</rdfs:label>
         <skos:definition>records that a group Outcome explicitly settles the concern represented by</skos:definition>
+        <skos:example>Outcome O1 resolves Issue I1: the group explicitly closes the Issue.</skos:example>
         <skos:prefLabel>resolves</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>An individual’s agreement or an unaccepted proposal does not by itself resolve a group Issue.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1312,11 +1451,13 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>responds to</rdfs:label>
         <skos:definition>provides a relevant response to</skos:definition>
+        <skos:example>Claim C2 respondsTo Information Request Q1; its does not satify the information need</skos:example>
         <skos:prefLabel>responds to</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>The relationship does not establish whether the information need is satisfied.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use for a relevant response when the evidence does not establish the answers relation</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1335,9 +1476,11 @@
         <dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
         <rdfs:label>selects</rdfs:label>
         <skos:definition>records that a group Outcome chooses an</skos:definition>
+        <skos:example>Outcome O1 selects Option O2: the group chooses O2.</skos:example>
         <skos:prefLabel>selects</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>An individual vote or stated preference is an Expressed Position; a group Outcome can select an Option.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1359,12 +1502,14 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>supports</rdfs:label>
         <skos:definition>provides identifiable evidence, reasoning, or an explanation in favor of</skos:definition>
+        <skos:example>Claim C2 supports Option O1: “O1 costs less to implement.”</skos:example>
         <skos:prefLabel>supports</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use when a Claim provides evidence, reasoning, or justification in favor of another conversation move. The connection must be clear from the conversation. Do not use for simple agreement.</cmns-av:usageNote>
     </owl:ObjectProperty>
     
 
@@ -1423,6 +1568,8 @@
         <rdfs:label>has conversation identifier</rdfs:label>
         <skos:definition>has as its unique conversation identifier</skos:definition>
         <skos:prefLabel>has conversation identifier</skos:prefLabel>
+        <cmns-av:explanatoryNote>Stores a unique string identifier for a MultipartyConversation, distinguishing it from other conversations.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to assign a unique and consistent identifier to each MultipartyConversation.</cmns-av:usageNote>
     </owl:DatatypeProperty>
     
 
@@ -1447,6 +1594,8 @@
         <skos:prefLabel>has conversation text</skos:prefLabel>
         <cmns-av:adaptedFrom>https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Stores the original conversational text of an Utterance or TextSpan as a string, preserving the source wording.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to record the actual text of an Utterance or TextSpan. Preserve the original wording rather than replacing it with a summary.</cmns-av:usageNote>
     </owl:DatatypeProperty>
     
 
@@ -1465,7 +1614,8 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:label>has reason</rdfs:label>
         <skos:definition>has the explanation of how conversational evidence establishes an annotated relationship or state assignment recorded as</skos:definition>
-        <skos:scopeNote>For state assignments, this property is used when conversational evidence directly establishes a state change without an associated relationship that explains the change.</skos:scopeNote>
+        <cmns-av:explanatoryNote>Stores a text explanation of why conversational evidence supports a relationship or StateAssignment. This records the reasoning behind the annotation, rather than the evidence itself.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to explain why a relationship or state assignment is justified by the conversation. The reason should reference the relevant evidence and explain how it supports the annotation.</cmns-av:usageNote>
     </owl:DatatypeProperty>
     
 
@@ -1484,6 +1634,8 @@
         <skos:prefLabel>has speaker name</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Stores the name or identifier of a Speaker as a string, allowing participants to be distinguished within a conversation.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to record the name or label associated with a Speaker. Apply the same identifier consistently when the speaker appears in multiple turns.</cmns-av:usageNote>
     </owl:DatatypeProperty>
     
 
@@ -1495,6 +1647,8 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:label>has summary</rdfs:label>
         <skos:definition>has the content of a conversation move concisely described in context as</skos:definition>
+        <cmns-av:explanatoryNote>Stores a concise description of a CJF conversation move&apos;s meaning in context, rather than the original utterance text.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to summarize what a conversation move communicates. Keep the summary short and grounded in the source conversation.</cmns-av:usageNote>
     </owl:DatatypeProperty>
     
 
@@ -1512,6 +1666,8 @@
         <skos:prefLabel>has turn number</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Stores the position of an Utterance in the conversation as an integer, allowing annotations to be traced to their source location.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to record the turn number associated with an Utterance. Preserve the original conversation numbering to maintain traceability and order.</cmns-av:usageNote>
     </owl:DatatypeProperty>
     
 
@@ -1539,9 +1695,6 @@
     
 
 
-    <!-- http://www.w3.org/2000/01/rdf-schema#Resource -->
-
-    <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource"/>
     
 
 
@@ -1571,11 +1724,14 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>about</rdfs:label>
         <skos:definition>CJF conversation move relationship in which a source Information Request concerns the content of a target Deliberative Conversation Move or Expressed Position.</skos:definition>
+        <skos:example>Information Request Q1 makesIsAbout About AB1; About AB1 isAimedAtIsAbout Claim C1. Q1 asks what evidence supports C1.</skos:example>
         <skos:prefLabel>about</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the isAbout object property. Instead of directly linking an Information Request to its target conversation move, the About class represents the relationship as a separate individual.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when an Information Request concerns an identifiable existing conversation move. Connect using makesIsAbout and isAimedAtIsAbout. A later contribution responding to the request uses respondsTo or answers instead.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1589,10 +1745,13 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>address</rdfs:label>
         <skos:definition>CJF conversation move relationship in which a source Claim, Option, or Outcome provides information, reasoning, a proposed solution, or a group decision that directly responds to the problem or concern represented by a target Issue, without necessarily resolving it.</skos:definition>
+        <skos:example>Option O2 makesAddresses Address AD1; Address AD1 isAimedAtAddresses Issue I1. O2 proposes a solution to I1, but the group has not yet settled it.</skos:example>
         <skos:prefLabel>address</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the addresses object property. Instead of directly linking two conversation moves, the Address class represents the relationship as a separate individual. Resolve is a more specific type of Address.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when a Claim, Option, or Outcome directly addresses an Issue, whether or not that Issue is settled. Connect using makesAddresses and isAimedAtAddresses.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1659,10 +1818,13 @@
         <dct:bibliographicCitation>[29] W. Kunz and H. W. J. Rittel, “Issues as elements of information systems,” Institute of Urban and Regional Development, University of California, Berkeley, CA, USA, Working Paper No. 131, 1970. [Online]. Available: https://escholarship.org/uc/item/5cj786v8</dct:bibliographicCitation>
         <rdfs:label>addressed</rdfs:label>
         <skos:definition>A state of an Issue for which a Claim or Option provides information, reasoning, or a possible solution that directly responds to the problem or concern, without necessarily resolving it.</skos:definition>
+        <skos:example>Option O1 responds to all parts of Issue I1, but the group has not settled I1; I1 is Addressed.</skos:example>
         <skos:prefLabel>addressed</skos:prefLabel>
+        <skos:scopeNote>Issue only. Addressed concerns response coverage; Resolved requires an explicit group settlement; The reasoner will record a transition to Addressed when the required conditions are represented</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>Issue: A Claim or Option addresses the entire Issue.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>An addresses relationship can provide evidence that the entire Issue has been handled.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1698,6 +1860,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use when the participant directly communicates agreement or acceptance. Do not confuse acknowledgment, repetition, or silence with agreement.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1711,10 +1874,14 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>answer</rdfs:label>
         <skos:definition>a response relationship in which a source Claim, Option, Issue, or Expressed Position provides a reply that satisfies the information need expressed by a target Information Request.</skos:definition>
+        <skos:example>Claim C2 makesAnswers Answer A1; Answer A1 isAimedAtAnswers Information Request Q1. Q1 asks for a meeting date, and C2 gives that date.</skos:example>
         <skos:prefLabel>answer</skos:prefLabel>
+        <cmns-av:usageNote>Use Answer when the reply satisfies the information request. Use Response for a relevant reply when satisfaction has not been established.</cmns-av:usageNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the answers object property. Instead of directly linking two conversation moves, the Answer class represents the relationship as a separate individual. Answer is a more specific type of Response.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use only if the source contribution satisfies the information need expressed by the target Information Request. Connect the moves through makesAnswers and isAimedAtAnswers.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1784,11 +1951,12 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>answered</rdfs:label>
         <skos:definition>state of an Information Request whose information need is satisfied by one or more contributions</skos:definition>
-        <skos:example>An information request asks “What time is it?” and a claim answers “It is 8 am.” The request has a recorded StateAssignment linked by hasPreviousAssignment to an assignment whose state is Open. With the answers relationship recorded, the State in the successor assignment is inferred as Answered.</skos:example>
+        <skos:example>An information request asks &quot;What time is it?&quot;. A claim answers with &quot;It is 8 am&quot;. The answer relationship between the claim and information request allows the state of the information request to be inferred as Answered.</skos:example>
         <skos:prefLabel>answered</skos:prefLabel>
-        <skos:scopeNote>The Answered state applies when an Information Request&apos;s information need has been satisfied. OWL may classify a recorded transition to Answered when the required conditions are represented, but creating state assignments, checking their chronological order, and determining the latest state are handled separately.</skos:scopeNote>
+        <skos:scopeNote>The Answered state applies when an Information Request&apos;s information need has been satisfied. The reasoner will record a transition to Answered when the required conditions are represented</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use when the information need is met; a relevant response alone does not establish Answered.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1803,11 +1971,14 @@
         <dct:bibliographicCitation>[31] N. Tran, D. Litman, and A. Godley, “Using large language models to analyze students’ collaborative argumentation in classroom discussions,” in Proc. Artificial Intelligence in Measurement and Education Conference (AIME-Con): Full Papers, Pittsburgh, PA, USA, 2025, pp. 111–125. [Online]. Available: https://aclanthology.org/2025.aimecon-main.13/</dct:bibliographicCitation>
         <rdfs:label>challenge</rdfs:label>
         <skos:definition>CJF conversation move relationship in which a source Claim or Issue provides an objection, counterargument, or evidence against a target Claim, Option, or Issue.</skos:definition>
+        <skos:example>Issue I2 makesChallenges Challenge CH1; Challenge CH1 isAimedAtChallenges Option O1. I2 raises a concern against O1.</skos:example>
         <skos:prefLabel>challenge</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the challenges object property. Instead of directly linking two conversation moves, the Challenge class represents the relationship as a separate individual.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when a Claim or Issue provides an identifiable objection, counterargument, or contrary evidence against a target Claim, Option, or Issue. Connect using makesChallenges and isAimedAtChallenges.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1849,12 +2020,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
         <dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
@@ -1873,6 +2038,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>A Claim does not need an argumentative target. A proposed choice is an Option, and a preference toward it is an Expressed Position.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Add supports or challenges when the Claim is clearly used for or against an identifiable conversation move; Create one Claim for each distinct claim, even if originating from the same utterance.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1917,6 +2083,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1177/10711813261475151</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1177/1461445617691702</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use as the common superclass for all CJF move classes. Link each move to its source turn(s) and add relationships or states only where applicable.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -1958,6 +2125,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/L16-1432/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use this class only to reify relationships as individuals; keep it distinct from object properties such as supports and challenges.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2061,10 +2229,12 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>contested</rdfs:label>
         <skos:definition>a state of a Claim evidenced by a challenge from an Issue or another Claim.</skos:definition>
+        <skos:example>Issue 1 challenges Claim C1; C1 is Contested.</skos:example>
         <skos:prefLabel>contested</skos:prefLabel>
-        <skos:scopeNote>Classifies a Claim state as Contested when an assignment is triggered by Challenge with an Unassessed or Supported predecessor. Contested membership is retained from a Contested predecessor when the assignment is triggered by Support or Challenge. A Claim state may be both Contested and Supported when both conditions are met.</skos:scopeNote>
+        <skos:scopeNote>Classifies a Claim state as Contested when an assignment is triggered by Challenge with an Unassessed or Supported predecessor. Contested membership is retained from a Contested predecessor when the assignment is triggered by Support or Challenge. A Claim state may be both Contested and Supported when both conditions are met. The reasoner will record a transition to Contested when the required conditions are represented</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Assign Contested when an Issue or Claim challenges the Claim. Retain Contested if the Claim subsequently receives support.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2083,9 +2253,11 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>conversation move with state</rdfs:label>
         <skos:definition>A collective judgment formation conversation move whose status is tracked through evidence-grounded State assignments as the conversation progresses.</skos:definition>
+        <skos:example>An Issue remains the same conversation move while moving from Open to Addressed and later to Resolved.</skos:example>
         <skos:prefLabel>conversation move with state</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use hasStateAssignment to connect the move to a StateAssignment. Record its assignedState, effective conversation turn, and evidence.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2100,11 +2272,13 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>deliberative conversation move</rdfs:label>
         <skos:definition>a ConversationMoveWithState that introduces or develops the content of the group’s reasoning by stating a Claim, raising an Issue, or proposing an Option</skos:definition>
+        <skos:example>An Issue about cost, an Option to reduce cost, and a Claim about the expected savings are deliberative content moves.</skos:example>
         <skos:prefLabel>deliberative conversation move</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use as a superclass of Issue, Option, and Claim for axioms or queries shared by these types; do not classify Information Request, Expressed Position, or Outcome under this class.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2118,6 +2292,7 @@
         <skos:definition>A type of multiparty dialogue in which participants engage in collaborative reasoning to address a problem, consider and evaluate possible courses of action, and seek agreement on a decision or course of action.</skos:definition>
         <skos:prefLabel>deliberative dialogue</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use to describe the deliberative interaction or context containing CJF conversation moves</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2144,11 +2319,13 @@
         <dct:bibliographicCitation>[20] Centre for Argument Technology, “A Quick Start Guide to Inference Anchoring Theory (IAT),” May 2, 2022. [Online]. Available: https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</dct:bibliographicCitation>
         <rdfs:label>disagreement</rdfs:label>
         <skos:definition>An Expressed Position in which a participant explicitly disagrees with or rejects an identifiable Claim, Option, or Issue.</skos:definition>
+        <skos:example>“I disagree with Platform A” expresses a disagreement position</skos:example>
         <skos:prefLabel>disagreement</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Use when the participant directly communicates disagreement; annotate a distinct concern as an Issue if present.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2184,6 +2361,7 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>expressed position</rdfs:label>
         <skos:definition>CJF conversation move that explicitly communicates a participant’s agreement or disagreement toward an identifiable deliberative conversation move</skos:definition>
+        <skos:example>At Turn 12, Speaker C says “I prefer Platform B.” Expressed Position is inferred as Agreement through a positive conversational marker annotated as positive support.  Its position is toward the Platform B Option; link it to Speaker C and Turn 12.</skos:example>
         <skos:prefLabel>expressed position</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
@@ -2193,6 +2371,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>The type of position can be inferred as agreement or disagreement. Link the position to its target through hasPositionTowards, to its speaker through hasSpeaker, and to its source utterance through hasUtterance. An individual position is not by itself a group Outcome.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use for “I agree,” “That’s a good idea,” or “I vote for X” when the target is identifiable. Annotate a distinct explanation or concern in the same turn separately as a Claim or Issue; understanding without endorsement is not agreement.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2246,6 +2425,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Annotate by the utterance&apos;s function. A rhetorical or assertive question counts only if it creates an information need; Create one information request for each distinct information need, even if originating from the same utterance.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2287,12 +2467,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
         <dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
@@ -2307,6 +2481,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>Disagreement alone is an Expressed Position; a request for an answer is an Information Request; a negative fact presented as evidence is a Claim.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when the speaker frames a specific problem for the group to address; Create one issue for each distinct issue requiring attention, even if originating from the same utterance.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2335,6 +2510,7 @@
         <skos:prefLabel>multiparty conversation</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>The conversation contains ordered Turns and Utterances. Speaker identity and order support tracing a conversation move across contributions.</cmns-av:explanatoryNote>
     </owl:Class>
     
 
@@ -2347,9 +2523,12 @@
         <dct:bibliographicCitation>[29] W. Kunz and H. W. J. Rittel, “Issues as elements of information systems,” Institute of Urban and Regional Development, University of California, Berkeley, CA, USA, Working Paper No. 131, 1970. [Online]. Available: https://escholarship.org/uc/item/5cj786v8</dct:bibliographicCitation>
         <rdfs:label>open</rdfs:label>
         <skos:definition>state of an Information Request or Issue when introduced, before evidence establishes another applicable state</skos:definition>
+        <skos:example>Issue I1 is Open after a participant raises it and before it has been addressed.</skos:example>
         <skos:prefLabel>open</skos:prefLabel>
+        <skos:scopeNote>Open is the initial state established when an information request is introduced; Open is the initial state when an Issue is introduced.</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Assign when the Information Request or Issue is introduced; retain until conversational evidence establishes another state.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2391,12 +2570,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
-                <owl:allValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <dct:bibliographicCitation>[12] G. Karadzhov, T. Stafford, and A. Vlachos, “DeliData: A dataset for deliberation in multi-party problem solving,” Proceedings of the ACM on Human-Computer Interaction, vol. 7, no. CSCW2, Art. no. 265, pp. 1–25, Oct. 2023, doi: 10.1145/3610056.</dct:bibliographicCitation>
         <dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
         <dct:bibliographicCitation>[14] M. G. Core and J. F. Allen, “Coding dialogs with the DAMSL annotation scheme,” in Working Notes of the AAAI Fall Symposium on Communicative Action in Humans and Machines, 1997, pp. 28–35. [Online]. Available: https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</dct:bibliographicCitation>
@@ -2410,6 +2583,7 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Create one Option for each distinct candidate, even if originating from the same utterance.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2430,6 +2604,8 @@
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>A majority decision can be an Outcome without unanimity; an individual vote cannot establish one by itself.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Annotated only when the conversation establishes the result as the group’s decision.</cmns-av:usageNote>
+        <cmns-av:usageNote>Use Issue for the concern raised for deliberation and Outcome for the group decision or commitment reached through deliberation.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2446,6 +2622,7 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>position</rdfs:label>
         <skos:definition>CJF conversation move relationship in which the source Expressed Position expresses the speaker&apos;s attitude toward the target deliberative conversation move</skos:definition>
+        <skos:example>Expressed Position EP1 makesPositionTowards Position P1; Position P1 isAimedAtPositionTowards Option O1. EP1 expresses agreement with O1.</skos:example>
         <skos:prefLabel>position</skos:prefLabel>
         <skos:scopeNote>A CJF conversation move relationship connecting an Expressed Position to the deliberative conversation move toward which the participant expresses an attitude. This relationship is distinct from the ExpressedPosition conversation move itself.</skos:scopeNote>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
@@ -2454,6 +2631,8 @@
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the hasPositionTowards object property. Instead of directly linking an Expressed Position to its target conversation move, the Position class represents the relationship as a separate individual.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use to connect an explicit Expressed Position to the deliberative conversation move that it concerns. Represent the relationship through makesPositionTowards and isAimedAtPositionTowards.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2469,11 +2648,14 @@
         <dct:bibliographicCitation>[31] N. Tran, D. Litman, and A. Godley, “Using large language models to analyze students’ collaborative argumentation in classroom discussions,” in Proc. Artificial Intelligence in Measurement and Education Conference (AIME-Con): Full Papers, Pittsburgh, PA, USA, 2025, pp. 111–125. [Online]. Available: https://aclanthology.org/2025.aimecon-main.13/</dct:bibliographicCitation>
         <rdfs:label>refinement</rdfs:label>
         <skos:definition>CJF conversation move relationship in which a source Claim, Option, or Issue extends, corrects, or reformulates the content of an earlier target conversation move of the same type</skos:definition>
+        <skos:example>Option O2 makesRefines Refinement RF1; Refinement RF1 isAimedAtRefines Option O1. O2 revises the earlier Option O1.</skos:example>
         <skos:prefLabel>refinement</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the refines object property. Instead of directly linking two conversation moves, the Refinement class represents the relationship as a separate individual.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when a later Claim refines a Claim, an Option refines an Option, or an Issue refines an Issue. Connect using makesRefines and isAimedAtRefines.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2486,9 +2668,12 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>rejected</rdfs:label>
         <skos:definition>state of an Option evidenced by a group-level decision to rule out the Option as a possible course of action</skos:definition>
+        <skos:example>The group rules out Option O1; O1 is Rejected.</skos:example>
         <skos:prefLabel>rejected</skos:prefLabel>
+        <skos:scopeNote>Applies to Options</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Clear group-level evidence establishes that the option has been ruled out; expressing a position of disagreement or rejection should not automatically change the option to Rejected, it can still be under consideration even if people disagree/reject it.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2501,9 +2686,12 @@
         <dct:bibliographicCitation>[1] J. Kim, J. Li, and T. Kim, “Towards identifying unresolved discussions in student online forums,” in Proc. NAACL HLT 2010 Fifth Workshop on Innovative Use of NLP for Building Educational Applications, Los Angeles, CA, USA, 2010, pp. 84–91. [Online]. Available: https://aclanthology.org/W10-1012/</dct:bibliographicCitation>
         <rdfs:label>resolve</rdfs:label>
         <skos:definition>an address relationship in which a source Outcome explicitly settles the problem or concern represented by a target Issue through a group-level decision or agreement.</skos:definition>
+        <skos:example>Outcome OUT1 makesResolves Resolve RV1; Resolve RV1 isAimedAtResolves Issue I1. OUT1 records a group agreement settling I1.</skos:example>
         <skos:prefLabel>resolve</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the resolves object property. Instead of directly linking two conversation moves, the Resolve class represents the relationship as a separate individual. Resolve is a more specific type of Address.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use only when a group Outcome explicitly settles the target Issue. Connect the Outcome and Issue through makesResolves and isAimedAtResolves.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2577,10 +2765,13 @@
         <dct:bibliographicCitation>[29] W. Kunz and H. W. J. Rittel, “Issues as elements of information systems,” Institute of Urban and Regional Development, University of California, Berkeley, CA, USA, Working Paper No. 131, 1970. [Online]. Available: https://escholarship.org/uc/item/5cj786v8</dct:bibliographicCitation>
         <rdfs:label>resolved</rdfs:label>
         <skos:definition>state of an Issue evidenced by a group Outcome that explicitly settles the concern it represents</skos:definition>
+        <skos:example>Outcome U1 records the group’s decision settling Issue I1; I1 is Resolved.</skos:example>
         <skos:prefLabel>resolved</skos:prefLabel>
+        <skos:scopeNote>Issue only. Requires an Outcome indicating that the group has settled it. The reasoner will record a transition to Resolved when the required conditions are represented</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://escholarship.org/uc/item/5cj786v8</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>Issue: An Outcome resolves the Issue.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>An Outcome resolves the Issue; a response or an individual’s acceptance alone does not establish Resolved.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2594,10 +2785,13 @@
         <dct:bibliographicCitation>[8] V. D. Lai, D. N. Pham, J. Steinberg, J. Mikeska, and T. H. Nguyen, “CAMAL: A novel dataset for multi-label conversational argument move analysis,” in Proc. 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), Torino, Italy, 2024, pp. 2673–2682. [Online]. Available: https://aclanthology.org/2024.lrec-main.239/</dct:bibliographicCitation>
         <rdfs:label>response</rdfs:label>
         <skos:definition>A CJF conversation move relationship in which a source Claim, Option, Issue, or Expressed Position provides a relevant reply to the information need expressed by a target Information Request, without necessarily satisfying that need.</skos:definition>
+        <skos:example>Claim C2 makesRespondsTo Response R1; Response R1 isAimedAtRespondsTo Information Request Q1. C2 is relevant to Q1 but does not fully answer it.</skos:example>
         <skos:prefLabel>response</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the respondsTo object property. Instead of directly linking two conversation moves, the Response class represents the relationship as a separate individual. Answer is a more specific type of Response.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when a contribution responds to the information need in an Information Request, even when the request remains unanswered. Connect the source and target through makesRespondsTo and isAimedAtRespondsTo.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2610,9 +2804,12 @@
         <dct:bibliographicCitation>[13] R. Fernández, M. Frampton, P. Ehlen, M. Purver, and S. Peters, “Modelling and detecting decisions in multi-party dialogue,” in Proc. 9th SIGdial Workshop on Discourse and Dialogue, Columbus, OH, USA, 2008, pp. 156–163. [Online]. Available: https://aclanthology.org/W08-0125/</dct:bibliographicCitation>
         <rdfs:label>select</rdfs:label>
         <skos:definition>CJF conversation move relationship in which a source Outcome records the group&apos;s selection of a target Option.</skos:definition>
+        <skos:example>Outcome OUT1 makesSelects Selection SEL1; Selection SEL1 isAimedAtSelects Option O1. OUT1 records the group&apos;s selection of O1.</skos:example>
         <skos:prefLabel>select</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1145/3610056</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the selects object property. Instead of directly linking an Outcome to an Option, the Selection class represents the relationship as a separate individual.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use only when an Outcome explicitly records the group&apos;s selection of an Option. An individual preference or vote does not establish group selection. Connect using makesSelects and isAimedAtSelects.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2682,11 +2879,13 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>selected</rdfs:label>
         <skos:definition>state of an Option evidenced by a group Outcome that explicitly chooses the Option</skos:definition>
-        <skos:example>Outcome U1 selects Option O1. O1 has a recorded StateAssignment linked by hasPreviousAssignment to an assignment whose state is UnderConsideration. The State in the successor assignment is inferred as Selected.</skos:example>
+        <skos:example>Outcome U1 selects Option O1; O1 is Selected.</skos:example>
         <skos:prefLabel>selected</skos:prefLabel>
+        <skos:scopeNote>Option only. Requires a group Outcome selecting the Option; The reasoner will record a transition to Selected when the required conditions are represented</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>Option: An Outcome conversation move selects the Option.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>An individual preference or vote is an Expressed Position and does not alone make the Option Selected.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2706,10 +2905,13 @@
         <dct:bibliographicCitation>[21] T. Lebo, S. Sahoo, and D. McGuinness, Eds., “PROV-O: The PROV Ontology,” W3C Recommendation, Apr. 30, 2013. [Online]. Available: https://www.w3.org/TR/prov-o/</dct:bibliographicCitation>
         <rdfs:label>speaker</rdfs:label>
         <skos:definition>prov:Agent that participates in a multiparty conversation and is identified as the source of one or more Utterances</skos:definition>
+        <skos:example>Speaker S3 introduces the Utterance that contains Option O1.</skos:example>
         <skos:prefLabel>speaker</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.w3.org/TR/prov-o/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Speaker identity supports tracing who introduced source utterances and, through provenance chains, who is associated with an Expressed Position.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use a stable speaker identifier even when the transcript anonymizes participant names.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2722,8 +2924,9 @@
         <dct:description>resolution and open questions motivate selected distinctions.</dct:description>
         <rdfs:label>state</rdfs:label>
         <skos:definition>status assigned to a CJF conversation move at a specified point in a conversation based on evidence of how its information need, issue, option, or claim has been addressed or evaluated</skos:definition>
+        <skos:example>The cost Issue is Open when raised at Turn 5, Addressed when an Option addresses it at Turn 15, and Resolved when a group Outcome resolves it at Turn 18.</skos:example>
         <skos:prefLabel>state</skos:prefLabel>
-        <cmns-av:adaptedFrom>C. Roberts, “Information structure in discourse: Towards an integrated formal theory of pragmatics,” in OSU Working Papers in Linguistics, vol. 49, J. H. Yoon and A. Kathol, Eds. Columbus, OH, USA: Ohio State University, 1996, pp. 91–136.</cmns-av:adaptedFrom>
+        <skos:scopeNote>Applicable states depend on the conversation move type. For example, an Issue can be Open, Addressed, or Resolved, while an Option can be Under Consideration or Selected.</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W08-0125/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/W10-1012/</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>A state may change as later turns provide evidence.</cmns-av:explanatoryNote>
@@ -2779,8 +2982,8 @@
         <dct:bibliographicCitation>[32] N. Noy and A. Rector, Eds., “Defining N-ary Relations on the Semantic Web,” W3C Working Group Note, Apr. 12, 2006. [Online]. Available: https://www.w3.org/TR/swbp-n-aryRelations/</dct:bibliographicCitation>
         <rdfs:label>state assignment</rdfs:label>
         <skos:definition>record that associates a CJF conversation move with state with one State at a specified Utterance and with the Text Span evidence supporting that state assignment</skos:definition>
+        <skos:example>claim1_assignment2 records Supported at utterance_0370 with evidence span_0370_support.</skos:example>
         <skos:prefLabel>state assignment</skos:prefLabel>
-        <skos:scopeNote>Project-defined modeling construct documented in the Team CJF OE_10_TeamCJF_CuratedTermList.xlsx. State assignments record the state of a conversation move at a specified point and preserve earlier records when the state changes.</skos:scopeNote>
         <cmns-av:usageNote>Preserve earlier assignment records when a conversation move changes state. Assignment records include both initial states and subsequent changes.</cmns-av:usageNote>
     </owl:Class>
     
@@ -2797,12 +3000,15 @@
         <dct:bibliographicCitation>[31] N. Tran, D. Litman, and A. Godley, “Using large language models to analyze students’ collaborative argumentation in classroom discussions,” in Proc. Artificial Intelligence in Measurement and Education Conference (AIME-Con): Full Papers, Pittsburgh, PA, USA, 2025, pp. 111–125. [Online]. Available: https://aclanthology.org/2025.aimecon-main.13/</dct:bibliographicCitation>
         <rdfs:label>support</rdfs:label>
         <skos:definition>A CJF conversation move relationship in which a source Claim provides evidence, reasoning, or an explanation in favor of a target Claim, Option, or Issue.</skos:definition>
+        <skos:example>Claim C2 makesSupports Support S1; Support S1 isAimedAtSupports Option O1. C2 gives a reason in favor of O1.</skos:example>
         <skos:prefLabel>support</skos:prefLabel>
         <cmns-av:adaptedFrom>https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://aclanthology.org/2025.aimecon-main.13/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom>https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>Created by reifying the supports object property. Instead of directly linking two conversation moves, the Support class represents the relationship as a separate individual.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Use when a Claim offers identifiable evidence, reasoning, or explanation in favor of the target Claim, Option, or Issue. Connect it using makesSupports and isAimedAtSupports.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2907,11 +3113,13 @@
         <dct:bibliographicCitation>[9] C. Olshefski, L. Lugini, R. Singh, D. Litman, and A. Godley, “The Discussion Tracker corpus of collaborative argumentation,” in Proc. 12th Language Resources and Evaluation Conference, Marseille, France, 2020, pp. 1033–1043. [Online]. Available: https://aclanthology.org/2020.lrec-1.130/</dct:bibliographicCitation>
         <rdfs:label>supported</rdfs:label>
         <skos:definition>a state of a Claim evidenced by supporting information or reasoning from another Claim.</skos:definition>
+        <skos:example>Claim 2 supports Claim C1; C1 is Supported.</skos:example>
         <skos:prefLabel>supported</skos:prefLabel>
-        <skos:scopeNote>Classifies a Claim state as Supported when an assignment is triggered by Support with an Unassessed or Contested predecessor. Supported membership is retained from a Supported predecessor when the assignment is triggered by Support or Challenge. A Claim state may be both Supported and Contested when both conditions are met.</skos:scopeNote>
+        <skos:scopeNote>Classifies a Claim state as Supported when an assignment is triggered by Support with an Unassessed or Contested predecessor. Supported membership is retained from a Supported predecessor when the assignment is triggered by Support or Challenge. A Claim state may be both Supported and Contested when both conditions are met; The reasoner will record a transition to Supported when the required conditions are represented</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2020.lrec-1.130/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1080/19462166.2014.1001791</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.18653/v1/2024.argmining-1.8</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Assign Supported when another Claim supports the Claim. Retain Supported if the Claim is subsequently challenged.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2936,8 +3144,12 @@
         <dct:bibliographicCitation>[22] W3C, “Web Annotation Data Model,” W3C Recommendation, Feb. 23, 2017. [Online]. Available: https://www.w3.org/TR/annotation-model/</dct:bibliographicCitation>
         <rdfs:label>text span</rdfs:label>
         <skos:definition>contiguous segment of transcript text delimited by start and end positions and used as the specific target of an annotation</skos:definition>
+        <skos:example>In Turn 12, the characters covering “Option B costs less” form the Text Span supporting Claim C1.</skos:example>
         <skos:prefLabel>text span</skos:prefLabel>
+        <skos:scopeNote>The exact section of transcript text used as evidence for an annotation.</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.w3.org/TR/annotation-model/</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>A Text Span connects an annotation to specific words in the conversation. It can be shorter than an Utterance.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Record where the text begins and ends in the transcript. Update these positions if the transcript changes.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2949,8 +3161,11 @@
         <dct:bibliographicCitation>[16] P. Baroni, M. Romano, F. Toni, M. Aurisicchio, and G. Bertanza, “Automatic evaluation of design alternatives with quantitative argumentation,” Argument &amp; Computation, vol. 6, no. 1, pp. 24–49, 2015, doi: 10.1080/19462166.2014.1001791.</dct:bibliographicCitation>
         <rdfs:label>unassessed</rdfs:label>
         <skos:definition>state of a Claim introduced into the conversation, before evidence establishes another applicable state</skos:definition>
+        <skos:example>Claim C1 is introduced without a clear group assessment; C1 is Unassessed.</skos:example>
         <skos:prefLabel>unassessed</skos:prefLabel>
+        <skos:scopeNote>Initial state for a newly introduced Claim.</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1080/19462166.2014.1001791</cmns-av:adaptedFrom>
+        <cmns-av:usageNote>Apply initially when the Claim has been recorded but no group support or challenge can be established; revise when later evidence warrants a state change.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -2963,10 +3178,13 @@
         <dct:bibliographicCitation>[30] P. McBurney, D. Hitchcock, and S. Parsons, “The eightfold way of deliberation dialogue,” International Journal of Intelligent Systems, vol. 22, no. 1, pp. 95–132, 2007, doi: 10.1002/int.20191.</dct:bibliographicCitation>
         <rdfs:label>under consideration</rdfs:label>
         <skos:definition>state of a proposed Option when introduced, before evidence establishes another applicable state</skos:definition>
+        <skos:example>Option O1 has been proposed; the group has not decided on it, so O1 is Under Consideration.</skos:example>
         <skos:prefLabel>under consideration</skos:prefLabel>
+        <skos:scopeNote>Initial state for an Option when it is proposed.</skos:scopeNote>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://doi.org/10.1002/int.20191</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:explanatoryNote>Option: Under Consideration is the initial state of a proposed option.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>A participant’s disagreement does not automatically remove an Option from consideration.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -3004,10 +3222,13 @@
         <dct:bibliographicCitation>[20] Centre for Argument Technology, “A quick start guide to Inference Anchoring Theory (IAT),” May 2, 2022. [Online]. Available: https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</dct:bibliographicCitation>
         <rdfs:label>utterance</rdfs:label>
         <skos:definition>speaker-attributed segment of a conversation bounded for annotation as one communicative contribution and capable of expressing one or more dialogue functions</skos:definition>
+        <skos:example>“I prefer Option B because it costs less” is one Utterance that may ground an Expressed Position and a Claim.</skos:example>
         <skos:prefLabel>utterance</skos:prefLabel>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://aclanthology.org/2024.lrec-main.239/</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://markcore.github.io/papers/97.Core-Allen.AAAI.pdf</cmns-av:adaptedFrom>
         <cmns-av:adaptedFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.arg.tech/f/IATannotationguidelines-2022-05.pdf</cmns-av:adaptedFrom>
+        <cmns-av:explanatoryNote>An Utterance belongs to a Turn. A Turn can contain multiple Utterances.</cmns-av:explanatoryNote>
+        <cmns-av:usageNote>Divide conversation text into contributions within a turn. Do not assume every sentence is a separate Utterance.</cmns-av:usageNote>
     </owl:Class>
     
 
@@ -3059,22 +3280,38 @@
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- Same-type refinement. Every target of a refinement has its source move's type. -->
+    <owl:Restriction>
+        <owl:onProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
+            </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Claim"/>
+    </owl:Restriction>
 
-    
+    <owl:Restriction>
+        <owl:onProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
+            </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Issue"/>
+    </owl:Restriction>
+
+    <owl:Restriction>
+        <owl:onProperty>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/refines"/>
+            </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
+        <rdfs:subClassOf rdf:resource="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/Option"/>
+    </owl:Restriction>
 
 
-    <!-- https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/OE_11/ -->
-
-    <owl:NamedIndividual rdf:about="https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/OE_11/">
-        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-    </owl:NamedIndividual>
 </rdf:RDF>
 
 

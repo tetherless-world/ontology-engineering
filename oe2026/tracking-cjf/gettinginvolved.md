@@ -11,6 +11,8 @@ The [ontology page](ontology.html#ontologies) links to the current OE_12 schema 
 
 Changes to terms and axioms receive team review against the [use case](usecase.html) and [curated terminology](termlist.html). Before releasing semantic changes, we check consistency with HermiT, validate state-assignment processing with SHACL, and rerun affected competency queries. Changes that alter an existing term's meaning receive a new term IRI or a documented migration. Superseded terms are marked with owl:deprecated and a replacement note where available. Earlier releases remain available at their archived URLs.
 
+CJF class IRIs use UpperCamelCase, and CJF property IRIs use lowerCamelCase. The OE12 naming checks cover declarations in the schema and class and property use in both example files. Reused terms retain the identifiers assigned by their source vocabularies. The OOPS! P22 check also counts those identifiers, including SIO terms such as `SIO_000000` and `SIO_000206`.
+
 Policy updated November 19, 2026. Project contributions are distributed under the [MIT License](license.html).
 
 ## Getting Involved
