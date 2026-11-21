@@ -81,7 +81,7 @@ The query returns Claims that support or challenge Platform A, their current sta
 
 ## CQ4 Platform A Issues and Their States
 
-**Question:** Which Issues challenge Platform A, what Open, Addressed, or Resolved states and evidence were recorded for each, and what is each Issue’s current state?
+**Question:** Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
 
 ### SPARQL query
 
@@ -97,7 +97,7 @@ The query returns Claims that support or challenge Platform A, their current sta
 
 <p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.answers.csv">Recorded answers (.csv)</a></p>
 
-Each row shows a recorded state classification and any evidence for that assignment. The `currentState` column repeats the Issue’s latest known state across its rows. When HermiT classifies the latest state as both Resolved and Addressed, the column shows Resolved. Initial Open assignments can have blank evidence.
+The query finds Issues that explicitly challenge Platform A. Each row shows one Open, Addressed, or Resolved classification for a recorded assignment and any supporting evidence. Initial Open assignments can have blank evidence.
 
 ## CQ5 Speakers Agreeing with the Selected Option
 

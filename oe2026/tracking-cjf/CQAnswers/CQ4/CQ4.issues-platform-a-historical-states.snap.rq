@@ -3,11 +3,7 @@ PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSa
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sio: <http://semanticscience.org/resource/>
 
-SELECT DISTINCT ?issue ?assignment ?stateType
-    (IF(BOUND(?resolvedAssignment), cjf:Resolved,
-        IF(BOUND(?addressedAssignment), cjf:Addressed,
-            IF(BOUND(?openAssignment), cjf:Open, ""))) AS ?currentState)
-    ?sourceMove ?evidence
+SELECT DISTINCT ?issue ?assignment ?stateType ?sourceMove ?evidence
 WHERE {
     ?issue cjf:makesChallenges ?challenge .
 
@@ -34,25 +30,6 @@ WHERE {
         ?stateType = cjf:Resolved
     )
 
-    # The current state uses the most specific classification.
-    OPTIONAL {
-        ?issue cjf:hasCurrentStateAssignment ?resolvedAssignment .
-        ?resolvedAssignment cjf:assignedState ?resolvedState .
-        ?resolvedState rdf:type cjf:Resolved .
-    }
-
-    OPTIONAL {
-        ?issue cjf:hasCurrentStateAssignment ?addressedAssignment .
-        ?addressedAssignment cjf:assignedState ?addressedState .
-        ?addressedState rdf:type cjf:Addressed .
-    }
-
-    OPTIONAL {
-        ?issue cjf:hasCurrentStateAssignment ?openAssignment .
-        ?openAssignment cjf:assignedState ?openState .
-        ?openState rdf:type cjf:Open .
-    }
-
     OPTIONAL {
         ?assignment cjf:hasTriggeringRelationship ?trigger .
 
@@ -66,4 +43,4 @@ WHERE {
         }
     }
 }
-ORDER BY ?issue ?assignment ?stateType ?sourceMove ?evidence
+ORDER BY ?issue ?assignment ?stateType ?sourceMove
