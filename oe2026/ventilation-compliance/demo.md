@@ -83,8 +83,7 @@ Writes use a temporary file and atomic replacement.
 
 Rule U1 classifies an explicitly typed `v:PolicyAssessment` as unknown when neither
 an incoming `v:isEvaluatedAt` link nor an outgoing `v:evaluatesMeasurement` link
-exists in the supplied data. The vocabulary URI includes the repeated path segment
-`ventilation-compliance/ventilation-compliance/`, matching the ontology and individuals.
+exists in the supplied data. The vocabulary URI is the ontology IRI, `https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/`, matching the ontology and individuals.
 The closed-world assumption applies only to this evidence-presence check. This
 does not check measurement values, freshness, or overall room compliance. It does
 not load `owl:imports` or execute OWL/SWRL reasoning; run that reasoning afterward.

@@ -11,7 +11,7 @@ The CareAir ventilation-compliance ontology joins three bodies of knowledge that
 
 | | |
 |---|---|
-| **Ontology IRI** | `https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/` |
+| **Ontology IRI** | `https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/` |
 | **Default prefix** | `v:` |
 | **Language** | OWL 2 DL with SWRL rules (evaluated with Pellet); closed-world checks in SHACL-AF (evaluated with pySHACL) |
 | **Imports** | PROV-O (2013-04-30), SAREF4BLDG v2.1.1, RealEstateCore Core v3.3, OMG Commons Quantities and Units |
@@ -501,7 +501,7 @@ The reused vocabularies are grouped by the module they support. Full citations a
   </tr>
   <tr>
     <td>v</td>
-    <td><a href="ventilation-compliance.rdf">https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/ventilation-compliance/</a> (CareAir ventilation-compliance ontology)</td>
+    <td><a href="ventilation-compliance.rdf">https://tw.rpi.edu/ontology-engineering/oe2026/ventilation-compliance/</a> (CareAir ventilation-compliance ontology)</td>
   </tr>
   <tr>
     <td>test</td>
