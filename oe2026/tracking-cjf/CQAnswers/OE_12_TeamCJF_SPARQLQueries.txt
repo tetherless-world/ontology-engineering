@@ -165,9 +165,9 @@ Local CSV: CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv
 https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ3/CQ3.claims-that-support-challenges-platform-a.answers.csv
 
 ------------------------------------------
-CQ4: CQ4: Which Issues challenge Platform A, how have their states changed throughout the conversation, and what evidence supports these changes?
+CQ4:  Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
 
-# Run in Protégé using SNAP SPARQL.
+# Run in Protégé using Snap SPARQL Query.
 # Active ontology: OE_12_TeamCJF_Individuals.rdf
 # Imported ontology: OE_12_TeamCJF.rdf
 # Reasoner: HermiT (active)
@@ -177,11 +177,7 @@ PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSa
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sio: <http://semanticscience.org/resource/>
 
-SELECT DISTINCT ?issue ?assignment ?stateType
-    (IF(BOUND(?resolvedAssignment), cjf:Resolved,
-        IF(BOUND(?addressedAssignment), cjf:Addressed,
-            IF(BOUND(?openAssignment), cjf:Open, ""))) AS ?currentState)
-    ?sourceMove ?evidence
+SELECT DISTINCT ?issue ?assignment ?stateType ?sourceMove ?evidence
 WHERE {
     ?issue cjf:makesChallenges ?challenge .
 
@@ -208,25 +204,6 @@ WHERE {
         ?stateType = cjf:Resolved
     )
 
-    # The current state uses the most specific classification.
-    OPTIONAL {
-        ?issue cjf:hasCurrentStateAssignment ?resolvedAssignment .
-        ?resolvedAssignment cjf:assignedState ?resolvedState .
-        ?resolvedState rdf:type cjf:Resolved .
-    }
-
-    OPTIONAL {
-        ?issue cjf:hasCurrentStateAssignment ?addressedAssignment .
-        ?addressedAssignment cjf:assignedState ?addressedState .
-        ?addressedState rdf:type cjf:Addressed .
-    }
-
-    OPTIONAL {
-        ?issue cjf:hasCurrentStateAssignment ?openAssignment .
-        ?openAssignment cjf:assignedState ?openState .
-        ?openState rdf:type cjf:Open .
-    }
-
     OPTIONAL {
         ?assignment cjf:hasTriggeringRelationship ?trigger .
 
@@ -240,7 +217,7 @@ WHERE {
         }
     }
 }
-ORDER BY ?issue ?assignment ?stateType ?sourceMove ?evidence
+ORDER BY ?issue ?assignment ?stateType ?sourceMove
 
 Expected Answer:
 
@@ -259,21 +236,22 @@ Recorded states: Open, Addressed.
 Evidence move: M0051.
 Current state: Addressed.
 
+Tested result: 11 rows representing 8 distinct state assignments.
+Some rows repeat because of OWL-inferred classifications
+and multiple supporting text spans.
+
+Note: This query retrieves Issues that explicitly challenge
+Platform A. Initial Open states may have blank evidence
+when no Address/Resolve trigger is recorded.
+
 Actual Answer:
 
-Executed with SNAP SPARQL and HermiT using the OE12 individuals
-and the imported OE12 schema.
+Verified in Protégé using the OE12 individuals ontology
+with the OE12 base ontology imported and HermiT active.
 
 Total result rows: 11
 Distinct state assignments: 8
 Distinct Issues: 3
-
-The stateType column shows each recorded assignment's state classification.
-The currentState column repeats the Issue's latest known state on each row.
-When HermiT classifies the current state as both Resolved and Addressed, this
-column shows Resolved. Historical classifications and multiple evidence spans
-can produce more than one row per assignment. Initial Open assignments can
-have blank evidence.
 
 Complete query results:
 
@@ -281,7 +259,6 @@ Result 1:
   Issue: sample:Move_OCT21_A-M0010
   Assignment: sample:Assignment_2ed0defc521d375f81df
   State: cjf:Addressed
-  Current state: cjf:Resolved
   Source Move: sample:Move_OCT21_A-M0021
   Evidence: We should consider adopting it instead
 
@@ -289,39 +266,34 @@ Result 2:
   Issue: sample:Move_OCT21_A-M0010
   Assignment: sample:Assignment_3cfe4fcd6c82b91ca5d0
   State: cjf:Addressed
-  Current state: cjf:Resolved
   Source Move: sample:Move_OCT21_A-M0048
-  Evidence: Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.
+  Evidence: That settles the funding concern.
 
 Result 3:
   Issue: sample:Move_OCT21_A-M0010
   Assignment: sample:Assignment_3cfe4fcd6c82b91ca5d0
   State: cjf:Addressed
-  Current state: cjf:Resolved
   Source Move: sample:Move_OCT21_A-M0048
-  Evidence: That settles the funding concern.
+  Evidence: Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.
 
 Result 4:
   Issue: sample:Move_OCT21_A-M0010
   Assignment: sample:Assignment_3cfe4fcd6c82b91ca5d0
   State: cjf:Resolved
-  Current state: cjf:Resolved
   Source Move: sample:Move_OCT21_A-M0048
-  Evidence: Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.
+  Evidence: That settles the funding concern.
 
 Result 5:
   Issue: sample:Move_OCT21_A-M0010
   Assignment: sample:Assignment_3cfe4fcd6c82b91ca5d0
   State: cjf:Resolved
-  Current state: cjf:Resolved
   Source Move: sample:Move_OCT21_A-M0048
-  Evidence: That settles the funding concern.
+  Evidence: Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.
 
 Result 6:
   Issue: sample:Move_OCT21_A-M0010
   Assignment: sample:Assignment_784175fca71db18ddd24
   State: cjf:Addressed
-  Current state: cjf:Resolved
   Source Move: sample:Move_OCT21_A-M0039
   Evidence: Then we could cover Platform A’s $6,000 gap by moving the funds reserved for the reporting add-on.
 
@@ -329,7 +301,6 @@ Result 7:
   Issue: sample:Move_OCT21_A-M0010
   Assignment: sample:Assignment_8b66f2862fe0f2165de0
   State: cjf:Open
-  Current state: cjf:Resolved
   Source Move: N/A
   Evidence: N/A
 
@@ -337,7 +308,6 @@ Result 8:
   Issue: sample:Move_OCT21_A-M0014
   Assignment: sample:Assignment_4da1b912363effeff64e
   State: cjf:Open
-  Current state: cjf:Addressed
   Source Move: N/A
   Evidence: N/A
 
@@ -345,7 +315,6 @@ Result 9:
   Issue: sample:Move_OCT21_A-M0014
   Assignment: sample:Assignment_b6b48dc43eacd2283461
   State: cjf:Addressed
-  Current state: cjf:Addressed
   Source Move: sample:Move_OCT21_A-M0051
   Evidence: We could use Monday’s five-to-six training slot for a vendor-led session, then give developers the recording and a practice environment.
 
@@ -353,7 +322,6 @@ Result 10:
   Issue: sample:Move_OCT21_A-M0050
   Assignment: sample:Assignment_3525c925355bbb2f1780
   State: cjf:Open
-  Current state: cjf:Addressed
   Source Move: N/A
   Evidence: N/A
 
@@ -361,12 +329,17 @@ Result 11:
   Issue: sample:Move_OCT21_A-M0050
   Assignment: sample:Assignment_c211c638c80ec7e81f78
   State: cjf:Addressed
-  Current state: cjf:Addressed
   Source Move: sample:Move_OCT21_A-M0051
   Evidence: We could use Monday’s five-to-six training slot for a vendor-led session, then give developers the recording and a practice environment.
 
-Local CSV: CQ4/CQ4.issues-platform-a-historical-states.answers.csv
+Saved CSV:
+CQ4/CQ4.issues-platform-a-historical-states.answers.csv
+
+GitHub CSV link:
 https://github.com/DevinDeSilva/ontology-engineering/blob/tracking-cjf/oe2026/tracking-cjf/CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.answers.csv
+
+
+
 
 ------------------------------------------
 CQ5: Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
