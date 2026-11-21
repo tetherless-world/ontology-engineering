@@ -1,4 +1,4 @@
-"""Checks for terms and license metadata declared in the OE12 schema."""
+"""Checks for OE12 term names and license metadata."""
 
 from pathlib import Path
 import unittest
@@ -11,8 +11,8 @@ class OE12SchemaTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.ontology = URIRef("https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/")
-        schema_path = Path(__file__).resolve().parents[2] / "ontology" / "OE_12_TeamCJF.rdf"
-        cls.schema = Graph().parse(schema_path, format="xml")
+        cls.ontology_dir = Path(__file__).resolve().parents[2] / "ontology"
+        cls.schema = Graph().parse(cls.ontology_dir / "OE_12_TeamCJF.rdf", format="xml")
 
     def test_cjf_term_names_follow_class_and_property_conventions(self):
         categories = {
@@ -27,6 +27,19 @@ class OE12SchemaTests(unittest.TestCase):
                 if isinstance(term, URIRef) and str(term).startswith(namespace):
                     with self.subTest(term=term, kind=kind):
                         self.assertRegex(str(term).removeprefix(namespace), pattern)
+
+    def test_cjf_class_and_property_names_used_in_examples_follow_conventions(self):
+        namespace = str(self.ontology)
+        for filename in ("OE_12_TeamCJF_Individuals.rdf", "OE_12_TeamCJF_Individuals_withoutCurrentState.rdf"):
+            graph = Graph().parse(self.ontology_dir / filename, format="xml")
+            for terms, pattern in (
+                (graph.objects(None, RDF.type, unique=True), r"^[A-Z][A-Za-z0-9]*$"),
+                (graph.predicates(unique=True), r"^[a-z][A-Za-z0-9]*$"),
+            ):
+                for term in terms:
+                    if isinstance(term, URIRef) and str(term).startswith(namespace):
+                        with self.subTest(file=filename, term=term):
+                            self.assertRegex(str(term).removeprefix(namespace), pattern)
 
     def test_mit_license_is_an_ontology_annotation(self):
         self.assertIn((self.ontology, RDF.type, OWL.Ontology), self.schema)
