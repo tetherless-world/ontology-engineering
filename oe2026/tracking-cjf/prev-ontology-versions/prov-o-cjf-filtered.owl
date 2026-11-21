@@ -106,24 +106,6 @@
     
 
 
-    <!-- http://www.w3.org/ns/prov#generated -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#generated">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#influenced"/>
-        <owl:inverseOf rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
-        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
-        <rdfs:label>generated</rdfs:label>
-        <prov:category>expanded</prov:category>
-        <prov:component>entities-activities</prov:component>
-        <prov:editorialNote xml:lang="en">prov:generated is one of few inverse property defined, to allow Activity-oriented assertions in addition to Entity-oriented assertions.</prov:editorialNote>
-        <prov:inverse>wasGeneratedBy</prov:inverse>
-        <prov:sharesDefinitionWith rdf:resource="http://www.w3.org/ns/prov#Generation"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.w3.org/ns/prov#hadMember -->
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#hadMember">
@@ -144,12 +126,6 @@
         <rdfs:comment xml:lang="en">A collection is an entity that provides a structure to some constituents, which are themselves entities. These constituents are said to be member of the collections.</rdfs:comment>
         <prov:dm>http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-collection</prov:dm>
     </owl:Axiom>
-    
-
-
-    <!-- http://www.w3.org/ns/prov#influenced -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#influenced"/>
     
 
 
@@ -174,58 +150,6 @@
     <!-- http://www.w3.org/ns/prov#qualifiedInfluence -->
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#qualifiedInfluence"/>
-    
-
-
-    <!-- http://www.w3.org/ns/prov#qualifiedUsage -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#qualifiedUsage">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#qualifiedInfluence"/>
-        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Usage"/>
-        <rdfs:comment xml:lang="en">If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualifiedUsage [ a prov:Usage; prov:entity :e; :foo :bar ].</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
-        <rdfs:label>qualifiedUsage</rdfs:label>
-        <prov:category>qualified</prov:category>
-        <prov:component>entities-activities</prov:component>
-        <prov:inverse>qualifiedUsingActivity</prov:inverse>
-        <prov:sharesDefinitionWith rdf:resource="http://www.w3.org/ns/prov#Usage"/>
-        <prov:unqualifiedForm rdf:resource="http://www.w3.org/ns/prov#used"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/ns/prov#used -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#used">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInfluencedBy"/>
-        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:comment xml:lang="en">A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
-        <rdfs:label>used</rdfs:label>
-        <prov:category>starting-point</prov:category>
-        <prov:component>entities-activities</prov:component>
-        <prov:inverse>wasUsedBy</prov:inverse>
-        <prov:qualifiedForm rdf:resource="http://www.w3.org/ns/prov#Usage"/>
-        <prov:qualifiedForm rdf:resource="http://www.w3.org/ns/prov#qualifiedUsage"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/ns/prov#wasAssociatedWith -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasAssociatedWith">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInfluencedBy"/>
-        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Agent"/>
-        <rdfs:comment xml:lang="en">An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
-        <rdfs:label>wasAssociatedWith</rdfs:label>
-        <prov:category>starting-point</prov:category>
-        <prov:component>agents-responsibility</prov:component>
-        <prov:inverse>wasAssociateFor</prov:inverse>
-    </owl:ObjectProperty>
     
 
 
@@ -365,19 +289,6 @@
     
 
 
-    <!-- http://www.w3.org/ns/prov#EmptyCollection -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#EmptyCollection">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Collection"/>
-        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
-        <rdfs:label xml:lang="en">EmptyCollection</rdfs:label>
-        <prov:category>expanded</prov:category>
-        <prov:component>collections</prov:component>
-        <prov:definition xml:lang="en">An empty collection is a collection without members.</prov:definition>
-    </owl:Class>
-    
-
-
     <!-- http://www.w3.org/ns/prov#Entity -->
 
     <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity">
@@ -391,12 +302,6 @@
         <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-entity</prov:dm>
         <prov:n rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Entity</prov:n>
     </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/ns/prov#EntityInfluence -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#EntityInfluence"/>
     
 
 
@@ -436,25 +341,6 @@
         <prov:definition xml:lang="en">Person agents are people.</prov:definition>
         <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent</prov:dm>
         <prov:n rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types</prov:n>
-    </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/ns/prov#Usage -->
-
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#Usage">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#EntityInfluence"/>
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#InstantaneousEvent"/>
-        <rdfs:comment xml:lang="en">An instance of prov:Usage provides additional descriptions about the binary prov:used relation from some prov:Activity to an prov:Entity that it used. For example, :keynote prov:used :podium; prov:qualifiedUsage [ a prov:Usage; prov:entity :podium; :foo :bar ].</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
-        <rdfs:label>Usage</rdfs:label>
-        <prov:category>qualified</prov:category>
-        <prov:component>entities-activities</prov:component>
-        <prov:constraints rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig</prov:constraints>
-        <prov:definition xml:lang="en">Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.</prov:definition>
-        <prov:dm rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-Usage</prov:dm>
-        <prov:n rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Usage</prov:n>
-        <prov:unqualifiedForm rdf:resource="http://www.w3.org/ns/prov#used"/>
     </owl:Class>
 </rdf:RDF>
 
