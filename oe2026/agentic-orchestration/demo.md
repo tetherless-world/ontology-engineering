@@ -16,19 +16,19 @@ title: queries
 
 ## Queries
 
-SPARQL queries for the competency questions of the [use case](usecase.html) (Section VII): the three that scope the
-ontology (CQ 1, CQ 3 and CQ 5) and the other six. CQ 1 has three steps, so there are 11 queries in all. They run on
-[OE_11_TeamAgenticCapabilities_Individuals.rdf](OE_11_TeamAgenticCapabilities_Individuals.rdf), which imports
-[OE_11_TeamAgenticCapabilities.rdf](OE_11_TeamAgenticCapabilities.rdf). The
-[query file](OE_11_TeamAgenticCapabilities_Queries.txt) gives every query with its prefixes, the reasoning it needs, the
-individuals it uses and its expected answer.
+The [Assignment 12 SPARQL file](OE_12_TeamAgenticCapabilities_Queries.txt) contains the 11 queries for the nine
+competency questions in Section VII of the [use case](usecase.html). CQ 1 has three steps. Its last query lists the
+steps of Ken's selected plan in execution order, with the task, skill, tool and constraint or requirement for each.
 
-Queries marked **OWL 2 DL** need a reasoner: run them in the Snap SPARQL Query plugin with Pellet or HermiT started.
-Queries marked **none** also run in Protégé's SPARQL Query tab. On November 13, 2026 each query below returned the
-answer shown in the Snap SPARQL Query plugin 6.0.0 with Pellet and with HermiT
-([test log](files/ontology/OE_11_TeamAgenticCapabilities_TestLog.txt)). Queries over plan steps are sorted by the
-step's position in the plan (hasStepPosition) and queries over plans by rank; the other queries return sets with no
-meaningful order, and their tables show the rows in the order Snap SPARQL returned them.
+In Protégé, open the [Assignment 12 individuals](OE_12_TeamAgenticCapabilities_Individuals.rdf). They import
+the [main ontology, version 4.2](OE_12_TeamAgenticCapabilities.rdf). Keep both files with the
+[XML catalog](catalog-v001.xml) and the project's `imports/` folder as described in the
+[opening instructions](ontology.html#ontology). Copy each query starting at its first `PREFIX` line.
+
+For queries marked **OWL 2 DL**, start Pellet or HermiT and use Snap SPARQL. Queries marked **none** also run in
+Protégé's SPARQL Query tab. The team obtained the expected answers to all 11 queries with both reasoners for
+Assignment 12. Step results are ordered by `hasStepPosition`, plan comparisons by rank. The other queries return
+sets whose row order can vary.
 
 ### The three competency questions that scope the ontology
 

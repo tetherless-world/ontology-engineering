@@ -33,8 +33,9 @@ execution, constraint violations, prerequisite readiness, and explanations of wh
 
 ![Conceptual model, Figure 1b: plans, steps, tasks, evaluation and invocations](files/conceptual_models/v3.0/fig1b_overview_plans.png)
 
-Each box is a class of the ontology and each arrow a property; the [Concept Map & Ontology](ontology.html) page has all
-figures.
+Each box represents an ontology class and each arrow a property. The [conceptual model page](ontology.html#conceptual-model)
+explains both overview figures and the detailed diagrams. The [Assignment 12 model (PDF)](files/conceptual_models/OE_12_TeamAgenticCapabilities_ConceptualModel.pdf)
+contains the complete version 5.0 documentation.
 
 ## List of Resources
 
@@ -45,7 +46,7 @@ figures.
   </tr>
   <tr>
     <td>1. Ontology</td>
-    <td><a href="OE_11_TeamAgenticCapabilities.rdf">OE_11_TeamAgenticCapabilities.rdf</a> and its <a href="OE_11_TeamAgenticCapabilities_Individuals.rdf">individuals</a> (RDF/XML), described on the <a href="ontology.html">Concept Map &amp; Ontology</a> page</td>
+    <td>Assignment 12, version 4.2. Download the <a href="OE_12_TeamAgenticCapabilities.rdf">main ontology</a> and its <a href="OE_12_TeamAgenticCapabilities_Individuals.rdf">individuals</a> in RDF/XML. The <a href="ontology.html#ontology">ontology page</a> includes opening instructions and earlier releases.</td>
   </tr>
   <tr>
     <td>2. Use Case</td>
@@ -57,7 +58,7 @@ figures.
   </tr>
   <tr>
     <td>4. Competency Question Queries</td>
-    <td><a href="demo.html">SPARQL queries and answers</a> for all nine competency questions, and the <a href="OE_11_TeamAgenticCapabilities_Queries.txt">query file</a> to run in Protégé</td>
+    <td><a href="demo.html">SPARQL queries and answers</a> for all nine competency questions, and the <a href="OE_12_TeamAgenticCapabilities_Queries.txt">Assignment 12 query file</a> to run in Protégé</td>
   </tr>
   <tr>
     <td>5. Presentations</td>
@@ -66,6 +67,10 @@ figures.
   <tr>
     <td>6. Reports</td>
     <td><a href="files/reports/OE_6_TeamAgenticCapabilities_Report.pdf">Assignment 6 report</a>: ontology development, what was difficult and what worked, controversial decisions, GenAI use</td>
+  </tr>
+  <tr>
+    <td>7. Maintenance</td>
+    <td><a href="gettinginvolved.html#maintenance-policy">Maintenance and evolution policy</a> for version identifiers, testing and archived releases</td>
   </tr>
 </table>
 

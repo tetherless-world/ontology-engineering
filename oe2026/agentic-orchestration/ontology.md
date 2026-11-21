@@ -2,26 +2,43 @@
 
 ## Conceptual Model
 
-**Current version: 4.1 (Assignment 11, November 13, 2026).** Version 4.1 follows the Assignment 11 ontology,
-OE_11_TeamAgenticCapabilities.rdf, which adds the step attribute hasStepPosition (Figure 5a); the other figures are
-unchanged from Version 4.0. The model is aligned with the ontology below: every class, is-a line, arrow and attribute in
-the diagrams is a term of the ontology with the same name, and every class and property of the ontology appears in a
-diagram.
+**Assignment 12 pairs conceptual model 5.0 with ontology 4.2.**
+[Download the documented conceptual model (PDF)](files/conceptual_models/OE_12_TeamAgenticCapabilities_ConceptualModel.pdf).
+
+An agent choosing among skills and tools needs to explain what each one contributes and which steps must finish
+before others can start. In our supplement-recommendation use case, a request can call for evidence, safety screening
+or products within a budget. The ontology connects those requirements to capabilities and records how candidate
+plans meet them. The two overview figures follow a request from the user's requirements to the execution of a plan.
+
+**Figure 1a** shows how skills and tools provide capabilities that satisfy information requirements. The same request
+can therefore lead to different candidate plans, each subject to the user's constraints.
 
 ![Figure 1a. Requests, requirements, constraints and capabilities](files/conceptual_models/v3.0/fig1a_overview_requests.png)
 
+**Figure 1b** follows a candidate plan through evaluation and execution. Each workflow step has a task. The
+invocation recorded when a step runs connects the plan to the information the agent used or produced.
+
 ![Figure 1b. Plans, steps, tasks, evaluation and invocations](files/conceptual_models/v3.0/fig1b_overview_plans.png)
+
+**Figure 2** traces a constraint to the request or saved preference that supplied it. Jessica's safety-screening
+requirement is a hard constraint. Ken's preference for fewer tool calls helps rank plans that already qualify.
+
+![Figure 2. Requests, requirements and constraints](files/conceptual_models/v3.0/fig2_requests_constraints.png)
+
+**Figure 5a** shows how a plan orders its steps and assigns a task to each step. The step position lets the
+third query for Ken's request return his selected plan in execution order.
 
 ![Figure 5a. Plan structure: plans, workflow steps and tasks](files/conceptual_models/v5.0/fig5a_plan_structure.png)
 
-PDF: [clean](files/conceptual_models/OE_11_TeamAgenticCapabilities_ConceptMap_Clean.pdf) ·
-[redlined](files/conceptual_models/OE_11_TeamAgenticCapabilities_RedlinedConceptMap.pdf)
+**Figure 6a** connects each candidate plan to its evaluation, criteria, score and rank. It explains how the
+reasoner can identify the selected plan and how the demonstration compares it with the alternatives.
 
-<iframe src="files/conceptual_models/OE_11_TeamAgenticCapabilities_ConceptMap_Clean.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+![Figure 6a. Candidate plan evaluation and selection](files/conceptual_models/v3.0/fig6a_plan_selection.png)
 
-Figures as images (PNG and SVG; the PlantUML sources of all figures, which load into PlantUML, are in
-[files/conceptual_models/v5.0/src](files/conceptual_models/v5.0/src/); Figure 5a is changed in Version 4.1, Figures 7a
-and 9a to 9e are from Version 4.0, and the others are unchanged from Version 3.0):
+<iframe title="Assignment 12 conceptual model, version 5.0" src="files/conceptual_models/OE_12_TeamAgenticCapabilities_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+
+Model 5.0 adds documentation to the diagrams introduced in earlier releases. Each figure is available below,
+along with the [PlantUML sources](files/conceptual_models/v5.0/src/).
 [1a](files/conceptual_models/v3.0/fig1a_overview_requests.png) ·
 [1b](files/conceptual_models/v3.0/fig1b_overview_plans.png) ·
 [2](files/conceptual_models/v3.0/fig2_requests_constraints.png) ·
@@ -46,6 +63,8 @@ and 9a to 9e are from Version 4.0, and the others are unchanged from Version 3.0
 
 ### Previous Versions
 
+- Version 4.1 (Assignment 11) includes the [clean PDF](files/conceptual_models/OE_11_TeamAgenticCapabilities_ConceptMap_Clean.pdf)
+  and [redlined PDF](files/conceptual_models/OE_11_TeamAgenticCapabilities_RedlinedConceptMap.pdf).
 - Version 4.0 (Assignment 10): [clean](files/conceptual_models/OE_10_TeamAgenticCapabilities_ConceptMap_Clean.pdf) and
   [new parts in blue](files/conceptual_models/OE_10_TeamAgenticCapabilities_ConceptMap.pdf), figures and PlantUML
   sources in [files/conceptual_models/v4.0](files/conceptual_models/v4.0/src/)
@@ -62,37 +81,46 @@ and 9a to 9e are from Version 4.0, and the others are unchanged from Version 3.0
 
 ## Ontology
 
-- **Files (Assignment 11):** [OE_11_TeamAgenticCapabilities.rdf](OE_11_TeamAgenticCapabilities.rdf) (classes and
-  properties) and [OE_11_TeamAgenticCapabilities_Individuals.rdf](OE_11_TeamAgenticCapabilities_Individuals.rdf)
-  (individuals; imports the main ontology), OWL 2 in RDF/XML written with the course serializer
-- **SPARQL queries:** [OE_11_TeamAgenticCapabilities_Queries.txt](OE_11_TeamAgenticCapabilities_Queries.txt); the queries
-  for all nine competency questions and their answers are on the [Demonstration & Queries](demo.html) page
-- **New in Assignment 11:** the datatype property hasStepPosition, the position of a step in its plan's execution
-  order, which the queries over plan steps use to sort their rows (Figure 5a); in the individuals, Ken's evidence steps
-  are now separate article search and abstract download steps
-- **Added in Assignment 10:** 22 object properties, most of them shortcuts defined by property chains (for example
-  hasHardConstraint, skillSatisfiesRequirement, stepSatisfiesHardConstraint, planConsumes), so that the queries can follow
-  one property where Snap SPARQL, which has no property paths, needed a chain of patterns; see Figures 9a to 9e
-- **Namespace:** `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/`
-- **Size:** 64 classes, 49 object properties and 9 datatype properties of the team's own, and 171 individuals
-- **Reasoner check:** consistent, with no unsatisfiable classes (Pellet 2.2.0 and HermiT 1.4.3.456); all 11 queries
-  return their expected answers with Pellet and with HermiT, and the course hygiene check has no findings;
-  [test log](files/ontology/OE_11_TeamAgenticCapabilities_TestLog.txt)
-- **Scope:** competency questions 1, 3 and 5 of the [use case](usecase.html) (Section VII); the queries cover all nine
-- **Opening it in Protégé:** open OE_11_TeamAgenticCapabilities_Individuals.rdf from this folder. `catalog-v001.xml` maps
-  the main ontology IRI to OE_11_TeamAgenticCapabilities.rdf and the AgentO and P-Plan imports to the copies in `imports/`:
-  the AgentO IRI redirects to a web page, and the P-Plan purl did not resolve on October 29, 2026.
-- **Previous versions:** Assignment 10, [main](archived/OE_10_TeamAgenticCapabilities.txt),
-  [individuals](archived/OE_10_TeamAgenticCapabilities_Individuals.txt),
-  [queries](archived/OE_10_TeamAgenticCapabilities_Queries.txt) and
-  [test log](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt); Assignment 9, [main](archived/OE_9_TeamAgenticCapabilities.txt),
+**Assignment 12, version 4.2 (November 20, 2026).** The main OWL ontology defines 64 classes, 49 object
+properties and 9 datatype properties belonging to the team. The accompanying ontology contains 171 individuals.
+This release adds term-list annotations, clarifies property domains and ranges, and removes the FIBO import. Ken's
+plan query now lists his steps without repeating the plan label in every row.
+
+| Assignment | Version | Main ontology | Individuals | SPARQL queries |
+|---|---|---|---|---|
+| 12 (current) | `v4.2` | [RDF/XML](OE_12_TeamAgenticCapabilities.rdf) | [RDF/XML](OE_12_TeamAgenticCapabilities_Individuals.rdf) | [Query file](OE_12_TeamAgenticCapabilities_Queries.txt) |
+| 11 | `v4.1` | [Archived ontology](archived/OE_11_TeamAgenticCapabilities.txt) | [Archived individuals](archived/OE_11_TeamAgenticCapabilities_Individuals.txt) | [Query file](archived/OE_11_TeamAgenticCapabilities_Queries.txt) |
+| 10 | `v4.0` | [Archived ontology](archived/OE_10_TeamAgenticCapabilities.txt) | [Archived individuals](archived/OE_10_TeamAgenticCapabilities_Individuals.txt) | [Query file](archived/OE_10_TeamAgenticCapabilities_Queries.txt) |
+
+**Version IRIs.** The current main ontology identifies itself as
+`https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/v4.2` and the individuals as
+`https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/v4.2`.
+Both headers identify the corresponding `v4.1` and `v4.0` IRIs as prior versions. The table links to the files for
+each version. The [maintenance and evolution policy](gettinginvolved.html#maintenance-policy) describes how the team
+versions and tests a release.
+
+**Opening the ontology in Protégé.** Keep the two Assignment 12 RDF files and the [XML catalog](catalog-v001.xml)
+together with the project's `imports/` folder. Open `OE_12_TeamAgenticCapabilities_Individuals.rdf`. The catalog
+resolves its import of the main ontology's `v4.2` IRI and supplies local copies of AgentO and P-Plan.
+
+**Validation.** The team ran Pellet and HermiT against the Assignment 12 ontologies. Both reasoners found them
+consistent, all 11 queries returned their expected answers, and the course hygiene check passed. The
+[demonstration](demo.html) gives the queries and results for all nine competency questions in the [use case](usecase.html).
+
+**Earlier releases.** The historical test logs are available for
+[Assignment 11](files/ontology/OE_11_TeamAgenticCapabilities_TestLog.txt) and
+[Assignment 10](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt).
+
+- Assignment 9 includes the [main ontology](archived/OE_9_TeamAgenticCapabilities.txt),
   [individuals](archived/OE_9_TeamAgenticCapabilities_Individuals.txt),
   [queries](archived/OE_9_TeamAgenticCapabilities_SPARQLQueries.txt) and
-  [test log](files/ontology/OE_9_TeamAgenticCapabilities_TestLog.txt); Assignment 8, [main](archived/OE_8_TeamAgenticCapabilities.txt) and
-  [individuals](archived/OE_8_TeamAgenticCapabilities_Individuals.txt); Assignment 6,
-  [main](archived/agentic-orchestration.txt), [example individuals](archived/cq_examples.txt) and
-  [reasoner answers](archived/cq_results.txt). Archived ontology files are stored as .txt so that the hygiene check
-  skips them.
+  [test log](files/ontology/OE_9_TeamAgenticCapabilities_TestLog.txt).
+- Assignment 8 includes the [main ontology](archived/OE_8_TeamAgenticCapabilities.txt) and
+  [individuals](archived/OE_8_TeamAgenticCapabilities_Individuals.txt).
+- Assignment 6 includes the [main ontology](archived/agentic-orchestration.txt),
+  [example individuals](archived/cq_examples.txt) and [reasoner answers](archived/cq_results.txt).
+
+The archive stores earlier ontology files with a `.txt` extension so the hygiene check runs on the current RDF files.
 
 ### Main Classes and Definitions
 
@@ -118,36 +146,27 @@ The full list of classes, properties and individuals, with sources, is the [term
 
 ## Ontologies Reused
 
-- [AgentO v0.2](https://w3id.org/agentic-ai/onto) (`agento:`): agents, tasks, tools, capabilities, workflow steps.
-  *Note:* as of November 12, 2026 this IRI redirects to sepses.ifs.tuwien.ac.at, which is not responding (likely a
-  temporary outage on their end); a backup copy is in
-  [imports/agento-v0.2.owl](imports/agento-v0.2.owl) (RDF/XML)
-- [P-Plan](http://purl.org/net/p-plan) (`pplan:`): plans, steps and the activities that carry them out (version 1.3, copy in `imports/`)
-- [OWL-S 1.2 Process](https://www.w3.org/submissions/OWL-S/) (`process:`): tool parameters and preconditions
-- [BEAM](http://w3id.org/beam/core) (`beam:`): the resource class above SkillResource
-- [PROV-O](https://www.w3.org/TR/prov-o/) (`prov:`): provenance of invocations and information artifacts
-- [OMG Commons Ontology Library](https://www.omg.org/spec/Commons/): annotation vocabulary, classifiers, collections,
-  documents, organizations, quantities and units
-- [FIBO FND Goals and Objectives](https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/), imported
-  by the course seed ontology
+- [AgentO v0.2](imports/agento-v0.2.owl) supplies the vocabulary for agents, tasks, tools, capabilities and workflow steps.
+- [P-Plan 1.3](imports/p-plan-1.3.ttl) describes plans, steps and the activities that carry them out.
+- [OWL-S 1.2](https://www.w3.org/submissions/OWL-S/) describes tool parameters and preconditions.
+- [PROV-O](https://www.w3.org/TR/prov-o/) records the provenance of invocations and information artifacts.
+- The [OMG Commons Ontology Library](https://www.omg.org/spec/Commons/) supplies the imported annotation vocabulary.
+  The ontology also reuses the Commons `Measure` class for plan metrics and [BEAM](https://w3id.org/beam/core)'s
+  `Resource` class for skill resources.
 
 ## Ontology Prefixes
 
 | Prefix | Namespace |
 |---|---|
 | oe-agtorch | `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/` |
+| oe-agtorch-ind | `https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration-individuals/` |
 | agento | `http://www.w3id.org/agentic-ai/onto#` |
 | pplan | `http://purl.org/net/p-plan#` |
 | process | `http://www.daml.org/services/owl-s/1.2/Process.owl#` |
 | prov | `http://www.w3.org/ns/prov#` |
 | cmns-av | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` |
-| cmns-cls | `https://www.omg.org/spec/Commons/Classifiers/` |
-| cmns-col | `https://www.omg.org/spec/Commons/Collections/` |
-| cmns-doc | `https://www.omg.org/spec/Commons/Documents/` |
-| cmns-org | `https://www.omg.org/spec/Commons/Organizations/` |
 | cmns-qtu | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` |
 | beam | `http://w3id.org/beam/core#` |
-| fibo-fnd-gao-obj | `https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/` |
 | dct | `http://purl.org/dc/terms/` |
 | skos | `http://www.w3.org/2004/02/skos/core#` |
 | owl | `http://www.w3.org/2002/07/owl#` |
