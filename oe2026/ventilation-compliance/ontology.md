@@ -451,17 +451,21 @@ To explore the ontology, open `individuals.rdf` in Protégé with the catalog in
 
 ## Ontology version
 
-- [Version 4 (11.06.2026)](https://drive.google.com/file/d/1de2D0Ak8-VkJLT9Oi_ddR3Lg3guIO7Ic/view?usp=share_link)
-- [Version 3 (10.30.2026)](https://drive.google.com/file/d/1rGgHYWUm7wlkjHZNXfRHlBUZ8ZOu0SW-/view?usp=share_link)
-- [Version 2 (10.23.2026)](https://drive.google.com/file/d/1nNHGjs25XlDSVxKEhhvMXQtPy7v8S-jL/view?usp=share_link)
-- [Version 1 (10.16.2026)](https://drive.google.com/file/d/1zr3qJ27BeCt3b2nh3yUHK3FnfZHq25Kz/view?usp=share_link)
+- [Version 6 (11.20.2026)](./archived/ontology/OE_12_TeamHVCC.rdf)
+- [Version 5 (11.16.2026)](./archived/ontology/OE_11_TeamHVCC.rdf)
+- [Version 4 (11.06.2026)](./archived/ontology/OE_10_TeamHVCC.rdf)
+- [Version 3 (10.30.2026)](./archived/ontology/OE_9_TeamHVCC.rdf)
+- [Version 2 (10.23.2026)](./archived/ontology/OE_8_TeamHVCC.rdf)
+- [Version 1 (10.16.2026)](./archived/ontology/OE_6_TeamHVCC.rdf)
 
 ## Individuals version 
 
-- [Version 3 (11.06.2026)](https://drive.google.com/file/d/1Tfh3-cf3_ezMEniaGQR8FZapGVnEUqST/view?usp=share_link)
-- [Version 2 (10.30.2026)](https://drive.google.com/file/d/1WGas4wosLwdDy4xTW6RV-koixCsDdf2H/view?usp=share_link)
-- [Version 1 (10.23.2026)](https://drive.google.com/file/d/1Q_sXuOQL58013yIvjluCNNwDzQz6zL2p/view?usp=share_link)
-
+- [Version 6 (11.20.2026)](./archived/ontology/OE_12_TeamHVCC_Individuals.rdf)
+- [Version 5 (11.16.2026)](./archived/ontology/OE_11_TeamHVCC_Individuals.rdf)
+- [Version 4 (11.06.2026)](./archived/ontology/OE_10_TeamHVCC_Individuals.rdf)
+- [Version 3 (10.30.2026)](./archived/ontology/OE_9_TeamHVCC_Individuals.rdf)
+- [Version 2 (10.23.2026)](./archived/ontology/OE_8_TeamHVCC_Individuals.rdf)
+  
 ## Ontologies Reused
 
 The reused vocabularies are grouped by the module they support. Full citations are on the [Related Work](related_work) page and in the references sheet of the [terminology list](termlist).
