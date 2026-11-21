@@ -1,0 +1,16 @@
+@startuml fig9d_plan_shortcuts
+!include style.iuml
+skinparam nodesep 120
+skinparam ranksep 75
+
+class InformationRequirement
+class OrchestrationPlan
+class "OrchestrationWorkflowStep" as OWS
+class HardConstraint
+
+OrchestrationPlan -right-> OWS : hasStep
+OrchestrationPlan .up.> InformationRequirement : /planSatisfiesRequirement
+OWS .up.> InformationRequirement : /stepSatisfiesRequirement
+OrchestrationPlan ..> HardConstraint : /planSatisfiesHardConstraint
+OWS ..> HardConstraint : /stepSatisfiesHardConstraint
+@enduml

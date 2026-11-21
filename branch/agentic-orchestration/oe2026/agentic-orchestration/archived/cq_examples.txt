@@ -1,0 +1,284 @@
+@prefix : <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/> .
+@prefix ex: <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/examples/> .
+@prefix agento: <http://www.w3id.org/agentic-ai/onto#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Example individuals for the three focus competency questions (CQ 2, CQ 3, CQ 6 of the use case).
+# Test data only: it is not part of OE_6_TeamAgenticCapabilities.rdf.
+
+<https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/examples/>
+    a owl:Ontology ;
+    rdfs:label "competency question examples"@en ;
+    owl:imports <https://tw.rpi.edu/ontology-engineering/oe2026/agentic-orchestration/agentic-orchestration/> .
+
+### Usage scenario 1, Jessica: request, requirements and the safety-screening hard constraint (CQ 3)
+
+ex:jessicaRequest a :Request ;
+    rdfs:label "Jessica's request: supplements for bone health, taking her osteoarthritis and celecoxib into account"@en ;
+    :expresses ex:needSupplementRecommendation , ex:needScientificEvidence , ex:needSupplementProducts .
+ex:needSupplementRecommendation a :InformationRequirement ; rdfs:label "supplement recommendations"@en .
+ex:needScientificEvidence a :InformationRequirement ; rdfs:label "supporting scientific evidence"@en .
+ex:needSupplementProducts a :InformationRequirement ; rdfs:label "purchasable supplement products"@en .
+
+ex:jessicaSafetySetting a :PreferenceSetting ;
+    rdfs:label "screen supplements against my current medication"@en .
+ex:safetyScreeningConstraint a :HardConstraint ;
+    rdfs:label "safety screening against celecoxib"@en ;
+    prov:wasDerivedFrom ex:jessicaSafetySetting .
+
+ex:supplementRecommendationCapability a :InformationAccess ;
+    rdfs:label "supplement recommendation capability"@en ;
+    :satisfiesRequirement ex:needSupplementRecommendation .
+ex:evidenceVerificationCapability a :DataProcessing ;
+    rdfs:label "evidence verification capability"@en ;
+    :satisfiesRequirement ex:needScientificEvidence .
+ex:productSearchCapability a :InformationAccess ;
+    rdfs:label "product search capability"@en ;
+    :satisfiesRequirement ex:needSupplementProducts .
+ex:interactionScreeningCapability a :InformationAccess ;
+    rdfs:label "interaction screening capability"@en ;
+    :satisfiesConstraint ex:safetyScreeningConstraint .
+ex:dosageCalculationCapability a :DataProcessing ;
+    rdfs:label "dosage calculation capability"@en .
+
+ex:personalizedSupplementRecommendationSkill a :Skill ;
+    rdfs:label "personalized supplement recommendation skill"@en ;
+    :hasCapability ex:supplementRecommendationCapability .
+ex:evidenceVerificationSkill a :Skill ;
+    rdfs:label "evidence verification skill"@en ;
+    :hasCapability ex:evidenceVerificationCapability .
+ex:productSelectionSkill a :Skill ;
+    rdfs:label "product selection skill"@en ;
+    :hasCapability ex:productSearchCapability .
+ex:supplementSafetyScreeningSkill a :Skill ;
+    rdfs:label "supplement safety screening skill"@en ;
+    :hasCapability ex:interactionScreeningCapability .
+ex:dosageCalculatorSkill a :Skill ;
+    rdfs:label "dosage calculator skill (not needed for Jessica)"@en ;
+    :hasCapability ex:dosageCalculationCapability .
+
+### Usage scenario 1, Jessica: the selected plan as written in the use case, one step after another (CQ 2)
+
+ex:jessicaPlan a :SelectedOrchestrationPlan ;
+    rdfs:label "Jessica's orchestration plan"@en ;
+    :addresses ex:jessicaRequest ;
+    :satisfiesConstraint ex:safetyScreeningConstraint ;
+    :hasStep ex:step1 , ex:step2 , ex:step3 , ex:step4 , ex:step5 , ex:step6 .
+
+ex:step1 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:getCandidateSupplements ; agento:nextStep ex:step2 .
+ex:step2 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:screenInteractions ; agento:nextStep ex:step3 .
+ex:step3 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:verifyEvidence ; agento:nextStep ex:step4 .
+ex:step4 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:getSupplementProducts ; agento:nextStep ex:step5 .
+ex:step5 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:selectSupplementProduct ; agento:nextStep ex:step6 .
+ex:step6 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:produceRecommendation .
+
+ex:getCandidateSupplements a agento:Task ; rdfs:label "get candidate supplements"@en ;
+    :performedBySkill ex:personalizedSupplementRecommendationSkill ;
+    :produces ex:candidates .
+ex:screenInteractions a agento:Task ; rdfs:label "screen interactions"@en ;
+    :performedBySkill ex:supplementSafetyScreeningSkill ;
+    :consumes ex:candidates ; :produces ex:safetyAssessment .
+ex:verifyEvidence a agento:Task ; rdfs:label "verify evidence"@en ;
+    :performedBySkill ex:evidenceVerificationSkill ;
+    :consumes ex:candidates ; :produces ex:evidenceAssessment .
+ex:getSupplementProducts a agento:Task ; rdfs:label "get supplement products"@en ;
+    :performedBySkill ex:productSelectionSkill ;
+    :consumes ex:candidates ; :produces ex:productList .
+ex:selectSupplementProduct a agento:Task ; rdfs:label "select supplement product"@en ;
+    :performedBySkill ex:productSelectionSkill ;
+    :consumes ex:safetyAssessment , ex:evidenceAssessment , ex:productList ;
+    :produces ex:selectedProducts .
+ex:produceRecommendation a agento:Task ; rdfs:label "produce recommendation"@en ;
+    :consumes ex:selectedProducts ; :produces ex:jessicaAnswer .
+
+ex:candidates a :CandidateSupplement ; rdfs:label "candidate supplements"@en .
+ex:safetyAssessment a :SafetyAssessment ; rdfs:label "safety assessment"@en ; :assessesSupplement ex:candidates .
+ex:evidenceAssessment a :EvidenceAssessment ; rdfs:label "evidence assessment"@en ; :assessesSupplement ex:candidates .
+ex:productList a :ProductList ; rdfs:label "product list"@en .
+ex:selectedProducts a :ProductList ; rdfs:label "selected products"@en .
+ex:jessicaAnswer a :Answer ; rdfs:label "recommendation for Jessica"@en .
+
+# A plan without the screening task breaks Jessica's hard constraint, so it is disqualified (A5 feedback).
+ex:jessicaPlanWithoutScreening a :CandidateOrchestrationPlan ;
+    rdfs:label "candidate plan for Jessica without interaction screening"@en ;
+    :addresses ex:jessicaRequest ;
+    :violatesConstraint ex:safetyScreeningConstraint .
+
+### Usage scenario 3, Olivia: two candidate plans scored on two soft constraints (CQ 6)
+
+ex:oliviaRequest a :Request ;
+    rdfs:label "Olivia's request: the best heart-health supplement"@en ;
+    :expresses ex:needHeartHealthSupplement .
+ex:needHeartHealthSupplement a :InformationRequirement ; rdfs:label "heart-health supplement recommendation"@en .
+
+ex:strongEvidenceConstraint a :SoftConstraint ;
+    rdfs:label "strong scientific evidence"@en ;
+    :hasPriority 1 ;
+    :isMeasuredBy ex:evidenceCoverageCriterion ;
+    prov:wasDerivedFrom ex:oliviaRequest .
+ex:fewToolCallsConstraint a :SoftConstraint ;
+    rdfs:label "as few external tool calls as possible"@en ;
+    :hasPriority 1 ;
+    :isMeasuredBy ex:toolUsageCriterion ;
+    :conflictsWith ex:strongEvidenceConstraint ;
+    prov:wasDerivedFrom ex:oliviaRequest .
+
+ex:evidenceCoverageCriterion a :DecisionCriterion ;
+    rdfs:label "high evidence coverage"@en ;
+    :hasDirection "maximize" ;
+    :hasWeight 1.0 .
+ex:toolUsageCriterion a :DecisionCriterion ;
+    rdfs:label "low tool usage"@en ;
+    :hasDirection "minimize" ;
+    :hasWeight 1.0 .
+
+ex:planA a :CandidateOrchestrationPlan ;
+    rdfs:label "plan A (screening and a second evidence pass)"@en ;
+    :addresses ex:oliviaRequest .
+ex:planB a :CandidateOrchestrationPlan ;
+    rdfs:label "plan B (one evidence pass)"@en ;
+    :addresses ex:oliviaRequest .
+
+ex:planAEvaluation a :PlanEvaluation ;
+    :evaluates ex:planA ;
+    :usesCriterion ex:evidenceCoverageCriterion , ex:toolUsageCriterion ;
+    :hasMeasurement ex:planAEvidenceCoverage , ex:planAToolCalls ;
+    :hasScore 1.00 ;
+    :hasRank 2 .
+ex:planAEvidenceCoverage a :EvidenceCoverage ; :hasValue 1.00 ; :hasUnit "share of candidate supplements with supporting studies" .
+ex:planAToolCalls a :ToolCallCount ; :hasValue 8 ; :hasUnit "external tool calls" .
+
+ex:planBEvaluation a :PlanEvaluation ;
+    :evaluates ex:planB ;
+    :usesCriterion ex:evidenceCoverageCriterion , ex:toolUsageCriterion ;
+    :hasMeasurement ex:planBEvidenceCoverage , ex:planBToolCalls ;
+    :hasScore 1.70 ;
+    :hasRank 1 .
+ex:planBEvidenceCoverage a :EvidenceCoverage ; :hasValue 0.70 ; :hasUnit "share of candidate supplements with supporting studies" .
+ex:planBToolCalls a :ToolCallCount ; :hasValue 3 ; :hasUnit "external tool calls" .
+
+# The harness records the outcome of the ranking.
+ex:planB a :SelectedOrchestrationPlan .
+ex:planA a :RejectedOrchestrationPlan .
+
+### Usage scenario 1, Ken: two candidate plans scored on his two soft constraints (CQ 1)
+# Tool-call counts follow the use case flows; the token costs are illustrative example values.
+
+ex:kenRequest a :Request ;
+    rdfs:label "Ken's request: supplement recommendations for building muscle mass"@en ;
+    :expresses ex:needMuscleSupplements , ex:needEvidenceForKen , ex:needAffordableProducts .
+ex:needMuscleSupplements a :InformationRequirement ; rdfs:label "supplement recommendations for building muscle mass"@en .
+ex:needEvidenceForKen a :InformationRequirement ; rdfs:label "supporting scientific evidence"@en .
+ex:needAffordableProducts a :InformationRequirement ; rdfs:label "affordable products with good reviews"@en .
+
+ex:kenSettings a :PreferenceSetting ;
+    rdfs:label "minimize token usage and external tool calls"@en .
+ex:kenFewToolCalls a :SoftConstraint ;
+    rdfs:label "minimize external tool calls"@en ;
+    :hasPriority 1 ;
+    :isMeasuredBy ex:kenToolCallCriterion ;
+    prov:wasDerivedFrom ex:kenSettings .
+ex:kenLowTokenUse a :SoftConstraint ;
+    rdfs:label "minimize token usage"@en ;
+    :hasPriority 1 ;
+    :isMeasuredBy ex:kenTokenCostCriterion ;
+    prov:wasDerivedFrom ex:kenSettings .
+ex:kenToolCallCriterion a :DecisionCriterion ; rdfs:label "fewest external tool calls"@en ;
+    :hasDirection "minimize" ; :hasWeight 1.0 .
+ex:kenTokenCostCriterion a :DecisionCriterion ; rdfs:label "lowest token cost"@en ;
+    :hasDirection "minimize" ; :hasWeight 1.0 .
+
+ex:kenPlan1 a :CandidateOrchestrationPlan ;
+    rdfs:label "Ken plan 1: one evidence pass, products sorted by price"@en ;
+    :addresses ex:kenRequest ;
+    :hasStep ex:k1s1 , ex:k1s2 , ex:k1s3 , ex:k1s4 , ex:k1s5 .
+ex:k1s1 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:getCandidatesForKen ; agento:nextStep ex:k1s2 .
+ex:k1s2 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:getProductsByPrice ; agento:nextStep ex:k1s3 .
+ex:k1s3 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:verifyEvidenceForKen ; agento:nextStep ex:k1s4 .
+ex:k1s4 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:selectProductForKen ; agento:nextStep ex:k1s5 .
+ex:k1s5 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:produceRecommendationForKen .
+
+ex:kenPlan2 a :CandidateOrchestrationPlan ;
+    rdfs:label "Ken plan 2: adds interaction screening and a second evidence pass"@en ;
+    :addresses ex:kenRequest ;
+    :hasStep ex:k2s1 , ex:k2s2 , ex:k2s3 , ex:k2s4 , ex:k2s5 , ex:k2s6 , ex:k2s7 .
+ex:k2s1 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:getCandidatesForKen ; agento:nextStep ex:k2s2 .
+ex:k2s2 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:getProductsByPrice ; agento:nextStep ex:k2s3 .
+ex:k2s3 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:verifyEvidenceForKen ; agento:nextStep ex:k2s4 .
+ex:k2s4 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:screenInteractionsForKen ; agento:nextStep ex:k2s5 .
+ex:k2s5 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:secondEvidencePassForKen ; agento:nextStep ex:k2s6 .
+ex:k2s6 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:selectProductForKen ; agento:nextStep ex:k2s7 .
+ex:k2s7 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:produceRecommendationForKen .
+
+ex:getCandidatesForKen a agento:Task ; rdfs:label "get candidate supplements"@en .
+ex:getProductsByPrice a agento:Task ; rdfs:label "get supplement products sorted by price"@en .
+ex:verifyEvidenceForKen a agento:Task ; rdfs:label "verify evidence"@en .
+ex:screenInteractionsForKen a agento:Task ; rdfs:label "screen interactions"@en .
+ex:secondEvidencePassForKen a agento:Task ; rdfs:label "verify evidence again with a broader query"@en .
+ex:selectProductForKen a agento:Task ; rdfs:label "select supplement product"@en .
+ex:produceRecommendationForKen a agento:Task ; rdfs:label "produce recommendation"@en .
+
+ex:kenPlan1Evaluation a :PlanEvaluation ;
+    :evaluates ex:kenPlan1 ;
+    :usesCriterion ex:kenToolCallCriterion , ex:kenTokenCostCriterion ;
+    :hasMeasurement ex:kenPlan1ToolCalls , ex:kenPlan1TokenCost ;
+    :hasScore 2.00 ;
+    :hasRank 1 .
+ex:kenPlan1ToolCalls a :ToolCallCount ; :hasValue 4 ; :hasUnit "external tool calls" .
+ex:kenPlan1TokenCost a :TokenCost ; :hasValue 0.02 ; :hasUnit "US dollars" .
+ex:kenPlan2Evaluation a :PlanEvaluation ;
+    :evaluates ex:kenPlan2 ;
+    :usesCriterion ex:kenToolCallCriterion , ex:kenTokenCostCriterion ;
+    :hasMeasurement ex:kenPlan2ToolCalls , ex:kenPlan2TokenCost ;
+    :hasScore 0.00 ;
+    :hasRank 2 .
+ex:kenPlan2ToolCalls a :ToolCallCount ; :hasValue 9 ; :hasUnit "external tool calls" .
+ex:kenPlan2TokenCost a :TokenCost ; :hasValue 0.05 ; :hasUnit "US dollars" .
+ex:kenPlan1 a :SelectedOrchestrationPlan .
+ex:kenPlan2 a :RejectedOrchestrationPlan .
+
+### Usage scenario 2, Dante: why each capability in his selected plan was chosen (CQ 5)
+
+ex:danteRequest a :Request ;
+    rdfs:label "Dante's request: compare magnesium glycinate and magnesium citrate for sleep and summarize the evidence for each"@en ;
+    :expresses ex:needEvidenceSummary , ex:needComparison .
+ex:needEvidenceSummary a :InformationRequirement ; rdfs:label "summarize scientific evidence"@en .
+ex:needComparison a :InformationRequirement ; rdfs:label "compare magnesium glycinate and magnesium citrate"@en .
+ex:danteSettings a :PreferenceSetting ; rdfs:label "safety screening on; minimize execution time"@en .
+ex:danteSafetyScreening a :HardConstraint ; rdfs:label "safety screening"@en ; prov:wasDerivedFrom ex:danteSettings .
+ex:danteFastExecution a :SoftConstraint ; rdfs:label "minimize execution time"@en ; :hasPriority 1 ;
+    prov:wasDerivedFrom ex:danteSettings .
+
+ex:evidenceVerificationCapability :satisfiesRequirement ex:needEvidenceSummary .
+ex:interactionScreeningCapability :satisfiesConstraint ex:danteSafetyScreening .
+ex:evidenceSynthesisCapability a :ContentGeneration ;
+    rdfs:label "evidence synthesis capability"@en ;
+    :satisfiesRequirement ex:needComparison .
+ex:evidenceSynthesisSkill a :Skill ;
+    rdfs:label "evidence synthesis skill"@en ;
+    :hasCapability ex:evidenceSynthesisCapability .
+
+ex:dantePlan a :SelectedOrchestrationPlan ;
+    rdfs:label "Dante's selected plan"@en ;
+    :addresses ex:danteRequest ;
+    :satisfiesConstraint ex:danteSafetyScreening ;
+    :hasStep ex:d1 , ex:d2 , ex:d3 , ex:d4 , ex:d5 .
+ex:d1 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:verifyEvidenceGlycinate .
+ex:d2 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:screenGlycinate .
+ex:d3 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:verifyEvidenceCitrate .
+ex:d4 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:screenCitrate .
+ex:d5 a :OrchestrationWorkflowStep ; agento:hasAssociatedTask ex:synthesizeEvidence .
+
+ex:verifyEvidenceGlycinate a agento:Task ; rdfs:label "verify evidence (magnesium glycinate)"@en ;
+    agento:requiresCapability ex:evidenceVerificationCapability ; :performedBySkill ex:evidenceVerificationSkill .
+ex:screenGlycinate a agento:Task ; rdfs:label "screen interactions (magnesium glycinate)"@en ;
+    agento:requiresCapability ex:interactionScreeningCapability ; :performedBySkill ex:supplementSafetyScreeningSkill .
+ex:verifyEvidenceCitrate a agento:Task ; rdfs:label "verify evidence (magnesium citrate)"@en ;
+    agento:requiresCapability ex:evidenceVerificationCapability ; :performedBySkill ex:evidenceVerificationSkill .
+ex:screenCitrate a agento:Task ; rdfs:label "screen interactions (magnesium citrate)"@en ;
+    agento:requiresCapability ex:interactionScreeningCapability ; :performedBySkill ex:supplementSafetyScreeningSkill .
+ex:synthesizeEvidence a agento:Task ; rdfs:label "synthesize evidence"@en ;
+    agento:requiresCapability ex:evidenceSynthesisCapability ; :performedBySkill ex:evidenceSynthesisSkill .

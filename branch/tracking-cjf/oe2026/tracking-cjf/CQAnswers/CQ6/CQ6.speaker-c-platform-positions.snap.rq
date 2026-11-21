@@ -1,0 +1,30 @@
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT DISTINCT ?pos ?option ?summary ?support_text ?turn
+WHERE {
+    # get Speaker C's expressed positions
+    ?pos a cjf:ExpressedPosition .
+    ?pos cjf:hasSpeaker ?speaker .
+    ?speaker cjf:hasSpeakerName "Speaker C" .
+
+    # keep positions about Platform A or Platform B
+    ?pos cjf:hasPositionTowards ?option .
+    FILTER (?option = sample:Move_OCT21_A-M0003
+            || ?option = sample:Move_OCT21_A-M0021)
+
+    OPTIONAL {
+        ?pos cjf:hasSummary ?summary .
+    }
+
+    # get the supporting text and its source turn
+    ?pos sio:SIO_000206 ?support .
+    ?support cjf:hasConversationText ?support_text .
+    ?support cjf:isPartOfUtterance ?utterance .
+    ?utterance prov:wasAttributedTo ?speaker .
+    ?utterance prov:wasGeneratedBy sample:Conversation .
+    ?utterance cjf:hasTurnNumber ?turn .
+}
+ORDER BY ?turn ?pos

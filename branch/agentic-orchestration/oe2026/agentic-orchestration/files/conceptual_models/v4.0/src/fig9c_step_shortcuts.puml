@@ -1,0 +1,20 @@
+@startuml fig9c_step_shortcuts
+!include style.iuml
+
+skinparam nodesep 90
+skinparam ranksep 70
+
+class "OrchestrationWorkflowStep" as OWS
+class "Task" as Task <<AgentO>> #EDEDED
+class "Capability" as Capability <<AgentO>> #EDEDED
+class InformationRequirement #EDEDED
+class HardConstraint #EDEDED
+
+OWS --> "1" Task : agento:hasAssociatedTask
+Task --> Capability : agento:requiresCapability
+Capability --> InformationRequirement : satisfiesRequirement
+Capability --> HardConstraint : satisfiesConstraint
+OWS ..> Capability : /stepRequiresCapability
+OWS ..> InformationRequirement : /stepSatisfiesRequirement
+OWS ..> HardConstraint : /stepSatisfiesHardConstraint
+@enduml

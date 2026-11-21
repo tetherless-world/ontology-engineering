@@ -1,0 +1,24 @@
+PREFIX cjf: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/>
+PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/>
+
+SELECT DISTINCT ?pos ?speaker_name ?support_text ?turn
+WHERE {
+    # the outcome directly asserts which option it selects
+    sample:Move_OCT21_A-M0067 cjf:selects ?option .
+    ?pos cjf:hasPositionTowards ?option .
+
+    # select the agreement (inferred)
+    ?pos a cjf:Agreement .
+
+    # hasSpeaker is a property chain
+    ?pos cjf:hasSpeaker ?speaker .
+    ?speaker cjf:hasSpeakerName ?speaker_name .
+
+    # find the supporting text in the conversation
+    ?pos cjf:isPositiveSupportedBy ?support .
+    ?support cjf:hasConversationText ?support_text .
+
+    # at what turn was this spoken
+    ?pos cjf:hasUtterance ?utterance .
+    ?utterance cjf:hasTurnNumber ?turn .
+} order by ?turn

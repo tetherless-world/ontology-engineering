@@ -1,0 +1,32 @@
+@startuml fig3a_skills_resources
+!include style.iuml
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam noteBackgroundColor #FFFFFF
+skinparam noteBorderColor #333333
+
+class Skill
+class "Resource" as BeamResource <<BEAM>> #EDEDED
+class "SkillResource" as SkillResource
+class "Instruction" as Instruction
+class ReferenceMaterial
+class Template
+class ExecutableResource
+class Script
+class "Capability" as Capability <<AgentO>> #EDEDED
+class Tool #EDEDED
+class Precondition #EDEDED
+
+BeamResource <|-- SkillResource
+SkillResource <|-- Instruction
+SkillResource <|-- ReferenceMaterial
+SkillResource <|-- Template
+SkillResource <|-- ExecutableResource
+ExecutableResource <|-- Script
+Skill --> SkillResource : hasResource
+Skill --> Capability : hasCapability
+Skill --> Tool : usesTool
+Skill --> Precondition : hasPrecondition
+note "The four kinds of SkillResource\nare pairwise disjoint" as N1
+N1 .. SkillResource
+@enduml

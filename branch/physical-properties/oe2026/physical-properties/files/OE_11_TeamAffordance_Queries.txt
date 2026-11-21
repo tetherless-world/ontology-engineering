@@ -1,0 +1,731 @@
+################################################################################
+# OE_11_TeamAffordance_Queries.txt
+# Ontology Engineering 2026 - Assignment 11 - Team Affordance
+# Team: Hyejin Park, Xiye Fan, Liangliang Zhang, Alex Clark
+#
+# Ontologies queried (load BOTH):
+#   OE_11_TeamAffordance.rdf              main ontology (classes, properties, CUT
+#                                         requirements, requirement mappings,
+#                                         SWRL rules)
+#   OE_11_TeamAffordance_Individuals.rdf  test individuals; owl:imports the main
+#                                         ontology
+#
+# HOW TO RUN
+#   1. Put both .rdf files in the same folder. In Protege 5.6.x, open
+#      OE_11_TeamAffordance_Individuals.rdf. Protege resolves the import of the
+#      main ontology from that same folder.
+#   2. Each query below is self-contained: copy everything from its first
+#      PREFIX line to its last line (ORDER BY / closing brace) into the tool
+#      named in its "RUN IN" line.
+#   3. Two kinds of reasoning are used, and each query says which one it needs:
+#      STANDARD = RDF simple entailment (asserted triples only)
+#          -> Window > Tabs > SPARQL Query; no reasoner needed.
+#      SNAP = OWL 2 DL entailment including the ontology's SWRL rules
+#          -> Reasoner > HermiT 1.4.x > Start reasoner, THEN run the query in
+#             the Snap SPARQL Query view (Window > Views > Query views >
+#             Snap SPARQL Query, placed in a tab).
+#          satisfiesRequirement, conflictsWithRequirement,
+#          hasUnresolvedRequirement and hasJudgment are inferred by the SWRL
+#          rules, so SNAP queries return no rows in the STANDARD tab (the only
+#          exception: the knife and scissors results, which the Individuals
+#          file also stores as cached assertions for CQ3).
+#
+# Namespaces (declared again in every query that uses them):
+#   af:  <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+#        schema terms, the cut action, requirements, mappings, features, levels
+#   ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+#        test individuals (carrotTarget, cardCandidate, assessments, judgments).
+#        New in OE_11: all test individuals moved to this namespace.
+#
+# Changes since OE_10 (instructor feedback):
+#   - This file is the final, checked submission. Every query below was run on
+#     OE_11_TeamAffordance.rdf + OE_11_TeamAffordance_Individuals.rdf, and its
+#     EXPECTED block is the result of that run.
+#   - All individuals use the ind: namespace.
+#   - Rule names follow the OE_11 descriptive SWRL labels.
+#   - Q1.2 simplified. Q2.2 rewritten (it did not return the expected answer).
+#     Q2.3 no longer uses CONCAT. CQ4 is one query (Q4.1). Q3.2 simplified (it
+#     was slow). Every query, including Q3.5, is stated as a question.
+#   - New: Q5.1 answers CQ5 (an object whose edge thickness is unknown).
+################################################################################
+
+
+################################################################################
+# CQ1 (Priority 1) - Role B: Xiye Fan
+# Can a rigid plastic card cut a carrot, and why? (Use Case Scenario 1)
+# Expected answer (from the use case): Yes.
+# REQUIREMENTS under the represented target conditions.
+#   Target carrot: hardness = high.
+#   Required for CUT (under this target condition):
+#       edgeThickness = low   (cutEdgeThicknessMapping)
+#       rigidity      = high  (cutRigidityMapping)
+#   Card candidate:
+#       edgeThickness = low   -> SATISFIED
+#       rigidity      = high  -> SATISFIED
+#   Computed result within the TWO modeled requirements: FEASIBLE.
+################################################################################
+
+
+# ------------------------------------------------------------------------------
+# Q1.1 (CQ1 - inferred judgment) - Can a rigid plastic card be used to cut a carrot?
+# Retrieve the feasibility judgment assigned to the card-carrot CUT assessment.
+# The inferred hasJudgment relationship indicates whether the action is feasible.
+# REASONING: rule InferSatisfiedRequirementFromMappedFeatures infers that
+#            both modeled CUT requirements are satisfied; rule
+#            ClassifyTwoCUTRequirementsSatisfied classifies the assessment
+#            as a TwoCUTRequirementsSatisfiedAssessment; rule
+#            AssignFeasibleJudgment infers the hasJudgment relationship.
+# RUN IN:    SNAP (Snap SPARQL Query tab, after Reasoner > HermiT > Start reasoner).
+# EXPECTED (1 row, with reasoning):
+#   ?judgment
+#   ind:feasibleJudgment
+#   Standard tab (no reasoner): NO ROWS (hasJudgment is inferred).
+# ------------------------------------------------------------------------------
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?judgment
+WHERE {
+    ind:cardCarrotCutAssessment af:hasJudgment ?judgment .
+}
+
+# ------------------------------------------------------------------------------
+# Q1.2 (CQ1 - explanation) - Why does the card satisfy the modeled CUT requirements?
+# Retrieve the target condition, each applicable mapping, the required feature
+# level, and the card's actual level; compare them row by row.
+# REASONING: asserted triples only (no reasoner needed).
+# RUN IN:    STANDARD (SPARQL Query tab, no reasoner needed).
+# EXPECTED (2 rows, even without a reasoner):
+#   ?requirement                 ?requiredFeature  ?requiredLevel ?candidateLevel
+#   af:cutEdgeThicknessRequirement  af:edgeThickness  af:low       af:low
+#   af:cutRigidityRequirement       af:rigidity       af:high      af:high
+#   In BOTH rows: candidate=ind:cardCandidate, target=ind:carrotTarget,
+#   action=af:cut, targetFeature=af:hardness, targetLevel=af:high.
+# ------------------------------------------------------------------------------
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?requirement ?requiredFeature ?requiredLevel ?candidateLevel
+WHERE {
+  ind:cardCarrotCutAssessment af:hasCandidate ?candidate ;
+                              af:hasTarget ?target ;
+                              af:hasAction ?action .
+
+  ?action af:hasRequirement ?requirement .
+
+  ?target af:hasFeatureValue ?targetFV .
+  ?targetFV af:hasFeatureType ?targetFeature ;
+            af:hasLevel ?targetLevel .
+
+  ?mapping af:usesTargetFeatureType ?targetFeature ;
+           af:usesTargetLevel ?targetLevel ;
+           af:affectsRequirement ?requirement ;
+           af:specifiesRequiredLevel ?requiredLevel .
+
+  ?requirement af:concernsFeature ?requiredFeature .
+
+  OPTIONAL {
+    ?candidate af:hasFeatureValue ?candidateFV .
+    ?candidateFV af:hasFeatureType ?requiredFeature ;
+                 af:hasLevel ?candidateLevel .
+  }
+}
+ORDER BY ?requirement
+
+
+################################################################################
+# CQ2 (Priority 2), CQ4 (Priority 4) and CQ5 (Priority 5) - Liangliang Zhang
+# (Use Case Scenario 2)
+# Tested against OE_11_TeamAffordance.rdf + OE_11_TeamAffordance_Individuals.rdf
+#
+# PREFIXES (every query declares the ones it uses):
+#   af:  <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+#        classes, properties, cut, requirements, mappings, features, levels
+#   ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+#        test individuals (carrotTarget, cardCandidate, ..., judgments).
+#        In OE_11 all test individuals moved to this namespace.
+#
+# WHICH TAB TO USE (stated again on every query):
+#   SNAP = Reasoner > HermiT > Start reasoner, then the Snap SPARQL Query view
+#          (Window > Views > Query views > Snap SPARQL Query), which uses
+#          OWL 2 DL + SWRL entailment. These queries read
+#          satisfiesRequirement, conflictsWithRequirement, hasUnresolvedRequirement
+#          and hasJudgment, which are never asserted for the CQ2 objects: the
+#          SWRL rules infer them. In the standard SPARQL tab they return NO ROWS.
+#   STANDARD = Window > Tabs > SPARQL Query (no reasoner needed).
+#
+# CHANGES SINCE OE_10 (instructor feedback):
+#   - Q2.2 rewritten: it now reads only inferred properties of the assessment,
+#     including the new OE_11 property hasUnresolvedRequirement.
+#   - Q2.3 rewritten without CONCAT, BIND, IF or GROUP BY.
+#   - CQ4 is now ONE query (Q4.1); the former Q4.2 was merged into it.
+#   - Every query is stated as its own English question.
+#   - NEW: CQ5 is answered by Q5.1.
+################################################################################
+
+
+# ==============================================================================
+# CQ2: "Given the same carrot, which of a rigid plastic card, a rolling pin, a
+#       kitchen sponge and a metal spatula can satisfy the CUT requirements?"
+# The carrot has hardness = high, so CUT requires rigidity = high AND
+# edge thickness = low.
+#   card        rigidity high, edge thickness low           -> FEASIBLE
+#   rolling pin rigidity high, edge thickness HIGH          -> INFEASIBLE
+#   sponge      rigidity LOW,  edge thickness HIGH          -> INFEASIBLE
+#   spatula     rigidity high, edge thickness NOT SUPPLIED  -> INSUFFICIENT INFO
+# Answer: only the card can cut the carrot.
+# ==============================================================================
+
+# Q2.1 (MAIN CQ2 QUERY)
+# Question: Which of the card, rolling pin, sponge and spatula can cut the
+#           carrot? Return the inferred feasibility judgment of each object.
+# RUN IN:   SNAP (HermiT started)
+# EXPECTED: 4 rows
+#   ind:cardCandidate        ind:feasibleJudgment
+#   ind:rollingPinCandidate  ind:infeasibleJudgment
+#   ind:spatulaCandidate     ind:insufficientInformationJudgment
+#   ind:spongeCandidate      ind:infeasibleJudgment
+# Standard tab (no reasoner): NO ROWS.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?candidate ?judgment
+WHERE {
+  ?assessment af:hasTarget ind:carrotTarget .
+  ?assessment af:hasAction af:cut .
+  ?assessment af:hasCandidate ?candidate .
+  ?assessment af:hasJudgment ?judgment .
+  FILTER (?candidate = ind:cardCandidate || ?candidate = ind:rollingPinCandidate ||
+          ?candidate = ind:spongeCandidate || ?candidate = ind:spatulaCandidate)
+}
+ORDER BY ?candidate
+
+
+# Q2.2
+# Question: For each of the four objects, which CUT requirements are satisfied,
+#           which are in conflict, and which cannot be evaluated?
+# RUN IN:   SNAP (HermiT started)
+# EXPECTED: 8 rows ("-" = empty cell; row order within one object may vary)
+#   ?candidate               ?satisfied                       ?conflicting                     ?unresolved
+#   ind:cardCandidate        af:cutEdgeThicknessRequirement   -                                -
+#   ind:cardCandidate        af:cutRigidityRequirement        -                                -
+#   ind:rollingPinCandidate  af:cutRigidityRequirement        -                                -
+#   ind:rollingPinCandidate  -                                af:cutEdgeThicknessRequirement   -
+#   ind:spatulaCandidate     af:cutRigidityRequirement        -                                -
+#   ind:spatulaCandidate     -                                -                                af:cutEdgeThicknessRequirement
+#   ind:spongeCandidate      -                                af:cutEdgeThicknessRequirement   -
+#   ind:spongeCandidate      -                                af:cutRigidityRequirement        -
+# Standard tab (no reasoner): NO ROWS.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?candidate ?satisfied ?conflicting ?unresolved
+WHERE {
+  ?assessment af:hasTarget ind:carrotTarget .
+  ?assessment af:hasCandidate ?candidate .
+  { ?assessment af:satisfiesRequirement ?satisfied . }
+  UNION
+  { ?assessment af:conflictsWithRequirement ?conflicting . }
+  UNION
+  { ?assessment af:hasUnresolvedRequirement ?unresolved . }
+  FILTER (?candidate = ind:cardCandidate || ?candidate = ind:rollingPinCandidate ||
+          ?candidate = ind:spongeCandidate || ?candidate = ind:spatulaCandidate)
+}
+ORDER BY ?candidate
+
+
+# Q2.3 (evidence, no reasoner)
+# Question: For each object, what level of each CUT feature does the carrot
+#           require, and what level does the object actually have?
+# RUN IN:   STANDARD (no reasoner needed). OPTIONAL keeps a row when the object
+#           has no value for a feature (the spatula's edge thickness).
+# EXPECTED: 8 rows ("-" = empty cell)
+#   ?candidate               ?feature          ?requiredLevel  ?candidateLevel
+#   ind:cardCandidate        af:edgeThickness  af:low          af:low
+#   ind:cardCandidate        af:rigidity       af:high         af:high
+#   ind:rollingPinCandidate  af:edgeThickness  af:low          af:high
+#   ind:rollingPinCandidate  af:rigidity       af:high         af:high
+#   ind:spatulaCandidate     af:edgeThickness  af:low          -
+#   ind:spatulaCandidate     af:rigidity       af:high         af:high
+#   ind:spongeCandidate      af:edgeThickness  af:low          af:high
+#   ind:spongeCandidate      af:rigidity       af:high         af:low
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?candidate ?feature ?requiredLevel ?candidateLevel
+WHERE {
+  ?assessment af:hasTarget ind:carrotTarget .
+  ?assessment af:hasCandidate ?candidate .
+  ?assessment af:hasAction ?action .
+  ?action af:hasRequirement ?requirement .
+  ?requirement af:concernsFeature ?feature .
+  ind:carrotTarget af:hasFeatureValue ?targetValue .
+  ?targetValue af:hasFeatureType ?targetFeature .
+  ?targetValue af:hasLevel ?targetLevel .
+  ?mapping af:affectsRequirement ?requirement .
+  ?mapping af:usesTargetFeatureType ?targetFeature .
+  ?mapping af:usesTargetLevel ?targetLevel .
+  ?mapping af:specifiesRequiredLevel ?requiredLevel .
+  OPTIONAL {
+    ?candidate af:hasFeatureValue ?candidateValue .
+    ?candidateValue af:hasFeatureType ?feature .
+    ?candidateValue af:hasLevel ?candidateLevel .
+  }
+  FILTER (?candidate = ind:cardCandidate || ?candidate = ind:rollingPinCandidate ||
+          ?candidate = ind:spongeCandidate || ?candidate = ind:spatulaCandidate)
+}
+ORDER BY ?candidate ?feature
+
+
+# Q2.4 (regression)
+# Question: Which judgment does EVERY object assessed against the carrot
+#           receive, including the neutral-name test candidates?
+# RUN IN:   SNAP (HermiT started)
+# EXPECTED: 9 rows
+#   ind:feasibleJudgment                 ind:cardCandidate
+#   ind:feasibleJudgment                 ind:knifeCandidate      (via its blade part)
+#   ind:feasibleJudgment                 ind:scissorsCandidate   (via its blade parts)
+#   ind:feasibleJudgment                 ind:testCandidateA      (card's levels, neutral name)
+#   ind:infeasibleJudgment               ind:rollingPinCandidate
+#   ind:infeasibleJudgment               ind:spongeCandidate
+#   ind:infeasibleJudgment               ind:testCandidateB      (rolling pin's levels)
+#   ind:insufficientInformationJudgment  ind:spatulaCandidate
+#   ind:insufficientInformationJudgment  ind:testCandidateC      (spatula's pattern)
+# Standard tab (no reasoner): only the 2 knife/scissors rows, because the
+# OE_11 Individuals file stores those two judgments as asserted (cached)
+# results for CQ3.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?judgment ?candidate
+WHERE {
+  ?assessment af:hasTarget ind:carrotTarget .
+  ?assessment af:hasAction af:cut .
+  ?assessment af:hasCandidate ?candidate .
+  ?assessment af:hasJudgment ?judgment .
+}
+ORDER BY ?judgment ?candidate
+
+
+# ==============================================================================
+# CQ4: "Why is the rigid plastic card returned as a qualifying candidate for
+#       cutting the carrot while the kitchen sponge is excluded?"
+# Answer: the two objects differ on exactly the features CUT constrains. The
+# card has rigidity high and edge thickness low, so it satisfies both
+# requirements (feasible). The sponge has rigidity low and edge thickness high:
+# both values are recorded and both differ from the required levels, so it
+# conflicts with both requirements (infeasible), not "missing information".
+# ==============================================================================
+
+# Q4.1 (single CQ4 query; replaces the OE_10 pair Q4.1 + Q4.2)
+# Question: For the card and the sponge, what judgment does each receive, and
+#           for each CUT requirement, is it satisfied or in conflict, what level
+#           is required, and what level does the object have?
+# RUN IN:   SNAP (HermiT started)
+# EXPECTED: 4 rows ("-" = empty cell)
+#   ?candidate          ?judgment               ?satisfied                      ?conflicting                    ?feature          ?requiredLevel  ?candidateLevel
+#   ind:cardCandidate   ind:feasibleJudgment    af:cutEdgeThicknessRequirement  -                               af:edgeThickness  af:low          af:low
+#   ind:cardCandidate   ind:feasibleJudgment    af:cutRigidityRequirement       -                               af:rigidity       af:high         af:high
+#   ind:spongeCandidate ind:infeasibleJudgment  -                               af:cutEdgeThicknessRequirement  af:edgeThickness  af:low          af:high
+#   ind:spongeCandidate ind:infeasibleJudgment  -                               af:cutRigidityRequirement       af:rigidity       af:high         af:low
+# Reading: every card row is "satisfied" and every sponge row is "conflicting",
+# on the same two requirements, so both requirements decide the outcome.
+# Standard tab (no reasoner): NO ROWS.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?candidate ?judgment ?satisfied ?conflicting ?feature ?requiredLevel ?candidateLevel
+WHERE {
+  ?assessment af:hasTarget ind:carrotTarget .
+  ?assessment af:hasCandidate ?candidate .
+  ?assessment af:hasJudgment ?judgment .
+  { ?assessment af:satisfiesRequirement ?satisfied .
+    ?satisfied af:concernsFeature ?feature .
+    ?mapping af:affectsRequirement ?satisfied . }
+  UNION
+  { ?assessment af:conflictsWithRequirement ?conflicting .
+    ?conflicting af:concernsFeature ?feature .
+    ?mapping af:affectsRequirement ?conflicting . }
+  ?mapping af:specifiesRequiredLevel ?requiredLevel .
+  ?candidate af:hasFeatureValue ?candidateValue .
+  ?candidateValue af:hasFeatureType ?feature .
+  ?candidateValue af:hasLevel ?candidateLevel .
+  FILTER (?candidate = ind:cardCandidate || ?candidate = ind:spongeCandidate)
+}
+ORDER BY ?candidate ?feature
+
+
+# ==============================================================================
+# CQ5: "If the rigidity of a candidate is known but its edge thickness is not
+#       represented, can the system decide whether it can cut the carrot, and
+#       what information is missing?"            (Scenario 2, alternate flow)
+# Answer: no final decision. The object satisfies the rigidity requirement,
+# but the edge-thickness requirement cannot be evaluated, so the judgment is
+# insufficient information (not infeasible). The missing information is the
+# object's edge thickness. Two objects show this pattern: the spatula and the
+# neutral-name test candidate C.
+# ==============================================================================
+
+# Q5.1 (NEW in OE_11)
+# Question: Which objects assessed against the carrot cannot be decided, which
+#           requirement do they still satisfy, and which feature is missing?
+# RUN IN:   SNAP (HermiT started)
+# EXPECTED: 2 rows
+#   ?candidate            ?judgment                            ?satisfied                 ?unresolved                     ?missingFeature
+#   ind:spatulaCandidate  ind:insufficientInformationJudgment  af:cutRigidityRequirement  af:cutEdgeThicknessRequirement  af:edgeThickness
+#   ind:testCandidateC    ind:insufficientInformationJudgment  af:cutRigidityRequirement  af:cutEdgeThicknessRequirement  af:edgeThickness
+# Standard tab (no reasoner): NO ROWS (hasUnresolvedRequirement and
+# hasJudgment are inferred by the OE_11 rules).
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT ?candidate ?judgment ?satisfied ?unresolved ?missingFeature
+WHERE {
+  ?assessment af:hasTarget ind:carrotTarget .
+  ?assessment af:hasCandidate ?candidate .
+  ?assessment af:hasJudgment ?judgment .
+  ?assessment af:hasUnresolvedRequirement ?unresolved .
+  ?unresolved af:concernsFeature ?missingFeature .
+  ?assessment af:satisfiesRequirement ?satisfied .
+}
+ORDER BY ?candidate
+
+
+################################################################################
+# CQ3 (Priority 3) - Role D: Alex Clark
+# Can a knife and a pair of scissors both meet the CUT requirements for the
+# same carrot, and how does the ontology represent the difference in their
+# part structures?
+################################################################################
+# Two equivalent combined queries are provided below:
+# CQ3-A for the regular SPARQL Query view; CQ3-B for Snap SPARQL with HermiT.
+# Copy ONE complete PREFIX-to-ORDER BY query at a time.
+#
+# PURPOSE AND LOGIC
+# Compare knifeCandidate and scissorsCandidate for action cut on carrotTarget.
+# Retrieve each assessment's judgment and satisfied CUT requirements, then join
+# those requirements to the applicable target-feature mappings and matching
+# blade feature values. Features belong to the blade parts, not the wholes.
+# Optional columns show the interacting peer blade and structural classes.
+# The peer must be a represented part of the same candidate. Keeping structure
+# optional retains the knife even without the scissors' classifications.
+#
+# EXPECTED OUTPUT: SIX UNIQUE EVIDENCE ROWS
+# Knife: knifeBlade x edgeThickness/rigidity requirements = two rows.
+# Scissors: scissorsBlade1 and scissorsBlade2 x both requirements = four rows.
+# Every row has feasibleJudgment. Required/matching levels are low for edge
+# thickness and high for rigidity. Scissors rows show the other blade and the
+# MultiPartObject/InteractingPartObject classes. Knife structural columns are
+# unbound. Repeated judgments are expected: these are evidence rows, not six
+# distinct assessments. DISTINCT removes only identical selected output rows.
+#
+# INTERPRETATION
+# Feasibility is relative to the two modeled CUT requirements; it is not an
+# empirical cutting or safety claim. The query connects assessment-level
+# satisfaction to matching part evidence; it is not a complete rule-proof trace.
+# One represented knife blade does not establish exactly one part under OWL's
+# open-world semantics. Missing structural rows do not establish negation.
+#
+# ONTOLOGY SETUP AND INFERENCE PROVENANCE
+# Open OE_11_TeamAffordance_Individuals.rdf and resolve its main-schema import
+# to the local OE_11_TeamAffordance.rdf. Schema terms use the af: namespace and
+# test individuals use the ind: namespace (both declared in each query).
+# The updated shared Individuals file stores eight annotated cached conclusions:
+# two judgments, four satisfaction links, and the scissors' two structural types.
+# Therefore a populated result on that file does not independently prove that
+# reasoning freshly derived those conclusions.
+# For a fresh-inference test, use a copy of the Individuals file without the
+# eight cached assertions, select HermiT, start the reasoner, and execute
+# CQ3-B. Synchronize after edits.
+# A Snap log identifying "Protege Null Reasoner" means HermiT is not being used.
+# Without reasoning that copy returns zero combined rows; with HermiT it
+# returns six.
+#
+################################################################################
+# CQ3-A - COMBINED QUERY: REGULAR SPARQL QUERY VIEW
+################################################################################
+# Use the updated shared Individuals file plus its loaded main-schema import,
+# or a complete local graph containing asserted and inferred axioms.
+# Expected: six rows. Starting HermiT alone does not materialize conclusions in
+# the regular view's asserted graph. The original unmaterialized copy gives zero
+# here.
+
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT DISTINCT ?candidate ?assessment ?judgment ?requirement
+                ?part ?feature ?requiredLevel ?partLevel
+                ?interactingPart ?multiPartType ?interactingType
+WHERE {
+  ?assessment a af:Assessment ;
+              af:hasCandidate ?candidate ;
+              af:hasTarget ind:carrotTarget ;
+              af:hasAction af:cut ;
+              af:hasJudgment ?judgment ;
+              af:satisfiesRequirement ?requirement .
+  FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate)
+  af:cut af:hasRequirement ?requirement .
+  ?requirement af:concernsFeature ?feature .
+  ind:carrotTarget af:hasFeatureValue ?targetValue .
+  ?targetValue af:hasFeatureType ?targetFeature ; af:hasLevel ?targetLevel .
+  ?mapping a af:RequirementMapping ;
+           af:affectsRequirement ?requirement ;
+           af:usesTargetFeatureType ?targetFeature ;
+           af:usesTargetLevel ?targetLevel ;
+           af:specifiesRequiredLevel ?requiredLevel .
+  ?candidate af:hasPart ?part .
+  ?part af:hasFeatureValue ?partValue .
+  ?partValue af:hasFeatureType ?feature ; af:hasLevel ?partLevel .
+  FILTER (?partLevel = ?requiredLevel)
+  OPTIONAL {
+    ?candidate af:hasPart ?interactingPart .
+    ?part af:interactsWith ?interactingPart .
+    FILTER (?part != ?interactingPart)
+  }
+  OPTIONAL {
+    ?candidate a ?multiPartType .
+    FILTER (?multiPartType = af:MultiPartObject)
+  }
+  OPTIONAL {
+    ?candidate a ?interactingType .
+    FILTER (?interactingType = af:InteractingPartObject)
+  }
+}
+ORDER BY ?candidate ?part ?requirement
+
+################################################################################
+# CQ3-B - COMBINED QUERY: SNAP SPARQL VIEW / HERMIT
+################################################################################
+# Select HermiT and Start reasoner before executing; wait for completion.
+# Expected: the same six rows and columns as CQ3-A (tested in Snap SPARQL).
+#
+# COMPATIBILITY WORKAROUND: the installed Snap plugin throws
+# UnsupportedOperationException at UnmodifiableIterator.remove / LeftJoin.evaluate
+# for the original filtered OPTIONAL patterns. Each optional pattern below is
+# repeated in two identical UNION branches to avoid that execution path.
+# This deliberately repeats intermediate matches; SELECT DISTINCT preserves
+# the original final answer set. Keep DISTINCT. Do not interpret the repeated
+# branches as additional evidence. No ontology change is needed for this fix.
+
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+
+SELECT DISTINCT ?candidate ?assessment ?judgment ?requirement
+                ?part ?feature ?requiredLevel ?partLevel
+                ?interactingPart ?multiPartType ?interactingType
+WHERE {
+  ?assessment a af:Assessment ;
+              af:hasCandidate ?candidate ;
+              af:hasTarget ind:carrotTarget ;
+              af:hasAction af:cut ;
+              af:hasJudgment ?judgment ;
+              af:satisfiesRequirement ?requirement .
+  FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate)
+  af:cut af:hasRequirement ?requirement .
+  ?requirement af:concernsFeature ?feature .
+  ind:carrotTarget af:hasFeatureValue ?targetValue .
+  ?targetValue af:hasFeatureType ?targetFeature ; af:hasLevel ?targetLevel .
+  ?mapping a af:RequirementMapping ;
+           af:affectsRequirement ?requirement ;
+           af:usesTargetFeatureType ?targetFeature ;
+           af:usesTargetLevel ?targetLevel ;
+           af:specifiesRequiredLevel ?requiredLevel .
+  ?candidate af:hasPart ?part .
+  ?part af:hasFeatureValue ?partValue .
+  ?partValue af:hasFeatureType ?feature ; af:hasLevel ?partLevel .
+  FILTER (?partLevel = ?requiredLevel)
+  OPTIONAL {
+    {
+    ?candidate af:hasPart ?interactingPart .
+    ?part af:interactsWith ?interactingPart .
+    FILTER (?part != ?interactingPart)
+    }
+    UNION
+    {
+    ?candidate af:hasPart ?interactingPart .
+    ?part af:interactsWith ?interactingPart .
+    FILTER (?part != ?interactingPart)
+    }
+  }
+  OPTIONAL {
+    {
+    ?candidate a ?multiPartType .
+    FILTER (?multiPartType = af:MultiPartObject)
+    }
+    UNION
+    {
+    ?candidate a ?multiPartType .
+    FILTER (?multiPartType = af:MultiPartObject)
+    }
+  }
+  OPTIONAL {
+    {
+    ?candidate a ?interactingType .
+    FILTER (?interactingType = af:InteractingPartObject)
+    }
+    UNION
+    {
+    ?candidate a ?interactingType .
+    FILTER (?interactingType = af:InteractingPartObject)
+    }
+  }
+}
+ORDER BY ?candidate ?part ?requirement
+
+################################################################################
+# CQ3 DIAGNOSTIC CHECKS - RETAINED Q3.1 THROUGH Q3.7
+################################################################################
+# These smaller queries isolate parts, distinctness, interactions, structural
+# inference, inverse links, assessment results, and matching blade evidence.
+# The original expected asserted/inferred row counts are respectively:
+# Q3.1 7/7; Q3.2 3/3; Q3.3 3/4; Q3.4 0/5; Q3.5 0/7; Q3.6 0/4; Q3.7 6/6.
+# In the updated shared file, cached assertions change Q3.4 asserted to 2 and
+# Q3.6 asserted to 4; other counts are unchanged. Original diagnostic queries
+# are retained below, with those two cache-related expectation notes updated.
+#
+# Q3.1 - Question: Which parts are represented for the knife, the scissors and
+#        the two structural test candidates?
+# REASONING: Asserted RDF; standard SPARQL Query tab; no reasoner.
+# EXPECTED: 7 rows: knife 1 part; scissors 2; testCandidate3 2; testCandidate4 2. These are represented counts, not exact OWL cardinalities.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?candidate ?part
+WHERE {
+ ?candidate a af:WholeObject .
+ ?candidate af:hasPart ?part .
+ ?part a af:ObjectPart .
+ FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate || ?candidate = ind:testCandidate3 || ?candidate = ind:testCandidate4)
+}
+ORDER BY ?candidate ?part
+
+
+# Q3.2 - Question: Which pairs of parts of the same object are explicitly
+#        stated to be different individuals?
+# REASONING: asserted triples only; RUN IN: STANDARD (no reasoner). Do not run
+#            in Snap SPARQL: asking HermiT for owl:differentFrom over all pairs
+#            of individuals is very slow.
+# CHANGED IN OE_11 (instructor feedback: Q3.2 was slow and crashed Protege):
+#            the query now starts from the three asserted owl:differentFrom
+#            triples, and the UNION, the STR() comparison and DISTINCT were removed.
+# EXPECTED: 3 rows: scissorsBlade1/2, testCandidate3Part1/2, testCandidate4Part1/2.
+#            Different IRIs alone do not establish OWL inequality.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?candidate ?part1 ?part2
+WHERE {
+ ?part1 owl:differentFrom ?part2 .
+ ?candidate af:hasPart ?part1 .
+ ?candidate af:hasPart ?part2 .
+}
+ORDER BY ?candidate
+
+
+# Q3.3 - Question: Which represented parts of the same object interact with
+#        each other?
+# REASONING: Asserted RDF or OWL entailment; standard tab for asserted; inferred graph/Snap SPARQL with HermiT for inferred.
+# EXPECTED: Asserted: 3 directed rows (both scissors directions; testCandidate4Part1 to Part2). Inferred: 4 rows, adding the reverse testCandidate4 interaction. No testCandidate3 rows means no represented/inferred interaction, not proof of noninteraction.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?candidate ?part1 ?part2
+WHERE {
+ ?candidate af:hasPart ?part1 .
+ ?candidate af:hasPart ?part2 .
+ ?part1 af:interactsWith ?part2 .
+ FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate || ?candidate = ind:testCandidate3 || ?candidate = ind:testCandidate4)
+}
+ORDER BY ?candidate ?part1 ?part2
+
+
+# Q3.4 - Question: Which objects are inferred to be multi-part objects or
+#        interacting-part objects?
+# REASONING: OWL DL entailment; Snap SPARQL with HermiT, or standard tab over an exported inferred graph.
+# EXPECTED: 5 rows: scissors and testCandidate4 each MultiPartObject + InteractingPartObject; testCandidate3 MultiPartObject only. Knife has no rows. Original asserted-only: 0. Updated cached Individuals: 2 scissors class rows; full 5 requires reasoning. Missing class rows do not prove class nonmembership.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?candidate ?structureClass
+WHERE {
+ ?candidate a ?structureClass .
+ FILTER (?structureClass = af:MultiPartObject || ?structureClass = af:InteractingPartObject)
+ FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate || ?candidate = ind:testCandidate3 || ?candidate = ind:testCandidate4)
+}
+ORDER BY ?candidate ?structureClass
+
+
+# Q3.5 - Question: For each represented part, is it inferred to be part of
+#        (isPartOf, the inverse of hasPart) its whole object?
+#        (OE_11: restated as a question, following instructor feedback.)
+# REASONING: OWL DL entailment; Snap SPARQL with HermiT, or standard tab over an exported inferred graph.
+# EXPECTED: 7 rows, one inverse isPartOf link per represented part. Standard tab (asserted only): 0 rows.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?candidate ?part
+WHERE {
+ ?candidate af:hasPart ?part .
+ ?part af:isPartOf ?candidate .
+ FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate || ?candidate = ind:testCandidate3 || ?candidate = ind:testCandidate4)
+}
+ORDER BY ?candidate ?part
+
+
+# Q3.6 - Question: Which CUT requirements do the knife and the scissors
+#        satisfy, and what judgment does each receive?
+# REASONING: OWL DL + existing SWRL; Snap SPARQL with HermiT, or standard tab over an exported inferred graph.
+# EXPECTED: 4 rows: knife and scissors each satisfy cutRigidityRequirement and cutEdgeThicknessRequirement, and each has feasibleJudgment. Standard tab: also 4 rows, because the
+#           Individuals file caches these results for CQ3. Candidates3/4 are structural controls without assessments or feature values.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?candidate ?assessment ?requirement ?judgment
+WHERE {
+ ?assessment a af:Assessment .
+ ?assessment af:hasCandidate ?candidate .
+ ?assessment af:hasTarget ind:carrotTarget .
+ ?assessment af:hasAction af:cut .
+ ?assessment af:satisfiesRequirement ?requirement .
+ ?assessment af:hasJudgment ?judgment .
+ FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate)
+}
+ORDER BY ?candidate ?requirement
+
+
+# Q3.7 - Question: Which blade feature values match the levels that the
+#        carrot requires for CUT?
+# REASONING: Asserted RDF; standard SPARQL Query tab; no reasoner.
+# EXPECTED: 6 matching rows: knife blade 2, each scissors blade 2. This checks represented feature matches; it does not itself infer an ontology judgment or require every part to match every requirement.
+PREFIX af: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/>
+PREFIX ind: <https://tw.rpi.edu/ontology-engineering/oe2026/physical-properties/individuals/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?candidate ?part ?requirement ?feature ?requiredLevel ?partLevel
+WHERE {
+ ?assessment af:hasCandidate ?candidate .
+ ?assessment af:hasTarget ind:carrotTarget .
+ ?assessment af:hasAction af:cut .
+ af:cut af:hasRequirement ?requirement .
+ ind:carrotTarget af:hasFeatureValue ?targetValue .
+ ?targetValue af:hasFeatureType ?targetFeature .
+ ?targetValue af:hasLevel ?targetLevel .
+ ?mapping a af:RequirementMapping .
+ ?mapping af:affectsRequirement ?requirement .
+ ?mapping af:usesTargetFeatureType ?targetFeature .
+ ?mapping af:usesTargetLevel ?targetLevel .
+ ?mapping af:specifiesRequiredLevel ?requiredLevel .
+ ?requirement af:concernsFeature ?feature .
+ ?candidate af:hasPart ?part .
+ ?part af:hasFeatureValue ?partValue .
+ ?partValue af:hasFeatureType ?feature .
+ ?partValue af:hasLevel ?partLevel .
+ FILTER (?partLevel = ?requiredLevel)
+ FILTER (?candidate = ind:knifeCandidate || ?candidate = ind:scissorsCandidate)
+}
+ORDER BY ?candidate ?part ?requirement

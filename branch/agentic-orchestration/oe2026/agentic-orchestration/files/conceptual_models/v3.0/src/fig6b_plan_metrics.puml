@@ -1,0 +1,24 @@
+@startuml fig6b_plan_metrics
+!include style.iuml
+skinparam nodesep 30
+skinparam ranksep 55
+
+class PlanEvaluation #EDEDED
+class PlanMetric {
+  hasValue : decimal
+  hasUnit : string
+}
+class "Measure" as Measure <<Commons>> #EDEDED
+class ToolCallCount
+class EvidenceCoverage
+class ToolCost
+class TokenCost
+class Latency
+PlanEvaluation -right-> PlanMetric : hasMeasurement
+Measure <|-- PlanMetric
+PlanMetric <|-- ToolCallCount
+PlanMetric <|-- EvidenceCoverage
+PlanMetric <|-- ToolCost
+PlanMetric <|-- TokenCost
+PlanMetric <|-- Latency
+@enduml
