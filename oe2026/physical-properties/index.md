@@ -16,7 +16,7 @@ The project supports three questions: evaluating one candidate and target, compa
 - Hyejin Park — Department of Computer Science — [parkh12@rpi.edu](mailto:parkh12@rpi.edu), [Personal Website](https://hbd-ngc1316.github.io/)
 - Xiye Fan — Department of Cognitive Science — [fanx4@rpi.edu](mailto:fanx4@rpi.edu), [Personal Website](https://hass.rpi.edu/people/xiye-fan)
 - Liangliang Zhang — Department of Computer Science — [Zhangl41@rpi.edu](mailto:Zhangl41@rpi.edu), [Personal Website](https://liangliang6v6.github.io/)
-- Alex Clark — Department of Electrical, Computer & Systems Engineering — [clarka14@rpi.edu](mailto:clarka14@rpi.edu), [Personal Website](https://github.com/alx-jam-clrk)
+- Alex Clark — Department of Electrical, Computer & Systems Engineering — [clarka14@rpi.edu](mailto:clarka14@rpi.edu), [Github Mainpage](https://github.com/alx-jam-clrk), [Linkedin Personal Page](https://www.linkedin.com/in/alx-jam-clrk)
 
 <!-- Add each member's verified personal homepage URL when supplied. Email links do not replace the assignment's homepage-link requirement. -->
 
