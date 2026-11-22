@@ -5,12 +5,13 @@ title: Term List
 
 ## Current Clean Terminology List
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTwX-1K9GKFokuQ93IPuNC8TnqSh52IDlBOh7VOej__c9hDZoKKksYpFllt0Vfpfw/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQGglAf-eQEioDZpBxFv7PHJI8d2tZPqHGNeI47K7m8qP8eFG5M2cMlIB1s5TV3nQ/pubhtml?widget=true&amp;headers=false" style="width: 100%;height: 700px;border: none;"></iframe>
 
-This is the latest available **clean** term list located in the team's Assignment 9 Google Drive folder. The source retains the title “Copy of OE_6_TeamAffordance_CuratedTermList_Clean”; it was last modified on October 22, 2026 and retrieved on October 25, 2026. The assignment number in its filename is preserved to avoid implying a different document version.
+This is the latest available **clean** term list located in the team's Assignment 12 Google Drive folder.
 
 ## Previous Versions
-- [Assignment 10 curated term list](files/OE_9_TeamAffordance_CuratedTermList.xlsx)
+- [Assignment 11 curated term list](files/OE_11_TeamAffordance_TermList.xlsx)
+- [Assignment 10 curated term list](files/OE_10_TeamAffordance_CuratedTermList.xlsx)
 - [Assignment 9 curated term list](files/OE_9_TeamAffordance_TermList.xlsx)
 - [Assignment 8 curated term list](files/OE_8_TeamAffordance_CuratedTermList.xlsx)
 - [Assignment 6 curated term list](files/OE_6_TeamAffordance_CuratedTermList_Clean.xlsx)

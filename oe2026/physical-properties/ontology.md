@@ -7,9 +7,9 @@ title: Concept Map and Ontology
 
 ## Conceptual Model
 
-The current conceptual model comes from the Assignment 11 document.
+The current conceptual model comes from the Assignment 12 document.
 
-<iframe src="files/OE_11_TeamAffordance_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
+<iframe src="files/OE_12_TeamAffordance_ConceptualModel.pdf" style="width: 100%;height: 700px;border: none;"></iframe>
 
 ### Asserted Class Hierarchies
 The ontology organizes its main concepts into several class hierarchies, separating physical entities, physical features, action requirements, and feasibility judgments. **PhysicalEntity** distinguishes complete objects and their constituent parts through **WholeObject** and **ObjectPart**. **PhysicalFeature** organizes the characteristics used to describe candidates and targets, including geometric, mechanical, material, surface, and structural features. The corresponding **ActionRequirement** hierarchy represents the physical characteristics relevant to determining whether CUT requirements can be met. Although **PhysicalFeature** and **ActionRequirement** contain related categories, they serve different purposes. **PhysicalFeature** describes what is represented about an entity, whereas **ActionRequirement** describes what is needed for an action. Keeping these concepts separate allows candidate and target characteristics to be evaluated against action-specific requirements. The **FeasibilityJudgment** hierarchy distinguishes **Feasible**, **Infeasible**, and **InsufficientInformation** outcomes. Additional asserted subclass relationships include **TwoCUTRequirementsSatisfiedAssessment**, a specialization of **Assessment**, and **HighHardnessRigidityMapping**, a specialization of **RequirementMapping**. These classes support the representation and evaluation of specific conditions within the CUT model.
@@ -63,6 +63,7 @@ The central assessment model connects an **Assessment** to its candidate, target
 Some CUT configurations depend not only on whole-object characteristics but also on the physical features and relationships of their constituent parts. As shown in Figure 6, the ontology represents part–whole relationships through *hasPart* and *isPartOf*, and interactions between object parts through *interactsWith*. Because **ObjectPart** is a subclass of **PhysicalEntity**, individual parts can also have their own **FeatureValue** descriptions. These relationships support the representation and evaluation of alternative CUT configurations, including knife and scissors assessments, without using conventional object functions as reasoning evidence. The OWL-defined classes shown in Figure 5 further support structural classification based on explicitly represented part relationships.
 
 ### Earlier Conceptual Model
+- [Assignment 11 conceptual model](files/OE_11_TeamAffordance_ConceptualModel.pdf)
 - [Assignment 10 conceptual model](files/OE_10_TeamAffordance_ConceptualModel.pdf)
 - [Assignment 9 conceptual model](files/OE_9_TeamAffordance_ConceptualModel.pdf)
 - [Assignment 8 conceptual model](files/OE_8_TeamAffordance_ConceptualModel.pdf)
@@ -74,7 +75,9 @@ Versions are listed with the most recent team ontology first. The Assignment 9 f
 
 | Version | Files |
 | --- | --- |
-| **Assignment 11 — latest release** | [Ontology RDF](files/OE_11_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_11_TeamAffordance_Individuals.rdf) |
+| **Assignment 12 — latest release** | [Ontology RDF](files/OE_12_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_12_TeamAffordance_Individuals.rdf) |
+
+| Assignment 11 | [Ontology RDF](files/OE_11_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_11_TeamAffordance_Individuals.rdf) |
 
 | Assignment 10 | [Ontology RDF](files/OE_10_TeamAffordance.rdf) · [CQ individuals RDF](files/OE_10_TeamAffordance_Individuals.rdf) |
 
