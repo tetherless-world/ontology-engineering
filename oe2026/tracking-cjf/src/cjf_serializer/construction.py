@@ -65,7 +65,11 @@ class Builder:
         self.base = conv.get("base", str(self.ns))
         self.conv = self.iri("Conversation")
         self.ontology_iri = URIRef(conv.get("individuals_iri", self.base + quote(self.key, safe="") + "/individuals"))
-        schemas = list(self.schema.subjects(RDF.type, OWL.Ontology))
+        # Prior versions are declared as owl:Ontology so every priorVersion target
+        # has a type; they are not the schema itself.
+        version_links = (OWL.priorVersion, OWL.backwardCompatibleWith, OWL.incompatibleWith, OWL.imports)
+        schemas = [s for s in self.schema.subjects(RDF.type, OWL.Ontology)
+                   if not any((None, link, s) in self.schema for link in version_links)]
         if len(schemas) != 1:
             raise InputValidationError("Input schema must declare exactly one owl:Ontology IRI")
         self.schema_iri = schemas[0]
