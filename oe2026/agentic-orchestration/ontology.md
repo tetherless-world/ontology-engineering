@@ -104,10 +104,11 @@ together with the project's `imports/` folder. Open `OE_12_TeamAgenticCapabiliti
 resolves its import of the main ontology's `v4.2` IRI and supplies local copies of AgentO and P-Plan.
 
 **Validation.** The team ran Pellet and HermiT against the Assignment 12 ontologies. Both reasoners found them
-consistent, all 11 queries returned their expected answers, and the course hygiene check passed. The
+consistent, all 11 queries returned their expected answers, the course hygiene check passed, and our 15 regression
+tests pass ([test log](files/ontology/OE_12_TeamAgenticCapabilities_TestLog.txt)). The
 [demonstration](demo.html) gives the queries and results for all nine competency questions in the [use case](usecase.html).
 
-**Earlier releases.** The historical test logs are available for
+**Earlier releases.** The test logs of earlier releases are available for
 [Assignment 11](files/ontology/OE_11_TeamAgenticCapabilities_TestLog.txt) and
 [Assignment 10](files/ontology/OE_10_TeamAgenticCapabilities_TestLog.txt).
 
