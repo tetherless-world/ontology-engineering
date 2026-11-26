@@ -1,4 +1,4 @@
-"""Checks for OE12 term names and license metadata."""
+"""Checks for OE13 term names and license metadata."""
 
 from pathlib import Path
 import unittest
@@ -7,12 +7,12 @@ from rdflib import Graph, URIRef
 from rdflib.namespace import DCTERMS, OWL, RDF
 
 
-class OE12SchemaTests(unittest.TestCase):
+class OE13SchemaTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.ontology = URIRef("https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/")
         cls.ontology_dir = Path(__file__).resolve().parents[2] / "ontology"
-        cls.schema = Graph().parse(cls.ontology_dir / "OE_12_TeamCJF.rdf", format="xml")
+        cls.schema = Graph().parse(cls.ontology_dir / "OE_13_TeamCJF.rdf", format="xml")
 
     def test_cjf_term_names_follow_class_and_property_conventions(self):
         categories = {
@@ -30,7 +30,7 @@ class OE12SchemaTests(unittest.TestCase):
 
     def test_cjf_class_and_property_names_used_in_examples_follow_conventions(self):
         namespace = str(self.ontology)
-        for filename in ("OE_12_TeamCJF_Individuals.rdf", "OE_12_TeamCJF_Individuals_withoutCurrentState.rdf"):
+        for filename in ("OE_13_TeamCJF_Individuals.rdf", "OE_13_TeamCJF_Individuals_withoutCurrentState.rdf"):
             graph = Graph().parse(self.ontology_dir / filename, format="xml")
             for terms, pattern in (
                 (graph.objects(None, RDF.type, unique=True), r"^[A-Z][A-Za-z0-9]*$"),

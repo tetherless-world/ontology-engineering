@@ -6,15 +6,17 @@ title: Demonstration and Queries
 <link rel="stylesheet" href="styles/demo.css">
 <script src="scripts/demo.js" defer></script>
 
-## OE Week 12 Sample Conversation
+## OE Week 13 Sample Conversation
 
-The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_12_TeamCJF_Individuals.rdf) with the [OE Week 12 CJF schema](ontology/OE_12_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
+The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_13_TeamCJF_Individuals.rdf) with the [OE Week 13 CJF schema](ontology/OE_13_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
+
+The [facilitation prototype](facilitator.html) uses the same individuals to replay issues and suggest a follow-up at a selected turn.
 
 ## Running the Queries
 
-These queries use OWL DL reasoning. Open `ontology/OE_12_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_12_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
+These queries use OWL DL reasoning. Open `ontology/OE_13_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_13_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
-- [Download CJFs' competency question queries (.txt)](CQAnswers/OE_12_TeamCJF_SPARQLQueries.txt)
+- [Download CJFs' competency question queries (.txt)](CQAnswers/OE_13_TeamCJF_SPARQLQueries.txt)
 - [OE Week 10 demonstration and recorded answers](demo-oe10.html)
 
 ## CQ1 Conversation Moves and Current States
