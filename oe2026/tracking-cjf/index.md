@@ -40,5 +40,6 @@ Annotated conversation data populates the CJF knowledge graph and is validated a
 | [Conceptual model and ontology](ontology.html) | Current diagrams, schema, example individuals, reused vocabularies, and ontology versions |
 | [Ontology version history](ontology-versions.html) | Schema and individuals downloads for OE Weeks 8–12, plus development snapshots |
 | [Demonstration and queries](demo.html) | CQ1–CQ6 queries and recorded answers for the sample conversation |
+| [Facilitation prototype](facilitator.html) | Replay the sample discussion and inspect evidence for suggested follow-up questions |
 | [Presentations](presentations.html) | Project proposal and course presentations |
 | [Getting involved](gettinginvolved) | Maintenance policy, project contacts, and contribution information |

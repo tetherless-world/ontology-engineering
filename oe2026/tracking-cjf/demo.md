@@ -10,6 +10,8 @@ title: Demonstration and Queries
 
 The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_13_TeamCJF_Individuals.rdf) with the [OE Week 13 CJF schema](ontology/OE_13_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
 
+The [facilitation prototype](facilitator.html) uses the same individuals to replay issues and suggest a follow-up at a selected turn.
+
 ## Running the Queries
 
 These queries use OWL DL reasoning. Open `ontology/OE_13_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_13_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
