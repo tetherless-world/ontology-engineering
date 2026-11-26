@@ -35,6 +35,7 @@ Annotated conversation data populates the CJF knowledge graph and is validated a
 
 | Resource | Contents |
 | --- | --- |
+| [Competency question graphs](answer-graphs.html) | Explore the RDF links and SPARQL steps behind worked answers to CQ1–CQ6 |
 | [Use case](usecase.html) | OE Week 11 project scope and competency questions, plus earlier versions |
 | [Terminology list](termlist.html) | OE Week 11 curated terminology workbook and earlier versions |
 | [Conceptual model and ontology](ontology.html) | Current diagrams, schema, example individuals, reused vocabularies, and ontology versions |
