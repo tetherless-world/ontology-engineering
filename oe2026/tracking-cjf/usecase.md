@@ -36,6 +36,7 @@ The document includes the full scenarios for all six questions. The [demonstrati
 
 ## Previous Versions
 
+- [OE Week 12 use case (.docx)](files/use-cases/OE_12_TeamCJF_UseCase_Clean.docx)
 - [OE Week 11 use case (.docx)](files/use-cases/OE_11_TeamCJF_UseCase_Clean.docx)
 - [OE Week 10 use case (.docx)](files/use-cases/OE_10_TeamCJF_UseCase.docx)
 - [OE Week 9 use case (.docx)](files/use-cases/OE_9_TeamCJF_UseCase_Clean.docx)

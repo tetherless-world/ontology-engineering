@@ -19,6 +19,7 @@ The Week 13 workbook lists 92 terms, including relationship classes such as Refi
 
 ## Previous Versions
 
+- [OE Week 12 curated term list (.xlsx)](files/term-lists/OE_12_TeamCJF_CuratedTermList_Clean.xlsx)
 - [OE Week 11 curated term list (.xlsx)](files/term-lists/OE_11_TeamCJF_CuratedTermList.xlsx)
 - [OE Week 10 curated term list (.xlsx)](files/term-lists/OE_10_TeamCJF_CuratedTermList.xlsx)
 - [OE Week 9 curated term list (.xlsx)](files/term-lists/OE_9_TeamCJF_CuratedTermList.xlsx)
