@@ -52,7 +52,7 @@ Multiparty conversations make it difficult to trace how a group develops a judgm
 
 The gallery shows the latest project diagrams. Open an image to view it at full size, or download the editable file and open it in [diagrams.net](https://app.diagrams.net/). The [RDF schema](ontology/TeamCJF.rdf) gives the implemented identifiers and axioms.
 
-<a href="files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio" download>Download the editable diagrams (.drawio)</a>
+<a href="files/conceptual-models/TeamCJF_ConceptualModel.drawio" download>Download the editable diagrams (.drawio)</a>
 
 ### Overview Diagram
 
@@ -155,7 +155,8 @@ Each relationship between conversation moves is an individual that connects a so
 
 ### Previous Conceptual Models
 
-- OE Week 10 conceptual model: [.docx](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf), and <a href="files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio" download>Download editable diagrams</a>
+- OE Week 11 conceptual model: [editable diagrams (.drawio)](files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio). Its figures are the ones shown above, in `images/conceptual-model/oe11/`.
+- OE Week 10 conceptual model: [.docx](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.drawio)
 - OE Week 9 conceptual model: [.docx](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.drawio). Its figures remain in `images/conceptual-model/oe9/`, and the [asset notes](files/conceptual-models/oe9/README.md) describe how they were prepared.
 - [OE Week 8 conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx)
 - [OE Week 6 conceptual model (.docx)](files/conceptual-models/oe6/OE_6_TeamCJF_ConceptualModel.docx)
