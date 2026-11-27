@@ -9,7 +9,7 @@ How does a group develop a judgment over the course of a conversation? Our ontol
 
 For conversation moves with states, the model records each state assignment, its effective utterance, its supporting evidence, and the preceding assignment. This history lets a researcher ask what has been discussed, which issues remain open, what supports or challenges an option, and how participants' positions develop. The project represents the group's reasoning and its provenance; it does not decide whether the group's judgment is correct.
 
-Because each recorded state change keeps its evidence, researchers can check why the model reports an issue as open or resolved, compare how judgments form across discussions, and reuse the same queries on newly annotated conversations. The state histories can also support facilitation tools that point a moderator to issues the group has not yet addressed, as our facilitation prototype does for one sample discussion.
+Because each recorded state change keeps its evidence, researchers can check why the model reports an issue as open or resolved, compare how judgments form across discussions, and reuse the same queries on newly annotated conversations. The state histories can also support facilitation tools that point a moderator to issues the group has not yet addressed.
 
 ## Team
 
@@ -35,9 +35,8 @@ Annotated conversation data populates the CJF knowledge graph and is validated a
 
 The demonstration follows a 28-turn discussion in which four speakers choose between two software platforms. It answers six competency questions about that discussion: which moves occurred, which issues were addressed or resolved, which claims bear on Platform A, how those issues changed state, who agreed with the final choice, and how one speaker's position shifted.
 
-- [Static demonstration and queries](demo.html): each question's SPARQL query, its recorded answers, and the reasoner steps to reproduce them in Protégé
+- [Static demonstration and queries](demo.html): walkthrough slides, each question's SPARQL query, its recorded answers, and the reasoner steps to reproduce them in Protégé
 - [Competency question graphs](answer-graphs.html): step through a worked answer and see which RDF links each query pattern matches
-- [Facilitation prototype](facilitator.html): replay the discussion turn by turn and see which issues were open at each point
 
 ## Use, Extend, or Give Feedback
 
@@ -55,7 +54,6 @@ The current release is **version 1.0** of the ontology and sample individuals, w
 | [Conceptual model and ontology](ontology.html) | Diagrams, the 1.0 schema and individuals, validation results, and reused vocabularies |
 | [Ontology version history](ontology-versions.html) | Schema and individuals downloads for 1.0 and OE Weeks 8–13, plus development snapshots |
 | [Demonstration and queries](demo.html) | CQ1–CQ6 queries and recorded answers for the sample conversation |
-| [Facilitation prototype](facilitator.html) | Replay the sample discussion and inspect evidence for suggested follow-up questions |
 | [Presentations](presentations.html) | Project proposal and course presentations |
 | [Publications](publications.html) | Project report outline (PDF) |
 | [Getting involved](gettinginvolved.html) | Maintenance policy, project contacts, and contribution information |

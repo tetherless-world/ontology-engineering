@@ -22,8 +22,6 @@ The demonstration follows a 28-turn discussion in which four speakers choose bet
 
 The demonstration uses the [sample conversation individuals with current assignments](ontology/TeamCJF_Individuals.rdf) with the [Tracking CJF 1.0 schema](ontology/TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
 
-The [facilitation prototype](facilitator.html) uses the same individuals to replay issues and suggest a follow-up at a selected turn.
-
 ## Running the Queries
 
 These queries use OWL DL reasoning. Open [`ontology/TeamCJF_Individuals.rdf`](ontology/TeamCJF_Individuals.rdf) in Protégé, either downloaded or with *File → Open from URL*; it imports the schema, `TeamCJF.rdf`, from this site. To work offline, save it together with `TeamCJF.rdf` and `catalog-v001.xml`. Select HermiT and start the reasoner, then run each query in SNAP SPARQL. Use the **Copy query** button above each query to copy it in full, from the first `PREFIX` line through its final line, and paste it into the SNAP SPARQL tab or a triple store. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
