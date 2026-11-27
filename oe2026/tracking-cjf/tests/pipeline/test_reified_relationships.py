@@ -17,7 +17,7 @@ class ReifiedRelationshipTests(unittest.TestCase):
 
     def prepare(self, current_schema):
         if current_schema:
-            schema = Path(__file__).resolve().parents[2] / "ontology/OE_13_TeamCJF.rdf"
+            schema = Path(__file__).resolve().parents[2] / "ontology/TeamCJF.rdf"
             self.schema.write_bytes(schema.read_bytes())
         self.values = fixtures.sheets(False)
         self.values["Milestones"].extend([

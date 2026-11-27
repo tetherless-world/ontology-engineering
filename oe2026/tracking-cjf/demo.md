@@ -6,26 +6,48 @@ title: Demonstration and Queries
 <link rel="stylesheet" href="styles/demo.css">
 <script src="scripts/demo.js" defer></script>
 
-## OE Week 13 Sample Conversation
+## Demonstration Walkthrough
 
-The demonstration uses the [CQ sample conversation individuals with current assignments](ontology/OE_13_TeamCJF_Individuals.rdf) with the [OE Week 13 CJF schema](ontology/OE_13_TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
+The demonstration follows a 28-turn discussion in which four speakers choose between two software platforms. For each of the six competency questions, it builds the SPARQL query one pattern at a time, names the inferences HermiT contributes at each step, and shows the answer in Protégé.
+
+- **Slides:** the walkthrough deck below steps through every query and its Protégé output.
+- **Interactive graphs:** the [competency question graphs](answer-graphs.html) let you pick a question and a worked answer, advance through the query step by step, and see which recorded, inferred, and SHACL-derived RDF links each pattern matches.
+- **Queries and answers:** the sections below give each question's steps, its full query with a **Copy query** button, and every recorded answer row.
+
+<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftetherless-world.github.io%2Fontology-engineering%2Fbranch%2Ftracking-cjf%2Foe2026%2Ftracking-cjf%2Ffiles%2Fdemo%2FCJF-OE12-CQ-demo-walkthrough.pptx" title="Competency question demonstration walkthrough slides" style="width:100%;aspect-ratio:16/10;border:0;" loading="lazy" allowfullscreen></iframe>
+
+[Download the walkthrough slides (.pptx)](files/demo/CJF-OE12-CQ-demo-walkthrough.pptx)
+
+## Sample Conversation
+
+The demonstration uses the [sample conversation individuals with current assignments](ontology/TeamCJF_Individuals.rdf) with the [Tracking CJF 1.0 schema](ontology/TeamCJF.rdf). The [source conversation transcript](inputs/Oct21_A_Discussion.md) preserves the 28 turns and speaker labels used by the [CQ sample generation configuration](configs/cq-sample.yaml). The [earlier conversation XML](files/conversations/CQ-sample-conversation.xml) is retained for reference.
 
 The [facilitation prototype](facilitator.html) uses the same individuals to replay issues and suggest a follow-up at a selected turn.
 
 ## Running the Queries
 
-The [competency question graphs](answer-graphs.html) let you select any of the six questions, inspect a worked answer, and step through the RDF links used to obtain it.
+These queries use OWL DL reasoning. Save `ontology/TeamCJF_Individuals.rdf`, `ontology/TeamCJF.rdf`, and `ontology/catalog-v001.xml` in the same folder, then open `TeamCJF_Individuals.rdf` in Protégé; the catalog resolves its import of the schema. Select HermiT and start the reasoner, then run each query in SNAP SPARQL. Use the **Copy query** button above each query to copy it in full, from the first `PREFIX` line through its final line, and paste it into the SNAP SPARQL tab or a triple store. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
-These queries use OWL DL reasoning. Open `ontology/OE_13_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_13_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL. Use the **Copy query** button above each query to copy it in full, from the first `PREFIX` line through its final line, and paste it into the SNAP SPARQL tab or a triple store. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
-
-- [Download CJFs' competency question queries (.txt)](CQAnswers/OE_13_TeamCJF_SPARQLQueries.txt)
+- [Download all competency question queries (.txt)](CQAnswers/TeamCJF_SPARQLQueries.txt)
 - [OE Week 10 demonstration and recorded answers](demo-oe10.html)
 
 ## CQ1 Conversation Moves and Current States
 
 [CQ1 in the use case](usecase.html#cq1) · [Explore the CQ1 answer graph](answer-graphs.html#cq1)
 
-**Question:** Which CJF conversation moves have occurred in the conversation, and what is the latest known state of each conversation move, where a state applies?
+**Question:** Which CJF conversation moves have occurred in the conversation, and what are their identifiers, types, summaries, and current recorded state(s), where applicable?
+
+### How the query works
+
+1. Find moves of each of the six types. Each `UNION` branch matches one class and writes its name into the same `?moveClass` column.
+2. Get the annotator's summary for the same move.
+3. Follow the move to its current State, if it has one. `OPTIONAL` keeps moves without a state.
+   *Inference:* `hasState` follows the property chain `hasCurrentStateAssignment` → `assignedState`.
+4. Read the specific class of that State. `MINUS` drops the generic State class.
+   *Inference:* State individuals are classified by equivalent class definitions that consider the previous state assignment, the move, and the relationship that triggered the change.
+5. Return the state class, or `N/A` when the move has no state.
+
+**Result:** The 70 rows cover 67 distinct moves; 13 rows show `N/A`. The funding issue M0010 has two current classes, Addressed and Resolved, because its current State satisfies both definitions.
 
 ### SPARQL query
 
@@ -49,7 +71,18 @@ The [SHACL rules](shacl/current-state-assignment-rules.ttl) identify terminal as
 
 [CQ2 in the use case](usecase.html#cq2) · [Explore the CQ2 answer graph](answer-graphs.html#cq2)
 
-**Question:** Which issues are currently addressed or resolved, and what evidence supports each current state?
+**Question:** Which Issues raised during the conversation have been assigned an Addressed or Resolved state, and what conversational evidence is associated with each Issue and its current recorded states?
+
+### How the query works
+
+1. Start with the moves classified as Issue.
+2. Follow the Issue's current assignment, written by the SHACL rule for the loaded conversation, and read its State.
+3. Read the specific state class, excluding the generic State class.
+   *Inference:* Addressed and Resolved are inferred from the Issue's previous state assignment and the relationship that triggered the change.
+4. Find the relationship that triggered the assignment. The assignment and its trigger are separate records.
+5. Follow the SIO evidence property from that relationship to its text span and read the words.
+
+**Result:** Six Issues produce 32 distinct evidence rows. For example, the training concern M0014 is Addressed at turn 20 by the proposal to use Monday's training slot for a vendor-led session; the transcript still leaves the arrangements to be confirmed.
 
 ### SPARQL query
 
@@ -71,7 +104,20 @@ The query follows each Issue’s current assignment and returns the assigned sta
 
 [CQ3 in the use case](usecase.html#cq3) · [Explore the CQ3 answer graph](answer-graphs.html#cq3)
 
-**Question:** Which Claims support or challenge Platform A, what are their summaries and current states, and which are classified as Supported?
+**Question:** Which Claims support or challenge Platform A, what are their summaries and current recorded states, and which of these Claims have been assigned a Supported state?
+
+### How the query works
+
+1. Find moves that support or challenge Platform A (M0003). Two `UNION` branches bind `?relation` to the matched relationship.
+   *Inference:* `supports` and `challenges` are inferred through the property chains over the reified relationships.
+2. Keep the moves that are Claims.
+3. Find the Claim's current State.
+   *Inference:* `hasState` follows `hasCurrentStateAssignment` → `assignedState`.
+4. Read the specific State class, removing the broad types named in the filter.
+   *Inference:* Supported and Contested are inferred from the Claim's previous state and the Support or Challenge relationship that triggered the assignment.
+5. Get the Claim's summary, if one is recorded.
+
+**Result:** Nine Claims appear: six support Platform A and three challenge it. Six are Supported, including M0013, the $6,000 funding-gap Claim, which challenges Platform A and itself has a Supported state.
 
 ### SPARQL query
 
@@ -93,7 +139,18 @@ The query returns Claims that support or challenge Platform A, their current sta
 
 [CQ4 in the use case](usecase.html#cq4) · [Explore the CQ4 answer graph](answer-graphs.html#cq4)
 
-**Question:** Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
+**Question:** Which Issues challenge Platform A, how have their states changed throughout the conversation, and what evidence supports these changes?
+
+### How the query works
+
+1. Follow the Challenge relationships to Platform A and keep the moves classified as Issue.
+2. Follow `hasStateAssignment` to read each Issue's whole history; each assignment points to its own State.
+3. Read its Open, Addressed, or Resolved state.
+   *Inference:* Addressed and Resolved are inferred from previous state assignments and triggering relationships.
+4. Find the triggering relationship and the move whose `makesAddresses` link points to it, if recorded. Initial Open assignments have no trigger.
+5. Follow the source move to its evidence span and read the words.
+
+**Result:** Eleven rows cover eight assignments for three Issues. The funding issue M0010 was Open at turn 5, Addressed at turns 9 and 15, and both Addressed and Resolved at turn 18, with the evidence “That settles the funding concern.” from turn 19.
 
 ### SPARQL query
 
@@ -115,7 +172,18 @@ The query finds Issues that explicitly challenge Platform A. Each row shows one 
 
 [CQ5 in the use case](usecase.html#cq5) · [Explore the CQ5 answer graph](answer-graphs.html#cq5)
 
-**Question:** For the final platform-selection Outcome, which speakers explicitly agreed with its selected Option, and which ExpressedPosition moves and source turns provide the evidence?
+**Question:** Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
+
+### How the query works
+
+1. Find the Option selected by the final Outcome.
+   *Inference:* `selects` follows the property chain `makesSelects` → `isAimedAtSelects`.
+2. Find agreeing positions about that Option.
+   *Inference:* `hasPositionTowards` follows `makesPositionTowards` → `isAimedAtPositionTowards`, and an ExpressedPosition positively supported by a TextSpan is classified as an Agreement.
+3. Get each position's speaker and name.
+   *Inference:* `hasSpeaker` follows a chain from the move to its TextSpan, the Utterance, and the Speaker.
+4. Get the evidence span and its supporting text.
+5. Get the source utterance and its turn number.
 
 ### SPARQL query
 
@@ -137,7 +205,17 @@ The query follows `selects` from the final Outcome to the chosen Option, then fi
 
 [CQ6 in the use case](usecase.html#cq6) · [Explore the CQ6 answer graph](answer-graphs.html#cq6)
 
-**Question:** What positions did Speaker C express toward Platform A and B throughout the conversation?
+**Question:** What positions did Speaker C express toward Platform A and Platform B throughout the conversation, and what are the identifiers, target Options, summaries, supporting utterances, and turn numbers of these Expressed Positions?
+
+### How the query works
+
+1. Find the ExpressedPositions whose speaker is Speaker C. The question includes preferences as well as explicit agreements.
+   *Inference:* `hasSpeaker` follows the chain from the position to its TextSpan, Utterance, and Speaker.
+2. Keep positions toward Platform A (M0003) or Platform B (M0021).
+   *Inference:* `hasPositionTowards` follows `makesPositionTowards` → `isAimedAtPositionTowards`.
+3. Get the annotator's summary, if one is recorded.
+4. Read the evidence for the position through the SIO evidence property.
+5. Check that the utterance belongs to this conversation and to Speaker C, and sort by turn.
 
 ### SPARQL query
 

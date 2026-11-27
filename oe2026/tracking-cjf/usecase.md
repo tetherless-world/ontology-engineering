@@ -5,13 +5,11 @@ title: Use Case
 
 ## Use Case Document
 
-**Current version: OE Week 11.**
+**Current version: OE Week 13, last revised November 20, 2026.**
 
-<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftetherless-world.github.io%2Fontology-engineering%2Fbranch%2Ftracking-cjf%2Foe2026%2Ftracking-cjf%2Ffiles%2Fuse-cases%2FOE_11_TeamCJF_UseCase_Clean.docx" title="OE Week 11 use case preview" style="width:100%;height:700px;border:0;" allowfullscreen></iframe>
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vRlk2kEBaxY5YTczEUztJ_n02AGMsvgZ1Uw8axhF3kMz7QcTuYlU4d_OndHzaJlPQ/pub?embedded=true" title="OE Week 13 use case" style="width:100%;height:700px;border:0;" allowfullscreen></iframe>
 
-### Download
-
-[Download the OE Week 11 use case (.docx)](files/use-cases/OE_11_TeamCJF_UseCase_Clean.docx)
+[Open the OE Week 13 use case in a new tab](https://docs.google.com/document/d/e/2PACX-1vRlk2kEBaxY5YTczEUztJ_n02AGMsvgZ1Uw8axhF3kMz7QcTuYlU4d_OndHzaJlPQ/pub)
 
 The **CJF-TRACKING** use case represents the evolving state of collective judgment formation in multiparty dialogue. A human user or researcher can query the group's developing reasoning, the relationships among its contributions, and the matters that remain unresolved as the conversation unfolds.
 
@@ -25,12 +23,12 @@ State changes require positive conversational evidence. The absence of further o
 
 ## Competency Questions
 
-The OE Week 11 use case develops six questions around a group choosing a software platform.
+The use case develops six questions in three scenarios around a group choosing a software platform: the conversation-wide state of the group’s reasoning (CQ1–CQ2), the subgraph around Platform A (CQ3–CQ4), and participants’ positions toward the options (CQ5–CQ6).
 
-1. <a id="cq1"></a>**CQ1.** Which CJF conversation moves have occurred in the conversation, and what are their identifiers, types, summaries, and recorded states, where applicable?
-2. <a id="cq2"></a>**CQ2.** Which Issues raised during the conversation have been assigned an Addressed or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
-3. <a id="cq3"></a>**CQ3.** Which Claims support or challenge Platform A, what are their summaries and recorded states, and which of these Claims have been assigned a Supported state?
-4. <a id="cq4"></a>**CQ4.** Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
+1. <a id="cq1"></a>**CQ1.** Which CJF conversation moves have occurred in the conversation, and what are their identifiers, types, summaries, and current recorded state(s), where applicable?
+2. <a id="cq2"></a>**CQ2.** Which Issues raised during the conversation have been assigned an Addressed or Resolved state, and what conversational evidence is associated with each Issue and its current recorded states?
+3. <a id="cq3"></a>**CQ3.** Which Claims support or challenge Platform A, what are their summaries and current recorded states, and which of these Claims have been assigned a Supported state?
+4. <a id="cq4"></a>**CQ4.** Which Issues challenge Platform A, how have their states changed throughout the conversation, and what evidence supports these changes?
 5. <a id="cq5"></a>**CQ5.** Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
 6. <a id="cq6"></a>**CQ6.** What positions did Speaker C express toward Platform A and Platform B throughout the conversation, and what are the identifiers, target Options, summaries, supporting utterances, and turn numbers of these Expressed Positions?
 
@@ -38,6 +36,7 @@ The document includes the full scenarios for all six questions. The [demonstrati
 
 ## Previous Versions
 
+- [OE Week 11 use case (.docx)](files/use-cases/OE_11_TeamCJF_UseCase_Clean.docx)
 - [OE Week 10 use case (.docx)](files/use-cases/OE_10_TeamCJF_UseCase.docx)
 - [OE Week 9 use case (.docx)](files/use-cases/OE_9_TeamCJF_UseCase_Clean.docx)
 - [OE Week 8 use case (.docx)](files/use-cases/OE_8_TeamCJF_UseCase_Clean.docx)

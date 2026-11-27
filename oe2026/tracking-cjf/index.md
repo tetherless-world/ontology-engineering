@@ -45,16 +45,17 @@ The ontology, example individuals, and queries are available under the [MIT Lice
 
 ## Current Resources
 
-**OE Week 13** provides the current ontology and individuals, alongside the OE Week 11 use case, terminology, and conceptual diagrams.
+The current release is **version 1.0** of the ontology and sample individuals, with the OE Week 13 use case and terminology and the OE Week 11 conceptual diagrams.
 
 | Resource | Contents |
 | --- | --- |
 | [Competency question graphs](answer-graphs.html) | Explore the RDF links and SPARQL steps behind worked answers to CQ1–CQ6 |
-| [Use case](usecase.html) | OE Week 11 project scope and competency questions, plus earlier versions |
-| [Terminology list](termlist.html) | OE Week 11 curated terminology workbook and earlier versions |
-| [Conceptual model and ontology](ontology.html) | Current diagrams, schema, example individuals, reused vocabularies, and ontology versions |
-| [Ontology version history](ontology-versions.html) | Schema and individuals downloads for OE Weeks 8–13, plus development snapshots |
+| [Use case](usecase.html) | OE Week 13 project scope and competency questions, plus earlier versions |
+| [Terminology list](termlist.html) | OE Week 13 curated term list and earlier versions |
+| [Conceptual model and ontology](ontology.html) | Diagrams, the 1.0 schema and individuals, validation results, and reused vocabularies |
+| [Ontology version history](ontology-versions.html) | Schema and individuals downloads for 1.0 and OE Weeks 8–13, plus development snapshots |
 | [Demonstration and queries](demo.html) | CQ1–CQ6 queries and recorded answers for the sample conversation |
 | [Facilitation prototype](facilitator.html) | Replay the sample discussion and inspect evidence for suggested follow-up questions |
 | [Presentations](presentations.html) | Project proposal and course presentations |
+| [Publications](publications.html) | Project report outline (PDF) |
 | [Getting involved](gettinginvolved.html) | Maintenance policy, project contacts, and contribution information |
