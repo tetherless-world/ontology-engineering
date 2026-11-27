@@ -4,7 +4,7 @@ title: Concept Map and Ontology
 toc: true
 ---
 
-[Ontologies](#ontologies) | [Validation](#validation) | [Conceptual Model](#conceptual-model) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+[Ontologies](#ontologies) | [Validation](#validation) | [Prior Versions](#prior-versions) | [Conceptual Model](#conceptual-model) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
 
 ## Ontologies
 
@@ -35,6 +35,10 @@ We validated version 1.0 on November 27, 2026:
 - **Current state assignments:** rerunning the [SHACL rules](shacl/current-state-assignment-rules.ttl) on `TeamCJF_IndividualsWithoutCurrentState.rdf` conforms, adds 54 current-assignment links, and reproduces `TeamCJF_Individuals.rdf` exactly.
 - **Competency questions:** in Protégé with HermiT, the six [demonstration queries](demo.html) returned 70, 32, 9, 11, 4, and 2 rows on OE_13, matching the recorded answer files. Version 1.0 has the same axioms and individuals, so the recorded answers apply to it unchanged.
 - **Pipeline tests:** the 42 serializer tests pass, including the class and property naming checks on the 1.0 files.
+
+## Prior Versions
+
+Earlier releases (OE Weeks 8–13) keep their original IRIs and are available as downloadable `.rdf` files on the [Ontology Version History](ontology-versions.html#downloadable-versions) page. The most recent prior version is OE_13.
 
 ## Conceptual Model
 
