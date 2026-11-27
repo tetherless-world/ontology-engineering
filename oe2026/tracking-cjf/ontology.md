@@ -21,7 +21,7 @@ The Tracking Collective Judgment Formation ontology represents conversation move
 | [Filtered PROV-O copy](prev-ontology-versions/prov-o-cjf-filtered.owl) | Local copy of the PROV-O terms the project uses; the catalog loads it in place of the online PROV-O |
 | [Current state assignment SHACL rules](shacl/current-state-assignment-rules.ttl) | Rules and constraints for identifying the latest recorded assignment for each move with state |
 
-**Loading in Protégé.** `TeamCJF.rdf` opens on its own: its PROV-O and OMG Commons Annotation Vocabulary imports resolve from their published IRIs. `TeamCJF_Individuals.rdf` imports the schema by its version IRI, so save it in the same folder as `TeamCJF.rdf` and `catalog-v001.xml` before opening it. Protégé then resolves the import locally.
+**Loading in Protégé.** Both files open directly in Protégé, either from a downloaded copy or with *File → Open from URL* using the file's address on this site. `TeamCJF.rdf` loads PROV-O and the OMG Commons Annotation Vocabulary from their published IRIs. `TeamCJF_Individuals.rdf` imports the schema from its published address on this site, so opening it also loads `TeamCJF.rdf` and its imports. To work offline, save the files together with `catalog-v001.xml`; the catalog resolves every import to the local copies.
 
 Version 1.0 is released under the [MIT License](license.html). Its header records the creators, license, modification date, version IRI, and its prior version, OE_13. See the [maintenance policy](gettinginvolved.html#maintenance-policy) for versioning, compatibility, and community feedback, or [contact the team](gettinginvolved.html).
 
@@ -30,7 +30,8 @@ Version 1.0 is released under the [MIT License](license.html). Its header record
 We validated version 1.0 on November 27, 2026:
 
 - **Reasoning:** HermiT 1.4.3 (the reasoner bundled with Protégé 5.6.9) finds the schema and sample individuals, with their imports, consistent and reports no unsatisfiable classes. It classifies the same individuals as in OE_13, for example 9 Agreements and 2 Resolved states.
-- **Regression against OE_13:** apart from the ontology header (version IRI, prior version, version information, modification date, and change note), the 1.0 files contain the same triples as the OE_13 release.
+- **Loading:** with the OWL API used by Protégé 5.6.9 and no catalog, `TeamCJF.rdf` loads from its address on this site, and a standalone copy of `TeamCJF_Individuals.rdf` loads together with all ten ontologies in its imports closure. HermiT finds the result consistent.
+- **Regression against OE_13:** apart from the ontology header (version IRI, prior version, version information, modification date, change note, and, in the individuals, the address the schema is imported from), the 1.0 files contain the same triples as the OE_13 release.
 - **Current state assignments:** rerunning the [SHACL rules](shacl/current-state-assignment-rules.ttl) on `TeamCJF_IndividualsWithoutCurrentState.rdf` conforms, adds 54 current-assignment links, and reproduces `TeamCJF_Individuals.rdf` exactly.
 - **Competency questions:** in Protégé with HermiT, the six [demonstration queries](demo.html) returned 70, 32, 9, 11, 4, and 2 rows on OE_13, matching the recorded answer files. Version 1.0 has the same axioms and individuals, so the recorded answers apply to it unchanged.
 - **Pipeline tests:** the 42 serializer tests pass, including the class and property naming checks on the 1.0 files.

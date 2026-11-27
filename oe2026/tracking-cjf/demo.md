@@ -26,7 +26,7 @@ The [facilitation prototype](facilitator.html) uses the same individuals to repl
 
 ## Running the Queries
 
-These queries use OWL DL reasoning. Save `ontology/TeamCJF_Individuals.rdf`, `ontology/TeamCJF.rdf`, and `ontology/catalog-v001.xml` in the same folder, then open `TeamCJF_Individuals.rdf` in Protégé; the catalog resolves its import of the schema. Select HermiT and start the reasoner, then run each query in SNAP SPARQL. Use the **Copy query** button above each query to copy it in full, from the first `PREFIX` line through its final line, and paste it into the SNAP SPARQL tab or a triple store. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
+These queries use OWL DL reasoning. Open [`ontology/TeamCJF_Individuals.rdf`](ontology/TeamCJF_Individuals.rdf) in Protégé, either downloaded or with *File → Open from URL*; it imports the schema, `TeamCJF.rdf`, from this site. To work offline, save it together with `TeamCJF.rdf` and `catalog-v001.xml`. Select HermiT and start the reasoner, then run each query in SNAP SPARQL. Use the **Copy query** button above each query to copy it in full, from the first `PREFIX` line through its final line, and paste it into the SNAP SPARQL tab or a triple store. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
 - [Download all competency question queries (.txt)](CQAnswers/TeamCJF_SPARQLQueries.txt)
 - [OE Week 10 demonstration and recorded answers](demo-oe10.html)
