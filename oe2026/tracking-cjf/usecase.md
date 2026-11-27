@@ -7,9 +7,9 @@ title: Use Case
 
 **Current version: OE Week 13, last revised November 20, 2026.**
 
-<iframe src="https://docs.google.com/document/d/e/2PACX-1vRlk2kEBaxY5YTczEUztJ_n02AGMsvgZ1Uw8axhF3kMz7QcTuYlU4d_OndHzaJlPQ/pub?embedded=true" title="OE Week 13 use case" style="width:100%;height:700px;border:0;" allowfullscreen></iframe>
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vQUm9EvALKJvgVWRN1LvpSoGc2CYMqnaGaesbk639aoWci0lvyNXUgjZxCxl8bPRg/pub?embedded=true" title="OE Week 13 use case" style="width:100%;height:700px;border:0;" allowfullscreen></iframe>
 
-[Open the OE Week 13 use case in a new tab](https://docs.google.com/document/d/e/2PACX-1vRlk2kEBaxY5YTczEUztJ_n02AGMsvgZ1Uw8axhF3kMz7QcTuYlU4d_OndHzaJlPQ/pub)
+[Open the OE Week 13 use case in a new tab](https://docs.google.com/document/d/e/2PACX-1vQUm9EvALKJvgVWRN1LvpSoGc2CYMqnaGaesbk639aoWci0lvyNXUgjZxCxl8bPRg/pub)
 
 The **CJF-TRACKING** use case represents the evolving state of collective judgment formation in multiparty dialogue. A human user or researcher can query the group's developing reasoning, the relationships among its contributions, and the matters that remain unresolved as the conversation unfolds.
 
