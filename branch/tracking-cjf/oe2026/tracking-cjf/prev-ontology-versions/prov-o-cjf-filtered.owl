@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY prov "http://www.w3.org/ns/prov#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="http://www.w3.org/ns/prov#"
+	xmlns="http://www.w3.org/ns/prov#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:prov="http://www.w3.org/ns/prov#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="http://www.w3.org/ns/prov#">
+		<rdfs:label xml:lang="en">W3C PROVenance Interchange Ontology (PROV-O)</rdfs:label>
+		<rdfs:comment xml:lang="en">Local, filtered copy of the W3C PROV Ontology (PROV-O) imported by the Tracking CJF ontology. It keeps the PROV-O terms and axioms the CJF ontology depends on and leaves out the parts of PROV-O that the CJF ontology does not use.</rdfs:comment>
+		<rdfs:seeAlso rdf:resource="http://www.w3.org/TR/prov-o/"/>
+		<rdfs:seeAlso rdf:resource="http://www.w3.org/ns/prov"/>
+		<owl:versionIRI rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
+		<owl:versionInfo xml:lang="en">Recommendation version 2013-04-30</owl:versionInfo>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&prov;Activity">
+		<rdfs:label>Activity</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<owl:disjointWith rdf:resource="&prov;Entity"/>
+		<prov:category>starting-point</prov:category>
+		<prov:component>entities-activities</prov:component>
+		<prov:constraints rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig</prov:constraints>
+		<prov:definition>An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</prov:definition>
+		<prov:dm rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-Activity</prov:dm>
+		<prov:n rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Activity</prov:n>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&prov;ActivityInfluence">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&prov;Agent">
+		<rdfs:label>Agent</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<owl:disjointWith rdf:resource="&prov;InstantaneousEvent"/>
+		<prov:category>starting-point</prov:category>
+		<prov:component>agents-responsibility</prov:component>
+		<prov:definition xml:lang="en">An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent&apos;s activity.</prov:definition>
+		<prov:dm rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent</prov:dm>
+		<prov:n rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Agent</prov:n>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&prov;Collection">
+		<rdfs:subClassOf rdf:resource="&prov;Entity"/>
+		<rdfs:label>Collection</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<prov:category>expanded</prov:category>
+		<prov:component>collections</prov:component>
+		<prov:definition xml:lang="en">A collection is an entity that provides a structure to some constituents, which are themselves entities. These constituents are said to be member of the collections.</prov:definition>
+		<prov:dm rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-collection</prov:dm>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&prov;Entity">
+		<rdfs:label>Entity</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<owl:disjointWith rdf:resource="&prov;InstantaneousEvent"/>
+		<prov:category>starting-point</prov:category>
+		<prov:component>entities-activities</prov:component>
+		<prov:constraints rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig</prov:constraints>
+		<prov:definition xml:lang="en">An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.</prov:definition>
+		<prov:dm rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-entity</prov:dm>
+		<prov:n rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Entity</prov:n>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&prov;Generation">
+		<rdfs:subClassOf rdf:resource="&prov;ActivityInfluence"/>
+		<rdfs:subClassOf rdf:resource="&prov;InstantaneousEvent"/>
+		<rdfs:label>Generation</rdfs:label>
+		<rdfs:comment xml:lang="en">An instance of prov:Generation provides additional descriptions about the binary prov:wasGeneratedBy relation from a generated prov:Entity to the prov:Activity that generated it. For example, :cake prov:wasGeneratedBy :baking; prov:qualifiedGeneration [ a prov:Generation; prov:activity :baking; :foo :bar ].</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<prov:category>qualified</prov:category>
+		<prov:component>entities-activities</prov:component>
+		<prov:constraints rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig</prov:constraints>
+		<prov:definition xml:lang="en">Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.</prov:definition>
+		<prov:dm rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-Generation</prov:dm>
+		<prov:n rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Generation</prov:n>
+		<prov:unqualifiedForm rdf:resource="&prov;wasGeneratedBy"/>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&prov;InstantaneousEvent">
+	</owl:Class>
+	
+	<owl:Class rdf:about="&prov;Person">
+		<rdfs:subClassOf rdf:resource="&prov;Agent"/>
+		<rdfs:label>Person</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<prov:category>expanded</prov:category>
+		<prov:component>agents-responsibility</prov:component>
+		<prov:definition xml:lang="en">Person agents are people.</prov:definition>
+		<prov:dm rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent</prov:dm>
+		<prov:n rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types</prov:n>
+	</owl:Class>
+	
+	<owl:AnnotationProperty rdf:about="&prov;category">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;component">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;constraints">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;definition">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;dm">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;editorialNote">
+	</owl:AnnotationProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;hadMember">
+		<rdfs:subPropertyOf rdf:resource="&prov;wasInfluencedBy"/>
+		<rdfs:label>hadMember</rdfs:label>
+		<rdfs:domain rdf:resource="&prov;Collection"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<rdfs:range rdf:resource="&prov;Entity"/>
+		<prov:category>expanded</prov:category>
+		<prov:component>expanded</prov:component>
+		<prov:inverse>wasMemberOf</prov:inverse>
+		<prov:sharesDefinitionWith rdf:resource="&prov;Collection"/>
+	</owl:ObjectProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;inverse">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;n">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;qualifiedForm">
+	</owl:AnnotationProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;qualifiedGeneration">
+		<rdfs:subPropertyOf rdf:resource="&prov;qualifiedInfluence"/>
+		<rdfs:label>qualifiedGeneration</rdfs:label>
+		<rdfs:comment xml:lang="en">If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation;  prov:entity :e; :foo :bar ].</rdfs:comment>
+		<rdfs:domain rdf:resource="&prov;Entity"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<rdfs:range rdf:resource="&prov;Generation"/>
+		<prov:category>qualified</prov:category>
+		<prov:component>entities-activities</prov:component>
+		<prov:inverse>qualifiedGenerationOf</prov:inverse>
+		<prov:sharesDefinitionWith rdf:resource="&prov;Generation"/>
+		<prov:unqualifiedForm rdf:resource="&prov;wasGeneratedBy"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;qualifiedInfluence">
+	</owl:ObjectProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;sharesDefinitionWith">
+	</owl:AnnotationProperty>
+	
+	<owl:AnnotationProperty rdf:about="&prov;unqualifiedForm">
+	</owl:AnnotationProperty>
+	
+	<owl:DatatypeProperty rdf:about="&prov;value">
+		<rdfs:label>value</rdfs:label>
+		<rdfs:domain rdf:resource="&prov;Entity"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<prov:category>expanded</prov:category>
+		<prov:component>entities-activities</prov:component>
+		<prov:definition xml:lang="en">Provides a value that is a direct representation of an entity.</prov:definition>
+		<prov:dm rdf:datatype="&xsd;anyURI">http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-attribute-value</prov:dm>
+		<prov:editorialNote>The editor&apos;s definition comes from http://www.w3.org/TR/rdf-primer/#rdfvalue</prov:editorialNote>
+		<prov:editorialNote xml:lang="en">This property serves the same purpose as rdf:value, but has been reintroduced to avoid some of the definitional ambiguity in the RDF specification (specifically, &apos;may be used in describing structured values&apos;).</prov:editorialNote>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;wasAttributedTo">
+		<rdfs:subPropertyOf rdf:resource="&prov;wasInfluencedBy"/>
+		<rdfs:label>wasAttributedTo</rdfs:label>
+		<rdfs:comment xml:lang="en">Attribution is the ascribing of an entity to an agent.</rdfs:comment>
+		<rdfs:domain rdf:resource="&prov;Entity"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<rdfs:range rdf:resource="&prov;Agent"/>
+		<prov:category>starting-point</prov:category>
+		<prov:component>agents-responsibility</prov:component>
+		<prov:definition xml:lang="en">Attribution is the ascribing of an entity to an agent.</prov:definition>
+		<prov:inverse>contributed</prov:inverse>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;wasGeneratedBy">
+		<rdfs:subPropertyOf rdf:resource="&prov;wasInfluencedBy"/>
+		<rdfs:label>wasGeneratedBy</rdfs:label>
+		<rdfs:domain rdf:resource="&prov;Entity"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+		<rdfs:range rdf:resource="&prov;Activity"/>
+		<prov:category>starting-point</prov:category>
+		<prov:component>entities-activities</prov:component>
+		<prov:inverse>generated</prov:inverse>
+		<prov:qualifiedForm rdf:resource="&prov;Generation"/>
+		<prov:qualifiedForm rdf:resource="&prov;qualifiedGeneration"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&prov;wasInfluencedBy">
+	</owl:ObjectProperty>
+	
+	<owl:Axiom>
+		<rdfs:comment xml:lang="en">A collection is an entity that provides a structure to some constituents, which are themselves entities. These constituents are said to be member of the collections.</rdfs:comment>
+		<owl:annotatedProperty rdf:resource="&rdfs;range"/>
+		<owl:annotatedSource rdf:resource="&prov;hadMember"/>
+		<owl:annotatedTarget rdf:resource="&prov;Entity"/>
+		<prov:dm>http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-collection</prov:dm>
+	</owl:Axiom>
+	<owl:Axiom>
+		<rdfs:comment>Attribution is a particular case of trace (see http://www.w3.org/TR/prov-dm/#concept-trace), in the sense that it links an entity to the agent that ascribed it.</rdfs:comment>
+		<owl:annotatedProperty rdf:resource="&rdfs;subPropertyOf"/>
+		<owl:annotatedSource rdf:resource="&prov;wasAttributedTo"/>
+		<owl:annotatedTarget rdf:resource="&prov;wasInfluencedBy"/>
+		<prov:definition>IF wasAttributedTo(e2,ag1,aAttr) holds, THEN wasInfluencedBy(e2,ag1) also holds.</prov:definition>
+	</owl:Axiom>
+</rdf:RDF>

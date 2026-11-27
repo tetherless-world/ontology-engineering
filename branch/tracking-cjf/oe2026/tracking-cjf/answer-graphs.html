@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Competency question graphs · Tracking CJF</title>
+  <link rel="stylesheet" href="styles/answer-graphs.css?v=2">
+  <script defer src="scripts/cq-graph-data.js"></script>
+  <script defer src="scripts/answer-graphs.js?v=2"></script>
+</head>
+<body>
+  <main>
+    <nav><a href="index.html">Tracking CJF</a> / <a href="demo.html">Demonstration and queries</a></nav>
+    <h1>Competency question graphs</h1>
+    <p>Follow a worked answer from the OE12 Classroom. Each arrow points from an RDF subject to its object.</p>
+    <noscript>Enable JavaScript to explore the answer graphs.</noscript>
+    <div class="controls">
+      <label>Competency question<select id="question"></select></label>
+      <label>Worked answer<select id="example"></select></label>
+    </div>
+    <h2 id="ask"></h2>
+    <div class="controls">
+      <label>Query step<select id="step"></select></label>
+      <button type="button" id="next-step" aria-controls="step graph code">Next step</button>
+      <div class="key"><span>Recorded</span><span>Inferred</span><span>SHACL-derived</span></div>
+    </div>
+    <div class="workspace">
+      <div class="canvas" tabindex="0" aria-label="Scrollable answer graph">
+        <svg id="graph" role="group" aria-label="Interactive RDF answer graph"></svg>
+      </div>
+      <div id="chain-tip" role="tooltip" hidden></div>
+      <aside>
+        <div id="type-panel" hidden>
+          <h3>Matched rdf:type triples</h3>
+          <ul id="types"></ul>
+        </div>
+        <h3>Selected answer row</h3>
+        <dl id="answer"></dl>
+        <h3>Inspect a node</h3>
+        <p id="detail" aria-live="polite">Select a graph node to see its full value and origin.</p>
+      </aside>
+    </div>
+    <details open><summary>SPARQL through this step</summary><pre id="code"></pre></details>
+    <p>The graph uses the classroom’s saved bindings. Advance through the query to see which patterns contribute to the final answer.</p>
+    <footer><a id="query-file">Full SPARQL query</a> · <a id="result-file">All recorded rows (CSV)</a></footer>
+  </main>
+</body>
+</html>

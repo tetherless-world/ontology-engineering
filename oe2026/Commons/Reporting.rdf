@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
+	<!ENTITY cmns-cxtdsg "https://www.omg.org/spec/Commons/ContextualDesignators/">
+	<!ENTITY cmns-doc "https://www.omg.org/spec/Commons/Documents/">
+	<!ENTITY cmns-dsg "https://www.omg.org/spec/Commons/Designators/">
+	<!ENTITY cmns-dt "https://www.omg.org/spec/Commons/DatesAndTimes/">
+	<!ENTITY cmns-pts "https://www.omg.org/spec/Commons/PartiesAndSituations/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY sbrm-rep "https://www.omg.org/SBRM/Reporting/">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://www.omg.org/SBRM/Reporting/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
+	xmlns:cmns-cxtdsg="https://www.omg.org/spec/Commons/ContextualDesignators/"
+	xmlns:cmns-doc="https://www.omg.org/spec/Commons/Documents/"
+	xmlns:cmns-dsg="https://www.omg.org/spec/Commons/Designators/"
+	xmlns:cmns-dt="https://www.omg.org/spec/Commons/DatesAndTimes/"
+	xmlns:cmns-pts="https://www.omg.org/spec/Commons/PartiesAndSituations/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sbrm-rep="https://www.omg.org/SBRM/Reporting/"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://www.omg.org/SBRM/Reporting/">
+		<rdfs:label>Reporting Ontology</rdfs:label>
+		<dct:abstract>This ontology defines the general notion of a report and related party concepts. It is designed to be very high level such that it can be extended to support any kind of domain-specific report, including but not limited to a business or regulatory report.</dct:abstract>
+		<dct:license rdf:datatype="&xsd;anyURI">https://opensource.org/licenses/MIT</dct:license>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/ContextualDesignators/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/DatesAndTimes/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Designators/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/Documents/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/PartiesAndSituations/"/>
+		<owl:versionIRI rdf:resource="https://www.omg.org/SBRM/20231101/Reporting/"/>
+		<skos:note>This ontology was originally designed for use in the Financial Industry Business Ontology (FIBO) for representing regulatory and other business reports, such as a credit report. It has since been extended based on usage in other projects, such as the emerging OMG Retail Industry Ontology (RIO) and Pistoia Alliance&apos;s Identification of Medicinal Products Ontology (IDMP-O) project.</skos:note>
+		<cmns-av:copyright>Copyright (c) 2018-2023 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2018-2023 Object Management Group, Inc.</cmns-av:copyright>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&sbrm-rep;IntendedRecipient">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:label>intended recipient</rdfs:label>
+		<skos:definition>party that is responsible for and authorized to receive something, such as a message, package, or business or regulatory report</skos:definition>
+		<cmns-av:adaptedFrom>ISO 11568:2023(en) Financial services — Key management (retail), clause 3.73</cmns-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&sbrm-rep;Report">
+		<rdfs:subClassOf rdf:resource="&cmns-doc;Document"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;isReportedTo"/>
+				<owl:onClass rdf:resource="&sbrm-rep;IntendedRecipient"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;isSubmittedBy"/>
+				<owl:onClass rdf:resource="&sbrm-rep;Submitter"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-cxtdsg;hasApplicablePeriod"/>
+				<owl:onClass rdf:resource="&cmns-dt;DatePeriod"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;hasReportDateTime"/>
+				<owl:onClass rdf:resource="&cmns-dt;DateTime"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;hasSubmissionDateTime"/>
+				<owl:onClass rdf:resource="&cmns-dt;DateTime"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;hasReportDate"/>
+				<owl:onClass rdf:resource="&cmns-dt;ExplicitDate"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;hasSubmissionDate"/>
+				<owl:onClass rdf:resource="&cmns-dt;ExplicitDate"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;isSubmittedTo"/>
+				<owl:onClass rdf:resource="&cmns-pts;PartyRole"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;isReportedBy"/>
+				<owl:someValuesFrom rdf:resource="&sbrm-rep;ReportingParty"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>report</rdfs:label>
+		<skos:definition>document containing a presentation of facts or a description of some proceeding, investigation or event</skos:definition>
+		<cmns-av:adaptedFrom>ISO 5127:2017(en), Information and documentation - Foundation and vocabulary, clause 3.4.7.32</cmns-av:adaptedFrom>
+		<cmns-av:explanatoryNote>Reports may refer to specific periods, events, or subjects, and may be communicated or presented in oral, electronic, or written form.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&sbrm-rep;ReportingParty">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&cmns-doc;specifies"/>
+				<owl:someValuesFrom rdf:resource="&sbrm-rep;Report"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>reporting party</rdfs:label>
+		<skos:definition>party that develops and provides a report, often in response to some contractual, legal, business, or regulatory requirement</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&sbrm-rep;Submitter">
+		<rdfs:subClassOf rdf:resource="&cmns-pts;PartyRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&sbrm-rep;submits"/>
+				<owl:onClass rdf:resource="&sbrm-rep;Report"/>
+				<owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>submitter</rdfs:label>
+		<skos:definition>party delivering something, such as a regulatory report</skos:definition>
+		<cmns-av:explanatoryNote>Note that in many cases, but not all, the reporting party and submitter are the same party.</cmns-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;hasReportDate">
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasDateOfIssuance"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasExplicitDate"/>
+		<rdfs:label xml:lang="en">has report date</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;ExplicitDate"/>
+		<skos:definition xml:lang="en">date on which a report was issued</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;hasReportDateTime">
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasDateTime"/>
+		<rdfs:label xml:lang="en">has report date time</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;DateTime"/>
+		<skos:definition xml:lang="en">date and time at which a report was issued</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;hasSubmissionDate">
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasDateOfIssuance"/>
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasExplicitDate"/>
+		<rdfs:label xml:lang="en">has submission date</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;ExplicitDate"/>
+		<skos:definition xml:lang="en">date on which a report was provided to its intended recipient</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;hasSubmissionDateTime">
+		<rdfs:subPropertyOf rdf:resource="&cmns-dt;hasDateTime"/>
+		<rdfs:label xml:lang="en">has submission date time</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-dt;DateTime"/>
+		<skos:definition xml:lang="en">date and time at which a report was provided to its intended recipient</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;isReportedBy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasPartyRole"/>
+		<rdfs:label>is reported by</rdfs:label>
+		<rdfs:range rdf:resource="&sbrm-rep;ReportingParty"/>
+		<skos:definition>indicates the party that submits something</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;isReportedTo">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasPartyRole"/>
+		<rdfs:label>is reported to</rdfs:label>
+		<rdfs:range rdf:resource="&sbrm-rep;IntendedRecipient"/>
+		<skos:definition>indicates the party for which a report has been prepared and to whom the report should be delivered</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;isSubmittedBy">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasPartyRole"/>
+		<rdfs:label>is submitted by</rdfs:label>
+		<rdfs:range rdf:resource="&sbrm-rep;Submitter"/>
+		<owl:inverseOf rdf:resource="&sbrm-rep;submits"/>
+		<skos:definition>indicates the party that submits something</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;isSubmittedTo">
+		<rdfs:subPropertyOf rdf:resource="&cmns-pts;hasPartyRole"/>
+		<rdfs:label>is submitted to</rdfs:label>
+		<rdfs:range rdf:resource="&cmns-pts;PartyRole"/>
+		<skos:definition>indicates the party to which something is submitted</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;reportsOn">
+		<rdfs:subPropertyOf rdf:resource="&cmns-doc;isAbout"/>
+		<rdfs:label>reports on</rdfs:label>
+		<rdfs:domain rdf:resource="&sbrm-rep;Report"/>
+		<skos:definition>indicates a subject matter, observation(s), assessment(s), focus or other topic of a report</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&sbrm-rep;submits">
+		<rdfs:label>submits</rdfs:label>
+		<rdfs:domain rdf:resource="&sbrm-rep;Submitter"/>
+		<skos:definition>presents something (a proposal, application, report, or other document) for consideration or review</skos:definition>
+	</owl:ObjectProperty>
+
+</rdf:RDF>
