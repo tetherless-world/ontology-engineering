@@ -145,16 +145,6 @@ Relationships between conversation moves can be reified as individuals of Collec
 
 Each relationship between conversation moves is an individual that connects a source move to a target move, so evidence and other context can be attached to the relationship itself. In the example, a Claim, Option, or Outcome connects to an Address individual through `makesAddresses`, and the Address identifies the target Issue through `isAimedAtAddresses`. A property chain over these two links infers the direct `addresses` relationship. The relationship records its reason, its supporting TextSpan, and its Utterance. The same pattern applies to supports, challenges, respondsTo, answers, resolves, refines, and hasPositionTowards.
 
-### Previous Conceptual Models
-
-- OE Week 11 conceptual model: [editable diagrams (.drawio)](files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio). All figures above except Figure 8 come from it and remain in `images/conceptual-model/oe11/`; that folder also keeps its earlier version of Figure 8.
-- OE Week 10 conceptual model: [.docx](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.drawio)
-- OE Week 9 conceptual model: [.docx](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.drawio). Its figures remain in `images/conceptual-model/oe9/`, and the [asset notes](files/conceptual-models/oe9/README.md) describe how they were prepared.
-- [OE Week 8 conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx)
-- [OE Week 6 conceptual model (.docx)](files/conceptual-models/oe6/OE_6_TeamCJF_ConceptualModel.docx)
-- [OE Week 6 diagrams](images/conceptual-model/oe6/milestones_relationships-ProvinanceV3.drawio.png) — earlier figure assets remain in `images/conceptual-model/oe6/`.
-- [OE Week 5 diagrams](images/conceptual-model/oe5/milestones_relationships-ProvenanceConceptualDiagram.png) — earlier figure assets remain in `images/conceptual-model/oe5/`.
-
 ## Ontologies Reused
 
 - [PROV-O](https://www.w3.org/TR/prov-o/) provides provenance concepts and relationships for activities, entities, and speaker attribution. A  [local copy](prev-ontology-versions/prov-o-cjf-filtered.owl) accompanies the project.
