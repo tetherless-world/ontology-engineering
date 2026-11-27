@@ -120,11 +120,11 @@ Agreement and Disagreement specialize ExpressedPosition, which is itself a conve
 ### Relationships between Conversation Moves
 
 <figure>
-  <a href="images/conceptual-model/oe11/conversation-move-relationships.png"><img src="images/conceptual-model/oe11/conversation-move-relationships.png" alt="Supports, challenges, addresses, resolves, selects, answers, respondsTo, isAbout, refines, and position relationships among conversation move types" style="max-width:100%;height:auto;" /></a>
+  <a href="images/conceptual-model/final/conversation-move-relationships.png"><img src="images/conceptual-model/final/conversation-move-relationships.png" alt="Relationships among the conversation move types: Claim, Issue, and Option specialize DeliberativeConversationMove; supports and challenges point from Claims to deliberative moves, challenges from Issues, addresses from Claims and Options to Issues, addresses and resolves from Outcomes to Issues, selects from Outcomes to Options, isAlternativeTo between Options, refines between deliberative moves, hasPositionTowards from ExpressedPositions, respondsTo and answers from deliberative moves and ExpressedPositions to InformationRequests, and isAbout from InformationRequests to deliberative moves and ExpressedPositions" style="max-width:100%;height:auto;" /></a>
   <figcaption>Figure 8. Semantic relationships among the conversation move types.</figcaption>
 </figure>
 
-The model connects claims, issues, options, outcomes, positions, and information requests through relationships such as supports, challenges, answers, addresses, resolves, and selects. These links let queries retrieve related contributions and provide evidence for determining move states. Combined with state information and the links to speakers and turns, they support all the competency questions.
+The model connects claims, issues, options, outcomes, positions, and information requests through relationships such as supports, challenges, answers, addresses, resolves, and selects. Competing options are linked by the symmetric `isAlternativeTo` property, and information requests point to what they ask about through `isAbout`. These links let queries retrieve related contributions and provide evidence for determining move states. Combined with state information and the links to speakers and turns, they support all the competency questions.
 
 ### Property Hierarchy
 
@@ -155,7 +155,7 @@ Each relationship between conversation moves is an individual that connects a so
 
 ### Previous Conceptual Models
 
-- OE Week 11 conceptual model: [editable diagrams (.drawio)](files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio). Its figures are the ones shown above, in `images/conceptual-model/oe11/`.
+- OE Week 11 conceptual model: [editable diagrams (.drawio)](files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio). All figures above except Figure 8 come from it and remain in `images/conceptual-model/oe11/`; that folder also keeps its earlier version of Figure 8.
 - OE Week 10 conceptual model: [.docx](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe10/OE_10_TeamCJF_ConceptualModel.drawio)
 - OE Week 9 conceptual model: [.docx](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.docx), [.pdf](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.pdf), and [editable diagrams (.drawio)](files/conceptual-models/oe9/OE_9_TeamCJF_ConceptualModel.drawio). Its figures remain in `images/conceptual-model/oe9/`, and the [asset notes](files/conceptual-models/oe9/README.md) describe how they were prepared.
 - [OE Week 8 conceptual model (.docx)](files/conceptual-models/oe8/OE_8_TeamCJF_ConceptualModel.docx)
