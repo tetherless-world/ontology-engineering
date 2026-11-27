@@ -5,6 +5,8 @@
   const question = get("question");
   const example = get("example");
   const step = get("step");
+  const nextStep = get("next-step");
+
   const titles = ["Moves and states", "Issue evidence", "Claims about Platform A",
     "Issue histories", "Agreement with the outcome", "Speaker C’s positions"];
 
@@ -60,6 +62,7 @@
   function render() {
     const q = classroomGraphs.questions[question.selectedIndex];
     const witness = q.examples[example.selectedIndex];
+    nextStep.textContent = step.selectedIndex === q.steps.length - 1 ? "Restart steps" : "Next step";
     showGraph(q, witness, step.selectedIndex);
     const bindings = get("answer");
     bindings.replaceChildren();
@@ -78,13 +81,18 @@
   }
 
   function selectQuestion() {
+
     const q = classroomGraphs.questions[question.selectedIndex];
     example.replaceChildren(...q.examples.map(w => new Option(w.label)));
     step.replaceChildren(...q.steps.map((s, i) => new Option((i + 1) + ". " + s.title)));
-    step.selectedIndex = q.steps.length - 1;
+    step.selectedIndex = 0;
     render();
   }
 
+  nextStep.addEventListener("click", () => {
+    step.selectedIndex = (step.selectedIndex + 1) % step.options.length;
+    render();
+  });
   for (const q of classroomGraphs.questions) {
     question.add(new Option("CQ" + q.id + " · " + titles[q.id - 1], String(q.id)));
   }
