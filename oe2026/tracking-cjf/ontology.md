@@ -4,35 +4,45 @@ title: Concept Map and Ontology
 toc: true
 ---
 
-[Ontologies](#ontologies) | [Ontology Versions](#ontology-versions) | [Conceptual Model](#conceptual-model) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+[Ontologies](#ontologies) | [Validation](#validation) | [Prior Versions](#prior-versions) | [Conceptual Model](#conceptual-model) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
 
 ## Ontologies
 
-### OE Week 13 CJF Ontology
+### Tracking CJF Ontology 1.0
 
-<a href="ontology/OE_13_TeamCJF.rdf" download>Download the OE Week 13 schema (.rdf)</a>
-
-The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/`. See the [current use case](usecase.html) for the intended questions and the [latest term list](termlist.html) for terminology and sources.
-
-### Example Individuals and Supporting Files
-
-For earlier schema and individuals downloads, see the [version archive](ontology-versions.html#downloadable-versions).
-
-OE_13 is released under the [MIT License](license.html). See the [maintenance policy](gettinginvolved#maintenance-policy) for versioning, compatibility, and community feedback, or [contact the team](gettinginvolved.html).
+The Tracking Collective Judgment Formation ontology represents conversation moves, their relationships, transcript evidence, provenance, and state assignment histories. Its namespace is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/` (prefix `cjf`), and its version IRI is `https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/1.0/`. See the [use case](usecase.html) for the intended questions and the [term list](termlist.html) for terminology and sources.
 
 | File | Purpose |
 | --- | --- |
-| <a href="ontology/OE_13_TeamCJF_Individuals_withoutCurrentState.rdf" download>Annotated CQ sample individuals (.rdf)</a> | Conversation moves, speakers, evidence, relationships, and state-assignment histories generated from the annotations |
-| <a href="ontology/OE_13_TeamCJF_Individuals.rdf" download>CQ sample individuals with current assignments (.rdf)</a> | The same data with current-state-assignment links added by SHACL; use this file for the competency queries |
-| <a href="prev-ontology-versions/mar11_groupb-individuals.rdf" download>March 11 Group B individuals (.rdf)</a> | Annotated example individuals from a corpus conversation |
-| <a href="prev-ontology-versions/tracking-cjf-individuals.rdf" download>Earlier conversation individuals (.rdf)</a> | Earlier instance dataset retained alongside the current examples |
-| [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings used to resolve ontology imports |
-| [Local PROV-O copy](prev-ontology-versions/prov-o-cjf-filtered.owl) | Provenance vocabulary used by the project |
+| [TeamCJF.rdf](ontology/TeamCJF.rdf) | The ontology schema: classes, properties, axioms, and term definitions |
+| [TeamCJF_Individuals.rdf](ontology/TeamCJF_Individuals.rdf) | The sample conversation individuals with current-state-assignment links added by SHACL; use this file for the competency queries |
+| [TeamCJF_IndividualsWithoutCurrentState.rdf](ontology/TeamCJF_IndividualsWithoutCurrentState.rdf) | The same individuals as generated from the annotations, before the SHACL step |
+| [Ontology import catalog](ontology/catalog-v001.xml) | Local mappings that resolve the imports when the files sit in the same folder |
+| [Filtered PROV-O copy](prev-ontology-versions/prov-o-cjf-filtered.owl) | Local copy of the PROV-O terms the project uses; the catalog loads it in place of the online PROV-O |
 | [Current state assignment SHACL rules](shacl/current-state-assignment-rules.ttl) | Rules and constraints for identifying the latest recorded assignment for each move with state |
 
-## Ontology Versions
+**Loading in Protégé.** `TeamCJF.rdf` opens on its own: its PROV-O and OMG Commons Annotation Vocabulary imports resolve from their published IRIs. `TeamCJF_Individuals.rdf` imports the schema by its version IRI, so save it in the same folder as `TeamCJF.rdf` and `catalog-v001.xml` before opening it. Protégé then resolves the import locally.
 
-The [version archive](ontology-versions.html#downloadable-versions) provides schema and individuals downloads for OE Weeks 8–13 and links to development snapshots.
+Version 1.0 is released under the [MIT License](license.html). Its header records the creators, license, modification date, version IRI, and its prior version, OE_13. See the [maintenance policy](gettinginvolved.html#maintenance-policy) for versioning, compatibility, and community feedback, or [contact the team](gettinginvolved.html).
+
+### Validation
+
+We validated version 1.0 on November 27, 2026:
+
+- **Reasoning:** HermiT 1.4.3 (the reasoner bundled with Protégé 5.6.9) finds the schema and sample individuals, with their imports, consistent and reports no unsatisfiable classes. It classifies the same individuals as in OE_13, for example 9 Agreements and 2 Resolved states.
+- **Regression against OE_13:** apart from the ontology header (version IRI, prior version, version information, modification date, and change note), the 1.0 files contain the same triples as the OE_13 release.
+- **Current state assignments:** rerunning the [SHACL rules](shacl/current-state-assignment-rules.ttl) on `TeamCJF_IndividualsWithoutCurrentState.rdf` conforms, adds 54 current-assignment links, and reproduces `TeamCJF_Individuals.rdf` exactly.
+- **Competency questions:** in Protégé with HermiT, the six [demonstration queries](demo.html) returned 70, 32, 9, 11, 4, and 2 rows on OE_13, matching the recorded answer files. Version 1.0 has the same axioms and individuals, so the recorded answers apply to it unchanged.
+- **Pipeline tests:** the 42 serializer tests pass, including the class and property naming checks on the 1.0 files.
+
+## Prior Versions
+
+Earlier releases keep their original IRIs and are available for download only; open them with the catalog in the same folder. The [version archive](ontology-versions.html#downloadable-versions) lists schema and individuals for OE Weeks 8–13 and links to development snapshots. The most recent prior version is [OE_13](ontology-versions.html#downloadable-versions).
+
+| File | Purpose |
+| --- | --- |
+| <a href="prev-ontology-versions/mar11_groupb-individuals.rdf" download>March 11 Group B individuals (.rdf)</a> | Annotated example individuals from a corpus conversation |
+| <a href="prev-ontology-versions/tracking-cjf-individuals.rdf" download>Earlier conversation individuals (.rdf)</a> | Earlier instance dataset |
 
 ## Conceptual Model
 
@@ -40,7 +50,7 @@ The [version archive](ontology-versions.html#downloadable-versions) provides sch
 
 Multiparty conversations make it difficult to trace how a group develops a judgment and what evidence supports it. The Collective Judgment Formation (CJF) ontology models information requests, issues, options, claims, expressed positions, and outcomes, connecting them to speakers and transcript evidence. It also records state histories so researchers can examine open issues, supporting or challenging contributions, and changing positions throughout the conversation.
 
-The gallery shows the latest project diagrams. Open an image to view it at full size, or download the editable file and open it in [diagrams.net](https://app.diagrams.net/). The [RDF schema](ontology/OE_13_TeamCJF.rdf) gives the implemented identifiers and axioms.
+The gallery shows the latest project diagrams. Open an image to view it at full size, or download the editable file and open it in [diagrams.net](https://app.diagrams.net/). The [RDF schema](ontology/TeamCJF.rdf) gives the implemented identifiers and axioms.
 
 <a href="files/conceptual-models/oe11/OE_11_TeamCJF_ConceptualModel.drawio" download>Download the editable diagrams (.drawio)</a>
 
@@ -179,5 +189,5 @@ Each relationship between conversation moves is an individual that connects a so
 | prov | `http://www.w3.org/ns/prov#` |
 | sio | `http://semanticscience.org/resource/` |
 | del | `https://w3id.org/deliberation/ontology#` |
-| AnnotationVocabulary | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` |
-| DatesAndTimes | `https://www.omg.org/spec/Commons/DatesAndTimes/` |
+| cmns-av | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` |
+| cmns-dt | `https://www.omg.org/spec/Commons/DatesAndTimes/` |

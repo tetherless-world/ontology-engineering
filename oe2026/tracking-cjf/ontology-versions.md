@@ -7,11 +7,12 @@ title: Ontology Version History
 
 ## Downloadable Versions
 
-Use the schema and individuals from the same week. The individuals with current assignments include the links used by the recorded query demonstrations.
+Use the schema and individuals from the same release. The individuals with current assignments include the links used by the recorded query demonstrations. The current release, version 1.0, is on the [ontology page](ontology.html#ontologies); the releases below keep their original IRIs and are provided as downloads.
 
 | Version | Schema | Individuals | Individuals with current assignments |
 | --- | --- | --- | --- |
-| OE Week 13 (current) | <a href="ontology/OE_13_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="ontology/OE_13_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="ontology/OE_13_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
+| 1.0 (current) | [TeamCJF.rdf](ontology/TeamCJF.rdf) | [TeamCJF_IndividualsWithoutCurrentState.rdf](ontology/TeamCJF_IndividualsWithoutCurrentState.rdf) | [TeamCJF_Individuals.rdf](ontology/TeamCJF_Individuals.rdf) |
+| OE Week 13 | <a href="prev-ontology-versions/OE_13/OE_13_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_13/OE_13_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_13/OE_13_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
 | OE Week 12 | <a href="prev-ontology-versions/OE_12/OE_12_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_12/OE_12_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_12/OE_12_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
 | OE Week 11 | <a href="prev-ontology-versions/OE_11/OE_11_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_11/OE_11_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_11/OE_11_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |
 | OE Week 10 | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF.rdf" download>Schema (.rdf)</a> | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals_withoutCurrentState.rdf" download>Individuals (.rdf)</a> | <a href="prev-ontology-versions/OE_10/OE_10_TeamCJF_Individuals.rdf" download>Individuals (.rdf)</a> |

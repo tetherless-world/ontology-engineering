@@ -29,6 +29,8 @@
 
   function showGraph(q, witness, stage) {
     const graph = get("graph");
+    const types = get("types");
+    types.replaceChildren();
     chainTip.hidden = true;
     graph.replaceChildren();
     graph.setAttribute("viewBox", "0 0 " + q.size.join(" "));
@@ -49,13 +51,22 @@
       const line = svg("path", {d: edge.d, class: "edge " + origin, "marker-end": "url(#arrow)"});
       const predicate = label.textContent;
       const chain = chains[predicate];
-      if (!chain) {
+      let description;
+      if (predicate === "rdf:type") {
+        const [subject, object] = edge.ends.map(id => witness.terms[id]);
+        const triple = (subject.display ?? subject.value) + " → rdf:type → " + (object.display ?? object.value);
+        const item = document.createElement("li");
+        item.textContent = triple;
+        types.append(item);
+        description = triple + " (" + origin + ")";
+      } else if (chain) {
+        description = chain.join(" → ");
+      } else {
         graph.append(line, label);
         continue;
       }
-      const description = chain.join(" → ");
       const group = svg("g", {class: "chain-edge", tabindex: 0, role: "button",
-        "aria-label": predicate + " property chain: " + description});
+        "aria-label": description});
       group.append(svg("path", {d: edge.d, class: "chain-hit"}), line, label);
       function reveal(x, y) {
         const title = document.createElement("strong");
@@ -85,6 +96,7 @@
       });
       graph.append(group);
     }
+    get("type-panel").hidden = types.children.length === 0;
     for (const node of q.nodes) {
       const term = witness.terms[node.id];
       if (!nodes.has(node.id) || !term) continue;
@@ -111,7 +123,10 @@
   function render() {
     const q = classroomGraphs.questions[question.selectedIndex];
     const witness = q.examples[example.selectedIndex];
-    nextStep.textContent = step.selectedIndex === q.steps.length - 1 ? "Restart steps" : "Next step";
+    if (step.selectedIndex < q.steps.length - 1) nextStep.textContent = "Next step";
+    else if (example.selectedIndex < q.examples.length - 1) nextStep.textContent = "Next worked answer";
+    else if (question.selectedIndex < question.options.length - 1) nextStep.textContent = "Next question";
+    else nextStep.textContent = "Restart from CQ1";
     showGraph(q, witness, step.selectedIndex);
     const bindings = get("answer");
     bindings.replaceChildren();
@@ -129,18 +144,30 @@
     get("result-file").href = q.csv;
   }
 
-  function selectQuestion() {
-
-    const q = classroomGraphs.questions[question.selectedIndex];
-    example.replaceChildren(...q.examples.map(w => new Option(w.label)));
-    step.replaceChildren(...q.steps.map((s, i) => new Option((i + 1) + ". " + s.title)));
+  function startAnswer() {
     step.selectedIndex = 0;
     render();
   }
 
+  function selectQuestion() {
+    const q = classroomGraphs.questions[question.selectedIndex];
+    example.replaceChildren(...q.examples.map(w => new Option(w.label)));
+    example.selectedIndex = 0;
+    step.replaceChildren(...q.steps.map((s, i) => new Option((i + 1) + ". " + s.title)));
+    startAnswer();
+  }
+
   nextStep.addEventListener("click", () => {
-    step.selectedIndex = (step.selectedIndex + 1) % step.options.length;
-    render();
+    if (step.selectedIndex + 1 < step.options.length) {
+      step.selectedIndex += 1;
+      render();
+    } else if (example.selectedIndex + 1 < example.options.length) {
+      example.selectedIndex += 1;
+      startAnswer();
+    } else {
+      question.selectedIndex = (question.selectedIndex + 1) % question.options.length;
+      selectQuestion();
+    }
   });
   for (const q of classroomGraphs.questions) {
     question.add(new Option("CQ" + q.id + " · " + titles[q.id - 1], String(q.id)));
@@ -152,9 +179,9 @@
   document.addEventListener("pointerdown", event => {
     if (!event.target.closest(".chain-edge")) chainTip.hidden = true;
   });
-  question.value = initial?.[1] ?? "5";
+  question.value = initial?.[1] ?? "1";
   question.addEventListener("change", selectQuestion);
-  example.addEventListener("change", render);
+  example.addEventListener("change", startAnswer);
   step.addEventListener("change", render);
   selectQuestion();
 })();
