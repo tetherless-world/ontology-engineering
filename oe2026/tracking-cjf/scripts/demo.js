@@ -95,5 +95,64 @@
     }
   }
 
+  // Fallback for browsers without the async Clipboard API (e.g. plain http).
+  function copyWithSelection(text) {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.append(area);
+    area.select();
+    const copied = document.execCommand("copy");
+    area.remove();
+    if (!copied) throw new Error("Copy command was rejected");
+  }
+
+  function addCopyButton(pre) {
+    const code = pre.querySelector("code") || pre;
+    const toolbar = document.createElement("div");
+    toolbar.className = "cjf-query-toolbar";
+
+    const status = document.createElement("span");
+    status.className = "cjf-copy-status";
+    status.setAttribute("role", "status");
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "cjf-copy";
+    button.textContent = "Copy query";
+    const label = pre.getAttribute("aria-label");
+    if (label) button.setAttribute("aria-label", `Copy ${label}`);
+
+    let resetTimer;
+    button.addEventListener("click", async () => {
+      // The rendered text is the unescaped query, ready for SNAP SPARQL or a triple store.
+      const text = code.textContent.replace(/\r\n?/g, "\n").trim() + "\n";
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          copyWithSelection(text);
+        }
+        status.textContent = "Copied";
+      } catch (error) {
+        // Leave the query selected so the reader can press Ctrl+C / Cmd+C.
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        status.textContent = "Press Ctrl+C to copy the selected query";
+      }
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => { status.textContent = ""; }, 3000);
+    });
+
+    toolbar.append(status, button);
+    pre.before(toolbar);
+  }
+
+  document.querySelectorAll("pre.cjf-query").forEach(addCopyButton);
   document.querySelectorAll("[data-csv-source]").forEach(showAnswers);
 })();

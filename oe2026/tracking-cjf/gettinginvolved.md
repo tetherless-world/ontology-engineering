@@ -21,6 +21,8 @@ We welcome researchers, annotators, ontology developers, and other users interes
 
 Feedback on conversation moves, relationships, evidence, definitions, or inferred states helps us improve the model. Please identify the ontology version, relevant term or query, expected behavior, and a short conversation example or reproducible result. If you are interested in contributing or taking part in future maintenance, contact any team member using the email links below.
 
+The ontology, individuals, queries, and website source are in the project's [GitHub repository](https://github.com/tetherless-world/ontology-engineering/tree/master/oe2026/tracking-cjf).
+
 ## Team Members
 
 - [Devin De Silva](https://github.com/DevinDeSilva) · [TWC profile](https://tw.rpi.edu/person/devin-de-silva) · [desild@rpi.edu](mailto:desild@rpi.edu)

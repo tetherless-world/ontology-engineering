@@ -14,12 +14,16 @@ The [facilitation prototype](facilitator.html) uses the same individuals to repl
 
 ## Running the Queries
 
-These queries use OWL DL reasoning. Open `ontology/OE_13_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_13_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL, copying it from the first `PREFIX` line through its final line. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
+The [competency question graphs](answer-graphs.html) let you select any of the six questions, inspect a worked answer, and step through the RDF links used to obtain it.
+
+These queries use OWL DL reasoning. Open `ontology/OE_13_TeamCJF_Individuals.rdf` in Protégé with the matching `OE_13_TeamCJF.rdf` schema and its imports. Select HermiT and start the reasoner, then run each query in SNAP SPARQL. Use the **Copy query** button above each query to copy it in full, from the first `PREFIX` line through its final line, and paste it into the SNAP SPARQL tab or a triple store. The queries and recorded answers are displayed below; each answer table includes all recorded rows. Scroll within a wide table to see all columns.
 
 - [Download CJFs' competency question queries (.txt)](CQAnswers/OE_13_TeamCJF_SPARQLQueries.txt)
 - [OE Week 10 demonstration and recorded answers](demo-oe10.html)
 
 ## CQ1 Conversation Moves and Current States
+
+[CQ1 in the use case](usecase.html#cq1) · [Explore the CQ1 answer graph](answer-graphs.html#cq1)
 
 **Question:** Which CJF conversation moves have occurred in the conversation, and what is the latest known state of each conversation move, where a state applies?
 
@@ -43,6 +47,8 @@ The [SHACL rules](shacl/current-state-assignment-rules.ttl) identify terminal as
 
 ## CQ2 Issues Currently Addressed or Resolved
 
+[CQ2 in the use case](usecase.html#cq2) · [Explore the CQ2 answer graph](answer-graphs.html#cq2)
+
 **Question:** Which issues are currently addressed or resolved, and what evidence supports each current state?
 
 ### SPARQL query
@@ -62,6 +68,8 @@ The [SHACL rules](shacl/current-state-assignment-rules.ttl) identify terminal as
 The query follows each Issue’s current assignment and returns the assigned state classes and supporting text from the triggering relationship.
 
 ## CQ3 Claims Supporting or Challenging Platform A
+
+[CQ3 in the use case](usecase.html#cq3) · [Explore the CQ3 answer graph](answer-graphs.html#cq3)
 
 **Question:** Which Claims support or challenge Platform A, what are their summaries and current states, and which are classified as Supported?
 
@@ -83,6 +91,8 @@ The query returns Claims that support or challenge Platform A, their current sta
 
 ## CQ4 Platform A Issues and Their States
 
+[CQ4 in the use case](usecase.html#cq4) · [Explore the CQ4 answer graph](answer-graphs.html#cq4)
+
 **Question:** Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
 
 ### SPARQL query
@@ -103,6 +113,8 @@ The query finds Issues that explicitly challenge Platform A. Each row shows one 
 
 ## CQ5 Speakers Agreeing with the Selected Option
 
+[CQ5 in the use case](usecase.html#cq5) · [Explore the CQ5 answer graph](answer-graphs.html#cq5)
+
 **Question:** For the final platform-selection Outcome, which speakers explicitly agreed with its selected Option, and which ExpressedPosition moves and source turns provide the evidence?
 
 ### SPARQL query
@@ -122,6 +134,8 @@ The query finds Issues that explicitly challenge Platform A. Each row shows one 
 The query follows `selects` from the final Outcome to the chosen Option, then finds Agreement moves targeting that Option. It returns each position, speaker, supporting text, and turn number. The reasoner infers `Agreement` from the positions’ `isPositiveSupportedBy` links to TextSpans. Property chains infer `hasPositionTowards`, `hasSpeaker`, and `hasUtterance`. The recorded answer identifies Speaker D at turn 25, Speaker B at turn 26, Speaker C at turn 27, and Speaker A at turn 28.
 
 ## CQ6 Speaker C's Positions toward Platforms A and B
+
+[CQ6 in the use case](usecase.html#cq6) · [Explore the CQ6 answer graph](answer-graphs.html#cq6)
 
 **Question:** What positions did Speaker C express toward Platform A and B throughout the conversation?
 

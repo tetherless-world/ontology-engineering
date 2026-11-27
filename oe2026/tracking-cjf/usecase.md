@@ -27,14 +27,14 @@ State changes require positive conversational evidence. The absence of further o
 
 The OE Week 11 use case develops six questions around a group choosing a software platform.
 
-1. Which CJF conversation moves have occurred in the conversation, and what are their identifiers, types, summaries, and recorded states, where applicable?
-2. Which Issues raised during the conversation have been assigned an Addressed or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
-3. Which Claims support or challenge Platform A, what are their summaries and recorded states, and which of these Claims have been assigned a Supported state?
-4. Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
-5. Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
-6. What positions did Speaker C express toward Platform A and Platform B throughout the conversation, and what are the identifiers, target Options, summaries, supporting utterances, and turn numbers of these Expressed Positions?
+1. <a id="cq1"></a>**CQ1.** Which CJF conversation moves have occurred in the conversation, and what are their identifiers, types, summaries, and recorded states, where applicable?
+2. <a id="cq2"></a>**CQ2.** Which Issues raised during the conversation have been assigned an Addressed or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
+3. <a id="cq3"></a>**CQ3.** Which Claims support or challenge Platform A, what are their summaries and recorded states, and which of these Claims have been assigned a Supported state?
+4. <a id="cq4"></a>**CQ4.** Which Issues associated with Platform A have been assigned an Open, Addressed, or Resolved state, and what conversational evidence is associated with each Issue and its recorded states?
+5. <a id="cq5"></a>**CQ5.** Which speakers explicitly agreed with the Option selected by the group, and what are the identifiers, supporting utterances, and turn numbers of their Expressed Positions?
+6. <a id="cq6"></a>**CQ6.** What positions did Speaker C express toward Platform A and Platform B throughout the conversation, and what are the identifiers, target Options, summaries, supporting utterances, and turn numbers of these Expressed Positions?
 
-The document includes the full scenarios for all six questions. The [OE Week 12 demonstration](demo.html) provides runnable queries and recorded answers for CQ1–CQ6. Its [CQ4 results](demo.html#cq4-platform-a-issues-and-their-states) show the recorded state history and supporting evidence for Issues that challenge Platform A. See the [conceptual model](ontology.html#conceptual-model) and [terminology list](termlist.html) for the vocabulary used in the questions.
+The document includes the full scenarios for all six questions. The [demonstration](demo.html) provides runnable queries and recorded answers for CQ1–CQ6. Its [CQ4 results](demo.html#cq4-platform-a-issues-and-their-states) show the recorded state history and supporting evidence for Issues that challenge Platform A. See the [conceptual model](ontology.html#conceptual-model) and [terminology list](termlist.html) for the vocabulary used in the questions.
 
 ## Previous Versions
 
