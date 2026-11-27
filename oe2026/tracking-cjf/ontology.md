@@ -4,7 +4,7 @@ title: Concept Map and Ontology
 toc: true
 ---
 
-[Ontologies](#ontologies) | [Validation](#validation) | [Prior Versions](#prior-versions) | [Conceptual Model](#conceptual-model) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
+[Ontologies](#ontologies) | [Validation](#validation) | [Conceptual Model](#conceptual-model) | [Ontologies Reused](#ontologies-reused) | [Ontology Prefixes](#ontology-prefixes)
 
 ## Ontologies
 
@@ -35,15 +35,6 @@ We validated version 1.0 on November 27, 2026:
 - **Current state assignments:** rerunning the [SHACL rules](shacl/current-state-assignment-rules.ttl) on `TeamCJF_IndividualsWithoutCurrentState.rdf` conforms, adds 54 current-assignment links, and reproduces `TeamCJF_Individuals.rdf` exactly.
 - **Competency questions:** in Protégé with HermiT, the six [demonstration queries](demo.html) returned 70, 32, 9, 11, 4, and 2 rows on OE_13, matching the recorded answer files. Version 1.0 has the same axioms and individuals, so the recorded answers apply to it unchanged.
 - **Pipeline tests:** the 42 serializer tests pass, including the class and property naming checks on the 1.0 files.
-
-## Prior Versions
-
-Earlier releases keep their original IRIs and are available for download only; open them with the catalog in the same folder. The [version archive](ontology-versions.html#downloadable-versions) lists schema and individuals for OE Weeks 8–13 and links to development snapshots. The most recent prior version is [OE_13](ontology-versions.html#downloadable-versions).
-
-| File | Purpose |
-| --- | --- |
-| <a href="prev-ontology-versions/mar11_groupb-individuals.rdf" download>March 11 Group B individuals (.rdf)</a> | Annotated example individuals from a corpus conversation |
-| <a href="prev-ontology-versions/tracking-cjf-individuals.rdf" download>Earlier conversation individuals (.rdf)</a> | Earlier instance dataset |
 
 ## Conceptual Model
 
