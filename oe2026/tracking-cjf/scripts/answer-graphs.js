@@ -6,6 +6,17 @@
   const example = get("example");
   const step = get("step");
   const nextStep = get("next-step");
+  const chainTip = get("chain-tip");
+  // Ordered owl:propertyChainAxiom members for the predicates in the classroom graphs.
+  const chains = {
+    selects: ["makesSelects", "isAimedAtSelects"],
+    supports: ["makesSupports", "isAimedAtSupports"],
+    challenges: ["makesChallenges", "isAimedAtChallenges"],
+    hasPositionTowards: ["makesPositionTowards", "isAimedAtPositionTowards"],
+    hasState: ["hasCurrentStateAssignment", "assignedState"],
+    hasSpeaker: ["sio:SIO_000206", "isPartOfUtterance", "prov:wasAttributedTo"],
+    hasUtterance: ["sio:SIO_000206", "isPartOfUtterance"]
+  };
 
   const titles = ["Moves and states", "Issue evidence", "Claims about Platform A",
     "Issue histories", "Agreement with the outcome", "Speaker C’s positions"];
@@ -18,6 +29,7 @@
 
   function showGraph(q, witness, stage) {
     const graph = get("graph");
+    chainTip.hidden = true;
     graph.replaceChildren();
     graph.setAttribute("viewBox", "0 0 " + q.size.join(" "));
     const active = q.steps.slice(0, stage + 1);
@@ -34,7 +46,44 @@
       if (!origin || !edges.has(edge.id)) continue;
       const label = svg("text", {x: edge.x, y: edge.y, "text-anchor": "middle"});
       label.textContent = witness.edgeLabels?.[edge.id] ?? edge.predicate;
-      graph.append(svg("path", {d: edge.d, class: "edge " + origin, "marker-end": "url(#arrow)"}), label);
+      const line = svg("path", {d: edge.d, class: "edge " + origin, "marker-end": "url(#arrow)"});
+      const predicate = label.textContent;
+      const chain = chains[predicate];
+      if (!chain) {
+        graph.append(line, label);
+        continue;
+      }
+      const description = chain.join(" → ");
+      const group = svg("g", {class: "chain-edge", tabindex: 0, role: "button",
+        "aria-label": predicate + " property chain: " + description});
+      group.append(svg("path", {d: edge.d, class: "chain-hit"}), line, label);
+      function reveal(x, y) {
+        const title = document.createElement("strong");
+        title.textContent = predicate;
+        const path = document.createElement("div");
+        path.textContent = description;
+        chainTip.replaceChildren(title, path);
+        chainTip.hidden = false;
+        const {width, height} = chainTip.getBoundingClientRect();
+        chainTip.style.left = Math.max(8, Math.min(x, window.innerWidth - width - 8)) + "px";
+        chainTip.style.top = (y + height + 16 < window.innerHeight ? y + 12 : Math.max(8, y - height - 12)) + "px";
+      }
+      function revealAtLabel() {
+        const rect = label.getBoundingClientRect();
+        reveal(rect.left, rect.bottom);
+      }
+      group.addEventListener("pointerenter", event => reveal(event.clientX, event.clientY));
+      group.addEventListener("pointerleave", () => { chainTip.hidden = true; });
+      group.addEventListener("focus", revealAtLabel);
+      group.addEventListener("blur", () => { chainTip.hidden = true; });
+      group.addEventListener("click", revealAtLabel);
+      group.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          revealAtLabel();
+        }
+      });
+      graph.append(group);
     }
     for (const node of q.nodes) {
       const term = witness.terms[node.id];
@@ -97,6 +146,12 @@
     question.add(new Option("CQ" + q.id + " · " + titles[q.id - 1], String(q.id)));
   }
   const initial = /^#cq([1-6])$/i.exec(location.hash);
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") chainTip.hidden = true;
+  });
+  document.addEventListener("pointerdown", event => {
+    if (!event.target.closest(".chain-edge")) chainTip.hidden = true;
+  });
   question.value = initial?.[1] ?? "5";
   question.addEventListener("change", selectQuestion);
   example.addEventListener("change", render);
