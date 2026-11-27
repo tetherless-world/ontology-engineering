@@ -98,7 +98,7 @@ The [SHACL rules](shacl/current-state-assignment-rules.ttl) identify terminal as
 
 <p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ2/CQ2.issues-currently-addressed-or-resolved.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ2/CQ2.issues-currently-addressed-or-resolved.answers.csv">Recorded answers (.csv)</a></p>
 
-The query follows each Issue’s current assignment and returns the assigned state classes and supporting text from the triggering relationship.
+The query follows each Issue’s current assignment and returns the assigned state classes and supporting text from the triggering relationship. Rows are sorted by Issue, state class, and evidence, so the order matches the recorded answers.
 
 ## CQ3 Claims Supporting or Challenging Platform A
 
@@ -166,7 +166,7 @@ The query returns Claims that support or challenge Platform A, their current sta
 
 <p class="cjf-downloads">Downloads: <a href="CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.snap.rq">SPARQL query (.rq)</a> · <a href="CQAnswers/CQ4/CQ4.issues-platform-a-historical-states.answers.csv">Recorded answers (.csv)</a></p>
 
-The query finds Issues that explicitly challenge Platform A. Each row shows one Open, Addressed, or Resolved classification for a recorded assignment and any supporting evidence. Initial Open assignments can have blank evidence.
+The query finds Issues that explicitly challenge Platform A. Each row shows one Open, Addressed, or Resolved classification from the Issue’s recorded assignments, with the source move and evidence that triggered it. Initial Open assignments have no source move or evidence. Rows are sorted by Issue, state, source move, and evidence.
 
 ## CQ5 Speakers Agreeing with the Selected Option
 

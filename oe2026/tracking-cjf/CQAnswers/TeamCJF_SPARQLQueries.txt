@@ -102,6 +102,7 @@ where {
     ?relation sio:SIO_000206 ?text_span .
     ?text_span cjf:hasConversationText ?evidence .
 }
+ORDER BY ?issues ?stateclass ?evidence
 
 Expected Answer:
 M0001 – Issue (Addressed): “For this project, I think Platform A’s tested integrations and simpler setup make it the better fit. I support choosing Platform A.”
@@ -177,7 +178,7 @@ PREFIX sample: <https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSa
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sio: <http://semanticscience.org/resource/>
 
-SELECT DISTINCT ?issue ?assignment ?stateType ?sourceMove ?evidence
+SELECT DISTINCT ?issue ?stateType ?sourceMove ?evidence
 WHERE {
     ?issue cjf:makesChallenges ?challenge .
 
@@ -217,27 +218,27 @@ WHERE {
         }
     }
 }
-ORDER BY ?issue ?assignment ?stateType ?sourceMove
+ORDER BY ?issue ?stateType ?sourceMove ?evidence
 
 Expected Answer:
 
 M0010 – Cost concern (7 rows):
-- Addressed (M0021): “We should consider adopting it instead.”
+- Addressed (M0021): “We should consider adopting it instead”
+- Addressed (M0039): “Then we could cover Platform A’s $6,000 gap by moving the funds reserved for the reporting add-on.”
 - Addressed (M0048): “Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.”
 - Addressed (M0048): “That settles the funding concern.”
+- Open: No source move or evidence recorded.
 - Resolved (M0048): “Let’s move the $6,000 into the platform budget. We’ve all agreed to that, so the funding gap for Platform A is covered.”
 - Resolved (M0048): “That settles the funding concern.”
-- Addressed (M0039): “Then we could cover Platform A’s $6,000 gap by moving the funds reserved for the reporting add-on.”
-- Open: No source move or evidence recorded.
 
 M0014 – Training concern (2 rows):
-- Open: No source move or evidence recorded.
 - Addressed (M0051): “We could use Monday’s five-to-six training slot for a vendor-led session, then give developers the recording and a practice environment.”
+- Open: No source move or evidence recorded.
 
 M0050 – Training schedule concern (2 rows):
-- Open: No source move or evidence recorded.
 - Addressed (M0051): “We could use Monday’s five-to-six training slot for a vendor-led session, then give developers the recording and a practice environment.”
-(11 rows expected, representing 8 distinct state assignments across 3 Issues.)
+- Open: No source move or evidence recorded.
+(11 rows expected, representing 8 distinct state assignments across 3 Issues, ordered by Issue, state, source move, and evidence.)
 
 Note: This query retrieves Issues that explicitly challenge Platform A. Initial Open states may have blank evidence when no Address/Resolve trigger is recorded. 
 Some rows repeat because of OWL-inferred classifications and multiple supporting text spans.

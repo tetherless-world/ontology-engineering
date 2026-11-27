@@ -1354,7 +1354,7 @@ const classroomGraphs = {
       "examples": [
         {
           "label": "Turn 18 · Resolved",
-          "rowIndex": 3,
+          "rowIndex": 6,
           "terms": {
             "issue": {
               "value": "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/Move_OCT21_A-M0010",
@@ -1426,7 +1426,6 @@ const classroomGraphs = {
           "note": "The assignment is at turn 18. This evidence span on its source move comes from turn 19.",
           "answer": {
             "issue": "sample:Move_OCT21_A-M0010",
-            "assignment": "sample:Assignment_3cfe4fcd6c82b91ca5d0",
             "stateType": "cjf:Resolved",
             "sourceMove": "sample:Move_OCT21_A-M0048",
             "evidence": "That settles the funding concern."
@@ -1434,7 +1433,7 @@ const classroomGraphs = {
         },
         {
           "label": "Turn 5 · Open",
-          "rowIndex": 6,
+          "rowIndex": 4,
           "terms": {
             "issue": {
               "value": "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/Move_OCT21_A-M0010",
@@ -1483,7 +1482,6 @@ const classroomGraphs = {
           "note": "This initial Open assignment survives with the optional trigger, source move and evidence unbound.",
           "answer": {
             "issue": "sample:Move_OCT21_A-M0010",
-            "assignment": "sample:Assignment_8b66f2862fe0f2165de0",
             "stateType": "cjf:Open",
             "sourceMove": "",
             "evidence": ""
@@ -1491,7 +1489,7 @@ const classroomGraphs = {
         },
         {
           "label": "Turn 15 · Addressed",
-          "rowIndex": 5,
+          "rowIndex": 1,
           "terms": {
             "issue": {
               "value": "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/Move_OCT21_A-M0010",
@@ -1562,7 +1560,6 @@ const classroomGraphs = {
           },
           "answer": {
             "issue": "sample:Move_OCT21_A-M0010",
-            "assignment": "sample:Assignment_784175fca71db18ddd24",
             "stateType": "cjf:Addressed",
             "sourceMove": "sample:Move_OCT21_A-M0039",
             "evidence": "Then we could cover Platform A’s $6,000 gap by moving the funds reserved for the reporting add-on."
@@ -1570,7 +1567,7 @@ const classroomGraphs = {
         },
         {
           "label": "Turn 18 · Addressed",
-          "rowIndex": 1,
+          "rowIndex": 3,
           "terms": {
             "issue": {
               "value": "https://tw.rpi.edu/ontology-engineering/oe2026/tracking-cjf/CQSample/Move_OCT21_A-M0010",
@@ -1642,7 +1639,6 @@ const classroomGraphs = {
           "note": "The turn-18 State also has the class Resolved.",
           "answer": {
             "issue": "sample:Move_OCT21_A-M0010",
-            "assignment": "sample:Assignment_3cfe4fcd6c82b91ca5d0",
             "stateType": "cjf:Addressed",
             "sourceMove": "sample:Move_OCT21_A-M0048",
             "evidence": "That settles the funding concern."
